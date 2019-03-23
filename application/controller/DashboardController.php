@@ -16,4 +16,11 @@ class DashboardController extends Controller
             'solicitudes_old' => SolicitudesModel::getAllOldSolicitudes(Session::get('user_email'))
         ));
     }
+
+    public function agendar($solicitud_id)
+    {
+        $this->View->render('dashboard/agendar', array(
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id)
+        ));
+    }
 }

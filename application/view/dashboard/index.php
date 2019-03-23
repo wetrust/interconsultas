@@ -34,10 +34,11 @@
                                 <tr>
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
+                                    <td><?= htmlentities($value->solicitud_rut); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
-                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->note_id; ?>">Edit</a></td>
-                                    <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->note_id; ?>">Eliminar</a></td>
+                                    <td><a href="<?= Config::get('URL') . 'dashboard/agendar/' . $value->solicitud_id; ?>">Agendar</a></td>
+                                    <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -69,10 +70,11 @@
                                 <tr>
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
+                                    <td><?= htmlentities($value->solicitud_rut); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
-                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->note_id; ?>">Edit</a></td>
-                                    <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->note_id; ?>">Eliminar</a></td>
+                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->solicitud_id; ?>">Edit</a></td>
+                                    <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -104,10 +106,11 @@
                                 <tr>
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
+                                    <td><?= htmlentities($value->solicitud_rut); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
-                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->note_id; ?>">Edit</a></td>
-                                    <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->note_id; ?>">Eliminar</a></td>
+                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->solicitud_id; ?>">Edit</a></td>
+                                    <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
