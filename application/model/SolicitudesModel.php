@@ -6,9 +6,9 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes WHERE solicitud_email = :solicitud_email AND solicitud_respuesta = 0";
+        $sql = "SELECT * FROM solicitudes WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_respuesta = 0";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_email' => $solicitud_email));
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
         return $query->fetchAll();
     }
@@ -17,9 +17,9 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes WHERE solicitud_email = :solicitud_email AND solicitud_respuesta = 1";
+        $sql = "SELECT * FROM solicitudes WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_respuesta = 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_email' => $solicitud_email));
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
         return $query->fetchAll();
     }
@@ -28,9 +28,9 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes WHERE solicitud_email = :solicitud_email  AND solicitud_respuesta = 2";
+        $sql = "SELECT * FROM solicitudes WHERE solicitud_profesionalemail = :solicitud_profesionalemail  AND solicitud_respuesta = 2";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_email' => $solicitud_email));
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
         return $query->fetchAll();
     }
@@ -39,16 +39,16 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes WHERE solicitud_email = :solicitud_email AND solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "SELECT * FROM solicitudes WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_email' => $solicitud_email, ':solicitud_id' => $solicitud_id));
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':solicitud_id' => $solicitud_id));
 
         return $query->fetch();
     }
     
     public static function createSolicitud($solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
     {
-        if (!$solicitud_text || strlen($solicitud_text) == 0) {
+        if (!$solicitud_profesionalemail || strlen($solicitud_profesionalemail) == 0) {
             Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
             return false;
         }
@@ -69,7 +69,7 @@ class SolicitudesModel
 
     public static function updateSolicitud($solicitud_id,$solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
     {
-        if (!$solicitud_id || !$solicitud_text) {
+        if (!$solicitud_id || !$solicitud_profesionalemail) {
             return false;
         }
 
