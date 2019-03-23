@@ -1,0 +1,5 @@
+# don't commit all the dependencies fetched via Composer
+/vendor/
+#database
+/db/
+composer.lock
