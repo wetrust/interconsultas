@@ -5,7 +5,7 @@
         <div class="card-body">
             <h4>Datos de la interconsulta</h4>
             <?php if ($this->solicitud) { ?>
-            <form method="post" action="<?php echo Config::get('URL'); ?>note/editSave">
+            <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/editSave">
                 <!-- we use htmlentities() here to prevent user input with " etc. break the HTML -->
                 <input type="hidden" name="solicitud_id" value="<?php echo htmlentities($this->solicitud->solicitud_id); ?>" />
                 <div class="row">
@@ -111,10 +111,10 @@
                             <label class="form-check-label" for="interconsulta.aceptada.no">No</label>
                         </div>
                     </div>
-                    <div class="col form-group">
+                    <div class="col form-group" id="jaja.papapa">
                         <label for="interconsulta.para">¿Eco de crecimiento?</label>
                     </div>
-                    <div class="col form-group">
+                    <div class="col form-group" id="jaja.papap">
                         <div class="form-check">
                             <input type="radio" id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input">
                             <label class="form-check-label" for="interconsulta.crecimiento.si">Si</label>
@@ -139,3 +139,16 @@
         </div>
     </div>
 </div>
+<script>
+    $("document").ready(function(){
+        $("#interconsulta\\.crecimiento\\.si").on("click", function(){
+            $("#jaja\\.papapa").removeClass("d-none");
+            $("#jaja\\.papap").removeClass("d-none");
+        });
+        
+        $("#interconsulta\\.crecimiento\\.no").on("click", function(){
+            $("#jaja\\.papapa").addClass("d-none");
+            $("#jaja\\.papap").addClass("d-none");
+        });
+    })
+</script>
