@@ -140,7 +140,7 @@
     </div>
 </div>
 <script>
-    $("document").ready(function(){
+    $(document).ready(function(){
         $("#interconsulta\\.crecimiento\\.si").on("click", function(){
             $("#jaja\\.papapa").removeClass("d-none");
             $("#jaja\\.papap").removeClass("d-none");
