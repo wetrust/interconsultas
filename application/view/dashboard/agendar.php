@@ -104,11 +104,11 @@
                     <div class="col form-group">
                         <div class="form-check">
                             <input type="radio" id="interconsulta.aceptada.si" value="1" name="interconsulta_aceptada" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.aceptada.si">Si</label>
+                            <label class="form-check-label" for="interconsulta.aceptada.si">Si</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="interconsulta.aceptada.no" value="0" name="interconsulta_aceptada" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.aceptada.no">No</label>
+                            <label class="form-check-label" for="interconsulta.aceptada.no">No</label>
                         </div>
                     </div>
                     <div class="col form-group">
@@ -117,11 +117,11 @@
                     <div class="col form-group">
                         <div class="form-check">
                             <input type="radio" id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.crecimiento.si">Si</label>
+                            <label class="form-check-label" for="interconsulta.crecimiento.si">Si</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="interconsulta.crecimiento.no" value="0" name="interconsulta_crecimiento" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.crecimiento.no">No</label>
+                            <label class="form-check-label" for="interconsulta.crecimiento.no">No</label>
                         </div>
                     </div>
                 </div>
