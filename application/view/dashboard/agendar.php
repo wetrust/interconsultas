@@ -141,12 +141,12 @@
 </div>
 <script>
     $(document).ready(function(){
-        $("#interconsulta\\.crecimiento\\.si").on("click", function(){
+        $("#interconsulta\\.aceptada\\.si").on("click", function(){
             $("#jaja\\.papapa").removeClass("d-none");
             $("#jaja\\.papap").removeClass("d-none");
         });
         
-        $("#interconsulta\\.crecimiento\\.no").on("click", function(){
+        $("#interconsulta\\.aceptada\\.no").on("click", function(){
             $("#jaja\\.papapa").addClass("d-none");
             $("#jaja\\.papap").addClass("d-none");
         });
