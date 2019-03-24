@@ -1,8 +1,9 @@
 <div class="container">
-    <h1>Agendar solicitud</h1>
+    <h1 class="text-center">Agendar solicitud</h1>
     <?php $this->renderFeedbackMessages(); ?>
     <div class="card mt-1">
         <div class="card-body">
+            <h4>Datos de la interconsulta</h4>
             <?php if ($this->solicitud) { ?>
             <form method="post" action="<?php echo Config::get('URL'); ?>note/editSave">
                 <!-- we use htmlentities() here to prevent user input with " etc. break the HTML -->
@@ -94,6 +95,41 @@
                         <label>Email (contrareferencia)</label>
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_profesionalemail); ?>">
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.para" class="my-3">¿Interconsulta aceptada?</label>
+                    </div>
+                    <div class="col form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="interconsulta.profesional.medico" value="1" name="interconsulta_aceptada" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.profesional.medico">Si</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="interconsulta.profesional.matrona" value="0" name="interconsulta_aceptada" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.profesional.matrona">No</label>
+                        </div>
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.para" class="my-3">¿Eco de crecimiento?</label>
+                    </div>
+                    <div class="col form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="interconsulta.profesional.medico" value="1" name="interconsulta_crecimiento" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.profesional.medico">Si</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="interconsulta.profesional.matrona" value="0" name="interconsulta_crecimiento" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.profesional.matrona">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.para" class="my-3">Comentario</label>
+                        <input type="text" class="form-control" name="comentario">
+                    </div>
+
                 </div>
                 <button type="submit" class="btn btn-primary">Change</button>
             </form>
