@@ -26,38 +26,39 @@
                         <label>Ege conocida precozmente</label>
                     </div>
                     <div class="col form-group">
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->note_text); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_eg); ?>">
                     </div>
                     <div class="col form-group">
                         <label>Ecografía previa de crecimiento</label>
                     </div>
                     <div class="col form-group">
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->note_text); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_eco); ?>">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label>FUM operacional</label>
-                        <input type="date" class="form-control" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
+                        <input type="date" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
                     </div>
                     <div class="col form-group">
                         <label>Edad Gestacional</label>
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->solicitud_egestacional); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_egestacional); ?>">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label>Diagnóstico de referencia</label>
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->solicitud_diagnostico); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_diagnostico); ?>">
                     </div>
+                </div>
                 <div class="row">
                     <div class="col form-group">
                         <label>Ciudad procedencia de la paciente</label>
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->solicitud_ciudad); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_ciudad); ?>">
                     </div>
                     <div class="col form-group">
                         <label>Lugar de control prenatal</label>
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->solicitud_lugar); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_lugar); ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -78,11 +79,11 @@
                 <div class="row">
                     <div class="col form-group">
                         <label>Nombre:</label>
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->solicitud_nombreprofesional); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_nombreprofesional); ?>">
                     </div>
                     <div class="col form-group">
                         <label>Email (de trabajo):</label>
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud->solicitud_email); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_email); ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -91,7 +92,7 @@
                     </div>
                     <div class="col form-group">
                         <label>Email (contrareferencia)</label>
-                        <input type="text" class="form-control" name="note_text" value="<?php echo htmlentities($this->solicitud->solicitud_profesionalemail); ?>">
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_profesionalemail); ?>">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Change</button>
