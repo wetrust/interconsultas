@@ -102,11 +102,11 @@
                         <label for="interconsulta.para">¿Interconsulta aceptada?</label>
                     </div>
                     <div class="col form-group">
-                        <div class="custom-control custom-radio custom-control-inline">
+                        <div class="form-check">
                             <input type="radio" id="interconsulta.aceptada.si" value="1" name="interconsulta_aceptada" class="form-check-input">
                             <label class="custom-control-label" for="interconsulta.aceptada.si">Si</label>
                         </div>
-                        <div class="custom-control custom-radio custom-control-inline">
+                        <div class="form-check">
                             <input type="radio" id="interconsulta.aceptada.no" value="0" name="interconsulta_aceptada" class="form-check-input">
                             <label class="custom-control-label" for="interconsulta.aceptada.no">No</label>
                         </div>
@@ -115,11 +115,11 @@
                         <label for="interconsulta.para">¿Eco de crecimiento?</label>
                     </div>
                     <div class="col form-group">
-                        <div class="custom-control custom-radio custom-control-inline">
+                        <div class="form-check">
                             <input type="radio" id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input">
                             <label class="custom-control-label" for="interconsulta.crecimiento.si">Si</label>
                         </div>
-                        <div class="custom-control custom-radio custom-control-inline">
+                        <div class="form-check">
                             <input type="radio" id="interconsulta.crecimiento.no" value="0" name="interconsulta_crecimiento" class="form-check-input">
                             <label class="custom-control-label" for="interconsulta.crecimiento.no">No</label>
                         </div>
