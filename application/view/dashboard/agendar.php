@@ -96,40 +96,40 @@
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_profesionalemail); ?>">
                     </div>
                 </div>
+                <h4>Responder a esta solicitud de interconsulta</h4>
                 <div class="row">
                     <div class="col form-group">
-                        <label for="interconsulta.para" class="my-3">¿Interconsulta aceptada?</label>
+                        <label for="interconsulta.para">¿Interconsulta aceptada?</label>
                     </div>
                     <div class="col form-group">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="interconsulta.profesional.medico" value="1" name="interconsulta_aceptada" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.profesional.medico">Si</label>
+                            <input type="radio" id="interconsulta.aceptada.si" value="1" name="interconsulta_aceptada" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.aceptada.si">Si</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="interconsulta.profesional.matrona" value="0" name="interconsulta_aceptada" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.profesional.matrona">No</label>
+                            <input type="radio" id="interconsulta.aceptada.no" value="0" name="interconsulta_aceptada" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.aceptada.no">No</label>
                         </div>
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.para" class="my-3">¿Eco de crecimiento?</label>
+                        <label for="interconsulta.para">¿Eco de crecimiento?</label>
                     </div>
                     <div class="col form-group">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="interconsulta.profesional.medico" value="1" name="interconsulta_crecimiento" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.profesional.medico">Si</label>
+                            <input type="radio" id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.crecimiento.si">Si</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="interconsulta.profesional.matrona" value="0" name="interconsulta_crecimiento" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.profesional.matrona">No</label>
+                            <input type="radio" id="interconsulta.crecimiento.no" value="0" name="interconsulta_crecimiento" class="form-check-input">
+                            <label class="custom-control-label" for="interconsulta.crecimiento.no">No</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
-                        <label for="interconsulta.para" class="my-3">Comentario</label>
-                        <input type="text" class="form-control" name="comentario">
+                        <label for="interconsulta.comentario.respuesta">Comentario</label>
+                        <input type="text" class="form-control" name="comentario" id="interconsulta.comentario.respuesta">
                     </div>
-
                 </div>
                 <button type="submit" class="btn btn-primary">Change</button>
             </form>
