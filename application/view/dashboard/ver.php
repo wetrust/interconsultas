@@ -119,11 +119,11 @@
                 </div>
                 <div class="col form-group" id="jaja.papap">
                     <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input">
+                        <input type="radio" disabled id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input" <?php if ($this->solicitud_evaluacion->eco_crecimiento == 1) { echo 'checked'; } ?>>
                         <label class="form-check-label" for="interconsulta.crecimiento.si">Si</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.crecimiento.no" value="0" name="interconsulta_crecimiento" class="form-check-input">
+                        <input type="radio" disabled id="interconsulta.crecimiento.no" value="0" name="interconsulta_crecimiento" class="form-check-input" <?php if ($this->solicitud_evaluacion->eco_crecimiento == 0) { echo 'checked'; } ?>>
                         <label class="form-check-label" for="interconsulta.crecimiento.no">No</label>
                     </div>
                 </div>
