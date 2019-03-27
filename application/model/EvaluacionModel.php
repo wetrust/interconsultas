@@ -26,7 +26,7 @@ class EvaluacionModel
 
     public static function createEvaluacion($solicitud_id, $evaluacion_aceptada, $eco_crecimiento, $evaluacion_comentarios)
     {
-        if (!$note_text || strlen($note_text) == 0) {
+        if (!$solicitud_id) {
             Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
             return false;
         }
