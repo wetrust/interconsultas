@@ -36,7 +36,7 @@ class EmailModel
         if ($interconsulta_aceptada == 1){
             $solicitud_estado = " aceptada ";
         }
-        $solicitud = SolicitudModel::getSolicitud($solicitud_id, Session::get('user_email'));
+        $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
         $body =  "Informamos a us que la interconsulta para: " . $solicitud->solicitud_nombre . ", nRut: " . $solicitud->solicitud_rut . " solicitada en fecha: " . $solicitud->solicitud_fecha . " ha sido " . $solicitud_estado . "\nComentario: ". $evaluacion_comentario;
 
         $mail = new Mail;
