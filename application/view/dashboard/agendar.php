@@ -6,7 +6,6 @@
             <h4>Datos de la interconsulta</h4>
             <?php if ($this->solicitud) { ?>
             <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/editSave">
-                <!-- we use htmlentities() here to prevent user input with " etc. break the HTML -->
                 <input type="hidden" name="solicitud_id" value="<?php echo htmlentities($this->solicitud->solicitud_id); ?>" />
                 <div class="row">
                     <div class="col form-group">
