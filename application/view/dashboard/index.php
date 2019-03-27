@@ -109,7 +109,7 @@
                                     <td><?= htmlentities($value->solicitud_rut); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
-                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->solicitud_id; ?>">Edit</a></td>
+                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->solicitud_id; ?>">Ver</a></td>
                                     <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
                                 </tr>
                                 <?php } ?>
