@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="card mt-1">
+    <div class="card mt-3">
         <div class="card-body">
             <h4>Responder a esta solicitud de interconsulta</h4>
             <div class="row">
@@ -136,7 +136,7 @@
             </div>
         </div>
     </div>
-    <div class="card mt-1">
+    <div class="card mt-3">
         <div class="card-body">
             <h4 class="text-center">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
