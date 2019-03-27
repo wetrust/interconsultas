@@ -136,6 +136,7 @@
             </div>
         </div>
     </div>
+    <?php if ($this->solicitud_evaluacion->evaluacion_aceptada == 1) { ?>
     <div class="card mt-3">
         <div class="card-body">
             <h4 class="text-center">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
@@ -277,6 +278,7 @@
                     </div>
         </div>
     </div>
+    <?php } ?>
     </form>
     <?php } else { ?>
         <div class="alert alert-danger" role="alert">Esta interconsulta no existe.</div>
