@@ -195,7 +195,7 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.bvm">BVM</label>
-                        <input type="number" class="form-control" id="interconsulta.respuesta.bvm">
+                        <input disabled type="number" class="form-control" id="interconsulta.respuesta.bvm">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.uterinas.div">
