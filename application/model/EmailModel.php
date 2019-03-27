@@ -29,4 +29,23 @@ class EmailModel
             return false;
         }
     }
+
+    public static function sendPrimeraRespuesta($solicitud_id,$interconsulta_aceptada, $evaluacion_comentario)
+    {
+        $solicitud_estado = " rechazada ";
+        if ($interconsulta_aceptada == 1){
+            $solicitud_estado = " aceptada ";
+        }
+        $solicitud = SolicitudModel::getSolicitud($solicitud_id, Session::get('user_email'));
+        $body =  "Informamos a us que la interconsulta para: " . $solicitud->solicitud_nombre . ", nRut: " . $solicitud->solicitud_rut . " solicitada en fecha: " . $solicitud->solicitud_fecha . " ha sido " . $solicitud_estado . "\nComentario: ". $evaluacion_comentario;
+
+        $mail = new Mail;
+        $mail_sent = $mail->sendMail($solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
+
+        if ($mail_sent) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

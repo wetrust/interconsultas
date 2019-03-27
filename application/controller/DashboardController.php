@@ -38,10 +38,17 @@ class DashboardController extends Controller
         }
 
         EvaluacionModel::createEvaluacion($solicitud_id, $interconsulta_aceptada, $interconsulta_crecimiento, $comentario);
-
+        EmailModel::sendPrimeraRespuesta($solicitud_id,$interconsulta_aceptada, $comentario);
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
         Redirect::to('dashboard');
+    }
+
+    public function edit($solicitud_id)
+    {
+        $this->View->render('dashboard/edit', array(
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email'))
+        ));
     }
 
     public function ver($solicitud_id)
