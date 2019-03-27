@@ -11,6 +11,9 @@
         <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Interconsultas resueltas</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#referentes" role="tab" aria-controls="referentes" aria-selected="false">Listas de referentes</a>
+        </li>
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -109,7 +112,7 @@
                                     <td><?= htmlentities($value->solicitud_rut); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
-                                    <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->solicitud_id; ?>">Ver</a></td>
+                                    <td><a href="<?= Config::get('URL') . 'dashboard/ver/' . $value->solicitud_id; ?>">Ver</a></td>
                                     <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
                                 </tr>
                                 <?php } ?>

@@ -40,4 +40,11 @@ class DashboardController extends Controller
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
         Redirect::to('dashboard');
     }
+
+    public function ver($solicitud_id)
+    {
+        $this->View->render('dashboard/ver', array(
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email'))
+        ));
+    }
 }
