@@ -1,17 +1,17 @@
 <div class="container">
     <h1 class="text-center">Agendar solicitud</h1>
     <?php $this->renderFeedbackMessages(); ?>
+    <?php if ($this->solicitud) { ?>
+    <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/editSave">
     <div class="card mt-1">
         <div class="card-body">
             <h4>Datos de la interconsulta</h4>
-            <?php if ($this->solicitud) { ?>
-            <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/editSave">
-                <input type="hidden" name="solicitud_id" value="<?php echo htmlentities($this->solicitud->solicitud_id); ?>" />
-                <div class="row">
-                    <div class="col form-group">
-                        <label>Nombre del paciente:</label>
-                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_nombre); ?>">
-                    </div>
+            <input type="hidden" name="solicitud_id" value="<?php echo htmlentities($this->solicitud->solicitud_id); ?>" />
+            <div class="row">
+                <div class="col form-group">
+                    <label>Nombre del paciente:</label>
+                    <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_nombre); ?>">
+                </div>
                     <div class="col form-group">
                         <label>RUT del paciente:</label>
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_rut); ?>">
@@ -95,6 +95,10 @@
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_profesionalemail); ?>">
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="card mt-1">
+            <div class="card-body">
                 <h4>Responder a esta solicitud de interconsulta</h4>
                 <div class="row">
                     <div class="col form-group">
@@ -130,6 +134,10 @@
                         <input type="text" class="form-control" name="comentario" id="interconsulta.comentario.respuesta">
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="card mt-1">
+            <div class="card-body">
                 <h4 class="text-center">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
                 <div class="row">
                     <div class="col-6 form-group">
@@ -269,10 +277,10 @@
                         </div>
                     </div>
                     <button class="btn btn-primary" id="interconsulta.enviar.respuesta">Enviar respuesta de interconsulta</button>                    
-            </form>
-            <?php } else { ?>
-            <div class="alert alert-danger" role="alert">Esta interconsulta no existe.</div>
-            <?php } ?>
         </div>
     </div>
+    </form>
+    <?php } else { ?>
+        <div class="alert alert-danger" role="alert">Esta interconsulta no existe.</div>
+    <?php } ?>
 </div>
