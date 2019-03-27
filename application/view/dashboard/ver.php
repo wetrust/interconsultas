@@ -106,11 +106,11 @@
                 </div>
                 <div class="col form-group">
                     <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.aceptada.si" value="1" name="interconsulta_aceptada" class="form-check-input">
+                        <input type="radio" disabled id="interconsulta.aceptada.si" value="1" name="interconsulta_aceptada" class="form-check-input" <?php if ($this->solicitud_evaluacion->evaluacion_aceptada == 1) { echo 'checked'; } ?>">
                         <label class="form-check-label" for="interconsulta.aceptada.si">Si</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.aceptada.no" value="0" name="interconsulta_aceptada" class="form-check-input">
+                        <input type="radio" disabled id="interconsulta.aceptada.no" value="0" name="interconsulta_aceptada" class="form-check-input" <?php if ($this->solicitud_evaluacion->evaluacion_aceptada == 0) { echo 'checked'; } ?>">
                         <label class="form-check-label" for="interconsulta.aceptada.no">No</label>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
             <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.comentario.respuesta">Comentario</label>
-                    <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta">
+                    <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta" value="<?php echo htmlentities($this->solicitud_evaluacion->evaluacion_comentarios); ?>">
                 </div>
             </div>
         </div>
