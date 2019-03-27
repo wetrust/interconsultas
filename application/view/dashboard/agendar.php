@@ -131,7 +131,7 @@
                         <input type="text" class="form-control" name="comentario" id="interconsulta.comentario.respuesta">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Change</button>
+                <button type="submit" class="btn btn-primary">Enviar respuesta</button>
             </form>
             <?php } else { ?>
             <div class="alert alert-danger" role="alert">Esta interconsulta no existe.</div>
