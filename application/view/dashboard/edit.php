@@ -232,7 +232,7 @@
                     <div class="row" id="interconsulta.respuesta.cmau.div">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau">Cuociente CM / AU</label>
-                            <input type="text" class="form-control" id="interconsulta.respuesta.cmau">
+                            <input type="text" class="form-control" disabled id="interconsulta.respuesta.cmau">
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
@@ -276,7 +276,7 @@
                             <input type="text" class="form-control" id="respuesta.ecografista">
                         </div>
                     </div>
-                    <button class="btn btn-primary" id="interconsulta.enviar.respuesta">Enviar respuesta de interconsulta</button>
+                    <button type="submit" class="btn btn-primary">Enviar respuesta</button>
         </div>
     </div>
     <script>
@@ -333,7 +333,213 @@
                     $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
                 }
             });
+
+            $("#interconsulta\\.respuesta\\.uterinas").on("change", function(){
+                var FExamen,FUM,EdadGestacional;
+                var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                var ut = $("#interconsulta\\.respuesta\\.uterinas").val();
+
+                eg = String(eg);
+                eg = eg.replace("semanas", "");
+
+                if (eg.length > 0){
+
+                    eg =  parseFloat(eg).toFixed();
+                    $("#interconsulta\\.respuesta\\.uterinas\\.percentil").val(pctUtAdvanced(eg,ut));
+
+                }
+                
+            })
+
+            $("#interconsulta\\.respuesta\\.pfe").on("change", function(){
+
+                var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                var pfe = $("#interconsulta\\.respuesta\\.pfe").val();
+
+                eg = String(eg);
+                eg = eg.replace("semanas", "");
+
+                if (eg.length > 0){
+
+                    eg =  parseFloat(eg).toFixed();
+                    $("#interconsulta\\.respuesta\\.pfe\\.percentil").val(pctpfeAdvanced(eg,pfe));
+
+                }
+            });
+
+            $("#interconsulta\\.respuesta\\.cm").on("change", function(){
+
+                var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                var acm = $("#interconsulta\\.respuesta\\.cm").val();
+
+                eg = String(eg);
+                eg = eg.replace("semanas", "");
+
+                if (eg.length > 0){
+
+                    eg =  parseFloat(eg).toFixed();
+                    $("#interconsulta\\.respuesta\\.cm\\.percentil").val(pctacmAdvanced(eg,acm));
+
+                }
+            });
         });
+
+        function pctpfeAdvanced(eg,pfe) {
+
+            var pct10 = [], pct90 = [];
+
+            pct10[0] = 97;pct10[1] = 121;pct10[2] = 150;pct10[3] = 185;pct10[4] = 227;pct10[5] = 275;
+            pct10[6] = 331;pct10[7] = 398;pct10[8] = 471;pct10[9] = 556;pct10[10] = 652;pct10[11] = 758;
+            pct10[12] = 876;pct10[13] = 1004;pct10[14] = 1145;pct10[15] = 1294;pct10[16] = 1453;
+            pct10[17] = 1621;pct10[18] = 1794;pct10[19] = 1973;pct10[20] = 2154;pct10[21] = 2335;
+            pct10[22] = 2513; pct10[23] = 2686; pct10[24] = 2851; pct10[25] = 2985;
+
+            pct90[0] = 137;pct90[1] = 171;pct90[2] = 212;pct90[3] = 261;pct90[4] = 319;
+            pct90[5] = 387;pct90[6] = 467;pct90[7] = 559;pct90[8] = 665;pct90[9] = 784;
+            pct90[10] = 918;pct90[11] = 1068;pct90[12] = 1234;pct90[13] = 1416;pct90[14] = 1613;
+            pct90[15] = 1824;pct90[16] = 2049;pct90[17] = 2285;pct90[18] = 2530;
+            pct90[19] = 2781;pct90[20] = 3036;pct90[21] = 3291;pct90[22] = 3543;pct90[23] = 3786;
+            pct90[24] = 4019;pct90[25] = 4234;
+
+            if (eg < 15) {  
+                return 0;
+            }
+            else if (eg > 40)
+            {
+                return 0;
+            }
+            else {
+                eg = eg - 15;
+                eg = parseInt(eg);
+                var uno = pct90[eg] - pct10[eg];
+                var dos = pfe - pct10[eg];
+                var pctFinal = (80 / (uno) * (dos)) + 10
+
+                var pctPFE = '';
+
+                if (pctFinal > 99){
+                    pctPFE = '> 99';
+                }
+                else if (pctFinal < 1){
+                    pctPFE = '< 1';
+                }
+                else{
+                    pctPFE = pctFinal.toFixed();
+                }
+                return pctPFE;
+            }
+        }
+
+        function pctUtAdvanced(eg,ut) {
+            var pct5 = [], pct95 = [];
+            pct5[0] = 1.23; pct5[1] = 1.18;	pct5[2] = 1.11; pct5[3] = 1.05;
+            pct5[4] = 0.99; pct5[5] = 0.94;	pct5[6] = 0.89; pct5[7] = 0.85;
+            pct5[8] = 0.81; pct5[9] = 0.78;	pct5[10] = 0.74; pct5[11] = 0.71;
+            pct5[12] = 0.69; pct5[13] = 0.66;	pct5[14] = 0.64; pct5[15] = 0.62;
+            pct5[16] = 0.6; pct5[17] = 0.58;	pct5[18] = 0.56; pct5[19] = 0.55;
+            pct5[20] = 0.54; pct5[21] = 0.52;	pct5[22] = 0.51; pct5[23] = 0.51;
+            pct5[24] = 0.51; pct5[25] = 0.49;	pct5[26] = 0.48; pct5[27] = 0.48;
+            pct5[28] = 0.47; pct5[29] = 0.47;	pct5[30] = 0.47;
+            pct95[0] = 2.84; pct95[1] = 2.71;	pct95[2] = 2.53; pct95[3] = 2.38;
+            pct95[4] = 2.24; pct95[5] = 2.11;	pct95[6] = 1.99; pct95[7] = 1.88;
+            pct95[8] = 1.79; pct95[9] = 1.71;	pct95[10] = 1.61; pct95[11] = 1.54;
+            pct95[12] = 1.47; pct95[13] = 1.41;	pct95[14] = 1.35; pct95[15] = 1.3;
+            pct95[16] = 1.25; pct95[17] = 1.21;	pct95[18] = 1.17; pct95[19] = 1.13;
+            pct95[20] = 1.11; pct95[21] = 1.06;	pct95[22] = 1.04; pct95[23] = 1.01;
+            pct95[24] = 0.99; pct95[25] = 0.97;	pct95[26] = 0.95; pct95[27] = 0.94;
+            pct95[28] = 0.92; pct95[29] = 0.91;	pct95[30] = 0.91;
+            
+            ut = ut.toString(); 
+            ut = ut.replace(",", ".");
+            ut = parseFloat(ut);
+
+            if (eg < 10) {  
+                return 0;
+            }
+            else if (eg > 40)
+            {
+                return 0;
+            }
+            else {
+                eg = eg - 10;
+                var uno=0;
+                var dos=0;
+                var resultado = '';
+                if (ut > 0){
+                    eg = parseInt(eg);
+                    uno=pct95[eg] - pct5[eg];
+                    dos=ut - pct5[eg];
+                    resultado = parseInt(90 / (uno) * (dos) + 5);
+                    var pctUT = '';
+                    //truncador de Pct, sobre 100 o bajo 1
+                    if (resultado > 99){
+                        pctUT = '> 99';
+                    }
+                    else if (resultado < 1){
+                        pctUT = '< 1';
+                    }
+                    else{
+                        pctUT = resultado.toFixed();
+                    }
+                    return pctUT;
+                }
+                else{
+                    return 0;
+                }
+            }
+        }
+
+        function pctacmAdvanced(eg,acm) {
+
+            var pct5 = [], pct95 = [];
+
+            pct5[0] = 1.24;pct5[1] = 1.29;	pct5[2] = 1.34;pct5[3] = 1.37;
+            pct5[4] = 1.4;pct5[5] = 1.43;	pct5[6] = 1.44;pct5[7] = 1.45;
+            pct5[8] = 1.45;pct5[9] = 1.44;	pct5[10] = 1.43;pct5[11] = 1.41;
+            pct5[12] = 1.38;pct5[13] = 1.34;	pct5[14] = 1.3;pct5[15] = 1.25;
+            pct5[16] = 1.19;pct5[17] = 1.13;	pct5[18] = 1.05;pct5[19] = 0.98;
+            pct5[20] = 0.89;
+
+            pct95[0] = 1.98;	pct95[1] = 2.12;	pct95[2] = 2.25;	pct95[3] = 2.36;
+            pct95[4] = 2.45;	pct95[5] = 2.53;	pct95[6] = 2.59;	pct95[7] = 2.63;
+            pct95[8] = 2.66;	pct95[9] = 2.67;	pct95[10] = 2.67;	pct95[11] = 2.65;
+            pct95[12] = 2.62;	pct95[13] = 2.56;	pct95[14] = 2.5;	pct95[15] = 2.41;
+            pct95[16] = 2.31;	pct95[17] = 2.2;	pct95[18] = 2.07;	pct95[19] = 1.92;
+            pct95[20] = 1.76;
+
+            acm = acm.toString();
+            acm = acm.replace(",", ".");
+            acm = parseFloat(acm);
+
+            if (eg < 20) {  
+                return 0;
+            }
+            else if (eg > 40)
+            {
+                return 0;
+            }
+            else {
+                eg = eg - 20;
+                eg = parseInt(eg);
+                var uno = pct95[eg] - pct5[eg];
+                var dos = acm - pct5[eg];
+                var resultado = parseInt(90 / (uno) * (dos) + 5);
+                var pctACM = '';
+
+                //truncador de Pct, sobre 100 o bajo 1
+                if (resultado > 99){
+                    pctACM = '> 99';
+                }
+                else if (resultado < 1){
+                    pctACM = '< 1';
+                }
+                else{
+                    pctACM = resultado.toFixed();
+                }
+                return pctACM;
+            }
+        }
+
     </script>
     <?php } ?>
     </form>
