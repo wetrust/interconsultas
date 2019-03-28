@@ -154,7 +154,7 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
-                        <input type="hidden" class="form-control" id="interconsulta.fum.copia">
+                        <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
                         <input type="text" class="form-control" id="interconsulta.respuesta.eg" disabled="">
                     </div>
                 </div>
@@ -276,8 +276,65 @@
                             <input type="text" class="form-control" id="respuesta.ecografista">
                         </div>
                     </div>
+                    <button class="btn btn-primary" id="interconsulta.enviar.respuesta">Enviar respuesta de interconsulta</button>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $("#interconsulta\\.respuesta\\.proceder").on("change", function(){
+                var resultad = $(this).val();
+                if (resultad == 'no') {
+                    $('#interconsulta\\.respuesta\\.pfe\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.ccca\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.liquido\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.uterinas\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.umbilical\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.cm\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.cmau\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.hipotesis\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.rciu\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.lugar\\.div').addClass('d-none');
+                    $('#interconsulta\\.respuesta\\.comentariosexamen\\.div').addClass('d-none');
+                    $('#interconsulta\\.titulo').addClass('d-none');
+                } 
+                else if (resultad == 'si') {
+                    $('#interconsulta\\.respuesta\\.pfe\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.ccca\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.liquido\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.bvm\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.uterinas\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.umbilical\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.cm\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.cmau\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.hipotesis\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.rciu\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.lugar\\.div').removeClass('d-none');
+                    $('#interconsulta\\.respuesta\\.comentariosexamen\\.div').removeClass('d-none');
+                    $('#interconsulta\\.titulo').removeClass('d-none');
+                }
+            });
+
+            $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
+                var FExamen,FUM,EdadGestacional;
+                var undia = 1000 * 60 * 60 * 24;
+                var unasemana = undia * 7;
+                FUM = $('#interconsulta\\.fum\\.copia').val();
+                FExamen = $('#interconsulta\\.respuesta\\.fecha').val();
+                FUM = new Date(FUM);
+                FExamen = new Date(FExamen);
+                EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
+                if (FExamen.getTime() < FUM.getTime()) {
+                    $('#interconsulta\\.respuesta\\.eg').val('0 semanas');
+                } 
+                else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
+                    $('#interconsulta\\.respuesta\\.eg').val('42 semanas');
+                } 
+                else {
+                    $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                }
+            });
+        });
+    </script>
     <?php } ?>
     </form>
     <?php } else { ?>
