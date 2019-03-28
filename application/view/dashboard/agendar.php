@@ -66,13 +66,13 @@
                         <h5><span class="badge badge-default p-2" for="interconsulta.profesional">Datos del profesional referente</span></h5>
                     </div>
                     <div class="col form-group">
-                        <div class="custom-control custom-radio custom-control-inline">
+                        <div class="form-check">
                             <input type="radio" id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.profesional.medico">Médico</label>
+                            <label class="form-check-label" for="interconsulta.profesional.medico">Médico</label>
                         </div>
-                        <div class="custom-control custom-radio custom-control-inline">
+                        <div class="form-check">
                             <input type="radio" id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" class="form-check-input">
-                            <label class="custom-control-label" for="interconsulta.profesional.matrona">Matrón/Matrona</label>
+                            <label class="form-check-label" for="interconsulta.profesional.matrona">Matrón/Matrona</label>
                         </div>
                     </div>
                 </div>
