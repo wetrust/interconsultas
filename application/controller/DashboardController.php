@@ -73,7 +73,7 @@ class DashboardController extends Controller
 
         RespuestaModel::createRespuesta($solicitud_id, $respuesta_proceder, $respuesta_fecha, $respuesta_eg, $respuesta_comentarios, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_ccca, $respuesta_ccca_percentil, $respuesta_liquido, $respuesta_bvm, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis,$respuesta_rciu,$respuesta_lugar, $respuesta_controlfecha,$respuesta_comentariosexamen, $respuesta_ecografista);
         SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
-        EmailModel::sendPrimeraRespuesta($solicitud_id,$interconsulta_aceptada, $comentario);
+        EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_proceder, $respuesta_fecha, $respuesta_eg, $respuesta_comentarios, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_ccca, $respuesta_ccca_percentil, $respuesta_liquido, $respuesta_bvm, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis,$respuesta_rciu,$respuesta_lugar, $respuesta_controlfecha,$respuesta_comentariosexamen, $respuesta_ecografista);
 
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
