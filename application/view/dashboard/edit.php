@@ -149,7 +149,7 @@
                         </select>
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.fecha">Fecha evaluación de interconsulta</label>
+                        <label for="interconsulta.respuesta.fecha" id="interconsulta.respuesta.fecha">Fecha evaluación de interconsulta</label>
                         <input type="date" class="form-control" name="respuesta_fecha">
                     </div>
                     <div class="col form-group">
