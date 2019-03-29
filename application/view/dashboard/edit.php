@@ -232,7 +232,7 @@
                     <div class="row" id="interconsulta.respuesta.cmau.div">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau">Cuociente CM / AU</label>
-                            <input type="text" class="form-control" name="respuesta_cmau">
+                            <input type="text" disabled class="form-control" name="respuesta_cmau" id="interconsulta.respuesta.cmau">
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
@@ -249,6 +249,8 @@
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.rciu">De ser RCIU, categorización según protocolo adjunto (Figuera, Gratacos y col.)</label>
                             <select class="form-control" name="respuesta_rciu">
+                                <option value="No PEG">No PEG</option>
+                                <option value="No RCIU">No RCIU</option>
                                 <option value="G I">G I</option>
                                 <option value="G II">G II</option>
                                 <option value="g III">G III</option>
@@ -381,6 +383,14 @@
                     $("#interconsulta\\.respuesta\\.cm\\.percentil").val(pctacmAdvanced(eg,acm));
 
                 }
+
+                if (acm > 0){
+                    if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
+                        var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
+                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2));
+                        
+                    }
+                }
             });
 
             $("#interconsulta\\.respuesta\\.umbilical").on("change", function(){
@@ -396,6 +406,14 @@
                     eg =  parseFloat(eg).toFixed();
                     $("#interconsulta\\.respuesta\\.umbilical\\.percentil").val(pctauAdvanced(eg,aumb));
 
+                }
+                
+                if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
+                    if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
+                        var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
+                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2));
+                        
+                    }
                 }
             });
 
