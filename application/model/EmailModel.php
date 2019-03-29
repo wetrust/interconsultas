@@ -37,7 +37,7 @@ class EmailModel
             $solicitud_estado = " aceptada ";
         }
         $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
-        $body =  "Informamos a us que la interconsulta para: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " solicitada en fecha: " . $solicitud->solicitud_fecha . " ha sido " . $solicitud_estado . "\nComentario: ". $evaluacion_comentario;
+        $body =  "Informamos a ud que la interconsulta de: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " solicitada en fecha: " . $solicitud->solicitud_fecha . " ha sido " . $solicitud_estado . "\nComentario: ". $evaluacion_comentario;
 
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);

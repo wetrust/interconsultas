@@ -407,7 +407,7 @@
                     $("#interconsulta\\.respuesta\\.umbilical\\.percentil").val(pctauAdvanced(eg,aumb));
 
                 }
-                
+
                 if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
                     if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                         var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
@@ -433,7 +433,64 @@
                 }
             });
 
+            $("#interconsulta\\.respuesta\\.cmau").on("change", function(){
+                var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                var cmau = $("#interconsulta\\.respuesta\\.cmau").val();
+
+                eg = String(eg);
+                eg = eg.replace("semanas", "");
+
+                if (eg.length > 0){
+
+                    eg =  parseFloat(eg).toFixed();
+                    $("#interconsulta\\.respuesta\\.cmau\\.percentil").val(pctcmauAdvanced(eg,cmau));
+
+                }
+            });
         });
+
+        function pctcmauAdvanced(eg, cmau){
+            var xpct5 = [], xpct95 = [];
+            xpct5[20] = 0.78; xpct5[21] = 0.87; xpct5[22] = 0.95; xpct5[23] = 1.02;
+            xpct5[24] = 1.09; xpct5[25] = 1.15; xpct5[26] = 1.2; xpct5[27] = 1.24;
+            xpct5[28] = 1.28; xpct5[29] = 1.31; xpct5[30] = 1.33; xpct5[31] = 1.35;
+            xpct5[32] = 1.36; xpct5[33] = 1.36; xpct5[34] = 1.36; xpct5[35] = 1.34;
+            xpct5[36] = 1.32; xpct5[37] = 1.3; xpct5[38] = 1.26; xpct5[39] = 1.22;
+            xpct5[40] = 1.18;
+
+            xpct95[20] = 1.68; xpct95[21] = 1.88; xpct95[22] = 2.06; xpct95[23] = 2.22;
+            xpct95[24] = 2.36; xpct95[25] = 2.49; xpct95[26] = 2.6;	xpct95[27] = 2.7;
+            xpct95[28] = 2.78; xpct95[29] = 2.84; xpct95[30] = 2.89; xpct95[31] = 2.92;
+            xpct95[32] = 2.93; xpct95[33] = 2.93; xpct95[34] = 2.91; xpct95[35] = 2.87;
+            xpct95[36] = 2.82; xpct95[37] = 2.75; xpct95[38] = 2.67; xpct95[39] = 2.57;
+
+            if (eg < 20) {  
+                return 0;
+            }
+            else if (eg > 40)
+            {
+                return 0;
+            }
+            else {
+                eg = parseInt(eg);
+                var uno = xpct95[eg] - xpct5[eg];
+                var dos = cmau - xpct5[eg];
+                var pctFinal = (90 / (uno) * (dos)) +5
+
+                var pctPFE = '';
+
+                if (pctFinal > 99){
+                    pctPFE = '> 99';
+                }
+                else if (pctFinal < 1){
+                    pctPFE = '< 1';
+                }
+                else{
+                    pctPFE = pctFinal.toFixed();
+                }
+                return pctPFE;
+            }
+        }
 
         function pctpfeAdvanced(eg,pfe) {
 
