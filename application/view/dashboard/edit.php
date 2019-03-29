@@ -387,7 +387,7 @@
                 if (acm > 0){
                     if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                         var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
-                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2));
+                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");
                         
                     }
                 }
@@ -411,7 +411,7 @@
                 if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
                     if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                         var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
-                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2));
+                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");
                         
                     }
                 }
