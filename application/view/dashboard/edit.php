@@ -402,7 +402,7 @@
             $("#interconsulta\\.respuesta\\.ccca").on("change", function(){
 
                 var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                var ccca = $("#interconsulta\\.respuesta\\.umbilical").val();
+                var ccca = $("#interconsulta\\.respuesta\\.ccca").val();
 
                 eg = String(eg);
                 eg = eg.replace("semanas", "");
@@ -612,8 +612,8 @@
                 return 0;
             }
             else {
-                eg = eg - 20;
                 eg = parseInt(eg);
+                eg = eg - 20;
                 var uno=pct95[eg] - pct5[eg];
                 var dos=aumb - pct5[eg];
                 var resultado = parseInt(90 / (uno) * (dos) + 5);
@@ -658,8 +658,8 @@
                 return 0;
             }
             else {
-                eg = eg - 15;
                 eg = parseInt(eg);
+                eg = eg - 15;
                 var uno= pct97[eg] - pct3[eg];
                 var dos=ccca - pct3[eg];
                 var resultado = parseInt(95 / (uno) * (dos) + 3);
