@@ -56,7 +56,7 @@ class EmailModel
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" . "Junto con saludar, comentamos a ud que han respondido a su interconsulta para la paciente: " . $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "\n\nExámen a lugar: " . $respuesta_proceder . "\nFecha evaluación interconsulta: " . $respuesta_fecha . "\nComentarios y obsv.: " . $respuesta_comentarios . "\nSolicitud enviada a correo electrónico: " . $solicitud->solicitud_profesionalemail . "\n\n\nPuede ver la solicitud en el siguiente link: ";
         
         $mail = new Mail;
-        $mail_sent = $mail->sendMail($solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
+        $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
 
         if ($mail_sent) {
             return true;
