@@ -155,7 +155,7 @@
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
                         <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
-                        <input type="text" class="form-control" name="respuesta_eg" disabled="">
+                        <input type="text" class="form-control" name="respuesta_eg" id="interconsulta.respuesta.eg" disabled="">
                     </div>
                 </div>
                 <div class="row">
