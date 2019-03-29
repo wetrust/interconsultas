@@ -236,7 +236,7 @@
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
-                            <input type="text" class="form-control" name="respuesta_cmau_percentil" disabled="">
+                            <input type="text" class="form-control" name="respuesta_cmau_percentil" disabled="" id="interconsulta.respuesta.cmau.percentil">
                         </div>
                     </div>
                     <div class="row" id="interconsulta.respuesta.hipotesis.div">
