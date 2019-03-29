@@ -73,7 +73,7 @@ class RespuestaModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "DELETE FROM respuestas WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "DELETE FROM solicitudes WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id));
 
