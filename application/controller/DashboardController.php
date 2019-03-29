@@ -95,4 +95,9 @@ class DashboardController extends Controller
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id)
         ));
     }
+    public function delete($note_id)
+    {
+        RespuestaModel::deleteNote($note_id);
+        Redirect::to('dashboard');
+    }
 }

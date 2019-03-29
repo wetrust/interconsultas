@@ -36,7 +36,7 @@ class NoteController extends Controller
 
     public function delete($note_id)
     {
-        NoteModel::deleteNote($note_id);
+        RespuestaModel::deleteNote($note_id);
         Redirect::to('note');
     }
 }
