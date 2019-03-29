@@ -44,6 +44,42 @@ class DashboardController extends Controller
         Redirect::to('dashboard');
     }
 
+    public function save(){ 
+        $solicitud_id = Request::post('solicitud_id');
+        $respuesta_proceder = Request::post('respuesta_proceder');
+        $respuesta_fecha = Request::post('respuesta_fecha');
+        $respuesta_eg = Request::post('respuesta_eg');
+        $respuesta_comentarios = Request::post('respuesta_comentarios');
+        $respuesta_pfe = Request::post('respuesta_pfe');
+        $respuesta_pfe_percentil = Request::post('respuesta_pfe_percentil');
+        $respuesta_ccca = Request::post('respuesta_ccca');
+        $respuesta_ccca_percentil = Request::post('respuesta_ccca_percentil');
+        $respuesta_liquido = Request::post('respuesta_liquido');
+        $respuesta_bvm = Request::post('respuesta_bvm');
+        $respuesta_uterinas = Request::post('respuesta_uterinas');
+        $respuesta_uterinas_percentil = Request::post('respuesta_uterinas_percentil');
+        $respuesta_umbilical = Request::post('respuesta_umbilical');
+        $respuesta_umbilical_percentil = Request::post('respuesta_umbilical_percentil');
+        $respuesta_cm = Request::post('respuesta_cm');
+        $respuesta_cm_percentil = Request::post('respuesta_cm_percentil');
+        $respuesta_cmau = Request::post('respuesta_cmau');
+        $respuesta_cmau_percentil = Request::post('respuesta_cmau_percentil');
+        $respuesta_hipotesis = Request::post('respuesta_hipotesis');
+        $respuesta_rciu = Request::post('respuesta_rciu');
+        $respuesta_lugar = Request::post('respuesta_lugar');
+        $respuesta_controlfecha = Request::post('respuesta_controlfecha');
+        $respuesta_comentariosexamen = Request::post('respuesta_comentariosexamen');
+        $respuesta_ecografista = Request::post('respuesta_ecografista');
+
+        RespuestaModel::createRespuesta($solicitud_id, $respuesta_proceder, $respuesta_fecha, $respuesta_eg, $respuesta_comentarios, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_ccca, $respuesta_ccca_percentil, $respuesta_liquido, $respuesta_bvm, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis,$respuesta_rciu,$respuesta_lugar, $respuesta_controlfecha,$respuesta_comentariosexamen, $respuesta_ecografista);
+        SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
+        EmailModel::sendPrimeraRespuesta($solicitud_id,$interconsulta_aceptada, $comentario);
+
+        //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
+        //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
+        Redirect::to('dashboard');
+    }
+
     public function edit($solicitud_id)
     {
         $this->View->render('dashboard/edit', array(

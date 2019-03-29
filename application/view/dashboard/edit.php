@@ -143,52 +143,52 @@
             <div class="row">
                 <div class="col-6 form-group">
                     <label for="interconsulta.email">¿Solicitud de exámen relacionada con crecimiento fetal?</label>
-                        <select class="form-control" id="interconsulta.respuesta.proceder">
+                        <select class="form-control" id="interconsulta.respuesta.proceder" name="respuesta_proceder">
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.fecha">Fecha evaluación de interconsulta</label>
-                        <input type="date" class="form-control" id="interconsulta.respuesta.fecha">
+                        <input type="date" class="form-control" name="respuesta_fecha">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
                         <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
-                        <input type="text" class="form-control" id="interconsulta.respuesta.eg" disabled="">
+                        <input type="text" class="form-control" name="respuesta_eg" disabled="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.comentarios" class="bg-primary text-white px-1">Comentarios y observaciones respecto a solicitud ecográfica</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.comentarios">
+                        <input type="text" class="form-control" name="respuesta_comentarios">
                     </div>
                 </div>
                 <h5 id="interconsulta.titulo" class="text-center m-3">Resumen exámen ecográfico de biometría y flujometría Doppler Materno / Fetal</h5>
                 <div class="row" id="interconsulta.respuesta.pfe.div">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.pfe"><strong>A.- Biometría ecográfica:</strong><br>Peso fetal estimado</label>
-                        <input type="number" class="form-control" id="interconsulta.respuesta.pfe">
+                        <input type="number" class="form-control" name="respuesta_pfe">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.pfe.percentil">&nbsp;<br>Percentil</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.pfe.percentil" disabled="">
+                        <input type="text" class="form-control" name="respuesta_pfe_percentil" disabled="">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.ccca.div">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ccca">Relación cráneo / abdómen</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.ccca">
+                        <input type="text" class="form-control" name="respuesta_ccca">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ccca.percentil">Percentil</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.ccca.percentil" disabled="">
+                        <input type="text" class="form-control" name="respuesta_ccca_percentil" disabled="">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.liquido.div">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.liquido">Líquido amniótico</label>
-                        <select class="form-control" id="interconsulta.respuesta.liquido">
+                        <select class="form-control" name="respuesta_liquido">
                             <option value="normal">Normal</option>
                             <option value="pha">PHA</option>
                             <option value="oha">OHA</option>
@@ -196,59 +196,59 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.bvm">BVM</label>
-                        <input type="number" class="form-control" id="interconsulta.respuesta.bvm">
+                        <input type="number" class="form-control" name="respuesta_bvm">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.uterinas.div">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.uterinas"><strong>B.- Flujometría Doppler</strong><br>IP. Promedio uterinas</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.uterinas">
+                        <input type="text" class="form-control" name="respuesta_uterinas">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>Percentil</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.uterinas.percentil" disabled="">
+                        <input type="text" class="form-control" name="respuesta_uterinas_percentil" disabled="">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.umbilical.div">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.umbilical">IP. Arteria umbilical</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.umbilical">
+                        <input type="text" class="form-control" name="respuesta_umbilical">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.umbilical.percentil">Percentil</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.umbilical.percentil" disabled="">
+                        <input type="text" class="form-control" name="respuesta_umbilical_percentil" disabled="">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.cm.div">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.cm">IP. Cerebral media</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.cm">
+                        <input type="text" class="form-control" name="respuesta_cm">
                     </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cm.percentil">Percentil</label>
-                            <input type="text" class="form-control" id="interconsulta.respuesta.cm.percentil" disabled="">
+                            <input type="text" class="form-control" name="respuesta_cm_percentil" disabled="">
                         </div>
                     </div>
                     <div class="row" id="interconsulta.respuesta.cmau.div">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau">Cuociente CM / AU</label>
-                            <input type="text" class="form-control" disabled id="interconsulta.respuesta.cmau">
+                            <input type="text" class="form-control" name="respuesta_cmau">
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
-                            <input type="text" class="form-control" id="interconsulta.respuesta.cmau.percentil" disabled="">
+                            <input type="text" class="form-control" name="respuesta_cmau_percentil" disabled="">
                         </div>
                     </div>
                     <div class="row" id="interconsulta.respuesta.hipotesis.div">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.hipotesis">Hipótesis diagnóstica</label>
-                            <input type="text" class="form-control" id="interconsulta.respuesta.hipotesis">
+                            <input type="text" class="form-control" name="respuesta_hipotesis">
                         </div>
                     </div>
                     <div class="row" id="interconsulta.respuesta.rciu.div">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.rciu">De ser RCIU, categorización según protocolo adjunto (Figuera, Gratacos y col.)</label>
-                            <select class="form-control" id="interconsulta.respuesta.rciu">
+                            <select class="form-control" name="respuesta_rciu">
                                 <option value="G I">G I</option>
                                 <option value="G II">G II</option>
                                 <option value="g III">G III</option>
@@ -259,21 +259,21 @@
                     <div class="row" id="interconsulta.respuesta.lugar.div">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.lugar"><strong>Próximo control</strong> Lugar:</label>
-                            <input type="text" class="form-control" id="interconsulta.respuesta.lugar">
+                            <input type="text" class="form-control" name="respuesta_lugar">
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.controlfecha">Fecha</label>
-                            <input type="date" class="form-control" id="interconsulta.respuesta.controlfecha">
+                            <input type="date" class="form-control" name="respuesta_controlfecha">
                         </div>
                     </div>
                     <div class="row" id="interconsulta.respuesta.comentariosexamen.div">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>
-                            <input type="text" class="form-control" id="interconsulta.respuesta.comentariosexamen">
+                            <input type="text" class="form-control" name="respuesta_comentariosexamen">
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.ecografista">Ecografista</label>
-                            <input type="text" class="form-control" id="respuesta.ecografista">
+                            <input type="text" class="form-control" name="respuesta_ecografista">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar respuesta</button>
@@ -620,10 +620,10 @@
                 var pctAUMB = '';
                 //truncador de Pct, sobre 100 o bajo 1
                 if (resultado > 99){
-                    pctAUMB = '&gt; 99';
+                    pctAUMB = '> 99';
                 }
                 else if (resultado < 1){
-                    pctAUMB = '&lt; 1';
+                    pctAUMB = '< 1';
                 }
                 else{
                     pctAUMB = resultado;
