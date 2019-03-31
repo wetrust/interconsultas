@@ -12,6 +12,7 @@ class PdfController extends Controller
 
     public function informe_crecimiento()
     {
+        header("Access-Control-Allow-Origin: *");
         $this->View->renderWithoutHeaderAndFooter('pdf/segundotrimestre/crecimiento', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
