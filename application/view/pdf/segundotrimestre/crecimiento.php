@@ -86,4 +86,5 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     //Close and output PDF document
     $base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'I')));
-    $echo $base64;
+
+    echo $base64;
