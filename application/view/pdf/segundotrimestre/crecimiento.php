@@ -45,7 +45,7 @@
     $this->pdf->Ln();
     $html = '<p style="color:#045dab;"><strong>DESCRIPCIÓN</strong></p><p>'.$this->data->linea_primera.'<br>'.$this->data->linea_segunda.'</p><p style="word-wrap: break-word;">'.$this->data->linea_tercera.'</p><p>'.$this->data->linea_cuarta.'<br>'.$this->data->linea_quinta.'<br>'.$this->data->linea_sexta.'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-
+    $this->pdf->Ln(1);
     $html = '<table style="border:1px solid #000;"><tbody><tr>
     <th style="color:#045dab;border-bottom:2px solid #000;border-top:2px solid #000;">
     <strong>BIOMETRÍA FETAL</strong></th>
