@@ -47,13 +47,13 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     $html = '<table style="border:1px solid #000;"><tbody><tr>
-    <th style="color:#045dab;border-bottom:2px solid #000;border-top:2px solid #000;">
+    <th style="color:#045dab;border-bottom:1px solid #000;">
     <strong>BIOMETRÍA FETAL</strong></th>
-    <th style="text-align:center;border-bottom:2px solid #000;border-top:2px solid #000;">
+    <th style="text-align:center;border-bottom:1px solid #000;">
     Valor observado</th>
-    <th style="border-bottom:2px solid #000;border-top:2px solid #000;text-align:center;">
+    <th style="border-bottom:1px solid #000;text-align:center;">
     Pct de Crecimiento</th>
-    <th style="border-bottom:2px solid #000;border-top:2px solid #000;text-align:center;">
+    <th style="border-bottom:1px solid #000;text-align:center;">
     Referencia para Edad</th> </tr>
     <tr><td>DBP (Hadlock):</td><td style="text-align:center;">'.$this->data->DBP.'</td><td style="text-align:center;">'.$this->data->DBPPCT.'</td><td style="text-align:center;">'.$this->data->DBPRANGO.'</td></tr>
     <tr><td>DOF (Jeanty):</td><td style="text-align:center;">'.$this->data->DOF.'</td><td style="text-align:center;">'.$this->data->DOFPCT.'</td><td style="text-align:center;">'.$this->data->DOFRANGO.'</td></tr>
