@@ -16,7 +16,7 @@ class PdfController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/segundotrimestre/crecimiento', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'data' => ProcesadorModel::informeCrecimientoFetal();
+            'data' => ProcesadorModel::informeCrecimientoFetal()
         ));
     }
 }
