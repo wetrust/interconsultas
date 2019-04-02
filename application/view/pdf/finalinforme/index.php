@@ -46,11 +46,12 @@
     $this->pdf->Ln(1);
     $html = '<p>Diagnóstico:  '.htmlentities($this->solicitud->solicitud_diagnostico).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Ciudad procedencia: '.htmlentities($this->solicitud->solicitud_ciudad).'</td><td>Lugar de control: '.htmlentities($this->solicitud->solicitud_lugar).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
 
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Datos del profesional referente</td><td>'.htmlentities($this->solicitud->solicitud_profesional).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><h3>Datos del profesional referente</h3></td><td>'.htmlentities($this->solicitud->solicitud_profesional).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td>Nombre: '.htmlentities($this->solicitud->solicitud_nombreprofesional).'</td><td>Email: '.htmlentities($this->solicitud->solicitud_email).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
