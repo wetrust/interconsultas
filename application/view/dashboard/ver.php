@@ -156,10 +156,6 @@
                         <label for="interconsulta.respuesta.liquido">Líquido amniótico</label>
                         <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->liquido); ?>">
                     </div>
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.bvm">BVM</label>
-                        <input disabled type="number" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->bvm); ?>">
-                    </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.pfe.div">
                     <div class="col form-group">

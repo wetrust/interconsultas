@@ -24,7 +24,7 @@ class RespuestaModel
         return $query->fetch();
     }
 
-    public static function createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_bvm, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis,$respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso, $respuesta_doppler)
+    public static function createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis,$respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso, $respuesta_doppler)
     {
         if (!$solicitud_id) {
             Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
@@ -33,9 +33,9 @@ class RespuestaModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO respuestas (solicitud_id, fecha, eg, pfe, pfe_percentil, liquido, bvm, uterinas, uterinas_percentil, umbilical, umbilical_percentil, cm, cm_percentil, cmau, cmau_percentil, hipotesis, comentariosexamen, ecografista, presentacion, dorso, doppler) VALUES (:solicitud_id, :fecha, :solicitud_eg, :pfe, :pfe_percentil, :liquido, :bvm, :uterinas, :uterinas_percentil, :umbilical, :umbilical_percentil, :cm, :cm_percentil, :cmau, :cmau_percentil, :hipotesis, :comentariosexamen, :ecografista, :presentacion, :dorso, :doppler)";
+        $sql = "INSERT INTO respuestas (solicitud_id, fecha, eg, pfe, pfe_percentil, liquido, uterinas, uterinas_percentil, umbilical, umbilical_percentil, cm, cm_percentil, cmau, cmau_percentil, hipotesis, comentariosexamen, ecografista, presentacion, dorso, doppler) VALUES (:solicitud_id, :fecha, :solicitud_eg, :pfe, :pfe_percentil, :liquido, :uterinas, :uterinas_percentil, :umbilical, :umbilical_percentil, :cm, :cm_percentil, :cmau, :cmau_percentil, :hipotesis, :comentariosexamen, :ecografista, :presentacion, :dorso, :doppler)";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_id' => $solicitud_id, ':fecha' => $respuesta_fecha, ':solicitud_eg' => $respuesta_eg, ':pfe' => $respuesta_pfe, ':pfe_percentil' => $respuesta_pfe_percentil, ':liquido' => $respuesta_liquido, ':bvm' => $respuesta_bvm, ':uterinas' => $respuesta_uterinas, ':uterinas_percentil' => $respuesta_uterinas_percentil, ':umbilical' => $respuesta_umbilical, ':umbilical_percentil' => $respuesta_umbilical_percentil, ':cm' => $respuesta_cm, ':cm_percentil' => $respuesta_cm_percentil, ':cmau' => $respuesta_cmau, ':cmau_percentil' => $respuesta_cmau_percentil, ':hipotesis' => $respuesta_hipotesis, ':comentariosexamen' => $respuesta_comentariosexamen, ':ecografista' => $respuesta_ecografista, ':presentacion' => $respuesta_presentacion, ':dorso' => $respuesta_dorso, ':doppler' => $respuesta_doppler));
+        $query->execute(array(':solicitud_id' => $solicitud_id, ':fecha' => $respuesta_fecha, ':solicitud_eg' => $respuesta_eg, ':pfe' => $respuesta_pfe, ':pfe_percentil' => $respuesta_pfe_percentil, ':liquido' => $respuesta_liquido, ':uterinas' => $respuesta_uterinas, ':uterinas_percentil' => $respuesta_uterinas_percentil, ':umbilical' => $respuesta_umbilical, ':umbilical_percentil' => $respuesta_umbilical_percentil, ':cm' => $respuesta_cm, ':cm_percentil' => $respuesta_cm_percentil, ':cmau' => $respuesta_cmau, ':cmau_percentil' => $respuesta_cmau_percentil, ':hipotesis' => $respuesta_hipotesis, ':comentariosexamen' => $respuesta_comentariosexamen, ':ecografista' => $respuesta_ecografista, ':presentacion' => $respuesta_presentacion, ':dorso' => $respuesta_dorso, ':doppler' => $respuesta_doppler));
 
         if ($query->rowCount() == 1) {
             return true;

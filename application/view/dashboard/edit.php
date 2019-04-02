@@ -174,10 +174,6 @@
                             <option value="oha severo">OHA severo</option>
                         </select>
                     </div>
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.bvm">BVM</label>
-                        <input type="number" class="form-control" name="respuesta_bvm">
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">

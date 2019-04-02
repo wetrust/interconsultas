@@ -45,7 +45,6 @@ class DashboardController extends Controller
         $respuesta_pfe = Request::post('respuesta_pfe');
         $respuesta_pfe_percentil = Request::post('respuesta_pfe_percentil');
         $respuesta_liquido = Request::post('respuesta_liquido');
-        $respuesta_bvm = Request::post('respuesta_bvm');
         $respuesta_presentacion = Request::post('respuesta_presentacion');
         $respuesta_dorso = Request::post('respuesta_dorso');
         $respuesta_uterinas = Request::post('respuesta_uterinas');
@@ -62,9 +61,9 @@ class DashboardController extends Controller
         $respuesta_ecografista = Request::post('respuesta_ecografista');
         $respuesta_doppler = Request::post('respuesta_doppler');
 
-        RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_bvm, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso,$respuesta_doppler);
+        RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso,$respuesta_doppler);
         SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
-        EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_bvm, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler);
+        EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler);
 
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
