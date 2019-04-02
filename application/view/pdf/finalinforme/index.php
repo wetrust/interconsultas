@@ -70,7 +70,7 @@
 
     $evaluacion_fecha = explode("-", $this->solicitud_evaluacion->evaluacion_fecha);
     $evaluacion_fecha = $evaluacion_fecha[2] . "-". $evaluacion_fecha[1]. "-". $evaluacion_fecha[0];
-
+    $this->pdf->Ln(4);
     $html = '<h2 style="border-bottom:1px double #000;">Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
