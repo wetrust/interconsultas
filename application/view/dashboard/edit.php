@@ -223,7 +223,7 @@
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau">Cuociente CM / AU</label>
                             <input type="text" disabled class="form-control" id="interconsulta.respuesta.cmau">
-                            <input type="hidden" disabled class="form-control" name="respuesta_cmau">
+                            <input type="hidden" class="form-control" name="respuesta_cmau">
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
