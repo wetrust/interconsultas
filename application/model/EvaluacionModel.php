@@ -24,7 +24,7 @@ class EvaluacionModel
         return $query->fetch();
     }
 
-    public static function createEvaluacion($solicitud_id, $evaluacion_aceptada, $eco_crecimiento, $evaluacion_comentarios)
+    public static function createEvaluacion($solicitud_id, $solicitud_fecha, $evaluacion_comentarios)
     {
         if (!$solicitud_id) {
             Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
@@ -33,9 +33,9 @@ class EvaluacionModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO evaluacion (solicitud_id, evaluacion_aceptada, eco_crecimiento, evaluacion_comentarios) VALUES (:solicitud_id, :evaluacion_aceptada, :eco_crecimiento, :evaluacion_comentarios)";
+        $sql = "INSERT INTO evaluacion (solicitud_id, solicitud_fecha, evaluacion_comentarios) VALUES (:solicitud_id, :solicitud_fecha, :evaluacion_comentarios)";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_id' => $solicitud_id, ':evaluacion_aceptada' => $evaluacion_aceptada, ':eco_crecimiento'  => $eco_crecimiento, ':evaluacion_comentarios'  => $evaluacion_comentarios));
+        $query->execute(array(':solicitud_id' => $solicitud_id, ':solicitud_fecha' => $solicitud_fecha, ':evaluacion_comentarios'  => $evaluacion_comentarios));
 
         if ($query->rowCount() == 1) {
             return true;

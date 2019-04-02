@@ -95,59 +95,24 @@
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_profesionalemail); ?>">
                     </div>
                 </div>
-                <h4>Responder a esta solicitud de interconsulta</h4>
+                <h4>Evaluación de solicitud ecográfica</h4>
                 <div class="row">
-                    <div class="col form-group">
-                        <label for="interconsulta.para">¿Interconsulta aceptada?</label>
-                    </div>
-                    <div class="col form-group">
-                        <div class="form-check">
-                            <input type="radio" id="interconsulta.aceptada.si" value="1" name="interconsulta_aceptada" class="form-check-input">
-                            <label class="form-check-label" for="interconsulta.aceptada.si">Si</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" id="interconsulta.aceptada.no" value="0" name="interconsulta_aceptada" class="form-check-input">
-                            <label class="form-check-label" for="interconsulta.aceptada.no">No</label>
-                        </div>
-                    </div>
-                    <div class="col form-group" id="jaja.papapa">
-                        <label for="interconsulta.para">¿Eco de crecimiento?</label>
-                    </div>
-                    <div class="col form-group" id="jaja.papap">
-                        <div class="form-check">
-                            <input type="radio" id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input">
-                            <label class="form-check-label" for="interconsulta.crecimiento.si">Si</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" id="interconsulta.crecimiento.no" value="0" name="interconsulta_crecimiento" class="form-check-input">
-                            <label class="form-check-label" for="interconsulta.crecimiento.no">No</label>
-                        </div>
+                    <div class="col-6 form-group">
+                        <label>Fecha</label>
+                        <input type="date" class="form-control" name="solicitud_fecha">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.comentario.respuesta">Comentario</label>
-                        <input type="text" class="form-control" name="comentario" id="interconsulta.comentario.respuesta">
+                        <input type="text" class="form-control" name="comentario">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar respuesta</button>
             </form>
             <?php } else { ?>
-            <div class="alert alert-danger" role="alert">Esta interconsulta no existe.</div>
+                <div class="alert alert-danger" role="alert">Esta interconsulta no existe.</div>
             <?php } ?>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        $("#interconsulta\\.aceptada\\.si").on("click", function(){
-            $("#jaja\\.papapa").removeClass("d-none");
-            $("#jaja\\.papap").removeClass("d-none");
-        });
-        
-        $("#interconsulta\\.aceptada\\.no").on("click", function(){
-            $("#jaja\\.papapa").addClass("d-none");
-            $("#jaja\\.papap").addClass("d-none");
-        });
-    })
-</script>
