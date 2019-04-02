@@ -109,7 +109,7 @@
     $this->pdf->Ln(2);
     $html = '<p>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'R', true);
-    $tmp = ini_get('upload_tmp_dir');
+    $tmp = Config::get('PATH_AVATARS');
     $this->pdf->Output("$tmp/informe.pdf", "F");
     //$this->pdf->Output('Informe.pdf', 'I');
 

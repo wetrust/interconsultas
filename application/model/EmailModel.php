@@ -69,7 +69,7 @@ class EmailModel
     
         $mail = new Mail;
 
-        $tmp = ini_get('upload_tmp_dir');
+        $tmp = Config::get('PATH_AVATARS');
         $mail->AddAttachment("$tmp/informe.pdf", $name = 'Informe',  $encoding = 'base64', $type = 'application/pdf');
         
         $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
