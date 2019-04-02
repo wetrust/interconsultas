@@ -109,7 +109,9 @@
     $this->pdf->Ln(2);
     $html = '<p>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'R', true);
-    $this->pdf->Output('Informe.pdf', 'I');
+    $tmp = ini_get('upload_tmp_dir');
+    $this->pdf->Output("$tmp/informe.pdf", "F");
+    //$this->pdf->Output('Informe.pdf', 'I');
 
     //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
 

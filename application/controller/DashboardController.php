@@ -63,6 +63,15 @@ class DashboardController extends Controller
 
         RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso,$respuesta_doppler);
         SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
+
+        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+            'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
+        ));
+        
         EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler);
 
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
