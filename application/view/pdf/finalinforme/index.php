@@ -35,7 +35,7 @@
     $html = '<h1 style="border-bottom:2px double #000;">Formulario referencia para evaluación ecográfica del crecimiento fetal</h1>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Nombre del paciente:'.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT del paciente: '.htmlentities($this->solicitud->solicitud_rut).'</td><td>Fecha de solicitud: '.htmlentities($this->solicitud->solicitud_fecha).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT del paciente: '.htmlentities($this->solicitud->solicitud_rut).'</td><td>Fecha de solicitud: '.htmlentities($this->solicitud->solicitud_fecha).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Ege conocida precozmente: '.($this->solicitud->solicitud_eg == 0 ? " No" : " Si").'</td><td>Ecografía previa de crecimiento:'.($this->solicitud->solicitud_eco == 0 ? " No" : " Si").'</td></tr></tbody></table>';
@@ -50,16 +50,23 @@
     $html = '<table><tbody><tr><td>Ciudad procedencia: '.htmlentities($this->solicitud->solicitud_ciudad).'</td><td>Lugar de control: '.htmlentities($this->solicitud->solicitud_lugar).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
 
-    $this->pdf->Ln(1);
+    $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><h3>Datos del profesional referente</h3></td><td>'.htmlentities($this->solicitud->solicitud_profesional).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td>Nombre: '.htmlentities($this->solicitud->solicitud_nombreprofesional).'</td><td>Email: '.htmlentities($this->solicitud->solicitud_email).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
+    $this->pdf->Ln(2);
     $html = '<h3>Ecografista de contrarreferencia</h3>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td>Email (contrareferencia)</td><td>'.htmlentities($this->solicitud->solicitud_profesionalemail).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+
+    $html = '<h1 style="border-bottom:2px double #000;">&nbsp;</h1>';
+    $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
+    $this->pdf->Ln(2);
+    $html = '<h1 style="border-bottom:2px double #000;">Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h1>';
+    $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
+    $this->pdf->Ln(2);
 
     $this->pdf->Output('Informe.pdf', 'I');
 
