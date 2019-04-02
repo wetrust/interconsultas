@@ -30,7 +30,7 @@
     // set JPEG quality
     $this->pdf->setJPEGQuality(90);
 
-    $this->pdf->SetFont('courier', '', 8);
+    $this->pdf->SetFont('Times', '', 8);
     
     $html = '<h1 style="border-bottom:2px double #000;">Formulario referencia para evaluación ecográfica del crecimiento fetal</h1>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
