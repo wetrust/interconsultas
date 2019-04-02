@@ -141,17 +141,6 @@
                         <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->eg); ?>">
                     </div>
                 </div>
-                <h5 id="interconsulta.titulo" class="text-center m-3">Resumen exámen ecográfico de biometría y flujometría Doppler Materno / Fetal</h5>
-                <div class="row" id="interconsulta.respuesta.pfe.div">
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.pfe"><strong>A.- Biometría ecográfica:</strong><br>Peso fetal estimado</label>
-                        <input disabled type="number" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->pfe); ?>">
-                    </div>
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.pfe.percentil">&nbsp;<br>Percentil</label>
-                        <input disabled type="text" class="form-control" disabled="" value="<?php echo htmlentities($this->solicitud_resultado->pfe_percentil); ?>">
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col form-group">
                         <label>Feto en presentación</label>
@@ -184,6 +173,16 @@
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.bvm">BVM</label>
                         <input disabled type="number" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->bvm); ?>">
+                    </div>
+                </div>
+                <div class="row" id="interconsulta.respuesta.pfe.div">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.pfe"><strong>A.- Biometría ecográfica:</strong><br>Peso fetal estimado</label>
+                        <input disabled type="number" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->pfe); ?>">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.pfe.percentil">&nbsp;<br>Percentil</label>
+                        <input disabled type="text" class="form-control" disabled="" value="<?php echo htmlentities($this->solicitud_resultado->pfe_percentil); ?>">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.uterinas.div">

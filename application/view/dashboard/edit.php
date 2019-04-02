@@ -226,7 +226,8 @@
                     <div class="row">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau">Cuociente CM / AU</label>
-                            <input type="text" disabled class="form-control" name="respuesta_cmau" id="interconsulta.respuesta.cmau">
+                            <input type="text" disabled class="form-control" id="interconsulta.respuesta.cmau">
+                            <input type="hidden" disabled class="form-control" name="respuesta_cmau">
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
@@ -346,6 +347,7 @@
                     if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                         var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
                         $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");
+                        $("input[name='respuesta_cmau']").val(ccp.toFixed(2));
                     }
                 }
             });
@@ -369,7 +371,8 @@
                 if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
                     if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                         var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
-                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");                        
+                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change"); 
+                        $("input[name='respuesta_cmau']").val(ccp.toFixed(2));                       
                     }
                 }
             });
