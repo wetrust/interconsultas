@@ -60,13 +60,12 @@ class EmailModel
          "\nArteria Umbilical: " . $respuesta_umbilical . ", Pct: " . $respuesta_umbilical_percentil.
          "\nArteria Cerebral media: " . $respuesta_cm . ", Pct: " . $respuesta_cm_percentil.
          "\nCuociente Cm / Au: " . $respuesta_cmau . ", Pct: " . $respuesta_cmau_percentil.
-         "\nHIPÓTESIS DIAGÓSTICA: " . $respuesta_liquido .
+         "\nHIPÓTESIS DIAGÓSTICA: " . 
          "\nCrecimiento fetal: " . $respuesta_hipotesis . 
          "\nFlujometría Doppler: " . $respuesta_doppler .
-         "\nLíquido amniótico: " . $respuesta_doppler . 
+         "\nLíquido amniótico: " . $respuesta_liquido .
          "\nCOMENTARIOS: " . $respuesta_comentariosexamen .
-         "\nEcografista: " . $respuesta_ecografista .
-         "\nSolicitud enviada a correo electrónico: " . $solicitud->solicitud_profesionalemail;
+         "\nEcografista: " . $respuesta_ecografista 
     
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
