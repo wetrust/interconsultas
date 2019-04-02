@@ -38,9 +38,11 @@
     $html = '<table><tbody><tr><td>Nombre del paciente:'.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT del paciente: '.htmlentities($this->solicitud->solicitud_rut).'</td><td>Fecha de solicitud: '.htmlentities($this->solicitud->solicitud_fecha).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Ege conocida precozmente: '.($this->solicitud->solicitud_eg == 0 ? " No" : " Si").'</td><td>Ecografía previa de crecimiento:'.($this->solicitud->solicitud_eco == 0 ? " No" : " Si").'</td></tr><tr><td>FUM Operacional: '.htmlentities($this->solicitud->solicitud_fum).'</td><td>Edad Gestacional: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Ege conocida precozmente: '.($this->solicitud->solicitud_eg == 0 ? " No" : " Si").'</td><td>Ecografía previa de crecimiento:'.($this->solicitud->solicitud_eco == 0 ? " No" : " Si").'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-
+    $this->pdf->Ln(1);
+    $html = '<table><tbody><tr><td>FUM Operacional: '.htmlentities($this->solicitud->solicitud_fum).'</td><td>Edad Gestacional: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<p>Diagnóstico:  '.htmlentities($this->solicitud->solicitud_diagnostico).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
