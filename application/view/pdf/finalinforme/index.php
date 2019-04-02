@@ -35,7 +35,10 @@
     $html = '<h1 style="border-bottom:2px double #000;">Formulario referencia para evbaluación ecográfica del crecimiento fetal</h1>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>Nombre del paciente:</strong> '.htmlentities($this->solicitud->solicitud_nombre).'</td><td><strong>RUT del paciente:</strong> '.htmlentities($this->solicitud->solicitud_rut).'</td><td><strong>Fecha de solicitud:</strong> '.htmlentities($this->solicitud->solicitud_fecha).'</td></tr><tr><td><strong>Ege conocida precozmente:</strong> '.($this->solicitud->solicitud_eg == 0 ? " No" : " Si").'</td><td><strong>Ecografía previa de crecimiento:</strong> '.($this->solicitud->solicitud_eco == 0 ? " No" : " Si").'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Nombre del paciente:</strong> '.htmlentities($this->solicitud->solicitud_nombre).'</td><td><strong>RUT del paciente:</strong> '.htmlentities($this->solicitud->solicitud_rut).'</td><td><strong>Fecha de solicitud:</strong> '.htmlentities($this->solicitud->solicitud_fecha).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+
+    $html = '<table><tbody><tr><td><strong>Ege conocida precozmente:</strong> '.($this->solicitud->solicitud_eg == 0 ? " No" : " Si").'</td><td><strong>Ecografía previa de crecimiento:</strong> '.($this->solicitud->solicitud_eco == 0 ? " No" : " Si").'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
 
     $this->pdf->Output('Informe.pdf', 'I');
