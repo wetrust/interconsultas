@@ -26,13 +26,27 @@
                         <label>Ege conocida precozmente</label>
                     </div>
                     <div class="col form-group">
-                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_eg); ?>">
+                        <div class="form-check">
+                            <input type="radio" disabled value="0" <?php $check = ($this->solicitud->solicitud_eg == 0 ? "checked" : ""); echo $check; ?> >
+                            <label>No</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" disabled value="1" <?php $check = ($this->solicitud->solicitud_eg == 1 ? "checked" : ""); echo $check; ?> >
+                            <label>Si</label>
+                        </div>
                     </div>
                     <div class="col form-group">
                         <label>Ecografía previa de crecimiento</label>
                     </div>
                     <div class="col form-group">
-                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_eco); ?>">
+                        <div class="form-check">
+                            <input type="radio" disabled value="0" <?php $check = ($this->solicitud->solicitud_eco == 0 ? "checked" : ""); echo $check; ?> >
+                            <label>No</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" disabled value="1" <?php $check = ($this->solicitud->solicitud_eco == 1 ? "checked" : ""); echo $check; ?> >
+                            <label>Si</label>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -66,14 +80,14 @@
                         <h5><span class="badge badge-default p-2" for="interconsulta.profesional">Datos del profesional referente</span></h5>
                     </div>
                     <div class="col form-group">
-                    <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Médico" ? "checked" : ""); echo $check; ?> >
-                        <label for="interconsulta.profesional.medico">Médico</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Matrona" ? "checked" : ""); echo $check; ?> >
-                        <label for="interconsulta.profesional.matrona">Matrón/Matrona</label>
-                    </div>
+                        <div class="form-check">
+                            <input type="radio" disabled id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Médico" ? "checked" : ""); echo $check; ?> >
+                            <label for="interconsulta.profesional.medico">Médico</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" disabled id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Matrona" ? "checked" : ""); echo $check; ?> >
+                            <label for="interconsulta.profesional.matrona">Matrón/Matrona</label>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
