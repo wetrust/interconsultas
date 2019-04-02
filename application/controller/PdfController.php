@@ -27,7 +27,8 @@ class PdfController extends Controller
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
-            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id)
+            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+            'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));
     }
 }

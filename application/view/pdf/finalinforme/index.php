@@ -73,6 +73,11 @@
     $html = '<p>Comentario: '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td><h3>Resumen evaluación 2° - 3° trimestre</h3></td><td>Fecha: '.htmlentities($this->solicitud_resultado->fecha).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td><td>Dorso Fetal: '.htmlentities($this->solicitud_resultado->dorso).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
 
     $this->pdf->Output('Informe.pdf', 'I');
 
@@ -80,19 +85,8 @@
 
     //echo $base64;
 
-    //Respuesta de profesional contrarreferente a solicitud de exámen ecográfico
-
-    //Fecha evaluación de interconsulta
-    //htmlentities($this->solicitud_resultado->fecha)
-
     //Edad gestacional actual
     //htmlentities($this->solicitud_resultado->eg)
-
-    //Feto en presentación
-    //htmlentities($this->solicitud_resultado->presentacion)
-
-    //Dorso fetal
-    //htmlentities($this->solicitud_resultado->dorso)
 
     //Líquido amniótico
     //htmlentities($this->solicitud_resultado->liquido)
