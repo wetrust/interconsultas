@@ -246,6 +246,12 @@
     </div>
     <script>
         $(document).ready(function () {
+            $(window).keydown(function(event){
+                if(event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+                }
+            });
             $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
                 var FExamen,FUM,EdadGestacional;
                 var undia = 1000 * 60 * 60 * 24;
