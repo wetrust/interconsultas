@@ -125,7 +125,8 @@
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
                         <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
-                        <input type="text" class="form-control" name="respuesta_eg" id="interconsulta.respuesta.eg" disabled="">
+                        <input type="text" class="form-control" id="interconsulta.respuesta.eg" disabled="">
+                        <input type="hidden" class="form-control" name="respuesta_eg">
                     </div>
                 </div>
                 <div class="row">
@@ -256,12 +257,15 @@
                 EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
                 if (FExamen.getTime() < FUM.getTime()) {
                     $('#interconsulta\\.respuesta\\.eg').val('0 semanas');
+                    $("input[name='respuesta_eg']").val('0 semanas');
                 } 
                 else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
                     $('#interconsulta\\.respuesta\\.eg').val('42 semanas');
+                    $("input[name='respuesta_eg']").val('42 semanas');
                 } 
                 else {
                     $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                    $("input[name='respuesta_eg']").val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
                 }
             });
 
