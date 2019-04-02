@@ -78,7 +78,36 @@
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td><td>Dorso Fetal: '.htmlentities($this->solicitud_resultado->dorso).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-
+    $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td>Líquido amniótico: '.htmlentities($this->solicitud_resultado->liquido).'</td><td></td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td><strong>Biometría ecográfica</strong></td><td>Peso fetal estimado: '.htmlentities($this->solicitud_resultado->pfe).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->pfe_percentil).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td><strong>Flujometrpia Doppler</strong></td><td>Promedio uterinas: '.htmlentities($this->solicitud_resultado->uterinas).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterinas_percentil).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>Arteria umbilical (Au): '.htmlentities($this->solicitud_resultado->umbilical).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->umbilical_percentil).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>Cerebral media (Cm): '.htmlentities($this->solicitud_resultado->cm).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cm_percentil).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>Cuociente Cm / Au (Cm): '.htmlentities($this->solicitud_resultado->cmau).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cmau_percentil).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<p>Hipótesis diagnóstica</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $html = '<p>Crecimiento fetal '.htmlentities($this->solicitud_resultado->hipotesis).'</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $html = '<p>Flujometría Doppler '.htmlentities($this->solicitud_resultado->doppler).'</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $html = '<p>Líquido amniótico '.htmlentities($this->solicitud_resultado->liquido).'</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $this->pdf->Ln(2);
+    $html = '<p>Hipótesis diagnóstica</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $html = '<p>'.htmlentities($this->solicitud_resultado->comentariosexamen).'</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $this->pdf->Ln(2);
+    $html = '<p>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'R', true);
     $this->pdf->Output('Informe.pdf', 'I');
 
     //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
@@ -87,46 +116,3 @@
 
     //Edad gestacional actual
     //htmlentities($this->solicitud_resultado->eg)
-
-    //Líquido amniótico
-    //htmlentities($this->solicitud_resultado->liquido)
-
-    //A.- Biometría ecográfica:
-    //Peso fetal estimado
-    //htmlentities($this->solicitud_resultado->pfe)
-    //Percentil
-    //htmlentities($this->solicitud_resultado->pfe_percentil)
-
-    //B.- Flujometría Doppler
-    //IP. Promedio uterinas
-    //htmlentities($this->solicitud_resultado->uterinas)
-    //Percentil
-    //htmlentities($this->solicitud_resultado->uterinas_percentil)
-
-    //IP. Arteria umbilical
-    //htmlentities($this->solicitud_resultado->umbilical)
-    //Percentil
-    //htmlentities($this->solicitud_resultado->umbilical_percentil)
-
-    //IP. Cerebral media
-    //htmlentities($this->solicitud_resultado->cm)
-    //Percentil
-    //htmlentities($this->solicitud_resultado->cm_percentil)
-
-    //Cuociente CM / AU
-    //htmlentities($this->solicitud_resultado->cmau)
-    //Percentil
-    //htmlentities($this->solicitud_resultado->cmau_percentil)
-
-    //Hipótesis diagnóstica
-    //Crecimiento fetal
-    //htmlentities($this->solicitud_resultado->hipotesis)
-
-    //Flujometría Doppler
-    //htmlentities($this->solicitud_resultado->doppler)
-
-    //Comentarios de exámen
-    //htmlentities($this->solicitud_resultado->comentariosexamen)
-
-    //Ecografista
-    //htmlentities($this->solicitud_resultado->ecografista)
