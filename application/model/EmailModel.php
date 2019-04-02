@@ -18,7 +18,7 @@ class EmailModel
 
     public static function sendSolicitanteEmail($solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
     {
-        $body =  "Gracias por solicitar una interconsulta para ". $solicitud_profesionalemail . " adjuntamos copia de los datos ingresados por ud. : \n\nNombre: " . $solicitud_nombre . "\nRut: " . $solicitud_rut . "\nCiudad: " . $solicitud_ciudad . "\nLugar de control: " . $solicitud_lugar ."\nFecha: " . $solicitud_fecha . "\nFUM: ". $solicitud_fum . "\nEdad Gestacional:" . $solicitud_egestacional . "\nDiagnóstico de referencia: " . $solicitud_diagnostico .  "\nProfesional referente: " . $solicitud_profesional . "\nNombre profesional: " . $solicitud_nombreprofesional . "\nCorreo electrónico: " . $solicitud_email;
+        $body =  "Recepcionada interconsulta solicitada al email ". $solicitud_profesionalemail . " adjuntamos copia de los datos ingresados por ud. : \n\nNombre: " . $solicitud_nombre . "\nRut: " . $solicitud_rut . "\nCiudad: " . $solicitud_ciudad . "\nLugar de control: " . $solicitud_lugar ."\nFecha: " . $solicitud_fecha . "\nFUM: ". $solicitud_fum . "\nEdad Gestacional:" . $solicitud_egestacional . "\nDiagnóstico de referencia: " . $solicitud_diagnostico .  "\nProfesional referente: " . $solicitud_profesional . "\nNombre profesional: " . $solicitud_nombreprofesional . "\nCorreo electrónico: " . $solicitud_email;
 
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
@@ -34,7 +34,7 @@ class EmailModel
     {
 
         $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
-        $body =  "Informamos a ud que la interconsulta: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " ha sido recepcionada en fecha " . $evaluacion_fecha . "\nComentario: ". $evaluacion_comentario;
+        $body =  "Informamos a ud que la interconsulta para: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " ha sido recepcionada en fecha " . $evaluacion_fecha . "\nComentario: ". $evaluacion_comentario;
 
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
@@ -61,8 +61,9 @@ class EmailModel
          "\nArteria Cerebral media: " . $respuesta_cm . ", Pct: " . $respuesta_cm_percentil.
          "\nCuociente Cm / Au: " . $respuesta_cmau . ", Pct: " . $respuesta_cmau_percentil.
          "\nHipótesis diagnóstica: " . 
-         "\nCrecimiento fetal: " . $respuesta_comentariosexamen . 
+         "\nCrecimiento fetal: " . $respuesta_hipotesis . 
          "\nFlujometría Doppler: " . $respuesta_doppler . 
+         "\nComentarios al exámen: " . $respuesta_comentariosexamen .
          "\nSolicitud enviada a correo electrónico: " . $solicitud->solicitud_profesionalemail;
     
         $mail = new Mail;
