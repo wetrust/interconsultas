@@ -26,13 +26,13 @@ class DashboardController extends Controller
 
     public function editSave(){ 
         $solicitud_id = Request::post('solicitud_id');
-        $solicitud_fecha = Request::post('solicitud_fecha');
+        $evaluacion_fecha = Request::post('evaluacion_fecha');
         $comentario = Request::post('comentario');
 
         SolicitudesModel::updateStateSolicitud($solicitud_id, 1);
 
-        EvaluacionModel::createEvaluacion($solicitud_id, $solicitud_fecha, $comentario);
-        EmailModel::sendPrimeraRespuesta($solicitud_id,$solicitud_fecha, $comentario);
+        EvaluacionModel::createEvaluacion($solicitud_id, $evaluacion_fecha, $comentario);
+        EmailModel::sendPrimeraRespuesta($solicitud_id,$evaluacion_fecha, $comentario);
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
         Redirect::to('dashboard');

@@ -30,11 +30,11 @@ class EmailModel
         }
     }
 
-    public static function sendPrimeraRespuesta($solicitud_id,$solicitud_fecha, $evaluacion_comentario)
+    public static function sendPrimeraRespuesta($solicitud_id,$evaluacion_fecha, $evaluacion_comentario)
     {
 
         $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
-        $body =  "Informamos a ud que la interconsulta: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " ha sido recepcionada en fecha " . $solicitud_fecha . "\nComentario: ". $evaluacion_comentario;
+        $body =  "Informamos a ud que la interconsulta: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " ha sido recepcionada en fecha " . $evaluacion_fecha . "\nComentario: ". $evaluacion_comentario;
 
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);

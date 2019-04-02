@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="col-6 form-group">
                         <label>Fecha</label>
-                        <input type="date" class="form-control" name="solicitud_fecha">
+                        <input type="date" class="form-control" name="evaluacion_fecha">
                     </div>
                 </div>
                 <div class="row">
