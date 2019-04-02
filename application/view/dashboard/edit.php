@@ -169,7 +169,8 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.pfe.percentil">&nbsp;<br>Percentil</label>
-                        <input type="text" class="form-control" name="respuesta_pfe_percentil" disabled="" id="interconsulta.respuesta.pfe.percentil">
+                        <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.pfe.percentil">
+                        <input type="hidden" class="form-control" name="respuesta_pfe_percentil">
                     </div>
                 </div>
                 <div class="row">
@@ -179,7 +180,8 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>Percentil</label>
-                        <input type="text" class="form-control" name="respuesta_uterinas_percentil" id="interconsulta.respuesta.uterinas.percentil" disabled="">
+                        <input type="text" class="form-control" id="interconsulta.respuesta.uterinas.percentil" disabled="">
+                        <input type="hidden" class="form-control" name="respuesta_uterinas_percentil">
                     </div>
                 </div>
                 <div class="row">
@@ -189,7 +191,8 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.umbilical.percentil">Percentil</label>
-                        <input type="text" class="form-control" name="respuesta_umbilical_percentil" disabled="" id="interconsulta.respuesta.umbilical.percentil">
+                        <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.umbilical.percentil">
+                        <input type="hidden" class="form-control" name="respuesta_umbilical_percentil">
                     </div>
                 </div>
                 <div class="row">
@@ -199,7 +202,8 @@
                     </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cm.percentil">Percentil</label>
-                            <input type="text" class="form-control" name="respuesta_cm_percentil" disabled="" id="interconsulta.respuesta.cm.percentil">
+                            <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.cm.percentil">
+                            <input type="hidden" class="form-control" name="respuesta_cm_percentil">
                         </div>
                     </div>
                     <div class="row">
@@ -209,7 +213,8 @@
                         </div>
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
-                            <input type="text" class="form-control" name="respuesta_cmau_percentil" disabled="" id="interconsulta.respuesta.cmau.percentil">
+                            <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.cmau.percentil">
+                            <input type="hidden" class="form-control" name="respuesta_cmau_percentil">
                         </div>
                     </div>
                     <div class="row">
@@ -272,6 +277,7 @@
 
                     eg =  parseFloat(eg).toFixed();
                     $("#interconsulta\\.respuesta\\.uterinas\\.percentil").val(pctUtAdvanced(eg,ut));
+                    $("input[name='respuesta_uterinas_percentil']").val(pctUtAdvanced(eg,ut));
 
                 }
                 
@@ -289,6 +295,7 @@
 
                     eg =  parseFloat(eg).toFixed();
                     $("#interconsulta\\.respuesta\\.pfe\\.percentil").val(pctpfeAdvanced(eg,pfe));
+                    $("input[name='respuesta_pfe_percentil']").val(pctpfeAdvanced(eg,pfe));
 
                 }
             });
@@ -305,6 +312,7 @@
 
                     eg =  parseFloat(eg).toFixed();
                     $("#interconsulta\\.respuesta\\.cm\\.percentil").val(pctacmAdvanced(eg,acm));
+                    $("input[name='respuesta_cm_percentil']").val(pctacmAdvanced(eg,acm));
 
                 }
 
@@ -312,7 +320,6 @@
                     if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                         var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
                         $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");
-                        
                     }
                 }
             });
@@ -329,14 +336,14 @@
 
                     eg =  parseFloat(eg).toFixed();
                     $("#interconsulta\\.respuesta\\.umbilical\\.percentil").val(pctauAdvanced(eg,aumb));
+                    $("input[name='respuesta_umbilical_percentil']").val(pctauAdvanced(eg,aumb));
 
                 }
 
                 if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
                     if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                         var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
-                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");
-                        
+                        $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");                        
                     }
                 }
             });
@@ -352,6 +359,7 @@
 
                     eg =  parseFloat(eg).toFixed();
                     $("#interconsulta\\.respuesta\\.cmau\\.percentil").val(pctcmauAdvanced(eg,cmau));
+                    $("input[name='respuesta_cmau_percentil']").val(pctcmauAdvanced(eg,cmau));
 
                 }
             });
