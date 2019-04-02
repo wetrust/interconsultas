@@ -154,8 +154,10 @@
                         <label for="interconsulta.respuesta.liquido">Líquido amniótico</label>
                         <select class="form-control" name="respuesta_liquido">
                             <option value="normal">Normal</option>
-                            <option value="pha">PHA</option>
-                            <option value="oha">OHA</option>
+                            <option value="pha leve">PHA leve</option>
+                            <option value="pha severo">PHA severo</option>
+                            <option value="oha leve">OHA leve</option>
+                            <option value="oha severo">OHA severo</option>
                         </select>
                     </div>
                     <div class="col form-group">
