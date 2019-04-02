@@ -70,9 +70,8 @@ class EmailModel
         $mail = new Mail;
 
         $tmp = Config::get('PATH_AVATARS');
-        $mail->AddAttachment("$tmp/informe.pdf", $name = 'Informe',  $encoding = 'base64', $type = 'application/pdf');
         
-        $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body, $tmp);
 
         if ($mail_sent) {
             return true;
