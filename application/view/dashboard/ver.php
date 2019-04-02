@@ -144,31 +144,17 @@
                 <div class="row">
                     <div class="col form-group">
                         <label>Feto en presentación</label>
-                        <select class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->presentacion); ?>">
-                            <option value="cefalica">Cefálica</option>
-                            <option value="podalica">Podálica</option>
-                            <option value="transversa">Transversa</option>
-                            <option value="indiferente">Indiferente</option>
-                        </select>
+                        <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->presentacion); ?>">
                     </div>
                     <div class="col form-group">
                         <label>Dorso fetal</label>
-                        <select class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->dorso); ?>">
-                            <option value="anterior">Anterior</option>
-                            <option value="lat. izquierdo">Lateralizado izquierdo</option>
-                            <option value="posterior">Posterior</option>
-                            <option value="lat. derecho">Lateralizado derecho</option>
-                        </select>
+                        <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->dorso); ?>">
                     </div>
                 </div>
                 <div class="row" id="interconsulta.respuesta.liquido.div">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.liquido">Líquido amniótico</label>
-                        <select disabled class="form-control" id="interconsulta.respuesta.liquido" value="<?php echo htmlentities($this->solicitud_resultado->liquido); ?>">
-                            <option value="normal">Normal</option>
-                            <option value="pha">PHA</option>
-                            <option value="oha">OHA</option>
-                        </select>
+                        <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->liquido); ?>">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.bvm">BVM</label>
