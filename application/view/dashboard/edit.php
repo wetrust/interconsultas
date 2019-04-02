@@ -67,11 +67,11 @@
                 </div>
                 <div class="col form-group">
                     <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional">
+                        <input type="radio" disabled id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Médico" ? "checked" : ""); echo $check; ?> >
                         <label for="interconsulta.profesional.medico">Médico</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional">
+                        <input type="radio" disabled id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Matrona" ? "checked" : ""); echo $check; ?> >
                         <label for="interconsulta.profesional.matrona">Matrón/Matrona</label>
                     </div>
                 </div>
