@@ -61,9 +61,6 @@
     $html = '<table><tbody><tr><td>Email (contrareferencia)</td><td>'.htmlentities($this->solicitud->solicitud_profesionalemail).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
 
-    $html = '<h1 style="border-bottom:2px double #000;">&nbsp;</h1>';
-    $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
-    $this->pdf->Ln(2);
     $html = '<h1 style="border-bottom:2px double #000;">Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h1>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
@@ -72,8 +69,11 @@
     $this->pdf->Ln(2);
     $html = '<p>Comentario: '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><h3>Resumen evaluación 2° - 3° trimestre</h3></td><td>Fecha: '.htmlentities($this->solicitud_resultado->fecha).'</td></tr></tbody></table>';
+    $this->pdf->Ln(4);
+
+    $html = '<h3>Resumen parar evaluación Eco - Doppler Materno fetal en 2° - 3° trimestre</h3>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $html = '<table><tbody><tr><td></td><td>Fecha: '.htmlentities($this->solicitud_resultado->fecha).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td><td>Dorso Fetal: '.htmlentities($this->solicitud_resultado->dorso).'</td></tr></tbody></table>';
@@ -84,22 +84,23 @@
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><strong>Biometría ecográfica</strong></td><td>Peso fetal estimado:</td><td>'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td>Percentil: '.htmlentities($this->solicitud_resultado->pfe_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td><strong>Flujometría Doppler</strong></td><td>Promedio uterinas:</td><td>'.htmlentities($this->solicitud_resultado->uterinas).' IP</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterinas_percentil).'</td></tr></tbody></table>';
+    $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td><strong>Flujometría Doppler</strong></td><td>IP Promedio uterinas:</td><td>'.htmlentities($this->solicitud_resultado->uterinas).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterinas_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Arteria umbilical (Au):</td><td>'.htmlentities($this->solicitud_resultado->umbilical).' IP</td><td>Percentil: '.htmlentities($this->solicitud_resultado->umbilical_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP Arteria umbilical (Au):</td><td>'.htmlentities($this->solicitud_resultado->umbilical).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->umbilical_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Cerebral media (Cm):</td><td>'.htmlentities($this->solicitud_resultado->cm).' IP</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cm_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP Cerebral media (Cm):</td><td>'.htmlentities($this->solicitud_resultado->cm).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cm_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Cuociente Cm / Au (Cm):</td><td>'.htmlentities($this->solicitud_resultado->cmau).' IP</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cmau_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Cuociente Cm / Au (Cm):</td><td>'.htmlentities($this->solicitud_resultado->cmau).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cmau_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<h3>Hipótesis diagnóstica</h3>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<p><strong>Crecimiento fetal</strong> '.htmlentities($this->solicitud_resultado->hipotesis).'</p>';
+    $html = '<p><strong>- Crecimiento fetal</strong> '.htmlentities($this->solicitud_resultado->hipotesis).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<p><strong>Flujometría Doppler</strong> '.htmlentities($this->solicitud_resultado->doppler).'</p>';
+    $html = '<p><strong>- Flujometría Doppler</strong> '.htmlentities($this->solicitud_resultado->doppler).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<p><strong>Líquido amniótico</strong> '.htmlentities($this->solicitud_resultado->liquido).'</p>';
+    $html = '<p><strong>- Líquido amniótico</strong> '.htmlentities($this->solicitud_resultado->liquido).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<h3>Comentarios y observaciones</h3>';
@@ -107,7 +108,7 @@
     $html = '<p>'.htmlentities($this->solicitud_resultado->comentariosexamen).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<p>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</p>';
+    $html = '<table><tbody><tr><td></td><td></td><td>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'R', true);
     $tmp = Config::get('PATH_AVATARS');
     $this->pdf->Output("$tmp/informe.pdf", "F");
