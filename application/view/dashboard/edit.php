@@ -101,31 +101,9 @@
         <div class="card-body">
             <h4>Responder a esta solicitud de interconsulta</h4>
             <div class="row">
-                <div class="col form-group">
-                    <label for="interconsulta.para">¿Interconsulta aceptada?</label>
-                </div>
-                <div class="col form-group">
-                    <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.aceptada.si" value="1" name="interconsulta_aceptada" class="form-check-input" <?php if ($this->solicitud_evaluacion->evaluacion_aceptada == 1) { echo 'checked'; } ?>>
-                        <label class="form-check-label" for="interconsulta.aceptada.si">Si</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.aceptada.no" value="0" name="interconsulta_aceptada" class="form-check-input" <?php if ($this->solicitud_evaluacion->evaluacion_aceptada == 0) { echo 'checked'; } ?>>
-                        <label class="form-check-label" for="interconsulta.aceptada.no">No</label>
-                    </div>
-                </div>
                 <div class="col form-group" id="jaja.papapa">
-                    <label for="interconsulta.para">¿Eco de crecimiento?</label>
-                </div>
-                <div class="col form-group" id="jaja.papap">
-                    <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.crecimiento.si" value="1" name="interconsulta_crecimiento" class="form-check-input" <?php if ($this->solicitud_evaluacion->eco_crecimiento == 1) { echo 'checked'; } ?>>
-                        <label class="form-check-label" for="interconsulta.crecimiento.si">Si</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" disabled id="interconsulta.crecimiento.no" value="0" name="interconsulta_crecimiento" class="form-check-input" <?php if ($this->solicitud_evaluacion->eco_crecimiento == 0) { echo 'checked'; } ?>>
-                        <label class="form-check-label" for="interconsulta.crecimiento.no">No</label>
-                    </div>
+                    <label for="interconsulta.para">Fecha</label>
+                    <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta" value="<?php echo htmlentities($this->solicitud_evaluacion->evaluacion_fecha); ?>">
                 </div>
             </div>
             <div class="row">
@@ -136,7 +114,6 @@
             </div>
         </div>
     </div>
-    <?php if ($this->solicitud_evaluacion->evaluacion_aceptada == 1) { ?>
     <div class="card mt-3">
         <div class="card-body">
             <h4 class="text-center">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
@@ -638,7 +615,6 @@
             }
         }
     </script>
-    <?php } ?>
     </form>
     <?php } else { ?>
         <div class="alert alert-danger" role="alert">Esta interconsulta no existe.</div>

@@ -17,7 +17,7 @@ class EvaluacionModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT solicitud_id, evaluacion_aceptada, eco_crecimiento, evaluacion_comentarios FROM evaluacion WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "SELECT solicitud_id, evaluacion_fecha, evaluacion_comentarios FROM evaluacion WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id));
 
