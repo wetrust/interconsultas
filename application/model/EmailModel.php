@@ -60,10 +60,11 @@ class EmailModel
          "\nArteria Umbilical: " . $respuesta_umbilical . ", Pct: " . $respuesta_umbilical_percentil.
          "\nArteria Cerebral media: " . $respuesta_cm . ", Pct: " . $respuesta_cm_percentil.
          "\nCuociente Cm / Au: " . $respuesta_cmau . ", Pct: " . $respuesta_cmau_percentil.
-         "\nHipótesis diagnóstica: " . 
+         "\nHIPÓTESIS DIAGÓSTICA: " . 
          "\nCrecimiento fetal: " . $respuesta_hipotesis . 
          "\nFlujometría Doppler: " . $respuesta_doppler . 
-         "\nComentarios al exámen: " . $respuesta_comentariosexamen .
+         "\nCOMENTARIOS: " . $respuesta_comentariosexamen .
+         "\nEcografista: " . $respuesta_ecografista .
          "\nSolicitud enviada a correo electrónico: " . $solicitud->solicitud_profesionalemail;
     
         $mail = new Mail;
