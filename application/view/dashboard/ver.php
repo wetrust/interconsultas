@@ -138,7 +138,7 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
-                        <input type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->eg); ?>">
+                        <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->eg); ?>">
                     </div>
                 </div>
                 <div class="row">
