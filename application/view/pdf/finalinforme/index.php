@@ -53,7 +53,7 @@
     $html = '<table><tbody><tr><td><strong>Nombre:</strong> '.htmlentities($this->solicitud->solicitud_nombreprofesional).'</td><td><strong>Email:</strong> '.htmlentities($this->solicitud->solicitud_email).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<h5>Ecografista de contrarreferencia</h5>';
+    $html = '<h3>Ecografista de contrarreferencia</h3>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td><strong>Email (contrareferencia)</strong></td><td>'.htmlentities($this->solicitud->solicitud_profesionalemail).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
