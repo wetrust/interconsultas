@@ -83,7 +83,8 @@ class DashboardController extends Controller
     {
         $this->View->render('dashboard/ver', array(
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
-            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id)
+            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+            'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));
     }
     public function delete($note_id)

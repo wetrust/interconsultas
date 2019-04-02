@@ -13,13 +13,13 @@ class RespuestaModel
         return $query->fetchAll();
     }
 
-    public static function getRespuesta($note_id)
+    public static function getRespuesta($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT solicitud_id, note_id, note_text FROM notes WHERE user_id = :user_id AND note_id = :note_id LIMIT 1";
+        $sql = "SELECT * FROM respuestas WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':user_id' => Session::get('user_id'), ':note_id' => $note_id));
+        $query->execute(array(':solicitud_id' => $solicitud_id));
 
         return $query->fetch();
     }
