@@ -65,7 +65,7 @@ class EmailModel
          "\nFlujometría Doppler: " . $respuesta_doppler .
          "\nLíquido amniótico: " . $respuesta_liquido .
          "\nCOMENTARIOS: " . $respuesta_comentariosexamen .
-         "\nEcografista: " . $respuesta_ecografista 
+         "\nEcografista: " . $respuesta_ecografista ;
     
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
