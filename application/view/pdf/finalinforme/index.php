@@ -67,20 +67,18 @@
     $html = '<h1 style="border-bottom:2px double #000;">Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h1>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '.htmlentities($this->solicitud_evaluacion->evaluacion_fecha).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $this->pdf->Ln(2);
+    $html = '<p>Comentario: '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</p>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $this->pdf->Ln(2);
 
     $this->pdf->Output('Informe.pdf', 'I');
 
     //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
 
     //echo $base64;
-
-    //Responder a esta solicitud de interconsulta
-
-    //Fecha
-    //htmlentities($this->solicitud_evaluacion->evaluacion_fecha)
-
-    //Comentario</label>
-    //htmlentities($this->solicitud_evaluacion->evaluacion_comentarios)
 
     //Respuesta de profesional contrarreferente a solicitud de exámen ecográfico
 
