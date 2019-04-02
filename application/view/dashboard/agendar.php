@@ -66,14 +66,14 @@
                         <h5><span class="badge badge-default p-2" for="interconsulta.profesional">Datos del profesional referente</span></h5>
                     </div>
                     <div class="col form-group">
-                        <div class="form-check">
-                            <input type="radio" disabled id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" class="form-check-input">
-                            <label class="form-check-label" for="interconsulta.profesional.medico">Médico</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" disabled id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" class="form-check-input">
-                            <label class="form-check-label" for="interconsulta.profesional.matrona">Matrón/Matrona</label>
-                        </div>
+                    <div class="form-check">
+                        <input type="radio" disabled id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Médico" ? "checked" : ""); echo $check; ?> >
+                        <label for="interconsulta.profesional.medico">Médico</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" disabled id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" <?php $check = ($this->solicitud->solicitud_profesional == "Matrona" ? "checked" : ""); echo $check; ?> >
+                        <label for="interconsulta.profesional.matrona">Matrón/Matrona</label>
+                    </div>
                     </div>
                 </div>
                 <div class="row">
