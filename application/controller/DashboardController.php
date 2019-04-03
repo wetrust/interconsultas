@@ -63,6 +63,7 @@ class DashboardController extends Controller
         $respuesta_doppler = Request::post('respuesta_doppler');
         $respuesta_anatomia = Request::post('respuesta_anatomia');
         $respuesta_anatomia_final = "";
+        print_r($respuesta_anatomia);
         foreach($respuesta_anatomia as $yek){
             $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$yek;
         }
