@@ -70,9 +70,9 @@
     $html = '<h2 style="border-bottom:1px double #000;text-align: left;">B- Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '. $evaluacion_fecha.'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    //$html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '. $evaluacion_fecha.'</td></tr></tbody></table>';
+    //$this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    //$this->pdf->Ln(2);
     //$html = '<table><tbody><tr><td><strong>- Comentario:</strong> '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</td></tr></tbody></table>';
     //$this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     //$this->pdf->Ln(4);
@@ -81,7 +81,7 @@
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
     $html = '<h2 style="border-bottom:1px double #000;text-align: left;">C- Resumen parar evaluación Eco - Doppler Materno fetal en 2° - 3° trimestre</h2>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
     $html = '<table><tbody><tr><td></td><td>Fecha de exámen: '.$fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
