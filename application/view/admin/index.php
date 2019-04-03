@@ -24,7 +24,7 @@
                     <td><input type="checkbox" name="softDelete" <?php if ($user->user_deleted) { ?> checked <?php } ?> /></td>
                     <td>
                         <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
-                        <button type="submit" class="btn btn-primary">Apply</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </td>
                 </form>
             </tr>
