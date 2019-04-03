@@ -95,7 +95,7 @@
     $html = '<table><tbody><tr><td>Líquido amniótico: '.htmlentities($this->solicitud_resultado->liquido).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->solicitud_resultado->anatomia_fetal).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->solicitud_resultado->anatomia_fetal).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><strong>Biometría ecográfica</strong></td><td>Peso fetal estimado:</td><td>'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td>Percentil: '.htmlentities($this->solicitud_resultado->pfe_percentil).'</td></tr></tbody></table>';
