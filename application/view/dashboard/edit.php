@@ -178,7 +178,7 @@
                 <div class="row">
                     <div class="col form-group">
                         <label>Anatomía Fetal</label>
-                        <select multiple="" class="form-control" name="respuesta_anatomia">
+                        <select multiple="" class="form-control" name="respuesta_anatomia[]">
                             <option value="no evaluada dirigidamente, pero el aspecto morfológico general es normal">No evaluada dirigidamente, pero el aspecto morfológico general es normal</option>
                             <option value="de aspecto general normal">de aspecto general normal</option>
                             <option value="hallazgos de siguientes patologías:">hallazgos ecográficos compatible con:</option>
