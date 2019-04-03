@@ -73,9 +73,9 @@
     $html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '. $evaluacion_fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>- Comentario:</strong> '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(4);
+    //$html = '<table><tbody><tr><td><strong>- Comentario:</strong> '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</td></tr></tbody></table>';
+    //$this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    //$this->pdf->Ln(4);
 
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
