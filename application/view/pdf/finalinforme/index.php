@@ -38,7 +38,7 @@
     $solicitud_fecha = explode("-", $this->solicitud->solicitud_fecha);
     $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
 
-    $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT del paciente: '.htmlentities($this->solicitud->solicitud_rut).'</td><td>Fecha de solicitud: '.htmlentities($solicitud_fecha).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).' RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).' Fecha de solicitud: '.htmlentities($solicitud_fecha).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     $solicitud_fum = explode("-", $this->solicitud->solicitud_fum);
@@ -103,7 +103,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Cerebral media (Cm):</td><td>'.htmlentities($this->solicitud_resultado->cm).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cm_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Cuociente Cm / Au (Cm):</td><td>'.htmlentities($this->solicitud_resultado->cmau).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cmau_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Cuociente Cm / Au (CCP):</td><td>'.htmlentities($this->solicitud_resultado->cmau).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cmau_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<h3>Hipótesis diagnóstica</h3>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
