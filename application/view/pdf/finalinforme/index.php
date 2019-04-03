@@ -47,7 +47,7 @@
     $html = '<table><tbody><tr><td>FUM Operacional: '.$solicitud_fum.'</td><td>Edad Gestacional: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<p>Diagnóstico:  '.htmlentities($this->solicitud->solicitud_diagnostico).'</p>';
+    $html = '<p>Diagnóstico de referencia:  '.htmlentities($this->solicitud->solicitud_diagnostico).'</p>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Ciudad procedencia: '.htmlentities($this->solicitud->solicitud_ciudad).'</td><td>Lugar de control: '.htmlentities($this->solicitud->solicitud_lugar).'</td></tr></tbody></table>';
@@ -70,21 +70,18 @@
     $html = '<h2 style="border-bottom:1px double #000;text-align: left;">B- Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    //$html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '. $evaluacion_fecha.'</td></tr></tbody></table>';
-    //$this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    //$this->pdf->Ln(2);
-    //$html = '<table><tbody><tr><td><strong>- Comentario:</strong> '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</td></tr></tbody></table>';
-    //$this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    //$this->pdf->Ln(4);
+    $html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '. $evaluacion_fecha.'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td><strong>- Comentario:</strong> '.htmlentities($this->solicitud_evaluacion->evaluacion_comentarios).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->Ln(4);
 
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
     $html = '<h2 style="border-bottom:1px double #000;text-align: left;">C- Resumen parar evaluación Eco - Doppler Materno fetal en 2° - 3° trimestre</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-
-    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">C- Resumen parar evaluación Eco - Doppler Materno fetal en 2° - 3° trimestre</h2>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
     $html = '<table><tbody><tr><td></td><td>Fecha de exámen: '.$fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
