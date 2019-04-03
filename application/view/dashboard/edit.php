@@ -246,7 +246,7 @@
                             <p>Hipótesis diagnóstica</p>
                         </div>
                         <div class="col-6 form-group">
-                            <label for="interconsulta.respuesta.hipotesis">Crecimiento</label>
+                            <label for="interconsulta.respuesta.hipotesis">Crecimiento fetal</label>
                             <input type="text" class="form-control" name="respuesta_hipotesis">
                         </div>
                         <div class="col-6 form-group">
