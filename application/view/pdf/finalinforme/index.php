@@ -32,7 +32,7 @@
 
     $this->pdf->SetFont('Helvetica', '', 9);
     
-    $html = '<h2 style="border-bottom:1px double #000;">Formulario referencia para evaluación ecográfica del crecimiento fetal</h2>';
+    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">Formulario referencia para evaluación ecográfica del crecimiento fetal</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
     $solicitud_fecha = explode("-", $this->solicitud->solicitud_fecha);
@@ -71,7 +71,7 @@
     $evaluacion_fecha = explode("-", $this->solicitud_evaluacion->evaluacion_fecha);
     $evaluacion_fecha = $evaluacion_fecha[2] . "-". $evaluacion_fecha[1]. "-". $evaluacion_fecha[0];
     $this->pdf->Ln(4);
-    $html = '<h2 style="border-bottom:1px double #000;">Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h2>';
+    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">Contrarreferencia desde unidad de ultrasonografía gineco obstétrica</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '. $evaluacion_fecha.'</td></tr></tbody></table>';
@@ -84,7 +84,7 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h2 style="border-bottom:1px double #000;">Resumen parar evaluación Eco - Doppler Materno fetal en 2° - 3° trimestre</h2>';
+    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">Resumen parar evaluación Eco - Doppler Materno fetal en 2° - 3° trimestre</h2>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'C', true);
     $html = '<table><tbody><tr><td></td><td>Fecha de exámen: '.$fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
