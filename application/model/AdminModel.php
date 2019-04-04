@@ -61,4 +61,24 @@ class AdminModel
             return true;
         }
     }
+
+    public static function deleteUser($user_id)
+    {
+        if (!$user_id) {
+            return false;
+        }
+
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "DELETE FROM users WHERE user_id = :user_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':user_id' => $user_id));
+
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_DELETION_FAILED'));
+        return false;
+    }
 }

@@ -23,4 +23,16 @@ class AdminController extends Controller
 
         Redirect::to("admin");
     }
+
+    public function delete($user_id){
+        $this->View->render('admin/delete', array(
+            'user_id' => $user_id)
+        );
+    }
+
+    public function delete_action(){
+        AdminModel::deleteUser(Request::post('user_id'));
+
+        Redirect::to("admin");
+    }
 }
