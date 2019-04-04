@@ -15,7 +15,7 @@
                         <input class="form-control" type="text" name="captcha" required />
                         <a href="#" onclick="document.getElementById('captcha').src = '<?php echo Config::get('URL'); ?>register/showCaptcha?' + Math.random(); return false">Reload Captcha</a>
                     </div>
-                    <input type="submit" class="btn btn-primary my-2" value="Send me a password-reset mail"/>
+                    <input type="submit" class="btn btn-primary my-2" value="Solicitar cambio de contraseña"/>
                 </form>
             </div>
         </div>
