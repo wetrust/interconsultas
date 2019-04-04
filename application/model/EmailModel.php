@@ -91,4 +91,42 @@ class EmailModel
             return false;
         }
     }
+
+    public static function sendRespuestaReferenteEmail($email_referente, $solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler, $respuesta_anatomia)
+    {
+        $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
+
+        $respuesta_fecha = explode("-", $respuesta_fecha);
+        $respuesta_fecha = $respuesta_fecha[2] . "-". $respuesta_fecha[1]. "-". $respuesta_fecha[0];
+
+        $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
+         "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
+         \n\nFecha evaluación interconsulta: " . $respuesta_fecha . 
+         "\nEdad Gestacional: " . $respuesta_eg . 
+         "\nPeso Fetal Estimado: " . $respuesta_pfe . ", Pct: " . $respuesta_pfe_percentil.
+         "\nIP Promedio de uterinas: " . $respuesta_uterinas . ", Pct: " . $respuesta_uterinas_percentil.
+         "\nIP Arteria Umbilical: " . $respuesta_umbilical . ", Pct: " . $respuesta_umbilical_percentil.
+         "\nIP Arteria Cerebral media: " . $respuesta_cm . ", Pct: " . $respuesta_cm_percentil.
+         "\nCuociente Cm / Au: " . $respuesta_cmau . ", Pct: " . $respuesta_cmau_percentil.
+         "\nHIPÓTESIS DIAGÓSTICA: " . 
+         "\nCrecimiento fetal: " . $respuesta_hipotesis . 
+         "\nFlujometría Doppler: " . $respuesta_doppler .
+         "\nLíquido amniótico: " . $respuesta_liquido .
+         "\nAnatomía fetal: " . $respuesta_anatomia .
+         "\nCOMENTARIOS: " . $respuesta_comentariosexamen .
+         "\nEcografista: " . $respuesta_ecografista ;
+    
+        $mail = new Mail;
+
+        $tmp = Config::get('PATH_AVATARS');
+        
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email_referente, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body, $tmp);
+
+        if ($mail_sent) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

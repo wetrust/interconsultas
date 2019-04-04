@@ -65,7 +65,7 @@ class RespuestaModel
         return false;
     }
 
-    public static function deleteNote($solicitud_id)
+    public static function deleteRespuesta($solicitud_id)
     {
         if (!$solicitud_id) {
             return false;

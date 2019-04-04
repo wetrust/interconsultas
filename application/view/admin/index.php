@@ -12,7 +12,7 @@
             <tr>
                 <th>Email</th>
                 <th>¿Contrarreferente autorizado?</th>
-                <th>¿Con almacenamiento?</th>
+                <th>¿Almacenamiento de datos?</th>
                 <th>Guardar</th>
                 <th>Eliminar</th>
             </tr>
