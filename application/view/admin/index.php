@@ -1,6 +1,7 @@
 <div class="container">
     <h1>Administrador maestro</h1>
     <!-- echo out the system feedback (error and success messages) -->
+    <!-- almacenamiento: NO: mail matrona-medico; SI: mail matrona -->
     <?php $this->renderFeedbackMessages(); ?>
     <h3>Qué hay aquí ?</h3>
     <div class="alert alert-info" role="alert">
