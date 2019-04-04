@@ -10,8 +10,7 @@
         <thead class="thead-dark">
             <tr>
                 <th>Email</th>
-                <th>Activado</th>
-                <th>Desactivar</th>
+                <th>Autorizado</th>
                 <th>Guardar</th>
             </tr>
         </thead>
@@ -21,7 +20,20 @@
                 <td><?= $user->user_email; ?></td>
                 <td><?= ($user->user_active == 0 ? 'No' : 'Si'); ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
-                    <td><input type="checkbox" name="softDelete" <?php if ($user->user_deleted) { ?> checked <?php } ?> /></td>
+                <td>
+                <?php
+                    $interests = array(0 => 'Si',  1 => 'No');
+                ?>
+                    <select name="softDelete">
+                <?php
+                    foreach($interests as $k => $v) {
+                ?>
+                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_deleted) ?> selected="selected" <?php } ?>><?php echo $v;?></option>
+                <?php
+                    }
+                ?>
+                    </select>
+                    </td>
                     <td>
                         <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
                         <button type="submit" class="btn btn-primary">Guardar</button>
