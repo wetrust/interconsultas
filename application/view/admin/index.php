@@ -11,8 +11,8 @@
         <thead class="thead-dark">
             <tr>
                 <th>Email</th>
+                <th>¿Contrarreferente autorizado?</th>
                 <th>¿Con almacenamiento?</th>
-                <th>Autorizado</th>
                 <th>Guardar</th>
                 <th>Eliminar</th>
             </tr>
@@ -23,20 +23,6 @@
                 <td><?= $user->user_email; ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
                 <td>
-                <?php
-                    $interests = array(0 => 'No',  1 => 'Si');
-                ?>
-                    <select name="almacenar">
-                <?php
-                    foreach($interests as $k => $v) {
-                ?>
-                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_deleted){ ?> selected <?php } ?>><?php echo $v;?></option>
-                <?php
-                    }
-                ?>
-                </td>
-                <td>
-
                 <?php
                     $interests = array(0 => 'Si',  1 => 'No');
                 ?>
@@ -50,6 +36,19 @@
                 ?>
                     </select>
                     </td>
+                <td>
+                <?php
+                    $interests = array(0 => 'No',  1 => 'Si');
+                ?>
+                    <select name="almacenar">
+                <?php
+                    foreach($interests as $k => $v) {
+                ?>
+                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_deleted){ ?> selected <?php } ?>><?php echo $v;?></option>
+                <?php
+                    }
+                ?>
+                </td>
                     <td>
                         <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
                         <button type="submit" class="btn btn-primary">Guardar</button>

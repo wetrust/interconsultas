@@ -2,13 +2,15 @@
 
 class AdminModel
 {
-    public static function setAccountSuspensionAndDeletionStatus($suspensionInDays, $softDelete, $userId)
+    public static function setAccountSuspensionAndDeletionStatus($save, $suspensionInDays, $softDelete, $userId)
     {
 
         if ($userId == Session::get('user_id')) {
             Session::add('feedback_negative', Text::get('FEEDBACK_ACCOUNT_CANT_DELETE_SUSPEND_OWN'));
             return false;
         }
+
+        self::almacenarFunction($userId, $save);
 
         if ($suspensionInDays > 0) {
             $suspensionTime = time() + ($suspensionInDays * 60 * 60 * 24);
@@ -26,6 +28,22 @@ class AdminModel
 
         if ($suspensionTime != null OR $delete = 1) {
             self::resetUserSession($userId);
+        }
+    }
+
+    private static function almacenarFunction($userId, $save)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $query = $database->prepare("UPDATE users SET user_almacenamiento = :user_almacenamiento WHERE user_id = :user_id LIMIT 1");
+        $query->execute(array(
+                ':user_almacenamiento' => $save,
+                ':user_id' => $userId
+        ));
+
+        if ($query->rowCount() == 1) {
+            Session::add('feedback_positive', Text::get('FEEDBACK_ACCOUNT_SUSPENSION_DELETION_STATUS'));
+            return true;
         }
     }
 
