@@ -22,7 +22,7 @@
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
                 <td>
                 <?php
-                    $interests = array(0 => 'Si',  1 => 'No');
+                    $interests = array(0 => 'Si',  "on" => 'No');
                 ?>
                     <select name="softDelete">
                 <?php
