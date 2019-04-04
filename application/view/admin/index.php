@@ -44,7 +44,7 @@
                     </td>
                 </form>
                 <td>
-                    <a href="admin/delete/<?= $user->user_id; ?>" class="btn btn-warning">Delete</button>
+                    <a href="admin/delete/<?= $user->user_id; ?>" class="btn btn-danger">Eliminar</button>
                 </td>
             </tr>
         <?php } ?>
