@@ -18,7 +18,6 @@
         <?php foreach ($this->users as $user) { ?>
             <tr>
                 <td><?= $user->user_email; ?></td>
-                <td><?= ($user->user_active == 0 ? 'No' : 'Si'); ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
                 <td>
                 <?php
