@@ -14,6 +14,7 @@
                 <th>¿Con almacenamiento?</th>
                 <th>Autorizado</th>
                 <th>Guardar</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,9 @@
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </td>
                 </form>
+                <td>
+                    <a href="admin/delete/<?= $user->user_id; ?>" class="btn btn-warning">Delete</button>
+                </td>
             </tr>
         <?php } ?>
         </tbody>

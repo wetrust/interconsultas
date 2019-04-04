@@ -1,7 +1,7 @@
 <?php
 return array(
     "FEEDBACK_UNKNOWN_ERROR" => "Unknown error occurred!",
-    "FEEDBACK_DELETED" => "Your account has been deleted.",
+    "FEEDBACK_DELETED" => "No estás autorizado, contacta al administrador",
     "FEEDBACK_ACCOUNT_SUSPENDED" => "Account Suspended for ",
     "FEEDBACK_ACCOUNT_SUSPENSION_DELETION_STATUS" => "Se ha modificado el estado del usuario.",
     "FEEDBACK_ACCOUNT_CANT_DELETE_SUSPEND_OWN" => "You can not delete or suspend your own account.",
