@@ -20,7 +20,9 @@
             <tr>
                 <td><?= $user->user_email; ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
+                <td></td>
                 <td>
+
                 <?php
                     $interests = array(0 => 'Si',  1 => 'No');
                 ?>
