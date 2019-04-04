@@ -16,7 +16,7 @@ class AdminModel
             $suspensionTime = null;
         }
 
-        if ($softDelete == "on") {
+        if ($softDelete == 1) {
             $delete = 1;
         } else {
             $delete = 0;
