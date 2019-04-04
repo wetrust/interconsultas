@@ -44,7 +44,7 @@
                 <?php
                     foreach($interests as $k => $v) {
                 ?>
-                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_deleted){ ?> selected <?php } ?>><?php echo $v;?></option>
+                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_almacenamiento){ ?> selected <?php } ?>><?php echo $v;?></option>
                 <?php
                     }
                 ?>
