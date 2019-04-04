@@ -22,7 +22,19 @@
             <tr>
                 <td><?= $user->user_email; ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
-                <td></td>
+                <td>
+                <?php
+                    $interests = array(0 => 'No',  1 => 'Si');
+                ?>
+                    <select name="almacenar">
+                <?php
+                    foreach($interests as $k => $v) {
+                ?>
+                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_deleted){ ?> selected <?php } ?>><?php echo $v;?></option>
+                <?php
+                    }
+                ?>
+                </td>
                 <td>
 
                 <?php
