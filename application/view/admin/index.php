@@ -10,6 +10,7 @@
         <thead class="thead-dark">
             <tr>
                 <th>Email</th>
+                <th>¿Con almacenamiento?</th>
                 <th>Autorizado</th>
                 <th>Guardar</th>
             </tr>
