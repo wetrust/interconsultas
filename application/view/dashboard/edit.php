@@ -133,7 +133,7 @@
             <h4 class="text-center">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
                 <div class="col form-group">
-                    <label>¿La solicitud es para es ecografía de crecimiento?</label>
+                    <label>¿La solicitud es para ecografía de crecimiento?</label>
                     <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento">
                         <option value="1">Si</option>
                         <option value="0">No</option>
@@ -177,11 +177,11 @@
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.liquido">Líquido amniótico</label>
                         <select class="form-control" name="respuesta_liquido">
-                            <option value="normal">Normal</option>
-                            <option value="pha leve">PHA leve</option>
-                            <option value="pha severo">PHA severo</option>
-                            <option value="oha leve">OHA leve</option>
-                            <option value="oha severo">OHA severo</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Pha leve">PHA leve</option>
+                            <option value="Pha severo">PHA severo</option>
+                            <option value="Oha leve">OHA leve</option>
+                            <option value="Oha severo">OHA severo</option>
                         </select>
                     </div>
                 </div>
@@ -257,14 +257,34 @@
                         </div>
                         <div class="col-6 form-group">
                             <label for="interconsulta.respuesta.hipotesis">Crecimiento fetal</label>
-                            <input type="text" class="form-control" name="respuesta_hipotesis">
+                            <select class="form-control" name="respuesta_hipotesis">
+                                <option value="Disminuido < p3">Disminuido < p3</option>
+                                <option value="Disminuido < p10">Disminuido < p10</option>
+                                <option value="Normal p10 - p 25">Normal p10 - p 25</option>
+                                <option value="Normal p26 - p50">Normal p26 - p50</option>
+                                <option value="Normal p51 - p 75">Normal p51 - p 75</option>
+                                <option value="Normal p76 - p90">Normal p76 - p90</option>
+                                <option value="Grande >p90">Grande >p90</option>
+                                <option value="Grande >p97">Grande >p97</option>
+                            </select>
                         </div>
                         <div class="col-6 form-group">
                             <label for="interconsulta.respuesta.hipotesis">Flujometría Doppler</label>
-                            <input type="text" class="form-control" name="respuesta_doppler">
+                            <select class="form-control" name="respuesta_doppler">
+                                <option value="Materno Normal + Fetal Normal">Materno Normal + Fetal Normal</option>
+                                <option value="Materno Alterado + Fetal Alterado">Materno Alterado + Fetal Alterado</option>
+                                <option value="Materno Alterado + Fetal Normal">Materno Alterado + Fetal Normal</option>
+                                <option value="Materno Normal + Fetal Alterado">Materno Normal + Fetal Alterado</option>
+                                <option value="Materno Normal + Fetal Alterado Solo CCP">Materno Normal + Fetal Alterado Solo CCP</option>
+                                <option value="Materno Normal + Fetal Alterado CCP + ACM">Materno Normal + Fetal Alterado CCP + ACM</option>
+                                <option value="Materno Normal + Fetal Alterado CCP + ACM + UMB">Materno Normal + Fetal Alterado CCP + ACM + UMB</option>
+                                <option value="Materno Alterado + Fetal Alterado Solo CCP">Materno Alterado + Fetal Alterado Solo CCP</option>
+                                <option value="Materno Alterado + Fetal Alterado CCP + ACM">Materno Alterado + Fetal Alterado CCP + ACM</option>
+                                <option value="Materno Alterado + Fetal Alterado CCP + ACM + UMB">Materno Alterado + Fetal Alterado CCP + ACM + UMB</option>
+                            </select>
                         </div>
                     </div>
-                    </div>
+                </div>
                     <div class="row">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>

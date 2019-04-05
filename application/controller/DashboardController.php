@@ -63,33 +63,54 @@ class DashboardController extends Controller
         $respuesta_doppler = Request::post('respuesta_doppler');
         $respuesta_anatomia = Request::post('respuesta_anatomia');
         $respuesta_anatomia_final = "";
+        $respuesta_crecimiento = Request::post('solicitud_crecimiento');
 
-        foreach($respuesta_anatomia as $yek => $out){
-            $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$out;
+        if ($respuesta_crecimiento == 1){
+            foreach($respuesta_anatomia as $yek => $out){
+                $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$out;
+            }
+    
+            $respuesta_anatomia = $respuesta_anatomia_final;
+    
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso,$respuesta_doppler, $respuesta_anatomia);
+            SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
+    
+            $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
+    
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
+            ));
+            
+    
+            EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
+    
+            if ($usuario->user_almacenamiento == 0){
+                EmailModel::sendRespuestaReferenteEmail(Session::get('user_email'),$solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
+                SolicitudesModel::deleteSolicitud($solicitud_id);
+            }
         }
+        else{
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista,"","","", "");
+            SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/breve', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
+            ));
 
-        $respuesta_anatomia = $respuesta_anatomia_final;
-
-        RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso,$respuesta_doppler, $respuesta_anatomia);
-        SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
-
-        $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
-
-        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
-        array(
-            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
-            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
-            'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
-        ));
-        
-
-        EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
-        
-        if ($usuario->user_almacenamiento == 0){
-            EmailModel::sendRespuestaReferenteEmail(Session::get('user_email'),$solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
-            SolicitudesModel::deleteSolicitud($solicitud_id);
+            EmailModel::sendRespuestaEmailBreve($solicitud_id, $respuesta_comentariosexamen, $respuesta_ecografista);
+            if ($usuario->user_almacenamiento == 0){
+                EmailModel::sendRespuestaReferenteEmailBreve(Session::get('user_email'), $solicitud_id, $respuesta_comentariosexamen, $respuesta_ecografista);
+                SolicitudesModel::deleteSolicitud($solicitud_id);
+            }
         }
+        
 
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
