@@ -132,6 +132,16 @@
         <div class="card-body">
             <h4 class="text-center">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
+                <div class="col form-group">
+                    <label>¿La solicitud es para es ecografía de crecimiento?</label>
+                    <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento">
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+            </div>
+            <div id="contenedor">
+            <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.fecha" >Fecha evaluación de interconsulta</label>
                         <input type="date" class="form-control" id="interconsulta.respuesta.fecha" name="respuesta_fecha">
@@ -254,6 +264,7 @@
                             <input type="text" class="form-control" name="respuesta_doppler">
                         </div>
                     </div>
+                    </div>
                     <div class="row">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>
@@ -275,6 +286,16 @@
                 return false;
                 }
             });
+
+            $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
+                if ($(this).val() == 0){
+                    $("#contenedor").removeClass("d-none");
+                }
+                else{
+                    $("#contenedor").addClass("d-none");
+                }
+            });
+
             $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
                 var FExamen,FUM,EdadGestacional;
                 var undia = 1000 * 60 * 60 * 24;
