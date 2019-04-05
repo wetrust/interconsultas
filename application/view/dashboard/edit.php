@@ -289,10 +289,10 @@
 
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 0){
-                    $("#contenedor").removeClass("d-none");
+                    $("#contenedor").addClass("d-none");
                 }
                 else{
-                    $("#contenedor").addClass("d-none");
+                    $("#contenedor").removeClass("d-none");
                 }
             });
 
