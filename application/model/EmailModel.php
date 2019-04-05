@@ -96,9 +96,6 @@ class EmailModel
     {
         $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
 
-        $respuesta_fecha = explode("-", $respuesta_fecha);
-        $respuesta_fecha = $respuesta_fecha[2] . "-". $respuesta_fecha[1]. "-". $respuesta_fecha[0];
-
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
          $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
@@ -159,9 +156,6 @@ class EmailModel
     public static function sendRespuestaReferenteEmailBreve($email_referente, $solicitud_id, $respuesta_comentariosexamen, $respuesta_ecografista)
     {
         $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
-
-        $respuesta_fecha = explode("-", $respuesta_fecha);
-        $respuesta_fecha = $respuesta_fecha[2] . "-". $respuesta_fecha[1]. "-". $respuesta_fecha[0];
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
