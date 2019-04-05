@@ -105,6 +105,7 @@ class DashboardController extends Controller
             ));
 
             EmailModel::sendRespuestaEmailBreve($solicitud_id, $respuesta_comentariosexamen, $respuesta_ecografista);
+            $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
             if ($usuario->user_almacenamiento == 0){
                 EmailModel::sendRespuestaReferenteEmailBreve(Session::get('user_email'), $solicitud_id, $respuesta_comentariosexamen, $respuesta_ecografista);
                 SolicitudesModel::deleteSolicitud($solicitud_id);
