@@ -39,7 +39,7 @@ class DashboardController extends Controller
         Redirect::to('dashboard');
     }
 
-    public function save(){ 
+    public function save(){
         $solicitud_id = Request::post('solicitud_id');
         $respuesta_fecha = Request::post('respuesta_fecha');
         $respuesta_eg = Request::post('respuesta_eg');
@@ -63,9 +63,11 @@ class DashboardController extends Controller
         $respuesta_doppler = Request::post('respuesta_doppler');
         $respuesta_anatomia = Request::post('respuesta_anatomia');
         $respuesta_anatomia_final = "";
+
         foreach($respuesta_anatomia as $yek => $out){
             $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$out;
         }
+
         $respuesta_anatomia = $respuesta_anatomia_final;
 
         RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_presentacion,$respuesta_dorso,$respuesta_doppler, $respuesta_anatomia);
@@ -81,12 +83,13 @@ class DashboardController extends Controller
             'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));
         
+
+        EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
+        
         if ($usuario->user_almacenamiento == 0){
             EmailModel::sendRespuestaReferenteEmail(Session::get('user_email'),$solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
             SolicitudesModel::deleteSolicitud($solicitud_id);
         }
-
-        EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
 
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
