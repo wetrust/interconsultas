@@ -73,7 +73,7 @@
     $html = '<table><tbody><tr><td><h3>Evaluación de solicitud ecográfica</h3></td><td>Fecha: '. $evaluacion_fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>- Comentario:</strong> '$this->solicitud_evaluacion->evaluacion_comentarios.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>- Comentario:</strong> ' . $this->solicitud_evaluacion->evaluacion_comentarios.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
