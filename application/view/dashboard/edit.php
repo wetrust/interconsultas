@@ -303,7 +303,7 @@
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
     <script>
         $(document).ready(function () {
-            $("#interconsulta\\.respuesta\\.pfe #interconsulta\\.respuesta\\.uterinas #interconsulta\\.respuesta\\.umbilical #interconsulta\\.respuesta\\.cm input[name='respuesta_ecografista']").keydown(function(event){
+            $("#interconsulta\\.respuesta\\.pfe, #interconsulta\\.respuesta\\.uterinas, #interconsulta\\.respuesta\\.umbilical, #interconsulta\\.respuesta\\.cm, input[name='respuesta_ecografista']").keydown(function(event){
                 if(event.keyCode == 13) {
                 event.preventDefault();
                 return false;
