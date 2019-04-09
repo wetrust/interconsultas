@@ -117,7 +117,7 @@
     $this->pdf->Ln(2);
     $html = '<h3>Comentarios y observaciones</h3>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<p>'.htmlentities($this->solicitud_resultado->comentariosexamen).'</p>';
+    $html = $this->solicitud_resultado->comentariosexamen;
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td></td><td>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</td><td></td></tr></tbody></table>';
