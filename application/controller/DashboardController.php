@@ -145,4 +145,10 @@ class DashboardController extends Controller
         RespuestaModel::deleteRespuesta($note_id);
         Redirect::to('dashboard');
     }
+    
+    public function configuracion(){
+        $this->View->render('dashboard/configuracion', array(
+            'solicitud' => SolicitudesModel::getSolicitud(Session::get('user_id'))
+        ));
+    }
 }
