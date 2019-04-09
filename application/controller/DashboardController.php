@@ -147,7 +147,7 @@ class DashboardController extends Controller
     }
     
     public function configuracion(){
-        $this->View->render('dashboard/configuracion', //array(
+        $this->View->render('dashboard/configuracion' //, array(
             //'solicitud' => SolicitudesModel::getSolicitud(Session::get('user_id'))
             //)
         );
