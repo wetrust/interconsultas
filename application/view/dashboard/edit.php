@@ -123,7 +123,7 @@
             <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.comentario.respuesta">Comentario</label>
-                    <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta" value="<?php echo htmlentities($this->solicitud_evaluacion->evaluacion_comentarios); ?>">
+                    <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta" value="<?php echo strip_tags($this->solicitud_evaluacion->evaluacion_comentarios); ?>">
                 </div>
             </div>
         </div>
