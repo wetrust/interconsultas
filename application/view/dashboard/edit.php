@@ -300,7 +300,7 @@
                 <button type="submit" class="btn btn-primary">Enviar respuesta</button>
         </div>
     </div>
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
     <script>
         $(document).ready(function () {
             $("#interconsulta\\.respuesta\\.pfe #interconsulta\\.respuesta\\.uterinas #interconsulta\\.respuesta\\.umbilical #interconsulta\\.respuesta\\.cm input[name='respuesta_ecografista']").keydown(function(event){
