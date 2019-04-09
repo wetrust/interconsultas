@@ -118,7 +118,7 @@
                 </div>
                 <div class="row">
                     <div class="col form-group">
-                        <label for="interconsulta.comentario.respuesta">Comentario</label>
+                        <label for="interconsulta.comentario.respuesta"><strong>Comentario</strong></label>
                         <textarea type="text" class="form-control" name="comentario"></textarea>
                     </div>
                 </div>
