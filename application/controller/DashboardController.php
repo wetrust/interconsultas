@@ -142,7 +142,7 @@ class DashboardController extends Controller
     }
     public function delete($note_id)
     {
-        RespuestaModel::deleteNote($note_id);
+        RespuestaModel::deleteRespuesta($note_id);
         Redirect::to('dashboard');
     }
 }
