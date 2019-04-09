@@ -45,7 +45,7 @@
                     </li>
                     <?php if (Session::userIsLoggedIn()) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="configuracion">Configuración</a>
+                        <a class="nav-link" href="dashboard/configuracion">Configuración</a>
                     </li>
                     <?php } ?>
                 </ul>
