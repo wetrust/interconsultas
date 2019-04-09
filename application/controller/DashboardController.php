@@ -67,7 +67,7 @@ class DashboardController extends Controller
 
         if ($respuesta_crecimiento == 1){
 
-            if (strlen($respuesta_anatomia) > 0){
+            if (is_array ($respuesta_anatomia)){
                 foreach($respuesta_anatomia as $yek => $out){
                     $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$out;
                 }
@@ -75,7 +75,6 @@ class DashboardController extends Controller
             else{
                 $respuesta_anatomia = "";
             }
-
     
             $respuesta_anatomia = $respuesta_anatomia_final;
     

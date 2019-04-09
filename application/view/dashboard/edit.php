@@ -253,10 +253,10 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <p>Hipótesis diagnóstica</p>
+                            <p><strong>Hipótesis diagnóstica</strong></p>
                         </div>
                         <div class="col-6 form-group">
-                            <label for="interconsulta.respuesta.hipotesis">Crecimiento fetal</label>
+                            <label for="interconsulta.respuesta.hipotesis"><strong>Crecimiento fetal</strong></label>
                             <select class="form-control" name="respuesta_hipotesis">
                                 <option value="Disminuido < p3">Disminuido < p3</option>
                                 <option value="Disminuido < p10">Disminuido < p10</option>
@@ -269,7 +269,7 @@
                             </select>
                         </div>
                         <div class="col-6 form-group">
-                            <label for="interconsulta.respuesta.hipotesis">Flujometría Doppler</label>
+                            <label for="interconsulta.respuesta.hipotesis"><strong>Flujometría Doppler</strong></label>
                             <select class="form-control" name="respuesta_doppler">
                                 <option value="Materno Normal + Fetal Normal">Materno Normal + Fetal Normal</option>
                                 <option value="Materno Alterado + Fetal Alterado">Materno Alterado + Fetal Alterado</option>
@@ -287,7 +287,7 @@
                 </div>
                 <div class="row">
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>
+                        <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label>
                         <textarea type="text" class="form-control" name="respuesta_comentariosexamen"></textarea>
                     </div>
                 </div>

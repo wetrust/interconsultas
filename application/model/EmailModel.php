@@ -42,7 +42,7 @@ class EmailModel
         $evaluacion_fecha = explode("-", $evaluacion_fecha);
         $evaluacion_fecha = $evaluacion_fecha[2] . "-". $evaluacion_fecha[1]. "-". $evaluacion_fecha[0];
 
-        $body =  "Informamos a ud que la interconsulta para: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " ha sido recepcionada en fecha " . $evaluacion_fecha . "\nCOMENTARIO: ". $evaluacion_comentario;
+        $body =  "Informamos a ud que la interconsulta para: " . $solicitud->solicitud_nombre . ", Rut: " . $solicitud->solicitud_rut . " ha sido recepcionada en fecha " . $evaluacion_fecha . "\nCOMENTARIO:\n". strip_tags($respuesta_comentariosexamen);
 
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
