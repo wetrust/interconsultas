@@ -76,7 +76,7 @@ class EmailModel
          "\nFlujometría Doppler: " . $respuesta_doppler .
          "\nLíquido amniótico: " . $respuesta_liquido .
          "\nAnatomía fetal: " . $respuesta_anatomia .
-         "\nCOMENTARIOS: " . strip_tags($respuesta_comentariosexamen) .
+         "\nCOMENTARIOS:\n " . strip_tags($respuesta_comentariosexamen) .
          "\nEcografista: " . $respuesta_ecografista ;
     
         $mail = new Mail;
@@ -99,7 +99,7 @@ class EmailModel
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
          $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
-         \n\nCOMENTARIOS: " . strip_tags($respuesta_comentariosexamen) .
+         \n\nCOMENTARIOS:\n " . strip_tags($respuesta_comentariosexamen) .
          "\nEcografista: " . $respuesta_ecografista ;
     
         $mail = new Mail;
@@ -137,7 +137,7 @@ class EmailModel
          "\nFlujometría Doppler: " . $respuesta_doppler .
          "\nLíquido amniótico: " . $respuesta_liquido .
          "\nAnatomía fetal: " . $respuesta_anatomia .
-         "\nCOMENTARIOS: " . strip_tags($respuesta_comentariosexamen) .
+         "\nCOMENTARIOS:\n " . strip_tags($respuesta_comentariosexamen) .
          "\nEcografista: " . $respuesta_ecografista ;
     
         $mail = new Mail;
@@ -160,7 +160,7 @@ class EmailModel
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
          $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
-         \n\nCOMENTARIOS: " . strip_tags($respuesta_comentariosexamen) .
+         \n\nCOMENTARIOS:\n " . strip_tags($respuesta_comentariosexamen) .
          "\nEcografista: " . $respuesta_ecografista ;
     
         $mail = new Mail;
