@@ -66,9 +66,16 @@ class DashboardController extends Controller
         $respuesta_crecimiento = Request::post('solicitud_crecimiento');
 
         if ($respuesta_crecimiento == 1){
-            foreach($respuesta_anatomia as $yek => $out){
-                $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$out;
+
+            if (strlen($respuesta_anatomia) > 0){
+                foreach($respuesta_anatomia as $yek => $out){
+                    $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$out;
+                }
             }
+            else{
+                $respuesta_anatomia = "";
+            }
+
     
             $respuesta_anatomia = $respuesta_anatomia_final;
     
