@@ -123,7 +123,7 @@
             <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.comentario.respuesta">Comentario</label>
-                    <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta" value="<?php echo strip_tags($this->solicitud_evaluacion->evaluacion_comentarios); ?>">
+                    <textarea disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta"><?php echo strip_tags($this->solicitud_evaluacion->evaluacion_comentarios); ?></textarea>
                 </div>
             </div>
         </div>
@@ -288,7 +288,7 @@
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label>
-                        <textarea type="text" class="form-control" name="respuesta_comentariosexamen"></textarea>
+                        <textarea type="text" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -310,7 +310,7 @@
                 }
             });
 
-            tinymce.init({ selector:'textarea' });
+            tinymce.init({ selector:'textarea#editable' });
 
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 0){
