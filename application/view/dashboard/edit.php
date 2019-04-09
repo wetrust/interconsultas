@@ -285,27 +285,32 @@
                         </div>
                     </div>
                 </div>
-                    <div class="row">
-                        <div class="col form-group">
-                            <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>
-                            <input type="text" class="form-control" name="respuesta_comentariosexamen">
-                        </div>
-                        <div class="col form-group">
-                            <label for="interconsulta.respuesta.ecografista">Ecografista</label>
-                            <input type="text" class="form-control" name="respuesta_ecografista">
-                        </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>
+                        <textarea type="text" class="form-control" name="respuesta_comentariosexamen"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar respuesta</button>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Ecografista</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar respuesta</button>
         </div>
     </div>
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
     <script>
         $(document).ready(function () {
-            $(window).keydown(function(event){
+            $("#interconsulta\\.respuesta\\.pfe #interconsulta\\.respuesta\\.uterinas #interconsulta\\.respuesta\\.umbilical #interconsulta\\.respuesta\\.cm input[name='respuesta_ecografista']").keydown(function(event){
                 if(event.keyCode == 13) {
                 event.preventDefault();
                 return false;
                 }
             });
+
+            tinymce.init({ selector:'textarea' });
 
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 0){
