@@ -335,11 +335,11 @@
             $("#textosPredefinidos").on("click", function(){
                 $("#textosPredefinidos").trigger("change");
             });
-            
+
             $("#textosPredefinidos").on("change", function(){
                 let args = {
                     action: "read",
-                    text_id: $(this).val()
+                    texto_id: $(this).val()
                 }
 
                 $.post(_api, args).done(function(data){
