@@ -6,7 +6,7 @@ class TextModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT user_id, texto_id, texto_titulo, texto_text FROM textos WHERE user_id = :user_id";
+        $sql = "SELECT texto_id, texto_titulo, texto_text FROM textos WHERE user_id = :user_id";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id')));
 
@@ -17,7 +17,7 @@ class TextModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT user_id, texto_id, texto_titulo, texto_text FROM textos WHERE user_id = :user_id AND texto_id = :texto_id LIMIT 1";
+        $sql = "SELECT texto_id, texto_titulo, texto_text FROM textos WHERE user_id = :user_id AND texto_id = :texto_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id'), ':texto_id' => $texto_id));
 
