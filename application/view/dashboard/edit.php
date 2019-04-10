@@ -323,7 +323,7 @@
             }
 
             $.post(_api, args).done(function(data){
-                $('#textosPredefinidos).empty();
+                $('#textosPredefinidos').empty();
                 if (Object.keys(data).length > 0) {
                     for (let i = 0; i < data.length; i++) {
                         var response = '<option value="' + data[i].text_id + '">' + data[i].text_titulo + '</option>';
