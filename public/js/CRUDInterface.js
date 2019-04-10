@@ -39,8 +39,6 @@ class CRUDInterface {
                             element_id = element_id[element_id.length -1];
                             $(this).val(data[element_id]);
                         });
-
-                        tinyMCE.activeEditor.setContent(data.texto_text);
                     }
                 });
             }
@@ -57,9 +55,6 @@ class CRUDInterface {
                 element_id = element_id[element_id.length -1];
                 if (this.nodeName == 'SELECT'){
                     args[element_id] = $(this).children(":selected").val();
-                }
-                else if (this.nodeName == 'TEXTAREA'){
-                    args[element_id] = $(this).html();
                 }
                 else{
                     args[element_id] = $(this).val();
