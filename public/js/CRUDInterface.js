@@ -40,7 +40,7 @@ class CRUDInterface {
                             $(this).val(data[element_id]);
                         });
 
-                        $("#interface\\.input\\.texto_text").html(data.texto_text);
+                        tinyMCE.activeEditor.setContent(data.texto_text);
                     }
                 });
             }
