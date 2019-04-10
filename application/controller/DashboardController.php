@@ -152,4 +152,27 @@ class DashboardController extends Controller
             //)
         );
     }
+
+    public function configuracion_api(){
+        $accion = Request::post('action');
+        $resultado = "";
+        switch ($accion) {
+            case "get":
+                $resultado = TextModel::getAllTexts();
+                break;
+            case "new":
+                $resultado = TextModel::createText(Request::post('texto_titulo'),Request::post('texto_text'));
+                break;
+            case "set":
+                $resultado = TextModel::updateText(Request::post('texto_id'), Request::post('texto_titulo'), Request::post('texto_text'));
+                break;
+            case "read":
+                $resultado = TextModel::getText(Request::post('texto_id'));
+                break;
+            case "delete":
+                $resultado = TextModel::deleteText(Request::post('texto_id'));
+                break;
+        }
+        return $this->View->renderJSON($resultado);  
+    }
 }
