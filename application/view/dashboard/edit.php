@@ -334,7 +334,8 @@
 
             $("#textosPredefinidos").on("click", function(){
                 $("#textosPredefinidos").trigger("change");
-            }
+            });
+            
             $("#textosPredefinidos").on("change", function(){
                 let args = {
                     action: "read",
