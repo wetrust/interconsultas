@@ -326,7 +326,7 @@
                 $('#textosPredefinidos').empty();
                 if (Object.keys(data).length > 0) {
                     for (let i = 0; i < data.length; i++) {
-                        var response = '<option value="' + data[i].text_id + '">' + data[i].text_titulo + '</option>';
+                        var response = '<option value="' + data[i].texto_id + '">' + data[i].texto_titulo + '</option>';
                         $('#textosPredefinidos').append(response);
                     }   
                 }
