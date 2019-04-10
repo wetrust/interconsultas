@@ -40,7 +40,7 @@ class CRUDInterface {
                             $(this).val(data[element_id]);
                         });
 
-                        $("#interface\\.input\\.texto_text").val(data["texto_text"]);
+                        $("#interface\\.input\\.texto_text").html(data.texto_text);
                     }
                 });
             }
