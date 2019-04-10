@@ -22,7 +22,7 @@
                 texto_titulo: {
                     name: "Titulo",
                     type: "text"
-                }
+                },
                 texto_text: {
                     name: "Texto",
                     type: "text"
