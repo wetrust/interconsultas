@@ -21,11 +21,14 @@ class CRUDInterface {
             var element = $(event.relatedTarget);
             var tableid = element.data('id');
             if ($.isNumeric(tableid)){
+                
                 let args = {
                     action: "read"
                 }
+
                 let element_first = $("#interface\\.body :input").first();
                 let element_id = element_first[0].id.split(".");
+                
                 element_id = element_id[element_id.length -1];
                 args[element_id] = tableid;
 
@@ -34,7 +37,12 @@ class CRUDInterface {
                         $('#interface\\.body :input').each(function(){
                             let element_id = this.id.split(".");
                             element_id = element_id[element_id.length -1];
-                            $(this).val(data[element_id]);
+                            if (element_id == "texto_text"){
+                                tinyMCE.activeEditor.setContent(data[element_id]);
+                            }
+                            else{
+                                $(this).val(data[element_id]);
+                            }
                         });
                     }
                 });
