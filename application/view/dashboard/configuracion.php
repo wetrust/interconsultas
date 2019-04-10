@@ -35,6 +35,6 @@
         wtInterface = new CRUDInterface(view);
         wtInterface.html("#almacenamiento");
 
-        tinymce.init({ selector:'#interface.input.texto_text' });
+        tinymce.init({ selector:'#interface\\.input\\.texto_text' });
     });
 </script>
