@@ -58,6 +58,9 @@ class CRUDInterface {
                 if (this.nodeName == 'SELECT'){
                     args[element_id] = $(this).children(":selected").val();
                 }
+                else if (this.nodeName == 'TEXTAREA'){
+                    args[element_id] = $(this).html();
+                }
                 else{
                     args[element_id] = $(this).val();
                 }
