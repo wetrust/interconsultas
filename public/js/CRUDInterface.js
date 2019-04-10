@@ -31,7 +31,7 @@ class CRUDInterface {
 
                 $.post(_api, args).done(function(data){
                     if (Object.keys(data).length > 0) {
-                        $('#interface\\.body :input').each(function(){
+                        $('#interface\\.body :input, #interface\\.body :textarea').each(function(){
                             let element_id = this.id.split(".");
                             element_id = element_id[element_id.length -1];
                             $(this).val(data[element_id]);
@@ -125,7 +125,7 @@ class CRUDInterface {
             throw new Error('No existen elementos para crear el formulario');
         }
 
-        let clase = (cantidad > 2) ? 'col-12 col-sm-6' : 'col-12';
+        let clase = (cantidad > 2) ? 'col-12' : 'col-12';
         let response = '';
         for (var input in inputs) {
             if (inputs[input].type != 'hidden'){
