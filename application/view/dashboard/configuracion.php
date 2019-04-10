@@ -7,6 +7,7 @@
     </div>
 </div>
 <script src="<?php echo Config::get('URL'); ?>/js/CRUDInterface.js"></script>
+<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
 <script>
     var _api, view, wtInterface;
 
@@ -33,5 +34,12 @@
         wtInterface = null;
         wtInterface = new CRUDInterface(view);
         wtInterface.html("#almacenamiento");
+        
+        var contenedor = $("#interface\\.input\\.texto_text").parent();
+        
+        $("#interface\\.input\\.texto_text").remove();
+        $(contenedor).append('<textarea id="interface.input.texto_text"></textarea>');
+
+        tinymce.init({ selector:'textarea' });
     });
 </script>
