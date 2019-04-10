@@ -118,6 +118,7 @@ class CRUDInterface {
         return modal;
     }
 
+    
     _createForm(inputs){
         let cantidad = Object.keys(inputs).length;
 
