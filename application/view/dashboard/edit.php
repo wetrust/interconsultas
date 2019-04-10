@@ -334,7 +334,7 @@
 
             $("#textosPredefinidos").on("change", function(){
                 let args = {
-                    action: "read"
+                    action: "read",
                     text_id: $(this).val()
                 }
 
