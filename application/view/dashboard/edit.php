@@ -287,6 +287,12 @@
                 </div>
                 <div class="row">
                     <div class="col form-group">
+                        <label><strong>Textos Preconfigurados</strong></label>
+                        <select class="form-control" id="textosPredefinidos"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
                         <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label>
                         <textarea type="text" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea>
                     </div>
@@ -302,12 +308,41 @@
     </div>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
     <script>
+        var _api = "<?php echo Config::get('URL'); ?>dashboard/configuracion_api";
+
         $(document).ready(function () {
             $("#interconsulta\\.respuesta\\.pfe, #interconsulta\\.respuesta\\.uterinas, #interconsulta\\.respuesta\\.umbilical, #interconsulta\\.respuesta\\.cm, input[name='respuesta_ecografista']").keydown(function(event){
                 if(event.keyCode == 13) {
                 event.preventDefault();
                 return false;
                 }
+            });
+
+            let args = {
+                action: "get"
+            }
+
+            $.post(_api, args).done(function(data){
+                $('#textosPredefinidos).empty();
+                if (Object.keys(data).length > 0) {
+                    for (let i = 0; i < data.length; i++) {
+                        var response = '<option value="' + data[i].text_id + '">' + data[i].text_titulo + '</option>';
+                        $('#textosPredefinidos').append(response);
+                    }   
+                }
+            });
+
+            $("#textosPredefinidos").on("change", function(){
+                let args = {
+                    action: "read"
+                    text_id: $(this).val()
+                }
+
+                $.post(_api, args).done(function(data){
+                    if (Object.keys(data).length > 0) {
+                        tinyMCE.activeEditor.setContent(data.texto_text);
+                    }
+                });
             });
 
             tinymce.init({ selector:'textarea#editable' });
