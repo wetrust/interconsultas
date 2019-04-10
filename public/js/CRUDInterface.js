@@ -31,7 +31,7 @@ class CRUDInterface {
 
                 $.post(_api, args).done(function(data){
                     if (Object.keys(data).length > 0) {
-                        $('#interface\\.body :input, #interface\\.body :textarea').each(function(){
+                        $('#interface\\.body :input').each(function(){
                             let element_id = this.id.split(".");
                             element_id = element_id[element_id.length -1];
                             $(this).val(data[element_id]);
@@ -118,7 +118,7 @@ class CRUDInterface {
         return modal;
     }
 
-    
+
     _createForm(inputs){
         let cantidad = Object.keys(inputs).length;
 
