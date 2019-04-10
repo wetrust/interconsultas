@@ -37,13 +37,10 @@ class CRUDInterface {
                         $('#interface\\.body :input').each(function(){
                             let element_id = this.id.split(".");
                             element_id = element_id[element_id.length -1];
-                            if (element_id == "texto_text"){
-                                tinyMCE.activeEditor.setContent(data[element_id]);
-                            }
-                            else{
-                                $(this).val(data[element_id]);
-                            }
+                            $(this).val(data[element_id]);
                         });
+
+                        $("#interface\\.input\\.texto_text").val(data["texto_text"]);
                     }
                 });
             }

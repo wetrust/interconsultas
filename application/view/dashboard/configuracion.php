@@ -34,7 +34,12 @@
         wtInterface = null;
         wtInterface = new CRUDInterface(view);
         wtInterface.html("#almacenamiento");
+        
+        var contenedor = $("#interface\\.input\\.texto_text").parent();
+        
+        $("#interface\\.input\\.texto_text").remove();
+        $(contenedor).append('<textarea id="interface.input.texto_text"></textarea>');
 
-        tinymce.init({ selector:'#interface\\.input\\.texto_text' });
+        tinymce.init({ selector:'textarea' });
     });
 </script>
