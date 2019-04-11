@@ -1,6 +1,5 @@
 <div class="container">
     <h1>Modificar texto predefinido</h1>
-    <h2>Edit a note</h2>
     <!-- echo out the system feedback (error and success messages) -->
     <?php $this->renderFeedbackMessages(); ?>
     <div class="card mt-1">
@@ -24,3 +23,7 @@
         </div>
     </div>
 </div>
+<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
+<script>
+    tinymce.init({ selector:'textarea' });
+</script>

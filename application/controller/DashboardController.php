@@ -154,7 +154,7 @@ class DashboardController extends Controller
 
     public function config_edit($text_id){
         $this->View->render('dashboard/modificar', array(
-            'textos' => TextModel::getText(Request::post('texto_id'))
+            'textos' => TextModel::getText($text_id)
         ));
     }
 
