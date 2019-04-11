@@ -19,6 +19,7 @@
                             <tr id="table.head">
                                 <td>Titulo</td>
                                 <td>Texto</td>
+                                <td>Modificar</td>
                             </tr>
                         </thead>
                         <tbody id="table.body">
