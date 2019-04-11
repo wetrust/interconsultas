@@ -225,18 +225,18 @@
                         <input type="hidden" class="form-control" name="respuesta_uterinas_percentil">
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.umbilical">IP. Arteria umbilical</label>
+                        <label for="interconsulta.respuesta.umbilical">&nbsp;<br>IP. Arteria umbilical</label>
                         <input type="text" class="form-control" name="respuesta_umbilical" id="interconsulta.respuesta.umbilical">
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.umbilical.percentil">Percentil</label>
+                        <label for="interconsulta.respuesta.umbilical.percentil">&nbsp;<br>Percentil</label>
                         <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.umbilical.percentil">
                         <input type="hidden" class="form-control" name="respuesta_umbilical_percentil">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.cm">&nbsp;<br>IP. Cerebral media</label>
+                        <label for="interconsulta.respuesta.cm">IP. Cerebral media</label>
                         <input type="text" class="form-control" name="respuesta_cm" id="interconsulta.respuesta.cm">
                     </div>
                         <div class="col form-group">
