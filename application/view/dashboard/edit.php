@@ -53,16 +53,14 @@
                         </div>
                     </div>
                 <div class="row">
-                    <div class="col form-group">
+                    <div class="col-3 form-group">
                         <label>FUM operacional</label>
                         <input type="date" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
                     </div>
-                    <div class="col form-group">
+                    <div class="col-3 form-group">
                         <label>Edad Gestacional</label>
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_egestacional); ?>">
                     </div>
-                </div>
-                <div class="row">
                     <div class="col form-group">
                         <label>Diagnóstico de referencia</label>
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_diagnostico); ?>">
