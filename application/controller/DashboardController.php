@@ -173,7 +173,7 @@ class DashboardController extends Controller
     }
 
     public function config_delete($text_id){
-        TextModel::deleteText(Request::post($text_id));
+        TextModel::deleteText($text_id);
         Redirect::to('dashboard/configuracion');
     }
 
