@@ -147,10 +147,20 @@ class DashboardController extends Controller
     }
     
     public function configuracion(){
-        $this->View->render('dashboard/configuracion' //, array(
-            //'solicitud' => SolicitudesModel::getSolicitud(Session::get('user_id'))
-            //)
+        $this->View->render('dashboard/configuracion', array(
+            'textos' =>  TextModel::getAllTexts())
         );
+    }
+
+    public function config_edit($text_id){
+        $this->View->render('dashboard/modificar', array(
+            'textos' => TextModel::getText(Request::post('texto_id'))
+        ));
+    }
+
+    public function config_save{
+        TextModel::updateText(Request::post('texto_id'), Request::post('texto_titulo'), Request::post('texto_text'));
+        Redirect::to('dashboard/configuracion');
     }
 
     public function configuracion_api(){
