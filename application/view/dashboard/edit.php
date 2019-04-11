@@ -182,8 +182,6 @@
                             <option value="lat. derecho">Lateralizado derecho</option>
                         </select>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.liquido">Líquido amniótico</label>
                         <select class="form-control" name="respuesta_liquido">
@@ -226,8 +224,6 @@
                         <input type="text" class="form-control" id="interconsulta.respuesta.uterinas.percentil" disabled="">
                         <input type="hidden" class="form-control" name="respuesta_uterinas_percentil">
                     </div>
-                </div>
-                <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.umbilical">IP. Arteria umbilical</label>
                         <input type="text" class="form-control" name="respuesta_umbilical" id="interconsulta.respuesta.umbilical">
@@ -248,8 +244,6 @@
                             <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.cm.percentil">
                             <input type="hidden" class="form-control" name="respuesta_cm_percentil">
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.cmau">Cuociente CM / AU</label>
                             <input type="text" disabled class="form-control" id="interconsulta.respuesta.cmau">
@@ -312,8 +306,10 @@
                         <label for="interconsulta.respuesta.ecografista">Ecografista</label>
                         <input type="text" class="form-control" name="respuesta_ecografista">
                     </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Enviar respuesta</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar respuesta</button>
         </div>
     </div>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
