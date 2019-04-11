@@ -20,5 +20,5 @@
 </div>
 <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
 <script>
-    tinymce.init({ selector:'textarea',height :540, language: 'es_MX' });
+    tinymce.init({ selector:'textarea',height :540, language: 'es_MX', language_url : '<?= config::get("URL"); ?>js/languages/es_MX.js' });
 </script>
