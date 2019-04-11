@@ -4,7 +4,7 @@
     <?php $this->renderFeedbackMessages(); ?>
     <div class="card mt-1">
         <div class="card-body">
-            <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/config_new">
+            <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/config_create">
                 <div class="form-group">
                     <label>Título:</label>
                     <input type="text" class="form-control" name="texto_titulo">

@@ -153,6 +153,10 @@ class DashboardController extends Controller
     }
 
     public function config_new(){
+        $this->View->render('dashboard/modificar');
+    }
+
+    public function config_create(){
         TextModel::createText(Request::post('texto_titulo'),Request::post('texto_text'));
         Redirect::to('dashboard/configuracion');
     }
