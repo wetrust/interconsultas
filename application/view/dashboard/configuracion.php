@@ -20,6 +20,7 @@
                                 <td>Titulo</td>
                                 <td>Texto</td>
                                 <td>Modificar</td>
+                                <td>Eliminar</td>
                             </tr>
                         </thead>
                         <tbody id="table.body">
@@ -28,6 +29,7 @@
                             <td><?= $text->texto_titulo; ?></td>
                             <td><?= $text->texto_text; ?></td>
                             <td><a class="btn btn-primary" href="<?= config::get("URL"); ?>dashboard/config_edit/<?= $text->texto_id; ?>">Modificar</a></td>
+                            <td><a class="btn btn-warning" href="<?= config::get("URL"); ?>dashboard/config_delete/<?= $text->texto_id; ?>">Eliminar</a></td>
                             </tr>
                         <?php } ?>
                         </tbody>

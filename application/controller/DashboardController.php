@@ -172,6 +172,11 @@ class DashboardController extends Controller
         Redirect::to('dashboard/configuracion');
     }
 
+    public function config_delete($text_id){
+        TextModel::deleteText(Request::post($text_id));
+        Redirect::to('dashboard/configuracion');
+    }
+
     public function configuracion_api(){
         $accion = Request::post('action');
         $resultado = "";
