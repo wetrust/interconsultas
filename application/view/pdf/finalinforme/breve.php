@@ -80,8 +80,6 @@
     $html = '<h2 style="border-bottom:1px double #000;text-align: left;">C- Resumen parar evaluación Eco - Doppler Materno fetal en 2° - 3° trimestre</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<h3>Comentarios y observaciones</h3>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<div style="line-height: 20px;">'.$this->solicitud_resultado->comentariosexamen . '</div>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
