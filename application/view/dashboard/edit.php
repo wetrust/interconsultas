@@ -134,6 +134,8 @@
             <div class="row">
                 <div class="col form-group">
                     <label>¿La solicitud es para ecografía de crecimiento?</label>
+                </div>
+                <div class="col form-group">
                     <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento">
                         <option value="1">Si</option>
                         <option value="0">No</option>
