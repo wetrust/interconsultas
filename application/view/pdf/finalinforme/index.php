@@ -117,7 +117,8 @@
     $this->pdf->Ln(2);
     $html = '<h3>Comentarios y observaciones</h3>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<div style="line-height: 20px; !important">'.$this->solicitud_resultado->comentariosexamen . '</div>';
+    $html = strip_tags($this->solicitud_resultado->comentariosexamen);
+    $html = str_replace("\n", "<br>", $html);
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td></td><td>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</td><td></td></tr></tbody></table>';
