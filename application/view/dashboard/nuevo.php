@@ -13,7 +13,7 @@
                     <label>Contenido:</label>
                     <textarea class="form-control" name="texto_text"></textarea>
                 </div>
-                <button type="submit" class="btn btn-danger">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>
     </div>
