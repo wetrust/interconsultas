@@ -1,15 +1,11 @@
 <div class="container">
-    <h1 class="text-center">Responder interconsulta</h1>
+    <h1 class="text-center my-3">Responder interconsulta</h1>
     <?php $this->renderFeedbackMessages(); ?>
     <?php if ($this->solicitud) { ?>
     <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/save">
     <div class="card mt-1" id="accordionExample">
         <div class="card-header g-verde" id="headingOne">
-            <h2 class="mb-0">
-                <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Datos de la interconsulta
-                </button>
-            </h2>
+            <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Datos de la interconsulta</button>
         </div>
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
@@ -138,7 +134,7 @@
     </div>
     <div class="card mt-3">
         <div class="card-body">
-            <h4>Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
+            <h4 class="my-3">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
                 <div class="col form-group">
                     <label><strong>¿La solicitud es para ecografía de crecimiento?</strong></label>
@@ -210,7 +206,10 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.pfe.percentil">&nbsp;<br>Percentil</label>
-                        <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.pfe.percentil">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
+                            <input type="text" class="form-control" id="interconsulta.respuesta.pfe.percentil" disabled="">
+                        </div>
                         <input type="hidden" class="form-control" name="respuesta_pfe_percentil">
                     </div>
                 </div>
