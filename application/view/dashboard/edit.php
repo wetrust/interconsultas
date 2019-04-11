@@ -349,7 +349,7 @@
                 });
             });
 
-            tinymce.init({ selector:'textarea#editable' });
+            tinymce.init({ selector:'textarea#editable',height : "540" });
 
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 0){
