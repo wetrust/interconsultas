@@ -79,7 +79,7 @@
 
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
-    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">C- Resumen evaluación de exámen ecográfico Eco - Doppler Materno fetal</h2>';
+    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">C- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td>Fecha de exámen: '.$fecha.'</td></tr></tbody></table>';
