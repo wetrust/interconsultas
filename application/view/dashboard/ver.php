@@ -223,8 +223,10 @@
                     <div class="row">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>
-                            <input disabled type="text" class="form-control" id="interconsulta.respuesta.comentariosexamen" value="<?php echo htmlentities($this->solicitud_resultado->comentariosexamen); ?>">
+                            <?php echo $this->solicitud_resultado->comentariosexamen; ?>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col form-group">
                             <label for="interconsulta.respuesta.ecografista">Ecografista</label>
                             <input disabled type="text" class="form-control" id="respuesta.ecografista" value="<?php echo htmlentities($this->solicitud_resultado->ecografista); ?>">
