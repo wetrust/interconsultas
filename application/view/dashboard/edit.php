@@ -236,7 +236,7 @@
                 </div>
                 <div class="row">
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.cm">IP. Cerebral media</label>
+                        <label for="interconsulta.respuesta.cm">&nbsp;<br>IP. Cerebral media</label>
                         <input type="text" class="form-control" name="respuesta_cm" id="interconsulta.respuesta.cm">
                     </div>
                         <div class="col form-group">
