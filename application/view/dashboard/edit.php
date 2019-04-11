@@ -130,10 +130,10 @@
     </div>
     <div class="card mt-3">
         <div class="card-body">
-            <h4 class="text-center">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
+            <h4>Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
                 <div class="col form-group">
-                    <label>¿La solicitud es para ecografía de crecimiento?</label>
+                    <label><strong>¿La solicitud es para ecografía de crecimiento?</strong></label>
                 </div>
                 <div class="col form-group">
                     <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento">
