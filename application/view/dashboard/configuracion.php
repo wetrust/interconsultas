@@ -19,8 +19,7 @@
                             <tr id="table.head">
                                 <td>Titulo</td>
                                 <td>Texto</td>
-                                <td>Modificar</td>
-                                <td>Eliminar</td>
+                                <td>Opciones</td>
                             </tr>
                         </thead>
                         <tbody id="table.body">
@@ -28,8 +27,7 @@
                             <tr>
                             <td><?= $text->texto_titulo; ?></td>
                             <td><?= $text->texto_text; ?></td>
-                            <td><a class="btn btn-primary" href="<?= config::get("URL"); ?>dashboard/config_edit/<?= $text->texto_id; ?>">Modificar</a></td>
-                            <td><a class="btn btn-danger" href="<?= config::get("URL"); ?>dashboard/config_delete/<?= $text->texto_id; ?>">Eliminar</a></td>
+                            <td class="w-25"><a class="btn btn-primary" href="<?= config::get("URL"); ?>dashboard/config_edit/<?= $text->texto_id; ?>">Modificar</a> <a class="btn btn-danger" href="<?= config::get("URL"); ?>dashboard/config_delete/<?= $text->texto_id; ?>">Eliminar</a></td>
                             </tr>
                         <?php } ?>
                         </tbody>
