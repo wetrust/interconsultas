@@ -220,8 +220,11 @@
                         <input type="text" class="form-control" name="respuesta_uterinas" id="interconsulta.respuesta.uterinas">
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>Percentil</label>
-                        <input type="text" class="form-control" id="interconsulta.respuesta.uterinas.percentil" disabled="">
+                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>&nbsp;</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
+                            <input type="text" class="form-control" id="interconsulta.respuesta.uterinas.percentil" disabled="">
+                        </div>
                         <input type="hidden" class="form-control" name="respuesta_uterinas_percentil">
                     </div>
                     <div class="col form-group">
@@ -229,8 +232,11 @@
                         <input type="text" class="form-control" name="respuesta_umbilical" id="interconsulta.respuesta.umbilical">
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.umbilical.percentil">&nbsp;<br>Percentil</label>
-                        <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.umbilical.percentil">
+                        <label for="interconsulta.respuesta.umbilical.percentil">&nbsp;<br>&nbsp;</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
+                            <input type="text" class="form-control" id="interconsulta.respuesta.umbilical.percentil" disabled="">
+                        </div>
                         <input type="hidden" class="form-control" name="respuesta_umbilical_percentil">
                     </div>
                 </div>
@@ -240,8 +246,11 @@
                         <input type="text" class="form-control" name="respuesta_cm" id="interconsulta.respuesta.cm">
                     </div>
                         <div class="col form-group">
-                            <label for="interconsulta.respuesta.cm.percentil">Percentil</label>
-                            <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.cm.percentil">
+                            <label for="interconsulta.respuesta.cm.percentil">&nbsp;</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
+                                <input type="text" class="form-control" id="interconsulta.respuesta.cm.percentil" disabled="">
+                            </div>
                             <input type="hidden" class="form-control" name="respuesta_cm_percentil">
                         </div>
                         <div class="col form-group">
@@ -250,8 +259,11 @@
                             <input type="hidden" class="form-control" name="respuesta_cmau">
                         </div>
                         <div class="col form-group">
-                            <label for="interconsulta.respuesta.cmau.percentil">Percentil</label>
-                            <input type="text" class="form-control" disabled="" id="interconsulta.respuesta.cmau.percentil">
+                            <label for="interconsulta.respuesta.cm.percentil">&nbsp;</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
+                                <input type="text" class="form-control" id="interconsulta.respuesta.cmau.percentil" disabled="">
+                            </div>
                             <input type="hidden" class="form-control" name="respuesta_cmau_percentil">
                         </div>
                     </div>
