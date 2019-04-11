@@ -111,7 +111,7 @@
         <div class="card-body">
             <h4>Responder a esta solicitud de interconsulta</h4>
             <div class="row">
-                <div class="col form-group" id="jaja.papapa">
+                <div class="col form-group">
                     <label for="interconsulta.para">Fecha</label>
                     <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta" value="<?php echo htmlentities($this->solicitud_evaluacion->evaluacion_fecha); ?>">
                 </div>
@@ -146,14 +146,12 @@
                     <label>Dorso fetal</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->dorso); ?>">
                 </div>
-            </div>
-            <div class="row" id="interconsulta.respuesta.liquido.div">
                 <div class="col form-group">
                     <label for="interconsulta.respuesta.liquido">Líquido amniótico</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->liquido); ?>">
                 </div>
             </div>
-            <div class="row" id="interconsulta.respuesta.pfe.div">
+            <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.respuesta.pfe"><strong>A.- Biometría ecográfica:</strong><br>Peso fetal estimado</label>
                     <input disabled type="number" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->pfe); ?>">
@@ -163,7 +161,7 @@
                     <input disabled type="text" class="form-control" disabled="" value="<?php echo htmlentities($this->solicitud_resultado->pfe_percentil); ?>">
                 </div>
             </div>
-            <div class="row" id="interconsulta.respuesta.uterinas.div">
+            <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.respuesta.uterinas"><strong>B.- Flujometría Doppler</strong><br>IP. Promedio uterinas</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->uterinas); ?>">
@@ -172,8 +170,6 @@
                     <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>Percentil</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->uterinas_percentil); ?>">
                 </div>
-            </div>
-            <div class="row" id="interconsulta.respuesta.umbilical.div">
                 <div class="col form-group">
                     <label for="interconsulta.respuesta.umbilical">IP. Arteria umbilical</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->umbilical); ?>">
@@ -183,7 +179,7 @@
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->umbilical_percentil); ?>">
                 </div>
             </div>
-            <div class="row" id="interconsulta.respuesta.cm.div">
+            <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.respuesta.cm">IP. Cerebral media</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->cm); ?>">
@@ -192,8 +188,6 @@
                     <label for="interconsulta.respuesta.cm.percentil">Percentil</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->cm_percentil); ?>">
                 </div>
-            </div>
-            <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.respuesta.cmau">Cuociente CM / AU</label>
                     <input disabled type="text" class="form-control" value="<?php echo htmlentities($this->solicitud_resultado->cmau); ?>">
@@ -218,11 +212,11 @@
             </div>
             <div class="row">
                 <div class="col form-group">
-                    <label for="interconsulta.respuesta.comentariosexamen">Comentarios de exámen</label>
+                    <label>Comentarios de exámen</label>
+                    <div class="border bg-light rounded">
                     <?php echo $this->solicitud_resultado->comentariosexamen; ?>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.respuesta.ecografista">Ecografista</label>
                     <input disabled type="text" class="form-control" id="respuesta.ecografista" value="<?php echo htmlentities($this->solicitud_resultado->ecografista); ?>">
