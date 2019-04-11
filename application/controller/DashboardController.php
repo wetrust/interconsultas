@@ -158,7 +158,7 @@ class DashboardController extends Controller
         ));
     }
 
-    public function config_save{
+    public function config_save(){
         TextModel::updateText(Request::post('texto_id'), Request::post('texto_titulo'), Request::post('texto_text'));
         Redirect::to('dashboard/configuracion');
     }
