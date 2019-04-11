@@ -119,7 +119,7 @@
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.comentario.respuesta"><strong>Comentario</strong></label>
-                        <textarea type="text" class="form-control" name="comentario"></textarea>
+                        <input type="text" class="form-control" name="comentario">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar respuesta</button>
@@ -130,9 +130,3 @@
         </div>
     </div>
 </div>
-<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
-<script>
-    $(document).ready(function () {
-        tinymce.init({ selector:'textarea' });
-    });
-</script>
