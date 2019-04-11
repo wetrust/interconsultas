@@ -153,7 +153,7 @@ class DashboardController extends Controller
     }
 
     public function config_new(){
-        $this->View->render('dashboard/modificar');
+        $this->View->render('dashboard/nuevo');
     }
 
     public function config_create(){
