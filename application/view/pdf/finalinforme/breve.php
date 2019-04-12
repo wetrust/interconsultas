@@ -90,10 +90,10 @@
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td></td><td>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'R', true);
-    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">&nbsp;</h2>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<h2 style="border-bottom:1px solid #000;text-align: left;">&nbsp;</h2>';
+    $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
-    $html = '<p><small>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad exclusiva de quien procesa esta información.</small></p>';
+    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad exclusiva de quien procesa esta información.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     $tmp = Config::get('PATH_AVATARS');
