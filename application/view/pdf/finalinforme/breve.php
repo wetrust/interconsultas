@@ -90,6 +90,9 @@
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td></td><td>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'R', true);
+    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">&nbsp;</h2>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+
     $tmp = Config::get('PATH_AVATARS');
     $this->pdf->Output("$tmp/informe.pdf", "F");
     //$this->pdf->Output('Informe.pdf', 'I');
