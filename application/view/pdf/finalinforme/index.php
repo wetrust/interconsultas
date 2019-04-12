@@ -32,6 +32,9 @@
 
     $this->pdf->SetFont('Helvetica', '', 9);
     
+    $html = '<h1 style="border-bottom:1px double #000;text-align: left;"><strong>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA</strong></h1>';
+    $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
+
     $html = '<h2 style="border-bottom:1px double #000;text-align: left;">A- Formulario referencia para evaluación ecográfica del crecimiento fetal</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
