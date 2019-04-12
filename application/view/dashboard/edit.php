@@ -101,9 +101,11 @@
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_email); ?>">
                     </div>
                 </div>
+                <h5><span class="badge badge-default p-2" for="interconsulta.profesional"><strong>Ecografista de contrarreferencia</strong></span></h5>
                 <div class="row">
                     <div class="col form-group">
-                        <label for="interconsulta.para" class="my-3"><strong>Ecografista de contrarreferencia</strong></label>
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_nombre_referente); ?>">
                     </div>
                     <div class="col form-group">
                         <label>Email (contrareferencia)</label>
