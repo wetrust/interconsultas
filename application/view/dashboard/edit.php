@@ -146,19 +146,19 @@
                     </select>
                 </div>
             </div>
-            <div id="contenedor">
             <div class="row">
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.fecha" >Fecha evaluación de interconsulta</label>
-                        <input type="date" class="form-control" id="interconsulta.respuesta.fecha" name="respuesta_fecha">
-                    </div>
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
-                        <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
-                        <input type="text" class="form-control" id="interconsulta.respuesta.eg" disabled="">
-                        <input type="hidden" class="form-control" name="respuesta_eg">
-                    </div>
+                <div class="col form-group">
+                    <label for="interconsulta.respuesta.fecha" >Fecha evaluación de interconsulta</label>
+                    <input type="date" class="form-control" id="interconsulta.respuesta.fecha" name="respuesta_fecha">
                 </div>
+                <div class="col form-group">
+                    <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
+                    <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
+                    <input type="text" class="form-control" id="interconsulta.respuesta.eg" disabled="">
+                    <input type="hidden" class="form-control" name="respuesta_eg">
+                </div>
+            </div>
+            <div id="contenedor">
                 <div class="row">
                     <div class="col form-group">
                         <label>Feto en presentación</label>

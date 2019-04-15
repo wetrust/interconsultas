@@ -44,7 +44,7 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h3 style="background-color:#0275d8;color:white;text-align:center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA</h3>';
+    $html = '<h3 style="background-color:#0275d8;color:white;text-align:center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA<br>PARA ECOGRAFÍA OBSTÉTRICA</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">A- Formulario referencia para evaluación ecográfica del crecimiento fetal</h4>';
@@ -81,7 +81,7 @@
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">C- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Edad Gestacional al exámen: '. htmlentities($this->solicitud_resultado->eg) .' semanas</td><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Edad Gestacional al exámen: '. htmlentities($this->solicitud_resultado->eg) .'</td><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Dorso Fetal: '.htmlentities($this->solicitud_resultado->dorso).'</td><td>Líquido amniótico: '.htmlentities($this->solicitud_resultado->liquido).'</td></tr></tbody></table>';
@@ -115,7 +115,7 @@
 
 
     $_html = strip_tags($this->solicitud_resultado->comentariosexamen);
-    $_html = str_replace("\n", "<br>", $html);
+    $_html = str_replace("\n", "<br>", $_html);
 
     $html = '<table><tbody><tr><td style="width:162px"><strong><em>Comentarios y observaciones</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -127,7 +127,7 @@
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(4);
-    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad exclusiva del profesional referente, quien procesa esta información.</p>';
+    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente de quien procesa esta información, profesional referente.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     
     //para enviar por email
