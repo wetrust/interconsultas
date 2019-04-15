@@ -163,8 +163,8 @@
                     <div class="col form-group">
                         <label>Feto en presentación</label>
                         <select class="form-control" name="respuesta_presentacion">
-                            <option value="cefalica">Cefálica</option>
-                            <option value="podalica">Podálica</option>
+                            <option value="cefálica">Cefálica</option>
+                            <option value="podálica">Podálica</option>
                             <option value="transversa">Transversa</option>
                             <option value="indiferente">Indiferente</option>
                         </select>
