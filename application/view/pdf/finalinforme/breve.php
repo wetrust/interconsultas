@@ -30,8 +30,11 @@
     // set JPEG quality
     $this->pdf->setJPEGQuality(90);
 
-    $this->pdf->SetFont('DejaVu Sans', '', 9);
+    $this->pdf->SetFont('Helvetica', '', 9);
     
+    $fecha = explode("-", $this->solicitud_resultado->fecha);
+    $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
+
     $html = '<h2 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA</strong></h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
@@ -88,12 +91,13 @@
     $html = str_replace("\n", "<br>", $html);
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td></td><td></td><td>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</td><td></td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'R', true);
-    $html = '<h2 style="border-bottom:1px solid #000;text-align: left;">&nbsp;</h2>';
+    $html = '<table><tbody><tr><td style="width:450px"></td><td>Ecografista: '.htmlentities($this->solicitud_resultado->ecografista).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->Ln(4);
+    $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
-
-    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad exclusiva de quien procesa esta información.</p>';
+    $this->pdf->Ln(4);
+    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente de quien procesa esta información, profesional referente.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     $tmp = Config::get('PATH_AVATARS');
