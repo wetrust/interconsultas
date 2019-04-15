@@ -30,7 +30,7 @@
     // set JPEG quality
     $this->pdf->setJPEGQuality(90);
 
-    $this->pdf->SetFont('Helvetica', '', 9);
+    $this->pdf->SetFont('DejaVu Sans', '', 9);
     
     $html = '<h2 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA</strong></h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
