@@ -436,7 +436,7 @@
                         <input type="text" class="form-control" name="respuesta_ecografista">
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-primary">Enviar respuesta</button>
+                        <button type="submit" class="btn btn-primary" id="enviar.respuesta.botton">Enviar respuesta</button>
                     </div>
                 </div>
         </div>
@@ -491,6 +491,10 @@
             $("#interconsulta\\.respuesta\\.elegir").on("click", function(e){
                 e.preventDefault();
                 $('#interconsulta\\.respuesta\\.crecimiento').attr("disabled", true);
+            });
+
+            $("#enviar\\.respuesta\\.botton").on("click", function(){
+                $("#interconsulta\\.respuesta\\.crecimiento").attr("disabled", false);
             });
 
             $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
