@@ -425,6 +425,7 @@
                 }
                 else{
                     $("#multiproposito").removeClass("d-none");
+                    $("#ginecologica").addClass("d-none");
                 }
             });
 
