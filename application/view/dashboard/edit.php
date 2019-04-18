@@ -2,7 +2,7 @@
     <h1 class="text-center my-3">Responder interconsulta</h1>
     <?php $this->renderFeedbackMessages(); ?>
     <?php if ($this->solicitud) { ?>
-    <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/save">
+    <!--<form method="post" action="<?php echo Config::get('URL'); ?>dashboard/save"> -->
     <div class="card mt-1" id="accordionExample">
         <div class="card-header g-verde" id="headingOne">
             <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Datos de la interconsulta</button>
@@ -137,12 +137,14 @@
             <h4 class="my-3">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
                 <div class="col form-group">
-                    <label><strong>¿La solicitud es para ecografía de crecimiento?</strong></label>
+                    <label><strong>Tipo de exámen solicitado</strong></label>
                 </div>
                 <div class="col form-group">
                     <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento">
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
+                        <option value="0">Eco doppler crecimiento</option>
+                        <option value="1">Eco primer trimestre</option>
+                        <option value="2">Eco Segundo / Tercer trimestre</option>
+                        <option value="3">Eco Ginecológica</option>
                     </select>
                 </div>
             </div>
