@@ -154,7 +154,7 @@
                     <label for="interconsulta.respuesta.fecha" >Fecha evaluación de interconsulta</label>
                     <input type="date" class="form-control" id="interconsulta.respuesta.fecha" name="respuesta_fecha">
                 </div>
-                <div class="col form-group">
+                <div class="col form-group" id="interconsulta.respuesta.edadgestacional">
                     <label for="interconsulta.respuesta.eg">Edad gestacional actual</label>
                     <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="<?php echo htmlentities($this->solicitud->solicitud_fum); ?>">
                     <input type="text" class="form-control" id="interconsulta.respuesta.eg" disabled="">
@@ -303,29 +303,6 @@
                         </div>
                     </div>
             </div>
-            <div id="comentarios">
-                <div class="row">
-                    <div class="col form-group">
-                        <label><strong>Textos Preconfigurados</strong></label>
-                        <select class="form-control" id="textosPredefinidos"></select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label>
-                        <textarea type="text" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.ecografista">Ecografista</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary">Enviar respuesta</button>
-                    </div>
-                </div>
-            </div>
             <div id="ginecologica">
                 <div class="row">
                     <div class="col form-group">
@@ -368,6 +345,29 @@
                     </div>
                 </div>
             </div>
+            <div id="ginecologica">
+            </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label><strong>Textos Preconfigurados</strong></label>
+                        <select class="form-control" id="textosPredefinidos"></select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label>
+                        <textarea type="text" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Ecografista</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Enviar respuesta</button>
+                    </div>
+                </div>
         </div>
     </div>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
@@ -418,18 +418,18 @@
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 4){
                     $("#multiproposito").addClass("d-none");
-                    $("#comentarios").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
+                    $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
-                    $("#comentarios").addClass("d-none");
                     $("#ginecologica").removeClass("d-none");
+                    $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                 }
                 else{
                     $("#multiproposito").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
-                    $("#comentarios").removeClass("d-none");
+                    $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                 }
             });
 
