@@ -43,11 +43,6 @@
                     <li class="nav-item <?php if (View::checkForActiveController($filename, "dashboard")) { echo 'active'; } ?>">
                         <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
                     </li>
-                    <?php if (Session::userIsLoggedIn()) { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard/configuracion">Configuración</a>
-                    </li>
-                    <?php } ?>
                 </ul>
                 <?php if (Session::userIsLoggedIn()) { ?>
                     <ul class="navbar-nav">
