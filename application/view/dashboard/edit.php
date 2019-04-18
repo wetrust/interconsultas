@@ -433,7 +433,7 @@
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label>
-                        <textarea type="text" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea>
+                        <textarea type="text" rows="2" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -447,7 +447,6 @@
                 </div>
         </div>
     </div>
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
     <script>
         var _api = "<?php echo Config::get('URL'); ?>dashboard/configuracion_api";
 
@@ -473,25 +472,6 @@
                 }
             });
 
-            $("#textosPredefinidos").on("click", function(){
-                $("#textosPredefinidos").trigger("change");
-            });
-
-            $("#textosPredefinidos").on("change", function(){
-                let args = {
-                    action: "read",
-                    texto_id: $(this).val()
-                }
-
-                $.post(_api, args).done(function(data){
-                    if (Object.keys(data).length > 0) {
-                        tinyMCE.activeEditor.setContent(data.texto_text);
-                    }
-                });
-            });
-
-            tinymce.init({ selector:'textarea#editable',height :540, language: 'es_MX', language_url : '<?= config::get("URL"); ?>js/languages/es_MX.js'  });
-
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 4){
                     $("#multiproposito").addClass("d-none");
@@ -500,7 +480,6 @@
                     $("#segundotrimestre").addClass("d-none");
                     $("#primertrimestre").addClass("d-none");
                     $("#textosPredefinidosContainer").addClass("d-none");
-                    tinyMCE.activeEditor.setContent("<p>-</p><p>-</p><p>-</p><p>-</p><p>-</p><p>-</p><p>-</p><p>-</p>");
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
@@ -576,9 +555,7 @@
                     eg =  parseFloat(eg).toFixed();
                     $("#interconsulta\\.respuesta\\.uterinas\\.percentil").val(pctUtAdvanced(eg,ut));
                     $("input[name='respuesta_uterinas_percentil']").val(pctUtAdvanced(eg,ut));
-
                 }
-                
             })
 
             $("#interconsulta\\.respuesta\\.pfe").on("change", function(){
