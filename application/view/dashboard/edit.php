@@ -153,7 +153,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col form-group">
+                <div class="col-6 form-group">
                     <label for="interconsulta.respuesta.fecha" >Fecha evaluación de interconsulta</label>
                     <input type="date" class="form-control" id="interconsulta.respuesta.fecha" name="respuesta_fecha">
                 </div>
