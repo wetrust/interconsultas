@@ -419,7 +419,7 @@
                 if ($(this).val() == 4){
                     $("#multiproposito").addClass("d-none");
                     $("#ginecologica").addClass("d-none");
-                    $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
+                    $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
