@@ -303,7 +303,7 @@
                         </div>
                     </div>
             </div>
-            <div class="comentarios">
+            <div id="comentarios">
                 <div class="row">
                     <div class="col form-group">
                         <label><strong>Textos Preconfigurados</strong></label>
