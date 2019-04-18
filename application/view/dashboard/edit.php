@@ -148,6 +148,9 @@
                         <option value="4">Eco Multipropósito</option>
                     </select>
                 </div>
+                <div class="col-2 form-group">
+                    <button class="btn btn-primary">Elegir</button>
+                </div>
             </div>
             <div class="row">
                 <div class="col form-group">
@@ -375,11 +378,11 @@
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">PFE</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_ecografista" disabled>
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">CC/CA</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_ecografista" disabled>
                     </div>
                 </div>
             </div>
