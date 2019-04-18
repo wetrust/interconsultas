@@ -2,7 +2,7 @@
     <h1 class="text-center my-3">Responder interconsulta</h1>
     <?php $this->renderFeedbackMessages(); ?>
     <?php if ($this->solicitud) { ?>
-    <!--<form method="post" action="<?php echo Config::get('URL'); ?>dashboard/save"> -->
+    <form method="post" action="<?php echo Config::get('URL'); ?>dashboard/save">
     <div class="card mt-1" id="accordionExample">
         <div class="card-header g-verde" id="headingOne">
             <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Datos de la interconsulta</button>
