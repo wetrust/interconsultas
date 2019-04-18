@@ -107,6 +107,7 @@ class DashboardController extends Controller
                 EmailModel::sendRespuestaReferenteEmail(Session::get('user_email'),$solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_percentil, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
+            Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 1){
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
@@ -123,7 +124,8 @@ class DashboardController extends Controller
                 'respuesta_douglas' => $respuesta_douglas,
                 'respuesta_fecha' => $respuesta_fecha,
                 'respuesta_eg' => $respuesta_eg,
-                'ecografista' => $respuesta_ecografista
+                'ecografista' => $respuesta_ecografista,
+                'comentariosexamen' => $respuesta_comentariosexamen
         
             ));
         }
@@ -144,12 +146,13 @@ class DashboardController extends Controller
                 EmailModel::sendRespuestaReferenteEmailBreve(Session::get('user_email'), $solicitud_id, $respuesta_comentariosexamen, $respuesta_ecografista);
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
+            Redirect::to('dashboard');
         }
         
 
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
-        Redirect::to('dashboard');
+
     }
 
     public function edit($solicitud_id)
