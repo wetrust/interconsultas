@@ -66,13 +66,13 @@ class DashboardController extends Controller
         $respuesta_crecimiento = Request::post('solicitud_crecimiento');
 
 
-        $respuesta_utero = Request::post('respuesta_utero');
+        $respuesta_utero_primertrimestre = Request::post('respuesta_utero_primertrimestre');
         $respuesta_saco_gestacional = Request::post('respuesta_saco_gestacional');
         $respuesta_embrion = Request::post('respuesta_embrion');
         $respuesta_lcn = Request::post('respuesta_lcn');
-        $respuesta_anexo_izquierdo = Request::post('respuesta_anexo_izquierdo');
-        $respuesta_anexo_derecho = Request::post('respuesta_anexo_derecho');
-        $respuesta_douglas = Request::post('respuesta_douglas');
+        $respuesta_anexo_izquierdo_primertrimestre = Request::post('respuesta_anexo_izquierdo_primertrimestre');
+        $respuesta_anexo_derecho_primertrimestre = Request::post('respuesta_anexo_derecho_primertrimestre');
+        $respuesta_douglas_primertrimestre = Request::post('respuesta_douglas_primertrimestre');
 
         if ($respuesta_crecimiento == 0){
 
@@ -115,13 +115,13 @@ class DashboardController extends Controller
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
-                'respuesta_utero' => $respuesta_utero,
+                'respuesta_utero' => $respuesta_utero_primertrimestre,
                 'respuesta_saco_gestacional' => $respuesta_saco_gestacional,
                 'respuesta_embrion' => $respuesta_embrion,
                 'respuesta_lcn' => $respuesta_lcn,
-                'respuesta_anexo_izquierdo' => $respuesta_anexo_izquierdo,
-                'respuesta_anexo_derecho' => $respuesta_anexo_derecho,
-                'respuesta_douglas' => $respuesta_douglas,
+                'respuesta_anexo_izquierdo_primertrimestre' => $respuesta_anexo_izquierdo_primertrimestre,
+                'respuesta_anexo_derecho_primertrimestre' => $respuesta_anexo_derecho_primertrimestre,
+                'respuesta_douglas_primertrimestre' => $respuesta_douglas_primertrimestre,
                 'respuesta_fecha' => $respuesta_fecha,
                 'respuesta_eg' => $respuesta_eg,
                 'ecografista' => $respuesta_ecografista,
