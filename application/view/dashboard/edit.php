@@ -345,7 +345,47 @@
                     </div>
                 </div>
             </div>
-            <div id="ginecologica">
+            <div id="segundotrimestre">
+            <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Placenta</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Líquido amniótico</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">DBP</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">CC</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">CA</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">LF</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">PFE</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">CC/CA</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
             </div>
                 <div class="row">
                     <div class="col form-group">
@@ -420,15 +460,24 @@
                     $("#multiproposito").addClass("d-none");
                     $("#ginecologica").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
+                    $("#segundotrimestre").addClass("d-none");
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
                     $("#ginecologica").removeClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
+                    $("#segundotrimestre").addClass("d-none");
+                }
+                else if ($(this).val() == 2){
+                    $("#segundotrimestre").removeClass("d-none");
+                    $("#multiproposito").addClass("d-none");
+                    $("#ginecologica").addClass("d-none");
+                    $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                 }
                 else{
                     $("#multiproposito").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
+                    $("#segundotrimestre").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                 }
             });
