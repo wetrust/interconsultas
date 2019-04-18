@@ -419,7 +419,7 @@
                     $("#multiproposito").addClass("d-none");
                     $("#ginecologica").addClass("d-none");
                 }
-                if ($(this).val() == 3){
+                else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
                     $("#ginecologica").removeClass("d-none");
                 }
