@@ -65,7 +65,16 @@ class DashboardController extends Controller
         $respuesta_anatomia_final = "";
         $respuesta_crecimiento = Request::post('solicitud_crecimiento');
 
-        if ($respuesta_crecimiento == 1){
+
+        $respuesta_utero = Request::post('respuesta_utero');
+        $respuesta_saco_gestacional = Request::post('respuesta_saco_gestacional');
+        $respuesta_embrion = Request::post('respuesta_embrion');
+        $respuesta_lcn = Request::post('respuesta_lcn');
+        $respuesta_anexo_izquierdo = Request::post('respuesta_anexo_izquierdo');
+        $respuesta_anexo_derecho = Request::post('respuesta_anexo_derecho');
+        $respuesta_douglas = Request::post('respuesta_douglas');
+
+        if ($respuesta_crecimiento == 0){
 
             if (is_array ($respuesta_anatomia)){
                 foreach($respuesta_anatomia as $yek => $out){
@@ -99,7 +108,26 @@ class DashboardController extends Controller
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
         }
-        else{
+        else if ($respuesta_crecimiento == 1){
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'respuesta_utero' => $respuesta_utero,
+                'respuesta_saco_gestacional' => $respuesta_saco_gestacional,
+                'respuesta_embrion' => $respuesta_embrion,
+                'respuesta_lcn' => $respuesta_lcn,
+                'respuesta_anexo_izquierdo' => $respuesta_anexo_izquierdo,
+                'respuesta_anexo_derecho' => $respuesta_anexo_derecho,
+                'respuesta_douglas' => $respuesta_douglas,
+                'respuesta_fecha' => $respuesta_fecha,
+                'respuesta_eg' => $respuesta_eg,
+                'ecografista' => $respuesta_ecografista
+        
+            ));
+        }
+        else if($respuesta_crecimiento == 4){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista,"","","", "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/breve', 

@@ -390,37 +390,37 @@
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">útero</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_utero">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">Saco gestacional</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_saco_gestacional">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">Embrión</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_embrion">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">LCN</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_lcn">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_anexo_izquierdo">
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_anexo_derecho">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 form-group">
                         <label for="interconsulta.respuesta.ecografista">Douglas</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
+                        <input type="text" class="form-control" name="respuesta_douglas">
                     </div>
                 </div>
             </div>
