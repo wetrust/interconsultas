@@ -161,7 +161,7 @@
                     <input type="hidden" class="form-control" name="respuesta_eg">
                 </div>
             </div>
-            <div id="contenedor">
+            <div id="multiproposito">
                 <div class="row">
                     <div class="col form-group">
                         <label>Feto en presentación</label>
@@ -324,6 +324,49 @@
                         <button type="submit" class="btn btn-primary">Enviar respuesta</button>
                     </div>
                 </div>
+            </div>
+            <div id="ginecologica">
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Útero</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Endometrio</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Ovario Izquierdo</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Ovario Derecho</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Douglas</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">Comentario</label>
+                        <input type="text" class="form-control" name="respuesta_ecografista">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
@@ -373,10 +416,15 @@
 
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 4){
-                    $("#contenedor").addClass("d-none");
+                    $("#multiproposito").addClass("d-none");
+                    $("#ginecologica").addClass("d-none");
+                }
+                if ($(this).val() == 3){
+                    $("#multiproposito").addClass("d-none");
+                    $("#ginecologica").removeClass("d-none");
                 }
                 else{
-                    $("#contenedor").removeClass("d-none");
+                    $("#multiproposito").removeClass("d-none");
                 }
             });
 
