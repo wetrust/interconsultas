@@ -114,7 +114,7 @@
     $html = '<table><tbody><tr><td>Comentarios y observaciones</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = strip_tags($this->solicitud_resultado->comentariosexamen);
+    $html = strip_tags($this->comentariosexamen);
     $html = str_replace("\n", "<br>", $html);
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
