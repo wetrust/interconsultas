@@ -306,7 +306,7 @@
                         </div>
                     </div>
             </div>
-            <div id="ginecologica">
+            <div id="ginecologica" class="d-none">
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">Útero</label>
@@ -344,7 +344,7 @@
                     </div>
                 </div>
             </div>
-            <div id="segundotrimestre">
+            <div id="segundotrimestre" class="d-none">
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">Placenta</label>
@@ -386,7 +386,7 @@
                     </div>
                 </div>
             </div>
-            <div id="primertrimestre">
+            <div id="primertrimestre" class="d-none">
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">útero</label>
@@ -424,12 +424,6 @@
                     </div>
                 </div>
             </div>
-                <div class="row" id="textosPredefinidosContainer">
-                    <div class="col form-group">
-                        <label><strong>Textos Preconfigurados</strong></label>
-                        <select class="form-control" id="textosPredefinidos"></select>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label>
@@ -448,27 +442,12 @@
         </div>
     </div>
     <script>
-        var _api = "<?php echo Config::get('URL'); ?>dashboard/configuracion_api";
 
         $(document).ready(function () {
             $("#interconsulta\\.respuesta\\.pfe, #interconsulta\\.respuesta\\.uterinas, #interconsulta\\.respuesta\\.umbilical, #interconsulta\\.respuesta\\.cm, input[name='respuesta_ecografista']").keydown(function(event){
                 if(event.keyCode == 13) {
                 event.preventDefault();
                 return false;
-                }
-            });
-
-            let args = {
-                action: "get"
-            }
-
-            $.post(_api, args).done(function(data){
-                $('#textosPredefinidos').empty();
-                if (Object.keys(data).length > 0) {
-                    for (let i = 0; i < data.length; i++) {
-                        var response = '<option value="' + data[i].texto_id + '">' + data[i].texto_titulo + '</option>';
-                        $('#textosPredefinidos').append(response);
-                    }   
                 }
             });
 
@@ -479,7 +458,6 @@
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#primertrimestre").addClass("d-none");
-                    $("#textosPredefinidosContainer").addClass("d-none");
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
@@ -487,7 +465,6 @@
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#primertrimestre").addClass("d-none");
-                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
                 else if ($(this).val() == 2){
                     $("#segundotrimestre").removeClass("d-none");
@@ -495,7 +472,6 @@
                     $("#ginecologica").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     $("#primertrimestre").addClass("d-none");
-                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
                 else if ($(this).val() == 1){
                     $("#primertrimestre").removeClass("d-none");
@@ -503,14 +479,12 @@
                     $("#multiproposito").addClass("d-none");
                     $("#ginecologica").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
-                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
                 else{
                     $("#multiproposito").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
-                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
             });
 
