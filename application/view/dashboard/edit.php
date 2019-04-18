@@ -335,12 +335,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col form-group">
+                    <div class="col-6 form-group">
                         <label for="interconsulta.respuesta.ecografista">Douglas</label>
-                        <input type="text" class="form-control" name="respuesta_ecografista">
-                    </div>
-                    <div class="col form-group">
-                        <label for="interconsulta.respuesta.ecografista">Comentario</label>
                         <input type="text" class="form-control" name="respuesta_ecografista">
                     </div>
                 </div>
