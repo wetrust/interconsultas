@@ -302,7 +302,8 @@
                             </select>
                         </div>
                     </div>
-                </div>
+            </div>
+            <div class="comentarios">
                 <div class="row">
                     <div class="col form-group">
                         <label><strong>Textos Preconfigurados</strong></label>
@@ -417,15 +418,18 @@
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 4){
                     $("#multiproposito").addClass("d-none");
+                    $("#comentarios").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
+                    $("#comentarios").addClass("d-none");
                     $("#ginecologica").removeClass("d-none");
                 }
                 else{
                     $("#multiproposito").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
+                    $("#comentarios").removeClass("d-none");
                 }
             });
 
