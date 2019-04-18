@@ -145,6 +145,7 @@
                         <option value="1">Eco primer trimestre</option>
                         <option value="2">Eco Segundo / Tercer trimestre</option>
                         <option value="3">Eco Ginecológica</option>
+                        <option value="4">Eco Multipropósito</option>
                     </select>
                 </div>
             </div>
@@ -160,6 +161,7 @@
                     <input type="hidden" class="form-control" name="respuesta_eg">
                 </div>
             </div>
+            <div id="contenedor">
                 <div class="row">
                     <div class="col form-group">
                         <label>Feto en presentación</label>
@@ -321,6 +323,7 @@
                     <div class="col">
                         <button type="submit" class="btn btn-primary">Enviar respuesta</button>
                     </div>
+                </div>
         </div>
     </div>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=oouk84qvr4nweklpy61gp7uep4rl0h3mnn2sc4t81ay5qs1f"></script>
@@ -367,6 +370,15 @@
             });
 
             tinymce.init({ selector:'textarea#editable',height :540, language: 'es_MX', language_url : '<?= config::get("URL"); ?>js/languages/es_MX.js'  });
+
+            $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
+                if ($(this).val() == 4){
+                    $("#contenedor").addClass("d-none");
+                }
+                else{
+                    $("#contenedor").removeClass("d-none");
+                }
+            });
 
             $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
                 var FExamen,FUM,EdadGestacional;
