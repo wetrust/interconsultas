@@ -136,7 +136,7 @@
         <div class="card-body">
             <h4 class="my-3">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
-                <div class="col form-group">
+                <div class="col-6 form-group">
                     <label><strong>Tipo de exámen solicitado</strong></label>
                 </div>
                 <div class="col form-group">
@@ -148,8 +148,8 @@
                         <option value="4">Eco Multipropósito</option>
                     </select>
                 </div>
-                <div class="col-2 form-group">
-                    <button class="btn btn-primary">Elegir</button>
+                <div class="col-1 form-group">
+                    <button class="btn btn-primary" id="interconsulta.respuesta.elegir">Elegir</button>
                 </div>
             </div>
             <div class="row">
@@ -424,7 +424,7 @@
                     </div>
                 </div>
             </div>
-                <div class="row">
+                <div class="row" id="textosPredefinidosContainer">
                     <div class="col form-group">
                         <label><strong>Textos Preconfigurados</strong></label>
                         <select class="form-control" id="textosPredefinidos"></select>
@@ -499,6 +499,8 @@
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#primertrimestre").addClass("d-none");
+                    $("#textosPredefinidosContainer").addClass("d-none");
+                    tinyMCE.activeEditor.setContent("<p>-</p><p>-</p><p>-</p><p>-</p><p>-</p><p>-</p><p>-</p><p>-</p>");
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
@@ -506,6 +508,7 @@
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#primertrimestre").addClass("d-none");
+                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
                 else if ($(this).val() == 2){
                     $("#segundotrimestre").removeClass("d-none");
@@ -513,6 +516,7 @@
                     $("#ginecologica").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     $("#primertrimestre").addClass("d-none");
+                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
                 else if ($(this).val() == 1){
                     $("#primertrimestre").removeClass("d-none");
@@ -520,13 +524,20 @@
                     $("#multiproposito").addClass("d-none");
                     $("#ginecologica").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
+                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
                 else{
                     $("#multiproposito").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
+                    $("#textosPredefinidosContainer").removeClass("d-none");
                 }
+            });
+
+            $("#interconsulta\\.respuesta\\.elegir").on("click", function(e){
+                e.preventDefault();
+                $('#interconsulta\\.respuesta\\.crecimiento').attr("disabled", true);
             });
 
             $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
