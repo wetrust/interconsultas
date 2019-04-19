@@ -182,7 +182,6 @@ class DashboardController extends Controller
                 'respuesta_ovario_derecho' => $respuesta_ovario_derecho,
                 'respuesta_douglas_ginecologica' => $respuesta_douglas_ginecologica,
                 'respuesta_fecha' => $respuesta_fecha,
-                'respuesta_eg' => $respuesta_eg,
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen
             ));

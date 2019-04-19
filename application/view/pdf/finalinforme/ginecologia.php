@@ -50,7 +50,7 @@
     $solicitud_fum = explode("-", $this->solicitud->solicitud_fum);
     $solicitud_fum = $solicitud_fum[2] . "-". $solicitud_fum[1]. "-". $solicitud_fum[0];
 
-    $html = '<table><tbody><tr><td>FUM Operacional: '.$solicitud_fum.'</td><td>Edad Gestacional: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>FUM Operacional: '.$solicitud_fum.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<p>Diagnóstico de referencia:  '.htmlentities($this->solicitud->solicitud_diagnostico).'</p>';
@@ -87,7 +87,7 @@
     $html = '<h2 style="border-bottom:1px double #000;text-align: left;">C- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>Fecha de exámen</strong>: '. $fecha.'</td><td>Edad Gestacional al Exámen: '. $this->respuesta_eg.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Fecha de exámen</strong>: '. $fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><strong>Útero</strong>: '. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
