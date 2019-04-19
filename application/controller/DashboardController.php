@@ -156,7 +156,7 @@ class DashboardController extends Controller
 
             EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
-            
+
             if ($usuario->user_almacenamiento == 0){
                 EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
                 SolicitudesModel::deleteSolicitud($solicitud_id);
@@ -165,6 +165,9 @@ class DashboardController extends Controller
             Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 2){
+
+            SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
+
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -183,8 +186,24 @@ class DashboardController extends Controller
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen
             ));
+
+            $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
+            $solicitud = $solicitud->solicitud_email;
+
+            sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
+            $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
+
+            if ($usuario->user_almacenamiento == 0){
+                EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
+                SolicitudesModel::deleteSolicitud($solicitud_id);
+            }
+
+            Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 3){
+
+            SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
+
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -201,6 +220,18 @@ class DashboardController extends Controller
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen
             ));
+
+            $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
+            $solicitud = $solicitud->solicitud_email;
+
+            $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
+
+            if ($usuario->user_almacenamiento == 0){
+                EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
+                SolicitudesModel::deleteSolicitud($solicitud_id);
+            }
+
+            Redirect::to('dashboard');
         }
         else if($respuesta_crecimiento == 4){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista,"","","", "");

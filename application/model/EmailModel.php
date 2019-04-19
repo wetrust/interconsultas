@@ -178,8 +178,6 @@ class EmailModel
         }
     }
 
-
-
     public static function sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, $email)
     {
         $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
@@ -217,6 +215,42 @@ class EmailModel
         }
     }
 
+    public static function sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_ecografista, $email)
+    {
+        $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
 
+        $respuesta_fecha = explode("-", $respuesta_fecha);
+        $respuesta_fecha = $respuesta_fecha[2] . "-". $respuesta_fecha[1]. "-". $respuesta_fecha[0];
+
+        $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
+
+        $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
+         "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
+         \n\nFecha evaluación interconsulta: " . $respuesta_fecha . 
+         "\nEdad Gestacional: " . $respuesta_eg . 
+         "\nPlacenta: " . $respuesta_placenta.
+         "\nLíquido amniótico: " . $respuesta_liquido_amniotico .
+         "\nDBP: " . $respuesta_dbp .
+         "\nCC: " . $respuesta_cc .
+         "\nCA: " . $respuesta_ca .
+         "\nLF: " . $respuesta_lf . 
+         "\nPFE: " . $respuesta_pfe .
+         "\nCC/CA: " . $respuesta_ccca .
+         "\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
+         "\nEcografista: " . $respuesta_ecografista ;
+    
+        $mail = new Mail;
+
+        $tmp = Config::get('PATH_AVATARS');
+        
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco primer trimestre', $body, $tmp);
+
+        if ($mail_sent) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
