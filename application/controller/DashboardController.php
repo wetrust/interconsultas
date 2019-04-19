@@ -65,7 +65,7 @@ class DashboardController extends Controller
         $respuesta_anatomia_final = "";
         $respuesta_crecimiento = Request::post('solicitud_crecimiento');
 
-
+        //para ecografía de primer trimestre
         $respuesta_utero_primertrimestre = Request::post('respuesta_utero_primertrimestre');
         $respuesta_saco_gestacional = Request::post('respuesta_saco_gestacional');
         $respuesta_embrion = Request::post('respuesta_embrion');
@@ -73,6 +73,25 @@ class DashboardController extends Controller
         $respuesta_anexo_izquierdo_primertrimestre = Request::post('respuesta_anexo_izquierdo_primertrimestre');
         $respuesta_anexo_derecho_primertrimestre = Request::post('respuesta_anexo_derecho_primertrimestre');
         $respuesta_douglas_primertrimestre = Request::post('respuesta_douglas_primertrimestre');
+
+        //para ecografía de segundo trimestre
+        $respuesta_placenta = Request::post('respuesta_placenta');
+        $respuesta_liquido_amniotico = Request::post('respuesta_liquido_amniotico');
+        $respuesta_dbp = Request::post('respuesta_dbp');
+        $respuesta_cc = Request::post('respuesta_cc');
+        $respuesta_ca = Request::post('respuesta_ca');
+        $respuesta_lf = Request::post('respuesta_lf');
+        $respuesta_pfe = Request::post('respuesta_pfe');
+        $respuesta_ccca = Request::post('respuesta_ccca');
+
+        //para ginecología
+        $respuesta_utero_ginecologica = Request::post('respuesta_utero_ginecologica');
+        $respuesta_endometrio = Request::post('respuesta_endometrio');
+        $respuesta_anexo_izquierdo_ginecologica = Request::post('respuesta_anexo_izquierdo_ginecologica');
+        $respuesta_anexo_derecho_ginecologica = Request::post('respuesta_anexo_derecho_ginecologica');
+        $respuesta_ovario_izquierdo = Request::post('respuesta_ovario_izquierdo');
+        $respuesta_ovario_derecho = Request::post('respuesta_ovario_derecho');
+        $respuesta_douglas_ginecologica = Request::post('respuesta_douglas_ginecologica');
 
         if ($respuesta_crecimiento == 0){
 
@@ -127,6 +146,45 @@ class DashboardController extends Controller
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen
         
+            ));
+        }
+        else if ($respuesta_crecimiento == 2){
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'respuesta_placenta' => $respuesta_placenta,
+                'respuesta_liquido_amniotico' => $respuesta_liquido_amniotico,
+                'respuesta_dbp' => $respuesta_dbp,
+                'respuesta_cc' => $respuesta_cc,
+                'respuesta_ca' => $respuesta_ca,
+                'respuesta_lf' => $respuesta_lf,
+                'respuesta_pfe' => $respuesta_pfe,
+                'respuesta_ccca' => $respuesta_ccca,
+                'respuesta_fecha' => $respuesta_fecha,
+                'respuesta_eg' => $respuesta_eg,
+                'ecografista' => $respuesta_ecografista,
+                'comentariosexamen' => $respuesta_comentariosexamen
+            ));
+        }
+        else if ($respuesta_crecimiento == 3){
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'respuesta_utero_ginecologica' => $respuesta_utero_ginecologica,
+                'respuesta_endometrio' => $respuesta_endometrio,
+                'respuesta_anexo_izquierdo_ginecologica' => $respuesta_anexo_izquierdo_ginecologica,
+                'respuesta_anexo_derecho_ginecologica' => $respuesta_anexo_derecho_ginecologica,
+                'respuesta_ovario_izquierdo' => $respuesta_ovario_izquierdo,
+                'respuesta_ovario_derecho' => $respuesta_ovario_derecho,
+                'respuesta_douglas_ginecologica' => $respuesta_douglas_ginecologica,
+                'respuesta_fecha' => $respuesta_fecha,
+                'respuesta_eg' => $respuesta_eg,
+                'ecografista' => $respuesta_ecografista,
+                'comentariosexamen' => $respuesta_comentariosexamen
             ));
         }
         else if($respuesta_crecimiento == 4){
