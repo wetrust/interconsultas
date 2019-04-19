@@ -190,7 +190,7 @@ class DashboardController extends Controller
             $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
             $solicitud = $solicitud->solicitud_email;
 
-            sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
+            EmailModel::sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
 
             if ($usuario->user_almacenamiento == 0){
