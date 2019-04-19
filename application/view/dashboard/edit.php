@@ -927,12 +927,12 @@
             var CC = 0;
             var CA = 0;
 
-            if (parseInt($("input[name='respuesta_cc']").val()) > 0){
+            if (parseInt($("input[name='respuesta_cc']").val()) < 0){
                 $("input[name='respuesta_pfe']").val("0");
                 return;
             }
 
-            if (parseInt($("input[name='respuesta_ca']").val()) > 0){
+            if (parseInt($("input[name='respuesta_ca']").val()) < 0){
                 $("input[name='respuesta_pfe']").val("0");
                 return;
             }
@@ -949,12 +949,12 @@
             var CC = 0;
             var CA = 0;
 
-            if (parseInt($("input[name='respuesta_cc']").val()) > 0){
+            if (parseInt($("input[name='respuesta_cc']").val()) < 0){
                 $("input[name='respuesta_pfe']").val("0");
                 return;
             }
 
-            if (parseInt($("input[name='respuesta_ca']").val()) > 0){
+            if (parseInt($("input[name='respuesta_ca']").val()) < 0){
                 $("input[name='respuesta_pfe']").val("0");
                 return;
             }
