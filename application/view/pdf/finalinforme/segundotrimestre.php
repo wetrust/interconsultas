@@ -38,7 +38,7 @@
     $html = '<h2 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA</strong></h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
-    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">A- Formulario referencia para evaluación ecográfica del crecimiento fetal</h2>';
+    $html = '<h2 style="border-bottom:1px double #000;text-align: left;">A- Formulario referencia para evaluación ecográfica de segundo / tercer trimestre</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     $solicitud_fecha = explode("-", $this->solicitud->solicitud_fecha);

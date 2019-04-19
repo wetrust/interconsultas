@@ -194,7 +194,7 @@ class DashboardController extends Controller
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
 
             if ($usuario->user_almacenamiento == 0){
-                EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
+                EmailModel::sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
 
@@ -222,12 +222,13 @@ class DashboardController extends Controller
             ));
 
             $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
+            
             $solicitud = $solicitud->solicitud_email;
-
+            EmailModel::sendRespuestaGinecologiaEmail($solicitud_id, $respuesta_fecha, $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica, $respuesta_comentariosexamen, $respuesta_ecografista, $email)
+            
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
-
             if ($usuario->user_almacenamiento == 0){
-                EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
+                EmailModel::sendRespuestaGinecologiaEmail($solicitud_id, $respuesta_fecha, $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
 

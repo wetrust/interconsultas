@@ -253,4 +253,40 @@ class EmailModel
         }
     }
 
+    public static function sendRespuestaGinecologiaEmail($solicitud_id, $respuesta_fecha, $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica, $respuesta_comentariosexamen, $respuesta_ecografista, $email)
+    {
+        $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
+
+        $respuesta_fecha = explode("-", $respuesta_fecha);
+        $respuesta_fecha = $respuesta_fecha[2] . "-". $respuesta_fecha[1]. "-". $respuesta_fecha[0];
+
+        $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
+
+        $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
+         "Junto con saludar, adjuntamos respuesta a su interconsulta ginecológica para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
+         \n\nFecha evaluación interconsulta: " . $respuesta_fecha .  
+         "\nÚtero: " . $respuesta_utero_ginecologica.
+         "\nEndometrio: " . $respuesta_endometrio .
+         "\nAnexo Izquierdo: " . $respuesta_anexo_izquierdo_ginecologica .
+         "\nAnexo Derecho: " . $respuesta_anexo_derecho_ginecologica .
+         "\nOvario Izquierdo: " . $respuesta_ovario_izquierdo .
+         "\nOvario Derecho: " . $respuesta_ovario_derecho . 
+         "\nDouglas: " . $respuesta_douglas_ginecologica .
+         "\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
+         "\nEcografista: " . $respuesta_ecografista ;
+    
+        $mail = new Mail;
+
+        $tmp = Config::get('PATH_AVATARS');
+        
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco primer trimestre', $body, $tmp);
+
+        if ($mail_sent) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
