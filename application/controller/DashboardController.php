@@ -129,6 +129,9 @@ class DashboardController extends Controller
             Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 1){
+            
+            SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
+
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -147,6 +150,18 @@ class DashboardController extends Controller
                 'comentariosexamen' => $respuesta_comentariosexamen
         
             ));
+
+            $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
+            $solicitud = $solicitud->solicitud_email;
+            
+            EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
+
+            if ($usuario->user_almacenamiento == 0){
+                EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
+                SolicitudesModel::deleteSolicitud($solicitud_id);
+            }
+
+            Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 2){
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
