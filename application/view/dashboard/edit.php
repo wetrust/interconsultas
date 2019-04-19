@@ -665,50 +665,6 @@
             });
         });
 
-        function psohdlk() {
-            var CC = 0;
-            var CA = 0;
-
-            if (parseInt($("input[name='respuesta_cc']").val()) > 0){
-                $("input[name='respuesta_pfe']").val("0");
-                return;
-            }
-
-            if (parseInt($("input[name='respuesta_ca']").val()) > 0){
-                $("input[name='respuesta_pfe']").val("0");
-                return;
-            }
-
-            CC = parseInt($("input[name='respuesta_cc']").val());
-            CA = parseInt($("input[name='respuesta_ca']").val());
-
-            var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
-            $("input[name='respuesta_pfe_ver']").val(psoP.toFixed(0));
-            $("input[name='respuesta_pfe']").val(psoP.toFixed(0));
-        }
-
-        function calCCCA(){
-            var CC = 0;
-            var CA = 0;
-
-            if (parseInt($("input[name='respuesta_cc']").val()) > 0){
-                $("input[name='respuesta_pfe']").val("0");
-                return;
-            }
-
-            if (parseInt($("input[name='respuesta_ca']").val()) > 0){
-                $("input[name='respuesta_pfe']").val("0");
-                return;
-            }
-
-            CC = parseInt($("input[name='respuesta_cc']").val());
-            CA = parseInt($("input[name='respuesta_ca']").val());
-
-            var ccca = CC / CA;
-            $("input[name='respuesta_ccca_ver']").val(ccca.toFixed(2));
-            $("input[name='respuesta_ccca']").val(ccca.toFixed(2));
-        }
-
         function pctcmauAdvanced(eg, cmau){
             var xpct5 = [], xpct95 = [];
             xpct5[20] = 0.78; xpct5[21] = 0.87; xpct5[22] = 0.95; xpct5[23] = 1.02;
@@ -965,6 +921,50 @@
                 }
                 return pctAUMB;
             }
+        }
+
+        function psohdlk() {
+            var CC = 0;
+            var CA = 0;
+
+            if (parseInt($("input[name='respuesta_cc']").val()) > 0){
+                $("input[name='respuesta_pfe']").val("0");
+                return;
+            }
+
+            if (parseInt($("input[name='respuesta_ca']").val()) > 0){
+                $("input[name='respuesta_pfe']").val("0");
+                return;
+            }
+
+            CC = parseInt($("input[name='respuesta_cc']").val());
+            CA = parseInt($("input[name='respuesta_ca']").val());
+
+            var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
+            $("input[name='respuesta_pfe_ver']").val(psoP.toFixed(0));
+            $("input[name='respuesta_pfe']").val(psoP.toFixed(0));
+        }
+
+        function calCCCA(){
+            var CC = 0;
+            var CA = 0;
+
+            if (parseInt($("input[name='respuesta_cc']").val()) > 0){
+                $("input[name='respuesta_pfe']").val("0");
+                return;
+            }
+
+            if (parseInt($("input[name='respuesta_ca']").val()) > 0){
+                $("input[name='respuesta_pfe']").val("0");
+                return;
+            }
+
+            CC = parseInt($("input[name='respuesta_cc']").val());
+            CA = parseInt($("input[name='respuesta_ca']").val());
+
+            var ccca = CC / CA;
+            $("input[name='respuesta_ccca_ver']").val(ccca.toFixed(2));
+            $("input[name='respuesta_ccca']").val(ccca.toFixed(2));
         }
     </script>
     </form>
