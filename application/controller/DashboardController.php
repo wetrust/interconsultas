@@ -149,7 +149,7 @@ class DashboardController extends Controller
             ));
         }
         else if ($respuesta_crecimiento == 2){
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
