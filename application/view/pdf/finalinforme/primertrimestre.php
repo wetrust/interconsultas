@@ -108,7 +108,7 @@
     $html = '<table><tbody><tr><td><strong>Anexo Derecho</strong>: '. $this->respuesta_anexo_derecho_primertrimestre.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>Douglas</strong>: '. $this->respuesta_douglas.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Douglas</strong>: '. $this->respuesta_douglas_primertrimestre.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><strong>Comentarios y observaciones</strong></td></tr></tbody></table>';

@@ -153,9 +153,10 @@ class DashboardController extends Controller
 
             $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
             $solicitud = $solicitud->solicitud_email;
-            
-            EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
 
+            EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
+            $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
+            
             if ($usuario->user_almacenamiento == 0){
                 EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
                 SolicitudesModel::deleteSolicitud($solicitud_id);
