@@ -28,7 +28,7 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN solicitudes ON solicitudes.solicitud_id = respuestas.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
+        $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
