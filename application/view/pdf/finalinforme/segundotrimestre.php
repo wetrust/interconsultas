@@ -116,7 +116,7 @@
     $this->pdf->Ln(4);
 
     $_html = strip_tags($this->comentariosexamen);
-    $_html = str_replace("\n", "<br>", $html);
+    $_html = str_replace("\n", "<br>", $_html);
     $html = '<table><tbody><tr><td style="width:162px"><strong><em>Comentarios y observaciones</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(8);
