@@ -145,7 +145,6 @@
                         <option value="2">Eco 2do / 3cer trimestre</option>
                         <option value="0" selected>Eco Doppler crecimiento</option>
                         <option value="3">Eco Ginecológica</option>
-                        <option value="4">Eco Multipropósito</option>
                     </select>
                 </div>
             </div>
