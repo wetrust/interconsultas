@@ -525,6 +525,7 @@
                     $("#multiproposito").removeClass("d-none");
                     $("#ginecologica").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
+                    $("#primertrimestre").addClass("d-none");
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     $("#editable").attr("rows", 3);
                 }
