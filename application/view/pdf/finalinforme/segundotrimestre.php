@@ -98,29 +98,29 @@
     
     $html = '<table><tbody><tr><td>DBP: '. $this->respuesta_dbp.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>CC: '. $this->respuesta_cc.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>CA: '. $this->respuesta_ca.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>LF: '. $this->respuesta_lf.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>PFE: '. $this->respuesta_pfe_segundo.'</td><td>PCT: '. $this->respuesta_pfe_pct_segundo.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>CC/CA: '. $this->respuesta_ccca.'</td><td>PCT: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>Comentarios y observaciones</strong></td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
-    $html = strip_tags($this->comentariosexamen);
-    $html = str_replace("\n", "<br>", $html);
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(4);
+
+    $_html = strip_tags($this->comentariosexamen);
+    $_html = str_replace("\n", "<br>", $html);
+    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Comentarios y observaciones</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->Ln(8);
+    
     $html = '<table><tbody><tr><td style="width:450px"></td><td>Ecografista: '.htmlentities($this->ecografista).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
