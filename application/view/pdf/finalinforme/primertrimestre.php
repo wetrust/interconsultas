@@ -97,7 +97,7 @@
     $html = '<table><tbody><tr><td><strong>Embrión</strong>: '. $this->respuesta_embrion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>LCN</strong>: '. $this->respuesta_lcn.'</td><td><strong>Edad Gestacional según LCN</strong>: '. $this->respuesta_lcn_eg.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>LCN</strong>: '. $this->respuesta_lcn.'</td><td><strong>Edad Gestacional según LCN</strong>: '. $this->respuesta_lcn_eg.' semanas</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><strong>Anexo Izquierdo</strong>: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td></tr></tbody></table>';
