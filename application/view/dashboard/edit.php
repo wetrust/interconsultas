@@ -441,7 +441,7 @@
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">LCN</label>
                         <input type="text" class="form-control" name="respuesta_lcn">
-                        <input type="hide" class="form-control" name="respuesta_lcn_eg">
+                        <input type="hidden" class="form-control" name="respuesta_lcn_eg">
                     </div>
                 </div>
                 <div class="row">
