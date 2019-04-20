@@ -148,9 +148,6 @@
                         <option value="4">Eco Multipropósito</option>
                     </select>
                 </div>
-                <div class="col-1 form-group">
-                    <button class="btn btn-primary" id="interconsulta.respuesta.elegir">Elegir</button>
-                </div>
             </div>
             <div class="row">
                 <div class="col-6 form-group">
@@ -412,13 +409,30 @@
                 <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">PFE</label>
-                        <input type="text" class="form-control" name="respuesta_pfe_ver" disabled>
-                        <input type="hidden" class="form-control" name="respuesta_pfe">
+                        <input type="text" class="form-control" name="respuesta_pfe_ver_segundo" disabled>
+                        <input type="hidden" class="form-control" name="respuesta_pfe_segundo">
                     </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>&nbsp;</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
+                            <input type="text" class="form-control" name="respuesta_pfe_pct_ver_segundo" disabled>
+                        </div>
+                        <input type="hidden" class="form-control" name="respuesta_pfe_pct_segundo">
+                    </div>
+
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">CC/CA</label>
                         <input type="text" class="form-control" name="respuesta_ccca_ver" disabled>
                         <input type="hidden" class="form-control" name="respuesta_ccca">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>&nbsp;</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
+                            <input type="text" class="form-control" name="respuesta_ccca_pct_ver" disabled>
+                        </div>
+                        <input type="hidden" class="form-control" name="respuesta_ccca_pct">
                     </div>
                 </div>
             </div>
@@ -535,11 +549,6 @@
                 }
             });
 
-            $("#interconsulta\\.respuesta\\.elegir").on("click", function(e){
-                e.preventDefault();
-                $('#interconsulta\\.respuesta\\.crecimiento').attr("disabled", true);
-            });
-
             $("#enviar\\.respuesta\\.botton").on("click", function(){
                 $("#interconsulta\\.respuesta\\.crecimiento").attr("disabled", false);
             });
@@ -555,6 +564,23 @@
 
             $("input[name='respuesta_lcn']").on("change", function(){
                 eglcn();
+            });
+
+            $("input[name='respuesta_pfe_segundo']").on("change", function(){
+                
+                var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                var pfe = $("input[name='respuesta_pfe_segundo']").val();
+
+                eg = String(eg);
+                eg = eg.replace("semanas", "");
+
+                if (eg.length > 0){
+
+                    eg =  parseFloat(eg).toFixed();
+                    $("input[name='respuesta_pfe_pct_segundo']").val(pctpfeAdvanced(eg,pfe));
+                    $("input[name='respuesta_pfe_pct_ver_segundo']").val(pctpfeAdvanced(eg,pfe));
+                }
+
             });
 
             $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
@@ -943,12 +969,14 @@
             var CA = 0;
 
             if (parseInt($("input[name='respuesta_cc']").val()) < 0){
-                $("input[name='respuesta_pfe']").val("0");
+                $("input[name='respuesta_pfe_ver_segundo']").val(0);
+                $("input[name='respuesta_pfe_segundo']").val(0);
                 return;
             }
 
             if (parseInt($("input[name='respuesta_ca']").val()) < 0){
-                $("input[name='respuesta_pfe']").val("0");
+                $("input[name='respuesta_pfe_ver_segundo']").val(0);
+                $("input[name='respuesta_pfe_segundo']").val(0);
                 return;
             }
 
@@ -958,12 +986,12 @@
             var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
             
             if (isNaN(psoP) != true) {
-                $("input[name='respuesta_pfe_ver']").val(psoP.toFixed(0));
-                $("input[name='respuesta_pfe']").val(psoP.toFixed(0));
+                $("input[name='respuesta_pfe_ver_segundo']").val(psoP.toFixed(0));
+                $("input[name='respuesta_pfe_segundo']").val(psoP.toFixed(0));
             }
             else{
-                $("input[name='respuesta_pfe_ver']").val(0);
-                $("input[name='respuesta_pfe']").val(0);
+                $("input[name='respuesta_pfe_ver_segundo']").val(0);
+                $("input[name='respuesta_pfe_segundo']").val(0);
             }
         }
 
