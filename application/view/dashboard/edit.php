@@ -499,7 +499,7 @@
     <script>
 
         $(document).ready(function () {
-            $("#multiproposito, #ginecologica, #segundotrimestre, #primertrimestre, #interconsulta\\.respuesta\\.ecografista, #interconsulta\\.respuesta\\.fecha, #interconsulta\\.respuesta\\.crecimiento").keydown(function(event){
+            $("#multiproposito, #ginecologica, #segundotrimestre, #primertrimestre, input[name='respuesta_ecografista'], #interconsulta\\.respuesta\\.fecha, #interconsulta\\.respuesta\\.crecimiento").keydown(function(event){
                 if(event.keyCode == 13) {
                     event.preventDefault();
                 return false;
