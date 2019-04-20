@@ -113,7 +113,7 @@
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
                                     <?php if ($value->tipo == 1){ ?>
-                                    <td><a href="<?= Config::get('URL') . 'pdf/informe_dopplercrecimiento' . $value->solicitud_id; ?>">Ver</a></td>
+                                    <td><a href="<?= Config::get('URL') . 'pdf/informe_dopplercrecimiento/' . $value->solicitud_id; ?>">Ver</a></td>
                                     <?php }else{ ?>
                                     <td></td>
                                     <?php } ?>
