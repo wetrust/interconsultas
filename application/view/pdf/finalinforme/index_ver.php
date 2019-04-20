@@ -44,7 +44,7 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h2 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCiA Y CONTRARREFERENCiA PARA ECOGRAFÍA OBSTÉTRiCA Y F. DOPPLER</strong></h2>';
+    $html = '<h2 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCIA y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA y FLUJOMETRÍA DOPPLER</strong></h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
