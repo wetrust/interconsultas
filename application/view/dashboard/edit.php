@@ -499,9 +499,9 @@
     <script>
 
         $(document).ready(function () {
-            $("#interconsulta\\.respuesta\\.pfe, #interconsulta\\.respuesta\\.uterinas, #interconsulta\\.respuesta\\.umbilical, #interconsulta\\.respuesta\\.cm, input[name='respuesta_ecografista']").keydown(function(event){
+            $("#multiproposito, #ginecologica, #segundotrimestre, #primertrimestre, #interconsulta\\.respuesta\\.ecografista, #interconsulta\\.respuesta\\.fecha, #interconsulta\\.respuesta\\.crecimiento").keydown(function(event){
                 if(event.keyCode == 13) {
-                event.preventDefault();
+                    event.preventDefault();
                 return false;
                 }
             });
