@@ -73,6 +73,7 @@ class DashboardController extends Controller
         $respuesta_anexo_izquierdo_primertrimestre = Request::post('respuesta_anexo_izquierdo_primertrimestre');
         $respuesta_anexo_derecho_primertrimestre = Request::post('respuesta_anexo_derecho_primertrimestre');
         $respuesta_douglas_primertrimestre = Request::post('respuesta_douglas_primertrimestre');
+        $respuesta_lcn_eg = Request::post('respuesta_lcn_eg');
 
         //para ecografía de segundo trimestre
         $respuesta_placenta = Request::post('respuesta_placenta');
@@ -147,7 +148,8 @@ class DashboardController extends Controller
                 'respuesta_fecha' => $respuesta_fecha,
                 'respuesta_eg' => $respuesta_eg,
                 'ecografista' => $respuesta_ecografista,
-                'comentariosexamen' => $respuesta_comentariosexamen
+                'comentariosexamen' => $respuesta_comentariosexamen,
+                'respuesta_lcn_eg' => $respuesta_lcn_eg
         
             ));
 
