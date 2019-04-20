@@ -89,6 +89,7 @@ class DashboardController extends Controller
         $respuesta_anatomia_segundo = Request::post('respuesta_anatomia_segundo');
         $respuesta_pfe_pct_segundo = Request::post('respuesta_pfe_pct_segundo');
         $respuesta_ccca_pct = Request::post('respuesta_ccca_pct');
+        $respuesta_hipotesis_segundo = Request::post('respuesta_hipotesis_segundo');
 
         //para ginecología
         $respuesta_utero_ginecologica = Request::post('respuesta_utero_ginecologica');
@@ -206,7 +207,8 @@ class DashboardController extends Controller
                 'comentariosexamen' => $respuesta_comentariosexamen,
                 'respuesta_presentacion_segundo' => $respuesta_presentacion_segundo,
                 'respuesta_dorso_segundo' => $respuesta_dorso_segundo,
-                'respuesta_anatomia_segundo' => $respuesta_anatomia_segundo
+                'respuesta_anatomia_segundo' => $respuesta_anatomia_segundo,
+                'respuesta_hipotesis_segundo' => $respuesta_hipotesis_segundo
             ));
 
             $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));

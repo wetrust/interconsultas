@@ -420,7 +420,6 @@
                         </div>
                         <input type="hidden" class="form-control" name="respuesta_pfe_pct_segundo">
                     </div>
-
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">CC/CA</label>
                         <input type="text" class="form-control" name="respuesta_ccca_ver" disabled>
@@ -433,6 +432,24 @@
                             <input type="text" class="form-control" name="respuesta_ccca_pct_ver" disabled>
                         </div>
                         <input type="hidden" class="form-control" name="respuesta_ccca_pct">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p><strong>Hipótesis diagnóstica</strong></p>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="interconsulta.respuesta.hipotesis"><strong>Crecimiento fetal</strong></label>
+                        <select class="form-control" name="respuesta_hipotesis_segundo">
+                            <option value="Disminuido < p3">Disminuido < p3</option>
+                            <option value="Disminuido < p10">Disminuido < p10</option>
+                            <option value="Normal p10 - p 25">Normal p10 - p 25</option>
+                            <option value="Normal p26 - p50">Normal p26 - p50</option>
+                            <option value="Normal p51 - p 75">Normal p51 - p 75</option>
+                            <option value="Normal p76 - p90">Normal p76 - p90</option>
+                            <option value="Grande >p90">Grande >p90</option>
+                            <option value="Grande >p97">Grande >p97</option>
+                        </select>
                     </div>
                 </div>
             </div>
