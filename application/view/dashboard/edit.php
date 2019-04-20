@@ -441,7 +441,11 @@
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">LCN</label>
                         <input type="text" class="form-control" name="respuesta_lcn">
-                        <input type="hidden" class="form-control" name="respuesta_lcn_eg">
+                    </div>
+                    <div class="col-3 form-group">
+                        <label for="interconsulta.respuesta.ecografista">Eg. x LCN</label>
+                        <input type="text" class="form-control" name="respuesta_lcn_eg_ver" disabled>
+                        <input type="text" class="form-control" name="respuesta_lcn_eg">
                     </div>
                 </div>
                 <div class="row">
@@ -1047,9 +1051,11 @@
                         i = 63;
                     }
                 }
+                $("input[name='respuesta_lcn_eg_ver']").val(eglcn);
                 $("input[name='respuesta_lcn_eg']").val(eglcn);
             } 
             else {
+                $("input[name='respuesta_lcn_eg_ver']").val(0);
                 $("input[name='respuesta_lcn_eg']").val(0);
             }
         };
