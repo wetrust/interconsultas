@@ -495,7 +495,7 @@
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#primertrimestre").addClass("d-none");
-                    $("#editable").attr("rows", 3);
+                    $("#editable").attr("rows", 10);
                 }
                 else if ($(this).val() == 3){
                     $("#multiproposito").addClass("d-none");
@@ -503,7 +503,7 @@
                     $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                     $("#segundotrimestre").addClass("d-none");
                     $("#primertrimestre").addClass("d-none");
-                    $("#editable").attr("rows", 10);
+                    $("#editable").attr("rows", 3);
                 }
                 else if ($(this).val() == 2){
                     $("#segundotrimestre").removeClass("d-none");
