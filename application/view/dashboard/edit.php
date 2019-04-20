@@ -413,7 +413,7 @@
                         <input type="hidden" class="form-control" name="respuesta_pfe_segundo">
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>&nbsp;</label>
+                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
                             <input type="text" class="form-control" name="respuesta_pfe_pct_ver_segundo" disabled>
@@ -427,7 +427,7 @@
                         <input type="hidden" class="form-control" name="respuesta_ccca">
                     </div>
                     <div class="col form-group">
-                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;<br>&nbsp;</label>
+                        <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend"><div class="input-group-text">Pct</div></div>
                             <input type="text" class="form-control" name="respuesta_ccca_pct_ver" disabled>
@@ -970,13 +970,13 @@
 
             if (parseInt($("input[name='respuesta_cc']").val()) < 0){
                 $("input[name='respuesta_pfe_ver_segundo']").val(0);
-                $("input[name='respuesta_pfe_segundo']").val(0);
+                $("input[name='respuesta_pfe_segundo']").val(0).trigger("change");
                 return;
             }
 
             if (parseInt($("input[name='respuesta_ca']").val()) < 0){
                 $("input[name='respuesta_pfe_ver_segundo']").val(0);
-                $("input[name='respuesta_pfe_segundo']").val(0);
+                $("input[name='respuesta_pfe_segundo']").val(0).trigger("change");
                 return;
             }
 
@@ -987,11 +987,11 @@
             
             if (isNaN(psoP) != true) {
                 $("input[name='respuesta_pfe_ver_segundo']").val(psoP.toFixed(0));
-                $("input[name='respuesta_pfe_segundo']").val(psoP.toFixed(0));
+                $("input[name='respuesta_pfe_segundo']").val(psoP.toFixed(0)).trigger("change");
             }
             else{
                 $("input[name='respuesta_pfe_ver_segundo']").val(0);
-                $("input[name='respuesta_pfe_segundo']").val(0);
+                $("input[name='respuesta_pfe_segundo']").val(0).trigger("change");
             }
         }
 
