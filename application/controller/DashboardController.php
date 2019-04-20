@@ -82,8 +82,13 @@ class DashboardController extends Controller
         $respuesta_cc = Request::post('respuesta_cc');
         $respuesta_ca = Request::post('respuesta_ca');
         $respuesta_lf = Request::post('respuesta_lf');
-        $respuesta_pfe = Request::post('respuesta_pfe');
+        $respuesta_pfe_segundo = Request::post('respuesta_pfe_segundo');
         $respuesta_ccca = Request::post('respuesta_ccca');
+        $respuesta_presentacion_segundo = Request::post('respuesta_presentacion_segundo');
+        $respuesta_dorso_segundo = Request::post('respuesta_dorso_segundo');
+        $respuesta_anatomia_segundo = Request::post('respuesta_anatomia_segundo');
+        $respuesta_pfe_pct_segundo = Request::post('respuesta_pfe_pct_segundo');
+        $respuesta_ccca_pct = Request::post('respuesta_ccca_pct');
 
         //para ginecología
         $respuesta_utero_ginecologica = Request::post('respuesta_utero_ginecologica');
@@ -170,6 +175,16 @@ class DashboardController extends Controller
 
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
+            if (is_array ($respuesta_anatomia_segundo)){
+                foreach($respuesta_anatomia_segundo as $yek => $out){
+                    $respuesta_anatomia_final = $respuesta_anatomia_final . ", ".$out;
+                }
+                $respuesta_anatomia_segundo = $respuesta_anatomia_final;
+            }
+            else{
+                $respuesta_anatomia_segundo = "";
+            }
+
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -181,12 +196,17 @@ class DashboardController extends Controller
                 'respuesta_cc' => $respuesta_cc,
                 'respuesta_ca' => $respuesta_ca,
                 'respuesta_lf' => $respuesta_lf,
-                'respuesta_pfe' => $respuesta_pfe,
+                'respuesta_pfe_segundo' => $respuesta_pfe_segundo,
+                'respuesta_pfe_pct_segundo' => $respuesta_pfe_pct_segundo,
                 'respuesta_ccca' => $respuesta_ccca,
+                'respuesta_ccca_pct' => $respuesta_ccca_pct,
                 'respuesta_fecha' => $respuesta_fecha,
                 'respuesta_eg' => $respuesta_eg,
                 'ecografista' => $respuesta_ecografista,
-                'comentariosexamen' => $respuesta_comentariosexamen
+                'comentariosexamen' => $respuesta_comentariosexamen,
+                'respuesta_presentacion_segundo' => $respuesta_presentacion_segundo,
+                'respuesta_dorso_segundo' => $respuesta_dorso_segundo,
+                'respuesta_anatomia_segundo' => $respuesta_anatomia_segundo
             ));
 
             $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
