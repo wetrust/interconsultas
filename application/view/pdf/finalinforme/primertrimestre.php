@@ -85,7 +85,7 @@
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">C- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>Fecha de exámen</strong>: '. $fecha.'</td><td>Edad Gestacional al Exámen: '. $this->respuesta_eg.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Fecha de exámen</strong>: '. $fecha.'</td><td>Edad Gestacional por FUR: '. $this->respuesta_eg.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><strong>Utero</strong>: '. $this->respuesta_utero.'</td></tr></tbody></table>';
