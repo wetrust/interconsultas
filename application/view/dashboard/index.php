@@ -195,7 +195,8 @@
         cargarCorreosProfesionales();
 
         $("#interfaz\\.enviar").on("click", function(){
-            let selecciono = $("#home").hasClass("active") ? true : false;
+            let selecciono = false;
+            selecciono = $("#home").hasClass("active");
             let email = "";
             let informe = $("#exampleModal").data("informe");
             let solicitud = $("#exampleModal").data("solicitud");
