@@ -13,6 +13,21 @@ class RespuestaModel
         return $query->fetchAll();
     }
 
+    public static function countRespuesta($solicitud_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT * FROM respuestas WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_id' => $solicitud_id));
+
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static function getRespuesta($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

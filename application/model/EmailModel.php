@@ -289,4 +289,117 @@ class EmailModel
         }
     }
 
+    public static function sendEmailManual()
+    {
+        $solicitud_id = intval(Request::post('solicitud'));
+        $email = Request::post('email');
+        $informe = intval(Request::post('informe'));
+        $response = new stdClass();
+
+        $response->result = false;
+
+        if ($solicitud_id || !$email || strlen($email) == 0 || informe < 0 || informe > 4){
+            return $response;
+        }
+
+        //verify if "respuesta" exist in database
+        if (RespuestaModel::countRespuesta($solicitud_id) == false){
+            return $response;
+        }
+
+        $respuesta = RespuestaModel::getRespuesta($solicitud_id);
+
+        //create PDF in temporal folder
+        if($solicitud_id == 1){
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre_ver', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'respuesta_utero' => $respuesta->utero_primertrimestre,
+                'respuesta_saco_gestacional' => $respuesta->saco_gestacional,
+                'respuesta_embrion' => $respuesta->embrion,
+                'respuesta_lcn' => $respuesta->lcn,
+                'respuesta_anexo_izquierdo_primertrimestre' => $respuesta->anexo_izquierdo_primertrimestre,
+                'respuesta_anexo_derecho_primertrimestre' => $respuesta->anexo_derecho_primertrimestre,
+                'respuesta_douglas_primertrimestre' => $respuesta->douglas_primertrimestre,
+                'respuesta_fecha' => $respuesta->fecha,
+                'respuesta_eg' => $respuesta->eg,
+                'ecografista' => $respuesta->ecografista,
+                'comentariosexamen' => $respuesta->comentariosexamen,
+                'respuesta_lcn_eg' => $respuesta->lcn_eg
+            ));
+    
+        } else if ($solicitud_id == 2){
+    
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'respuesta_placenta' => $respuesta->placenta,
+                'respuesta_liquido_amniotico' => $respuesta->liquido_amniotico,
+                'respuesta_dbp' => $respuesta->dbp,
+                'respuesta_cc' => $respuesta->cc,
+                'respuesta_ca' => $respuesta->ca,
+                'respuesta_lf' => $respuesta->lf,
+                'respuesta_pfe_segundo' => $respuesta->pfe_segundo,
+                'respuesta_pfe_pct_segundo' => $respuesta->pfe_pct_segundo,
+                'respuesta_ccca' => $respuesta->ccca,
+                'respuesta_ccca_pct' => $respuesta->ccca_pct,
+                'respuesta_fecha' => $respuesta->fecha,
+                'respuesta_eg' => $respuesta->eg,
+                'ecografista' => $respuesta->ecografista,
+                'comentariosexamen' => $respuesta->comentariosexamen,
+                'respuesta_presentacion_segundo' => $respuesta->presentacion_segundo,
+                'respuesta_dorso_segundo' => $respuesta->dorso_segundo,
+                'respuesta_anatomia_segundo' => $respuesta->anatomia_segundo,
+                'respuesta_hipotesis_segundo' => $respuesta->hipotesis_segundo
+            ));
+    
+        } else if($solicitud_id == 3){
+    
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia_ver', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'respuesta_utero_ginecologica' => $respuesta->utero_ginecologica,
+                'respuesta_endometrio' => $respuesta->endometrio,
+                'respuesta_anexo_izquierdo_ginecologica' => $respuesta->anexo_izquierdo_ginecologica,
+                'respuesta_anexo_derecho_ginecologica' => $respuesta->anexo_derecho_ginecologica,
+                'respuesta_ovario_izquierdo' => $respuesta->ovario_izquierdo,
+                'respuesta_ovario_derecho' => $respuesta->ovario_derecho,
+                'respuesta_douglas_ginecologica' => $respuesta->douglas_ginecologica,
+                'respuesta_fecha' => $respuesta->fecha,
+                'ecografista' => $respuesta->ecografista,
+                'comentariosexamen' => $respuesta->comentariosexamen
+            ));
+    
+        }else if($solicitud_id == 0){
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+                'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
+            ));
+        }
+
+        $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
+
+        $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
+         "Junto con saludar, reenviamos informe para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre
+    
+        $mail = new Mail;
+
+        $tmp = Config::get('PATH_AVATARS');
+        
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Reenvio de informe', $body, $tmp);
+
+        if ($mail_sent) {$response->result = true;}
+
+        return $response;
+    }
 }
