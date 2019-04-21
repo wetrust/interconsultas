@@ -513,7 +513,6 @@
         </div>
     </div>
     <script>
-
         $(document).ready(function () {
             $("#multiproposito, #ginecologica, #segundotrimestre, #primertrimestre, input[name='respuesta_ecografista'], #interconsulta\\.respuesta\\.fecha, #interconsulta\\.respuesta\\.crecimiento").keydown(function(event){
                 if(event.keyCode == 13) {
