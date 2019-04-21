@@ -285,7 +285,6 @@ class DashboardController extends Controller
             Redirect::to('dashboard');
         }
         
-
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
 
@@ -365,5 +364,9 @@ class DashboardController extends Controller
                 break;
         }
         return $this->View->renderJSON($resultado);  
+    }
+
+    public function profesionales_email(){
+        $this->View->renderJSON(SolicitudesModel::getAllProfesionales(Session::get('user_email')));
     }
 }
