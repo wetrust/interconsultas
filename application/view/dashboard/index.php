@@ -160,20 +160,20 @@
             <div class="modal-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Elegir correo</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Mhome" role="tab" aria-controls="home" aria-selected="true">Elegir correo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Escribir correo</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Mprofile" role="tab" aria-controls="profile" aria-selected="false">Escribir correo</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade show active" id="Mhome" role="tabpanel" aria-labelledby="home-tab">
                         <div class="form-group">
                             <label for="interconsulta.respuesta.fecha">Fecha evaluación de interconsulta</label>
                             <select class="form-control" id="interfaz.email"></select>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade" id="Mprofile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="form-group">
                             <label for="interfaz.email.write">Fecha evaluación de interconsulta</label>
                             <input type="email" class="form-control" id="interfaz.email.write">
@@ -196,7 +196,7 @@
 
         $("#interfaz\\.enviar").on("click", function(){
             let selecciono = false;
-            selecciono = $("#home").hasClass("active");
+            selecciono = $("#Mhome").hasClass("active");
             let email = "";
             let informe = $("#exampleModal").data("informe");
             let solicitud = $("#exampleModal").data("solicitud");
