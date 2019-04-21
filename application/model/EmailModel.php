@@ -298,7 +298,7 @@ class EmailModel
 
         $response->result = false;
 
-        if (!$solicitud_id || !$email || strlen($email) == 0 || informe < 0 || informe > 4){
+        if (!$solicitud_id || !$email || strlen($email) == 0 || $informe < 0 || $informe > 4){
             return $response;
         }
 
