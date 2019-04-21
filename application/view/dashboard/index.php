@@ -201,7 +201,7 @@
             let solicitud = $("#exampleModal").data("solicitud");
 
             if (selecciono){
-                email = $("#interfaz\\.email").val();
+                email = $("#interfaz\\.email option:selected").val();
             }
             else{
                 email = $("#interfaz\\.email\\.write").val();
