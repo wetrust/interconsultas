@@ -114,7 +114,7 @@
     $html = '<table><tbody><tr><td>CC/CA: '. $this->respuesta_ccca.'</td><td>PCT: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica *</em></strong></td><td style="width:450px">Crecimiento fetal: '.htmlentities($this->respuesta_hipotesis_segundo).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">* Crecimiento fetal: '.htmlentities($this->respuesta_hipotesis_segundo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Líquido amniótico: '.htmlentities($this->respuesta_liquido_amniotico).'</td></tr></tbody></table>';
@@ -133,7 +133,7 @@
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(4);
-    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente de quien procesa esta información, profesional referente.</p>';
+    $html = '<p>* Gráfica de referencia, Hadlock F P y col. 1991; Radiology 181 : 129 - 133<br>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente de quien procesa esta información, profesional referente.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     $tmp = Config::get('PATH_AVATARS');
