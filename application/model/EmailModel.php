@@ -390,7 +390,7 @@ class EmailModel
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, reenviamos informe para la paciente: " . 
-         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre;
     
         $mail = new Mail;
 
