@@ -35,7 +35,7 @@
     $fecha = explode("-", $this->respuesta_fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h2 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA PRECOZ DE URGENCIA</strong></h2>';
+    $html = '<h3 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA PRECOZ DE URGENCIA</strong></h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">A- Formulario referencia para evaluación ecográfica obstétrica de primera consulta</h4>';
@@ -97,7 +97,7 @@
     $html = '<table><tbody><tr><td>Embrión: '. $this->respuesta_embrion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>LCN* : '. $this->respuesta_lcn.'</td><td>Edad Gestacional según LCN: '. $this->respuesta_lcn_eg.' semanas</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>LCN : '. $this->respuesta_lcn.'</td><td>Edad Gestacional según LCN: '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td></tr></tbody></table>';
@@ -121,8 +121,7 @@
     $this->pdf->Ln(4);
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
-    $this->pdf->Ln(4);
-    $html = '<p>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente de quien procesa esta información, profesional referente.</p>';
+    $html = '<p>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente de quien procesa esta información, profesional referente.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     $tmp = Config::get('PATH_AVATARS');
