@@ -112,9 +112,14 @@
                                     <td><?= htmlentities($value->solicitud_rut); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
-                                    <?php if ($value->tipo == 1){ ?>
+                                    <?php if ($value->tipo == 0){ ?>
+                                    <td><a href="<?= Config::get('URL') . 'pdf/informe_primertrimestre/' . $value->solicitud_id; ?>">Ver</a></td>
+                                    <?php } else if ($value->tipo == 1){ ?>
                                     <td><a href="<?= Config::get('URL') . 'pdf/informe_dopplercrecimiento/' . $value->solicitud_id; ?>">Ver</a></td>
-                                    <?php }else{ ?>
+                                    <?php } else if ($value->tipo == 2){ ?>
+                                    <td><a href="<?= Config::get('URL') . 'pdf/informe_segundotrimestre/' . $value->solicitud_id; ?>">Ver</a></td>
+                                    <?php } else if ($value->tipo == 3){ ?>
+                                    <td><a href="<?= Config::get('URL') . 'pdf/informe_ginecologico/' . $value->solicitud_id; ?>">Ver</a></td>
                                     <td></td>
                                     <?php } ?>
                                     <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
