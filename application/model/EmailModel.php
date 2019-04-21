@@ -311,7 +311,7 @@ class EmailModel
 
         //create PDF in temporal folder
         if($solicitud_id == 1){
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre_ver', 
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
@@ -332,7 +332,7 @@ class EmailModel
     
         } else if ($solicitud_id == 2){
     
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
@@ -359,7 +359,7 @@ class EmailModel
     
         } else if($solicitud_id == 3){
     
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia_ver', 
+            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
