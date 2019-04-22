@@ -83,6 +83,39 @@
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <div class="card mt-1">
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label>Ciudad</label>
+                            <select class="form-control" id="filtro.ciudad">
+                                <option value="8">No Seleccionado</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label>Fecha</label>
+                            <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha">
+                        </div>
+                        <div class="col">
+                            <label>Tipo</label>
+                            <select class="form-control" id="filtro.tipo">
+                                <option value="8">No Seleccionado</option>
+                                <option value="1">Eco Primer trimestre</option>
+                                <option value="2">Eco 2do / 3cer trimestre</option>
+                                <option value="0">Eco Doppler crecimiento</option>
+                                <option value="3">Eco Ginecológica</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Ciudad">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Lugar de control prenatal">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Profesional">
+                        </div>
+                    </div>
                     <?php if ($this->solicitudes_old) { ?>
                         <table class="table table-bordered mt-2">
                             <thead class="thead-dark">
