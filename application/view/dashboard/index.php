@@ -260,6 +260,13 @@
         });
 
         $("#filtro\\.accion").on("click", function(){
+
+            let ciudad = $("#filtro\\.ciudad option:selected").val();
+            let lugar = $("#filtro\\.lugar option:selected").val();
+            let desde = $("#filtro\\.fecha").val();
+            let hasta = $("#filtro\\.fecha").val();
+            let tipo = $("#filtro\\.tipo option:selected").val();
+
             let args = {
                 ciudad: ciudad,
                 lugar: lugar,
