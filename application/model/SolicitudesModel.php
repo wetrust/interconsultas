@@ -100,6 +100,16 @@ class SolicitudesModel
         return $query->fetchAll();
     }
 
+    public static function getAllLugar($solicitud_email)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT solicitud_lugar FROM solicitudes Where solicitud_profesionalemail = :solicitud_profesionalemail group by solicitud_lugar";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
+
+        return $query->fetchAll();
+    }
 
     public static function updateSolicitud($solicitud_id,$solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
     {

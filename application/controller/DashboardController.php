@@ -381,4 +381,8 @@ class DashboardController extends Controller
     public function ciudades(){
         $this->View->renderJSON(SolicitudesModel::getAllCiudades(Session::get('user_email')));
     }
+
+    public function lugar(){
+        $this->View->renderJSON(SolicitudesModel::getAllLugar(Session::get('user_email')));
+    }
 }

@@ -227,6 +227,7 @@
     $(document).ready(function(){
         cargarCorreosProfesionales();
         cargarCiudad();
+        cargarLugar();
 
         $("#interfaz\\.enviar").on("click", function(){
             let selecciono = false;
@@ -313,6 +314,20 @@
                     response = '<option value="' + data[i].solicitud_ciudad +'">' + data[i].solicitud_ciudad +'</option>';
                 }
                 $('#filtro\\.ciudad').append(response);
+            }
+        });
+    }
+
+    function cargarLugar(){
+        $.get(_api + 'lugar').done(function(data){
+            $('#filtro\\.lugar').empty();
+            $('#filtro\\.lugar').append('<option value="">No Seleccionado</option>');
+            if (Object.keys(data).length > 0) {
+                let response = '<option value=""></option>';
+                for (let i = 0; i < data.length; i++) {
+                    response = '<option value="' + data[i].solicitud_lugar +'">' + data[i].solicitud_lugar +'</option>';
+                }
+                $('#filtro\\.lugar').append(response);
             }
         });
     }
