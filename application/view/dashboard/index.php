@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="card mt-1">
+            <div class="card mt-1">
                 <div class="card-body">
                     <?php if ($this->solicitudes) { ?>
                         <table class="table table-bordered mt-2">
@@ -97,7 +97,11 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label>Fecha</label>
+                            <label>Fecha desde</label>
+                            <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha">
+                        </div>
+                        <div class="col">
+                            <label>Fecha hasta</label>
                             <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha">
                         </div>
                         <div class="col">
