@@ -359,7 +359,7 @@ class EmailModel
     
         } else if($solicitud_id == 3){
     
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
+            View::renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
