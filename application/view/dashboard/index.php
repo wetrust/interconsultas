@@ -91,6 +91,12 @@
                             </select>
                         </div>
                         <div class="col">
+                            <label>Lugar de control</label>
+                            <select class="form-control" id="filtro.lugar">
+                                <option value="8">No Seleccionado</option>
+                            </select>
+                        </div>
+                        <div class="col">
                             <label>Fecha</label>
                             <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha">
                         </div>
