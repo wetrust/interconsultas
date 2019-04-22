@@ -375,6 +375,6 @@ class DashboardController extends Controller
     }
 
     public function filtro_resuelto(){
-        $this->View->renderJSON(Solicitudes::getAllOldSolicitudesFilter(Session::get('user_email'),Request::post('ciudad'),Request::post('lugar'),Request::post('desde'),Request::post('hasta'),Request::post('tipo')));
+        $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesFilter(Session::get('user_email'),Request::post('ciudad'),Request::post('lugar'),Request::post('desde'),Request::post('hasta'),Request::post('tipo')));
     }
 }
