@@ -105,7 +105,7 @@
                             </select>
                         </div>
                     </div>
-                    <button class="btn btn-primary my-3">Ver</button>
+                    <button class="btn btn-primary my-3">Filtrar</button>
                     <?php if ($this->solicitudes_old) { ?>
                         <table class="table table-bordered mt-2">
                             <thead class="thead-dark">
