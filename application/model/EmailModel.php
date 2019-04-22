@@ -311,7 +311,7 @@ class EmailModel
 
         //create PDF in temporal folder
         if($solicitud_id == 1){
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
+            View::renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
