@@ -295,6 +295,7 @@ class EmailModel
         $email = Request::post('email');
         $informe = intval(Request::post('informe'));
         $response = new stdClass();
+        $internalView = new View;
 
         $response->result = false;
 
@@ -311,7 +312,7 @@ class EmailModel
 
         //create PDF in temporal folder
         if($solicitud_id == 1){
-            View::renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
+            internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
@@ -332,7 +333,7 @@ class EmailModel
     
         } else if ($solicitud_id == 2){
     
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
+            internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
@@ -359,7 +360,7 @@ class EmailModel
     
         } else if($solicitud_id == 3){
     
-            View::renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
+            internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
@@ -377,7 +378,7 @@ class EmailModel
             ));
     
         }else if($solicitud_id == 0){
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
+            internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
