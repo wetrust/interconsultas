@@ -115,7 +115,7 @@
                             </select>
                         </div>
                     </div>
-                    <button class="btn btn-primary my-3">Filtrar</button>
+                    <button class="btn btn-primary my-3" id="filtro.accion">Filtrar</button>
                     <?php if ($this->solicitudes_old) { ?>
                         <table class="table table-bordered mt-2">
                             <thead class="thead-dark">
@@ -257,6 +257,27 @@
 
         $(".linkemail").on("click", function(){
             callModal($(this).data("informe"), $(this).data("solicitud"));
+        });
+
+        $("#filtro\\.accion").on("click", function(){
+            let args = {
+                ciudad: ciudad,
+                lugar: lugar,
+                desde: desde,
+                hasta: hasta,
+                tipo: tipo
+            }
+
+            $.post(_api  + 'filtro_resuelto', args).done(function(data){
+                if (Object.keys(data).length > 0) {
+                    if (data.result){
+                        alert("Enviado exitosamente");
+                    }
+                    else{
+                        alert("Hubo un error al enviar el correo");
+                    }
+                }
+            });
         });
 
     });
