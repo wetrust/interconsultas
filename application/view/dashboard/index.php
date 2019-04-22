@@ -102,7 +102,7 @@
                         </div>
                         <div class="col">
                             <label>Fecha hasta</label>
-                            <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha">
+                            <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha">
                         </div>
                         <div class="col">
                             <label>Tipo</label>
@@ -264,7 +264,7 @@
             let ciudad = $("#filtro\\.ciudad option:selected").val();
             let lugar = $("#filtro\\.lugar option:selected").val();
             let desde = $("#filtro\\.fecha").val();
-            let hasta = $("#filtro\\.fecha").val();
+            let hasta = $("#filtro\\.fecha\\.hasta").val();
             let tipo = $("#filtro\\.tipo option:selected").val();
 
             let args = {
