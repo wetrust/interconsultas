@@ -105,17 +105,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Ciudad">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Lugar de control prenatal">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Profesional">
-                        </div>
-                    </div>
+                    <button class="btn btn-primary mr-3">Ver</button>
                     <?php if ($this->solicitudes_old) { ?>
                         <table class="table table-bordered mt-2">
                             <thead class="thead-dark">
