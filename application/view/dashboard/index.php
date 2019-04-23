@@ -297,7 +297,7 @@
                             response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>';
                         }
                         
-                        response += '<td>'+ data[i].solicitud_diagnostico +'</td><td><a class="btn btn-danger" href="' _URL + 'dashboard/delete/' + data[i].solicitud_id + '">Eliminar</a></td>';
+                        response += '<td>'+ data[i].solicitud_diagnostico +'</td><td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + data[i].solicitud_id + '">Eliminar</a></td>';
                         response += '</tr>';
                     }
 
