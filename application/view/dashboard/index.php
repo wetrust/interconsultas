@@ -288,16 +288,16 @@
                         response = '<tr><td>'+ data[i].solicitud_id +'</td><td>'+ data[i].solicitud_nombre +'</td><td>'+ data[i].solicitud_rut +'</td><td>'+ data[i].solicitud_fecha +'</td><td>'+ data[i].solicitud_diagnostico +'</td>';
                         
                         if (data[i].tipo == "1"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>';
                         } else if (data[i].tipo == "0"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>';
                         } else  if (data[i].tipo == "2"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>">Reenviar</a></td>
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>">Reenviar</a></td>';
                         } else  if (data[i].tipo == "3"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>';
                         }
                         
-                        response += '<td>'+ data[i].solicitud_diagnostico +'</td><td><a class="btn btn-danger" href="' _URL + 'dashboard/delete/' + data[i].solicitud_id + '">Eliminar</a></td>
+                        response += '<td>'+ data[i].solicitud_diagnostico +'</td><td><a class="btn btn-danger" href="' _URL + 'dashboard/delete/' + data[i].solicitud_id + '">Eliminar</a></td>';
                         response += '</tr>';
                     }
 
