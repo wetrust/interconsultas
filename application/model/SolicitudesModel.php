@@ -44,6 +44,8 @@ class SolicitudesModel
         $desde = strval($desde);
         $hasta = strval($hasta);
         $tipo = intval($tipo);
+        $sql = "";
+        $query = "";
 
         if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && $tipo == 8){
             //no filtra
