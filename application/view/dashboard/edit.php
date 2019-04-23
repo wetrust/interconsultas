@@ -132,7 +132,7 @@
             </div>
         </div>
     </div>
-    <div class="card mt-3">
+    <div class="card mt-3" id="respuesta">
         <div class="card-body">
             <h4 class="my-3">Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>
             <div class="row">
@@ -514,6 +514,11 @@
     </div>
     <script>
         $(document).ready(function () {
+
+            $('html,body').animate({
+                scrollTop: $("#respuesta").offset().top
+            }, 'slow');
+
             $("#multiproposito, #ginecologica, #segundotrimestre, #primertrimestre, input[name='respuesta_ecografista'], #interconsulta\\.respuesta\\.fecha, #interconsulta\\.respuesta\\.crecimiento").keydown(function(event){
                 if(event.keyCode == 13) {
                     event.preventDefault();
