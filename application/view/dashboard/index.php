@@ -122,7 +122,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nombre de paciente</th>
-                                    <th>ciudad</th>
+                                    <th>Ciudad</th>
                                     <th>Fecha</th>
                                     <th>Tipo de exámen</th>
                                     <th>Accion</th>
