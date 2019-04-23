@@ -135,7 +135,7 @@
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
                                     <td><?= htmlentities($value->solicitud_ciudad); ?></td>
-                                    <td><?= htmlentities($value->solicitud_fecha); ?></td>
+                                    <td><?= htmlentities($value->fecha); ?></td>
                                     <td><?php
                                         if ($value->tipo == "1"){
                                             $tipo = 'Eco Primer trimestre';
@@ -309,7 +309,7 @@
                             tipo = 'Eco Ginecológica';
                         }
 
-                        response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_ciudad +'</td><td>'+ value.solicitud_fecha +'</td><td>'+ tipo +'</td>';
+                        response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_ciudad +'</td><td>'+ value.fecha +'</td><td>'+ tipo +'</td>';
                         
                         if (value.tipo == "1"){
                             response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
