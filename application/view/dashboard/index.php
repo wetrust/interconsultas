@@ -329,7 +329,7 @@
                 let response = '<option value=""></option>';
                 $.each(data, function(i value) {
                     response = '<option value="' + value.solicitud_ciudad +'">' + value.solicitud_ciudad +'</option>';
-                })
+                });
                 $('#filtro\\.ciudad').append(response);
             }
         });
