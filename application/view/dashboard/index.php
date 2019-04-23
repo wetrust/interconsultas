@@ -327,7 +327,7 @@
             $('#filtro\\.ciudad').append('<option value="">No Seleccionado</option>');
             if (Object.keys(data).length > 0) {
                 let response = '<option value=""></option>';
-                $.each(data, function(i value) {
+                $.each(data, function(i, value) {
                     response = '<option value="' + value.solicitud_ciudad +'">' + value.solicitud_ciudad +'</option>';
                 });
                 $('#filtro\\.ciudad').append(response);
