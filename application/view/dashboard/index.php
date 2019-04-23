@@ -124,7 +124,7 @@
                                     <th>Nombre de paciente</th>
                                     <th>ciudad</th>
                                     <th>Fecha</th>
-                                    <th>Diagnóstico</th>
+                                    <th>Tipo</th>
                                     <th>Accion</th>
                                     <th>Eliminar</th>
                                 </tr>
