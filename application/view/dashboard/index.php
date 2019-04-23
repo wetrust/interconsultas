@@ -105,7 +105,7 @@
                             <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha">
                         </div>
                         <div class="col">
-                            <label>Tipo</label>
+                            <label>Tipo de exámen</label>
                             <select class="form-control" id="filtro.tipo">
                                 <option value="8">No Seleccionado</option>
                                 <option value="1">Eco Primer trimestre</option>
@@ -124,7 +124,7 @@
                                     <th>Nombre de paciente</th>
                                     <th>ciudad</th>
                                     <th>Fecha</th>
-                                    <th>Tipo</th>
+                                    <th>Tipo de exámen</th>
                                     <th>Accion</th>
                                     <th>Eliminar</th>
                                 </tr>
