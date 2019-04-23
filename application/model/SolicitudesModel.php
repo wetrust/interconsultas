@@ -53,7 +53,7 @@ class SolicitudesModel
             $query = $database->prepare($sql);
             $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
         }
-        else if (strlen($ciudad) < 0 && strlen($lugar) < 0 && strlen($desde) < 0 && strlen($hasta) < 0 && $tipo < 8){
+        else if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && $tipo < 8){
             //filtra por tipo
             $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND respuestas.tipo = :tipo";
             $query = $database->prepare($sql);
