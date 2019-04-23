@@ -284,24 +284,24 @@
                 let _URL = "<?= Config::get('URL') ?>";
                 if (Object.keys(data).length > 0) {
                     let response = '<option value=""></option>';
-                    for (let i = 0; i < data.length; i++) {
-                        response = '<tr><td>'+ data[i].solicitud_id +'</td><td>'+ data[i].solicitud_nombre +'</td><td>'+ data[i].solicitud_rut +'</td><td>'+ data[i].solicitud_fecha +'</td><td>'+ data[i].solicitud_diagnostico +'</td>';
+                    
+                    $.each(data, function(i, value) {
+                        response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_rut +'</td><td>'+ value.solicitud_fecha +'</td><td>'+ value.solicitud_diagnostico +'</td>';
                         
-                        if (data[i].tipo == "1"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>';
-                        } else if (data[i].tipo == "0"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>';
-                        } else  if (data[i].tipo == "2"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>">Reenviar</a></td>';
-                        } else  if (data[i].tipo == "3"){
-                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>';
+                        if (value.tipo == "1"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        } else if (value.tipo == "0"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        } else  if (value.tipo == "2"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>">Reenviar</a></td>';
+                        } else  if (value.tipo == "3"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
                         }
                         
-                        response += '<td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + data[i].solicitud_id + '">Eliminar</a></td>';
+                        response += '<td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + value.solicitud_id + '">Eliminar</a></td>';
                         response += '</tr>';
-                    }
-
-                    $('#tabla\\.resuelta').append(response);
+                        $('#tabla\\.resuelta').append(response);
+                    });                    
                 }
             });
         });
