@@ -129,7 +129,7 @@
                                     <th>Eliminar</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tabla.resuelta">
                                 <?php foreach($this->solicitudes_old as $key => $value) { ?>
                                 <tr>
                                     <td><?= $value->solicitud_id; ?></td>
@@ -145,6 +145,7 @@
                                     <td><a class="btn btn-primary mr-3" href="<?= Config::get('URL') . 'pdf/informe_segundotrimestre/' . $value->solicitud_id; ?>">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe="<?= $value->tipo; ?>" data-solicitud="<?= $value->solicitud_id; ?>">Reenviar</a></td>
                                     <?php } else if ($value->tipo == 3){ ?>
                                     <td><a class="btn btn-primary mr-3" href="<?= Config::get('URL') . 'pdf/informe_ginecologico/' . $value->solicitud_id; ?>">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe="<?= $value->tipo; ?>" data-solicitud="<?= $value->solicitud_id; ?>">Reenviar</a></td>
+
                                     <?php } ?>
                                     <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
                                 </tr>
@@ -276,15 +277,31 @@
                 hasta: hasta,
                 tipo: tipo
             }
+            
+            $('#tabla\\.resuelta').empty();
 
             $.post(_api  + 'filtro_resuelto', args).done(function(data){
+                let _URL = "<?= Config::get('URL') ?>";
                 if (Object.keys(data).length > 0) {
-                    if (data.result){
-                        alert("Enviado exitosamente");
+                    let response = '<option value=""></option>';
+                    for (let i = 0; i < data.length; i++) {
+                        response = '<tr><td>'+ data[i].solicitud_id +'</td><td>'+ data[i].solicitud_nombre +'</td><td>'+ data[i].solicitud_rut +'</td><td>'+ data[i].solicitud_fecha +'</td><td>'+ data[i].solicitud_diagnostico +'</td>';
+                        
+                        if (data[i].tipo == "1"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>
+                        } else if (data[i].tipo == "0"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>
+                        } else  if (data[i].tipo == "2"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>">Reenviar</a></td>
+                        } else  if (data[i].tipo == "3"){
+                            response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + data[i].solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ data[i].tipo +' data-solicitud=' + data[i].solicitud_id + '>Reenviar</a></td>
+                        }
+                        
+                        response += '<td>'+ data[i].solicitud_diagnostico +'</td><td><a class="btn btn-danger" href="' _URL + 'dashboard/delete/' + data[i].solicitud_id + '">Eliminar</a></td>
+                        response += '</tr>';
                     }
-                    else{
-                        alert("Hubo un error al enviar el correo");
-                    }
+
+                    $('#tabla\\.resuelta').append(response);
                 }
             });
         });
