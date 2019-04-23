@@ -121,8 +121,8 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Rut</th>
+                                    <th>Nombre de paciente</th>
+                                    <th>ciudad</th>
                                     <th>Fecha</th>
                                     <th>Diagnóstico</th>
                                     <th>Accion</th>
@@ -134,7 +134,7 @@
                                 <tr>
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
-                                    <td><?= htmlentities($value->solicitud_rut); ?></td>
+                                    <td><?= htmlentities($value->solicitud_ciudad); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
                                     <?php if ($value->tipo == 1){ ?>
@@ -286,7 +286,7 @@
                     let response = '<option value=""></option>';
                     
                     $.each(data, function(i, value) {
-                        response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_rut +'</td><td>'+ value.solicitud_fecha +'</td><td>'+ value.solicitud_diagnostico +'</td>';
+                        response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_ciudad +'</td><td>'+ value.solicitud_fecha +'</td><td>'+ value.solicitud_diagnostico +'</td>';
                         
                         if (value.tipo == "1"){
                             response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
