@@ -137,13 +137,13 @@
                                     <td><?= htmlentities($value->solicitud_ciudad); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
                                     <td><?php
-                                        if ($value.tipo == "1"){
+                                        if ($value->tipo == "1"){
                                             $tipo = 'Eco Primer trimestre';
-                                        } else if ($value.tipo == "0"){
+                                        } else if ($value->tipo == "0"){
                                             $tipo = 'Eco Doppler crecimiento';
-                                        } else  if ($value.tipo == "2"){
+                                        } else  if ($value->tipo == "2"){
                                             $tipo = 'Eco 2do / 3cer trimestre';
-                                        } else  if ($value.tipo == "3"){
+                                        } else  if ($value->tipo == "3"){
                                             $tipo = 'Eco Ginecológica';
                                         }
                                     
