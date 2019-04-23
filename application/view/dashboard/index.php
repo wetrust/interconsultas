@@ -136,7 +136,18 @@
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
                                     <td><?= htmlentities($value->solicitud_ciudad); ?></td>
                                     <td><?= htmlentities($value->solicitud_fecha); ?></td>
-                                    <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
+                                    <td><?php
+                                        if ($value.tipo == "1"){
+                                            $tipo = 'Eco Primer trimestre';
+                                        } else if ($value.tipo == "0"){
+                                            $tipo = 'Eco Doppler crecimiento';
+                                        } else  if ($value.tipo == "2"){
+                                            $tipo = 'Eco 2do / 3cer trimestre';
+                                        } else  if ($value.tipo == "3"){
+                                            $tipo = 'Eco Ginecológica';
+                                        }
+                                    
+                                    echo htmlentities($tipo); ?></td>
                                     <?php if ($value->tipo == 1){ ?>
                                     <td><a class="btn btn-primary mr-3" href="<?= Config::get('URL') . 'pdf/informe_primertrimestre/' . $value->solicitud_id; ?>">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe="<?= $value->tipo; ?>" data-solicitud="<?= $value->solicitud_id; ?>">Reenviar</a></td>
                                     <?php } else if ($value->tipo == 0){ ?>
@@ -286,7 +297,19 @@
                     let response = '<option value=""></option>';
                     
                     $.each(data, function(i, value) {
-                        response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_ciudad +'</td><td>'+ value.solicitud_fecha +'</td><td>'+ value.solicitud_diagnostico +'</td>';
+                        let tipo = "";
+
+                        if (value.tipo == "1"){
+                            tipo = 'Eco Primer trimestre';
+                        } else if (value.tipo == "0"){
+                            tipo = 'Eco Doppler crecimiento';
+                        } else  if (value.tipo == "2"){
+                            tipo = 'Eco 2do / 3cer trimestre';
+                        } else  if (value.tipo == "3"){
+                            tipo = 'Eco Ginecológica';
+                        }
+
+                        response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_ciudad +'</td><td>'+ value.solicitud_fecha +'</td><td>'+ tipo +'</td>';
                         
                         if (value.tipo == "1"){
                             response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
