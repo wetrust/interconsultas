@@ -113,12 +113,10 @@
                 </div>
                 <h4>Evaluación de solicitud ecográfica</h4>
                 <div class="row">
-                    <div class="col-6 form-group">
+                    <div class="col-4 form-group">
                         <label>Fecha</label>
                         <input type="date" class="form-control" name="evaluacion_fecha">
                     </div>
-                </div>
-                <div class="row">
                     <div class="col form-group">
                         <label for="interconsulta.comentario.respuesta"><strong>Comentario</strong></label>
                         <input type="text" class="form-control" name="comentario">
