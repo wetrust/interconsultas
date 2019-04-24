@@ -54,7 +54,7 @@
     $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Fecha de solicitud: '.$solicitud_fecha.'</td><td>FUM Operacional: '.$solicitud_fum.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Fecha de solicitud: '.$solicitud_fecha.'</td><td>FUR Referida: '.$solicitud_fum.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Diagnóstico de referencia: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td><td>Edad Gestacional solicitud: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
@@ -63,7 +63,7 @@
     $html = '<table><tbody><tr><td>Ciudad procedencia: '.htmlentities($this->solicitud->solicitud_ciudad).'</td><td>Lugar de control: '.htmlentities($this->solicitud->solicitud_lugar).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td style="background-color:#eceeef;">Profesional referente</td><td>'.htmlentities($this->solicitud->solicitud_profesional).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="background-color:#eceeef;">Profesional referente:</td><td>'.htmlentities($this->solicitud->solicitud_profesional).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td></td><td>Nombre: '.htmlentities($this->solicitud->solicitud_nombreprofesional).'</td></tr><tr><td></td><td>Email: '.htmlentities($this->solicitud->solicitud_email).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -115,7 +115,7 @@
     $_html = strip_tags($this->solicitud_resultado->comentariosexamen);
     $_html = str_replace("\n", "<br>", $_html);
 
-    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Comentarios y observaciones</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(8);
 
