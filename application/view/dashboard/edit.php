@@ -1126,7 +1126,7 @@
                     }
                 }
                 var FechaA = new Date($("#interconsulta\\.respuesta\\.fecha").val());
-                var eglcN = eglcN.toString().split('.');
+                var eglcN = eglcn.toString().split('.');
 
                 if (eglcN.length == 1){
                     eglcN = eglcN[0] * 7;
