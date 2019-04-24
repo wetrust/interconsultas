@@ -1136,9 +1136,9 @@
 
                 FechaA.setDate(FechaA.getDate() - eglcN);
 
-                $("input[name='respuesta_furop']").val(FechaA.toString());
+                $("input[name='respuesta_furop']").val(FechaA.getFullYear() + "-" + (FechaA.getMonth() +1) + "-" +FechaA.getDate());
                 FechaA.setDate(FechaA.getDate() + 240);
-                $("input[name='respuesta_fppactualizada']").val(FechaA.toString());
+                $("input[name='respuesta_fppactualizada']").val(FechaA.getFullYear() + "-" + (FechaA.getMonth() +1) + "-" +FechaA.getDate());
 
                 $("input[name='respuesta_lcn_eg_ver']").val(eglcn);
                 $("input[name='respuesta_lcn_eg']").val(eglcn);
