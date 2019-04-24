@@ -97,7 +97,7 @@
     $html = '<table><tbody><tr><td>Embrión: '. $this->respuesta_embrion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>LCN : '. $this->respuesta_lcn.'</td><td>Edad Gestacional según LCN: '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>LCN : '. $this->respuesta_lcn.'</td><td><strong>Edad Gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
 
@@ -121,10 +121,10 @@
     $fpplcn = explode("-", $fpplcn);
     $fpplcn = $fpplcn[2] . "-". $fpplcn[1]. "-". $fpplcn[0];
 
-    $html = '<table><tbody><tr><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td>FUR según LCN: '. $furlcn.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td><strong>FUR según LCN:</strong> '. $furlcn.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_primertrimestre.'</td><td>FPP según LCN: '. $fpplcn.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_primertrimestre.'</td><td><strong>FPP según LCN:</strong> '. $fpplcn.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Douglas: '. $this->respuesta_douglas_primertrimestre.'</td></tr></tbody></table>';
