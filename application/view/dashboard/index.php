@@ -135,7 +135,10 @@
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
                                     <td><?= htmlentities($value->solicitud_ciudad); ?></td>
-                                    <td><?= htmlentities($value->fecha); ?></td>
+                                    <td><?php
+                                        $laFecha = explode("-",$value->fecha);
+                                        echo htmlentities($laFecha[2] . "-". $laFecha[1]. "-". $laFecha[0]); 
+                                    ?></td>
                                     <td><?php
                                         if ($value->tipo == "1"){
                                             $tipo = 'Eco Primer trimestre';
