@@ -1129,9 +1129,9 @@
                 var eglcN = eglcn.toString().split('.');
 
                 if (eglcN.length == 1){
-                    eglcN = parseint(eglcN[0]) * 7;
+                    eglcN = parseInt(eglcN[0]) * 7;
                 }else if (eglcN.length == 2){
-                    eglcN = (parseint(eglcN[0]) * 7) + parseint(eglcN[1]);
+                    eglcN = (parseInt(eglcN[0]) * 7) + parseInt(eglcN[1]);
                 }
 
                 FechaA.setDate(FechaA.getDate() - eglcN);
