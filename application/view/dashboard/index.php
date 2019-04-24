@@ -30,7 +30,10 @@
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
                                     <td><?= htmlentities($value->solicitud_rut); ?></td>
-                                    <td><?= htmlentities($value->solicitud_fecha); ?></td>
+                                    <td><?php
+                                        $laFecha = explode("-",$value->solicitud_fecha);
+                                        echo htmlentities($laFecha[2] . "-". $laFecha[1]. "-". $laFecha[0]); 
+                                    ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
                                     <td><a href="<?= Config::get('URL') . 'dashboard/agendar/' . $value->solicitud_id; ?>">Agendar</a></td>
                                     <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
@@ -66,7 +69,10 @@
                                     <td><?= $value->solicitud_id; ?></td>
                                     <td><?= htmlentities($value->solicitud_nombre); ?></td>
                                     <td><?= htmlentities($value->solicitud_rut); ?></td>
-                                    <td><?= htmlentities($value->solicitud_fecha); ?></td>
+                                    <td><?php
+                                        $laFecha = explode("-",$value->solicitud_fecha);
+                                        echo htmlentities($laFecha[2] . "-". $laFecha[1]. "-". $laFecha[0]); 
+                                    ?></td>
                                     <td><?= htmlentities($value->solicitud_diagnostico); ?></td>
                                     <td><a href="<?= Config::get('URL') . 'dashboard/edit/' . $value->solicitud_id; ?>">Responder</a></td>
                                     <td><a class="btn btn-danger" href="<?= Config::get('URL') . 'dashboard/delete/' . $value->solicitud_id; ?>">Eliminar</a></td>
