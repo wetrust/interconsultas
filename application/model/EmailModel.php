@@ -62,22 +62,8 @@ class EmailModel
         $respuesta_fecha = $respuesta_fecha[2] . "-". $respuesta_fecha[1]. "-". $respuesta_fecha[0];
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
-         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
-         \n\nFecha evaluación interconsulta: " . $respuesta_fecha . 
-         "\nEdad Gestacional: " . $respuesta_eg . 
-         "\nPeso Fetal Estimado: " . $respuesta_pfe . ", Pct: " . $respuesta_pfe_percentil.
-         "\nIP Promedio de uterinas: " . $respuesta_uterinas . ", Pct: " . $respuesta_uterinas_percentil.
-         "\nIP Arteria Umbilical: " . $respuesta_umbilical . ", Pct: " . $respuesta_umbilical_percentil.
-         "\nIP Arteria Cerebral media: " . $respuesta_cm . ", Pct: " . $respuesta_cm_percentil.
-         "\nCuociente Cm / Au: " . $respuesta_cmau . ", Pct: " . $respuesta_cmau_percentil.
-         "\nHIPÓTESIS DIAGÓSTICA: " . 
-         "\nCrecimiento fetal: " . $respuesta_hipotesis . 
-         "\nFlujometría Doppler: " . $respuesta_doppler .
-         "\nLíquido amniótico: " . $respuesta_liquido .
-         "\nAnatomía fetal: " . $respuesta_anatomia .
-         "\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
-         "\nEcografista: " . $respuesta_ecografista ;
+         "Junto con saludar, reenviamos informe para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre;
     
         $mail = new Mail;
 
@@ -125,22 +111,8 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
-         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
-         \n\nFecha evaluación interconsulta: " . $respuesta_fecha . 
-         "\nEdad Gestacional: " . $respuesta_eg . 
-         "\nPeso Fetal Estimado: " . $respuesta_pfe . ", Pct: " . $respuesta_pfe_percentil.
-         "\nIP Promedio de uterinas: " . $respuesta_uterinas . ", Pct: " . $respuesta_uterinas_percentil.
-         "\nIP Arteria Umbilical: " . $respuesta_umbilical . ", Pct: " . $respuesta_umbilical_percentil.
-         "\nIP Arteria Cerebral media: " . $respuesta_cm . ", Pct: " . $respuesta_cm_percentil.
-         "\nCuociente Cm / Au: " . $respuesta_cmau . ", Pct: " . $respuesta_cmau_percentil.
-         "\nHIPÓTESIS DIAGÓSTICA: " . 
-         "\nCrecimiento fetal: " . $respuesta_hipotesis . 
-         "\nFlujometría Doppler: " . $respuesta_doppler .
-         "\nLíquido amniótico: " . $respuesta_liquido .
-         "\nAnatomía fetal: " . $respuesta_anatomia .
-         "\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
-         "\nEcografista: " . $respuesta_ecografista ;
+         "Junto con saludar, reenviamos informe para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre;
     
         $mail = new Mail;
 
@@ -188,19 +160,8 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
-         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
-         \n\nFecha evaluación interconsulta: " . $respuesta_fecha . 
-         "\nEdad Gestacional: " . $respuesta_eg . 
-         "\nUtero: " . $respuesta_utero_primertrimestre.
-         "\nSaco Gestacional: " . $respuesta_saco_gestacional .
-         "\nEmbrión: " . $respuesta_embrion .
-         "\nLCN: " . $respuesta_lcn .
-         "\nAnexo Izquierdo: " . $respuesta_anexo_izquierdo_primertrimestre .
-         "\nAnexo Derecho: " . $respuesta_anexo_derecho_primertrimestre . 
-         "\nDouglas: " . $respuesta_douglas_primertrimestre .
-         "\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
-         "\nEcografista: " . $respuesta_ecografista ;
+         "Junto con saludar, reenviamos informe para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre;
     
         $mail = new Mail;
 
@@ -225,20 +186,8 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
-         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
-         \n\nFecha evaluación interconsulta: " . $respuesta_fecha . 
-         "\nEdad Gestacional: " . $respuesta_eg . 
-         "\nPlacenta: " . $respuesta_placenta.
-         "\nLíquido amniótico: " . $respuesta_liquido_amniotico .
-         "\nDBP: " . $respuesta_dbp .
-         "\nCC: " . $respuesta_cc .
-         "\nCA: " . $respuesta_ca .
-         "\nLF: " . $respuesta_lf . 
-         "\nPFE: " . $respuesta_pfe .
-         "\nCC/CA: " . $respuesta_ccca .
-         "\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
-         "\nEcografista: " . $respuesta_ecografista ;
+         "Junto con saludar, reenviamos informe para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre;
     
         $mail = new Mail;
 
@@ -262,19 +211,9 @@ class EmailModel
 
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
 
-        $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, adjuntamos respuesta a su interconsulta ginecológica para la paciente: " . 
-         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
-         \n\nFecha evaluación interconsulta: " . $respuesta_fecha .  
-         "\nÚtero: " . $respuesta_utero_ginecologica.
-         "\nEndometrio: " . $respuesta_endometrio .
-         "\nAnexo Izquierdo: " . $respuesta_anexo_izquierdo_ginecologica .
-         "\nAnexo Derecho: " . $respuesta_anexo_derecho_ginecologica .
-         "\nOvario Izquierdo: " . $respuesta_ovario_izquierdo .
-         "\nOvario Derecho: " . $respuesta_ovario_derecho . 
-         "\nDouglas: " . $respuesta_douglas_ginecologica .
-         "\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
-         "\nEcografista: " . $respuesta_ecografista ;
+         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
+         "Junto con saludar, reenviamos informe para la paciente: " . 
+         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre;
     
         $mail = new Mail;
 
