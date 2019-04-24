@@ -481,11 +481,11 @@
                     </div>
                     <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">FUR Operacional</label>
-                        <input type="date" class="form-control" name="respuesta_furop" disabled>
+                        <input type="text" class="form-control" name="respuesta_furop" disabled>
                     </div>
                     <div class="col-3 form-group">
                         <label for="interconsulta.respuesta.ecografista">FPP actualizada</label>
-                        <input type="date" class="form-control" name="respuesta_fppactualizada" disabled>
+                        <input type="text" class="form-control" name="respuesta_fppactualizada" disabled>
                     </div>
                 </div>
                 <div class="row">
@@ -1138,7 +1138,7 @@
 
                 $("input[name='respuesta_furop']").val(FechaA.getDate() + "-" +(FechaA.getMonth() +1) + "-" + FechaA.getFullYear());
                 FechaA.setDate(FechaA.getDate() + 240);
-                $("input[name='respuesta_fppactualizada']").val(FechaA.getFullYear() + "-" + (FechaA.getMonth() +1) + "-" +FechaA.getDate());
+                $("input[name='respuesta_fppactualizada']").val(FechaA.getDate() + "-" +(FechaA.getMonth() +1) + "-" + FechaA.getFullYear());
 
                 $("input[name='respuesta_lcn_eg_ver']").val(eglcn);
                 $("input[name='respuesta_lcn_eg']").val(eglcn);
