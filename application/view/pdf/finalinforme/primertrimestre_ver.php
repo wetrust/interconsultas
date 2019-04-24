@@ -113,8 +113,9 @@
         $egXLCN = ($egXLCN[0] * 7) + $egXLCN[1];
     }
     
-    $furlcn = date("Y-m-d", strtotime("-". strval($egXLCN) . "day", $fExamen));
+    $furlcn = strtotime("-". strval($egXLCN) . "day", $fExamen);
     $fpplcn = date("Y-m-d", strtotime("+240 day", $furlcn));
+    $furlcn = date("Y-m-d", strtotime("-". strval($egXLCN) . "day", $fExamen));
     $furlcn = explode("-", $furlcn);
     $furlcn = $furlcn[2] . "-". $furlcn[1]. "-". $furlcn[0];
     $fpplcn = explode("-", $fpplcn);
