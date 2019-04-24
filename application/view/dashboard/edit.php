@@ -119,12 +119,10 @@
         <div class="card-body">
             <h4>Responder a esta solicitud de interconsulta</h4>
             <div class="row">
-                <div class="col form-group" id="jaja.papapa">
+                <div class="col-3 form-group" id="jaja.papapa">
                     <label for="interconsulta.para">Fecha</label>
                     <input type="text" disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta" value="<?php echo htmlentities($this->solicitud_evaluacion->evaluacion_fecha); ?>">
                 </div>
-            </div>
-            <div class="row">
                 <div class="col form-group">
                     <label for="interconsulta.comentario.respuesta">Comentario</label>
                     <textarea disabled class="form-control" name="comentario" id="interconsulta.comentario.respuesta"><?php echo strip_tags($this->solicitud_evaluacion->evaluacion_comentarios); ?></textarea>
