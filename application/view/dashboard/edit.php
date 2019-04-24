@@ -478,6 +478,18 @@
                 </div>
                 <div class="row">
                     <div class="col form-group">
+                    </div>
+                    <div class="col form-group">
+                        <label for="interconsulta.respuesta.ecografista">FUR Operacional</label>
+                        <input type="date" class="form-control" name="respuesta_furop" disabled>
+                    </div>
+                    <div class="col-3 form-group">
+                        <label for="interconsulta.respuesta.ecografista">FPP actualizada</label>
+                        <input type="date" class="form-control" name="respuesta_fppactualizada" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
                         <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label>
                         <input type="text" class="form-control" name="respuesta_anexo_izquierdo_primertrimestre">
                     </div>
@@ -585,7 +597,7 @@
             });
 
             $("input[name='respuesta_pfe_segundo']").on("change", function(){
-                
+
                 var eg = $("#interconsulta\\.respuesta\\.eg").val();
                 var pfe = $("input[name='respuesta_pfe_segundo']").val();
 
@@ -593,7 +605,6 @@
                 eg = eg.replace("semanas", "");
 
                 if (eg.length > 0){
-
                     eg =  parseFloat(eg).toFixed();
                     $("input[name='respuesta_pfe_pct_segundo']").val(pctpfeAdvanced(eg,pfe));
                     $("input[name='respuesta_pfe_pct_ver_segundo']").val(pctpfeAdvanced(eg,pfe));
@@ -1114,6 +1125,21 @@
                         i = 63;
                     }
                 }
+                var FechaA = new Date($("#interconsulta\\.respuesta\\.fecha").val());
+                var eglcN = eglcN.toString().split('.');
+
+                if (eglcN.length == 1){
+                    eglcN = eglcN[0] * 7;
+                }else if (eglcN.length == 2){
+                    eglcN = (eglcN[0] * 7) + eglcN[1];
+                }
+
+                FechaA.setDate(FechaA.getDate() - eglcN);
+
+                $("input[name='respuesta_furop']").val(FechaA.toString());
+                FechaA.setDate(FechaA.getDate() + 240);
+                $("input[name='respuesta_fppactualizada']").val(FechaA.toString());
+
                 $("input[name='respuesta_lcn_eg_ver']").val(eglcn);
                 $("input[name='respuesta_lcn_eg']").val(eglcn);
             } 
