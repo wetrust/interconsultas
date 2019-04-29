@@ -278,6 +278,7 @@
 
                     $.each(data, function(i, value) {
                         let tipo = "";
+                        let _URL = "<?= Config::get('URL') ?>";
 
                         if (value.tipo == "1"){
                             tipo = 'Eco Primer trimestre';
