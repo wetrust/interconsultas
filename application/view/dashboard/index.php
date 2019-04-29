@@ -243,7 +243,7 @@
     </div>
 </div>
 <div class="modal fade" id="expandir.informacion" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Solicitudes enviadas por este correo</h5>
@@ -302,7 +302,7 @@
                             tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
                         }
 
-                        tabla += '</td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + value.solicitud_id; +'">Eliminar</a></tr>';
+                        tabla += '<td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + value.solicitud_id; +'">Eliminar</a></tr>';
                     });
 
                     tabla += '</tbody></table>';
