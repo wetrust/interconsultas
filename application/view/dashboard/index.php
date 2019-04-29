@@ -271,10 +271,11 @@
 
             $.get(_api + 'dashboard/interconsultasEmail/' + correo).done(function(data){
                 $('#expandir\\.informacion\\.contenedor').empty();
-
-                var tabla = '<table class="table table-bordered mt-2"><thead class="thead-dark"><tr><th>#</th><th>Nombre de paciente</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th><th>Eliminar</th></tr></thead><tbody>';
                 
                 if (Object.keys(data).length > 0) {
+                    
+                    var tabla = '<table class="table table-bordered mt-2"><thead class="thead-dark"><tr><th>#</th><th>Nombre de paciente</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th><th>Eliminar</th></tr></thead><tbody>';
+
                     $.each(data, function(i, value) {
                         let tipo = "";
 
@@ -301,11 +302,12 @@
                         }
 
                         tabla += '</td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + value.solicitud_id; +'">Eliminar</a></tr>';
-                    }
+                    });
 
                     tabla += '</tbody></table>';
                     $('#expandir\\.informacion\\.contenedor').append(tabla);
                 }
+                
                 $("#expandir\\.informacion").modal("show");
             });                              
         });
