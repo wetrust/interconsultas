@@ -188,10 +188,10 @@
                                     <th>Emails</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tabla.correos.geniales">
                                 <?php foreach($this->profesionales as $key => $value) { ?>
                                 <tr>
-                                    <td><?= htmlentities($value->solicitud_email); ?></td>
+                                    <td data-email="<?= htmlentities($value->solicitud_email); ?>"><?= htmlentities($value->solicitud_email); ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -242,6 +242,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="expandir.informacion" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Solicitudes enviadas por este correo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="expandir.informacion.contenedor">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
 
@@ -249,6 +265,50 @@
         cargarCorreosProfesionales();
         cargarCiudad();
         cargarLugar();
+    
+        $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
+            var correo = $(this).data("email");
+
+            $.get(_api + 'dashboard/interconsultasEmail/' + correo).done(function(data){
+                $('#expandir\\.informacion\\.contenedor').empty();
+
+                var tabla = '<table class="table table-bordered mt-2"><thead class="thead-dark"><tr><th>#</th><th>Nombre de paciente</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th><th>Eliminar</th></tr></thead><tbody>';
+                
+                if (Object.keys(data).length > 0) {
+                    $.each(data, function(i, value) {
+                        let tipo = "";
+
+                        if (value.tipo == "1"){
+                            tipo = 'Eco Primer trimestre';
+                        } else if (value.tipo == "0"){
+                            tipo = 'Eco Doppler crecimiento';
+                        } else  if (value.tipo == "2"){
+                            tipo = 'Eco 2do / 3cer trimestre';
+                        } else  if (value.tipo == "3"){
+                            tipo = 'Eco Ginecológica';
+                        }
+
+                        tabla += '<tr><td>' + value.solicitud_id + '</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>' + tipo +'</td>';
+
+                        if (value.tipo == "1"){
+                            tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        } else if (value.tipo == "0"){
+                            tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        } else  if (value.tipo == "2"){
+                            tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        } else  if (value.tipo == "3"){
+                            tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        }
+
+                        tabla += '</td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + value.solicitud_id; +'">Eliminar</a></tr>';
+                    }
+
+                    tabla += '</tbody></table>';
+                    $('#expandir\\.informacion\\.contenedor').append(tabla);
+                }
+                $("#expandir\\.informacion").modal("show");
+            });                              
+        });
 
         $("#interfaz\\.enviar").on("click", function(){
             let selecciono = false;
