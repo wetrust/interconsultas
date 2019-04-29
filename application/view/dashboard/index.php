@@ -269,7 +269,7 @@
         $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
             var correo = $(this).data("email");
 
-            $.get(_api + 'dashboard/interconsultasEmail/' + correo).done(function(data){
+            $.get(_api + 'interconsultasEmail/' + correo).done(function(data){
                 $('#expandir\\.informacion\\.contenedor').empty();
                 
                 if (Object.keys(data).length > 0) {
@@ -307,7 +307,7 @@
                     tabla += '</tbody></table>';
                     $('#expandir\\.informacion\\.contenedor').append(tabla);
                 }
-                
+
                 $("#expandir\\.informacion").modal("show");
             });                              
         });
