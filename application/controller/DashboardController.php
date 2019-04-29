@@ -385,4 +385,8 @@ class DashboardController extends Controller
     public function lugar(){
         $this->View->renderJSON(SolicitudesModel::getAllLugar(Session::get('user_email')));
     }
+
+    public function interconsultasEmail($email){
+        $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesWhereSolicitante($email));
+    }
 }
