@@ -122,6 +122,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary my-3" id="filtro.accion">Filtrar datos</button>
+                    <button class="btn btn-danger my-3" id="filtro.borrar">Borrar filtros</button>
                     <?php if ($this->solicitudes_old) { ?>
                         <table class="table table-bordered mt-2">
                             <thead class="thead-dark">
