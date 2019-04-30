@@ -1,7 +1,8 @@
 $(document).ready(function(){
-    cargarCorreosProfesionales();
-    cargarCiudad();
-    cargarLugar();
+    loadNews();
+    //cargarCorreosProfesionales();
+    //cargarCiudad();
+    //cargarLugar();
 
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
         var correo = $(this).data("email");
@@ -185,4 +186,22 @@ function callModal(informe, solicitud){
     $("#exampleModal").data("solicitud", solicitud);
 
     $("#exampleModal").modal("show");
+}
+
+function loadNews(){
+    $.get('news').done(function(data){
+        $('#tabla\\.resultado').empty();
+        
+        if (Object.keys(data).length > 0) {
+            var tabla = '';
+
+            $.each(data, function(i, value) {
+
+                tabla += '<tr><td>' + value.solicitud_id + '</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + solicitud_diagnostico +'</td>';
+
+                tabla += '<td><btn class="btn btn-secondary">Ver</button></td></tr>';
+            });
+            $('#tabla.resultado').append(tabla);
+        }
+    });
 }

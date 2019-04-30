@@ -389,4 +389,8 @@ class DashboardController extends Controller
     public function interconsultasEmail($email){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesWhereSolicitante($email));
     }
+
+    public function news(){
+        $this->View->renderJSON(SolicitudesModel::getAllNewSolicitudes(Session::get('user_email')));
+    }
 }

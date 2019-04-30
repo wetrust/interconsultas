@@ -37,10 +37,10 @@
                     </label>
                 </div>
             </div>
-            <button type="button" class="btn btn-animado d-none">Ver Filtros</button>
+            <button type="button" class="btn btn-animado d-none" id="filtro.activar">Ver Filtros</button>
         </div>
     </div>
-    <div class="card my-2 shadow">
+    <div class="card my-2 shadow d-none" id="filtro.contenedor">
         <div class="card-body">
             <div class="row">
                 <div class="col">
