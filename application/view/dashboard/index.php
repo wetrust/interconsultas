@@ -1,7 +1,9 @@
 <div class="container">
     <h1 class="my-2">Administración de interconsultas</h1>
+    <?php $this->renderFeedbackMessages(); ?>
     <div class="card my-2 shadow">
-        <div class="card-body">
+        <div class="card-body d-flex flex-row">
+            <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
             <div class="btn-group-toggle" data-toggle="buttons">
                 <label class="btn btn-secondary active">
                     <input type="checkbox" checked autocomplete="off"> Nuevas
@@ -15,8 +17,25 @@
             </div>
         </div>
     </div>
-
-    <?php $this->renderFeedbackMessages(); ?>
+    <div class="card my-2 shadow">
+        <div class="card-body">
+            <table class="table table-bordered mt-2">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Rut</th>
+                        <th>Fecha</th>
+                        <th>Diagnóstico</th>
+                        <th>Accion</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Interconsultas nuevas</a></li>
         <li class="nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Interconsultas esperando evaluación</a></li>
