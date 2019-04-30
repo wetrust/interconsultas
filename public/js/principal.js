@@ -199,7 +199,7 @@ function loadNews(){
 
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
 
-                tabla += '<td><btn class="btn btn-secondary">Ver</button></td></tr>';
+                tabla += '<td><button class="btn btn-secondary">Ver</button></td></tr>';
             });
             $('#tabla\\.resultado').append(tabla);
         }
