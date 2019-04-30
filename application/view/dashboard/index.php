@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Administración de interconsultas</h1>
+    <h1 class="my-2">Administración de interconsultas</h1>
     <?php $this->renderFeedbackMessages(); ?>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Interconsultas nuevas</a></li>
