@@ -14,8 +14,8 @@
   54% { background-color: #A065AA; }
   66% { background-color: #EE4D7A; }
   77% { background-color: #EF4C45; }
-  89% { background-color: #F4792B; }
-  100% { background-color: #FAA634; }
+  89% { background-color: #F4792B;; color:#FFF;}
+  100% { background-color: #FAA634; color:#FFF;}
 }
 </style>
 <div class="container">
@@ -23,7 +23,7 @@
     <?php $this->renderFeedbackMessages(); ?>
     <div class="card my-2 shadow">
         <div class="card-body d-flex flex-row">
-            <div class="w-100">
+            <div class="w-100 d-flex flex-row">
                 <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
                 <div class="btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary active">
@@ -37,7 +37,7 @@
                     </label>
                 </div>
             </div>
-            <button type="button" class="btn btn-animado">Ver Filtros</button>
+            <button type="button" class="btn btn-animado d-none">Ver Filtros</button>
         </div>
     </div>
     <div class="card my-2 shadow">
