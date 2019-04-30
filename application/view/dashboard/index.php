@@ -83,7 +83,6 @@
                         <th>Fecha</th>
                         <th>Diagnóstico</th>
                         <th>Accion</th>
-                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody id="tabla.resultado">
