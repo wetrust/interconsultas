@@ -197,7 +197,7 @@ function loadNews(){
 
             $.each(data, function(i, value) {
 
-                tabla += '<tr><td>' + value.solicitud_id + '</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + solicitud_diagnostico +'</td>';
+                tabla += '<tr><td>' + value.solicitud_id + '</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
 
                 tabla += '<td><btn class="btn btn-secondary">Ver</button></td></tr>';
             });
