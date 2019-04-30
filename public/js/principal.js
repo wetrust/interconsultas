@@ -206,6 +206,7 @@ function loadNews(){
 
         $('#tabla\\.resultado tr > td > button').on("click", function(){
             let solicitud_id =  $(this).data("id");
+            $('#ver\\.interconsulta\\.contenedor').empty();
             $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="dashboard/agendar/'+ solicitud_id+'"></iframe>')
             $("#ver\\.interconsulta").modal("show");
         });
