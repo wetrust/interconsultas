@@ -260,7 +260,7 @@ function loadInProcess(){
                 let solicitud_id =  $(this).data("id");
                 $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
                 $("#ver\\.interconsulta").modal("hide");
-                loadNews();
+                loadInProcess();
             });
         });
     });
