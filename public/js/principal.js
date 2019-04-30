@@ -203,5 +203,9 @@ function loadNews(){
             });
             $('#tabla\\.resultado').append(tabla);
         }
+
+        $('#tabla\\.resultado tr > td > button').on("click", function(){
+            $("#ver\\.interconsulta").modal("show");
+        });
     });
 }

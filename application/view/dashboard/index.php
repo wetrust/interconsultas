@@ -27,13 +27,13 @@
                 <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
                 <div class="btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary active">
-                        <input type="checkbox" checked autocomplete="off"> Nuevas
+                        <input type="radio" checked autocomplete="off"> Nuevas
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" autocomplete="off"> En espera
+                        <input type="radio" autocomplete="off"> En espera
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" autocomplete="off"> Finalizadas
+                        <input type="radio" autocomplete="off"> Finalizadas
                     </label>
                 </div>
             </div>
@@ -343,6 +343,21 @@
             </div>
             <div class="modal-body" id="expandir.informacion.contenedor">
                 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Interconsulta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="expandir.informacion.contenedor">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
