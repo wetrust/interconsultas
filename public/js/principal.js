@@ -189,7 +189,7 @@ function callModal(informe, solicitud){
 }
 
 function loadNews(){
-    $.get('news').done(function(data){
+    $.get('dashboard/news').done(function(data){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
