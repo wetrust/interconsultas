@@ -213,7 +213,7 @@ function loadNews(){
             $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button>');
             $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                 let solicitud_id =  $(this).data("id");
-                $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete" + solicitud_id);
+                $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
                 $("#ver\\.interconsulta").modal("hide");
                 loadNews();
             });
