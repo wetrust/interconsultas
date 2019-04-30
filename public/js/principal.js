@@ -201,7 +201,7 @@ function loadNews(){
 
                 tabla += '<td><btn class="btn btn-secondary">Ver</button></td></tr>';
             });
-            $('#tabla.resultado').append(tabla);
+            $('#tabla\\.resultado').append(tabla);
         }
     });
 }
