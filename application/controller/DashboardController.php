@@ -20,7 +20,7 @@ class DashboardController extends Controller
 
     public function agendar($solicitud_id)
     {
-        $this->View->render('dashboard/agendar', array(
+        $this->View->renderWithoutHeaderAndFooter('dashboard/agendar', array(
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email'))
         ));
     }

@@ -199,12 +199,14 @@ function loadNews(){
 
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
 
-                tabla += '<td><button class="btn btn-secondary">Ver</button></td></tr>';
+                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
             $('#tabla\\.resultado').append(tabla);
         }
 
         $('#tabla\\.resultado tr > td > button').on("click", function(){
+            let solicitud_id =  $(this).data("id");
+            $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item" src="dashboard/agendar/'+ solicitud_id+'"></iframe>')
             $("#ver\\.interconsulta").modal("show");
         });
     });
