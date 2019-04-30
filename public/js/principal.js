@@ -4,7 +4,7 @@ $(document).ready(function(){
     //cargarCiudad();
     //cargarLugar();
 
-    $('input:radio[name=interconsultas]:checked').on("click", function(){
+    $('input:radio[name=interconsultas]').on("click", function(){
         let valor = parseInt($(this).val());
 
         if (valor == 1){
