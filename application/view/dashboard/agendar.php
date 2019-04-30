@@ -31,7 +31,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
     <h1 class="text-center">Agendar solicitud</h1>
     <?php $this->renderFeedbackMessages(); ?>
     <div class="card mt-1">
@@ -162,6 +161,5 @@
             <?php } ?>
         </div>
     </div>
-</div>
 </body>
 </html>
