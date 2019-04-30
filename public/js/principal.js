@@ -232,3 +232,36 @@ function loadNews(){
         });
     });
 }
+
+function loadInProcess(){
+    $.get('dashboard/process').done(function(data){
+        $('#tabla\\.resultado').empty();
+        
+        if (Object.keys(data).length > 0) {
+            var tabla = '';
+
+            $.each(data, function(i, value) {
+
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
+
+                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
+            });
+            $('#tabla\\.resultado').append(tabla);
+        }
+
+        $('#tabla\\.resultado tr > td > button').on("click", function(){
+            let solicitud_id =  $(this).data("id");
+            $('#ver\\.interconsulta\\.contenedor').empty();
+            $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="dashboard/edit/'+ solicitud_id+'"></iframe>')
+            $("#ver\\.interconsulta").modal("show");
+            $("#ver\\.interconsulta\\.eliminar").remove();
+            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button>');
+            $("#ver\\.interconsulta\\.eliminar").on("click", function(){
+                let solicitud_id =  $(this).data("id");
+                $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
+                $("#ver\\.interconsulta").modal("hide");
+                loadNews();
+            });
+        });
+    });
+}

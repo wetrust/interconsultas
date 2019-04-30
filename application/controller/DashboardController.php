@@ -393,4 +393,8 @@ class DashboardController extends Controller
     public function news(){
         $this->View->renderJSON(SolicitudesModel::getAllNewSolicitudes(Session::get('user_email')));
     }
+
+    public function process(){
+        $this->View->renderJSON(SolicitudesModel::getAllSolicitudes(Session::get('user_email')));
+    }
 }
