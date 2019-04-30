@@ -4,6 +4,18 @@ $(document).ready(function(){
     //cargarCiudad();
     //cargarLugar();
 
+    $('input:radio[name=interconsultas]:checked').on("click", function(){
+        let valor = parseInt($(this).val());
+
+        if (valor == 1){
+            loadNews();
+        }else if (valor == 2){
+
+        }else if (valor == 3){
+
+        }
+    });
+
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
         var correo = $(this).data("email");
 
