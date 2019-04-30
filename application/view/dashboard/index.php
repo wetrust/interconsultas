@@ -1,5 +1,21 @@
 <div class="container">
     <h1 class="my-2">Administración de interconsultas</h1>
+    <div class="card my-2 shadow">
+        <div class="card-body">
+            <div class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="checkbox" checked autocomplete="off"> Nuevas
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="checkbox" autocomplete="off"> En espera
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="checkbox" autocomplete="off"> Finalizadas
+                </label>
+            </div>
+        </div>
+    </div>
+
     <?php $this->renderFeedbackMessages(); ?>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Interconsultas nuevas</a></li>
