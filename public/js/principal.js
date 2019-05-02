@@ -60,7 +60,7 @@ $(document).ready(function(){
         $("#filtro\\.lugar").val("");
         $("#filtro\\.fecha").val("");
         $("#filtro\\.fecha\\.hasta").val("");
-        $("#filtro\\.tipo option:selected").val(0);
+        $("#filtro\\.tipo").val(0);
     });
 
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
