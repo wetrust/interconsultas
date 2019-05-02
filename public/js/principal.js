@@ -9,10 +9,13 @@ $(document).ready(function(){
 
         if (valor == 1){
             loadNews();
+            $("#filtro\\.activar").addClass("d-none");
         }else if (valor == 2){
             loadInProcess();
+            $("#filtro\\.activar").addClass("d-none");
         }else if (valor == 3){
             loadInFinish();
+            $("#filtro\\.activar").removeClass("d-none");
         }
     });
 
