@@ -31,6 +31,10 @@ $(document).ready(function(){
         }
     });
 
+    $("#filtro\\.borrar").on("click", function(){
+        loadInFinish();
+    });
+
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
         var correo = $(this).data("email");
 
