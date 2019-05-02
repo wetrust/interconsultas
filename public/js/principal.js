@@ -241,7 +241,7 @@ function loadInProcess(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
-            var tabla = '';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Rut</th><th>Fecha</th><th>Diagnóstico</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
 
@@ -249,6 +249,8 @@ function loadInProcess(){
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
+
+            tabla += '</tbody>';
             $('#tabla\\.resultado').append(tabla);
         }
 
@@ -274,14 +276,16 @@ function loadInFinish(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
-            var tabla = '';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Fecha</th><th>Diagnóstico</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
 
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
+
+            tabla += '</tbody>';
             $('#tabla\\.resultado').append(tabla);
         }
 

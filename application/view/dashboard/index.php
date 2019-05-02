@@ -85,8 +85,6 @@
                         <th>Accion</th>
                     </tr>
                 </thead>
-                <tbody id="tabla.resultado">
-                </tbody>
             </table>
         </div>
     </div>
