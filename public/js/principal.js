@@ -285,7 +285,7 @@ function loadInFinish(){
 
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
 
-                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
+                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Ver</button></td></tr>';
             });
 
             tabla += '</tbody>';
@@ -294,8 +294,20 @@ function loadInFinish(){
 
         $('#tabla\\.resultado tr > td > button').on("click", function(){
             let solicitud_id =  $(this).data("id");
+            let tipo =  $(this).data("tipo");
+            let url = '';
+            if (tipo == "1"){
+                url = 'pdf/informe_primertrimestre/';
+            } else if (tipo == "0"){
+                url = 'pdf/informe_dopplercrecimiento/';
+            } else  if (tipo == "2"){
+                url = 'pdf/informe_segundotrimestre/';
+            } else  if (tipo == "3"){
+                url = 'pdf/informe_ginecologico/';
+            }
+
             $('#ver\\.interconsulta\\.contenedor').empty();
-            $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="dashboard/ver/'+ solicitud_id+'"></iframe>')
+            $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
             $("#ver\\.interconsulta").modal("show");
             $("#ver\\.interconsulta\\.eliminar").remove();
             $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button>');
