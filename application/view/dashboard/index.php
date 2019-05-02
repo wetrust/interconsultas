@@ -75,7 +75,7 @@
     </div>
     <div class="card my-2 shadow">
         <div class="card-body">
-            <table class="table table-bordered mt-2">
+            <table class="table table-bordered mt-2" id="tabla.resultado">
                 <thead class="thead-dark">
                     <tr>
                         <th>Nombre</th>

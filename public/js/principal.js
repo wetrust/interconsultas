@@ -205,7 +205,7 @@ function loadNews(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
-            var tabla = '';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Rut</th><th>Fecha</th><th>Diagnóstico</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
 
@@ -213,6 +213,9 @@ function loadNews(){
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
+
+            tabla += '</tbody>';
+            
             $('#tabla\\.resultado').append(tabla);
         }
 
