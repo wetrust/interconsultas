@@ -12,7 +12,7 @@ $(document).ready(function(){
         }else if (valor == 2){
             loadInProcess();
         }else if (valor == 3){
-
+            loadInFinish();
         }
     });
 
