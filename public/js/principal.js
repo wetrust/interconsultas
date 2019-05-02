@@ -4,13 +4,13 @@ $(document).ready(function(){
     //cargarCiudad();
     //cargarLugar();
 
-    $('input:radio[name=interconsultas]').on("click", function(){
-        let valor = parseInt($(this).val());
+    $('.btn-group-toggle').on("click", function(){
+        let valor = parseInt($(this).find('input').val());
 
         if (valor == 1){
             loadNews();
         }else if (valor == 2){
-
+            loadInProcess();
         }else if (valor == 3){
 
         }
