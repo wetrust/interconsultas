@@ -294,8 +294,18 @@ function loadInFinish(){
             var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
+                let tipo = "";
+                if (value.tipo == "1"){
+                    tipo = 'Eco Primer trimestre';
+                } else if (value.tipo == "0"){
+                    tipo = 'Eco Doppler crecimiento';
+                } else  if (value.tipo == "2"){
+                    tipo = 'Eco 2do / 3cer trimestre';
+                } else  if (value.tipo == "3"){
+                    tipo = 'Eco Ginecológica';
+                }
 
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + tipo +'</td>';
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Ver</button></td></tr>';
             });
