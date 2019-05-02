@@ -4,7 +4,7 @@ $(document).ready(function(){
     //cargarCiudad();
     //cargarLugar();
 
-    $('.btn-group-toggle').on("click", function(){
+    $('.btn-group-toggle .btn').on("click", function(){
         let valor = parseInt($(this).find('input').val());
 
         if (valor == 1){
