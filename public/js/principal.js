@@ -18,7 +18,16 @@ $(document).ready(function(){
         }else if (valor == 3){
             loadInFinish();
             $("#filtro\\.activar").removeClass("d-none");
+        }
+    });
+
+    $("#filtro\\.activar").on("click", function(){
+        var toggle = $("#filtro\\.contenedor").hasClass("d-none");
+
+        if (toggle){
             $("#filtro\\.contenedor").removeClass("d-none");
+        }else{
+            $("#filtro\\.contenedor").addClass("d-none");
         }
     });
 
