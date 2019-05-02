@@ -41,7 +41,7 @@
             <div class="collapse navbar-collapse" id="navbarHome">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item <?php if (View::checkForActiveController($filename, "dashboard")) { echo 'active'; } ?>">
-                        <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="https://crecimientofetal.cl">Volver a crecimientofetal.cl</a>
                     </li>
                 </ul>
                 <?php if (Session::userIsLoggedIn()) { ?>
