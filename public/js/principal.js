@@ -1,8 +1,8 @@
 $(document).ready(function(){
     loadNews();
-    //cargarCorreosProfesionales();
-    //cargarCiudad();
-    //cargarLugar();
+    cargarCorreosProfesionales();
+    cargarCiudad();
+    cargarLugar();
 
     $('.btn-group-toggle .btn').on("click", function(){
         let valor = parseInt($(this).find('input').val());
