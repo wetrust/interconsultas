@@ -56,6 +56,11 @@ $(document).ready(function(){
 
     $("#filtro\\.borrar").on("click", function(){
         loadInFinish();
+        $("#filtro\\.ciudad").val(0);
+        $("#filtro\\.lugar").val(0);
+        $("#filtro\\.fecha").val();
+        $("#filtro\\.fecha\\.hasta").val();
+        $("#filtro\\.tipo option:selected").val(0);
     });
 
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
