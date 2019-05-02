@@ -31,6 +31,29 @@ $(document).ready(function(){
         }
     });
 
+    $("#filtro\\.accion").on("click", function(){
+
+        let ciudad = $("#filtro\\.ciudad option:selected").val();
+        let lugar = $("#filtro\\.lugar option:selected").val();
+        let desde = $("#filtro\\.fecha").val();
+        let hasta = $("#filtro\\.fecha\\.hasta").val();
+        let tipo = $("#filtro\\.tipo option:selected").val();
+
+        let args = {
+            ciudad: ciudad,
+            lugar: lugar,
+            desde: desde,
+            hasta: hasta,
+            tipo: tipo
+        }
+        
+        $('#tabla\\.resuelta').empty();
+
+        $.post(_api  + 'filtro_resuelto', args).done(function(data){
+            buildFinishTable(data);
+        });
+    });
+
     $("#filtro\\.borrar").on("click", function(){
         loadInFinish();
     });
@@ -113,60 +136,7 @@ $(document).ready(function(){
         callModal($(this).data("informe"), $(this).data("solicitud"));
     });
 
-    $("#filtro\\.accion").on("click", function(){
-
-        let ciudad = $("#filtro\\.ciudad option:selected").val();
-        let lugar = $("#filtro\\.lugar option:selected").val();
-        let desde = $("#filtro\\.fecha").val();
-        let hasta = $("#filtro\\.fecha\\.hasta").val();
-        let tipo = $("#filtro\\.tipo option:selected").val();
-
-        let args = {
-            ciudad: ciudad,
-            lugar: lugar,
-            desde: desde,
-            hasta: hasta,
-            tipo: tipo
-        }
-        
-        $('#tabla\\.resuelta').empty();
-
-        $.post(_api  + 'filtro_resuelto', args).done(function(data){
-            if (Object.keys(data).length > 0) {
-                let response = '<option value=""></option>';
-                
-                $.each(data, function(i, value) {
-                    let tipo = "";
-
-                    if (value.tipo == "1"){
-                        tipo = 'Eco Primer trimestre';
-                    } else if (value.tipo == "0"){
-                        tipo = 'Eco Doppler crecimiento';
-                    } else  if (value.tipo == "2"){
-                        tipo = 'Eco 2do / 3cer trimestre';
-                    } else  if (value.tipo == "3"){
-                        tipo = 'Eco Ginecológica';
-                    }
-
-                    response = '<tr><td>'+ value.solicitud_id +'</td><td>'+ value.solicitud_nombre +'</td><td>'+ value.solicitud_ciudad +'</td><td>'+ value.fecha +'</td><td>'+ tipo +'</td>';
-                    
-                    if (value.tipo == "1"){
-                        response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
-                    } else if (value.tipo == "0"){
-                        response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
-                    } else  if (value.tipo == "2"){
-                        response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
-                    } else  if (value.tipo == "3"){
-                        response += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
-                    }
-                    
-                    response += '<td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + value.solicitud_id + '">Eliminar</a></td>';
-                    response += '</tr>';
-                    $('#tabla\\.resuelta').append(response);
-                });                    
-            }
-        });
-    });
+    
 
 });
 
@@ -292,31 +262,35 @@ function loadInProcess(){
 
 function loadInFinish(){
     $.get('dashboard/finish').done(function(data){
-        $('#tabla\\.resultado').empty();
+        buildFinishTable(data);
+    });
+}
+
+function buildFinishTable(data){
+    $('#tabla\\.resultado').empty();
         
-        if (Object.keys(data).length > 0) {
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th></tr></thead><tbody>';
+    if (Object.keys(data).length > 0) {
+        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th></tr></thead><tbody>';
 
-            $.each(data, function(i, value) {
-                let tipo = "";
-                if (value.tipo == "1"){
-                    tipo = 'Eco Primer trimestre';
-                } else if (value.tipo == "0"){
-                    tipo = 'Eco Doppler crecimiento';
-                } else  if (value.tipo == "2"){
-                    tipo = 'Eco 2do / 3cer trimestre';
-                } else  if (value.tipo == "3"){
-                    tipo = 'Eco Ginecológica';
-                }
+        $.each(data, function(i, value) {
+            let tipo = "";
+            if (value.tipo == "1"){
+                tipo = 'Eco Primer trimestre';
+            } else if (value.tipo == "0"){
+                tipo = 'Eco Doppler crecimiento';
+            } else  if (value.tipo == "2"){
+                tipo = 'Eco 2do / 3cer trimestre';
+            } else  if (value.tipo == "3"){
+                tipo = 'Eco Ginecológica';
+            }
 
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + tipo +'</td>';
+            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + tipo +'</td>';
 
-                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Ver</button></td></tr>';
-            });
+            tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Ver</button></td></tr>';
+        });
 
-            tabla += '</tbody>';
-            $('#tabla\\.resultado').append(tabla);
-        }
+        tabla += '</tbody>';
+        $('#tabla\\.resultado').append(tabla);
 
         $('#tabla\\.resultado tr > td > button').on("click", function(){
             let solicitud_id =  $(this).data("id");
@@ -344,5 +318,5 @@ function loadInFinish(){
                 loadInProcess();
             });
         });
-    });
+    }
 }
