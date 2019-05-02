@@ -10,12 +10,15 @@ $(document).ready(function(){
         if (valor == 1){
             loadNews();
             $("#filtro\\.activar").addClass("d-none");
+            $("#filtro\\.contenedor").addClass("d-none");
         }else if (valor == 2){
             loadInProcess();
             $("#filtro\\.activar").addClass("d-none");
+            $("#filtro\\.contenedor").addClass("d-none");
         }else if (valor == 3){
             loadInFinish();
             $("#filtro\\.activar").removeClass("d-none");
+            $("#filtro\\.contenedor").removeClass("d-none");
         }
     });
 
@@ -279,7 +282,7 @@ function loadInFinish(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Fecha</th><th>Diagnóstico</th><th>Accion</th></tr></thead><tbody>';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
 
