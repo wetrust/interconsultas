@@ -227,7 +227,7 @@ function loadNews(){
                 else{
                     eg = "No";
                 }
-                $("#eg_conocida").val(eg);
+                $("#eg_precoz").val(eg);
                 let eco = data.solicitud_eco;
                 if (eco == "1"){
                     eco = "Si";
