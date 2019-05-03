@@ -118,6 +118,29 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg h-100" role="document">
+        <div class="modal-content  h-100">
+            <div class="modal-header">
+                <h5 class="modal-title">Interconsulta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="ver.interconsulta.contenedor">
+            </div>
+            <div class="modal-footer" id="ver.interconsulta.footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="expandir.informacion" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Solicitudes enviadas por este correo</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+            <div class="modal-body" id="expandir.informacion.contenedor"></div>
+            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -153,29 +176,6 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" id="interfaz.enviar">Enviar correo</button>
             </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg h-100" role="document">
-        <div class="modal-content  h-100">
-            <div class="modal-header">
-                <h5 class="modal-title">Interconsulta</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body" id="ver.interconsulta.contenedor">
-            </div>
-            <div class="modal-footer" id="ver.interconsulta.footer">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="expandir.informacion" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header"><h5 class="modal-title">Solicitudes enviadas por este correo</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-            <div class="modal-body" id="expandir.informacion.contenedor"></div>
-            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div>
         </div>
     </div>
 </div>
