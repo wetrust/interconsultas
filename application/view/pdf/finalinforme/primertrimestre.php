@@ -148,6 +148,7 @@
     $tmp = Config::get('PATH_AVATARS');
     if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
     $this->pdf->Output("$tmp/informe.pdf", "F");
+
     // $this->pdf->Output('Informe.pdf', 'I');
 
     //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
