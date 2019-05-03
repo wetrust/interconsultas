@@ -122,7 +122,7 @@
     <div class="modal-dialog modal-lg h-100" role="document">
         <div class="modal-content  h-100">
             <div class="modal-header">
-                <h5 class="modal-title">Interconsulta</h5>
+                <h5 class="modal-title" id="ver.interconsulta.titulo">Interconsulta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body" id="ver.interconsulta.contenedor">
