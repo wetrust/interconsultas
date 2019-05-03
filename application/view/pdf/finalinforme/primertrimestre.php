@@ -146,6 +146,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     $tmp = Config::get('PATH_AVATARS');
+    echo "$tmp/informe.pdf";
     if (file_exists("$tmp/informe.pdf")){
         echo unlink("$tmp/informe.pdf");
     } 
