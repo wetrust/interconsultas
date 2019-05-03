@@ -318,7 +318,7 @@ function buildFinishTable(data){
             });
 
             $("#ver\\.interconsulta\\.enviar").on("click", function(){
-                callModal($(this).data("informe"), $(this).data("solicitud"));
+                callModal($(this).data("informe"), $(this).data("id"));
             });
         });
     }
