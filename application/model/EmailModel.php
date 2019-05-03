@@ -247,6 +247,9 @@ class EmailModel
             return $response;
         }
 
+        $tmp = Config::get('PATH_AVATARS');
+        if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
+        
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
 
         //create PDF in temporal folder
