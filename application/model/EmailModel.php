@@ -249,11 +249,11 @@ class EmailModel
 
         $tmp = Config::get('PATH_AVATARS');
         if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
-        
+
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
 
         //create PDF in temporal folder
-        if($solicitud_id == 1){
+        if($informe == 1){
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -272,7 +272,7 @@ class EmailModel
                 'comentariosexamen' => $respuesta->comentariosexamen,
                 'respuesta_lcn_eg' => $respuesta->lcn_eg
             ));
-        } else if ($solicitud_id == 2){
+        } else if ($informe == 2){
     
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
@@ -299,7 +299,7 @@ class EmailModel
                 'respuesta_hipotesis_segundo' => $respuesta->hipotesis_segundo
             ));
     
-        } else if($solicitud_id == 3){
+        } else if($informe == 3){
     
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
             array(
@@ -318,7 +318,7 @@ class EmailModel
                 'comentariosexamen' => $respuesta->comentariosexamen
             ));
     
-        }else if($solicitud_id == 0){
+        }else if($informe == 0){
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
