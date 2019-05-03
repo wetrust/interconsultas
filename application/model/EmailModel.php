@@ -249,7 +249,7 @@ class EmailModel
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
 
-        print_r(SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')));
+        return SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email'));
         //create PDF in temporal folder
         if($solicitud_id == 1){
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
