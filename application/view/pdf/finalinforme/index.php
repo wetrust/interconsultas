@@ -129,6 +129,7 @@
     
     //para enviar por email
     $tmp = Config::get('PATH_AVATARS');
+    if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
     $this->pdf->Output("$tmp/informe.pdf", "F");
     /////////
 

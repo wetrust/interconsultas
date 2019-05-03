@@ -269,7 +269,6 @@ class EmailModel
                 'comentariosexamen' => $respuesta->comentariosexamen,
                 'respuesta_lcn_eg' => $respuesta->lcn_eg
             ));
-    
         } else if ($solicitud_id == 2){
     
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
