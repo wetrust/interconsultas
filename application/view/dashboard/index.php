@@ -26,13 +26,13 @@
             <div class="w-100 d-flex flex-row">
                 <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
                 <div class="btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
+                    <label id="interconsultas.estado.nuevas" class="btn btn-secondary active">
                         <input type="radio" value="1" name="interconsultas" checked autocomplete="off"> Nuevas
                     </label>
-                    <label class="btn btn-secondary">
+                    <label id="interconsultas.estado.espera" class="btn btn-secondary">
                         <input type="radio" value="2" name="interconsultas" autocomplete="off"> En espera
                     </label>
-                    <label class="btn btn-secondary">
+                    <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
                         <input type="radio" value="3" name="interconsultas" autocomplete="off"> Finalizadas
                     </label>
                 </div>

@@ -31,7 +31,6 @@ class DashboardController extends Controller
         EmailModel::sendPrimeraRespuesta($solicitud_id,$evaluacion_fecha, $comentario);
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
         //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
-        Redirect::to('dashboard');
     }
 
     public function save(){
