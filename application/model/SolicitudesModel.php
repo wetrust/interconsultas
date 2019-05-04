@@ -121,7 +121,7 @@ class SolicitudesModel
             //filtra por fecha y tipo
             $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND respuestas.tipo = :tipo AND respuestas.fecha between :fechauno AND :fechados";
             $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':fechauno' => $desde, ':fechados' => $hasta), ':tipo' => $tipo);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':fechauno' => $desde, ':fechados' => $hasta, ':tipo' => $tipo));
         }
         else if (strlen($ciudad) > 0 && strlen($lugar) < 0 && strlen($desde) > 0 && strlen($hasta) > 0 && $tipo < 8){
             //filtra por ciudad, fecha y tipo
