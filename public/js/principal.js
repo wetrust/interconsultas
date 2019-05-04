@@ -259,7 +259,7 @@ function loadNews(){
 
                 $.post('dashboard/editSave', dav).done(function(data){
                     $("#ver\\.interconsulta").modal("hide");
-                    $("#interconsultas\\.estado\\.espera").button('toggle');
+                    $("#interconsultas\\.estado\\.espera").button('toggle').trigger("click");
                 });
             });
 
