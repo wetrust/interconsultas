@@ -213,7 +213,7 @@ function loadNews(){
             $("#ver\\.interconsulta > div > div").removeClass("h-100");
             $("#ver\\.interconsulta\\.titulo").html("Datos de la interconsulta");
             $('#ver\\.interconsulta\\.contenedor').empty();
-            $('#ver\\.interconsulta\\.contenedor').append('<input type="hidden" name="solicitud_id" value=""/><div class="row"> <div class="col form-group"><label>Nombre del paciente:</label><input type="text" class="form-control" disabled id="solicitud_nombre"></div><div class="col form-group"><label>RUT del paciente:</label><input type="text" class="form-control" disabled id="solicitud_rut"></div><div class="col form-group"><label>Fecha de solicitud:</label><input type="text" class="form-control" disabled id="solicitud_fecha"></div></div><div class="row"> <div class="col form-group"><label>Ege conocida precozmente</label><input type="text" class="form-control" disabled id="eg_precoz"></div><div class="col form-group"><label>Ecografía previa de crecimiento</label><input type="text" class="form-control" disabled id="ecografia_previa"></div></div><div class="row"> <div class="col form-group"><label>FUM operacional</label><input type="date" class="form-control" disabled id="solicitud_fum"></div><div class="col form-group"><label>Edad Gestacional</label><input type="text" class="form-control" disabled id="solicitud_egestacional"></div></div><div class="row"> <div class="col form-group"><label>Diagnóstico de referencia</label><input type="text" class="form-control" disabled id="solicitud_diagnostico"></div></div><div class="row"> <div class="col form-group"><label>Ciudad procedencia de la paciente</label><input type="text" class="form-control" disabled id="solicitud_ciudad"></div><div class="col form-group"><label>Lugar de control prenatal</label><input type="text" class="form-control" disabled id="solicitud_lugar"></div></div><div class="row"> <div class="col form-group"><label>Datos del profesional referente</label><input type="text" class="form-control" disabled id="interconsulta_profesional"></div></div><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombreprofesional"></div><div class="col form-group"><label>Email (de trabajo):</label><input type="text" class="form-control" disabled id="solicitud_email"></div></div><h5><span class="badge badge-default p-2" for="interconsulta.profesional"><strong>Ecografista de contrarreferencia</strong></span></h5><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombre_referente"></div><div class="col form-group"><label>Email (contrareferencia)</label><input type="text" class="form-control" disabled id="solicitud_profesionalemail"></div></div><h4>Evaluación de solicitud ecográfica</h4><div class="row"> <div class="col-4 form-group"><label>Fecha</label><input type="date" class="form-control" id="evaluacion_fecha"></div><div class="col form-group"><label for="interconsulta.comentario.respuesta"><strong>Comentario</strong></label><input type="text" class="form-control" id="comentario"></div></div><button type="submit" class="btn btn-primary">Enviar respuesta</button>');
+            $('#ver\\.interconsulta\\.contenedor').append('<input type="hidden" name="solicitud_id" value=""/><div class="row"> <div class="col form-group"><label>Nombre del paciente:</label><input type="text" class="form-control" disabled id="solicitud_nombre"></div><div class="col form-group"><label>RUT del paciente:</label><input type="text" class="form-control" disabled id="solicitud_rut"></div><div class="col form-group"><label>Fecha de solicitud:</label><input type="text" class="form-control" disabled id="solicitud_fecha"></div></div><div class="row"> <div class="col form-group"><label>Ege conocida precozmente</label><input type="text" class="form-control" disabled id="eg_precoz"></div><div class="col form-group"><label>Ecografía previa de crecimiento</label><input type="text" class="form-control" disabled id="ecografia_previa"></div></div><div class="row"> <div class="col form-group"><label>FUM operacional</label><input type="date" class="form-control" disabled id="solicitud_fum"></div><div class="col form-group"><label>Edad Gestacional</label><input type="text" class="form-control" disabled id="solicitud_egestacional"></div></div><div class="row"> <div class="col form-group"><label>Diagnóstico de referencia</label><input type="text" class="form-control" disabled id="solicitud_diagnostico"></div></div><div class="row"> <div class="col form-group"><label>Ciudad procedencia de la paciente</label><input type="text" class="form-control" disabled id="solicitud_ciudad"></div><div class="col form-group"><label>Lugar de control prenatal</label><input type="text" class="form-control" disabled id="solicitud_lugar"></div></div><div class="row"> <div class="col form-group"><label>Datos del profesional referente</label><input type="text" class="form-control" disabled id="interconsulta_profesional"></div></div><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombreprofesional"></div><div class="col form-group"><label>Email (de trabajo):</label><input type="text" class="form-control" disabled id="solicitud_email"></div></div><h5><span class="badge badge-default p-2" for="interconsulta.profesional"><strong>Ecografista de contrarreferencia</strong></span></h5><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombre_referente"></div><div class="col form-group"><label>Email (contrareferencia)</label><input type="text" class="form-control" disabled id="solicitud_profesionalemail"></div></div><h4>Evaluación de solicitud ecográfica</h4><div class="row"> <div class="col-4 form-group"><label>Fecha</label><input type="date" class="form-control" id="evaluacion_fecha"></div><div class="col form-group"><label for="interconsulta.comentario.respuesta"><strong>Comentario</strong></label><input type="text" class="form-control" id="comentario"></div></div><button id="boton.interconsulta.enviar" class="btn btn-primary">Enviar respuesta</button>');
 
             $.get('dashboard/agendar/' + solicitud_id).done(function(data){
                 $("#solicitud_id").val(data.solicitud_id);
@@ -228,6 +228,7 @@ function loadNews(){
                     eg = "No";
                 }
                 $("#eg_precoz").val(eg);
+                
                 let eco = data.solicitud_eco;
                 if (eco == "1"){
                     eco = "Si";
@@ -235,6 +236,7 @@ function loadNews(){
                 else{
                     eco = "No";
                 }
+
                 $("#ecografia_previa").val(eco);
                 $("#solicitud_fum").val(data.solicitud_fum);
                 $("#solicitud_egestacional").val(data.solicitud_egestacional);
@@ -246,12 +248,21 @@ function loadNews(){
                 $("#solicitud_email").val(data.solicitud_email);
                 $("#solicitud_nombre_referente").val(data.solicitud_nombre_referente);
                 $("#solicitud_profesionalemail").val(data.solicitud_profesionalemail);
-
-                //interconsulta_profesional
-                //eg_precoz
-                //ecografia_previa
             });
             
+            $("#boton\\.interconsulta\\.enviar").on("click", function(){
+                let dav = {
+                    solicitud_id: $("#solicitud_id").val(),
+                    evaluacion_fecha: $("#evaluacion_fecha").val(),
+                    comentario: $("#comentario").val()
+                }
+
+                $.post('dashboard/editSave', dav).done(function(data){
+                    $("#ver\\.interconsulta").modal("hide");
+                    loadInProcess();
+                });
+            });
+
             $("#ver\\.interconsulta").modal("show");
             $("#ver\\.interconsulta\\.footer").empty();
             $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
