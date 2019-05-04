@@ -440,8 +440,24 @@ function loadInProcess(){
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     $("#editable").attr("rows", 3);
 
+                    $("#interconsulta\\.respuesta\\.uterinas").on("change", function(){
+                        var FExamen,FUM,EdadGestacional;
+                        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                        var ut = $("#interconsulta\\.respuesta\\.uterinas").val();
+        
+                        eg = String(eg);
+                        eg = eg.replace("semanas", "");
+        
+                        if (eg.length > 0){
+        
+                            eg =  parseFloat(eg).toFixed();
+                            $("#interconsulta\\.respuesta\\.uterinas\\.percentil").val(pctUtAdvanced(eg,ut));
+                            $("input[name='respuesta_uterinas_percentil']").val(pctUtAdvanced(eg,ut));
+                        }
+                    })
+        
                     $("#interconsulta\\.respuesta\\.pfe").on("change", function(){
-
+        
                         var eg = $("#interconsulta\\.respuesta\\.eg").val();
                         var pfe = $("#interconsulta\\.respuesta\\.pfe").val();
         
@@ -456,11 +472,105 @@ function loadInProcess(){
         
                         }
                     });
+        
+                    $("#interconsulta\\.respuesta\\.cm").on("change", function(){
+        
+                        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                        var acm = $("#interconsulta\\.respuesta\\.cm").val();
+        
+                        eg = String(eg);
+                        eg = eg.replace("semanas", "");
+        
+                        if (eg.length > 0){
+        
+                            eg =  parseFloat(eg).toFixed();
+                            $("#interconsulta\\.respuesta\\.cm\\.percentil").val(pctacmAdvanced(eg,acm));
+                            $("input[name='respuesta_cm_percentil']").val(pctacmAdvanced(eg,acm));
+        
+                        }
+        
+                        if (acm > 0){
+                            if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
+                                var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
+                                $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change");
+                                $("input[name='respuesta_cmau']").val(ccp.toFixed(2));
+                            }
+                        }
+                    });
+        
+                    $("#interconsulta\\.respuesta\\.umbilical").on("change", function(){
+        
+                        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                        var aumb = $("#interconsulta\\.respuesta\\.umbilical").val();
+        
+                        eg = String(eg);
+                        eg = eg.replace("semanas", "");
+        
+                        if (eg.length > 0){
+        
+                            eg =  parseFloat(eg).toFixed();
+                            $("#interconsulta\\.respuesta\\.umbilical\\.percentil").val(pctauAdvanced(eg,aumb));
+                            $("input[name='respuesta_umbilical_percentil']").val(pctauAdvanced(eg,aumb));
+        
+                        }
+        
+                        if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
+                            if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
+                                var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
+                                $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change"); 
+                                $("input[name='respuesta_cmau']").val(ccp.toFixed(2));                       
+                            }
+                        }
+                    });
+        
+                    $("#interconsulta\\.respuesta\\.cmau").on("change", function(){
+                        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                        var cmau = $("#interconsulta\\.respuesta\\.cmau").val();
+        
+                        eg = String(eg);
+                        eg = eg.replace("semanas", "");
+        
+                        if (eg.length > 0){
+        
+                            eg =  parseFloat(eg).toFixed();
+                            $("#interconsulta\\.respuesta\\.cmau\\.percentil").val(pctcmauAdvanced(eg,cmau));
+                            $("input[name='respuesta_cmau_percentil']").val(pctcmauAdvanced(eg,cmau));
+        
+                        }
+                    });
                 }
             });
 
             $("#enviar\\.respuesta\\.botton").on("click", function(){
-                $("#interconsulta\\.respuesta\\.crecimiento").attr("disabled", false);
+                var tpoexm = $('#interconsulta\\.respuesta\\.crecimiento').val();
+                var args = [];
+                if (tpoexm == 3){
+                    args = {
+                        solicitud_id: $("#solicitud_id").val(),
+                        solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                        respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                        respuesta_utero_ginecologica: $('input[name="respuesta_utero_ginecologica"]').val(),
+                        respuesta_anexo_izquierdo_ginecologica: $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
+                        respuesta_anexo_derecho_ginecologica: $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
+                        respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
+                        respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
+                        respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
+                        respuesta_comentariosexamen: $('input[name="respuesta_comentariosexamen"]').val(),
+                        respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
+                        respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
+                    }
+                } else if (tpoexm == 2){
+                
+                } else if (tpoexm == 1){
+                
+                } else {
+
+                }
+
+                $.post('dashboard/save', args).done(function(data){
+                    $("#ver\\.interconsulta").modal("hide");
+                    $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
+                });
             });
 
 
