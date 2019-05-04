@@ -330,6 +330,7 @@ function loadInProcess(){
 
                 $("#ecografia_previa").val(eco);
                 $("#solicitud_fum").val(data.solicitud_fum);
+                $('#interconsulta\\.fum\\.copia').val(data.solicitud_fum);
                 $("#solicitud_egestacional").val(data.solicitud_egestacional);
                 $("#solicitud_diagnostico").val(data.solicitud_diagnostico);
                 $("#solicitud_ciudad").val(data.solicitud_ciudad);
@@ -340,7 +341,12 @@ function loadInProcess(){
                 $("#solicitud_nombre_referente").val(data.solicitud_nombre_referente);
                 $("#solicitud_profesionalemail").val(data.solicitud_profesionalemail);
             });
-            
+
+            $.get('dashboard/edit/' + solicitud_id).done(function(data){
+                $("#evaluacion_fecha").val();
+                $("#evaluacion_comentarios").val();
+            });
+
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
                 if ($(this).val() == 4){
                     $("#multiproposito").remove();

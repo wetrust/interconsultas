@@ -286,10 +286,7 @@ class DashboardController extends Controller
 
     public function edit($solicitud_id)
     {
-        $this->View->render('dashboard/edit', array(
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
-            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id)
-        ));
+        $this->View->renderJSON(EvaluacionModel::getEvaluacion($solicitud_id));
     }
 
     public function ver($solicitud_id)
