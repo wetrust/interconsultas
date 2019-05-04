@@ -193,11 +193,11 @@ function loadNews(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Rut</th><th>Fecha</th><th>Diagnóstico</th><th>Accion</th></tr></thead><tbody>';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
 
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ value.solicitud_fecha +'</td>';
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
@@ -281,11 +281,11 @@ function loadInProcess(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Rut</th><th>Fecha</th><th>Diagnóstico</th><th>Accion</th></tr></thead><tbody>';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
 
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>'+ value.solicitud_fecha +'</td><td>' + value.solicitud_diagnostico +'</td>';
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>' + value.solicitud_fecha +'</td>';
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
@@ -751,7 +751,7 @@ function buildFinishTable(data){
     $('#tabla\\.resultado').empty();
         
     if (Object.keys(data).length > 0) {
-        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th></tr></thead><tbody>';
+        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Tipo de exámen</th><th>Realizado</th><th>Accion</th></tr></thead><tbody>';
 
         $.each(data, function(i, value) {
             let tipo = "";
@@ -765,7 +765,7 @@ function buildFinishTable(data){
                 tipo = 'Eco Ginecológica';
             }
 
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + tipo +'</td>';
+            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>'+ value.fecha +'</td>';
 
             tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Ver</button></td></tr>';
         });
