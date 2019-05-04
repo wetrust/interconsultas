@@ -365,6 +365,38 @@ function loadInProcess(){
                     $("#segundotrimestre").remove();
                     $("#primertrimestre").remove();
                     $("#editable").attr("rows", 3);
+
+                    $("#enviar\\.respuesta\\.botton").on("click", function(){
+                        var tpoexm = $('#interconsulta\\.respuesta\\.crecimiento').val();
+                        var args = [];
+                        if (tpoexm == 3){
+                            args = {
+                                solicitud_id: $("#solicitud_id").val(),
+                                solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                                respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                                respuesta_utero_ginecologica: $('input[name="respuesta_utero_ginecologica"]').val(),
+                                respuesta_anexo_izquierdo_ginecologica: $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
+                                respuesta_anexo_derecho_ginecologica: $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
+                                respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
+                                respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
+                                respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
+                                respuesta_comentariosexamen: $('input[name="respuesta_comentariosexamen"]').val(),
+                                respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
+                                respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
+                            }
+                        } else if (tpoexm == 2){
+                        
+                        } else if (tpoexm == 1){
+                        
+                        } else {
+        
+                        }
+        
+                        $.post('dashboard/save', args).done(function(data){
+                            $("#ver\\.interconsulta").modal("hide");
+                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
+                        });
+                    });
                 }
                 else if ($(this).val() == 2){
                     $("#final").remove();
