@@ -343,8 +343,8 @@ function loadInProcess(){
             });
 
             $.get('dashboard/edit/' + solicitud_id).done(function(data){
-                $("#evaluacion_fecha").val();
-                $("#evaluacion_comentarios").val();
+                $("#evaluacion_fecha").val(data.evaluacion_fecha);
+                $("#evaluacion_comentarios").val(data.evaluacion_comentarios);
             });
 
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
