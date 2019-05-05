@@ -863,6 +863,9 @@ function buildFinishTable(data){
                 url = 'pdf/informe_ginecologico/';
             }
 
+            $("#ver\\.interconsulta > div").addClass("h-100");
+            $("#ver\\.interconsulta > div > div").addClass("h-100");
+            $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
             $('#ver\\.interconsulta\\.contenedor').empty();
             $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
             $("#ver\\.interconsulta").modal("show");
