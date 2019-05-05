@@ -385,8 +385,8 @@ function loadInProcess(){
                             respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
                             respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
                             respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
-                            respuesta_comentariosexamen: $('input[name="respuesta_comentariosexamen"]').val(),
-                            respuesta_ecografista: $('#editable').val(),
+                            respuesta_comentariosexamen: $('#editable').val(),
+                            respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                             respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
                         }
         
