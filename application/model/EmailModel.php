@@ -133,7 +133,7 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, adjuntamos respuesta a su interconsulta ecográfica para la paciente: " . 
-         $solicitud->solicitud_rut ." ". $solicitud->solicitud_nombre . "
+         $solicitud->solicitud_nombre . ", RUT:  ". $solicitud->solicitud_rut ."
          \n\nCOMENTARIOS:\n " . html_entity_decode(strip_tags($respuesta_comentariosexamen)) .
          "\nEcografista: " . $respuesta_ecografista ;
     
