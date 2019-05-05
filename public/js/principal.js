@@ -1,3 +1,4 @@
+var nombreprofesionalPegar = "";
 $(document).ready(function(){
     loadNews();
     cargarCorreosProfesionales();
@@ -86,7 +87,10 @@ $(document).ready(function(){
                         tipo = 'Eco Ginecológica';
                     }
 
-                    tabla += '<tr><td>' + value.solicitud_id + '</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.fecha +'</td><td>' + tipo +'</td>';
+                    let fecha = value.solicitud_fecha.split('-');
+                    fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+
+                    tabla += '<tr><td>' + value.solicitud_id + '</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ fecha +'</td><td>' + tipo +'</td>';
 
                     if (value.tipo == "1"){
                         tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
@@ -197,7 +201,10 @@ function loadNews(){
 
             $.each(data, function(i, value) {
 
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ value.solicitud_fecha +'</td>';
+                let fecha = value.solicitud_fecha.split('-');
+                fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
@@ -285,7 +292,10 @@ function loadInProcess(){
 
             $.each(data, function(i, value) {
 
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>' + value.solicitud_fecha +'</td>';
+                let fecha = value.solicitud_fecha.split('-');
+                fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>' + fecha +'</td>';
 
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
@@ -340,6 +350,9 @@ function loadInProcess(){
                 $("#solicitud_email").val(data.solicitud_email);
                 $("#solicitud_nombre_referente").val(data.solicitud_nombre_referente);
                 $("#solicitud_profesionalemail").val(data.solicitud_profesionalemail);
+
+                nombreprofesionalPegar = data.solicitud_nombre_referente;
+                $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
             });
 
             $.get('dashboard/edit/' + solicitud_id).done(function(data){
@@ -357,6 +370,8 @@ function loadInProcess(){
                     $("#segundotrimestre").remove();
                     $("#primertrimestre").remove();
                     $("#editable").attr("rows", 3);
+
+                    $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
 
                     $("#enviar\\.respuesta\\.botton").on("click", function(){
                         var args = {
@@ -389,6 +404,7 @@ function loadInProcess(){
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     $("#primertrimestre").remove();
                     $("#editable").attr("rows", 3);
+                    $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
 
                     $("input[name='respuesta_cc']").on("change", function(){
                         psohdlk();
@@ -467,7 +483,7 @@ function loadInProcess(){
                     $("input[name='respuesta_lcn']").on("change", function(){
                         eglcn();
                     });
-
+                    $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
                     $("#segundotrimestre").remove();
                     $("#multiproposito").remove();
                     $("#ginecologica").remove();
@@ -507,7 +523,7 @@ function loadInProcess(){
                     $("#primertrimestre").remove();
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     $("#editable").attr("rows", 3);
-
+                    $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
                     $("#interconsulta\\.respuesta\\.uterinas").on("change", function(){
                         var eg = $("#interconsulta\\.respuesta\\.eg").val();
                         var ut = $("#interconsulta\\.respuesta\\.uterinas").val();
@@ -803,7 +819,7 @@ function loadInProcess(){
 
                 }
             });
-            
+            $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
             $("#ver\\.interconsulta").modal("show");
             $("#ver\\.interconsulta\\.footer").empty();
             $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
@@ -841,7 +857,10 @@ function buildFinishTable(data){
                 tipo = 'Eco Ginecológica';
             }
 
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>'+ value.fecha +'</td>';
+            let fecha = value.fecha.split('-');
+            fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+
+            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>'+ fecha +'</td>';
 
             tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Ver</button></td></tr>';
         });
