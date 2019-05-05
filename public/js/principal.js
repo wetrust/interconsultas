@@ -437,7 +437,7 @@ function loadInProcess(){
                             respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
                             respuesta_eg: $('input[name="respuesta_eg"]').val(),
                             respuesta_placenta: $('input[name="respuesta_placenta"]').val(),
-                            respuesta_liquido_amniotico: $('input[name="respuesta_liquido_amniotico"] option:selected').val(),
+                            respuesta_liquido_amniotico: $('select[name="respuesta_liquido_amniotico"] option:selected').val(),
                             respuesta_dbp: $('input[name="respuesta_dbp"]').val(),
                             respuesta_cc: $('input[name="respuesta_cc"]').val(),
                             respuesta_ca: $('input[name="respuesta_ca"]').val(),
@@ -612,14 +612,14 @@ function loadInProcess(){
 
                         var args = {
                             solicitud_id: $("#solicitud_id").val(),
-                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento").val(),
+                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
                             respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
                             respuesta_eg: $('input[name="respuesta_eg"]').val(),
                             respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
                             respuesta_pfe_percentil: $('input[name="respuesta_pfe_percentil"]').val(),
-                            respuesta_liquido: $('input[name="respuesta_liquido"]').val(),
-                            respuesta_presentacion: $('input[name="respuesta_presentacion"]').val(),
-                            respuesta_dorso: $('input[name="respuesta_dorso"]').val(),
+                            respuesta_liquido: $('select[name="respuesta_liquido"] option:selected').val(),
+                            respuesta_presentacion: $('select[name="respuesta_presentacion"] option:selected').val(),
+                            respuesta_dorso: $('select[name="respuesta_dorso"] option:selected').val(),
                             respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
                             respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_percentil"]').val(),
                             respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
@@ -628,8 +628,8 @@ function loadInProcess(){
                             respuesta_cm_percentil: $('input[name="respuesta_cm_percentil"]').val(),
                             respuesta_cmau: $('input[name="respuesta_cmau"]').val(),
                             respuesta_cmau_percentil: $('input[name="respuesta_cmau_percentil"]').val(),
-                            respuesta_hipotesis: $('input[name="respuesta_hipotesis"]').val(),
-                            respuesta_doppler: $('input[name="respuesta_doppler"]').val(),
+                            respuesta_hipotesis: $('select[name="respuesta_hipotesis"] option:selected').val(),
+                            respuesta_doppler: $('select[name="respuesta_doppler"] option:selected').val(),
                             respuesta_anatomia: anatomia,
                             respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
@@ -644,29 +644,35 @@ function loadInProcess(){
             });
 
             $("#enviar\\.respuesta\\.botton").on("click", function(){
-                var tpoexm = $('#interconsulta\\.respuesta\\.crecimiento').val();
-                var args = [];
-                if (tpoexm == 3){
-                    args = {
-                        solicitud_id: $("#solicitud_id").val(),
-                        solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
-                        respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
-                        respuesta_utero_ginecologica: $('input[name="respuesta_utero_ginecologica"]').val(),
-                        respuesta_anexo_izquierdo_ginecologica: $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
-                        respuesta_anexo_derecho_ginecologica: $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
-                        respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
-                        respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
-                        respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
-                        respuesta_comentariosexamen: $('input[name="respuesta_comentariosexamen"]').val(),
-                        respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
-                        respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
-                    }
-                } else if (tpoexm == 2){
-                
-                } else if (tpoexm == 1){
-                
-                } else {
+                var anatomia = [];
 
+                $.each($('input[name="respuesta_anatomia"] option:selected'), function(){
+                    anatomia.push($(this).val());
+                });
+
+                var args = {
+                    solicitud_id: $("#solicitud_id").val(),
+                    solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                    respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                    respuesta_eg: $('input[name="respuesta_eg"]').val(),
+                    respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
+                    respuesta_pfe_percentil: $('input[name="respuesta_pfe_percentil"]').val(),
+                    respuesta_liquido: $('select[name="respuesta_liquido"] option:selected').val(),
+                    respuesta_presentacion: $('select[name="respuesta_presentacion"] option:selected').val(),
+                    respuesta_dorso: $('select[name="respuesta_dorso"] option:selected').val(),
+                    respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
+                    respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_percentil"]').val(),
+                    respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
+                    respuesta_umbilical_percentil: $('input[name="respuesta_umbilical_percentil"]').val(),
+                    respuesta_cm: $('input[name="respuesta_cm"]').val(),
+                    respuesta_cm_percentil: $('input[name="respuesta_cm_percentil"]').val(),
+                    respuesta_cmau: $('input[name="respuesta_cmau"]').val(),
+                    respuesta_cmau_percentil: $('input[name="respuesta_cmau_percentil"]').val(),
+                    respuesta_hipotesis: $('select[name="respuesta_hipotesis"] option:selected').val(),
+                    respuesta_doppler: $('select[name="respuesta_doppler"] option:selected').val(),
+                    respuesta_anatomia: anatomia,
+                    respuesta_comentariosexamen: $('#editable').val(),
+                    respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                 }
 
                 $.post('dashboard/save', args).done(function(data){
