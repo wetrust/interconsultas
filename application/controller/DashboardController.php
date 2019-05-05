@@ -358,7 +358,7 @@ class DashboardController extends Controller
     }
 
     public function profesionales_email(){
-        $this->View->renderJSON(SolicitudesModel::getAllProfesionales(Session::get('user_email')));
+        $this->View->renderJSON(SolicitudesModel::getAllProfesionales(Session::get('user_email'));
     }
 
     public function email_manual(){

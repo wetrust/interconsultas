@@ -148,10 +148,11 @@ function cargarCorreosProfesionales(){
         $('#interfaz\\.email').empty();
         if (Object.keys(data).length > 0) {
             let response = '<option value=""></option>';
-            for (let i = 0; i < data.length; i++) {
+
+            $.each(data, function(i, value) {
                 response = '<option value="' + data[i].solicitud_email +'">' + data[i].solicitud_email +'</option>';
-            }
-            $('#interfaz\\.email').append(response);
+                $('#interfaz\\.email').append(response);
+            });
         }
     });
 }

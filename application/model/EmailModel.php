@@ -63,7 +63,7 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, reenviamos informe de paciente: " . 
-         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
+         $solicitud->solicitud_nombre . "\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -161,7 +161,7 @@ class EmailModel
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, reenviamos informe de paciente: " . 
-         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
+         $solicitud->solicitud_nombre . "\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -187,7 +187,7 @@ class EmailModel
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, reenviamos informe de paciente: " . 
-         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
+         $solicitud->solicitud_nombre . "\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -213,7 +213,7 @@ class EmailModel
 
          $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, reenviamos informe de paciente: " . 
-         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
+         $solicitud->solicitud_nombre . "\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -332,7 +332,7 @@ class EmailModel
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
          "Junto con saludar, reenviamos informe de paciente: " . 
-         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
+         $solicitud->solicitud_nombre . "\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
