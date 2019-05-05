@@ -62,8 +62,8 @@ class EmailModel
         $respuesta_fecha = $respuesta_fecha[2] . "-". $respuesta_fecha[1]. "-". $respuesta_fecha[0];
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, reenviamos informe de la paciente: " . 
-         $solicitud->solicitud_nombre . ", RUT " .$solicitud->solicitud_rut ;
+         "Junto con saludar, reenviamos informe de paciente: " . 
+         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -160,8 +160,8 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, reenviamos informe de la paciente: " . 
-         $solicitud->solicitud_nombre . ", RUT " .$solicitud->solicitud_rut ;
+         "Junto con saludar, reenviamos informe de paciente: " . 
+         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -186,8 +186,8 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, reenviamos informe de la paciente: " . 
-         $solicitud->solicitud_nombre . ", RUT " .$solicitud->solicitud_rut ;
+         "Junto con saludar, reenviamos informe de paciente: " . 
+         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -212,8 +212,8 @@ class EmailModel
         $respuesta_comentariosexamen = str_replace("&nbsp;", " ", $respuesta_comentariosexamen);
 
          $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, reenviamos informe de la paciente: " . 
-         $solicitud->solicitud_nombre . ", RUT " .$solicitud->solicitud_rut ;
+         "Junto con saludar, reenviamos informe de paciente: " . 
+         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
@@ -331,8 +331,8 @@ class EmailModel
         $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
 
         $body = "Estimado(a) ". $solicitud->solicitud_nombreprofesional . "\n\n" .
-         "Junto con saludar, reenviamos informe de la paciente: " . 
-         $solicitud->solicitud_nombre . ", RUT " .$solicitud->solicitud_rut ;
+         "Junto con saludar, reenviamos informe de paciente: " . 
+         $solicitud->solicitud_nombre . "\n\n RUT (DNI): " .$solicitud->solicitud_rut ;
     
         $mail = new Mail;
 
