@@ -348,15 +348,7 @@ function loadInProcess(){
             });
 
             $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
-                if ($(this).val() == 4){
-                    $("#multiproposito").remove();
-                    $("#ginecologica").remove();
-                    $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
-                    $("#segundotrimestre").remove();
-                    $("#primertrimestre").remove();
-                    $("#editable").attr("rows", 10);
-                }
-                else if ($(this).val() == 3){
+                if ($(this).val() == 3){
                     $("#multiproposito").remove();
                     $("#final").remove();
                     $("#ver\\.interconsulta\\.contenedor").append('<div id="ginecologica"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Útero</label> <input type="text" class="form-control" name="respuesta_utero_ginecologica"> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Endometrio</label> <input type="text" class="form-control" name="respuesta_endometrio"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label> <input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label> <input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Ovario Izquierdo</label> <input type="text" class="form-control" name="respuesta_ovario_izquierdo"> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Ovario Derecho</label> <input type="text" class="form-control" name="respuesta_ovario_derecho"> </div></div><div class="row"> <div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista">Douglas</label> <input type="text" class="form-control" name="respuesta_douglas_ginecologica"> </div></div></div>');
@@ -367,29 +359,19 @@ function loadInProcess(){
                     $("#editable").attr("rows", 3);
 
                     $("#enviar\\.respuesta\\.botton").on("click", function(){
-                        var tpoexm = $('#interconsulta\\.respuesta\\.crecimiento').val();
-                        var args = [];
-                        if (tpoexm == 3){
-                            args = {
-                                solicitud_id: $("#solicitud_id").val(),
-                                solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
-                                respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
-                                respuesta_utero_ginecologica: $('input[name="respuesta_utero_ginecologica"]').val(),
-                                respuesta_anexo_izquierdo_ginecologica: $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
-                                respuesta_anexo_derecho_ginecologica: $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
-                                respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
-                                respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
-                                respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
-                                respuesta_comentariosexamen: $('input[name="respuesta_comentariosexamen"]').val(),
-                                respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
-                                respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
-                            }
-                        } else if (tpoexm == 2){
-                        
-                        } else if (tpoexm == 1){
-                        
-                        } else {
-        
+                        var args = {
+                            solicitud_id: $("#solicitud_id").val(),
+                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                            respuesta_utero_ginecologica: $('input[name="respuesta_utero_ginecologica"]').val(),
+                            respuesta_anexo_izquierdo_ginecologica: $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
+                            respuesta_anexo_derecho_ginecologica: $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
+                            respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
+                            respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
+                            respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
+                            respuesta_comentariosexamen: $('input[name="respuesta_comentariosexamen"]').val(),
+                            respuesta_ecografista: $('#editable').val(),
+                            respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
                         }
         
                         $.post('dashboard/save', args).done(function(data){
@@ -447,6 +429,36 @@ function loadInProcess(){
                             $("input[name='respuesta_ccca_pct_ver']").val(pctcccaAdvanced(eg,ccca));
                         }
                     });
+
+                    $("#enviar\\.respuesta\\.botton").on("click", function(){
+                        var args = {
+                            solicitud_id: $("#solicitud_id").val(),
+                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                            respuesta_eg: $('input[name="respuesta_eg"]').val(),
+                            respuesta_placenta: $('input[name="respuesta_placenta"]').val(),
+                            respuesta_liquido_amniotico: $('input[name="respuesta_liquido_amniotico"] option:selected').val(),
+                            respuesta_dbp: $('input[name="respuesta_dbp"]').val(),
+                            respuesta_cc: $('input[name="respuesta_cc"]').val(),
+                            respuesta_ca: $('input[name="respuesta_ca"]').val(),
+                            respuesta_lf: $('input[name="respuesta_lf"]').val(),
+                            respuesta_pfe_segundo: $('input[name="respuesta_pfe_segundo"]').val(),
+                            respuesta_ccca: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_presentacion_segundo: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_dorso_segundo: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_anatomia_segundo: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_pfe_pct_segundo: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_ccca_pct: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_hipotesis_segundo: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_comentariosexamen: $('#editable').val(),
+                            respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
+                        }
+        
+                        $.post('dashboard/save', args).done(function(data){
+                            $("#ver\\.interconsulta").modal("hide");
+                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
+                        });
+                    });
                 }
                 else if ($(this).val() == 1){
                     $("#final").remove();
@@ -461,6 +473,30 @@ function loadInProcess(){
                     $("#ginecologica").remove();
                     $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     $("#editable").attr("rows", 3);
+
+                    $("#enviar\\.respuesta\\.botton").on("click", function(){
+                        var args = {
+                            solicitud_id: $("#solicitud_id").val(),
+                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                            respuesta_eg: $('input[name="respuesta_eg"]').val(),
+                            respuesta_utero_primertrimestre: $('input[name="respuesta_utero_primertrimestre"]').val(),
+                            respuesta_saco_gestacional: $('input[name="respuesta_saco_gestacional"]').val(),
+                            respuesta_embrion: $('input[name="respuesta_embrion"]').val(),
+                            respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
+                            respuesta_anexo_izquierdo_primertrimestre: $('input[name="respuesta_anexo_izquierdo_primertrimestre"]').val(),
+                            respuesta_anexo_derecho_primertrimestre: $('input[name="respuesta_anexo_derecho_primertrimestre"]').val(),
+                            respuesta_douglas_primertrimestre: $('input[name="respuesta_douglas_primertrimestre"]').val(),
+                            respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
+                            respuesta_comentariosexamen: $('#editable').val(),
+                            respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
+                        }
+
+                        $.post('dashboard/save', args).done(function(data){
+                            $("#ver\\.interconsulta").modal("hide");
+                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
+                        });
+                    });
                 }
                 else{
                     $("#final").remove();
@@ -473,7 +509,6 @@ function loadInProcess(){
                     $("#editable").attr("rows", 3);
 
                     $("#interconsulta\\.respuesta\\.uterinas").on("change", function(){
-                        var FExamen,FUM,EdadGestacional;
                         var eg = $("#interconsulta\\.respuesta\\.eg").val();
                         var ut = $("#interconsulta\\.respuesta\\.uterinas").val();
         
@@ -489,7 +524,6 @@ function loadInProcess(){
                     })
         
                     $("#interconsulta\\.respuesta\\.pfe").on("change", function(){
-        
                         var eg = $("#interconsulta\\.respuesta\\.eg").val();
                         var pfe = $("#interconsulta\\.respuesta\\.pfe").val();
         
@@ -506,7 +540,6 @@ function loadInProcess(){
                     });
         
                     $("#interconsulta\\.respuesta\\.cm").on("change", function(){
-        
                         var eg = $("#interconsulta\\.respuesta\\.eg").val();
                         var acm = $("#interconsulta\\.respuesta\\.cm").val();
         
@@ -531,7 +564,6 @@ function loadInProcess(){
                     });
         
                     $("#interconsulta\\.respuesta\\.umbilical").on("change", function(){
-        
                         var eg = $("#interconsulta\\.respuesta\\.eg").val();
                         var aumb = $("#interconsulta\\.respuesta\\.umbilical").val();
         
@@ -569,6 +601,44 @@ function loadInProcess(){
                             $("input[name='respuesta_cmau_percentil']").val(pctcmauAdvanced(eg,cmau));
         
                         }
+                    });
+
+                    $("#enviar\\.respuesta\\.botton").on("click", function(){
+                        var anatomia = [];
+
+                        $.each($('input[name="respuesta_anatomia"] option:selected'), function(){
+                            anatomia.push($(this).val());
+                        });
+
+                        var args = {
+                            solicitud_id: $("#solicitud_id").val(),
+                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                            respuesta_eg: $('input[name="respuesta_eg"]').val(),
+                            respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
+                            respuesta_pfe_percentil: $('input[name="respuesta_pfe_percentil"]').val(),
+                            respuesta_liquido: $('input[name="respuesta_liquido"] option:selected').val(),
+                            respuesta_presentacion: $('input[name="respuesta_presentacion"] option:selected').val(),
+                            respuesta_dorso: $('input[name="respuesta_dorso"] option:selected').val(),
+                            respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
+                            respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_percentil"]').val(),
+                            respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
+                            respuesta_umbilical_percentil: $('input[name="respuesta_umbilical_percentil"]').val(),
+                            respuesta_cm: $('input[name="respuesta_cm"]').val(),
+                            respuesta_cm_percentil: $('input[name="respuesta_cm_percentil"]').val(),
+                            respuesta_cmau: $('input[name="respuesta_cmau"]').val(),
+                            respuesta_cmau_percentil: $('input[name="respuesta_cmau_percentil"]').val(),
+                            respuesta_hipotesis: $('input[name="respuesta_hipotesis"] option:selected').val(),
+                            respuesta_doppler: $('input[name="respuesta_doppler"] option:selected').val(),
+                            respuesta_anatomia: anatomia,
+                            respuesta_comentariosexamen: $('#editable').val(),
+                            respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
+                        }
+
+                        $.post('dashboard/save', args).done(function(data){
+                            $("#ver\\.interconsulta").modal("hide");
+                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
+                        });
                     });
                 }
             });
