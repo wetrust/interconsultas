@@ -91,17 +91,19 @@ $(document).ready(function(){
                     fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
 
                     tabla += '<tr><td>' + value.solicitud_id + '</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ fecha +'</td><td>' + tipo +'</td>';
+                    tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_';
 
                     if (value.tipo == "1"){
-                        tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_primertrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        tabla += 'primertrimestre/';
                     } else if (value.tipo == "0"){
-                        tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_dopplercrecimiento/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        tabla += 'dopplercrecimiento/';
                     } else  if (value.tipo == "2"){
-                        tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_segundotrimestre/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        tabla += 'segundotrimestre/';
                     } else  if (value.tipo == "3"){
-                        tabla += '<td><a class="btn btn-primary mr-3" href="' + _URL + 'pdf/informe_ginecologico/' + value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
+                        tabla += 'ginecologico/';
                     }
 
+                    tabla += value.solicitud_id + '">Ver</a><a href="#" class="btn btn-primary linkemail" data-informe='+ value.tipo +' data-solicitud=' + value.solicitud_id + '>Reenviar</a></td>';
                     tabla += '<td><a class="btn btn-danger" href="' + _URL + 'dashboard/delete/' + value.solicitud_id +'">Eliminar</a></td></tr>';
                 });
 
@@ -159,8 +161,7 @@ function cargarCorreosProfesionales(){
 
 function cargarCiudad(){
     $.get(_api + 'ciudades').done(function(data){
-        $('#filtro\\.ciudad').empty();
-        $('#filtro\\.ciudad').append('<option value="">No Seleccionado</option>');
+        $('#filtro\\.ciudad').empty().append('<option value="">No Seleccionado</option>');
         if (Object.keys(data).length > 0) {
             let response = '<option value=""></option>';
             $.each(data, function(i, value) {
@@ -173,8 +174,7 @@ function cargarCiudad(){
 
 function cargarLugar(){
     $.get(_api + 'lugar').done(function(data){
-        $('#filtro\\.lugar').empty();
-        $('#filtro\\.lugar').append('<option value="">No Seleccionado</option>');
+        $('#filtro\\.lugar').empty().append('<option value="">No Seleccionado</option>');
         if (Object.keys(data).length > 0) {
             let response = '<option value=""></option>';
             $.each(data, function(i, value) {
@@ -186,11 +186,7 @@ function cargarLugar(){
 }
 
 function callModal(informe, solicitud){
-
-    $("#exampleModal").data("informe", informe);
-    $("#exampleModal").data("solicitud", solicitud);
-
-    $("#exampleModal").modal("show");
+    $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
 
 function loadNews(){
@@ -206,7 +202,6 @@ function loadNews(){
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
 
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
-
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
 
@@ -220,8 +215,7 @@ function loadNews(){
             $("#ver\\.interconsulta > div").removeClass("h-100");
             $("#ver\\.interconsulta > div > div").removeClass("h-100");
             $("#ver\\.interconsulta\\.titulo").html("Datos de la interconsulta");
-            $('#ver\\.interconsulta\\.contenedor').empty();
-            $('#ver\\.interconsulta\\.contenedor').append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col form-group"><label>Nombre del paciente:</label><input type="text" class="form-control" disabled id="solicitud_nombre"></div><div class="col form-group"><label>RUT del paciente:</label><input type="text" class="form-control" disabled id="solicitud_rut"></div><div class="col form-group"><label>Fecha de solicitud:</label><input type="text" class="form-control" disabled id="solicitud_fecha"></div></div><div class="row"> <div class="col form-group"><label>Ege conocida precozmente</label><input type="text" class="form-control" disabled id="eg_precoz"></div><div class="col form-group"><label>Ecografía previa de crecimiento</label><input type="text" class="form-control" disabled id="ecografia_previa"></div></div><div class="row"> <div class="col form-group"><label>FUM operacional</label><input type="date" class="form-control" disabled id="solicitud_fum"></div><div class="col form-group"><label>Edad Gestacional</label><input type="text" class="form-control" disabled id="solicitud_egestacional"></div></div><div class="row"> <div class="col form-group"><label>Diagnóstico de referencia</label><input type="text" class="form-control" disabled id="solicitud_diagnostico"></div></div><div class="row"> <div class="col form-group"><label>Ciudad procedencia de la paciente</label><input type="text" class="form-control" disabled id="solicitud_ciudad"></div><div class="col form-group"><label>Lugar de control prenatal</label><input type="text" class="form-control" disabled id="solicitud_lugar"></div></div><div class="row"> <div class="col form-group"><label>Datos del profesional referente</label><input type="text" class="form-control" disabled id="interconsulta_profesional"></div></div><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombreprofesional"></div><div class="col form-group"><label>Email (de trabajo):</label><input type="text" class="form-control" disabled id="solicitud_email"></div></div><h5><span class="badge badge-default p-2" for="interconsulta.profesional"><strong>Ecografista de contrarreferencia</strong></span></h5><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombre_referente"></div><div class="col form-group"><label>Email (contrareferencia)</label><input type="text" class="form-control" disabled id="solicitud_profesionalemail"></div></div><h4>Evaluación de solicitud ecográfica</h4><div class="row"> <div class="col-4 form-group"><label>Fecha</label><input type="date" class="form-control" id="evaluacion_fecha"></div><div class="col form-group"><label for="interconsulta.comentario.respuesta"><strong>Comentario</strong></label><input type="text" class="form-control" id="comentario"></div></div><button id="boton.interconsulta.enviar" class="btn btn-primary">Enviar respuesta</button>');
+            $('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col form-group"><label>Nombre del paciente:</label><input type="text" class="form-control" disabled id="solicitud_nombre"></div><div class="col form-group"><label>RUT del paciente:</label><input type="text" class="form-control" disabled id="solicitud_rut"></div><div class="col form-group"><label>Fecha de solicitud:</label><input type="text" class="form-control" disabled id="solicitud_fecha"></div></div><div class="row"> <div class="col form-group"><label>Ege conocida precozmente</label><input type="text" class="form-control" disabled id="eg_precoz"></div><div class="col form-group"><label>Ecografía previa de crecimiento</label><input type="text" class="form-control" disabled id="ecografia_previa"></div></div><div class="row"> <div class="col form-group"><label>FUM operacional</label><input type="date" class="form-control" disabled id="solicitud_fum"></div><div class="col form-group"><label>Edad Gestacional</label><input type="text" class="form-control" disabled id="solicitud_egestacional"></div></div><div class="row"> <div class="col form-group"><label>Diagnóstico de referencia</label><input type="text" class="form-control" disabled id="solicitud_diagnostico"></div></div><div class="row"> <div class="col form-group"><label>Ciudad procedencia de la paciente</label><input type="text" class="form-control" disabled id="solicitud_ciudad"></div><div class="col form-group"><label>Lugar de control prenatal</label><input type="text" class="form-control" disabled id="solicitud_lugar"></div></div><div class="row"> <div class="col form-group"><label>Datos del profesional referente</label><input type="text" class="form-control" disabled id="interconsulta_profesional"></div></div><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombreprofesional"></div><div class="col form-group"><label>Email (de trabajo):</label><input type="text" class="form-control" disabled id="solicitud_email"></div></div><h5><span class="badge badge-default p-2" for="interconsulta.profesional"><strong>Ecografista de contrarreferencia</strong></span></h5><div class="row"> <div class="col form-group"><label>Nombre:</label><input type="text" class="form-control" disabled id="solicitud_nombre_referente"></div><div class="col form-group"><label>Email (contrareferencia)</label><input type="text" class="form-control" disabled id="solicitud_profesionalemail"></div></div><h4>Evaluación de solicitud ecográfica</h4><div class="row"> <div class="col-4 form-group"><label>Fecha</label><input type="date" class="form-control" id="evaluacion_fecha"></div><div class="col form-group"><label for="interconsulta.comentario.respuesta"><strong>Comentario</strong></label><input type="text" class="form-control" id="comentario"></div></div><button id="boton.interconsulta.enviar" class="btn btn-primary">Enviar respuesta</button>');
 
             $.get('dashboard/agendar/' + solicitud_id).done(function(data){
                 $("#solicitud_id").val(data.solicitud_id);
@@ -272,8 +266,7 @@ function loadNews(){
             });
 
             $("#ver\\.interconsulta").modal("show");
-            $("#ver\\.interconsulta\\.footer").empty();
-            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+            $("#ver\\.interconsulta\\.footer").empty().prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                 let solicitud_id =  $(this).data("id");
                 $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
@@ -723,7 +716,6 @@ function loadInProcess(){
             });
 
             $("#interconsulta\\.respuesta\\.uterinas").on("change", function(){
-                var FExamen,FUM,EdadGestacional;
                 var eg = $("#interconsulta\\.respuesta\\.eg").val();
                 var ut = $("#interconsulta\\.respuesta\\.uterinas").val();
 
