@@ -381,8 +381,69 @@ function loadInProcess(){
                         $("#final").remove();
                         $("#segundotrimestre").remove();
                         $("#primertrimestre").remove();
-                        $("#ver\\.interconsulta\\.contenedor").append('<div id="doppleruterinas"> <div class="row"> <div class="col form-group"> <label>Anatomía Fetal</label> <select multiple="" class="form-control" name="respuesta_anatomia[]"> <option value="no evaluada dirigidamente, pero el aspecto morfológico general es normal">No evaluada dirigidamente, pero el aspecto morfológico general es normal</option> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos de siguientes patologías:">hallazgos ecográficos compatible con:</option> </select> </div></div><div class="row"> <div class="col-12"><strong>Flujometría Doppler</strong></div><div class="col form-group"> <label>IP. Uterina Derecha</label> <input type="text" class="form-control" name="respuesta_uterina_derecha"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_uterina_derecha_percentil_view"> </div><input type="hidden" class="form-control" name="respuesta_uterina_derecha"> </div><div class="col form-group"> <label>IP. Uterina Izquierda</label> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_uterina_izquierda_percentil_view"> </div><input type="hidden" class="form-control" name="respuesta_uterina_izquierda_percentil"> </div></div><div class="row"> <div class="col form-group"> <label>IP. Promedio uterinas</label> <input type="text" class="form-control" name="respuesta_uterinas"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_uterinas_promedio_view"> </div><input type="hidden" class="form-control" name="respuesta_uterinas_promedio"> </div></div></div>');
+                        $("#ver\\.interconsulta\\.contenedor").append('<div id="doppleruterinas"> <div class="row"> <div class="col form-group"> <label>Anatomía Fetal</label> <select multiple="" class="form-control" name="respuesta_anatomia[]"> <option value="no evaluada dirigidamente, pero el aspecto morfológico general es normal">No evaluada dirigidamente, pero el aspecto morfológico general es normal</option> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos de siguientes patologías:">hallazgos ecográficos compatible con:</option> </select> </div></div><div class="row"> <div class="col-12"><strong>Flujometría Doppler</strong></div><div class="col form-group"> <label>IP. Uterina Derecha</label> <input type="text" class="form-control" name="respuesta_uterina_derecha"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_uterina_derecha_percentil_view" disabled> </div><input type="hidden" class="form-control" name="respuesta_uterina_derecha_percentil"> </div><div class="col form-group"> <label>IP. Uterina Izquierda</label> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_uterina_izquierda_percentil_view" disabled> </div><input type="hidden" class="form-control" name="respuesta_uterina_izquierda_percentil"> </div></div><div class="row"> <div class="col form-group"> <label>IP. Promedio uterinas</label> <input type="text" class="form-control" name="respuesta_uterinas_view" disabled> <input type="hidden" class="form-control" name="respuesta_uterinas" disabled> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_uterinas_promedio_view" disabled> </div><input type="hidden" class="form-control" name="respuesta_uterinas_promedio"> </div></div></div>');
                         $("#ver\\.interconsulta\\.contenedor").append('<div id="final"><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios de exámen</strong></label> <textarea type="text" rows="2" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Ecografista</label> <input type="text" class="form-control" name="respuesta_ecografista"> </div></div></div>');
+                    
+                        $("input[name='respuesta_uterina_derecha']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var ut = $(this).val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+            
+                                eg =  parseFloat(eg).toFixed();
+                                $("input[name='respuesta_uterina_derecha_percentil_view']").val(pctUtAdvanced(eg,ut));
+                                $("input[name='respuesta_uterina_derecha_percentil']").val(pctUtAdvanced(eg,ut));
+
+                                if (ut > 0){
+                                    if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
+                                        var promedio = (ut + $("input[name='respuesta_uterina_izquierda']").val()) / 2;
+                                        $("input[name='respuesta_uterinas_view']").val(promedio.toFixed(2)).trigger("change");
+                                        $("input[name='respuesta_uterinas']").val(promedio.toFixed(2));
+                                    }
+                                }
+                            }
+                        });
+
+                        $("input[name='respuesta_uterina_izquierda']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var ut = $(this).val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+            
+                                eg =  parseFloat(eg).toFixed();
+                                $("input[name='respuesta_uterina_izquierda_percentil_view']").val(pctUtAdvanced(eg,ut));
+                                $("input[name='respuesta_uterina_izquierda_percentil']").val(pctUtAdvanced(eg,ut));
+
+                                if (ut > 0){
+                                    if ($("input[name='respuesta_uterina_derecha']").val() > 0){
+                                        var promedio = (ut + $("input[name='respuesta_uterina_derecha']").val()) / 2;
+                                        $("input[name='respuesta_uterinas_view']").val(promedio.toFixed(2)).trigger("change");
+                                        $("input[name='respuesta_uterinas']").val(promedio.toFixed(2));
+                                    }
+                                }
+                            }
+                        });
+
+                        $("input[name='respuesta_uterinas_view']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var ut = $(this).val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+            
+                                eg =  parseFloat(eg).toFixed();
+                                $("input[name='respuesta_uterinas_promedio_view']").val(pctUtAdvanced(eg,ut));
+                                $("input[name='respuesta_uterinas_promedio']").val(pctUtAdvanced(eg,ut));
+                            }
+                        });
                     }
                     else if ($(this).val() == 3){
                         $("#doppleruterinas").remove();
