@@ -399,7 +399,7 @@ function loadInProcess(){
 
                                 if (ut > 0){
                                     if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
-                                        var promedio = (ut + $("input[name='respuesta_uterina_izquierda']").val()) / 2;
+                                        var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
                                         $("input[name='respuesta_uterinas_view']").val(promedio.toFixed(2)).trigger("change");
                                         $("input[name='respuesta_uterinas']").val(promedio.toFixed(2));
                                     }
@@ -422,7 +422,7 @@ function loadInProcess(){
 
                                 if (ut > 0){
                                     if ($("input[name='respuesta_uterina_derecha']").val() > 0){
-                                        var promedio = (ut + $("input[name='respuesta_uterina_derecha']").val()) / 2;
+                                        var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_derecha']").val())) / 2;
                                         $("input[name='respuesta_uterinas_view']").val(promedio.toFixed(2)).trigger("change");
                                         $("input[name='respuesta_uterinas']").val(promedio.toFixed(2));
                                     }
