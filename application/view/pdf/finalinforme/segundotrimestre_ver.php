@@ -108,7 +108,7 @@
     $html = '<table><tbody><tr><td>LF: '. $this->respuesta_lf.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>PFE: '. $this->respuesta_pfe_segundo.'</td><td>PCT: '. $this->respuesta_pfe_pct_segundo.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>PFE: '. $this->respuesta_pfe.'</td><td>PCT: '. $this->respuesta_pfe_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>CC/CA: '. $this->respuesta_ccca.'</td><td>PCT: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
