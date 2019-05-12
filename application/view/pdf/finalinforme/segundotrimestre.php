@@ -114,10 +114,13 @@
     $html = '<table><tbody><tr><td>CC/CA: '. $this->respuesta_ccca.'</td><td>PCT: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal: '.htmlentities($this->respuesta_hipotesis_segundo).' *</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal: '.htmlentities($this->respuesta_hipotesis).' *</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Líquido amniótico: '.htmlentities($this->respuesta_liquido_amniotico).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->Ln(1);
+    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Crecimiento fetal Cc/Ca: '.htmlentities($this->respuesta_crecimiento_ccca).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
