@@ -576,6 +576,21 @@ function loadInProcess(){
                             psohdlk();
                             calCCCA();
                         });
+
+                        $("input[name='respuesta_ccca']").on("change", function(){
+                            
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var ccca = $("input[name='respuesta_ccca']").val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+            
+                                eg =  parseFloat(eg).toFixed();
+                                $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
+                            }
+                        });
             
                         $("#interconsulta\\.respuesta\\.cm").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
@@ -729,6 +744,21 @@ function loadInProcess(){
                 $("input[name='respuesta_ca']").on("change", function(){
                     psohdlk();
                     calCCCA();
+                });
+
+                $("input[name='respuesta_ccca']").on("change", function(){
+                            
+                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                    var ccca = $("input[name='respuesta_ccca']").val();
+    
+                    eg = String(eg);
+                    eg = eg.replace("semanas", "");
+    
+                    if (eg.length > 0){
+    
+                        eg =  parseFloat(eg).toFixed();
+                        $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
+                    }
                 });
 
                 $("#interconsulta\\.respuesta\\.umbilical").on("change", function(){
@@ -1276,7 +1306,7 @@ function calCCCA(){
     CA = parseInt($("input[name='respuesta_ca']").val());
 
     var ccca = CC / CA;
-    $("input[name='respuesta_ccca']").val(ccca.toFixed(2));
+    $("input[name='respuesta_ccca']").val(ccca.toFixed(2)).trigger("change");
 
     if (isNaN(ccca) != true) {
         $("input[name='respuesta_ccca']").val(ccca.toFixed(2)).trigger("change");
