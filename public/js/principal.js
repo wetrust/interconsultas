@@ -796,7 +796,7 @@ function loadInProcess(){
 
                     var args = "";
 
-                    if ($(this).val() == 3){
+                    if (tipoExm == 3){
                         args = {
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
@@ -812,7 +812,7 @@ function loadInProcess(){
                             respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
                         }
                     }
-                    else if ($(this).val() == 2){
+                    else if (tipoExm == 2){
                         args = {
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
@@ -837,7 +837,7 @@ function loadInProcess(){
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                         }
                     }
-                    else if ($(this).val() == 1){
+                    else if (tipoExm == 1){
                         args = {
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
