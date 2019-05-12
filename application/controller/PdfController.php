@@ -75,6 +75,7 @@ class PdfController extends Controller
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'respuesta_placenta' => $respuesta->placenta,
+            'respuesta_placenta_insercion' => $respuesta->placenta_insercion,
             'respuesta_liquido_amniotico' => $respuesta->liquido_amniotico,
             'respuesta_dbp' => $respuesta->dbp,
             'respuesta_cc' => $respuesta->cc,
