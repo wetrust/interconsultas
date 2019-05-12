@@ -183,7 +183,7 @@ class DashboardController extends Controller
                 $respuesta_anatomia_segundo = "";
             }
 
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "","", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,respuesta_placenta_insercion, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe_segundo, $respuesta_ccca, $respuesta_presentacion_segundo, $respuesta_dorso_segundo, $respuesta_anatomia_segundo, $respuesta_pfe_pct_segundo, $respuesta_ccca_pct, $respuesta_hipotesis_segundo, "", "", "", "", "", "", "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "","", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe_segundo, $respuesta_ccca, $respuesta_presentacion_segundo, $respuesta_dorso_segundo, $respuesta_anatomia_segundo, $respuesta_pfe_pct_segundo, $respuesta_ccca_pct, $respuesta_hipotesis_segundo, "", "", "", "", "", "", "");
 
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
