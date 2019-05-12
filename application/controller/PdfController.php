@@ -93,7 +93,7 @@ class PdfController extends Controller
             'respuesta_dorso_segundo' => $respuesta->dorso_segundo,
             'respuesta_anatomia_segundo' => $respuesta->anatomia_segundo,
             'respuesta_hipotesis' => $respuesta->hipotesis_segundo,
-            'respuesta_crecimiento_ccca' => $respuesta_crecimiento_ccca
+            'respuesta_crecimiento_ccca' => $respuesta->crecimiento_ccca
         ));
     }
 
