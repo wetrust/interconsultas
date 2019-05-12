@@ -105,12 +105,15 @@
     $fExamen = strtotime($this->solicitud_evaluacion->evaluacion_fecha);
     //convertir eg a dias
     $egXLCN = $this->respuesta_lcn_eg;
-    $egXLCN = explode(".", $egXLCN);
+    
+    if (egXLCN != ""){
+        $egXLCN = explode(".", $egXLCN);
 
-    if (count($egXLCN) == 1){
-        $egXLCN = $egXLCN[0] * 7;
-    }else if (count($egXLCN) == 2){
-        $egXLCN = ($egXLCN[0] * 7) + $egXLCN[1];
+        if (count($egXLCN) == 1){
+            $egXLCN = $egXLCN * 7;
+        }else if (count($egXLCN) == 2){
+            $egXLCN = ($egXLCN[0] * 7) + $egXLCN[1];
+        }
     }
     
     $furlcn = strtotime("-". strval($egXLCN) . "day", $fExamen);
