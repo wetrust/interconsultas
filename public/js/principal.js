@@ -794,8 +794,10 @@ function loadInProcess(){
                         $(this).remove();
                     });
 
+                    var args = "";
+
                     if ($(this).val() == 3){
-                        var args = {
+                        args = {
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
                             respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
@@ -809,16 +811,9 @@ function loadInProcess(){
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                             respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
                         }
-            
-                        $.post('dashboard/save', args).done(function(data){
-                            $("#ver\\.interconsulta").modal("hide");
-                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
-                            $('#mensaje\\.dialogo').modal("hide");
-                            $('#mensaje\\.dialogo').remove();
-                        });
                     }
                     else if ($(this).val() == 2){
-                        var args = {
+                        args = {
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
                             respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
@@ -841,16 +836,9 @@ function loadInProcess(){
                             respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                         }
-            
-                        $.post('dashboard/save', args).done(function(data){
-                            $("#ver\\.interconsulta").modal("hide");
-                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
-                            $('#mensaje\\.dialogo').modal("hide");
-                            $('#mensaje\\.dialogo').remove();
-                        });
                     }
                     else if ($(this).val() == 1){
-                        var args = {
+                        args = {
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
                             respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
@@ -866,13 +854,6 @@ function loadInProcess(){
                             respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                         }
-
-                        $.post('dashboard/save', args).done(function(data){
-                            $("#ver\\.interconsulta").modal("hide");
-                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
-                            $('#mensaje\\.dialogo').modal("hide");
-                            $('#mensaje\\.dialogo').remove();
-                        });
                     }
                     else{
                         var anatomia = [];
@@ -881,7 +862,7 @@ function loadInProcess(){
                             anatomia.push($(this).val());
                         });
 
-                        var args = {
+                        args = {
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
                             respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
@@ -907,14 +888,14 @@ function loadInProcess(){
                             respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                         }
-
-                        $.post('dashboard/save', args).done(function(data){
-                            $("#ver\\.interconsulta").modal("hide");
-                            $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
-                            $('#mensaje\\.dialogo').modal("hide");
-                            $('#mensaje\\.dialogo').remove();
-                        });
                     }
+
+                    $.post('dashboard/save', args).done(function(data){
+                        $("#ver\\.interconsulta").modal("hide");
+                        $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
+                        $('#mensaje\\.dialogo').modal("hide");
+                        $('#mensaje\\.dialogo').remove();
+                    });
                 });
             });
         }
