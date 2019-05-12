@@ -105,8 +105,8 @@
     $fExamen = strtotime($this->solicitud_evaluacion->evaluacion_fecha);
     //convertir eg a dias
     $egXLCN = $this->respuesta_lcn_eg;
-    
-    if (egXLCN != ""){
+
+    if ($egXLCN != ""){
         $egXLCN = explode(".", $egXLCN);
 
         if (count($egXLCN) == 1){
