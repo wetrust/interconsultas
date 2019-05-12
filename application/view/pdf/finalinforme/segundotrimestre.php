@@ -86,7 +86,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
-    $html = '<table><tbody><tr><td>Edad Gestacional al exámen: '. htmlentities($this->respuesta_eg) .'</td><td>Feto en presentación: '.htmlentities($this->respuesta_presentacion_segundo).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Edad Gestacional al exámen: '. htmlentities($this->respuesta_eg) .'</td><td>Feto en presentación: '.htmlentities($this->respuesta_presentacion).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Dorso Fetal: '.htmlentities($this->respuesta_dorso_segundo).'</td><td>Líquido amniótico: '.htmlentities($this->respuesta_liquido_amniotico).'</td></tr></tbody></table>';

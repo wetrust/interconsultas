@@ -80,7 +80,6 @@ class DashboardController extends Controller
         $respuesta_ca = Request::post('respuesta_ca');
         $respuesta_lf = Request::post('respuesta_lf');
         $respuesta_ccca = Request::post('respuesta_ccca');
-        $respuesta_presentacion_segundo = Request::post('respuesta_presentacion_segundo');
         $respuesta_dorso_segundo = Request::post('respuesta_dorso_segundo');
         $respuesta_anatomia_segundo = Request::post('respuesta_anatomia_segundo');
         $respuesta_ccca_pct = Request::post('respuesta_ccca_pct');
@@ -127,8 +126,6 @@ class DashboardController extends Controller
                 EmailModel::sendRespuestaReferenteEmail(Session::get('user_email'),$solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_pct, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler,$respuesta_anatomia);
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
-
-            Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 1){
 
@@ -165,8 +162,6 @@ class DashboardController extends Controller
                 EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
-
-            Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 2){
 
@@ -182,7 +177,7 @@ class DashboardController extends Controller
                 $respuesta_anatomia_segundo = "";
             }
 
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "","", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_presentacion_segundo, $respuesta_dorso_segundo, $respuesta_anatomia_segundo, $respuesta_pfe_pct, $respuesta_ccca_pct, $respuesta_hipotesis_segundo, "", "", "", "", "", "", "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "","", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_presentacion, $respuesta_dorso_segundo, $respuesta_anatomia_segundo, $respuesta_pfe_pct, $respuesta_ccca_pct, $respuesta_hipotesis_segundo, "", "", "", "", "", "", "");
 
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
@@ -204,7 +199,7 @@ class DashboardController extends Controller
                 'respuesta_eg' => $respuesta_eg,
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen,
-                'respuesta_presentacion_segundo' => $respuesta_presentacion_segundo,
+                'respuesta_presentacion' => $respuesta_presentacion,
                 'respuesta_dorso_segundo' => $respuesta_dorso_segundo,
                 'respuesta_anatomia_segundo' => $respuesta_anatomia_segundo,
                 'respuesta_hipotesis_segundo' => $respuesta_hipotesis_segundo
@@ -220,8 +215,6 @@ class DashboardController extends Controller
                 EmailModel::sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
-
-            Redirect::to('dashboard');
         }
         else if ($respuesta_crecimiento == 3){
 
@@ -255,8 +248,6 @@ class DashboardController extends Controller
                 EmailModel::sendRespuestaGinecologiaEmail($solicitud_id, $respuesta_fecha, $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
-
-            Redirect::to('dashboard');
         }
         else if($respuesta_crecimiento == 4){
 
@@ -277,7 +268,6 @@ class DashboardController extends Controller
                 EmailModel::sendRespuestaReferenteEmailBreve(Session::get('user_email'), $solicitud_id, $respuesta_comentariosexamen, $respuesta_ecografista);
                 SolicitudesModel::deleteSolicitud($solicitud_id);
             }
-            Redirect::to('dashboard');
         }
         
         //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
