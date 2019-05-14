@@ -465,7 +465,7 @@ function loadInProcess(){
                     else if ($(this).val() == 2){
                         $("#doppleruterinas").remove();
                         $("#final").remove();
-                        $("#ver\\.interconsulta\\.contenedor").append('<div id="segundotrimestre"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso_segundo"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.liquido">Líquido amniótico</label> <select class="form-control" name="respuesta_liquido_amniotico"> <option value="Normal">Normal</option> <option value="Pha leve">PHA leve</option> <option value="Pha severo">PHA severo</option> <option value="Oha leve">OHA leve</option> <option value="Oha severo">OHA severo</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div></div><div class="row"> <div class="col form-group"> <label>Evaluación de anatomía fetal</label></div><div class="col form-group"><select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos descritos en ítem D, comentarios y observaciones.">hallazgos ecográficos descritos en ítem D, comentarios y observaciones.</option> </select> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">DBP (mm)</label> <input type="text" class="form-control" name="respuesta_dbp"> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">CC (mm)</label> <input type="text" class="form-control" name="respuesta_cc"> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">CA (mm)</label> <input type="text" class="form-control" name="respuesta_ca"> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">LF (mm)</label> <input type="text" class="form-control" name="respuesta_lf"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Peso fetal estimado</label> <input type="text" class="form-control" name="respuesta_pfe" disabled></div><div class="col form-group"> <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_pfe_pct" disabled> </div></div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Cc/Ca</label> <input type="text" class="form-control" name="respuesta_ccca" disabled></div><div class="col form-group"> <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_ccca_pct" disabled> </div></div></div><div class="row"> <div class="col-12"> <p><strong>Hipótesis diagnóstica</strong></p></div><div class="col-6 form-group"><label><strong>Crecimiento fetal (Peso)</strong></label> <select class="form-control" name="respuesta_hipotesis"> <option value="Disminuido < p3">Disminuido < p3</option> <option value="Disminuido < p10">Disminuido < p10</option> <option value="Normal p10 - p 25">Normal p10 - p 25</option><option value="Normal p26 - p 75" selected>Normal p26 - p 75</option> <option value="Normal p76 - p90">Normal p76 - p90</option> <option value="Grande >p90">Grande &gt; p90</option> <option value="Grande >p97">Grande &gt; p97</option> </select></div><div class="col-6 form-group"><label><strong>Crecimiento fetal (Cc/Ca)</strong></label> <select class="form-control" name="respuesta_crecimiento_ccca"> <option value="Proporcionado, pct 3 al 97">Proporcionado, pct 3 al 97</option> <option value="Enflaquecido, pct > 97">Enflaquecido, pct &gt; 97</option> <option value="Obeso < 3">Obeso &lt; 3</option></select></div></div></div>');
+                        $("#ver\\.interconsulta\\.contenedor").append('<div id="segundotrimestre"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso_segundo"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.liquido">Líquido amniótico</label> <select class="form-control" name="respuesta_liquido_amniotico"> <option value="Normal">Normal</option> <option value="Pha leve">PHA leve</option> <option value="Pha severo">PHA severo</option> <option value="Oha leve">OHA leve</option> <option value="Oha severo">OHA severo</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div></div><div class="row"> <div class="col form-group"> <label>Evaluación de anatomía fetal</label></div><div class="col form-group"><select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos descritos en ítem D, comentarios y observaciones.">hallazgos ecográficos descritos en ítem D, comentarios y observaciones.</option></select></div></div><div class="row"> <div class="col form-group"><label for="interconsulta.respuesta.ecografista">DBP (mm)</label><input type="text" class="form-control" name="respuesta_dbp"></div><div class="col-3"></div><div class="col form-group"><label>CC (mm)</label><input type="text" class="form-control" name="respuesta_cc"></div><div class="col form-group"><label>Percentil</label><input type="text" class="form-control" name="respuesta_cc_pct"></div></div><div class="row"> <div class="col form-group"><label>CA (mm)</label><input type="text" class="form-control" name="respuesta_ca"></div><div class="col form-group"><label>Percentil</label><input type="text" class="form-control" name="respuesta_ca_pct"></div><div class="col form-group"><label>LF (mm)</label><input type="text" class="form-control" name="respuesta_lf"></div><div class="col form-group"><label>Percentil</label><input type="text" class="form-control" name="respuesta_lf_pct"></div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Peso fetal estimado</label> <input type="text" class="form-control" name="respuesta_pfe" disabled></div><div class="col form-group"> <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_pfe_pct" disabled> </div></div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Cc/Ca</label> <input type="text" class="form-control" name="respuesta_ccca" disabled></div><div class="col form-group"> <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control" name="respuesta_ccca_pct" disabled> </div></div></div><div class="row"> <div class="col-12"> <p><strong>Hipótesis diagnóstica</strong></p></div><div class="col-6 form-group"><label><strong>Crecimiento fetal (Peso)</strong></label> <select class="form-control" name="respuesta_hipotesis"> <option value="Disminuido < p3">Disminuido < p3</option> <option value="Disminuido < p10">Disminuido < p10</option> <option value="Normal p10 - p 25">Normal p10 - p 25</option><option value="Normal p26 - p 75" selected>Normal p26 - p 75</option> <option value="Normal p76 - p90">Normal p76 - p90</option> <option value="Grande >p90">Grande &gt; p90</option> <option value="Grande >p97">Grande &gt; p97</option> </select></div><div class="col-6 form-group"><label><strong>Crecimiento fetal (Cc/Ca)</strong></label> <select class="form-control" name="respuesta_crecimiento_ccca"> <option value="proporcionado, pct 3 al 97">proporcionado, pct 3 al 97</option> <option value="Enflaquecido, pct > 97">Enflaquecido, pct &gt; 97</option> <option value="Obeso < 3">Obeso &lt; 3</option></select></div></div></div>');
                         $("#ver\\.interconsulta\\.contenedor").append('<div id="final"><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios y observaciones</strong></label> <textarea type="text" rows="2" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Ecografista</label> <input type="text" class="form-control" name="respuesta_ecografista"> </div></div></div>');
                         $("#multiproposito").remove();
                         $("#ginecologica").remove();
@@ -509,6 +509,51 @@ function loadInProcess(){
             
                                 eg =  parseFloat(eg).toFixed();
                                 $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
+                            }
+                        });
+
+                        $("input[name='respuesta_cc']").on("change", function(){
+                            
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var cc = $("input[name='respuesta_cc']").val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+            
+                                eg =  parseFloat(eg).toFixed();
+                                $("input[name='respuesta_cc_pct']").val(pctccAdvanced(eg,cc));
+                            }
+                        });
+
+                        $("input[name='respuesta_ca']").on("change", function(){
+                            
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var ca = $("input[name='respuesta_ca']").val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+            
+                                eg =  parseFloat(eg).toFixed();
+                                $("input[name='respuesta_ca_pct']").val(pctccAdvanced(eg,ca));
+                            }
+                        });
+
+                        $("input[name='respuesta_lf']").on("change", function(){
+                            
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var lf = $("input[name='respuesta_lf']").val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+            
+                                eg =  parseFloat(eg).toFixed();
+                                $("input[name='respuesta_lf_pct']").val(pctccAdvanced(eg,lf));
                             }
                         });
                     }
@@ -853,8 +898,11 @@ function loadInProcess(){
                             respuesta_liquido_amniotico: $('select[name="respuesta_liquido_amniotico"] option:selected').val(),
                             respuesta_dbp: $('input[name="respuesta_dbp"]').val(),
                             respuesta_cc: $('input[name="respuesta_cc"]').val(),
+                            respuesta_cc_pct: $('input[name="respuesta_cc_pct"]').val(),
                             respuesta_ca: $('input[name="respuesta_ca"]').val(),
+                            respuesta_ca_pct: $('input[name="respuesta_ca_pct"]').val(),
                             respuesta_lf: $('input[name="respuesta_lf"]').val(),
+                            respuesta_lf_pct: $('input[name="respuesta_lf_pct"]').val(),
                             respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
                             respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
                             respuesta_presentacion: $('select[name="respuesta_presentacion"]').val(),
@@ -1427,6 +1475,163 @@ function pctcccaAdvanced(eg, ccca) {
         else if (resultado < 1) {
             return '< 1';
         } 
+        else {
+            return resultado;
+        }
+    }
+}
+
+function pctcaAdvanced(eg, ca) {
+    var pct3 = [];
+    var pct97 = [];
+
+    pct3[12] = 42;  pct3[13] = 52;  pct3[14] = 64
+    pct3[15] = 75;  pct3[16] = 86;  pct3[17] = 97
+    pct3[18] = 109; pct3[19] = 119; pct3[20] = 131
+    pct3[21] = 141; pct3[22] = 151; pct3[23] = 161
+    pct3[24] = 171; pct3[25] = 181; pct3[26] = 191
+    pct3[27] = 200; pct3[28] = 209; pct3[29] = 218
+    pct3[30] = 227; pct3[31] = 236; pct3[32] = 245
+    pct3[33] = 253; pct3[34] = 261; pct3[35] = 269
+    pct3[36] = 277; pct3[37] = 285; pct3[38] = 292
+    pct3[39] = 299; pct3[40] = 307; pct3[41] = 313
+    pct3[42] = 320
+
+    pct97[12] = 71;  pct97[13] = 79;  pct97[14] = 92
+    pct97[15] = 102; pct97[16] = 113; pct97[17] = 127
+    pct97[18] = 141; pct97[19] = 155; pct97[20] = 170
+    pct97[21] = 183; pct97[22] = 192; pct97[23] = 209
+    pct97[24] = 223; pct97[25] = 235; pct97[26] = 248
+    pct97[27] = 260; pct97[28] = 271; pct97[29] = 284
+    pct97[30] = 295; pct97[31] = 306; pct97[32] = 318
+    pct97[33] = 329; pct97[34] = 339; pct97[35] = 349
+    pct97[36] = 359; pct97[37] = 370; pct97[38] = 380
+    pct97[39] = 389; pct97[40] = 399; pct97[41] = 409
+    pct97[42] = 418
+
+    if (eg < 12) {
+        return 0;
+    } 
+    else if (eg > 40)
+    {
+        return 0;
+    } 
+    else {
+        eg = parseInt(eg);
+        var uno = pct97[eg] - pct3[eg];
+        var dos = ca - pct3[eg];
+        var resultado = parseInt(95 / (uno) * (dos) + 3);
+        if (resultado > 99) {
+            return '> 99';
+        } 
+        else if (resultado < 1) {
+            return '< 1';
+        } 
+        else {
+            return resultado;
+        }
+    }
+}
+
+
+function pctccAdvanced(eg, cc) {
+    var pct3 = [];
+    var pct97 = [];
+
+    pct3[12] = 64;  pct3[13] = 74;  pct3[14] = 88
+    pct3[15] = 100; pct3[16] = 113; pct3[17] = 126
+    pct3[18] = 137; pct3[19] = 149; pct3[20] = 161
+    pct3[21] = 172; pct3[22] = 183; pct3[23] = 194
+    pct3[24] = 204; pct3[25] = 214; pct3[26] = 224
+    pct3[27] = 233; pct3[28] = 242; pct3[29] = 250
+    pct3[30] = 258; pct3[31] = 267; pct3[32] = 274
+    pct3[33] = 280; pct3[34] = 287; pct3[35] = 293
+    pct3[36] = 299; pct3[37] = 303; pct3[38] = 308
+    pct3[39] = 311; pct3[40] = 315; pct3[41] = 318
+    pct3[42] = 322
+        
+    pct97[12] = 81;  pct97[13] = 94;  pct97[14] = 106
+    pct97[15] = 120; pct97[16] = 135; pct97[17] = 150
+    pct97[18] = 165; pct97[19] = 179; pct97[20] = 193
+    pct97[21] = 206; pct97[22] = 219; pct97[23] = 232
+    pct97[24] = 243; pct97[25] = 256; pct97[26] = 268
+    pct97[27] = 279; pct97[28] = 290; pct97[29] = 300
+    pct97[30] = 310; pct97[31] = 319; pct97[32] = 328
+    pct97[33] = 336; pct97[34] = 343; pct97[35] = 351
+    pct97[36] = 358; pct97[37] = 363; pct97[38] = 368
+    pct97[39] = 373; pct97[40] = 377; pct97[41] = 382
+    pct97[42] = 387
+
+    if (eg < 12) {
+        return 0;
+    } 
+    else if (eg > 40)
+    {
+        return 0;
+    } 
+    else {
+        eg = parseInt(eg);
+        var uno = pct97[eg] - pct3[eg];
+        var dos = cc - pct3[eg];
+        var resultado = parseInt(95 / (uno) * (dos) + 3);
+        if (resultado > 99) {
+            return '> 99';
+        } 
+        else if (resultado < 1) {
+            return '< 1';
+        } 
+        else {
+            return resultado;
+        }
+    }
+}
+
+function pctlfAdvanced(eg, lf) {
+    var pct3 = [];
+    var pct97 = [];
+
+    pct3[12] = 7;  pct3[13] = 9;  pct3[14] = 12
+    pct3[15] = 15; pct3[16] = 17; pct3[17] = 21
+    pct3[18] = 23; pct3[19] = 26; pct3[20] = 28
+    pct3[21] = 30; pct3[22] = 33; pct3[23] = 35
+    pct3[24] = 38; pct3[25] = 40; pct3[26] = 42
+    pct3[27] = 44; pct3[28] = 46; pct3[29] = 48
+    pct3[30] = 50; pct3[31] = 52; pct3[32] = 53
+    pct3[33] = 55; pct3[34] = 57; pct3[35] = 59
+    pct3[36] = 60; pct3[37] = 62; pct3[38] = 64
+    pct3[39] = 65; pct3[40] = 66; pct3[41] = 68
+    pct3[42] = 69
+        
+    pct97[12] = 12; pct97[13] = 14; pct97[14] = 17
+    pct97[15] = 20; pct97[16] = 23; pct97[17] = 27
+    pct97[18] = 31; pct97[19] = 34; pct97[20] = 38
+    pct97[21] = 40; pct97[22] = 43; pct97[23] = 47
+    pct97[24] = 50; pct97[25] = 52; pct97[26] = 56
+    pct97[27] = 58; pct97[28] = 62; pct97[29] = 64
+    pct97[30] = 66; pct97[31] = 68; pct97[32] = 71
+    pct97[33] = 73; pct97[34] = 75; pct97[35] = 78
+    pct97[36] = 80; pct97[37] = 82; pct97[38] = 84
+    pct97[39] = 86; pct97[40] = 88; pct97[41] = 90
+    pct97[42] = 92
+
+    if (eg < 12) {
+        return 0;
+    } 
+    else if (eg > 40)
+    {
+        return 0;
+    } 
+    else {
+        eg = parseInt(eg);
+        var uno = pct97[eg] - pct3[eg];
+        var dos = lf - pct3[eg];
+        var resultado = parseInt(95 / (uno) * (dos) + 3);
+        if (resultado > 99) {
+            return '> 99';
+        }
+        else if (resultado < 1) {
+            return '< 1';
+        }
         else {
             return resultado;
         }

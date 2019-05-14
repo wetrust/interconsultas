@@ -3,7 +3,7 @@
     $this->pdf->SetCreator(PDF_CREATOR);
     $this->pdf->SetAuthor('WT');
     $this->pdf->SetTitle('Evaluación ecográfica del crecimiento fetal');
-    $this->pdf->SetSubject('TCPDF Tutorial');
+    $this->pdf->SetSubject('');
     $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
     // set default header data
