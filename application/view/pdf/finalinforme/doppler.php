@@ -41,7 +41,7 @@
     $evaluacion_fecha = explode("-", $this->solicitud_evaluacion->evaluacion_fecha);
     $evaluacion_fecha = $evaluacion_fecha[2] . "-". $evaluacion_fecha[1]. "-". $evaluacion_fecha[0];
 
-    $fecha = explode("-", $this->solicitud_resultado->fecha);
+    $fecha = explode("-", $this->respuesta_fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
     $html = '<h3 style="border-bottom:4px double #000;text-align: center;"><strong>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA DOPPLER MATERNO</strong></h3>';
