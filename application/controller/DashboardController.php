@@ -255,7 +255,7 @@ class DashboardController extends Controller
                 'respuesta_fecha' => $respuesta_fecha,
                 'respuesta_eg' => $respuesta_eg,
                 'respuesta_anatomia' => $respuesta_anatomia,
-                'anatomia_fetal_extra' => $respuesta_anatomia_extra,
+                'respuesta_anatomia_extra' => $respuesta_anatomia_extra,
                 'respuesta_embrion' => $respuesta_embrion,
                 'respuesta_lcn' => $respuesta_lcn,
                 'respuesta_lcn_eg' => $respuesta_lcn_eg,
