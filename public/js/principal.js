@@ -441,7 +441,7 @@ function loadInProcess(){
                             eglcn();
                         });
 
-                        $("input[name='respuesta_anatomia']").on("change", function(){
+                        $("select[name='respuesta_anatomia']").on("change", function(){
                             if ($(this).val() == "hallazgos ecográficos compatibles con:"){
                                 $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
                             }
@@ -484,7 +484,7 @@ function loadInProcess(){
                             calCCCA();
                         });
 
-                        $("input[name='respuesta_anatomia']").on("change", function(){
+                        $("select[name='respuesta_anatomia']").on("change", function(){
                             if ($(this).val() == "hallazgos ecográficos compatibles con:"){
                                 $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
                             }
@@ -646,7 +646,7 @@ function loadInProcess(){
                             }
                         });
 
-                        $("input[name='respuesta_anatomia']").on("change", function(){
+                        $("select[name='respuesta_anatomia']").on("change", function(){
                             if ($(this).val() == "hallazgos ecográficos compatibles con:"){
                                 $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
                             }
@@ -718,7 +718,7 @@ function loadInProcess(){
                     }
                 });
 
-                $("input[name='respuesta_anatomia']").on("change", function(){
+                $("select[name='respuesta_anatomia']").on("change", function(){
                     if ($(this).val() == "hallazgos ecográficos compatibles con:"){
                         $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
                     }
