@@ -89,13 +89,10 @@
     $html = '<table><tbody><tr><td>Edad Gestacional al exámen: '. htmlentities($this->respuesta_eg) .'</td><td>Feto en presentación: '.htmlentities($this->respuesta_presentacion).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Dorso Fetal: '.htmlentities($this->respuesta_dorso_segundo).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Dorso Fetal: '.htmlentities($this->respuesta_dorso_segundo).'</td><td>Líquido amniótico: '.htmlentities($this->respuesta_liquido_amniotico).'</td><td>Placenta: '. $this->respuesta_placenta. ', '.$this->respuesta_placenta_insercion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Líquido amniótico: '.htmlentities($this->respuesta_liquido_amniotico).'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->respuesta_anatomia_segundo).'</td><td>Placenta: '. $this->respuesta_placenta. ', '.$this->respuesta_placenta_insercion.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->respuesta_anatomia_segundo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
     
