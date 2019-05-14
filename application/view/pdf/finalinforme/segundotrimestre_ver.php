@@ -119,9 +119,6 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Cc/Ca: '.htmlentities($this->respuesta_crecimiento_ccca).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Líquido amniótico: '.htmlentities($this->respuesta_liquido_amniotico).'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
     
     $_html = strip_tags($this->comentariosexamen);
