@@ -80,7 +80,7 @@
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Evaluación de solicitud ecográfica: '. $evaluacion_fecha .'</td><td>Comentario: ' . $this->solicitud_evaluacion->evaluacion_comentarios.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(8);
+    $this->pdf->Ln(4);
 
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">C- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
@@ -101,16 +101,12 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td></td><td>CC:</td><td>'. $this->respuesta_cc.' mm.</td><td>Percentil: '. $this->respuesta_cc_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td></td><td>CA:</td><td>'. $this->respuesta_ca. ' mm.</td><td>Percentil: '. $this->respuesta_ca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td></td><td>LF:</td><td>'. $this->respuesta_lf.' mm.</td><td>Percentil: '. $this->respuesta_lf_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td></td><td>PFE:</td><td>'. $this->respuesta_pfe.' gr.</td><td>Percentil: '. $this->respuesta_pfe_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td></td><td>CC/CA:</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
