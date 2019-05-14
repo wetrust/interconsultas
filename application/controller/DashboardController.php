@@ -244,7 +244,7 @@ class DashboardController extends Controller
         }
         else if($respuesta_crecimiento == 4){
 
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterinas_derecha, $respuesta_uterinas_derecha_percentil, $respuesta_uterinas_izquierda, $respuesta_uterinas_izquierda_percentil, $respuesta_fcf)
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterinas_derecha, $respuesta_uterinas_derecha_percentil, $respuesta_uterinas_izquierda, $respuesta_uterinas_izquierda_percentil, $respuesta_fcf);
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
         
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler', 
