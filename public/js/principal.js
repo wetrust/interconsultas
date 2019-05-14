@@ -538,7 +538,7 @@ function loadInProcess(){
                             if (eg.length > 0){
             
                                 eg =  parseFloat(eg).toFixed();
-                                $("input[name='respuesta_ca_pct']").val(pctccAdvanced(eg,ca));
+                                $("input[name='respuesta_ca_pct']").val(pctcaAdvanced(eg,ca));
                             }
                         });
 
@@ -553,7 +553,7 @@ function loadInProcess(){
                             if (eg.length > 0){
             
                                 eg =  parseFloat(eg).toFixed();
-                                $("input[name='respuesta_lf_pct']").val(pctccAdvanced(eg,lf));
+                                $("input[name='respuesta_lf_pct']").val(pctlfAdvanced(eg,lf));
                             }
                         });
                     }
