@@ -132,4 +132,38 @@ class PdfController extends Controller
             'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));
     }
+
+    public function informe_doppler($solicitud_id){
+
+        $respuesta = RespuestaModel::getRespuesta($solicitud_id);
+
+        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
+
+            'respuesta_fecha' => $respuesta->fecha,
+            'respuesta_eg' => $respuesta->eg,
+            'respuesta_anatomia' => $respuesta->anatomia_fetal,
+            'anatomia_fetal_extra' => $respuesta->anatomia_extra,
+            'respuesta_embrion' => $respuesta->embrion,
+            'respuesta_lcn' => $respuesta->lcn,
+            'respuesta_lcn_eg' => $respuesta->lcn_eg,
+            'respuesta_fcf' => $respuesta->respuesta_fcf,
+            'respuesta_dbp' => $respuesta->dbp,
+            'respuesta_cc' => $respuesta->cc,
+            'respuesta_ca' => $respuesta->ca,
+            'respuesta_lf' => $respuesta->lf,
+            'uterinas_derecha' => $respuesta->uterinas_derecha,
+            'uterinas_derecha_percentil' => $respuesta->uterinas_derecha_percentil,
+            'uterinas_izquierda' => $respuesta->uterinas_izquierda,
+            'uterinas_izquierda_percentil' => $respuesta->uterinas_izquierda_percentil,
+            'uterinas' => $respuesta->ecografista,
+            'uterinas_percentil' => $respuesta->ecografista,
+            'ecografista' => $respuesta->ecografista,
+            'comentariosexamen' => $respuesta->comentariosexamen
+
+        ));
+    }
 }
