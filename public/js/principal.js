@@ -907,6 +907,7 @@ function loadInProcess(){
                             respuesta_cc: $('input[name="respuesta_cc"]').val(),
                             respuesta_ca: $('input[name="respuesta_ca"]').val(),
                             respuesta_lf: $('input[name="respuesta_lf"]').val(),
+                            respuesta_dbp: $('input[name="respuesta_dbp"]').val(),
                             respuesta_uterinas_derecha: $('input[name="respuesta_uterina_derecha"]').val(),
                             respuesta_uterinas_derecha_percentil: $('input[name="respuesta_uterina_derecha_percentil"]').val(),
                             respuesta_uterinas_izquierda: $('input[name="respuesta_uterina_izquierda"]').val(),
