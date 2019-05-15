@@ -126,13 +126,13 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     
     //para enviar por email
-    $tmp = Config::get('PATH_AVATARS');
-    if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
-    $this->pdf->Output("$tmp/informe.pdf", "F");
+    //$tmp = Config::get('PATH_AVATARS');
+    //if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
+    //$this->pdf->Output("$tmp/informe.pdf", "F");
     /////////
 
     //para visualizar en el navegador
-    //$this->pdf->Output('Informe.pdf', 'I');
+    $this->pdf->Output('Informe.pdf', 'I');
     //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
     //echo $base64;
     //////////
