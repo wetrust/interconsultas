@@ -1047,6 +1047,8 @@ function buildFinishTable(data){
                 tipo = 'Eco 2do / 3cer trimestre';
             } else  if (value.tipo == "3"){
                 tipo = 'Eco Ginecológica';
+            } else  if (value.tipo == "4"){
+                tipo = 'Eco Doppler Materno (Art. uterinas)';
             }
 
             let fecha = value.fecha.split('-');
