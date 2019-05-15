@@ -95,7 +95,7 @@ class PdfController extends Controller
             'respuesta_presentacion' => $respuesta->presentacion_segundo,
             'respuesta_dorso_segundo' => $respuesta->dorso_segundo,
             'respuesta_anatomia_segundo' => $respuesta->anatomia_segundo,
-            'respuesta_anatomia_extra' => $respuesta->anatomia_extra,
+            'anatomia_fetal_extra' => $respuesta->anatomia_extra,
             'respuesta_hipotesis' => $respuesta->hipotesis_segundo,
             'respuesta_crecimiento_ccca' => $respuesta->crecimiento_ccca
         ));
@@ -146,7 +146,7 @@ class PdfController extends Controller
             'respuesta_fecha' => $respuesta->fecha,
             'respuesta_eg' => $respuesta->eg,
             'respuesta_anatomia' => $respuesta->anatomia_fetal,
-            'anatomia_fetal_extra' => $respuesta->anatomia_extra,
+            'respuesta_anatomia_extra' => $respuesta->anatomia_extra,
             'respuesta_embrion' => $respuesta->embrion,
             'respuesta_lcn' => $respuesta->lcn,
             'respuesta_lcn_eg' => $respuesta->lcn_eg,
