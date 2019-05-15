@@ -158,8 +158,8 @@ class PdfController extends Controller
             'uterinas_derecha_percentil' => $respuesta->uterinas_derecha_percentil,
             'uterinas_izquierda' => $respuesta->uterinas_izquierda,
             'uterinas_izquierda_percentil' => $respuesta->uterinas_izquierda_percentil,
-            'uterinas' => $respuesta->ecografista,
-            'uterinas_percentil' => $respuesta->ecografista,
+            'uterinas' => $respuesta->uterinas,
+            'uterinas_percentil' => $respuesta->uterinas_percentil,
             'ecografista' => $respuesta->ecografista,
             'comentariosexamen' => $respuesta->comentariosexamen
 
