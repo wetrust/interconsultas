@@ -94,13 +94,13 @@
     $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>LCN:</td><td>'.htmlentities($this->respuesta_lcn).'</td><td>EG x LCN: '.htmlentities($this->respuesta_lcn_eg).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td></td><td>DBP</td><td>'.htmlentities($this->respuesta_dbp).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_dbp).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>CC:</td><td>'.htmlentities($this->respuesta_cc).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Hueso Nasal: </td><td>'.htmlentities($this->respuesta_cc).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>CA:</td><td>'.htmlentities($this->respuesta_ca).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Ductus venoso: </td><td>'.htmlentities($this->respuesta_ca).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>LF:</td><td>'.htmlentities($this->respuesta_lf).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Reflujo tricuspídeo: </td><td>'.htmlentities($this->respuesta_lf).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>Uterina Derecha:</td><td>'.htmlentities($this->uterinas_derecha).'</td><td>Percentil: '.htmlentities($this->uterinas_derecha_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
