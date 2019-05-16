@@ -117,7 +117,7 @@
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(4);
-    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente.<br>Profesional quien finalmente evalua clínicamente informe ecográfico.</p>';
+    $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente.<br>Profesional quien finalmente evalua clínicamente la información contenida en el exámen ecográfico.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     //$tmp = Config::get('PATH_AVATARS');
