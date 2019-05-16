@@ -59,10 +59,11 @@
                     <label>Tipo de exámen</label>
                     <select class="form-control" id="filtro.tipo">
                         <option value="8">No Seleccionado</option>
-                        <option value="1">Eco Primer trimestre</option>
-                        <option value="2">Eco 2do / 3cer trimestre</option>
-                        <option value="0">Eco Doppler crecimiento</option>
-                        <option value="3">Eco Ginecológica</option>
+                        <option value="1">1.- Ecografía precoz de urgencia</option>
+                        <option value="4">2.- Ecografía 11-14</option>
+                        <option value="2">3.- Eco 2do / 3cer trimestre</option>
+                        <option value="0">4.- Doppler (MF) + Eco. crecimiento</option>
+                        <option value="3">5.- Eco Ginecológica</option>
                     </select></div>
                 <div class="col">
                     <label>Filtro</label>
