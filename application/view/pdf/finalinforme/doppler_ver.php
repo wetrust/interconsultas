@@ -102,7 +102,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $translucencia = "";
     if (strlen($this->respuesta_translucencia_nucal) > 0){
-        $translucencia =  $this->respuesta_translucencia_nucal . "mm";
+        $translucencia =  $this->respuesta_translucencia_nucal . " mm";
     }
     $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_dbp).'</td><td>'. $translucencia .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
