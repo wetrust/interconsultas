@@ -101,7 +101,7 @@
     $html = '<table><tbody><tr><td></td><td>IP Uterina Promedio: **</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.htmlentities($this->uterinas_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $translucencia = "";
-    if (strlen($this->respuesta_translucencia_nucal) > 1){
+    if (strlen($this->respuesta_translucencia_nucal) > 0){
         $translucencia =  ", " . $this->respuesta_translucencia_nucal . "mm";
     }
     $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_dbp). $translucencia .'</td><td></td></tr></tbody></table>';
