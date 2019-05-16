@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="card col-4">
+        <div class="card col-4 mt-2">
             <div class="card-body">
                 <h5 class="card-title text-center">INGRESAR</h5>
                 <?php $this->renderFeedbackMessages(); ?>
@@ -40,7 +40,7 @@
                 <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvidaste tu contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
             </div>
         </div>
-        <div class="card col-8">
+        <div class="col-8 mt-2">
         </div>
     </div>
 </div>
