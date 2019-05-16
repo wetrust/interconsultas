@@ -102,11 +102,11 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>Reflujo tricuspídeo: </td><td>'.htmlentities($this->respuesta_lf).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Uterina Derecha:</td><td>'.htmlentities($this->uterinas_derecha).'</td><td>Percentil: '.htmlentities($this->uterinas_derecha_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP Uterina Derecha:</td><td>'.htmlentities($this->uterinas_derecha).'</td><td>Percentil: '.htmlentities($this->uterinas_derecha_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Uterina Izquierda:</td><td>'.htmlentities($this->uterinas_izquierda).'</td><td>Percentil: '.htmlentities($this->uterinas_izquierda_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP Uterina Izquierda:</td><td>'.htmlentities($this->uterinas_izquierda).'</td><td>Percentil: '.htmlentities($this->uterinas_izquierda_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Uterina Promedio: **</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.htmlentities($this->uterinas_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP Uterina Promedio: **</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.htmlentities($this->uterinas_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
