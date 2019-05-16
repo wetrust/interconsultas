@@ -62,7 +62,7 @@
                         <option value="1">1.- Ecografía precoz de urgencia</option>
                         <option value="4">2.- Ecografía 11-14</option>
                         <option value="2">3.- Eco 2do / 3cer trimestre</option>
-                        <option value="0">4.- Doppler (MF) + Eco. crecimiento</option>
+                        <option value="0">4.- Doppler + Eco. crecimiento</option>
                         <option value="3">5.- Eco Ginecológica</option>
                     </select></div>
                 <div class="col">
