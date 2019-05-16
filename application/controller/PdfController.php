@@ -151,6 +151,7 @@ class PdfController extends Controller
             'respuesta_lcn_eg' => $respuesta->lcn_eg,
             'respuesta_fcf' => $respuesta->respuesta_fcf,
             'respuesta_dbp' => $respuesta->dbp,
+            'respuesta_translucencia_nucal' => $respuesta->translucencia_nucal
             'respuesta_cc' => $respuesta->cc,
             'respuesta_ca' => $respuesta->ca,
             'respuesta_lf' => $respuesta->lf,
