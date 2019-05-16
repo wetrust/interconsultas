@@ -376,7 +376,7 @@ function loadInProcess(){
                         $("#ver\\.interconsulta\\.contenedor").append('<div id="final"><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.comentariosexamen"><strong>Comentarios y observaciones</strong></label> <textarea type="text" rows="2" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Ecografista</label> <input type="text" class="form-control" name="respuesta_ecografista"> </div></div></div>');
                         $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
 
-                        $("input[name='respuesta_dbp']").on("change", function(){
+                        $("select[name='respuesta_dbp']").on("change", function(){
                             if ($(this).val() == "medible"){
                                 $("#translucencia").removeClass("d-none");
                             }
