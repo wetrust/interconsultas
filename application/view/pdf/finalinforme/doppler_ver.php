@@ -75,7 +75,7 @@
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">B- Contrarreferencia inicial desde unidad de ultrasonografía gineco obstétrica</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Evaluación de solicitud ecográfica: '. $evaluacion_fecha .'</td><td>Comentario: ' . $this->solicitud_evaluacion->evaluacion_comentarios.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><em><strong>Evaluación de solicitud ecográfica:</strong> '. $evaluacion_fecha .'</em></td><td><em><strong>Comentario:</strong> ' . $this->solicitud_evaluacion->evaluacion_comentarios.'</em></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
