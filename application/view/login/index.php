@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="d-flex p-2 justify-content-center">
-        <div class="card">
+    <div class="row">
+        <div class="card col-4">
             <div class="card-body">
                 <h5 class="card-title text-center">INGRESAR</h5>
                 <?php $this->renderFeedbackMessages(); ?>
@@ -39,6 +39,8 @@
                 </form>
                 <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvidaste tu contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
             </div>
+        </div>
+        <div class="card col-8">
         </div>
     </div>
 </div>
