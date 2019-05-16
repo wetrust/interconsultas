@@ -91,7 +91,7 @@
     $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->respuesta_anatomia). " ".$this->respuesta_anatomia_extra.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>LCN:</td><td>'.htmlentities($this->respuesta_lcn).'</td><td>EG x LCN: '.htmlentities($this->respuesta_lcn_eg).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>LCN: *</td><td>'.htmlentities($this->respuesta_lcn).'</td><td>EG x LCN: '.htmlentities($this->respuesta_lcn_eg).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_dbp).'</td><td></td></tr></tbody></table>';
@@ -106,7 +106,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>Uterina Izquierda:</td><td>'.htmlentities($this->uterinas_izquierda).'</td><td>Percentil: '.htmlentities($this->uterinas_izquierda_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Uterina Promedio:</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.htmlentities($this->uterinas_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Uterina Promedio: **</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.htmlentities($this->uterinas_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
@@ -122,7 +122,7 @@
     $this->pdf->Ln(4);
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
-    $html = '<p>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente del profesional referente, quien finalmente evalua los contenidos de este informe.</p>';
+    $html = '<p>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br><small>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., Puerto B., Gratacos E., UOG 2008; 32: 128-32</small><br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este, es favorecer análisis preeliminar de datos obtenidos en el examen ecográfico, la interpretación clínica de los resultados es responsabilidad fundamentalmente del profesional referente, quien finalmente evalua los contenidos de este informe.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     
     //para enviar por email
