@@ -41,6 +41,14 @@
             </div>
         </div>
         <div class="col-8 mt-2">
+            <div class="mx-5 px-5">
+                <h5 class="text-primary text-center">Guía para orientar interpretación clinica del exámen ecográfico obstétrico en la valoración del crecimiento fetal.</h5>
+                <h6 class="text-primary mx-5 px-5">El Software para procesar datos ecográficos y flujometría Doppler fetal es actualmente de acceso libre.</h6>
+                <h6 class="text-primary mx-5 px-5">Para solicitar interconsulta a un profesional de contrarreferencia (ecografista), debe este previamente estar registrado en el sistema.</h6>
+                <h6 class="text-primary mx-5 px-5">La plataforma para solicitar interconsulta depende de un servidor que procese y registre la información (datos ecográficos).</h6>
+                <h6 class="text-primary mx-5 px-5">Si es de su interés usar este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ".</h6>
+                <h6 class="text-primary mx-5 px-5">Para mayor información, favor contactarse con nosotros al email examenecografico@gmail.com</h6>
+            </div>
         </div>
     </div>
 </div>
