@@ -42,11 +42,11 @@
         </div>
         <div class="col-8 mt-2">
             <div class="mx-3 px-5">
-                <h6 class="text-primary text-justify">El objetivo de esta herramienta informática es favorecer el sistema de referencia y contrareferencia para el exámen ecográfico obstétrico entre los distintos niveles de atención en salud materna.
+                <p class="mt-2 text-justify">El objetivo de esta herramienta informática es favorecer el sistema de referencia y contrareferencia para el exámen ecográfico obstétrico entre los distintos niveles de atención en salud materna.
                 <img class="mx-auto d-block" src="imagenes/ecografo.png" alt="Ecógrafo">
                 <br>El profesional contrareferente a quien le fue solicitada la interconsulta deberá estar previamente registrado en la plataforma.
-                <br><br>Si es de su interés adquirir este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ".
-                <br><br>Si ud. desea probar la plataforma de interconsultas, puede usar el usuario invitado (Usuario: prueba@prueba.cl; Contraseña: 123abc).</h6>
+                <br><br>Si es de su interés adquirir este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ".</p>
+                <p class="text-primary text-justify">Si ud. desea probar la plataforma de interconsultas, puede usar el usuario invitado (Usuario: prueba@prueba.cl; Contraseña: 123abc).</p>
             </div>
         </div>
     </div>
