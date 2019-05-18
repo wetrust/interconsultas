@@ -1123,7 +1123,7 @@ function buildFinishTable(data){
     }
     else{
         $("#mensaje\\.resultado").removeClass("d-none");
-        $("#mensaje\\.resultado").html("No tienes interconsultas finalizadas o no estas autorizado a guardar interconsultas finalizadas");
+        $("#mensaje\\.resultado").html("No tienes interconsultas finalizadas o no estas autorizado para guardar interconsultas finalizadas");
     }
 }
 
