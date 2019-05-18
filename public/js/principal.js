@@ -1100,7 +1100,7 @@ function buildFinishTable(data){
                 let solicitud_id =  $(this).data("id");
                 $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
                 $("#ver\\.interconsulta").modal("hide");
-                loadInProcess();
+                loadInFinish();
             });
 
             $("#ver\\.interconsulta\\.enviar").on("click", function(){
