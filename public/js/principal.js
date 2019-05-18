@@ -290,6 +290,7 @@ function loadNews(){
         }
         else{
             $("#mensaje\\.resultado").removeClass("d-none");
+            $("#mensaje\\.resultado").html("No tienes interconsultas nuevas");
         }
     });
 }
@@ -299,6 +300,7 @@ function loadInProcess(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
+            $("#mensaje\\.resultado").addClass("d-none");
             var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
@@ -1038,6 +1040,10 @@ function loadInProcess(){
                 });
             });
         }
+        else{
+            $("#mensaje\\.resultado").removeClass("d-none");
+            $("#mensaje\\.resultado").html("No tienes interconsultas en espera");
+        }
     });
 }
 
@@ -1051,6 +1057,7 @@ function buildFinishTable(data){
     $('#tabla\\.resultado').empty();
         
     if (Object.keys(data).length > 0) {
+        $("#mensaje\\.resultado").addClass("d-none");
         var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Tipo de exámen</th><th>Realizado</th><th>Accion</th></tr></thead><tbody>';
 
         $.each(data, function(i, value) {
@@ -1113,6 +1120,10 @@ function buildFinishTable(data){
                 callModal($(this).data("informe"), $(this).data("id"));
             });
         });
+    }
+    else{
+        $("#mensaje\\.resultado").removeClass("d-none");
+        $("#mensaje\\.resultado").html("No tienes interconsultas finalizadas");
     }
 }
 
