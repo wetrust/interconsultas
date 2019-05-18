@@ -48,7 +48,7 @@
             <img class="mx-auto d-block" src="imagenes/ecografo.png" alt="Ecógrafo">
             <ul>
                 <li class="text-justify">El profesional contrareferente a quien le fue solicitada la interconsulta deberá necesariamente estar previamente registrado en la plataforma.</li>
-                <li class="text-justify">Si desea probar la plataforma de interconsultas, puede usar el usuario invitado ( Usuario: <strong>prueba@prueba.cl</strong>; Contraseña: <strong>123abc</strong> ).</li>
+                <li class="text-justify">Si desea probar la plataforma de interconsultas, puede usar el usuario invitado ( <strong>Usuario:</strong> prueba@prueba.cl; <strong>Contraseña:</strong> 123abc ).</li>
                 <li class="text-justify">Si es de su interés adquirir este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ" para asi guardar la información del exámen ecográfico.</li>
             </ul>
             </div>
