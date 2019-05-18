@@ -1,5 +1,5 @@
 <div class="container">
-    <a href="https://administrador.crecimientofetal.cl" class="btn btn-primary">Volver</a>
+    <a href="https://administrador.crecimientofetal.cl" class="btn btn-primary mt-2">Volver</a>
     <?php if ($this->profesionales) { ?>
     <table class="table table-bordered mt-2">
         <thead class="thead-dark">
