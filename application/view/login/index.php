@@ -41,7 +41,8 @@
             </div>
         </div>
         <div class="col-8 mt-2">
-            <div class="mx-5 px-5">
+            <div class="mx-3 px-5">
+                <h6 class="text-primary">El objetivo de esta plataforma es responder y administrar interconsultas solicitadas desde <strong>crecimientofetal.cl</strong></h6>
                 <h6 class="text-primary">Para responder a interconsulta de profesional referente deberá ud. encontrarse registrado en la plataforma.</h6>
                 <h6 class="text-primary">La plataforma para solicitar interconsulta depende de un servidor que procese y registre la información (datos ecográficos).</h6>
                 <h6 class="text-primary">Si es de su interés usar este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ".</h6>
