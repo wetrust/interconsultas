@@ -47,7 +47,7 @@
                 <br>La plataforma para solicitar interconsulta depende de un servidor que procese y registre la información (datos ecográficos).
                 <br><br>Si es de su interés usar este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ".
                 <br>Para mayor información, favor contactarse con nosotros al email examenecografico@gmail.com
-                <br><br>Si ud. desea probar la plataforma de interconsultas, puede usar el usuario invitado (Usuario: prueba@prueba.cl; Contraseña: 123abc). Pruebe el sistema solicitando una interconsulta para el médico referente (prueba@prueba.cl) en <strong>crecimientofetal.cl</strong> y observe como llega esta solicitud a este panel de administración</h6>
+                <br><br>Si ud. desea probar la plataforma de interconsultas, puede usar el usuario invitado (Usuario: prueba@prueba.cl; Contraseña: 123abc). Pruebe el sistema solicitando una interconsulta para el médico referente (prueba@prueba.cl) en <strong>crecimientofetal.cl</strong> y observe como llega esta solicitud a este panel de administración.</h6>
             </div>
         </div>
     </div>
