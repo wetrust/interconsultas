@@ -90,35 +90,6 @@
             </table>
         </div>
     </div>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#referentes" role="tab" aria-controls="referentes" aria-selected="false">Listas profesionales referentes</a></li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade" id="referentes" role="tabpanel" aria-labelledby="contact-tab">
-        <div class="card mt-1">
-                <div class="card-body">
-                    <?php if ($this->profesionales) { ?>
-                        <table class="table table-bordered mt-2">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Emails</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabla.correos.geniales">
-                                <?php foreach($this->profesionales as $key => $value) { ?>
-                                <tr>
-                                    <td data-email="<?= htmlentities($value->solicitud_email); ?>"><?= htmlentities($value->solicitud_email); ?></td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    <?php } else { ?>
-                        <div class="alert alert-info mt-2" role="alert">No tiene solicitudes actualmente</div>
-                    <?php } ?>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg h-100" role="document">

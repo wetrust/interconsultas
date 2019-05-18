@@ -10,9 +10,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $this->View->render('dashboard/index', array(
-            'profesionales' => SolicitudesModel::getAllProfesionales(Session::get('user_email'))
-        ));
+        $this->View->render('dashboard/index');
     }
 
     public function agendar($solicitud_id)

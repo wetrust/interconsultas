@@ -1,7 +1,6 @@
 var nombreprofesionalPegar = "";
 $(document).ready(function(){
     loadNews();
-    cargarCorreosProfesionales();
     cargarCiudad();
     cargarLugar();
 
@@ -144,20 +143,6 @@ $(document).ready(function(){
     });
 
 });
-
-function cargarCorreosProfesionales(){
-    $.get(_api + 'profesionales_email').done(function(data){
-        $('#interfaz\\.email').empty();
-        if (Object.keys(data).length > 0) {
-            let response = '<option value=""></option>';
-
-            $.each(data, function(i, value) {
-                response = '<option value="' + data[i].solicitud_email +'">' + data[i].solicitud_email +'</option>';
-                $('#interfaz\\.email').append(response);
-            });
-        }
-    });
-}
 
 function cargarCiudad(){
     $.get(_api + 'ciudades').done(function(data){
