@@ -255,9 +255,10 @@ function loadNews(){
                 $("#ver\\.interconsulta\\.footer").empty().prepend('<button id="boton.interconsulta.enviar" class="btn btn-primary">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
-                    $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
+                    $.get("dashboard/delete/" + solicitud_id).done(function(){
+                        loadNews();
+                    });
                     $("#ver\\.interconsulta").modal("hide");
-                    loadNews();
                 });
 
                 $("#boton\\.interconsulta\\.enviar").on("click", function(){
