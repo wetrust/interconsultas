@@ -883,9 +883,10 @@ function loadInProcess(){
                 $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
-                    $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
+                    $.get("dashboard/delete/" + solicitud_id).done(function(){
+                        loadInProcess();
+                    });
                     $("#ver\\.interconsulta").modal("hide");
-                    loadInProcess();
                 });
 
                 $("#enviar\\.respuesta\\.botton").on("click", function(){
