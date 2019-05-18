@@ -49,6 +49,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo Session::get('user_name'); ?> </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUser">
+                                <?php if (Session::get("user_account_type") == 2) : ?>
                                 <a class="dropdown-item" href="user/index">Mi cuenta</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="user/changeUserRole">Cambiar tipo de cuenta</a>
@@ -56,6 +57,7 @@
                                 <a class="dropdown-item" href="user/editusername">Cambiar mi nombre de usuario</a>
                                 <a class="dropdown-item" href="user/edituseremail">Cambiar mi correo</a>
                                 <a class="dropdown-item" href="user/changePassword">Cambiar mi contraseña</a>
+                                <?php endif; ?>
                                 <a class="dropdown-item" href="login/logout">Salir</a>
                                 <div class="dropdown-divider"></div>
                                 <?php if (Session::get("user_account_type") == 7) : ?>
