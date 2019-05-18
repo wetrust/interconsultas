@@ -43,13 +43,18 @@
                     <li class="nav-item <?php if (View::checkForActiveController($filename, "dashboard")) { echo 'active'; } ?>">
                         <a class="nav-link" href="https://crecimientofetal.cl">Volver a pagina inicial</a>
                     </li>
+                    <?php if (Session::userIsLoggedIn()) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profesionales">Lista profesionales referentes</a>
+                    </li>
+                    <?php } ?>
                 </ul>
                 <?php if (Session::userIsLoggedIn()) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo Session::get('user_name'); ?> </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUser">
-                                <?php if (Session::get("user_account_type") == 2) : ?>
+                                <?php if (Session::get("user_account_type") > 2) : ?>
                                 <a class="dropdown-item" href="user/index">Mi cuenta</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="user/changeUserRole">Cambiar tipo de cuenta</a>
