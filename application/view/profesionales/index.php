@@ -14,3 +14,4 @@
     <?php } else { ?>
     <div class="alert alert-info mt-2" role="alert">No tiene solicitudes actualmente</div>
     <?php } ?>
+</div>
