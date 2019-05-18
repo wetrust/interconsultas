@@ -1,4 +1,5 @@
 <div class="container">
+    <a href="https://administrador.crecimientofetal.cl" class="btn btn-primary">Volver</a>
     <?php if ($this->profesionales) { ?>
     <table class="table table-bordered mt-2">
         <thead class="thead-dark">
@@ -6,9 +7,7 @@
         </thead>
         <tbody id="tabla.correos.geniales">
             <?php foreach($this->profesionales as $key => $value) { ?>
-            <tr>
-                <td data-email="<?= htmlentities($value->solicitud_email); ?>"><?= htmlentities($value->solicitud_email); ?></td>
-            </tr>
+            <tr><td data-email="<?= htmlentities($value->solicitud_email); ?>"><?= htmlentities($value->solicitud_email); ?></td></tr>
             <?php } ?>
         </tbody>
     </table>
