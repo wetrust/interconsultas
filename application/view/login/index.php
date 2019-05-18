@@ -43,6 +43,7 @@
         <div class="col-8 mt-2">
             <div class="mx-3 px-5">
                 <h6 class="text-primary text-justify">El objetivo de este nuevo módulo es permitir el sistema de referencia y contrareferencia para los exámenes ecográficos obstétricos fundamentalmente para valorar el crecimiento fetal.
+                <img src="imagenes/ecografo.png" alt="Ecógrafo">
                 <br>El profesional contrareferente a quien fue enviada la interconsulta deberá estar previamente registrado en la plataforma.
                 <br>La plataforma para solicitar interconsulta depende de un servidor que procese y registre la información (datos ecográficos).
                 <br><br>Si es de su interés usar este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ".
