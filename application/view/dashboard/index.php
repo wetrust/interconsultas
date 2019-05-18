@@ -76,6 +76,7 @@
     </div>
     <div class="card my-2 shadow">
         <div class="card-body">
+            <div class="alert alert-primary d-none" role="alert" id="mensaje.resultado">No tienes interconsultas en este ítem</div>
             <table class="table table-bordered mt-2" id="tabla.resultado">
                 <thead class="thead-dark">
                     <tr>

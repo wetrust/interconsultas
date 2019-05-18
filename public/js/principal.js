@@ -194,6 +194,7 @@ function loadNews(){
         $('#tabla\\.resultado').empty();
         
         if (Object.keys(data).length > 0) {
+            $("#mensaje\\.resultado").addClass("d-none");
             var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Accion</th></tr></thead><tbody>';
 
             $.each(data, function(i, value) {
@@ -286,6 +287,9 @@ function loadNews(){
                     });
                 });
             });
+        }
+        else{
+            $("#mensaje\\.resultado").removeClass("d-none");
         }
     });
 }
