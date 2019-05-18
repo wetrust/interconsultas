@@ -42,11 +42,11 @@
         </div>
         <div class="col-8 mt-2">
             <div class="mx-5 px-5">
-                <h6 class="text-primary">El Software para procesar datos ecográficos y flujometría Doppler fetal es actualmente de acceso libre.</h6>
-                <h6 class="text-primary">Para solicitar interconsulta a un profesional de contrarreferencia (ecografista), debe este previamente estar registrado en el sistema.</h6>
+                <h6 class="text-primary">Para responder a interconsulta de profesional referente deberá ud. encontrarse registrado en la plataforma.</h6>
                 <h6 class="text-primary">La plataforma para solicitar interconsulta depende de un servidor que procese y registre la información (datos ecográficos).</h6>
                 <h6 class="text-primary">Si es de su interés usar este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ".</h6>
                 <h6 class="text-primary">Para mayor información, favor contactarse con nosotros al email examenecografico@gmail.com</h6>
+                <h6 class="text-primary">Si ud. desea probar la plataforma de interconsultas, puede usar el usuario invitado (Usuario: prueba@prueba.cl; Contraseña: 123abc). Pruebe el sistema solicitando una interconsulta para el médico referente (prueba@prueba.cl) en <strong>crecimientofetal.cl</strong> y observe como llega esta solicitud en este panel de administración</h6>
             </div>
         </div>
     </div>
