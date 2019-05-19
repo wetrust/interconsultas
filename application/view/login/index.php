@@ -45,14 +45,12 @@
         <div class="col-8 mt-2">
             <div class="mx-3 px-5">
             <h5 class="text-center">SISTEMA DE REFERENCIA Y CONTRARREFERENCIA PARA SOLICITUD DE ECOGRAFIA OBSTETRICA</h5>
-            <ul class="mt-2">
+            <ul class="mt-3">
                 <li class="text-justify">El objetivo de esta herramienta informática es favorecer el sistema de referencia y contrareferencia para el exámen ecográfico obstétrico entre los distintos niveles de atención en salud materna.</li>
             </ul>
             <img class="mx-auto d-block" src="imagenes/ecografo.png" alt="Ecógrafo">
             <ul>
-                <li class="text-justify">El profesional contrareferente a quien le fue solicitada la interconsulta deberá necesariamente estar previamente registrado en la plataforma.</li>
-                <li class="text-justify">Si desea probar la plataforma de interconsultas, puede usar el usuario invitado ( <strong>Usuario:</strong> prueba@prueba.cl; <strong>Contraseña:</strong> 123abc ).</li>
-                <li class="text-justify">Si es de su interés adquirir este servicio es necesario contratar un servidor cloud con proveedores como "Google Cloud Computing" o "Amazon AWZ" para asi guardar la información del exámen ecográfico.</li>
+                <li class="text-justify">Al suscribirse podrá almacenar de forma privada la información de los exámenes ecográfiso. Pudiendo compartir en linea los resultados de examen con el profesional referente.<br><br><a>Solicitud de suscripción</a></li>
             </ul>
             </div>
         </div>
