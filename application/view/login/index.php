@@ -50,7 +50,7 @@
             </ul>
             <img class="mx-auto d-block" src="imagenes/ecografo.png" alt="Ecógrafo">
             <ul>
-                <li class="text-justify">Al suscribirse a la plataforma podrá de forma privada, almacenar la información de los exámenes ecográficos realizados por ud., pudiendo compartir en linea estos resultados con el profesional referente.<br><br><a>Solicitud de suscripción</a></li>
+                <li class="text-justify">Al suscribirse a la plataforma podrá de forma privada, almacenar la información de los exámenes ecográficos realizados por ud., pudiendo compartir en linea estos resultados con el profesional referente.<br><br><a href="contacto">Solicitud de suscripción</a></li>
             </ul>
             </div>
         </div>
