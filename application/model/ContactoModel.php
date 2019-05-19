@@ -18,11 +18,11 @@ class ContactoModel
         $mail_sent = $mail->sendMailWithPHPMailer("instructivoeco@gmail.com", Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud de suscripción', $body);
 
         if ($mail_sent) {
-            return true;
             Session::add('feedback_positive', "Se ha enviado con éxito su mensaje, pronto nos pondremos en contacto con ud.");
+            return true;
         } else {
-            return false;
             Session::add('feedback_negative', "Tenemos problemas en el servidor, intentelo más tarde");
+            return false;
         }
     }
 
