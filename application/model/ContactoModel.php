@@ -4,10 +4,10 @@ class ContactoModel
 {
     public static function sendEmail($nombre, $direccion, $email,$telefono,$mensaje)
     {
-        $body = "Solicitud de suscripcion para interconsulta \n\n".
+        $body = "SOLICITUD DE SUSCRIPCIÓN PARA INTERCONSULTOR \n\n".
          "Nombre: " . $nombre . "\n\n".
-         "Dirección postal ". $direccion . "\n\n".
-         "Correo electrónico: " . $email . "\n\n".
+         "Dirección: ". $direccion . "\n\n".
+         "Email: " . $email . "\n\n".
          "Teléfono: " . $telefono . "\n\n".
          "Mensaje: " . html_entity_decode(strip_tags($mensaje)) ;
     
