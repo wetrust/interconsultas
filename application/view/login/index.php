@@ -38,6 +38,8 @@
                     <input type="submit" class="btn btn-primary my-2" value="Ingresar"/>
                 </form>
                 <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvidaste tu contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
+                <p>Si ud. no es usuario registrado en la plataforma, puede temporalmente usar contraseña de usuario invitado</p>
+                <ul><li>Correo: prueba@prueba.cl</li><li>Contraseña: 123abc</li></ul>
             </div>
         </div>
         <div class="col-8 mt-2">
