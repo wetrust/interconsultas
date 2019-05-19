@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group col">
                         <label>Teléfono:</label>
-                        <input type="email" class="form-control" name="telefono_text" autocomplete="off">
+                        <input type="text" class="form-control" name="telefono_text" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group">
