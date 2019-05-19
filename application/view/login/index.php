@@ -38,12 +38,13 @@
                     <input type="submit" class="btn btn-primary my-2" value="Ingresar"/>
                 </form>
                 <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvidaste tu contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
-                <p>Si ud. no es usuario registrado en la plataforma, puede temporalmente usar contraseña de usuario invitado</p>
+                <p class="mt-2">Si ud. no es usuario registrado en la plataforma, puede temporalmente usar contraseña de usuario invitado</p>
                 <ul><li>Correo: prueba@prueba.cl</li><li>Contraseña: 123abc</li></ul>
             </div>
         </div>
         <div class="col-8 mt-2">
             <div class="mx-3 px-5">
+            <h3>SISTEMA DE REFERENCIA Y CONTRARREFERENCIA PARA SOLICITUD DE ECOGRAFIA OBSTETRICA</h3>
             <ul class="mt-2">
                 <li class="text-justify">El objetivo de esta herramienta informática es favorecer el sistema de referencia y contrareferencia para el exámen ecográfico obstétrico entre los distintos niveles de atención en salud materna.</li>
             </ul>
