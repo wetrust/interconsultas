@@ -44,7 +44,7 @@
         </div>
         <div class="col-8 mt-2">
             <div class="mx-3 px-5">
-            <h3>SISTEMA DE REFERENCIA Y CONTRARREFERENCIA PARA SOLICITUD DE ECOGRAFIA OBSTETRICA</h3>
+            <h5 class="text-center">SISTEMA DE REFERENCIA Y CONTRARREFERENCIA PARA SOLICITUD DE ECOGRAFIA OBSTETRICA</h5>
             <ul class="mt-2">
                 <li class="text-justify">El objetivo de esta herramienta informática es favorecer el sistema de referencia y contrareferencia para el exámen ecográfico obstétrico entre los distintos niveles de atención en salud materna.</li>
             </ul>
