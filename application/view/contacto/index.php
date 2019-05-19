@@ -13,11 +13,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
+            <div class="form-group col">
                 <label>Correo electronico:</label>
                 <input type="email" class="form-control" name="email_text" autocomplete="off">
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label>Teléfono:</label>
                 <input type="email" class="form-control" name="telefono_text" autocomplete="off">
             </div>
