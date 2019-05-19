@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="card">
+    <div class="card mt-2">
         <div class="card-body">
             <h5>Formulario de contacto</h5>
             <p>Use este formulario para solicitar una suscripción para este sistema o para contactarnos</p>
