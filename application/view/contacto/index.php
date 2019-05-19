@@ -9,19 +9,25 @@
             </div>
             <div class="form-group col">
                 <label>Dirección postal:</label>
-                <input type="text" class="form-control" name="nombre_text" autocomplete="off">
+                <input type="text" class="form-control" name="direccion_text" autocomplete="off">
             </div>
         </div>
-        <div class="form-group">
-            <label>Correo electronico:</label>
-            <input type="email" class="form-control" name="email_text" autocomplete="off">
+        <div class="row">
+            <div class="form-group">
+                <label>Correo electronico:</label>
+                <input type="email" class="form-control" name="email_text" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Teléfono:</label>
+                <input type="email" class="form-control" name="telefono_text" autocomplete="off">
+            </div>
         </div>
         <div class="form-group">
             <label>Mensaje:</label>
             <textarea class="form-control" name="mensaje_text" autocomplete="off"></textarea>
         </div>
         <input type="hidden" name="csrf_token" value="<?= Csrf::makeToken(); ?>" />
+        <p>Para acceder a esta plataforma y guardar datos de exámenes ecográficos, es necesario contratar un servidor Cloud ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
         <button type="submit" class="btn btn-primary">Enviar mensajes</button>
-        <p>Al adquirir este servicio y guardar su información, es necesario contratar un servidor Cloud ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
     </form>
 </div>
