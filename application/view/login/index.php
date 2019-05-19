@@ -2,7 +2,7 @@
     <div class="row">
         <div class="card col-4 mt-2">
             <div class="card-body">
-                <h5 class="card-title text-center">INGRESAR</h5>
+                <h5 class="card-title text-center">INGRESAR A PLATAFORMA</h5>
                 <?php $this->renderFeedbackMessages(); ?>
                 <form action="<?php echo Config::get('URL'); ?>login/login" method="post">
                     <div class="form-group">
