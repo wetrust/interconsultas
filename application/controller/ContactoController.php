@@ -9,6 +9,6 @@ class ContactoController extends Controller
 
     public function index()
     {
-        $this->View->render('index/index');
+        $this->View->render('contacto/index');
     }
 }
