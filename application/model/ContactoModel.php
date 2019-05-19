@@ -19,8 +19,10 @@ class ContactoModel
 
         if ($mail_sent) {
             return true;
+            Session::add('feedback_positive', "Se ha enviado con éxito su mensaje, pronto nos pondremos en contacto con ud.");
         } else {
             return false;
+            Session::add('feedback_negative', "Tenemos problemas en el servidor, intentelo más tarde");
         }
     }
 

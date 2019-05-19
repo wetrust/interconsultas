@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card mt-2">
         <div class="card-body">
+            <?php $this->renderFeedbackMessages(); ?>
             <h5>Formulario de contacto</h5>
             <p>Use este formulario para solicitar una suscripción para este sistema o para contactarnos</p>
             <form method="post" action="<?php echo Config::get('URL');?>contacto/enviar">
