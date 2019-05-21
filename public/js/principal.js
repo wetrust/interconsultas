@@ -385,8 +385,7 @@ function loadInProcess(){
                             eg = eg.replace("semanas", "");
 
                             if (eg.length > 0){
-
-                                eg =  parseFloat(eg).toFixed();
+                                eg = parseFloat(eg).toFixed();
                                 $("input[name='respuesta_uterina_derecha_percentil_view']").val(pctUtAdvanced(eg,ut));
                                 $("input[name='respuesta_uterina_derecha_percentil']").val(pctUtAdvanced(eg,ut));
 
@@ -408,7 +407,7 @@ function loadInProcess(){
 
                             if (eg.length > 0){
 
-                                eg =  parseFloat(eg).toFixed();
+                                eg = parseFloat(eg).toFixed();
                                 $("input[name='respuesta_uterina_izquierda_percentil_view']").val(pctUtAdvanced(eg,ut));
                                 $("input[name='respuesta_uterina_izquierda_percentil']").val(pctUtAdvanced(eg,ut));
 
@@ -540,7 +539,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_pfe']").on("change", function(){
-            
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var pfe = $("input[name='respuesta_pfe']").val();
             
@@ -554,7 +552,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_ccca']").on("change", function(){
-                            
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ccca = $("input[name='respuesta_ccca']").val();
             
@@ -568,7 +565,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_cc']").on("change", function(){
-                            
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var cc = $("input[name='respuesta_cc']").val();
             
@@ -582,7 +578,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_ca']").on("change", function(){
-                            
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ca = $("input[name='respuesta_ca']").val();
 
@@ -596,7 +591,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_lf']").on("change", function(){
-                            
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var lf = $("input[name='respuesta_lf']").val();
             
@@ -611,7 +605,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_lh']").on("change", function(){
-                            
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var lh = $("input[name='respuesta_lh']").val();
 
@@ -625,7 +618,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_cerebelo']").on("change", function(){
-                            
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var cerebelo = $("input[name='respuesta_cerebelo']").val();
 
@@ -702,7 +694,6 @@ function loadInProcess(){
                         });
 
                         $("input[name='respuesta_ccca']").on("change", function(){
-
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ccca = $("input[name='respuesta_ccca']").val();
 
@@ -833,7 +824,6 @@ function loadInProcess(){
                 })
 
                 $("input[name='respuesta_pfe']").on("change", function(){
-
                     var eg = $("#interconsulta\\.respuesta\\.eg").val();
                     var pfe = $("input[name='respuesta_pfe']").val();
 
@@ -848,7 +838,6 @@ function loadInProcess(){
                 });
 
                 $("#interconsulta\\.respuesta\\.cm").on("change", function(){
-
                     var eg = $("#interconsulta\\.respuesta\\.eg").val();
                     var acm = $("#interconsulta\\.respuesta\\.cm").val();
 
@@ -861,7 +850,6 @@ function loadInProcess(){
                         $("input[name='respuesta_cm_percentil']").val(pctacmAdvanced(eg,acm));
 
                     }
-
                     if (acm > 0){
                         if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
                             var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
@@ -875,19 +863,19 @@ function loadInProcess(){
                     psohdlk();
                     calCCCA();
                 });
+
                 $("input[name='respuesta_ca']").on("change", function(){
                     psohdlk();
                     calCCCA();
                 });
 
                 $("input[name='respuesta_ccca']").on("change", function(){
-                            
                     var eg = $("#interconsulta\\.respuesta\\.eg").val();
                     var ccca = $("input[name='respuesta_ccca']").val();
-    
+
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
-    
+
                     if (eg.length > 0){
                         eg =  parseFloat(eg).toFixed();
                         $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
