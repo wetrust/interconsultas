@@ -561,7 +561,7 @@ function loadInProcess(){
                             if (eg.length > 0){
             
                                 eg =  parseFloat(eg).toFixed();
-                                $("#respuesta_lf_pct").val("Pct." + pctlfAdvanced(eg,lf));
+                                $("#respuesta_lf_pct").html("Pct." + pctlfAdvanced(eg,lf));
                             }
                         });
                     }
@@ -952,7 +952,7 @@ function loadInProcess(){
                             respuesta_ca: $('input[name="respuesta_ca"]').val(),
                             respuesta_ca_pct: $('input[name="respuesta_ca_pct"]').val(),
                             respuesta_lf: $('input[name="respuesta_lf"]').val(),
-                            respuesta_lf_pct: $('#respuesta_lf_pct').val(),
+                            respuesta_lf_pct: $('#respuesta_lf_pct').html(),
                             respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
                             respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
                             respuesta_presentacion: $('select[name="respuesta_presentacion"]').val(),
