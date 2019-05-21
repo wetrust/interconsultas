@@ -1166,6 +1166,7 @@ function loadInProcess(){
                             respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
                             respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
+                            respuesta_bvm: $('input[name="respuesta_bvm"]').val()
                         }
 
                         args.respuesta_uterinas_percentil = args.respuesta_uterinas_percentil.replace("Pct. ", "")
