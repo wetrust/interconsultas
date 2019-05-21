@@ -39,9 +39,6 @@
     $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
     $solicitud_fum = explode("-", $this->solicitud->solicitud_fum);
     $solicitud_fum = $solicitud_fum[2] . "-". $solicitud_fum[1]. "-". $solicitud_fum[0];
-
-    $evaluacion_fecha = explode("-", $this->solicitud_evaluacion->evaluacion_fecha);
-    $evaluacion_fecha = $evaluacion_fecha[2] . "-". $evaluacion_fecha[1]. "-". $evaluacion_fecha[0];
     
     $html = '<h3 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA PRECOZ DE URGENCIA</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
@@ -71,14 +68,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
-    $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">B- Contrarreferencia inicial desde unidad de ultrasonografía gineco obstétrica</h4>';
-    $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
-    $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><em><strong>Fecha</strong> Evaluación de solicitud ecográfica: '. $evaluacion_fecha .'</em></td><td><em><strong>Comentario:</strong> ' . $this->solicitud_evaluacion->evaluacion_comentarios.'</em></td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(8);
-
-    $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">C- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
+    $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha.'</td><td>Edad Gestacional por FUR: '. $this->respuesta_eg.'</td></tr></tbody></table>';
