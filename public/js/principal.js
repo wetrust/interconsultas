@@ -494,6 +494,7 @@ function loadInProcess(){
                                 $("input[name='respuesta_ic']").val(0);
                             }
                         });
+
                         $("input[name='respuesta_dof']").on("change", function(){
                             let dbp = $("input[name='respuesta_dbp']").val();
                             let dbp_ready = false;
@@ -557,7 +558,6 @@ function loadInProcess(){
                             eg = eg.replace("semanas", "");
             
                             if (eg.length > 0){
-            
                                 eg =  parseFloat(eg).toFixed();
                                 $("#respuesta_ccca_pct").html("Pct. " + pctcccaAdvanced(eg,ccca));
                             }
@@ -572,7 +572,6 @@ function loadInProcess(){
                             eg = eg.replace("semanas", "");
             
                             if (eg.length > 0){
-            
                                 eg =  parseFloat(eg).toFixed();
                                 $("#respuesta_cc_pct").html("Pct. " + pctccAdvanced(eg,cc));
                             }
@@ -582,12 +581,11 @@ function loadInProcess(){
                             
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ca = $("input[name='respuesta_ca']").val();
-            
+
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
-            
+
                             if (eg.length > 0){
-            
                                 eg =  parseFloat(eg).toFixed();
                                 $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
                             }
@@ -605,6 +603,34 @@ function loadInProcess(){
             
                                 eg =  parseFloat(eg).toFixed();
                                 $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
+                            }
+                        });
+
+                        $("input[name='respuesta_lh']").on("change", function(){
+                            
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var lh = $("input[name='respuesta_lh']").val();
+
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+                                eg = parseFloat(eg).toFixed();
+                                $("#respuesta_lh_pct").html("Pct. " + pctlhAdvanced(eg,lh));
+                            }
+                        });
+
+                        $("input[name='respuesta_cerebelo']").on("change", function(){
+                            
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var cerebelo = $("input[name='respuesta_cerebelo']").val();
+
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+                                eg = parseFloat(eg).toFixed();
+                                $("#respuesta_cerebelo_pct").html("Pct. " + pctcerebeloAdvanced(eg,cerebelo));
                             }
                         });
                     }
@@ -642,7 +668,6 @@ function loadInProcess(){
                             eg = eg.replace("semanas", "");
 
                             if (eg.length > 0){
-            
                                 eg =  parseFloat(eg).toFixed();
                                 $("#interconsulta\\.respuesta\\.uterinas\\.percentil").val(pctUtAdvanced(eg,ut));
                                 $("input[name='respuesta_uterinas_percentil']").val(pctUtAdvanced(eg,ut));
@@ -657,7 +682,6 @@ function loadInProcess(){
                             eg = eg.replace("semanas", "");
 
                             if (eg.length > 0){
-            
                                 eg =  parseFloat(eg).toFixed();
                                 $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
             
@@ -749,7 +773,6 @@ function loadInProcess(){
                             eg = eg.replace("semanas", "");
             
                             if (eg.length > 0){
-            
                                 eg =  parseFloat(eg).toFixed();
                                 $("#interconsulta\\.respuesta\\.cmau\\.percentil").val(pctcmauAdvanced(eg,cmau));
                                 $("input[name='respuesta_cmau_percentil']").val(pctcmauAdvanced(eg,cmau));
@@ -799,7 +822,6 @@ function loadInProcess(){
                     eg = eg.replace("semanas", "");
 
                     if (eg.length > 0){
-
                         eg =  parseFloat(eg).toFixed();
                         $("#interconsulta\\.respuesta\\.uterinas\\.percentil").val(pctUtAdvanced(eg,ut));
                         $("input[name='respuesta_uterinas_percentil']").val(pctUtAdvanced(eg,ut));
@@ -815,7 +837,6 @@ function loadInProcess(){
                     eg = eg.replace("semanas", "");
 
                     if (eg.length > 0){
-
                         eg =  parseFloat(eg).toFixed();
                         $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
 
@@ -831,7 +852,6 @@ function loadInProcess(){
                     eg = eg.replace("semanas", "");
 
                     if (eg.length > 0){
-
                         eg =  parseFloat(eg).toFixed();
                         $("#interconsulta\\.respuesta\\.cm\\.percentil").val(pctacmAdvanced(eg,acm));
                         $("input[name='respuesta_cm_percentil']").val(pctacmAdvanced(eg,acm));
@@ -865,7 +885,6 @@ function loadInProcess(){
                     eg = eg.replace("semanas", "");
     
                     if (eg.length > 0){
-    
                         eg =  parseFloat(eg).toFixed();
                         $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
                     }
@@ -1763,3 +1782,99 @@ function ICAdvanced(dbp, dof) {
         return 0;
     }
 }
+
+function pctlhAdvanced(eg, lh) {
+
+    var pct05 = [];
+    var pct95 = [];
+   
+    pct05[12] = 4.8;   pct95[12] = 12.3;    pct05[13] = 7.6;   pct95[13] = 15.1;
+    pct05[14] = 10.3;  pct95[14] = 17.9;    pct05[15] = 13.1;  pct95[15] = 20.7;
+    pct05[16] = 15.8;  pct95[16] = 23.5;    pct05[17] = 18.5;  pct95[17] = 26.3;
+    pct05[18] = 21.2;  pct95[18] = 29.1;    pct05[19] = 23.8;  pct95[19] = 31.6;
+    pct05[20] = 26.3;  pct95[20] = 34.2;    pct05[21] = 28.8;  pct95[21] = 36.7;
+    pct05[22] = 31.2;  pct95[22] = 39.2;    pct05[23] = 33.5;  pct95[23] = 41.6;
+    pct05[24] = 35.7;  pct95[24] = 43.9;    pct05[25] = 37.9;  pct95[25] = 46.1;
+    pct05[26] = 39.9;  pct95[26] = 48.1;    pct05[27] = 41.9;  pct95[27] = 50.1;
+    pct05[28] = 43.7;  pct95[28] = 52.1;    pct05[29] = 45.5;  pct95[29] = 53.9;
+    pct05[30] = 47.2;  pct95[30] = 55.6;    pct05[31] = 48.9;  pct95[31] = 57.3;
+    pct05[32] = 50.4;  pct95[32] = 58.9;    pct05[33] = 52.1;  pct95[33] = 60.5;
+    pct05[34] = 53.4;  pct95[34] = 62.1;    pct05[35] = 54.8;  pct95[35] = 63.5;
+    pct05[36] = 56.2;  pct95[36] = 64.9;    pct05[37] = 57.6;  pct95[37] = 66.4;
+    pct05[38] = 59.8;  pct95[38] = 67.8;    pct05[39] = 60.4;  pct95[39] = 69.3;
+    pct05[40] = 61.9;  pct95[40] = 70.8;
+    
+    if (eg < 12) {
+        return 0;
+    } 
+    else if (eg > 40)
+    {
+        return 0;
+    } 
+    else {
+        eg = parseInt(eg);
+        var uno = pct95[eg] - pct5[eg];
+        var dos = lh - pct5[eg];
+        var resultado = parseInt(95 / (uno) * (dos) + 5);
+        if (resultado > 99) {
+            return '> 99';
+        }
+        else if (resultado < 1) {
+            return '< 1';
+        }
+        else {
+            return resultado;
+        }
+    }
+}
+
+function pctcerebeloAdvanced(eg,cerebelo) {
+
+    //cerebelo segun Hill
+    var pct2ds = [];
+    var pctmedia = [];
+    var pct2dsmas = [];
+
+    pct2ds[0] = 12;pct2ds[1] = 14;pct2ds[2] = 15;pct2ds[3] = 16;pct2ds[4] = 17;pct2ds[5] = 18;
+    pct2ds[6] = 19;pct2ds[7] = 20;pct2ds[8] = 21;pct2ds[9] = 22;pct2ds[10] = 24;
+    pct2ds[11] = 26;pct2ds[12] = 27;pct2ds[13] = 29;pct2ds[14] = 30;pct2ds[15] = 31;
+    pct2ds[16] = 33;pct2ds[17] = 36;pct2ds[18] = 37;pct2ds[19] = 38;pct2ds[20] = 40;
+    pct2ds[21] = 40;pct2ds[22] = 40;pct2ds[23] = 41;pct2ds[24] = 42;pct2ds[25] = 44;
+    
+    pctmedia[0] = 15;pctmedia[1] = 16;pctmedia[2] = 17;pctmedia[3] = 18;pctmedia[4] = 20;
+    pctmedia[5] = 20;pctmedia[6] = 22;pctmedia[7] = 23;pctmedia[8] = 24;pctmedia[9] = 26;
+    pctmedia[10] = 28;pctmedia[11] = 30;pctmedia[12] = 31;pctmedia[13] = 33;pctmedia[14] = 34;
+    pctmedia[15] = 37;pctmedia[16] = 39;pctmedia[17] = 41;pctmedia[18] = 43;pctmedia[19] = 46;
+    pctmedia[20] = 47;pctmedia[21] = 49;pctmedia[22] = 51;pctmedia[23] = 51;pctmedia[24] = 52;
+    pctmedia[25] = 52
+
+    pct2dsmas[0] = 18;pct2dsmas[1] = 18;pct2dsmas[2] = 19;pct2dsmas[3] = 20;pct2dsmas[4] = 22;
+    pct2dsmas[5] = 23;pct2dsmas[6] = 25;pct2dsmas[7] = 26;pct2dsmas[8] = 27;pct2dsmas[9] = 30;
+    pct2dsmas[10] = 32;pct2dsmas[11] = 34;pct2dsmas[12] = 34;pct2dsmas[13] = 37;pct2dsmas[14] = 38;
+    pct2dsmas[15] = 41;pct2dsmas[16] = 43;pct2dsmas[17] = 46;pct2dsmas[18] = 48;pct2dsmas[19] = 53;
+    pct2dsmas[20] = 56;pct2dsmas[21] = 58;pct2dsmas[22] = 60;pct2dsmas[23] = 62;pct2dsmas[24] = 62;
+    pct2dsmas[25] = 62;
+
+    if (eg < 15) {
+        return 0;
+    } 
+    else if (eg > 40)
+    {
+        return 0;
+    } 
+    else {
+        eg = parseInt(eg) - 15;
+        var uno = pct2dsmas[eg] - pct2ds[eg];
+        var dos = cerebelo - pct2ds[eg];
+        var resultado = parseInt(95 / (uno) * (dos) + 5);
+        if (resultado > 99) {
+            return '> 99';
+        }
+        else if (resultado < 1) {
+            return '< 1';
+        }
+        else {
+            return resultado;
+        }
+    }
+};
