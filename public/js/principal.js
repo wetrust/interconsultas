@@ -1148,11 +1148,11 @@ function loadInProcess(){
                             respuesta_placenta: $('select[name="respuesta_placenta"]').val(),
                             respuesta_placenta_insercion: $('select[name="respuesta_placenta_insercion"]').val(),
                             respuesta_uterina_derecha: $('input[name="respuesta_uterina_derecha"]').val(),
-                            respuesta_uterina_derecha_percentil: $('input[name="respuesta_uterina_derecha_percentil"]').html(),
+                            respuesta_uterina_derecha_percentil: $('#respuesta_uterina_derecha_percentil').html(),
                             respuesta_uterina_izquierda: $('input[name="respuesta_uterina_izquierda"]').val(),
-                            respuesta_uterina_izquierda_percentil: $('input[name="respuesta_uterina_izquierda_percentil"]').html(),
+                            respuesta_uterina_izquierda_percentil: $('#respuesta_uterina_izquierda_percentil').html(),
                             respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
-                            respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_percentil"]').html(),
+                            respuesta_uterinas_percentil: $('#respuesta_uterinas_percentil').html(),
                             respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
                             respuesta_umbilical_percentil: $('input[name="respuesta_umbilical_percentil"]').val(),
                             respuesta_cm: $('input[name="respuesta_cm"]').val(),
@@ -1169,7 +1169,9 @@ function loadInProcess(){
                             respuesta_bvm: $('input[name="respuesta_bvm"]').val()
                         }
 
-                        args.respuesta_uterinas_percentil = args.respuesta_uterinas_percentil.replace("Pct. ", "")
+                        args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
+                        args.respuesta_uterina_izquierda_percentil = args.respuesta_uterina_izquierda_percentil.replace("Pct. ", "");
+                        args.respuesta_uterinas_percentil = args.respuesta_uterinas_percentil.replace("Pct. ", "");
                     }
 
                     $.post('dashboard/save', args).done(function(data){
