@@ -1014,9 +1014,9 @@ function loadInProcess(){
                             respuesta_liquido_amniotico: $('select[name="respuesta_liquido_amniotico"] option:selected').val(),
                             respuesta_dbp: $('input[name="respuesta_dbp"]').val(),
                             respuesta_cc: $('input[name="respuesta_cc"]').val(),
-                            respuesta_cc_pct: $('input[name="respuesta_cc_pct"]').html(),
+                            respuesta_cc_pct: $('#respuesta_cc_pct').html(),
                             respuesta_ca: $('input[name="respuesta_ca"]').val(),
-                            respuesta_ca_pct: $('input[name="respuesta_ca_pct"]').html(),
+                            respuesta_ca_pct: $('#respuesta_ca_pct').html(),
                             respuesta_lf: $('input[name="respuesta_lf"]').val(),
                             respuesta_lf_pct: $('#respuesta_lf_pct').html(),
                             respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
@@ -1026,7 +1026,7 @@ function loadInProcess(){
                             respuesta_anatomia: $('select[name="respuesta_anatomia"]').val(),
                             respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
                             respuesta_pfe_pct: $('input[name="respuesta_pfe_pct"]').val(),
-                            respuesta_ccca_pct: $('input[name="respuesta_ccca_pct"]').html(),
+                            respuesta_ccca_pct: $('#respuesta_ccca_pct').html(),
                             respuesta_hipotesis: $('select[name="respuesta_hipotesis"]').val(),
                             respuesta_crecimiento_ccca: $('select[name="respuesta_crecimiento_ccca"]').val(),
                             respuesta_comentariosexamen: $('#editable').val(),
@@ -1035,9 +1035,9 @@ function loadInProcess(){
                             respuesta_ic: $('input[name="respuesta_ic"]').val(),
                             respuesta_bvm: $('input[name="respuesta_bvm"]').val(),
                             respuesta_lh: $('input[name="respuesta_lh"]').val(),
-                            respuesta_lh_pct: $('input[name="respuesta_lh_pct"]').html(),
+                            respuesta_lh_pct: $('#respuesta_lh_pct').html(),
                             respuesta_cerebelo: $('input[name="respuesta_cerebelo"]').val(),
-                            respuesta_cerebelo_pct: $('input[name="respuesta_cerebelo_pct"]').html()
+                            respuesta_cerebelo_pct: $('#respuesta_cerebelo_pct').html()
                         }
 
                         args.respuesta_lf_pct = args.respuesta_lf_pct.replace("Pct. ", "");
