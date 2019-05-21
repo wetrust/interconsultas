@@ -1813,8 +1813,8 @@ function pctlhAdvanced(eg, lh) {
     } 
     else {
         eg = parseInt(eg);
-        var uno = pct95[eg] - pct5[eg];
-        var dos = lh - pct5[eg];
+        var uno = pct95[eg] - pct05[eg];
+        var dos = lh - pct05[eg];
         var resultado = parseInt(95 / (uno) * (dos) + 5);
         if (resultado > 99) {
             return '> 99';
