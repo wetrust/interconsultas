@@ -84,9 +84,9 @@
     $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>LCN: *</td><td>'.htmlentities($this->respuesta_lcn).' mm.</td><td>EG x LCN: '.htmlentities($this->respuesta_lcn_eg).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td></td><td>IP Uterina Derecha:</td><td>'.htmlentities($this->uterinas_derecha).'</td><td>Percentil: '.htmlentities($this->uterinas_derecha_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP Uterina Derecha:</td><td>'.htmlentities($this->uterina_derecha).'</td><td>Percentil: '.htmlentities($this->uterina_derecha_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>IP Uterina Izquierda:</td><td>'.htmlentities($this->uterinas_izquierda).'</td><td>Percentil: '.htmlentities($this->uterinas_izquierda_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP Uterina Izquierda:</td><td>'.htmlentities($this->uterina_izquierda).'</td><td>Percentil: '.htmlentities($this->uterina_izquierda_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Uterina Promedio: **</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.htmlentities($this->uterinas_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);

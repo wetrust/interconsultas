@@ -85,7 +85,11 @@
     $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Peso fetal estimado:</td><td>'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td>Percentil: '.htmlentities($this->solicitud_resultado->pfe_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong><em>Flujometría Doppler</em></strong></td><td>IP Promedio uterinas:</td><td>'.htmlentities($this->solicitud_resultado->uterinas).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterinas_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Flujometría Doppler</em></strong></td><td>IP Uterina derecha:</td><td>'.htmlentities($this->solicitud_resultado->uterina_derecha).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterina_derecha_percentil).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>IP Uterina izquierda:</td><td>'.htmlentities($this->solicitud_resultado->uterina_izquierda).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterina_izquierda_percentil).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>IP Promedio uterinas:</td><td>'.htmlentities($this->solicitud_resultado->uterinas).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterinas_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Arteria umbilical (UMB):</td><td>'.htmlentities($this->solicitud_resultado->umbilical).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->umbilical_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);

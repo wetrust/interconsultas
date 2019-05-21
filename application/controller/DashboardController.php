@@ -102,16 +102,15 @@ class DashboardController extends Controller
         $respuesta_ovario_derecho = Request::post('respuesta_ovario_derecho');
         $respuesta_douglas_ginecologica = Request::post('respuesta_douglas_ginecologica');
 
-        $respuesta_uterinas_derecha = Request::post('respuesta_uterinas_derecha');
-        $respuesta_uterinas_derecha_percentil = Request::post('respuesta_uterinas_derecha_percentil');
-        $respuesta_uterinas_izquierda = Request::post('respuesta_uterinas_izquierda');
-        $respuesta_uterinas_izquierda_percentil = Request::post('respuesta_uterinas_izquierda_percentil');
+        $respuesta_uterina_derecha = Request::post('respuesta_uterina_derecha');
+        $respuesta_uterina_derecha_percentil = Request::post('respuesta_uterina_derecha_percentil');
+        $respuesta_uterina_izquierda = Request::post('respuesta_uterina_izquierda');
+        $respuesta_uterina_izquierda_percentil = Request::post('respuesta_uterina_izquierda_percentil');
         $respuesta_fcf = Request::post('respuesta_fcf');
         $respuesta_translucencia_nucal = Request::post('respuesta_translucencia_nucal');
 
         if ($respuesta_crecimiento == 0){
-
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_pct, $respuesta_liquido, $respuesta_presentacion, $respuesta_dorso, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista, $respuesta_doppler_materno, $respuesta_anatomia, $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","", $respuesta_doppler_fetal,"","","",$respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_pct, $respuesta_liquido, $respuesta_presentacion, $respuesta_dorso, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista, $respuesta_doppler_materno, $respuesta_anatomia, $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","", $respuesta_doppler_fetal,"","","",$respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, "", "", "", "", "", "", "", "", "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
@@ -132,7 +131,6 @@ class DashboardController extends Controller
             }
         }
         else if ($respuesta_crecimiento == 1){
-
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_lcn_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","","",$respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
@@ -153,7 +151,6 @@ class DashboardController extends Controller
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen,
                 'respuesta_lcn_eg' => $respuesta_lcn_eg
-        
             ));
 
             $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
@@ -257,7 +254,7 @@ class DashboardController extends Controller
         }
         else if($respuesta_crecimiento == 4){
 
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterinas_derecha, $respuesta_uterinas_derecha_percentil, $respuesta_uterinas_izquierda, $respuesta_uterinas_izquierda_percentil, $respuesta_fcf, $respuesta_translucencia_nucal, "", "", "", "", "", "", "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, $respuesta_translucencia_nucal, "", "", "", "", "", "", "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
         
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler', 
@@ -278,10 +275,10 @@ class DashboardController extends Controller
                 'respuesta_cc' => $respuesta_cc,
                 'respuesta_ca' => $respuesta_ca,
                 'respuesta_lf' => $respuesta_lf,
-                'uterinas_derecha' => $respuesta_uterinas_derecha,
-                'uterinas_derecha_percentil' => $respuesta_uterinas_derecha_percentil,
-                'uterinas_izquierda' => $respuesta_uterinas_izquierda,
-                'uterinas_izquierda_percentil' => $respuesta_uterinas_izquierda_percentil,
+                'uterina_derecha' => $respuesta_uterina_derecha,
+                'uterina_derecha_percentil' => $respuesta_uterina_derecha_percentil,
+                'uterina_izquierda' => $respuesta_uterina_izquierda,
+                'uterina_izquierda_percentil' => $respuesta_uterina_izquierda_percentil,
                 'uterinas' => $respuesta_uterinas,
                 'uterinas_percentil' => $respuesta_uterinas_percentil,
                 'ecografista' => $respuesta_ecografista,
