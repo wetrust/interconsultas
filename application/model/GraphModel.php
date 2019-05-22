@@ -70,7 +70,7 @@ class GraphModel
             'link_base'         => '/',
             'link_target'       => '_top',
             'fill_under'        => array(false, false),
-            'marker_size'       => 1,
+            'marker_size'       => array(1, 1, 3),
             'marker_type'       => array('circle', 'circle'),
             'label_x'           => "Semanas",
             'axis_min_h'        => '15',
