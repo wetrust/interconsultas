@@ -10,7 +10,7 @@
         "phpmailer/phpmailer": "~5.2",
         "gregwar/captcha": "~1.1",
         "phpunit/phpunit": "4.8.*|5.7.*",
-        "tecnick.com/tcpdf":"~6.2.17",
+        "tecnickcom/tcpdf":"~6.2.17",
         "goat1000/svggraph": "~3.0"
     },
     "autoload": {
