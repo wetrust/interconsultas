@@ -42,7 +42,7 @@ class GraphModel
         $settings['graph_title'] = 'IP Uterina Promedio';
         $settings['axis_min_h'] = '10';
         $settings['axis_min_v'] = '0.1';
-        $values = DataModel::ccca();
+        $values = DataModel::uterinas();
 
         $punto = array($EG => $valor);
         array_push($values,$punto);
