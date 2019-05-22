@@ -23,8 +23,8 @@ class GraphModel
             'marker_size'       => 3,
             'marker_type'       => array('circle', 'circle'),
             'marker_colour'     => array('blue', 'red'),
-            'label_x'           => "Gramos",
-            'label_y'           => "Semanas",
+            'label_x'           => "Semanas",
+            'label_y'           => "Gramos",
             'axis_min_h'        => '16'
           );
           
