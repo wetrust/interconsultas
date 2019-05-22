@@ -30,7 +30,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, self::settings());
+        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         $graph->render('MultiLineGraph');
@@ -47,7 +47,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, self::settings());
+        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         $graph->render('MultiLineGraph');
