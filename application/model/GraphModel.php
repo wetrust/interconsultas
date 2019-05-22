@@ -43,7 +43,7 @@ class GraphModel
           $graph->colours($colours);
           $graph->values($values);
           //$graph->links($links);
-          $graph->render('LineGraph');
+          $graph->render('MultiLineGraph');
     }
 
     public static function getNote($note_id)
