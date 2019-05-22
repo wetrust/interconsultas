@@ -26,7 +26,8 @@ class GraphModel
             'label_x'           => "Semanas",
             'label_y'           => "Gramos",
             'axis_min_h'        => '16',
-            'graph_title'             => 'Peso fetal estimado'
+            'graph_title'             => 'Peso fetal estimado',
+            'show_grid_h'       => false
           );
           
           $values = array(
