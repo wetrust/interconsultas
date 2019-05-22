@@ -28,6 +28,7 @@ class GraphModel
             'axis_min_h'        => '16',
             'graph_title'             => 'Peso fetal estimado',
             'show_grid_v'       => false
+            'marker_opacity'       => 0
           );
           
           $values = array(
@@ -69,9 +70,8 @@ class GraphModel
             'link_base'         => '/',
             'link_target'       => '_top',
             'fill_under'        => array(false, false),
-            'marker_size'       => 3,
+            'marker_size'       => 1,
             'marker_type'       => array('circle', 'circle'),
-            'marker_colour'     => array('blue', 'blue'),
             'label_x'           => "Semanas",
             'axis_min_h'        => '15',
             'axis_min_v'        => '0.75',
