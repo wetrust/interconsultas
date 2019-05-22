@@ -50,7 +50,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, self::settings());
         $graph->colours(self::colours());
         $graph->values($values);
-        //$graph->render('MultiLineGraph');
+        $graph->render('MultiLineGraph');
     }
 
     public static function settings(){
