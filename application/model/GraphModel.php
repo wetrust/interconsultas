@@ -72,8 +72,8 @@ class GraphModel
             'marker_type'       => array('circle', 'circle'),
             'marker_colour'     => array('blue', 'blue'),
             'label_x'           => "Semanas",
-            'label_y'           => "Gramos",
             'axis_min_h'        => '15',
+            'axis_min_v'        => '0.75',
             'title'             => 'Cc / Ca'
         );
           
