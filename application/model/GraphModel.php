@@ -20,8 +20,6 @@ class GraphModel
             'link_base'         => '/',
             'link_target'       => '_top',
             'fill_under'        => array(false, false),
-            'marker_size'       => 3,
-            'marker_colour'     => array('blue', 'blue'),
             'label_x'           => "Semanas",
             'label_y'           => "Gramos",
             'axis_min_h'        => '16'
@@ -33,7 +31,7 @@ class GraphModel
         );
           
           $colours = array(
-            array('red', 'yellow'), array('blue', 'white')
+            array('blue', 'yellow'), array('blue', 'white')
           );
           $links = array(
             'Dough' => 'jpegsaver.php', 'Ray' => 'crcdropper.php',
