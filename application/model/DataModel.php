@@ -30,4 +30,5 @@ class DataModel
         );
         
         return $values;
+    }
 }
