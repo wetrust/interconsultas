@@ -88,9 +88,7 @@ class GraphModel
             array('25' => 1.15)
         );
           
-        $colours = array(
-            array('blue', 'yellow'), array('blue', 'white')
-        );
+        $colours = array('blue', 'blue', 'red');
         $links = array(
             'Dough' => 'jpegsaver.php', 'Ray' => 'crcdropper.php',
             'Me' => 'svggraph.php'
