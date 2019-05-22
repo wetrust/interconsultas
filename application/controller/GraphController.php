@@ -9,12 +9,7 @@ class GraphController extends Controller
 
     public function index()
     {
-        GraphModel::pesoFetal();
-    }
-
-    public function ccca()
-    {
-        GraphModel::ccca();
+        GraphModel::uterinas('22', 1)
     }
 
 }
