@@ -5,9 +5,9 @@ class GraphModel
     public static function pesoFetal($EG, $PESO)
     {
         $settings = self::settings();
-        $settings['graph_title'] = 'Peso Fetal';
-        $settings['axis_min_h'] = '16';
-        $settings['axis_min_v'] = '100';
+        $settings["graph_title"] = 'Peso Fetal';
+        $settings["axis_min_h"] = '16';
+        $settings["axis_min_v"] = '100';
         $values = DataModel::pesoFetal();
 
         $punto = array($EG => $PESO);
@@ -22,9 +22,9 @@ class GraphModel
     public static function ccca($EG, $valor)
     {
         $settings = self::settings();
-        $settings['graph_title'] = 'Cc / Ca';
-        $settings['axis_min_h'] = '15';
-        $settings['axis_min_v'] = '0.75';
+        $settings["graph_title"] = 'Cc / Ca';
+        $settings["axis_min_h"] = '15';
+        $settings["axis_min_v"] = '0.75';
         $values = DataModel::ccca();
 
         $punto = array($EG => $valor);
@@ -39,11 +39,9 @@ class GraphModel
     public static function uterinas($EG, $valor)
     {
         $settings = self::settings();
-        print_r($settings);
         $settings["graph_title"] = 'IP Uterina Promedio';
-        print_r($settings);
-        $settings['axis_min_h'] = '10';
-        $settings['axis_min_v'] = '0.1';
+        $settings["axis_min_h"] = '10';
+        $settings["axis_min_v"] = '0.1';
         $values = DataModel::uterinas();
 
         $punto = array($EG => $valor);
