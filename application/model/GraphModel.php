@@ -27,7 +27,7 @@ class GraphModel
             'label_y'           => "Gramos",
             'axis_min_h'        => '16',
             'graph_title'             => 'Peso fetal estimado',
-            'show_grid_v'       => false
+            'show_grid_v'       => false,
             'marker_opacity'       => 0
           );
           
