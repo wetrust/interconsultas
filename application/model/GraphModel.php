@@ -25,7 +25,7 @@ class GraphModel
             'marker_colour'     => array('blue', 'red'),
             'label_x'           => "Gramos",
             'label_y'           => "Semanas",
-            'axis_min_v'        => '16'
+            'axis_min_h'        => '16'
           );
           
           $values = array(
