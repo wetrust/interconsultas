@@ -22,7 +22,10 @@ class GraphModel
             'fill_under'        => array(false, false),
             'marker_size'       => 3,
             'marker_type'       => array('circle', 'circle'),
-            'marker_colour'     => array('blue', 'red')
+            'marker_colour'     => array('blue', 'red'),
+            'label_x'           => "Gramos",
+            'label_y'           => "Semanas",
+            'axis_min_v'        => '16'
           );
           
           $values = array(
