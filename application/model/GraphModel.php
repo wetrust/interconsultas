@@ -95,7 +95,7 @@ class GraphModel
             'Me' => 'svggraph.php'
         );
            
-          $graph = new Goat1000\SVGGraph\SVGGraph(300, 200, $settings);
+          $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
           
           $graph->colours($colours);
           $graph->values($values);
