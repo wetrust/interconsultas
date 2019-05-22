@@ -20,6 +20,9 @@ class GraphModel
             'link_base'         => '/',
             'link_target'       => '_top',
             'fill_under'        => array(false, false),
+            'marker_size'       => 3,
+            'marker_type'       => array('circle', 'circle'),
+            'marker_colour'     => array('blue', 'blue'),
             'label_x'           => "Semanas",
             'label_y'           => "Gramos",
             'axis_min_h'        => '16'
