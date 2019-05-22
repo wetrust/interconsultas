@@ -21,7 +21,7 @@ class GraphModel
             'link_target'       => '_top',
             'fill_under'        => array(false, false),
             'marker_size'       => 3,
-            'marker_type'       => array('circle', 'square'),
+            'marker_type'       => array('circle', 'circle'),
             'marker_colour'     => array('blue', 'red')
           );
           
