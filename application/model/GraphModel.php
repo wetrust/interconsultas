@@ -26,7 +26,7 @@ class GraphModel
             'label_x'           => "Semanas",
             'label_y'           => "Gramos",
             'axis_min_h'        => '16',
-            'title'             => 'Peso fetal estimado'
+            'graph_title'             => 'Peso fetal estimado'
           );
           
           $values = array(
@@ -74,7 +74,7 @@ class GraphModel
             'label_x'           => "Semanas",
             'axis_min_h'        => '15',
             'axis_min_v'        => '0.75',
-            'title'             => 'Cc / Ca'
+            'graph_title'       => 'Cc / Ca'
         );
           
         $values = array(
