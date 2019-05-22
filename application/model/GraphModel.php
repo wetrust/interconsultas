@@ -40,7 +40,8 @@ class GraphModel
     {
         $settings = self::settings();
         print_r($settings);
-        $settings['graph_title'] = 'IP Uterina Promedio';
+        $settings["graph_title"] = 'IP Uterina Promedio';
+        print_r($settings);
         $settings['axis_min_h'] = '10';
         $settings['axis_min_v'] = '0.1';
         $values = DataModel::uterinas();
