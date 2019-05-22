@@ -39,6 +39,7 @@ class GraphModel
     public static function uterinas($EG, $valor)
     {
         $settings = self::settings();
+        print_r($settings);
         $settings['graph_title'] = 'IP Uterina Promedio';
         $settings['axis_min_h'] = '10';
         $settings['axis_min_v'] = '0.1';
@@ -50,7 +51,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, self::settings());
         $graph->colours(self::colours());
         $graph->values($values);
-        $graph->render('MultiLineGraph');
+        //$graph->render('MultiLineGraph');
     }
 
     public static function settings(){
