@@ -19,7 +19,7 @@ class GraphModel
             'pad_left'          => 20,
             'link_base'         => '/',
             'link_target'       => '_top',
-            'fill_under'        => array(true, false),
+            'fill_under'        => array(false, false),
             'marker_size'       => 3,
             'marker_type'       => array('circle', 'square'),
             'marker_colour'     => array('blue', 'red')
