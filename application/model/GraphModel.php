@@ -125,6 +125,7 @@ class GraphModel
         $settings["graph_title"] = 'CC';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '30';
+        $settings["axis_max_v"] = '480';
         $values = DataModel::cc();
 
         if (is_numeric($valor)){
