@@ -18,6 +18,7 @@ class GraphController extends Controller
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'respuesta' => $respuesta,
             'grafico_uno' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
             'grafico_dos' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
             'grafico_tres' => GraphModel::uterinas($respuesta->eg, $respuesta->uterinas),
