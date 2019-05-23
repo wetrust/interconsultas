@@ -1,59 +1,8 @@
 <?php
 
-class GraphicoModel
-{
-    private static $factory;
-    private $graph;
-
-    public static function getFactory()
-    {
-        if (!self::$factory) {
-            self::$factory = new GraphicoModel();
-        }
-        return self::$factory;
-    }
-
-    public function getInstance(){
-        if (!$this->graph) {
-            $this->graph = new Goat1000\SVGGraph\SVGGraph(300, 200, self::settings());
-        }
-        return $this->graph;
-    }
-    public static function settings(){
-        $settings = array(
-            'back_colour'       => '#FFF',
-            'stroke_colour'     => '#000',
-            'back_stroke_width' => 0,
-            'back_stroke_colour'=> '#eee',
-            'axis_colour'       => '#333',
-            'axis_overlap'      => 2,
-            'axis_font'         => 'Georgia',
-            'axis_font_size'    => 10,
-            'grid_colour'       => '#666',
-            'label_colour'      => '#000',
-            'pad_right'         => 20,
-            'pad_left'          => 20,
-            'link_base'         => '/',
-            'link_target'       => '_top',
-            'fill_under'        => array(false, false),
-            'marker_size'       => array(1, 1, 5),
-            'marker_type'       => array('circle', 'circle', 'cross'),
-            'label_x'           => "Semanas",
-            'axis_min_h'        => '15',
-            'axis_min_v'        => '0.75',
-            'graph_title'       => 'Cc / Ca',
-            'show_grid_v'       => false,
-            'semantic_classes'  => false,
-            'show_data_labels'  => false,
-            'show_tooltips'     => false,
-        );
-
-        return $settings;
-    }
-}
-
 class GraphModel
 {
+
     public static function pesoFetal($EG, $PESO)
     {
         $settings = self::settings();
@@ -65,10 +14,9 @@ class GraphModel
         $punto = array($EG => $PESO);
         array_push($values,$punto);
 
-        $graph = GraphicoModel::getFactory()->getInstance();
+        $graph = new Goat1000\SVGGraph\SVGGraph(300, 200, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
-        //$graph->settings($settings);
         return $graph->fetch('MultiLineGraph');
     }
 
@@ -83,7 +31,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = GraphicoModel::getFactory()->getInstance();
+        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -100,7 +48,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = GraphicoModel::getFactory()->getInstance();
+        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -148,10 +96,8 @@ class GraphModel
         $settings["axis_min_v"] = '0.35';
         $values = DataModel::cuocienteCerebroPlacentario();
 
-        echo $EG;
-        echo $valor;
         $punto = array($EG => $valor);
-        //array_push($values,$punto);
+        array_push($values,$punto);
 
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
