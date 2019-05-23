@@ -9,8 +9,8 @@ class GraphModel
         $settings["graph_title"] = 'Peso Fetal';
         $settings["axis_min_h"] = '16';
         $settings["axis_min_v"] = '100';
-        $settings["axis_max_v"] = '4900';
-        $settings["grid_division_v"] = '460';
+        //$settings["axis_max_v"] = '4900';
+        //$settings["grid_division_v"] = '460';
         $values = DataModel::pesoFetal();
 
         $punto = array($EG => $PESO);
@@ -50,7 +50,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 150, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 180, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -67,7 +67,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 150, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 180, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -84,7 +84,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 150, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 180, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -101,7 +101,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 150, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 180, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
