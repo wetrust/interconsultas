@@ -53,6 +53,57 @@ class GraphModel
         $graph->render('MultiLineGraph');
     }
 
+    public static function umbilical($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'IP Arteria Umbilical';
+        $settings["axis_min_h"] = '20';
+        $settings["axis_min_v"] = '0.2';
+        $values = DataModel::umbilical();
+
+        $punto = array($EG => $valor);
+        array_push($values,$punto);
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        $graph->render('MultiLineGraph');
+    }
+
+    public static function cerebralMedia($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'IP Arteria Cerebral Media';
+        $settings["axis_min_h"] = '20';
+        $settings["axis_min_v"] = '0.35';
+        $values = DataModel::cerebralMedia();
+
+        $punto = array($EG => $valor);
+        array_push($values,$punto);
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        $graph->render('MultiLineGraph');
+    }
+
+    public static function cuocienteCerebroPlacentario($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'IP de CCP';
+        $settings["axis_min_h"] = '20';
+        $settings["axis_min_v"] = '0.35';
+        $values = DataModel::cuocienteCerebroPlacentario();
+
+        $punto = array($EG => $valor);
+        array_push($values,$punto);
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        $graph->render('MultiLineGraph');
+    }
+
     public static function settings(){
         $settings = array(
             'back_colour'       => '#FFF',

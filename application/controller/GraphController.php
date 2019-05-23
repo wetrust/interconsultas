@@ -9,7 +9,7 @@ class GraphController extends Controller
 
     public function index()
     {
-        GraphModel::uterinas('22', 1);
+        GraphModel::cuocienteCerebroPlacentario('22', 1);
     }
 
 }
