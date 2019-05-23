@@ -17,7 +17,7 @@ class GraphModel
         if (!self::graph) {
             self::graph = new Goat1000\SVGGraph\SVGGraph(300, 200, self::settings());
         }
-        return !self::graph;
+        return self::graph;
     }
 
     public static function pesoFetal($EG, $PESO)
