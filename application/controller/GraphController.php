@@ -14,6 +14,7 @@ class GraphController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
             'grafico_uno' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
             'grafico_dos' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
             'grafico_tres' => GraphModel::uterinas($respuesta->eg, $respuesta->uterinas),
