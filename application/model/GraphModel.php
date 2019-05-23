@@ -137,7 +137,7 @@ class GraphModel
             'link_base'         => '/',
             'link_target'       => '_top',
             'fill_under'        => array(false, false),
-            'marker_size'       => array(1, 1, 2),
+            'marker_size'       => array(0, 0, 2),
             'marker_type'       => array('circle', 'circle', 'cross'),
             'label_x'           => "Semanas",
             'label_font_size'   => 6,
