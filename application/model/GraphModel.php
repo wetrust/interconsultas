@@ -137,7 +137,7 @@ class GraphModel
             'link_base'         => '/',
             'link_target'       => '_top',
             'fill_under'        => array(false, false),
-            'marker_size'       => array(1, 1, 5),
+            'marker_size'       => array(1, 1, 2),
             'marker_type'       => array('circle', 'circle', 'cross'),
             'label_x'           => "Semanas",
             'label_font_size'   => 6,
@@ -150,6 +150,7 @@ class GraphModel
             'semantic_classes'  => false,
             'show_data_labels'  => false,
             'show_tooltips'     => false,
+            'line_dash'         => array('10', '8,2,5')
         );
 
         return $settings;
