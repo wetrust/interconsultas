@@ -27,7 +27,7 @@ class GraphModel
     public static function ccca($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Cuociente Cráneo / Abdomen';
+        $settings["graph_title"] = 'Índice Cráneo / Abdomen';
         $settings["axis_min_h"] = '15';
         $settings["axis_min_v"] = '0.75';
         $values = DataModel::ccca();
@@ -103,9 +103,82 @@ class GraphModel
     public static function cuocienteCerebroPlacentario($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Cuociente Cerebro / Placentario';
+        $settings["graph_title"] = 'Índice Cerebro / Placentario';
         $settings["axis_min_h"] = '20';
         $settings["axis_min_v"] = '0.35';
+        $values = DataModel::cuocienteCerebroPlacentario();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+
+    public static function cc($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'CC';
+        $settings["axis_min_h"] = '12';
+        $settings["axis_min_v"] = '30';
+        $values = DataModel::cc();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+    public static function ca($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'CA';
+        $settings["axis_min_h"] = '12';
+        $settings["axis_min_v"] = '20';
+        $values = DataModel::cuocienteCerebroPlacentario();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+    public static function lf($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'LF';
+        $settings["axis_min_h"] = '12';
+        $settings["axis_min_v"] = '5';
+        $values = DataModel::cuocienteCerebroPlacentario();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+    public static function lh($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'LH';
+        $settings["axis_min_h"] = '12';
+        $settings["axis_min_v"] = '5';
         $values = DataModel::cuocienteCerebroPlacentario();
 
         if (is_numeric($valor)){

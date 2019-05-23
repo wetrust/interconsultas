@@ -7,7 +7,7 @@ class GraphController extends Controller
         parent::__construct();
     }
 
-    public function index($solicitud_id)
+    public function informe_dopplercrecimiento($solicitud_id)
     {
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
@@ -28,4 +28,24 @@ class GraphController extends Controller
         ));
     }
 
+    public function informe_segundotrimestre($solicitud_id)
+    {
+        $respuesta = RespuestaModel::getRespuesta($solicitud_id);
+        $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+        $respuesta->eg = explode (".", $respuesta->eg);
+        $respuesta->eg = $respuesta->eg[0];
+
+        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'respuesta' => $respuesta,
+            'grafico_uno' => GraphModel::cc($respuesta->eg, $respuesta->cc),
+            'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
+            'grafico_tres' => GraphModel::lf($respuesta->eg, $respuesta->lf),
+            'grafico_cuatro' => GraphModel::lh($respuesta->eg, $respuesta->respuesta_lh),
+            'grafico_cinco' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
+            'grafico_seis' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
+        ));
+    }
 }

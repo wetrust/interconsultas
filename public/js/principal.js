@@ -1348,7 +1348,27 @@ function buildFinishTable(data){
             let tipo =  $(this).data("tipo");
             let url = '';
             if (tipo == "0"){
-                url = 'graph/index/';
+                url = 'graph/informe_dopplercrecimiento/';
+                $("#ver\\.interconsulta > div").addClass("h-100");
+                $("#ver\\.interconsulta > div > div").addClass("h-100");
+                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
+                $('#ver\\.interconsulta\\.contenedor').empty();
+                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
+                $("#ver\\.interconsulta").modal("show");
+                $("#ver\\.interconsulta\\.footer").empty();
+                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-primary" id="ver.interconsulta.enviar" data-id="'+solicitud_id+'" data-informe="'+ tipo +'">Enviar</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                $("#ver\\.interconsulta\\.eliminar").on("click", function(){
+                    let solicitud_id =  $(this).data("id");
+                    $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
+                    $("#ver\\.interconsulta").modal("hide");
+                    loadInFinish();
+                });
+    
+                $("#ver\\.interconsulta\\.enviar").on("click", function(){
+                    callModal($(this).data("informe"), $(this).data("id"));
+                });
+            } else  if (tipo == "2"){
+                url = 'pdf/informe_segundotrimestre/';
                 $("#ver\\.interconsulta > div").addClass("h-100");
                 $("#ver\\.interconsulta > div > div").addClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
