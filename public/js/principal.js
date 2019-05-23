@@ -1347,15 +1347,7 @@ function buildFinishTable(data){
             let solicitud_id =  $(this).data("id");
             let tipo =  $(this).data("tipo");
             let url = '';
-            if (tipo == "1"){
-                url = 'pdf/informe_primertrimestre/';
-            } else if (tipo == "0"){
-                url = 'pdf/informe_dopplercrecimiento/';
-            } else  if (tipo == "2"){
-                url = 'pdf/informe_segundotrimestre/';
-            } else  if (tipo == "3"){
-                url = 'pdf/informe_ginecologico/';
-            } else if (tipo == "4"){
+            if (tipo == "0"){
                 url = 'graph/index/';
                 $("#ver\\.interconsulta > div").addClass("h-100");
                 $("#ver\\.interconsulta > div > div").addClass("h-100");
