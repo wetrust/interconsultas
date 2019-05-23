@@ -10,7 +10,7 @@ class GraphController extends Controller
     public function index($solicitud_id)
     {
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
-        $respuesta->eg = str_replace(" semanas", "", respuesta->eg);
+        $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
         $respuesta->eg = floatval($respuesta->eg);
         $respuesta->eg = bcdiv($respuesta->eg, '1', 0);
 
