@@ -107,6 +107,7 @@ class GraphModel
 
     public static function settings(){
         $settings = array(
+            'auto_fit'          => true,
             'back_colour'       => '#FFF',
             'stroke_colour'     => '#000',
             'back_stroke_width' => 0,
