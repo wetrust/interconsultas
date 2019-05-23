@@ -44,7 +44,7 @@ class GraphController extends Controller
             'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
             'grafico_tres' => GraphModel::lf($respuesta->eg, $respuesta->lf),
             'grafico_cuatro' => GraphModel::lh($respuesta->eg, $respuesta->respuesta_lh),
-            'grafico_cinco' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
+            'grafico_cinco' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe_segundo),
             'grafico_seis' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
         ));
     }
