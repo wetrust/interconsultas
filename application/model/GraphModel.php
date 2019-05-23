@@ -6,7 +6,7 @@ class GraphModel
     public static function pesoFetal($EG, $PESO)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Peso Fetal';
+        $settings["graph_title"] = 'Peso Fetal Estimado';
         $settings["axis_min_h"] = '16';
         $settings["axis_min_v"] = '100';
         //$settings["axis_max_v"] = '4900';
@@ -27,7 +27,7 @@ class GraphModel
     public static function ccca($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Cc / Ca';
+        $settings["graph_title"] = 'Relación Cráneo / Abdomen';
         $settings["axis_min_h"] = '15';
         $settings["axis_min_v"] = '0.75';
         $values = DataModel::ccca();
@@ -46,7 +46,7 @@ class GraphModel
     public static function uterinas($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'IP Uterina Promedio';
+        $settings["graph_title"] = 'IP Promedio de Uterina';
         $settings["axis_min_h"] = '10';
         $settings["axis_min_v"] = '0.1';
         $values = DataModel::uterinas();
@@ -103,7 +103,7 @@ class GraphModel
     public static function cuocienteCerebroPlacentario($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'IP de CCP';
+        $settings["graph_title"] = 'Cuociente cerebro placentario';
         $settings["axis_min_h"] = '20';
         $settings["axis_min_v"] = '0.35';
         $values = DataModel::cuocienteCerebroPlacentario();
@@ -150,7 +150,6 @@ class GraphModel
             'semantic_classes'  => false,
             'show_data_labels'  => false,
             'show_tooltips'     => false,
-            'line_dash'         => array('10', '8,2,5'),
             'line_stroke_width' => 1
         );
 
