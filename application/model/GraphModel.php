@@ -148,6 +148,8 @@ class GraphModel
         $settings["axis_min_v"] = '0.35';
         $values = DataModel::cuocienteCerebroPlacentario();
 
+        echo $EG;
+        echo $valor;
         $punto = array($EG => $valor);
         //array_push($values,$punto);
 
