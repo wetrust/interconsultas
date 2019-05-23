@@ -27,7 +27,7 @@ class GraphModel
     public static function ccca($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Relación Cráneo / Abdomen';
+        $settings["graph_title"] = 'Cuociente Cráneo / Abdomen';
         $settings["axis_min_h"] = '15';
         $settings["axis_min_v"] = '0.75';
         $values = DataModel::ccca();
@@ -103,7 +103,7 @@ class GraphModel
     public static function cuocienteCerebroPlacentario($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Cuociente cerebro placentario';
+        $settings["graph_title"] = 'Cuociente Cerebro / Placentario';
         $settings["axis_min_h"] = '20';
         $settings["axis_min_v"] = '0.35';
         $values = DataModel::cuocienteCerebroPlacentario();
