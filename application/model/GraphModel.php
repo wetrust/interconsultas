@@ -15,7 +15,7 @@ class GraphModel
 
     public static function getInstance(){
         if (!self::graph) {
-            !self::graph = new Goat1000\SVGGraph\SVGGraph(300, 200, self::settings());
+            self::graph = new Goat1000\SVGGraph\SVGGraph(300, 200, self::settings());
         }
         return !self::graph;
     }
