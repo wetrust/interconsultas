@@ -13,8 +13,8 @@ class GraphicoModel
         return self::$factory;
     }
 
-    public static function getInstance(){
-        if ($this->graph) {
+    public function getInstance(){
+        if (!$this->graph) {
             $this->graph = new Goat1000\SVGGraph\SVGGraph(300, 200, self::settings());
         }
         return $this->graph;
