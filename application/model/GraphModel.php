@@ -132,6 +132,7 @@ class GraphModel
             'axis_min_h'        => '15',
             'axis_min_v'        => '0.75',
             'graph_title'       => 'Cc / Ca',
+            'graph_title_font_size' => 6,
             'show_grid_v'       => false,
             'semantic_classes'  => false,
             'show_data_labels'  => false,
