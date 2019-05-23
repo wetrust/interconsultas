@@ -23,7 +23,7 @@ class GraphController extends Controller
         //    'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($respuesta->eg, $respuesta->cmau)
         //));
 
-        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico', 
+        $this->View->render('pdf/finalinforme/index_grafico', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
