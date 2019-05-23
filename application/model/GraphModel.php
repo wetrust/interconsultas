@@ -149,7 +149,7 @@ class GraphModel
         $values = DataModel::cuocienteCerebroPlacentario();
 
         $punto = array($EG => $valor);
-        array_push($values,$punto);
+        //array_push($values,$punto);
 
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
