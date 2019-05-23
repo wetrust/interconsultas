@@ -7,9 +7,20 @@ class GraphController extends Controller
         parent::__construct();
     }
 
-    public function index()
+    public function index($solicitud_id)
     {
-        GraphModel::cuocienteCerebroPlacentario('22', 1);
+        $respuesta = RespuestaModel::getRespuesta($solicitud_id);
+
+        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'grafico_uno' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
+            'grafico_dos' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
+            'grafico_tres' => GraphModel::uterinas($respuesta->eg, $respuesta->uterinas),
+            'grafico_cuatro' => GraphModel::umbilical($respuesta->eg, $respuesta->umbilical),
+            'grafico_cinco' => GraphModel::cerebralMedia($respuesta->eg, $respuesta->cm),
+            'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($respuesta->eg, $respuesta->cmau),
+        ));
     }
 
 }
