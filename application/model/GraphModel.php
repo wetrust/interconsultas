@@ -2,6 +2,24 @@
 
 class GraphModel
 {
+    private static $factory;
+    private $graph;
+
+    public static function getFactory()
+    {
+        if (!self::$factory) {
+            self::$factory = new GraphModel();
+        }
+        return self::$factory;
+    }
+
+    public static function getInstance(){
+        if (!$this->graph) {
+            $this->graph = new Goat1000\SVGGraph\SVGGraph(300, 200, self::settings());
+        }
+        return $this->graph;
+    }
+
     public static function pesoFetal($EG, $PESO)
     {
         $settings = self::settings();
@@ -13,9 +31,10 @@ class GraphModel
         $punto = array($EG => $PESO);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(300, 200, $settings);
+        $graph = self::getFactory()->getInstance();
         $graph->colours(self::colours());
         $graph->values($values);
+        //$graph->settings($settings);
         return $graph->fetch('MultiLineGraph');
     }
 
