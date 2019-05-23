@@ -114,7 +114,7 @@ class GraphModel
             'axis_colour'       => '#333',
             'axis_overlap'      => 2,
             'axis_font'         => 'Helvetica',
-            'axis_font_size'    => 6,
+            'axis_font_size'    => 5,
             'grid_colour'       => '#666',
             'label_colour'      => '#000',
             'pad_right'         => 20,
