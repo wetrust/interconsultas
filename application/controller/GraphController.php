@@ -22,9 +22,9 @@ class GraphController extends Controller
         //    'grafico_cinco' => GraphModel::cerebralMedia($respuesta->eg, $respuesta->cm),
         //    'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($respuesta->eg, $respuesta->cmau)
         //));
-        GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe);
+        //GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe);
         GraphModel::ccca($respuesta->eg, $respuesta->ccca);
-        GraphModel::uterinas($respuesta->eg, $respuesta->uterinas);
+        //GraphModel::uterinas($respuesta->eg, $respuesta->uterinas);
     }
 
 }
