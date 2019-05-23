@@ -10,7 +10,7 @@ class GraphModel
         $settings["axis_min_h"] = '16';
         $settings["axis_min_v"] = '100';
         $settings["axis_max_v"] = '4900';
-        $settings["grid_division_v"] = '460'
+        $settings["grid_division_v"] = '460';
         $values = DataModel::pesoFetal();
 
         $punto = array($EG => $PESO);
