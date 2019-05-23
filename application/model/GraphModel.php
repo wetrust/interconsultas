@@ -16,7 +16,7 @@ class GraphModel
         $punto = array($EG => $PESO);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 170, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -33,7 +33,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 170, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -50,7 +50,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 170, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -67,7 +67,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 170, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -84,7 +84,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 170, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -101,7 +101,7 @@ class GraphModel
         $punto = array($EG => $valor);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 170, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
