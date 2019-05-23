@@ -143,7 +143,7 @@ class GraphModel
         $settings["graph_title"] = 'CA';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
-        $values = DataModel::cuocienteCerebroPlacentario();
+        $values = DataModel::ca();
 
         if (is_numeric($valor)){
             $punto = array($EG => $valor);
@@ -161,7 +161,7 @@ class GraphModel
         $settings["graph_title"] = 'LF';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
-        $values = DataModel::cuocienteCerebroPlacentario();
+        $values = DataModel::lf();
 
         if (is_numeric($valor)){
             $punto = array($EG => $valor);
@@ -179,7 +179,7 @@ class GraphModel
         $settings["graph_title"] = 'LH';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
-        $values = DataModel::cuocienteCerebroPlacentario();
+        $values = DataModel::lh();
 
         if (is_numeric($valor)){
             $punto = array($EG => $valor);
