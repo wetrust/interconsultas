@@ -207,7 +207,7 @@ class GraphModel
         $settings = array(
             'auto_fit'          => true,
             'back_colour'       => '#FFF',
-            'stroke_colour'     => '#000',
+            'stroke_colour'     => '#F00',
             'back_stroke_width' => 0,
             'back_stroke_colour'=> '#eee',
             'axis_colour'       => '#333',
