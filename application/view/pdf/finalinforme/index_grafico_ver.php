@@ -40,7 +40,7 @@
     $this->pdf->Ln(2);
 
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=0, $y=20, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=50, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=50, $y=20, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=100, $y=0, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=100, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=200, $y=0, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
