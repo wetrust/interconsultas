@@ -1278,7 +1278,7 @@ function loadInFinish(){
 
 function buildFinishTable(data){
     $('#tabla\\.resultado').empty();
-        
+
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
         var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Tipo de exámen</th><th>Realizado</th><th>Accion</th></tr></thead><tbody>';
@@ -1334,9 +1334,10 @@ function buildFinishTable(data){
             $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-primary" id="ver.interconsulta.enviar" data-id="'+solicitud_id+'" data-informe="'+ tipo +'">Enviar</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                 let solicitud_id =  $(this).data("id");
-                $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
-                $("#ver\\.interconsulta").modal("hide");
-                loadInFinish();
+                $.get("dashboard/delete/" + solicitud_id).done(function(data){
+                    $("#ver\\.interconsulta").modal("hide");
+                    loadInFinish();
+                });
             });
 
             $("#ver\\.interconsulta\\.enviar").on("click", function(){
@@ -1357,17 +1358,7 @@ function buildFinishTable(data){
                 $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-primary" id="ver.interconsulta.enviar" data-id="'+solicitud_id+'" data-informe="'+ tipo +'">Enviar</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-                $("#ver\\.interconsulta\\.eliminar").on("click", function(){
-                    let solicitud_id =  $(this).data("id");
-                    $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
-                    $("#ver\\.interconsulta").modal("hide");
-                    loadInFinish();
-                });
-    
-                $("#ver\\.interconsulta\\.enviar").on("click", function(){
-                    callModal($(this).data("informe"), $(this).data("id"));
-                });
+                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             } else  if (tipo == "2"){
                 url = 'graph/informe_segundotrimestre/';
                 $("#ver\\.interconsulta > div").addClass("h-100");
@@ -1377,19 +1368,8 @@ function buildFinishTable(data){
                 $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-primary" id="ver.interconsulta.enviar" data-id="'+solicitud_id+'" data-informe="'+ tipo +'">Enviar</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-                $("#ver\\.interconsulta\\.eliminar").on("click", function(){
-                    let solicitud_id =  $(this).data("id");
-                    $("#ver\\.interconsulta\\.contenedor > iframe").attr("src", "dashboard/delete/" + solicitud_id);
-                    $("#ver\\.interconsulta").modal("hide");
-                    loadInFinish();
-                });
-    
-                $("#ver\\.interconsulta\\.enviar").on("click", function(){
-                    callModal($(this).data("informe"), $(this).data("id"));
-                });
+                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             }
-            
         });
     }
     else{
