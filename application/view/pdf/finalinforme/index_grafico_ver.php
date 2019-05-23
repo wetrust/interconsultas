@@ -22,7 +22,7 @@
     
     $solicitud_fecha = explode("-", $this->respuesta->fecha);
     $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
-
+    $this->pdf->Ln(2);
     $html = '<h3 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA Y FLUJOMETRÍA DOPPLER</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
