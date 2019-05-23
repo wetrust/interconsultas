@@ -16,7 +16,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(300, 200, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
-        $graph->render('MultiLineGraph');
+        return $graph->fetch('MultiLineGraph');
     }
 
     public static function ccca($EG, $valor)
@@ -33,7 +33,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
-        $graph->render('MultiLineGraph');
+        return $graph->fetch('MultiLineGraph');
     }
 
     public static function uterinas($EG, $valor)
@@ -50,7 +50,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
-        $graph->render('MultiLineGraph');
+        return $graph->fetch('MultiLineGraph');
     }
 
     public static function umbilical($EG, $valor)
@@ -67,7 +67,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
-        $graph->render('MultiLineGraph');
+        return $graph->fetch('MultiLineGraph');
     }
 
     public static function cerebralMedia($EG, $valor)
@@ -84,7 +84,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
-        $graph->render('MultiLineGraph');
+        return $graph->fetch('MultiLineGraph');
     }
 
     public static function cuocienteCerebroPlacentario($EG, $valor)
@@ -101,7 +101,7 @@ class GraphModel
         $graph = new Goat1000\SVGGraph\SVGGraph(500, 500, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
-        $graph->render('MultiLineGraph');
+        return $graph->fetch('MultiLineGraph');
     }
 
     public static function settings(){
