@@ -9,6 +9,8 @@ class GraphModel
         $settings["graph_title"] = 'Peso Fetal';
         $settings["axis_min_h"] = '16';
         $settings["axis_min_v"] = '100';
+        $settings["axis_max_v"] = '4900';
+        $settings["grid_division_v"] = '460'
         $values = DataModel::pesoFetal();
 
         $punto = array($EG => $PESO);
@@ -115,7 +117,7 @@ class GraphModel
             'axis_colour'       => '#333',
             'axis_overlap'      => 2,
             'axis_font'         => 'Helvetica',
-            'axis_font_size'    => 3,
+            'axis_font_size'    => 2,
             'grid_colour'       => '#666',
             'label_colour'      => '#000',
             'pad_right'         => 20,
