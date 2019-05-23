@@ -151,7 +151,7 @@ class GraphModel
             'show_data_labels'  => false,
             'show_tooltips'     => false,
             'line_dash'         => array('10', '8,2,5'),
-            'axis_stroke_width' => 1
+            'line_stroke_width' => 1
         );
 
         return $settings;
