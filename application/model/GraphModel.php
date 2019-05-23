@@ -16,7 +16,7 @@ class GraphModel
         $punto = array($EG => $PESO);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(180, 180, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(170, 170, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
@@ -133,7 +133,7 @@ class GraphModel
             'axis_min_v'        => '0.75',
             'graph_title'       => 'Cc / Ca',
             'graph_title_font_size' => 7,
-            'graph_title_space' => 4,
+            'graph_title_space' => 3,
             'show_grid_v'       => false,
             'semantic_classes'  => false,
             'show_data_labels'  => false,
