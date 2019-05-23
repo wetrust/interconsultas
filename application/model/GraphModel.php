@@ -14,7 +14,7 @@ class GraphModel
         $punto = array($EG => $PESO);
         array_push($values,$punto);
 
-        $graph = new Goat1000\SVGGraph\SVGGraph(175, 125, $settings);
+        $graph = new Goat1000\SVGGraph\SVGGraph(130, 130, $settings);
         $graph->colours(self::colours());
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
