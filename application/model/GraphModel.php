@@ -13,8 +13,10 @@ class GraphModel
         //$settings["grid_division_v"] = '460';
         $values = DataModel::pesoFetal();
 
-        $punto = array($EG => $PESO);
-        array_push($values,$punto);
+        if (is_numeric($PESO)){
+            $punto = array($EG => $PESO);
+            array_push($values,$punto);
+        }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
@@ -30,8 +32,10 @@ class GraphModel
         $settings["axis_min_v"] = '0.75';
         $values = DataModel::ccca();
 
-        $punto = array($EG => $valor);
-        array_push($values,$punto);
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
@@ -47,8 +51,10 @@ class GraphModel
         $settings["axis_min_v"] = '0.1';
         $values = DataModel::uterinas();
 
-        $punto = array($EG => $valor);
-        array_push($values,$punto);
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
@@ -64,8 +70,10 @@ class GraphModel
         $settings["axis_min_v"] = '0.2';
         $values = DataModel::umbilical();
 
-        $punto = array($EG => $valor);
-        array_push($values,$punto);
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
@@ -81,8 +89,10 @@ class GraphModel
         $settings["axis_min_v"] = '0.35';
         $values = DataModel::cerebralMedia();
 
-        $punto = array($EG => $valor);
-        array_push($values,$punto);
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
@@ -98,8 +108,10 @@ class GraphModel
         $settings["axis_min_v"] = '0.35';
         $values = DataModel::cuocienteCerebroPlacentario();
 
-        $punto = array($EG => $valor);
-        array_push($values,$punto);
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
         $graph->colours(self::colours());
