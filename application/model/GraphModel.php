@@ -126,6 +126,8 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '30';
         $settings["axis_max_v"] = '408';
+        $settings["grid_division_v"] = '0.2';
+        
         $values = DataModel::cc();
 
         if (is_numeric($valor)){
