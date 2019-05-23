@@ -69,7 +69,7 @@ class GraphModel
         $graph->colours(self::colours());
         $graph->values($values);
         //$graph->settings($settings);
-        return $graph->fetch('MultiLineGraph');
+        $graph->render('MultiLineGraph');
     }
 
     public static function ccca($EG, $valor)
@@ -86,7 +86,7 @@ class GraphModel
         $graph = GraphicoModel::getFactory()->getInstance();
         $graph->colours(self::colours());
         $graph->values($values);
-        return $graph->fetch('MultiLineGraph');
+        $graph->render('MultiLineGraph');
     }
 
     public static function uterinas($EG, $valor)
@@ -103,7 +103,7 @@ class GraphModel
         $graph = GraphicoModel::getFactory()->getInstance();
         $graph->colours(self::colours());
         $graph->values($values);
-        return $graph->fetch('MultiLineGraph');
+        $graph->render('MultiLineGraph');
     }
 
     public static function umbilical($EG, $valor)
