@@ -150,7 +150,8 @@ class GraphModel
             'semantic_classes'  => false,
             'show_data_labels'  => false,
             'show_tooltips'     => false,
-            'line_stroke_width' => 1
+            'line_stroke_width' => 1,
+            'axis_stroke_width' => 1
         );
 
         return $settings;
