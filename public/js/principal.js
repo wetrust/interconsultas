@@ -1368,7 +1368,7 @@ function buildFinishTable(data){
                     callModal($(this).data("informe"), $(this).data("id"));
                 });
             } else  if (tipo == "2"){
-                url = 'pdf/informe_segundotrimestre/';
+                url = 'graph/informe_segundotrimestre/';
                 $("#ver\\.interconsulta > div").addClass("h-100");
                 $("#ver\\.interconsulta > div > div").addClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
