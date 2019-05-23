@@ -42,9 +42,9 @@
     $this->pdf->ImageSVG($this->grafico_uno, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG($this->grafico_uno, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG($this->grafico_uno, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG($this->grafico_cuatro, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG($this->grafico_cinco, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG($this->grafico_seis, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG($this->grafico_uno, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG($this->grafico_uno, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG($this->grafico_uno, $x=30, $y=100, $w='', $h=100, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     
     //$html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">A- Formulario referencia para evaluación ecográfica del crecimiento fetal</h4>';
     //$this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
