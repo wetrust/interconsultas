@@ -11,8 +11,8 @@ class GraphController extends Controller
     {
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
-        $respuesta->eg = floatval($respuesta->eg);
-        $respuesta->eg = bcdiv($respuesta->eg, '1', 0);
+        $respuesta->eg = explode (".", $respuesta->eg);
+        $respuesta->eg = b$respuesta->eg[0];
 
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
         array(
