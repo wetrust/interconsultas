@@ -133,7 +133,7 @@ class GraphModel
             'axis_min_v'        => '0.75',
             'graph_title'       => 'Cc / Ca',
             'graph_title_font_size' => 7,
-            'graph_title_space' => 8,
+            'graph_title_space' => 5,
             'show_grid_v'       => false,
             'semantic_classes'  => false,
             'show_data_labels'  => false,
