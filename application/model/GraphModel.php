@@ -10,7 +10,6 @@ class GraphModel
         $settings["axis_min_h"] = '16';
         $settings["axis_min_v"] = '100';
         $settings["axis_max_v"] = '4900';
-        $settings["grid_division_v"] = '460';
         $values = DataModel::pesoFetal();
 
         if (is_numeric($PESO)){
@@ -31,7 +30,6 @@ class GraphModel
         $settings["axis_min_h"] = '15';
         $settings["axis_min_v"] = '0.75';
         $settings["axis_max_v"] = '1.33';
-        $settings["grid_division_v"] = '0.8';
         $values = DataModel::ccca();
 
         if (is_numeric($valor)){
@@ -128,7 +126,6 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '30';
         $settings["axis_max_v"] = '408';
-        $settings["grid_division_v"] = '42';
 
         $values = DataModel::cc();
 
@@ -149,7 +146,6 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '400';
-        $settings["grid_division_v"] = '40';
         $values = DataModel::ca();
 
         if (is_numeric($valor)){
@@ -169,7 +165,6 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '90';
-        $settings["grid_division_v"] = '5';
         $values = DataModel::lf();
 
         if (is_numeric($valor)){
@@ -189,7 +184,6 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '80';
-        $settings["grid_division_v"] = '5';
         $values = DataModel::lh();
 
         if (is_numeric($valor)){
@@ -230,6 +224,7 @@ class GraphModel
             'graph_title'       => 'Cc / Ca',
             'graph_title_font_size' => 7,
             'graph_title_space' => 3,
+            'show_grid_h'       => false,
             'show_grid_v'       => false,
             'semantic_classes'  => false,
             'show_data_labels'  => false,
