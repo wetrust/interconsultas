@@ -52,6 +52,8 @@ class GraphModel
         $settings["graph_title"] = 'IP Promedio de Uterina';
         $settings["axis_min_h"] = '10';
         $settings["axis_min_v"] = '0.1';
+        $settings["axis_max_v"] = '3.6';
+        $settings["grid_division_v"] = '1.2';
         $values = DataModel::uterinas();
 
         if (is_numeric($valor)){
