@@ -186,7 +186,7 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '105';
-        $settings["grid_division_v"] = '26';
+        $settings["grid_division_v"] = '35';
         $settings["grid_division_h"] = '7';
         $values = DataModel::lf();
 
@@ -207,7 +207,7 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '105';
-        $settings["grid_division_v"] = '26';
+        $settings["grid_division_v"] = '35';
         $settings["grid_division_h"] = '7';
         $values = DataModel::lh();
 
