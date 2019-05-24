@@ -11,6 +11,7 @@ class GraphModel
         $settings["axis_min_v"] = '100';
         $settings["axis_max_v"] = '4900';
         $settings["grid_division_v"] = '1630';
+        $settings["grid_division_h"] = '8';
         $values = DataModel::pesoFetal();
 
         if (is_numeric($PESO)){
@@ -32,6 +33,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.7';
         $settings["axis_max_v"] = '1.35';
         $settings["grid_division_v"] = '0.3';
+        $settings["grid_division_h"] = '6.2';
 
         $values = DataModel::ccca();
 
@@ -54,6 +56,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.1';
         $settings["axis_max_v"] = '3.6';
         $settings["grid_division_v"] = '1.2';
+        $settings["grid_division_h"] = '7.5';
         $values = DataModel::uterinas();
 
         if (is_numeric($valor)){
@@ -75,6 +78,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.2';
         $settings["axis_max_v"] = '1.8';
         $settings["grid_division_v"] = '0.6';
+        $settings["grid_division_h"] = '5';
         $values = DataModel::umbilical();
 
         if (is_numeric($valor)){
@@ -96,6 +100,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.35';
         $settings["axis_max_v"] = '2.75';
         $settings["grid_division_v"] = '0.9';
+        $settings["grid_division_h"] = '5';
         $values = DataModel::cerebralMedia();
 
         if (is_numeric($valor)){
@@ -117,7 +122,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.35';
         $settings["axis_max_v"] = '3.35';
         $settings["grid_division_v"] = '1.1';
-        $settings["grid_division_h"] = '4';
+        $settings["grid_division_h"] = '5';
         $values = DataModel::cuocienteCerebroPlacentario();
 
         if (is_numeric($valor)){
