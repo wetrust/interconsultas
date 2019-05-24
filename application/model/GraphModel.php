@@ -94,6 +94,8 @@ class GraphModel
         $settings["graph_title"] = 'IP Arteria Cerebral Media';
         $settings["axis_min_h"] = '20';
         $settings["axis_min_v"] = '0.35';
+        $settings["axis_max_v"] = '2.75';
+        $settings["grid_division_v"] = '0.9';
         $values = DataModel::cerebralMedia();
 
         if (is_numeric($valor)){
