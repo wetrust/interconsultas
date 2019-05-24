@@ -1,11 +1,15 @@
 var nombreprofesionalPegar = "";
 $(document).ready(function(){
     $("#interconsultas\\.estado\\.espera").remove();
-    $("#interconsultas\\.estado\\.nuevas").parent().prepend('<label id="interconsultas.estado.solicitar" class="btn btn-secondary active"><input type="radio" value="1" name="interconsultas" checked autocomplete="off"> Nuevas</label>');
+    $("#interconsultas\\.estado\\.nuevas").parent().prepend('<label id="interconsultas.estado.solicitar" class="btn btn-secondary active"><input type="radio" value="1" name="interconsultas" checked autocomplete="off">Solicitar interconsulta</label>');
     $("#interconsultas\\.estado\\.nuevas").remove();
-    loadInFinish();
+    loadsolicitud();
 });
 
+function loadsolicitud(){
+    $("#tabla\\.resultado").addClass("d-none");
+    $("#mensaje\\.resultado").addClass("d-none");
+}
 function loadInFinish(){
     $.get('dashboard/finish').done(function(data){
         buildFinishTable(data);
