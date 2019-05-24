@@ -156,4 +156,8 @@
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
     var _URL = "<?= Config::get('URL') ?>";
 </script>
+<?php if (Session::get("user_account_type") > 2) { ?>
 <script src="js/principal.js"></script>
+<?php } else { ?>
+<script src="js/basico.js"></script>
+<?php } ?>
