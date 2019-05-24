@@ -117,6 +117,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.35';
         $settings["axis_max_v"] = '3.35';
         $settings["grid_division_v"] = '1.1';
+        $settings["grid_division_h"] = '4';
         $values = DataModel::cuocienteCerebroPlacentario();
 
         if (is_numeric($valor)){
