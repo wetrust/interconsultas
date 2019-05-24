@@ -139,7 +139,7 @@ class GraphModel
     public static function cc($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'CC';
+        $settings["graph_title"] = 'Cráneo';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '30';
         $settings["axis_max_v"] = '480';
@@ -161,7 +161,7 @@ class GraphModel
     public static function ca($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'CA';
+        $settings["graph_title"] = 'Abdómen';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '480';
@@ -182,7 +182,7 @@ class GraphModel
     public static function lf($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'LF';
+        $settings["graph_title"] = 'Femur';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '105';
@@ -203,7 +203,7 @@ class GraphModel
     public static function lh($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'LH';
+        $settings["graph_title"] = 'Húmero';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '105';
