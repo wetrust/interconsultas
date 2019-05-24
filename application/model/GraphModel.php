@@ -33,7 +33,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.7';
         $settings["axis_max_v"] = '1.35';
         $settings["grid_division_v"] = '0.3';
-        $settings["grid_division_h"] = '6';
+        $settings["grid_division_h"] = '5';
 
         $values = DataModel::ccca();
 
