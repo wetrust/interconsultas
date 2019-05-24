@@ -11,7 +11,7 @@ class GraphModel
         $settings["axis_min_v"] = '100';
         $settings["axis_max_v"] = '4900';
         $settings["grid_division_v"] = '1630';
-        $settings["grid_division_h"] = '8';
+        $settings["grid_division_h"] = '6';
         $values = DataModel::pesoFetal();
 
         if (is_numeric($PESO)){
@@ -33,7 +33,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.7';
         $settings["axis_max_v"] = '1.35';
         $settings["grid_division_v"] = '0.3';
-        $settings["grid_division_h"] = '6.2';
+        $settings["grid_division_h"] = '6';
 
         $values = DataModel::ccca();
 
