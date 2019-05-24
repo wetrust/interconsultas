@@ -11,6 +11,12 @@ class InterconsultaModel
         if (isset($contrareferente->user_email)){
             if ($contrareferente->user_email == $solicitud_profesionalemail){
                 //almacenar la interconsulta
+
+                if (Session::userIsLoggedIn()) {
+                    $solicitud_nombreprofesional = Session::get('user_name');
+                    $solicitud_email = Session::get('user_email');
+                }
+                
                 SolicitudesModel::createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional);
                 
                 //enviar un email al médico contrareferente

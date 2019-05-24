@@ -1153,6 +1153,7 @@ function loadInProcess(){
                     }
                     else if (tipoExm == 2){
                         args = {
+                            
                             solicitud_id: $("#solicitud_id").val(),
                             solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
                             respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),

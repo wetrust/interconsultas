@@ -16,12 +16,212 @@ $(document).ready(function(){
             $("#filtro\\.activar").removeClass("d-none");
         }
     });
+    $("#interconsulta\\.enviar").on("click", function(){
 
+		var listo = false;
+
+		//revisar si el usuario lleno todas las cajas
+			
+		var nombre = String($("#interconsulta\\.nombre").val());
+		var rut = String($("#interconsulta\\.rut").val());
+		var fecha = String($("#interconsulta\\.fecha").val());
+		var eg = String($('input[name=interconsulta_eg]:checked').val());
+		var eco = String($('input[name=interconsulta_eco]:checked').val());
+		var fum = String($("#interconsulta\\.fum").val());
+		var diagnostico = String($("#interconsulta\\.diagnostico").val());
+		var lugar = String($("#interconsulta\\.lugar").val());
+		var ciudad = String($("#interconsulta\\.ciudad").val());
+		var egestacional = String($("#interconsulta\\.egestacional").val());
+		var profesional = String($('input[name=interconsulta_profesional]:checked').val());
+		var nombreprofesional = String($("#interconsulta\\.profesional\\.nombre").val());
+		var email = String($("#interconsulta\\.email").val());
+		var para = String($("#interconsulta\\.para").val());
+		var nombre_para = String($("#interconsulta\\.para\\.nombre").val());
+		
+		if (nombre.length < 3){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cómo se llama la paciente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (rut.length < 4){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cual es el RUT de la paciente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (fecha.length < 4){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cual es la Fecha de solicitud de la interconsulta?, ¿Hoy?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (eg == 'undefined' || eg.length < 1){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿La Ege es conocida precozmente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (eco == 'undefined' || eco.length  < 0)
+		{
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Tiene una ecografía previa de crecimiento la paciente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (fum.length < 4){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cual es la Fecha de ultima mestruación de la paciente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (diagnostico.length  < 3){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cual es el Diagnóstico de referencia?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (ciudad.length < 2){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cual es la ciudad procedencia de la paciente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (lugar.length  < 3){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cual es el lugar de control prenatal?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (egestacional.length < 3){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>La fecha de solicitud y la FUM operacional no permiten calcular una edad gestacional, ¿Habrá ingresado mal estas fechas?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (profesional == 'undefined' || profesional.length  < 1){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Quién refiere a la paciente un médico o una matrona?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (nombre_para.length < 2){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cómo se llama el médico referente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+
+		if (para.length < 5){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿A quien usted solicita la interconsulta?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+		else{
+			listo = true;
+		}
+
+		if (listo == true){
+			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><h5 class="text-center"><strong>VERIFICACIÓN DE DATOS</strong></h5></div><div class="modal-body"><ul><li>El correo del profesional referente (usted) es: <strong class="text-primary">' + email +'</strong></li><li>El correo del profesional contrarreferente es: <strong class="text-primary">' + para +'</strong></li></ul><h5 class="mt-3 text-center"><strong>¿Los correos están correctos?</strong></h5></div><div class="modal-footer"><button type="button" class="btn btn-primary" id="enviar-solicitud-interconsulta">Si</button><button type="button" class="btn btn-secondary" data-dismiss="modal">No</button></div></div></div></div>');
+			$('#cautivo\\.dialogo').modal("show");
+			$('#enviar-solicitud-interconsulta').on("click", function(){
+				$('#interconsulta\\.enviar').prop("disabled", true);
+
+				var data = {
+					nombre: $("#interconsulta\\.nombre").val(),
+					rut: $("#interconsulta\\.rut").val(),
+					fecha: $("#interconsulta\\.fecha").val(),
+					eg: $('input[name=interconsulta_eg]:checked').val(),
+					eco: $('input[name=interconsulta_eco]:checked').val(),
+					fum: $("#interconsulta\\.fum").val(),
+					diagnostico: $("#interconsulta\\.diagnostico").val(),
+					lugar: $("#interconsulta\\.lugar").val(),
+					ciudad: $("#interconsulta\\.ciudad").val(),
+					egestacional: $("#interconsulta\\.egestacional").val(),
+					profesional: $('input[name=interconsulta_profesional]:checked').val(),
+					nombreprofesional: $("#interconsulta\\.profesional\\.nombre").val(),
+					email: $("#interconsulta\\.email").val(),
+					para: $("#interconsulta\\.para").val(),
+					nombre_para: $("#interconsulta\\.para\\.nombre").val()
+				};
+				$('#cautivo\\.dialogo').modal("hide");
+				$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Interconsulta</h5></div><div class="modal-body"><p>Enviando solicitud de interconsulta, por favor espere</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div></div></div></div></div>');
+				$('#cautivo\\.dialogo').modal("show");
+		
+				$.post("https://administrador.crecimientofetal.cl/api/send", data).done(function(response){
+					if (response.result == false){
+						$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">ERROR</h5></div><div class="modal-body"><p>Usted NO puede solicitar interconsulta para este profesional</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+						$('#mensaje\\.dialogo').modal("show");
+		
+						$('#mensaje\\.dialogo').on('hidden.bs.modal', function (e) {
+							$('#cautivo\\.dialogo').modal("hide");
+							$("#cautivo\\.dialogo").remove();
+							$(this).remove();
+							$('#interconsulta\\.enviar').prop("disabled", false);
+						});
+					}
+					else if (response.result == true){
+						$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Información</h5></div><div class="modal-body"><p>Su Solicitud de interconsulta ha sido enviada correctamente</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+						$('#mensaje\\.dialogo').modal("show");
+		
+						$('#mensaje\\.dialogo').on('hidden.bs.modal', function (e) {
+							$('#cautivo\\.dialogo').modal("hide");
+							$("#cautivo\\.dialogo").remove();
+							$(this).remove();
+							$('#interconsulta\\.enviar').prop("disabled", false);
+						});
+					}
+				});
+			});
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
+				$(this).remove();
+			});
+			return;
+		}
+	});
 });
 
 function construir(){
     $("#mensaje\\.resultado").parent().parent().prepend('<div class="card-header bg-primary" id="card.header"><h4 class="text-white text-center">Formulario de referencia para evaluación ecográfica gineco - Obstétrica</h4><h6 class="text-white text-center">Formulario de libre disposición para profesionales que soliciten exámen ecográfico a ecografistas registrados en la plataforma</h6></div>');
-    $("#mensaje\\.resultado").parent().prepend('<div id="formulario.solicitud"> <div class="row"> <div class="col form-group"> <label for="interconsulta.nombre">Nombre del paciente</label> <input type="text" class="form-control" id="interconsulta.nombre"> </div><div class="col form-group"> <label for="interconsulta.rut">RUT del paciente</label> <input type="text" class="form-control" id="interconsulta.rut"> </div><div class="col form-group"> <label for="interconsulta.fecha">Fecha de solicitud del exámen</label> <input type="date" class="form-control" id="interconsulta.fecha"> </div></div><div class="row"> <div class="col form-group"> <label for="inputEmail4">Ege conocida precozmente</label> </div><div class="col form-group"> <div> <input type="radio" id="interconsulta.eg.si" value="1" name="interconsulta_eg" class="form-check-input"> <label for="interconsulta.eg.si">Si</label> </div><div> <input type="radio" id="interconsulta.eg.no" value="0" name="interconsulta_eg" class="form-check-input" checked=""> <label for="interconsulta.eg.no">No</label> </div></div><div class="col form-group"> <label for="inputEmail4">Ecografía previa de crecimiento</label> </div><div class="col form-group"> <div> <input type="radio" id="interconsulta.eco.si" value="1" name="interconsulta_eco" class="form-check-input"> <label for="interconsulta.eco.si">Si</label> </div><div> <input type="radio" id="interconsulta.eco.no" value="0" name="interconsulta_eco" class="form-check-input" checked=""> <label for="interconsulta.eco.no">No</label> </div></div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.fecha">FUM operacional</label> <input type="date" class="form-control" id="interconsulta.fum"> </div><div class="col-2 form-group"> <label for="interconsulta.fecha">Edad Gestacional</label> <input type="text" class="form-control" id="interconsulta.egestacional" disabled=""> </div><div class="col form-group"> <label for="interconsulta.diagnostico">Diagnóstico de referencia</label> <input type="text" class="form-control" id="interconsulta.diagnostico"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.ciudad">Ciudad procedencia de la paciente</label> <input type="text" class="form-control" id="interconsulta.ciudad"> </div><div class="col form-group"> <label for="interconsulta.lugar">Lugar de control prenatal</label> <input type="text" class="form-control" id="interconsulta.lugar"> </div></div><br><div class="row"> <div class="col form-group"> <h5><span class="badge badge-default p-2" for="interconsulta.profesional">Datos del profesional referente a exámen ecográfico</span></h5> </div><div class="col form-group"> <div> <input type="radio" id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" class="form-check-input"> <label for="interconsulta.profesional.medico">Médico</label> </div><div> <input type="radio" id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" class="form-check-input" checked=""> <label for="interconsulta.profesional.matrona">Matrón/Matrona</label> </div></div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.profesional.nombre">Nombre del profesional referente</label> <input type="text" class="form-control" id="interconsulta.profesional.nombre"> </div><div class="col form-group"> <label for="interconsulta.email">Email (de profesional referente)</label> <input type="email" class="form-control" id="interconsulta.email"> </div></div><h5><span class="badge badge-default p-2" for="interconsulta.profesional">Datos ecografista de contrarreferencia</span></h5> <div class="row"> <div class="col form-group"> <label for="interconsulta.para.nombre">Nombre del profesional a quien ud. solicitó exámen ecografico</label> <input type="text" class="form-control" id="interconsulta.para.nombre"> </div><div class="col form-group"> <label for="interconsulta.para">Email (profesional de contrareferencia)</label> <input type="email" class="form-control" id="interconsulta.para"> </div></div><div class="row"> <div class="col"> <button class="btn btn-primary" id="interconsulta.enviar">Enviar solicitud de exámen ecográfico</button> </div></div></div>');
+    $("#mensaje\\.resultado").parent().prepend('<div id="formulario.solicitud"> <div class="row"> <div class="col form-group"> <label for="interconsulta.nombre">Nombre del paciente</label> <input type="text" class="form-control" id="interconsulta.nombre"> </div><div class="col form-group"> <label for="interconsulta.rut">RUT del paciente</label> <input type="text" class="form-control" id="interconsulta.rut"> </div><div class="col form-group"> <label for="interconsulta.fecha">Fecha de solicitud del exámen</label> <input type="date" class="form-control" id="interconsulta.fecha"> </div></div><div class="row"> <div class="col form-group"> <label for="inputEmail4">Ege conocida precozmente</label> </div><div class="col form-group"> <div> <input type="radio" id="interconsulta.eg.si" value="1" name="interconsulta_eg" class="form-check-input"> <label for="interconsulta.eg.si">Si</label> </div><div> <input type="radio" id="interconsulta.eg.no" value="0" name="interconsulta_eg" class="form-check-input" checked=""> <label for="interconsulta.eg.no">No</label> </div></div><div class="col form-group"> <label for="inputEmail4">Ecografía previa de crecimiento</label> </div><div class="col form-group"> <div> <input type="radio" id="interconsulta.eco.si" value="1" name="interconsulta_eco" class="form-check-input"> <label for="interconsulta.eco.si">Si</label> </div><div> <input type="radio" id="interconsulta.eco.no" value="0" name="interconsulta_eco" class="form-check-input" checked=""> <label for="interconsulta.eco.no">No</label> </div></div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.fecha">FUM operacional</label> <input type="date" class="form-control" id="interconsulta.fum"> </div><div class="col-2 form-group"> <label for="interconsulta.fecha">Edad Gestacional</label> <input type="text" class="form-control" id="interconsulta.egestacional" disabled=""> </div><div class="col form-group"> <label for="interconsulta.diagnostico">Diagnóstico de referencia</label> <input type="text" class="form-control" id="interconsulta.diagnostico"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.ciudad">Ciudad procedencia de la paciente</label> <input type="text" class="form-control" id="interconsulta.ciudad"> </div><div class="col form-group"> <label for="interconsulta.lugar">Lugar de control prenatal</label> <input type="text" class="form-control" id="interconsulta.lugar"> </div></div><br><div class="row"> <div class="col form-group"> <h5><span class="badge badge-default p-2" for="interconsulta.profesional">Datos del profesional referente a exámen ecográfico</span></h5> </div><div class="col form-group"> <div> <input type="radio" id="interconsulta.profesional.medico" value="Médico" name="interconsulta_profesional" class="form-check-input"> <label for="interconsulta.profesional.medico">Médico</label> </div><div> <input type="radio" id="interconsulta.profesional.matrona" value="Matrona" name="interconsulta_profesional" class="form-check-input" checked=""> <label for="interconsulta.profesional.matrona">Matrón/Matrona</label> </div></div></div><h5><span class="badge badge-default p-2" for="interconsulta.profesional">Datos ecografista de contrarreferencia</span></h5> <div class="row"> <div class="col form-group"> <label for="interconsulta.para.nombre">Nombre del profesional a quien ud. solicitó exámen ecografico</label> <input type="text" class="form-control" id="interconsulta.para.nombre"> </div><div class="col form-group"> <label for="interconsulta.para">Email (profesional de contrareferencia)</label> <input type="email" class="form-control" id="interconsulta.para"> </div></div><div class="row"> <div class="col"> <button class="btn btn-primary" id="interconsulta.enviar">Enviar solicitud de exámen ecográfico</button> </div></div></div>');
 }
 
 function loadsolicitud(){
