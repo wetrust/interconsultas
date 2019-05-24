@@ -10,6 +10,7 @@ class GraphModel
         $settings["axis_min_h"] = '16';
         $settings["axis_min_v"] = '100';
         $settings["axis_max_v"] = '4900';
+        $settings["grid_division_v"] = '1630';
         $values = DataModel::pesoFetal();
 
         if (is_numeric($PESO)){
