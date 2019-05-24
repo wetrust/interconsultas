@@ -73,6 +73,8 @@ class GraphModel
         $settings["graph_title"] = 'IP Arteria Umbilical';
         $settings["axis_min_h"] = '20';
         $settings["axis_min_v"] = '0.2';
+        $settings["axis_max_v"] = '1.8';
+        $settings["grid_division_v"] = '0.6';
         $values = DataModel::umbilical();
 
         if (is_numeric($valor)){
