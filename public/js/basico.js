@@ -5,6 +5,18 @@ $(document).ready(function(){
     $("#interconsultas\\.estado\\.nuevas").remove();
     construir();
     loadsolicitud();
+    $('.btn-group-toggle .btn').on("click", function(){
+        let valor = parseInt($(this).find('input').val());
+
+        if (valor == 1){
+            loadsolicitud();
+            $("#filtro\\.activar").addClass("d-none");
+        }else if (valor == 3){
+            loadInFinish();
+            $("#filtro\\.activar").removeClass("d-none");
+        }
+    });
+
 });
 
 function construir(){
@@ -23,7 +35,7 @@ function loadInFinish(){
     $("#mensaje\\.resultado").removeClass("d-none");
     $("#card\\.header").addClass("d-none");
     $("#formulario\\.solicitud").addClass("d-none");
-    
+
     $.get('dashboard/finish').done(function(data){
         buildFinishTable(data);
     });
