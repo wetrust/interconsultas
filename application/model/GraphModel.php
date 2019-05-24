@@ -220,7 +220,7 @@ class GraphModel
             'back_colour'       => '#FFF',
             'stroke_colour'     => '#F00',
             'back_stroke_width' => 0,
-            'back_stroke_colour'=> '#eee',
+            'back_stroke_colour'=> '#f6f6f6',
             'axis_colour'       => '#333',
             'axis_overlap'      => 2,
             'axis_font'         => 'Helvetica',
