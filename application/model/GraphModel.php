@@ -142,7 +142,8 @@ class GraphModel
         $settings["graph_title"] = 'CC';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '30';
-        $settings["axis_max_v"] = '408';
+        $settings["axis_max_v"] = '480';
+        $settings["grid_division_v"] = '160';
         $settings["grid_division_h"] = '7';
 
         $values = DataModel::cc();
@@ -163,7 +164,8 @@ class GraphModel
         $settings["graph_title"] = 'CA';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
-        $settings["axis_max_v"] = '400';
+        $settings["axis_max_v"] = '480';
+        $settings["grid_division_v"] = '160';
         $settings["grid_division_h"] = '7';
         $values = DataModel::ca();
 
