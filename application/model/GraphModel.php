@@ -143,6 +143,7 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '30';
         $settings["axis_max_v"] = '408';
+        $settings["grid_division_h"] = '7';
 
         $values = DataModel::cc();
 
@@ -163,6 +164,7 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '400';
+        $settings["grid_division_h"] = '7';
         $values = DataModel::ca();
 
         if (is_numeric($valor)){
@@ -182,6 +184,7 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '90';
+        $settings["grid_division_h"] = '7';
         $values = DataModel::lf();
 
         if (is_numeric($valor)){
@@ -201,6 +204,7 @@ class GraphModel
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '5';
         $settings["axis_max_v"] = '80';
+        $settings["grid_division_h"] = '7';
         $values = DataModel::lh();
 
         if (is_numeric($valor)){
