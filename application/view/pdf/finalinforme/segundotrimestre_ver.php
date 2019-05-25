@@ -80,26 +80,26 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>DBP:</td><td>'. $this->respuesta_dbp.' mm</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>DBP (Hadlock):</td><td>'. $this->respuesta_dbp.' mm</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td></td><td>DOF:</td><td>'. $this->respuesta_dof.' mm.</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>DOF (Jeanty):</td><td>'. $this->respuesta_dof.' mm.</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>IC:</td><td>'. $this->respuesta_ic.'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Índice Cefálico:</td><td>'. $this->respuesta_ic.'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>CC:</td><td>'. $this->respuesta_cc.' mm.</td><td>Percentil: '. $this->respuesta_cc_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>CC (Hadlock):</td><td>'. $this->respuesta_cc.' mm.</td><td>Percentil: '. $this->respuesta_cc_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>CA:</td><td>'. $this->respuesta_ca. ' mm.</td><td>Percentil: '. $this->respuesta_ca_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>CA (Hadlock):</td><td>'. $this->respuesta_ca. ' mm.</td><td>Percentil: '. $this->respuesta_ca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>LF:</td><td>'. $this->respuesta_lf.' mm.</td><td>Percentil: '. $this->respuesta_lf_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>LF (Hadlock):</td><td>'. $this->respuesta_lf.' mm.</td><td>Percentil: '. $this->respuesta_lf_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>LH:</td><td>'. $this->respuesta_lh.' mm.</td><td>Percentil: '. $this->respuesta_lh_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>LH (Jeanty):</td><td>'. $this->respuesta_lh.' mm.</td><td>Percentil: '. $this->respuesta_lh_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>Cerebelo:</td><td>'. $this->respuesta_cerebelo.' mm.</td><td>Percentil: '. $this->respuesta_cerebelo_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Cerebelo (Hill):</td><td>'. $this->respuesta_cerebelo.' mm.</td><td>Percentil: '. $this->respuesta_cerebelo_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>PFE:</td><td>'. $this->respuesta_pfe.' gr.</td><td>Percentil: '. $this->respuesta_pfe_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>PFE (Hadlock):</td><td>'. $this->respuesta_pfe.' gr.</td><td>Percentil: '. $this->respuesta_pfe_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>CC/CA:</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Índice Cc / Ca (Hadlock):</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
 
     $this->pdf->Ln(2);
