@@ -84,6 +84,8 @@
     $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Peso fetal estimado:</td><td>'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td>Percentil: '.htmlentities($this->solicitud_resultado->pfe_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>Índice Cc / Ca (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->ccca).' </td><td>Percentil: '.htmlentities($this->solicitud_resultado->ccca_pct).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td><strong><em>Flujometría Doppler</em></strong></td><td>IP Uterina derecha:</td><td>'.htmlentities($this->solicitud_resultado->uterina_derecha).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->uterina_derecha_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
