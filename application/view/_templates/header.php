@@ -40,9 +40,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarHome">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item <?php if (View::checkForActiveController($filename, "dashboard")) { echo 'active'; } ?>">
-                        <a class="nav-link" href="https://crecimientofetal.cl">Volver a pagina inicial</a>
-                    </li>
                     <?php if (Session::userIsLoggedIn()) { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="profesionales">Lista profesionales referentes</a>

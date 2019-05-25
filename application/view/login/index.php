@@ -55,9 +55,10 @@
             pudiendo compartir en linea estos resultados con el profesional referente.<br><br>
             <a href="contacto">Solicitud de suscripción</a>
             <br><br>
-            <a href="img/solicitud_interconsulta.pdf">Instructivo para referencia y contrarreferencia</a>
+            <a href="imagenes/solicitud_interconsulta.pdf">Instructivo para referencia y contrarreferencia</a>
             </li>
             </ul>
         </div>
     </div>
 </div>
+/Sha256:1
