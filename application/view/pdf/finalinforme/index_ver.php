@@ -97,7 +97,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Cerebral media (ACM):</td><td>'.htmlentities($this->solicitud_resultado->cm).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cm_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Cuociente Cm / Au (CCP):</td><td>'.htmlentities($this->solicitud_resultado->cmau).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cmau_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Índice Cm / Au (ICP):</td><td>'.htmlentities($this->solicitud_resultado->cmau).'</td><td>Percentil: '.htmlentities($this->solicitud_resultado->cmau_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
 
