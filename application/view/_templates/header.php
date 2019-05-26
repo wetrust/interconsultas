@@ -31,7 +31,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php setlocale(LC_ALL, 'es_CL'); ?>
+    <?php setlocale(LC_ALL, 'es_CL.UTF-8'); ?>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded g-verde">
         <div class="container">
             <div class="row w-100">
