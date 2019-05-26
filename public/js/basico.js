@@ -1,9 +1,9 @@
 var nombreprofesionalPegar = "";
 $(document).ready(function(){
-    $("#interconsultas\\.estado\\.espera").remove();
-    $("#interconsultas\\.estado\\.nuevas").parent().prepend('<label id="interconsultas.estado.solicitar" class="btn btn-secondary active"><input type="radio" value="1" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta</label>');
+	$("#interconsultas\\.estado\\.espera").remove();
+	$("#interconsultas\\.estado\\.finalizadas").remove();
+    $("#interconsultas\\.estado\\.nuevas").parent().prepend('<label id="interconsultas.estado.solicitar" class="btn btn-secondary active"><input type="radio" value="1" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta</label><label id="interconsultas.estado.finalizadas" class="btn btn-secondary active"><input type="radio" value="3" name="interconsultas" autocomplete="off"> Respuesta del ecografista</label>');
 	$("#interconsultas\\.estado\\.nuevas").remove();
-	$("#interconsultas\\.estado\\.finalizadas > input").text("Respuesta del ecografista");
 
     construir();
     loadsolicitud();
@@ -226,7 +226,7 @@ $(document).ready(function(){
 	});
 
 	$("#interconsulta\\.para\\.select").on("click", function(){
-		$(this).trigger("click");
+		$(this).trigger("change");
 	});
 
 	$("#interconsulta\\.para\\.select").on("change", function(){
