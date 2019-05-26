@@ -31,6 +31,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
+    <?php setlocale(LC_ALL, 'es_CL'); ?>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded g-verde">
         <div class="container">
             <div class="row w-100">
@@ -38,7 +39,7 @@
                     <img class="img-fluid w-100" src="imagenes/ic_launcher-web.png" alt="logo" style="max-width: 128px;">
                 </div>
                 <div class="col-11">
-                    <p class="float-right" name="fechaHora" style="color: #f0df90;">Domingo, 26 de Mayo 2019</p>
+                    <p class="float-right" name="fechaHora" style="color: #f0df90;"><?php echo strftime("%A %e %B %Y", mktime(0, 0, 0, date("m")  , date("d"), date("Y"))); ?></p>
                     <h5 class="text-white mt-0 mb-1"><em>Crecimientofetal.cl/interconsulta</em></h5>
                     <p class="text-white"><em>Ultrasonografía obstétrica básica para profesionales</em></p>
                 </div>
