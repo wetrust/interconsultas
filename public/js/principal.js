@@ -1290,11 +1290,13 @@ function loadInProcess(){
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                             respuesta_bvm: $('input[name="respuesta_bvm"]').val(),
                             respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
+                            respuesta_ccca_pct: $('#respuesta_ccca_pct').html(),
                         }
 
                         args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
                         args.respuesta_uterina_izquierda_percentil = args.respuesta_uterina_izquierda_percentil.replace("Pct. ", "");
                         args.respuesta_uterinas_percentil = args.respuesta_uterinas_percentil.replace("Pct. ", "");
+                        args.respuesta_ccca_pct = args.respuesta_ccca_pct.replace("Pct. ", "");
                     }
 
                     $.post('dashboard/save', args).done(function(data){
