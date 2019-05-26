@@ -30,6 +30,17 @@ class UserModel
         return $all_users_profiles;
     }
 
+    public static function getMedicos()
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_name, user_email FROM users where user_active = 1 AND user_account_type = 3";
+        $query = $database->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
     public static function getPublicProfileOfUser($user_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
