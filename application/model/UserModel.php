@@ -135,7 +135,7 @@ class UserModel
             return false;
         }
 
-        if (!preg_match("/^[a-zA-Z0-9]{2,64}$/", $new_user_name)) {
+        if (!preg_match("/^[a-zA-Z0-9 ]{2,64}$/", $new_user_name)) {
             Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_DOES_NOT_FIT_PATTERN'));
             return false;
         }

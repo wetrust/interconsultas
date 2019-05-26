@@ -7,7 +7,7 @@
                 <form action="<?php echo Config::get('URL'); ?>register/register_action" method="post">
                     <div class="form-group">
                         <label>Username (letters/numbers, 2-64 chars)</label>
-                        <input class="form-control" type="text" name="user_name" pattern="[a-zA-Z0-9]{2,64}" required />
+                        <input class="form-control" type="text" name="user_name" pattern="[a-zA-Z0-9 ]{2,64}" required />
                     </div>
                     <div class="form-group">
                         <label>email address (a real address)</label>
