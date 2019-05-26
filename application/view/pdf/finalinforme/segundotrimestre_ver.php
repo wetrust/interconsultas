@@ -106,7 +106,7 @@
     $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal: '.htmlentities($this->respuesta_hipotesis).' *</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Índice Cc / Ca (Hadlock): '.htmlentities($this->respuesta_crecimiento_ccca).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Índice Cc / Ca: '.htmlentities($this->respuesta_crecimiento_ccca).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
     
