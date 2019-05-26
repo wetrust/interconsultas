@@ -227,6 +227,10 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#interconsulta\\.para\\.select").on("click", function(){
+		$(this).trigger("click");
+	});
+
 	$("#interconsulta\\.para\\.select").on("change", function(){
 		let correo = $(this).val();
 		let nombre = $("#interconsulta\\.para\\.select option:selected").text();
