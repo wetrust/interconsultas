@@ -51,14 +51,11 @@
             <div class="mx-3 px-5">
             <h5 class="text-center">SISTEMA DE REFERENCIA Y CONTRARREFERENCIA PARA SOLICITUD DE ECOGRAFIA OBSTETRICA</h5>
             <ul class="mt-3">
-                <li class="text-justify">El objetivo de esta herramienta informática es favorecer el sistema de referencia y contrareferencia para el exámen ecográfico obstétrico entre los distintos niveles de atención en salud materna.</li>
+                <li class="text-justify">Sitio web diseñado para profesionales de la salud vinculados con la <strong>vigilancia del control prenatal</strong>. Especialmente para quienes se desempeñan en los niveles básico y medio de atención en salud materna.</li>
             </ul>
             <img class="mx-auto d-block" src="imagenes/ecografo.png" alt="Ecógrafo">
             <ul>
-            <li class="text-justify">Al suscribirse a la plataforma podrá de forma privada,
-            almacenar la información de los exámenes ecográficos realizados por ud.,
-            pudiendo compartir en linea estos resultados con el profesional referente.<br><br>
-            </li>
+            <li class="text-justify">El objetivo principal de esta herramienta informática es favorecer la <strong>Referencia y Contraferencia</strong> para exámenes ecográficos obstétrico, entre profesionales de distintos niveles de atención en salud materna.</li>
             <ul>
                 <li><a href="#">Acerca de la plataforma y autor</a></li>
                 <li><a href="imagenes/solicitud_interconsulta.pdf">Instructivo para referencia y contrarreferencia</a></li>
