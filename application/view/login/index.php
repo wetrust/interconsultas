@@ -1,5 +1,10 @@
 <div class="container">
     <div class="row">
+        <div class="col">
+            <p class="mt-0 mb-2 text-center"><small><em>Software obstétrico propiedad intelectual Dr. Rudecindo Lagos,  Maternidad Hospital Regional de Temuco, Facultad de Medicina Universidad de La Frontera Temuco - Chile <img src="https://servidor.crecimientofetal.cl/img/chile.jpg" alt="Chile"></em></small></p>
+        </div>
+    </div>
+    <div class="row">
         <div class="card col-4 mt-2">
             <div class="card-body">
                 <h5 class="card-title text-center">INGRESAR A PLATAFORMA</h5>

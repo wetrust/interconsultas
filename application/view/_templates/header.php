@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-11">
                     <p class="float-right" name="fechaHora" style="color: #f0df90;">Domingo, 26 de Mayo 2019</p>
-                    <h5 class="text-white mt-0 mb-1"><em>CrecimientoFetal.cl</em></h5>
+                    <h5 class="text-white mt-0 mb-1"><em>Crecimientofetal.cl/interconsulta</em></h5>
                     <p class="text-white"><em>Ultrasonografía obstétrica básica para profesionales</em></p>
                 </div>
             </div>
