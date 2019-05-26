@@ -245,6 +245,14 @@ $(document).ready(function(){
 			return;
 		}
 	});
+
+	$("#interconsulta\\.para\\.select").on("change", function(){
+		let correo = $(this).val();
+		let nombre = $("#interconsulta\\.para\\.select option:selected").text();
+
+		$("#interconsulta\\.para\\.nombre").val(nombre);
+		$("#interconsulta\\.para").val(correo);
+	});
 });
 
 function construir(){
