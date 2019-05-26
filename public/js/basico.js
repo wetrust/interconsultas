@@ -157,15 +157,6 @@ $(document).ready(function(){
 			return;
 		}
 
-		if (profesional == 'undefined' || profesional.length  < 1){
-			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Quién refiere a la paciente un médico o una matrona?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
-			$('#cautivo\\.dialogo').modal("show");
-			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
-				$(this).remove();
-			});
-			return;
-		}
-
 		if (nombre_para.length < 2){
 			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>¿Cómo se llama el médico referente?</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
 			$('#cautivo\\.dialogo').modal("show");
@@ -188,10 +179,7 @@ $(document).ready(function(){
 		}
 
 		if (listo == true){
-			$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><h5 class="text-center"><strong>VERIFICACIÓN DE DATOS</strong></h5></div><div class="modal-body"><ul><li>El correo del profesional referente (usted) es: <strong class="text-primary">' + email +'</strong></li><li>El correo del profesional contrarreferente es: <strong class="text-primary">' + para +'</strong></li></ul><h5 class="mt-3 text-center"><strong>¿Los correos están correctos?</strong></h5></div><div class="modal-footer"><button type="button" class="btn btn-primary" id="enviar-solicitud-interconsulta">Si</button><button type="button" class="btn btn-secondary" data-dismiss="modal">No</button></div></div></div></div>');
-			$('#cautivo\\.dialogo').modal("show");
-			$('#enviar-solicitud-interconsulta').on("click", function(){
-				$('#interconsulta\\.enviar').prop("disabled", true);
+			$('#interconsulta\\.enviar').prop("disabled", true);
 
 				var data = {
 					nombre: $("#interconsulta\\.nombre").val(),
@@ -204,13 +192,9 @@ $(document).ready(function(){
 					lugar: $("#interconsulta\\.lugar").val(),
 					ciudad: $("#interconsulta\\.ciudad").val(),
 					egestacional: $("#interconsulta\\.egestacional").val(),
-					profesional: $('input[name=interconsulta_profesional]:checked').val(),
-					nombreprofesional: $("#interconsulta\\.profesional\\.nombre").val(),
-					email: $("#interconsulta\\.email").val(),
 					para: $("#interconsulta\\.para").val(),
 					nombre_para: $("#interconsulta\\.para\\.nombre").val()
 				};
-				$('#cautivo\\.dialogo').modal("hide");
 				$('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Interconsulta</h5></div><div class="modal-body"><p>Enviando solicitud de interconsulta, por favor espere</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div></div></div></div></div>');
 				$('#cautivo\\.dialogo').modal("show");
 		
@@ -238,11 +222,6 @@ $(document).ready(function(){
 						});
 					}
 				});
-			});
-			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
-				$(this).remove();
-			});
-			return;
 		}
 	});
 
