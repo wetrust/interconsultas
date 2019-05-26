@@ -156,13 +156,13 @@ class SolicitudesModel
         return $query->fetchAll();
     }
 
-    public static function getSolicitud($solicitud_id, $solicitud_email)
+    public static function getSolicitud($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "SELECT * FROM solicitudes WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':solicitud_id' => $solicitud_id));
+        $query->execute(array(':solicitud_id' => $solicitud_id));
 
         return $query->fetch();
     }

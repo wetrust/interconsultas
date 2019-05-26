@@ -15,7 +15,7 @@ class DashboardController extends Controller
 
     public function agendar($solicitud_id)
     {
-        $this->View->renderJSON(SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')));
+        $this->View->renderJSON(SolicitudesModel::getSolicitud($solicitud_id));
     }
 
     public function editSave(){ 
@@ -118,7 +118,7 @@ class DashboardController extends Controller
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
             ));
@@ -137,7 +137,7 @@ class DashboardController extends Controller
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_utero' => $respuesta_utero_primertrimestre,
                 'respuesta_saco_gestacional' => $respuesta_saco_gestacional,
@@ -171,7 +171,7 @@ class DashboardController extends Controller
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_placenta' => $respuesta_placenta,
                 'respuesta_placenta_insercion' => $respuesta_placenta_insercion,
@@ -224,7 +224,7 @@ class DashboardController extends Controller
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_utero_ginecologica' => $respuesta_utero_ginecologica,
                 'respuesta_endometrio' => $respuesta_endometrio,
@@ -256,7 +256,7 @@ class DashboardController extends Controller
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_fecha' => $respuesta_fecha,
                 'respuesta_eg' => $respuesta_eg,
@@ -295,7 +295,7 @@ class DashboardController extends Controller
     public function ver($solicitud_id)
     {
         $this->View->render('dashboard/ver', array(
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));

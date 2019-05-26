@@ -257,7 +257,7 @@ class EmailModel
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_utero' => $respuesta->utero_primertrimestre,
                 'respuesta_saco_gestacional' => $respuesta->saco_gestacional,
@@ -277,7 +277,7 @@ class EmailModel
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_placenta' => $respuesta->placenta,
                 'respuesta_liquido_amniotico' => $respuesta->liquido_amniotico,
@@ -304,7 +304,7 @@ class EmailModel
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_utero_ginecologica' => $respuesta->utero_ginecologica,
                 'respuesta_endometrio' => $respuesta->endometrio,
@@ -322,7 +322,7 @@ class EmailModel
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
             ));

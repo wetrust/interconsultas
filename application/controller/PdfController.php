@@ -35,7 +35,7 @@ class PdfController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));
@@ -48,7 +48,7 @@ class PdfController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'respuesta_utero' => $respuesta->utero_primertrimestre,
             'respuesta_saco_gestacional' => $respuesta->saco_gestacional,
@@ -72,7 +72,7 @@ class PdfController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'respuesta_placenta' => $respuesta->placenta,
             'respuesta_placenta_insercion' => $respuesta->placenta_insercion,
@@ -115,7 +115,7 @@ class PdfController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'respuesta_utero_ginecologica' => $respuesta->utero_ginecologica,
             'respuesta_endometrio' => $respuesta->endometrio,
@@ -134,7 +134,7 @@ class PdfController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));
@@ -147,7 +147,7 @@ class PdfController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id,Session::get('user_email')),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
             'respuesta_fecha' => $respuesta->fecha,
             'respuesta_eg' => $respuesta->eg,
