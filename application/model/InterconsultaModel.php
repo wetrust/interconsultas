@@ -13,7 +13,7 @@ class InterconsultaModel
                 //almacenar la interconsulta
 
                 if (Session::userIsLoggedIn()) {
-                    $solicitud_profesional = 1;
+                    $solicitud_profesional = "matrona";
                     $solicitud_nombreprofesional = Session::get('user_name');
                     $solicitud_email = Session::get('user_email');
                 }
