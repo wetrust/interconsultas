@@ -31,50 +31,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark g-verde">
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-faded g-verde">
         <div class="container">
-            <a class="navbar-brand" href="<?php echo Config::get('URL'); ?>">Interconsultas</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHome" aria-controls="navbarHome" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarHome">
-                <ul class="navbar-nav mr-auto">
-                    <?php if (Session::userIsLoggedIn()) { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profesionales">Lista profesionales referentes</a>
-                    </li>
-                    <?php } ?>
-                </ul>
-                <?php if (Session::userIsLoggedIn()) { ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo Session::get('user_name'); ?> </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarUser">
-                                <?php if (Session::get("user_account_type") > 2) : ?>
-                                <a class="dropdown-item" href="user/index">Mi cuenta</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="user/changeUserRole">Cambiar tipo de cuenta</a>
-                                <a class="dropdown-item" href="user/editAvatar">Modificar avatar</a>
-                                <a class="dropdown-item" href="user/editusername">Cambiar mi nombre de usuario</a>
-                                <a class="dropdown-item" href="user/edituseremail">Cambiar mi correo</a>
-                                <a class="dropdown-item" href="user/changePassword">Cambiar mi contraseña</a>
-                                <?php endif; ?>
-                                <a class="dropdown-item" href="login/logout">Salir</a>
-                                <div class="dropdown-divider"></div>
-                                <?php if (Session::get("user_account_type") == 7) : ?>
-                                    <a class="dropdown-item <?php if (View::checkForActiveController($filename, "admin")) {echo 'active';} ?>" href="admin/">Admin</a>
-                                <?php endif; ?>
-                            </div>
-                        </li>
-                    </ul>
-                <?php } else { ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item <?php if (View::checkForActiveController($filename, "login/index")) { echo 'active'; } ?>">
-                            <a class="btn btn-outline-light my-2 my-sm-0" href="<?php echo Config::get('URL'); ?>login/index">Ingresar</a>
-                        </li>
-                    </ul>
-                <?php } ?>
+            <div class="row w-100">
+                <div class="col-1">
+                    <img class="img-fluid w-100" src="imagenes/ic_launcher-web.png" alt="logo" style="max-width: 128px;">
+                </div>
+                <div class="col-11">
+                    <p class="float-right" name="fechaHora" style="color: #f0df90;">Domingo, 26 de Mayo 2019</p>
+                    <h5 class="text-white mt-0 mb-1"><em>CrecimientoFetal.cl</em></h5>
+                    <p class="text-white"><em>Ultrasonografía obstétrica básica para profesionales</em></p>
+                </div>
             </div>
         </div>
     </nav>

@@ -37,7 +37,7 @@
 					<input type="hidden" name="csrf_token" value="<?= Csrf::makeToken(); ?>" />
                     <input type="submit" class="btn btn-primary my-2" value="Ingresar"/>
                 </form>
-                <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvidaste tu contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
+                <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvido su contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
                 <p class="mt-2">Si ud. no es usuario registrado en la plataforma, puede temporalmente usar contraseña de usuario invitado</p>
                 <ul><li>Correo: prueba@prueba.cl</li><li>Contraseña: 123abc</li></ul>
             </div>
@@ -61,4 +61,3 @@
         </div>
     </div>
 </div>
-/Sha256:1
