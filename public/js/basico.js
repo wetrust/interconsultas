@@ -58,13 +58,10 @@ $(document).ready(function(){
 		var eg = String($('input[name=interconsulta_eg]:checked').val());
 		var eco = String($('input[name=interconsulta_eco]:checked').val());
 		var fum = String($("#interconsulta\\.fum").val());
-		var diagnostico = String($("#interconsulta\\.diagnostico").val());
+		var diagnostico = String($("#interconsulta\\.diagnostico\\.select").val());
 		var lugar = String($("#interconsulta\\.lugar").val());
 		var ciudad = String($("#interconsulta\\.ciudad").val());
 		var egestacional = String($("#interconsulta\\.egestacional").val());
-		var profesional = String($('input[name=interconsulta_profesional]:checked').val());
-		var nombreprofesional = String($("#interconsulta\\.profesional\\.nombre").val());
-		var email = String($("#interconsulta\\.email").val());
 		var para = String($("#interconsulta\\.para").val());
 		var nombre_para = String($("#interconsulta\\.para\\.nombre").val());
 		
