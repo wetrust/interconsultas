@@ -791,6 +791,13 @@ function loadInProcess(){
                             }
                         });
 
+                        $("input[name='respuesta_lf']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_uterina_derecha']").focus();
+                            }
+                        });
+
                         $("input[name='respuesta_ccca']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ccca = $("input[name='respuesta_ccca']").val();
@@ -1045,6 +1052,13 @@ function loadInProcess(){
                     if ( event.which == 13 ) {
                        event.preventDefault();
                        $("input[name='respuesta_lf']").focus();
+                    }
+                });
+
+                $("input[name='respuesta_lf']").keypress(function( event ) {
+                    if ( event.which == 13 ) {
+                       event.preventDefault();
+                       $("input[name='respuesta_uterina_derecha']").focus();
                     }
                 });
 
