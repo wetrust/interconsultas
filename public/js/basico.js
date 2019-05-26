@@ -3,7 +3,7 @@ $(document).ready(function(){
     $("#interconsultas\\.estado\\.espera").remove();
     $("#interconsultas\\.estado\\.nuevas").parent().prepend('<label id="interconsultas.estado.solicitar" class="btn btn-secondary active"><input type="radio" value="1" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta</label>');
 	$("#interconsultas\\.estado\\.nuevas").remove();
-	$("#interconsultas\\.estado\\.finalizadas").text("Respuesta del ecografista");
+	$("#interconsultas\\.estado\\.finalizadas > input").text("Respuesta del ecografista");
 
     construir();
     loadsolicitud();
