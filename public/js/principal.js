@@ -1290,7 +1290,7 @@ function loadInProcess(){
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                             respuesta_bvm: $('input[name="respuesta_bvm"]').val(),
                             respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
-                            respuesta_ccca_pct: $('#respuesta_ccca_pct').html(),
+                            respuesta_ccca_pct: $('input[name="respuesta_ccca_pct"]').val(),
                         }
 
                         args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
