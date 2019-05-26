@@ -18,6 +18,7 @@ $(document).ready(function(){
             $("#filtro\\.activar").removeClass("d-none");
         }
 	});
+
 	loadProfesionales();
     
     $("#interconsulta\\.fum").on("change", function(){
