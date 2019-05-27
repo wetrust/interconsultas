@@ -30,10 +30,10 @@
         <?php echo Session::get('user_name'); ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="user/editUsername">Nombre</a>
+          <a class="dropdown-item" href="user/editUsername">Cambiar</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="login/logout">Salir</a>
+          <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
         </div>
       </li>
     </ul>
