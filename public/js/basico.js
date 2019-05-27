@@ -50,7 +50,6 @@ $(document).ready(function(){
     $("#interconsulta\\.enviar").on("click", function(){
 
 		var listo = false;
-
 		//revisar si el usuario lleno todas las cajas
 			
 		var nombre = String($("#interconsulta\\.nombre").val());
