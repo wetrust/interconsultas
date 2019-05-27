@@ -61,7 +61,8 @@ class PdfController extends Controller
             'respuesta_eg' => $respuesta->eg,
             'ecografista' => $respuesta->ecografista,
             'comentariosexamen' => $respuesta->comentariosexamen,
-            'respuesta_lcn_eg' => $respuesta->lcn_eg
+            'respuesta_lcn_eg' => $respuesta->lcn_eg,
+            'respuesta_sexo_fetal' => $respuesta->sexo_fetal
         ));
     }
 
