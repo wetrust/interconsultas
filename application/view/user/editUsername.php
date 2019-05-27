@@ -1,4 +1,7 @@
 <div class="container">
+    <ol class="breadcrumb">
+        <li class="ml-auto"><a href="<?php echo Config::get('URL'); ?>"><strong>Volver</strong></a></li>
+    </ol>
     <h1>Cambiar nombre</h1>
     <!-- echo out the system feedback (error and success messages) -->
     <?php $this->renderFeedbackMessages(); ?>
