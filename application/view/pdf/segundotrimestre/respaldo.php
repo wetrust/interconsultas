@@ -68,7 +68,7 @@
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">C- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Edad Gestacional al exámen: 20.1 semanas</td><td>Feto en presentación: cefálica</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Edad Gestacional: 20.1 semanas</td><td>Feto en presentación: cefálica</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Dorso Fetal: anterior</td><td>Líquido amniótico: Normal</td></tr></tbody></table>';

@@ -73,7 +73,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
-    $html = '<table><tbody><tr><td>Edad Gestacional al exámen: '. htmlentities($this->solicitud_resultado->eg) .'</td><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td><td>Dorso Fetal: '.htmlentities($this->solicitud_resultado->dorso).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Edad Gestacional: '. htmlentities($this->solicitud_resultado->eg) .'</td><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td><td>Dorso Fetal: '.htmlentities($this->solicitud_resultado->dorso).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Líquido amniótico: '.htmlentities($this->solicitud_resultado->liquido).'</td><td>BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).'</td><td>Placenta: '.htmlentities($this->solicitud_resultado->placenta).', '.$this->solicitud_resultado->placenta_insercion.'</td><td>Sexo: '.htmlentities($this->solicitud_resultado->sexo_fetal).'</td></tr></tbody></table>';
