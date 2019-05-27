@@ -1,6 +1,6 @@
 <div class="container">
     <ol class="breadcrumb">
-        <li class="float-right"><a href="<?php echo Config::get('URL'); ?>"><strong>Volver</strong></a></li>
+        <li class="ml-auto"><a href="<?php echo Config::get('URL'); ?>"><strong>Volver</strong></a></li>
     </ol>
     <div class="row p-2">
         <div class="col-6">
