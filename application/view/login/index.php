@@ -57,7 +57,7 @@
             <ul>
             <li class="text-justify">El objetivo principal de esta herramienta informática es favorecer la <strong>Referencia y Contraferencia</strong> para exámenes ecográficos obstétrico, entre profesionales de distintos niveles de atención en salud materna.</li>
             <ul>
-                <li><a href="acercade">Acerca de la plataforma y autor</a></li>
+                <li><a href="AcercaDe">Acerca de la plataforma y autor</a></li>
                 <li><a href="imagenes/solicitud_interconsulta.pdf">Instructivo para referencia y contrarreferencia</a></li>
                 <li><a href="contacto">Solicitud de suscripción al sistema</a></li>
             </ul>
