@@ -47,6 +47,22 @@ class AdminModel
         }
     }
 
+    private static function categoriaProfesionalFunction($userId, $categoria)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $query = $database->prepare("UPDATE users SET user_account_type = :user_account_type WHERE user_id = :user_id LIMIT 1");
+        $query->execute(array(
+                ':user_account_type' => $categoria,
+                ':user_id' => $userId
+        ));
+
+        if ($query->rowCount() == 1) {
+            Session::add('feedback_positive', Text::get('FEEDBACK_ACCOUNT_SUSPENSION_DELETION_STATUS'));
+            return true;
+        }
+    }
+
     private static function writeDeleteAndSuspensionInfoToDatabase($userId, $suspensionTime, $delete)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

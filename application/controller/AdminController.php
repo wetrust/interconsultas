@@ -17,9 +17,10 @@ class AdminController extends Controller
 
     public function actionAccountSettings()
     {
-        AdminModel::setAccountSuspensionAndDeletionStatus(
-            Request::post('almacenar'),Request::post('suspension'), Request::post('softDelete'), Request::post('user_id')
-        );
+        AdminModel::categoriaProfesionalFunction(Request::post('user_id'),Request::post('user_account_type'));
+        //AdminModel::setAccountSuspensionAndDeletionStatus(
+        //    Request::post('almacenar'),Request::post('suspension'), Request::post('softDelete'), Request::post('user_id')
+        //);
 
         Redirect::to("admin");
     }
