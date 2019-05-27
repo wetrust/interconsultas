@@ -47,7 +47,7 @@ class AdminModel
         }
     }
 
-    private static function categoriaProfesionalFunction($userId, $categoria)
+    public static function categoriaProfesionalFunction($userId, $categoria)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
