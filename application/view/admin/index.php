@@ -24,7 +24,7 @@
                 <td><?= $user->user_email; ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
                 <td>
-                <?php $interests = array(1 => 'Invitado',  2 => 'Matron (a)', 3 => 'Médico');?>
+                <?php $interests = array(1 => 'Invitado',  2 => 'Referente', 3 => 'Contrarreferente');?>
                     <select name="user_account_type" class="form-control">
                 <?php
                     foreach($interests as $k => $v) {
