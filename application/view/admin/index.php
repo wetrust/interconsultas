@@ -10,9 +10,9 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
+                <th>Nombre</th>
                 <th>Email</th>
-                <th>¿Contrarreferente autorizado?</th>
-                <th>¿Almacenamiento de datos?</th>
+                <th>Tipo de usuario</th>
                 <th>Guardar</th>
                 <th>Eliminar</th>
             </tr>
@@ -20,6 +20,7 @@
         <tbody>
         <?php foreach ($this->users as $user) { ?>
             <tr>
+                <td><?= $user->user_name; ?></td>
                 <td><?= $user->user_email; ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
                 <td>
@@ -36,19 +37,6 @@
                 ?>
                     </select>
                     </td>
-                <td>
-                <?php
-                    $interests = array(0 => 'No',  1 => 'Si');
-                ?>
-                    <select name="almacenar">
-                <?php
-                    foreach($interests as $k => $v) {
-                ?>
-                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_almacenamiento){ ?> selected <?php } ?>><?php echo $v;?></option>
-                <?php
-                    }
-                ?>
-                </td>
                     <td>
                         <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
                         <button type="submit" class="btn btn-primary">Guardar</button>
