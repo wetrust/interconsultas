@@ -660,10 +660,9 @@ function loadInProcess(){
                         $("input[name='respuesta_uterina_derecha']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ut = $(this).val();
-        
+
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
-        
                             if (eg.length > 0){
                                 eg = parseFloat(eg).toFixed();
                                 $("#respuesta_uterina_derecha_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
@@ -683,7 +682,7 @@ function loadInProcess(){
                                $("input[name='respuesta_uterina_izquierda']").focus();
                             }
                         });
-        
+
                         $("input[name='respuesta_uterina_izquierda']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ut = $(this).val();
