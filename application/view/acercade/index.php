@@ -37,8 +37,8 @@
                         </div>
                         <div class="col-10">
                             <p><strong>Dr. Rudecindo Lagos Sandoval</strong></p>
-                            <p class="text-justify mb-0"><small>Médico cirujano, especialista en Ginecología y Obstetricia, docente de pre y postgrado. Profesor adscrito al Departamento de Obstetricia y Ginecología, Facultad de Medicina, Universidad de La Frontera, y Centro de Excelencia <a href="https://www.ciges.cl/index.php/quienes-somos/personal/academico/17-ciges-personas/ciges-academicos/47-dr-rudecindo-lagos-sandoval">CIGES</a>. Unidad de Ultrasonografía Gineco-Obstétrica de hospital base Hernán Hernríquez Aravena ciudad de Temuco, Región de La Arauncanía - Chile. <img src="https://servidor.crecimientofetal.cl/img/chile.jpg" alt="Chile"></small></p>
-                            <p><small>Línea de interés y proyectos en desarrollo:</small></p>
+                            <p class="text-justify"><small>Médico cirujano, especialista en Ginecología y Obstetricia, docente de pre y postgrado. Profesor adscrito al Departamento de Obstetricia y Ginecología, Facultad de Medicina, Universidad de La Frontera, y Centro de Excelencia <a href="https://www.ciges.cl/index.php/quienes-somos/personal/academico/17-ciges-personas/ciges-academicos/47-dr-rudecindo-lagos-sandoval">CIGES</a>. Unidad de Ultrasonografía Gineco-Obstétrica de hospital base Hernán Hernríquez Aravena ciudad de Temuco, Región de La Arauncanía - Chile. <img src="https://servidor.crecimientofetal.cl/img/chile.jpg" alt="Chile"></small></p>
+                            <p class="mb-0"><small><strong>Línea de interés y proyectos en desarrollo:<strong></small></p>
                             <ul class="mb-0">
                                 <li><small>Valoración del crecimiento intrauterino mediante exámen ultrasonográfico y flujometría Doppler.</small></li>
                                 <li><small>Curvas de crecimiento intrauterino, valorar efecto modulador de variables biológicas materno/fetales en la categorización del peso al nacer.</small></li>
