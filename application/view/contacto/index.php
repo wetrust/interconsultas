@@ -33,8 +33,9 @@
                     <textarea class="form-control" name="mensaje_text" autocomplete="off"></textarea>
                 </div>
                 <input type="hidden" name="csrf_token" value="<?= Csrf::makeToken(); ?>" />
-                <p>Para acceder a esta plataforma y guardar datos de exámenes ecográficos, es necesario contratar un servidor Cloud, ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
+                <p class="d-none">Para acceder a esta plataforma y guardar datos de exámenes ecográficos, es necesario contratar un servidor Cloud, ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
                 <button type="submit" class="btn btn-primary">Enviar mensajes</button>
+                <p>En respuesta a su solicitud podrá ver en la plataforma y recibir via email el resultado de los exámenes ecográficos</p>
             </form>
         </div>
     </div>
