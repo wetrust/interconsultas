@@ -12,7 +12,7 @@
                                 <li><small>Valoración ecográfica del crecimiento fetal.</small></li>
                                 <li><small>Evaluación de flujometria Doppler materno/fetal.</small></li>
                             </ul>
-                            <p class="text-justify mb-0"><small><strong>La aplicación web dispone de dos herramientas informáticas.</strong></small></p>
+                            <p class="text-justify mb-0"><br><small><strong>La aplicación web dispone de dos herramientas informáticas.</strong></small></p>
                             <ul>
                                 <li><small><a href="https://crecimientofetal.cl">Crecimientofetal.cl</a></small></li>
                                 <li><small><a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a></small></li>
