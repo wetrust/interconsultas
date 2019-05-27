@@ -1215,7 +1215,7 @@ function loadInProcess(){
                             respuesta_lh_pct: $('#respuesta_lh_pct').html(),
                             respuesta_cerebelo: $('input[name="respuesta_cerebelo"]').val(),
                             respuesta_cerebelo_pct: $('#respuesta_cerebelo_pct').html(),
-                            respuesta_sexo_fetal: $('input[name="respuesta_sexo_fetal"]').val()
+                            respuesta_sexo_fetal: $('select[name="respuesta_sexo_fetal"]').val()
                         }
 
                         args.respuesta_lf_pct = args.respuesta_lf_pct.replace("Pct. ", "");
@@ -1278,7 +1278,7 @@ function loadInProcess(){
                             respuesta_bvm: $('input[name="respuesta_bvm"]').val(),
                             respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
                             respuesta_ccca_pct: $('input[name="respuesta_ccca_pct"]').val(),
-                            respuesta_sexo_fetal: $('input[name="respuesta_sexo_fetal"]').val(),
+                            respuesta_sexo_fetal: $('select[name="respuesta_sexo_fetal"]').val(),
                         }
 
                         args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
