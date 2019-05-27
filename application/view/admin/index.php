@@ -24,14 +24,12 @@
                 <td><?= $user->user_email; ?></td>
                 <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
                 <td>
-                <?php
-                    $interests = array(0 => 'Si',  1 => 'No');
-                ?>
-                    <select name="softDelete">
+                <?php $interests = array(1 => 'Invitado',  2 => 'Matron (a)', 3 => 'Médico');?>
+                    <select name="user_account_type" class="form-control">
                 <?php
                     foreach($interests as $k => $v) {
                 ?>
-                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_deleted){ ?> selected <?php } ?>><?php echo $v;?></option>
+                    <option value="<?php echo $k; ?>" <?php if($k == $user->user_account_type){ ?> selected <?php } ?>><?php echo $v;?></option>
                 <?php
                     }
                 ?>
