@@ -61,8 +61,7 @@ class PdfController extends Controller
             'respuesta_eg' => $respuesta->eg,
             'ecografista' => $respuesta->ecografista,
             'comentariosexamen' => $respuesta->comentariosexamen,
-            'respuesta_lcn_eg' => $respuesta->lcn_eg,
-            'respuesta_sexo_fetal' => $respuesta->sexo_fetal
+            'respuesta_lcn_eg' => $respuesta->lcn_eg
         ));
     }
 
@@ -105,7 +104,8 @@ class PdfController extends Controller
             'respuesta_lh' => $respuesta->respuesta_lh,
             'respuesta_lh_pct' => $respuesta->respuesta_lh_pct,
             'respuesta_cerebelo' => $respuesta->respuesta_cerebelo,
-            'respuesta_cerebelo_pct' => $respuesta->respuesta_cerebelo_pct
+            'respuesta_cerebelo_pct' => $respuesta->respuesta_cerebelo_pct,
+            'respuesta_sexo_fetal' => $respuesta->sexo_fetal
         ));
     }
 
