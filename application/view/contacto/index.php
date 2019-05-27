@@ -6,7 +6,7 @@
         <div class="card-body">
             <?php $this->renderFeedbackMessages(); ?>
             <h5>Formulario de contacto</h5>
-            <p>Use este formulario para solicitar una suscripción para este sistema o para contactarnos</p>
+            <p>Use este formulario para solicitar suscripción a la plataforma.</p>
             <form method="post" action="<?php echo Config::get('URL');?>contacto/enviar">
                 <div class="row">
                     <div class="form-group col">
@@ -35,7 +35,7 @@
                 <input type="hidden" name="csrf_token" value="<?= Csrf::makeToken(); ?>" />
                 <p class="d-none">Para acceder a esta plataforma y guardar datos de exámenes ecográficos, es necesario contratar un servidor Cloud, ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
                 <button type="submit" class="btn btn-primary">Enviar mensajes</button>
-                <p>En respuesta a su solicitud podrá ver en la plataforma y recibir via email el resultado de los exámenes ecográficos</p>
+                <p>En respuesta a su solicitud podrá ver informes y gráficas en plataforma, además recibir via email el resultado de los exámenes ecográficos</p>
             </form>
         </div>
     </div>
