@@ -2,7 +2,7 @@
     <div class="row p-2">
         <div class="col-6">
             <div class="card">
-                <div class="card-block">
+                <div class="card-body">
                     <h4>Acerca de la plataforma</h4>
                     <div class="row">
                         <div class="col">
@@ -26,7 +26,7 @@
         </div>
         <div class="col-6">
             <div class="card">
-                <div class="card-block">
+                <div class="card-body">
                     <h4>Acerca del autor</h4>
                     <div class="row">
                         <div class="col-2">
@@ -38,7 +38,7 @@
                             <p><small>Línea de interés:</small></p>
                             <ul class="mb-0">
                                 <li><small>Valoración del crecimiento intrauterino mediante exámen ultrasonográfico y flujometría Doppler.</small></li>
-                                <li><small>Valoración clinica del recién nacido. <a href="#postnatal">ver proyecto</a></small></li>
+                                <li><small>Curvas de peso, valorar efecto modulador de variables biológicas materno/fetales en la categorización del peso al nacer.</small></li>
                             </ul>
                         </div>
                     </div>
