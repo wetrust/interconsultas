@@ -35,7 +35,7 @@
                 <input type="hidden" name="csrf_token" value="<?= Csrf::makeToken(); ?>" />
                 <p class="d-none">Para acceder a esta plataforma y guardar datos de exámenes ecográficos, es necesario contratar un servidor Cloud, ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
                 <button type="submit" class="btn btn-primary">Enviar mensajes</button>
-                <p>En respuesta a su solicitud podrá ver informes y gráficas en plataforma, además recibir via email el resultado de los exámenes ecográficos</p>
+                <p>En respuesta a su solicitud obtendrá ud. el calificativo de invitado, referente o contrarreferente:</p>
             </form>
         </div>
     </div>
