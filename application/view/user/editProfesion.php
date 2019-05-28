@@ -9,7 +9,7 @@
             <form method="post" action="<?php echo Config::get('URL'); ?>user/editProfesion_action">
                 <div class="form-group">
                     <label>Seleccione su profesion</label>
-                    <?php $interests = array(1 => 'Matrona',  2 => 'Médico');?>
+                    <?php $interests = array('Matrona' => 'Matrona',  'Médico' => 'Médico');?>
                     <select name="user_profesion" class="form-control">
                         <?php foreach($interests as $k => $v) { ?>
                             <option value="<?php echo $k; ?>" <?php if($k == $this->user->user_profesion){ ?> selected <?php } ?>><?php echo $v;?></option>
