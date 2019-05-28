@@ -17,11 +17,11 @@
                             </ul>
                             <p class="text-justify"><br><small><strong>La aplicación web dispone de dos herramientas informáticas.</strong></small></p>
                             <ul>
-                                <li><small><a href="https://crecimientofetal.cl">Crecimientofetal.cl</a></small></li>
                                 <li><small><a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a></small></li>
                             </ul>
                             <p class="text-justify mb-0"><small><em>El primer software permite obtener informe de <strong>protocolo estandarizado</strong> y gráficas de crecimiento para valoración biométrica fetal y flujometria Doppler materno fetal.</em></small></p>
                             <p class="text-justify mb-0"><small><em>La segunda aplicación web permite  además  de forma resumida, enviar  mediante Email la información obtenida al profesional referente, a objeto de <strong>optimizar el sistema de referencia y contrareferencia</strong> entre los distintos niveles de atención en salud materna.</em></small></p>
+                            <p class="text-justify mb-0"><small>La plataforma consta de 3 categorías de usuario: Invitado, Referente y Contrarreferente.</small></p>
                         </div>
                     </div>
                 </div>
