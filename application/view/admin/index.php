@@ -26,9 +26,7 @@
                 <td>
                 <?php $interests = array(1 => 'Invitado',  2 => 'Referente', 3 => 'Contrarreferente', 4 => 'Autorreferido');?>
                     <select name="user_account_type" class="form-control">
-                <?php
-                    foreach($interests as $k => $v) {
-                ?>
+                <?php foreach($interests as $k => $v) { ?>
                     <option value="<?php echo $k; ?>" <?php if($k == $user->user_account_type){ ?> selected <?php } ?>><?php echo $v;?></option>
                 <?php
                     }
