@@ -1,5 +1,6 @@
 var nombreprofesionalPegar = "";
 $(document).ready(function(){
+    construir();
     cargarCiudad();
     cargarLugar();
     loadsolicitud();
