@@ -4,7 +4,7 @@
   animation: example 5s infinite;
   color:#000
 }
-/* Standard syntax */
+
 @keyframes example {
   0% { background-color: #BDCE30; }
   11% { background-color: #6ABB81; }
@@ -17,6 +17,7 @@
   89% { background-color: #F4792B;; color:#FFF;}
   100% { background-color: #FAA634; color:#FFF;}
 }
+
 .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle{
     background-color: var(--gray-dark) !important;
     border-color: var(--gray-dark) !important;
