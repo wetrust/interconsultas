@@ -33,7 +33,7 @@ class UserController extends Controller
         }
 
         UserModel::editUserName(Request::post('user_name'));
-        Redirect::to('user/editUsername');
+        Redirect::home();
     }
 
     public function editProfesion()
@@ -45,8 +45,8 @@ class UserController extends Controller
 
     public function editProfesion_action()
     {
-        UserModel::editProfesion(Request::post('user_profesion'));
-        Redirect::to('user/editProfesion');
+        UserModel::saveProfesion(Session::get('user_id'),Request::post('user_profesion'));
+        Redirect::home();
     }
 
     public function editUserEmail()

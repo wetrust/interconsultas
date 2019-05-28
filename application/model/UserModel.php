@@ -116,6 +116,18 @@ class UserModel
         return false;
     }
 
+    public static function saveProfesion($user_id, $user_profesion)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $query = $database->prepare("UPDATE users SET user_profesion = :user_profesion WHERE user_id = :user_id LIMIT 1");
+        $query->execute(array(':user_id' => $user_id, ':user_profesion' => $user_profesion));
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+        return false;
+    }
+
     public static function saveNewEmailAddress($user_id, $new_user_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

@@ -7,7 +7,6 @@
     <div class="card mt-1">
         <div class="card-body">
             <form method="post" action="<?php echo Config::get('URL'); ?>user/editProfesion_action">
-                <input type="hidden" name="user_id" value="<?php echo Session::get('user_id'); ?>" />
                 <div class="form-group">
                     <label>Seleccione su profesion</label>
                     <?php $interests = array(1 => 'Matrona',  2 => 'Médico');?>
