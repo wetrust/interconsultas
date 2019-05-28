@@ -10,9 +10,6 @@
         Usuario: <?php echo Session::get('user_name'); ?>, Correo: <?php echo Session::get('user_email'); ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
-          <a class="dropdown-item" href="#">Modificar profesión</a>
-          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
         </div>
       </li>
