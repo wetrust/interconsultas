@@ -36,7 +36,9 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
-          <a class="dropdown-item" href="user/editProfesion">Modificar profesión</a>
+          <?php if (Session::get("user_account_type") < 3) { ?>
+          <a class="dropdown-item" href="user/editProfesion">Profesional referente</a>
+          <?php } ?>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
         </div>
