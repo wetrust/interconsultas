@@ -181,7 +181,7 @@ class SolicitudesModel
         $query->execute(array(':solicitud_nombre_referente' => $solicitud_nombre_referente, ':solicitud_profesionalemail' => $solicitud_profesionalemail,':solicitud_nombre' => $solicitud_nombre,':solicitud_rut' => $solicitud_rut,':solicitud_fecha' => $solicitud_fecha,':solicitud_eg' => $solicitud_eg,':solicitud_eco' => $solicitud_eco,':solicitud_diagnostico' => $solicitud_diagnostico,':solicitud_lugar' => $solicitud_lugar,':solicitud_ciudad' => $solicitud_ciudad,':solicitud_profesional' => $solicitud_profesional,':solicitud_nombreprofesional' => $solicitud_nombreprofesional,':solicitud_email' => $solicitud_email,':solicitud_fum' => $solicitud_fum,':solicitud_respuesta' => $solicitud_respuesta,':solicitud_egestacional' => $solicitud_egestacional));
 
         if ($query->rowCount() == 1) {
-            $query->lastInsertId(); 
+            return $database->lastInsertId(); 
         }
 
         Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
