@@ -196,6 +196,7 @@ class DashboardController extends Controller
                 'respuesta_dorso_segundo' => $respuesta_dorso_segundo,
                 'respuesta_anatomia_segundo' => $respuesta_anatomia,
                 'anatomia_fetal_extra' => $respuesta_anatomia_extra,
+                'respuesta_hipotesis' => $respuesta_hipotesis,
                 'respuesta_dof' => $respuesta_dof,
                 'respuesta_ic' => $respuesta_ic,
                 'respuesta_bvm' => $respuesta_bvm,

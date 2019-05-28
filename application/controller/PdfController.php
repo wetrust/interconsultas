@@ -96,6 +96,7 @@ class PdfController extends Controller
             'respuesta_dorso_segundo' => $respuesta->dorso_segundo,
             'respuesta_anatomia_segundo' => $respuesta->anatomia_segundo,
             'anatomia_fetal_extra' => $respuesta->anatomia_extra,
+            'respuesta_hipotesis' => $respuesta->hipotesis_segundo,
             'respuesta_dof' => $respuesta->respuesta_dof,
             'respuesta_ic' => $respuesta->respuesta_ic,
             'respuesta_bvm' => $respuesta->respuesta_bvm,
