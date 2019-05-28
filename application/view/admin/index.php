@@ -1,3 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <a class="navbar-brand" href="#">Interconsultas</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Usuario: <?php echo Session::get('user_name'); ?>, Correo: <?php echo Session::get('user_email'); ?>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
+          <a class="dropdown-item" href="#">Modificar profesión</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
     <h1>Administrador maestro</h1>
     <!-- echo out the system feedback (error and success messages) -->
