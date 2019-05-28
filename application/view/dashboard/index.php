@@ -31,7 +31,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="user/editProfesion">Modificar profesión</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
         </div>
