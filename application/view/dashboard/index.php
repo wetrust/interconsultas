@@ -17,6 +17,10 @@
   89% { background-color: #F4792B;; color:#FFF;}
   100% { background-color: #FAA634; color:#FFF;}
 }
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle{
+    background-color: var(--gray-dark) !important;
+    border-color: var(--gray-dark) !important;
+}
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <a class="navbar-brand" href="#">Interconsultas</a>
