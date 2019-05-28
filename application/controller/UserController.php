@@ -36,6 +36,19 @@ class UserController extends Controller
         Redirect::to('user/editUsername');
     }
 
+    public function editProfesion()
+    {
+        $this->View->render('user/editProfesion', array(
+            'user' => UserModel::getPublicProfileOfUser(Session::get('user_id'))
+        ));
+    }
+
+    public function editProfesion_action()
+    {
+        UserModel::editProfesion(Request::post('user_profesion'));
+        Redirect::to('user/editProfesion');
+    }
+
     public function editUserEmail()
     {
         $this->View->render('user/editUserEmail');
