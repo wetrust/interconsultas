@@ -35,7 +35,7 @@ class UserModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT user_name, user_email FROM users where user_active = 1 AND user_account_type = 3";
+        $sql = "SELECT user_name, user_email FROM users where user_active = 1 AND user_account_type IN (3,4)";
         $query = $database->prepare($sql);
         $query->execute();
 
