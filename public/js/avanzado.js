@@ -323,6 +323,32 @@ $(document).ready(function(){
 		}
     });
     
+    $("#interconsulta\\.fum").on("change", function(){
+
+		var FExamen, FUM, EdadGestacional;
+		var undia = 1000 * 60 * 60 * 24;
+		var unasemana = undia * 7;
+
+		FUM = $("#interconsulta\\.fum").val();
+		FExamen = $("#interconsulta\\.fecha").val();
+
+		FUM = new Date (FUM);
+		FExamen = new Date (FExamen);
+
+		EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
+
+		if (FExamen.getTime() < FUM.getTime()) {
+			$('#interconsulta\\.egestacional').val("0 semanas");
+		}
+		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
+			$('#interconsulta\\.egestacional').val("42 semanas");
+		}
+		else {
+			$('#interconsulta\\.egestacional').val(Math.floor(EdadGestacional) + "." + Math.round((EdadGestacional - Math.floor(EdadGestacional))*7) + " semanas");
+		}
+
+    });
+    
     $("#interconsulta\\.para\\.select").on("click", function(){
 		$(this).trigger("change");
 	});
