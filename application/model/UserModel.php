@@ -123,6 +123,7 @@ class UserModel
         $query = $database->prepare("UPDATE users SET user_profesion = :user_profesion WHERE user_id = :user_id LIMIT 1");
         $query->execute(array(':user_id' => $user_id, ':user_profesion' => $user_profesion));
         if ($query->rowCount() == 1) {
+            Session::add('feedback_positive', 'Su profesión se ha cambiado con éxito');
             return true;
         }
         return false;
