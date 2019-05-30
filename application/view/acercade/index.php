@@ -5,7 +5,7 @@
     <div class="row p-2">
         <div class="col-6">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body pb-0">
                     <h4>Acerca de la plataforma</h4>
                     <div class="row">
                         <div class="col">
@@ -15,7 +15,7 @@
                                 <li><small>Valoración ecográfica del crecimiento.</small></li>
                                 <li><small>Evaluación de flujometria Doppler materno/fetal.</small></li>
                             </ul>
-                            <p class="text-justify"><small>El anexo <a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a> permite además enviar via Email resultado del exámen al profesional referente, de esta forma se pretende <strong>optimizar el sistema de referencia y contrarreferencia</strong> entre los distintos niveles de atención en salud materna. La plataforma consta de tres categorías de usuario: Invitado, Referente y Contrarreferente; el primero solo puede visitar el sitio y enviar solicitud de examen, el profesional referente ademas ver y almacenar resultado del examen ecografico, y el profesional contrarreferente realiza examen y almacena informacion en base de datos.</small></p>
+                            <p class="text-justify"><small>El anexo <a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a> permite además enviar via Email resultado del exámen al profesional referente, de esta forma se pretende <strong>optimizar el sistema de referencia y contrarreferencia</strong> entre los distintos niveles de atención en salud materna. La plataforma consta de tres categorías de usuario: <strong>Invitado</strong>, <strong>Referente</strong> y <strong>Contrarreferente</strong>; el primero solo puede visitar el sitio y enviar solicitud de examen, el profesional referente ademas ver y almacenar resultado del examen ecografico, y el profesional contrarreferente realiza examen y almacena informacion en base de datos.</small></p>
                         </div>
                     </div>
                 </div>
