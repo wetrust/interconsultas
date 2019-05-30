@@ -6,7 +6,6 @@ $(document).ready(function(){
 
     $('.btn-group-toggle .btn').on("click", function(){
         let valor = parseInt($(this).find('input').val());
-
         if (valor == 1){
             loadNews();
             $("#filtro\\.activar").addClass("d-none");
@@ -23,7 +22,6 @@ $(document).ready(function(){
 
     $("#filtro\\.activar").on("click", function(){
         var toggle = $("#filtro\\.contenedor").hasClass("d-none");
-
         if (toggle){
             $("#filtro\\.contenedor").removeClass("d-none");
         }else{
@@ -32,7 +30,6 @@ $(document).ready(function(){
     });
 
     $("#filtro\\.accion").on("click", function(){
-
         let ciudad = $("#filtro\\.ciudad option:selected").val();
         let lugar = $("#filtro\\.lugar option:selected").val();
         let desde = $("#filtro\\.fecha").val();
@@ -48,7 +45,6 @@ $(document).ready(function(){
         }
         
         $('#tabla\\.resuelta').empty();
-
         $.post(_api  + 'filtro_resuelto', args).done(function(data){
             buildFinishTable(data);
         });
@@ -65,12 +61,9 @@ $(document).ready(function(){
 
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
         var correo = $(this).data("email");
-
         $.get(_api + 'interconsultasEmail/' + correo).done(function(data){
             $('#expandir\\.informacion\\.contenedor').empty();
-            
             if (Object.keys(data).length > 0) {
-                
                 var tabla = '<table class="table table-bordered mt-2"><thead class="thead-dark"><tr><th>#</th><th>Nombre de paciente</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th><th>Eliminar</th></tr></thead><tbody>';
 
                 $.each(data, function(i, value) {
@@ -173,24 +166,19 @@ function cargarLugar(){
 function callModal(informe, solicitud){
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
-
 function loadNews(){
     $.get('dashboard/news').done(function(data){
         $('#tabla\\.resultado').empty();
-        
         if (Object.keys(data).length > 0) {
             $("#mensaje\\.resultado").addClass("d-none");
             var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Accion</th></tr></thead><tbody>';
-
             $.each(data, function(i, value) {
-
                 let fecha = value.solicitud_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
 
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
-
             tabla += '</tbody>';
             
             $('#tabla\\.resultado').append(tabla);

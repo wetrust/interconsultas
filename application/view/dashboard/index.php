@@ -22,6 +22,11 @@
     background-color: var(--gray-dark) !important;
     border-color: var(--gray-dark) !important;
 }
+
+.modal-dialog.modal-lg{
+    max-width:8000px !important;
+}
+
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <a class="navbar-brand" href="#">Interconsultas</a>
