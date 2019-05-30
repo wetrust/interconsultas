@@ -7,7 +7,7 @@ class CurvasModel
         $tabla = DataModel::cerebelo();
 
         if ($eg < 15 || $eg > 40) {
-            return 0;
+            return $tabla[2][15];
         }
         else {
             $uno = $tabla[2][$eg] - $tabla[0][$eg];
