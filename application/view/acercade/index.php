@@ -9,17 +9,17 @@
                     <h4>Acerca de la plataforma</h4>
                     <div class="row">
                         <div class="col">
-                            <p class="text-justify">El sitio web <a href="https://crecimientofetal.cl">Crecimientofetal.cl</a>,  permite valoración del crecimiento fetal mediante <strong>protocolo estandarizado</strong>, generando informes  y graficas, la aplicación consta de tres módulos:</p>
+                            <p class="text-justify"><small>El sitio web <a href="https://crecimientofetal.cl">Crecimientofetal.cl</a>,  permite valoración del crecimiento fetal mediante <strong>protocolo estandarizado</strong>, generando informes  y graficas, la aplicación consta de tres módulos:</small></p>
                             <ul>
-                                <li>Determinación de la edad gestacional.</li>
-                                <li>Valoración ecográfica del crecimiento.</li>
-                                <li>Evaluación de flujometria Doppler materno/fetal.</li>
+                                <li><small>Determinación de la edad gestacional.</small></li>
+                                <li><small>Valoración ecográfica del crecimiento.</small></li>
+                                <li><small>Evaluación de flujometria Doppler materno/fetal.</small></li>
                             </ul>
-                            <p class="text-justify">El anexo <a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a> permite además enviar mediante Email la información obtenida al profesional referente, a objeto de <strong>optimizar el sistema de referencia y contrarreferencia</strong> entre los distintos niveles de atención en salud materna. La plataforma consta de tres categorías de usuario:</p>
+                            <p class="text-justify"><small>El anexo <a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a> permite además enviar mediante Email la información obtenida al profesional referente, a objeto de <strong>optimizar el sistema de referencia y contrarreferencia</strong> entre los distintos niveles de atención en salud materna. La plataforma consta de tres categorías de usuario:</small></p>
                             <ul>
-                                <li>Invitado: puede ver y solicitar interconsulta al profesional contrarreferente.</li>
-                                <li>Referente: solicitar interconsulta, almacenar informes en base de datos.Valoración ecográfica del crecimiento.</li>
-                                <li>Contrarreferente: <strong>realizar exámenes</strong> y almacenamiento en base de datos.</li>
+                                <li><small>Invitado: puede ver y solicitar interconsulta al profesional contrarreferente.</small></li>
+                                <li><small>Referente: solicitar interconsulta, almacenar informes en base de datos.Valoración ecográfica del crecimiento.</small></li>
+                                <li><small>Contrarreferente: <strong>realizar exámenes</strong> y almacenamiento en base de datos.</small></li>
                             </ul>
                         </div>
                     </div>
