@@ -941,8 +941,8 @@ function loadInProcess(){
                             }
 
                             if (acm > 0){
-                                if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
-                                    var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
+                                if ($("input[name='respuesta_umbilical']").val() > 0){
+                                    var ccp = (acm / $("input[name='respuesta_umbilical']").val());
                                     $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");
                                 }
                             }
@@ -1114,8 +1114,8 @@ function loadInProcess(){
 
                     }
                     if (acm > 0){
-                        if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
-                            var ccp = (acm / $('#interconsulta\\.respuesta\\.umbilical').val());
+                        if ($("input[name='respuesta_umbilical']").val() > 0){
+                            var ccp = (acm / $("input[name='respuesta_umbilical']").val());
                             $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");
                         }
                     }
