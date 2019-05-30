@@ -7,12 +7,12 @@ class CurvasModel
         $tabla = DataModel::cerebelo();
 
         if ($eg < 15 || $eg > 40) {
-            return $tabla[2][15];
+            return 0;
         }
         else {
             $uno = $tabla[2][$eg] - $tabla[0][$eg];
             $dos = $cerebelo - $tabla[0][$eg];
-            $resultado = intval(95 / ($uno) * ($dos) + 5);
+            $resultado = intval((95 / ($uno) * ($dos)) + 5);
 
             if ($resultado > 99) {
                 return '> 99';
