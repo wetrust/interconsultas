@@ -15,4 +15,8 @@ class ApiController extends Controller
     public function profesionales(){
         $this->View->renderJSON(UserModel::getMedicos());
     }
+
+    public function cerebelo($eg, $cerebelo){
+        $this->View->renderJSON(CurvasModel::cerebelo($eg, $cerebelo));
+    }
 }
