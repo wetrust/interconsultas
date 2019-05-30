@@ -11,8 +11,8 @@ class CurvasModel
         }
         else {
             $uno = $tabla[2][$eg] - $tabla[0][$eg];
-            return $uno;
             $dos = $cerebelo - $tabla[0][$eg];
+            return $dos;
             $resultado = intval((95 / ($uno) * ($dos)) + 5);
 
             if ($resultado > 99) {
