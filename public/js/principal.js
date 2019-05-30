@@ -819,30 +819,26 @@ function loadInProcess(){
                             }
                         });
 
-                        $("#interconsulta\\.respuesta\\.umbilical").on("change", function(){
+                        $("input[name='respuesta_umbilical']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var aumb = $("#interconsulta\\.respuesta\\.umbilical").val();
+                            var aumb = $("input[name='respuesta_umbilical']").val();
             
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
             
                             if (eg.length > 0){
                                 eg =  parseFloat(eg).toFixed();
-                                $("#interconsulta\\.respuesta\\.umbilical\\.percentil").val(pctauAdvanced(eg,aumb));
                                 $("input[name='respuesta_umbilical_percentil']").val(pctauAdvanced(eg,aumb));
-            
                             }
             
                             if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
-                                if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
-                                    var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
+                                if ($("input[name='respuesta_umbilical']").val() > 0){
+                                    var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $("input[name='respuesta_umbilical']").val());
                                     $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change"); 
                                     $("input[name='respuesta_cmau']").val(ccp.toFixed(2));                       
                                 }
                             }
-                        });
-
-                        $("input[name='respuesta_umbilical']").keypress(function( event ) {
+                        }).keypress(function( event ) {
                             if ( event.which == 13 ) {
                                event.preventDefault();
                                $("input[name='respuesta_cm']").focus();
@@ -1052,32 +1048,26 @@ function loadInProcess(){
                     }
                 });
 
-                $("#interconsulta\\.respuesta\\.umbilical").on("change", function(){
-
+                $("input[name='respuesta_umbilical']").on("change", function(){
                     var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var aumb = $("#interconsulta\\.respuesta\\.umbilical").val();
+                    var aumb = $("input[name='respuesta_umbilical']").val();
 
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
 
                     if (eg.length > 0){
-
                         eg =  parseFloat(eg).toFixed();
-                        $("#interconsulta\\.respuesta\\.umbilical\\.percentil").val(pctauAdvanced(eg,aumb));
                         $("input[name='respuesta_umbilical_percentil']").val(pctauAdvanced(eg,aumb));
-
                     }
 
                     if ($("#interconsulta\\.respuesta\\.cm").val() > 0){
-                        if ($("#interconsulta\\.respuesta\\.umbilical").val() > 0){
-                            var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $('#interconsulta\\.respuesta\\.umbilical').val());
+                        if ($("input[name='respuesta_umbilical']").val() > 0){
+                            var ccp = ($("#interconsulta\\.respuesta\\.cm").val() / $("input[name='respuesta_umbilical']").val());
                             $('#interconsulta\\.respuesta\\.cmau').val(ccp.toFixed(2)).trigger("change"); 
                             $("input[name='respuesta_cmau']").val(ccp.toFixed(2));                       
                         }
                     }
-                });
-
-                $("input[name='respuesta_umbilical']").keypress(function( event ) {
+                }).keypress(function( event ) {
                     if ( event.which == 13 ) {
                        event.preventDefault();
                        $("input[name='respuesta_cm']").focus();
@@ -1262,7 +1252,7 @@ function loadInProcess(){
                             respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
                             respuesta_uterinas_percentil: $('#respuesta_uterinas_percentil').html(),
                             respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
-                            respuesta_umbilical_percentil: $('input[name="respuesta_umbilical_percentil"]').val(),
+                            respuesta_umbilical_percentil: $('#respuesta_umbilical_percentil').val(),
                             respuesta_cm: $('input[name="respuesta_cm"]').val(),
                             respuesta_cm_percentil: $('input[name="respuesta_cm_percentil"]').val(),
                             respuesta_cmau: $('input[name="respuesta_cmau"]').val(),
