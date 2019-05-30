@@ -937,7 +937,7 @@ function loadInProcess(){
 
                             if (eg.length > 0){
                                 eg =  parseFloat(eg).toFixed();
-                                $("input[name='respuesta_cm_percentil']").html("Pct. " + pctacmAdvanced(eg,acm));
+                                $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
                             }
 
                             if (acm > 0){
@@ -957,7 +957,7 @@ function loadInProcess(){
             
                             if (eg.length > 0){
                                 eg =  parseFloat(eg).toFixed();
-                                $("input[name='respuesta_umbilical_percentil']").html("Pct. " + pctauAdvanced(eg,aumb));
+                                $("#respuesta_umbilical_percentil").html("Pct. " + pctauAdvanced(eg,aumb));
                             }
             
                             if ($("input[name='respuesta_cm']").val() > 0){
@@ -982,7 +982,7 @@ function loadInProcess(){
             
                             if (eg.length > 0){
                                 eg =  parseFloat(eg).toFixed();
-                                $("input[name='respuesta_cmau_percentil']").html("Pct. " + pctcmauAdvanced(eg,cmau));
+                                $("#respuesta_cmau_percentil").html("Pct. " + pctcmauAdvanced(eg,cmau));
                             }
                         });
                     }
@@ -1110,7 +1110,7 @@ function loadInProcess(){
 
                     if (eg.length > 0){
                         eg =  parseFloat(eg).toFixed();
-                        $("input[name='respuesta_cm_percentil']").html("Pct. " + pctacmAdvanced(eg,acm));
+                        $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
 
                     }
                     if (acm > 0){
@@ -1181,7 +1181,7 @@ function loadInProcess(){
 
                     if (eg.length > 0){
                         eg =  parseFloat(eg).toFixed();
-                        $("input[name='respuesta_umbilical_percentil']").html("Pct. " + pctauAdvanced(eg,aumb));
+                        $("#respuesta_umbilical_percentil").html("Pct. " + pctauAdvanced(eg,aumb));
                     }
 
                     if ($("input[name='respuesta_cm']").val() > 0){
@@ -1206,7 +1206,7 @@ function loadInProcess(){
 
                     if (eg.length > 0){
                         eg =  parseFloat(eg).toFixed();
-                        $("input[name='respuesta_cmau_percentil']").html("Pct. " + pctcmauAdvanced(eg,cmau));
+                        $("#respuesta_cmau_percentil").html("Pct. " + pctcmauAdvanced(eg,cmau));
                     }
                 });
 
