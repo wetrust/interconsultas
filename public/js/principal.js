@@ -161,7 +161,6 @@ function loadNews(){
             $.each(data, function(i, value) {
                 let fecha = value.solicitud_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
                 tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
             });
@@ -175,49 +174,39 @@ function loadNews(){
                 $('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col"> <label>Nombre del paciente:</label> <p id="solicitud_nombre"></p></div><div class="col"> <label>RUT del paciente:</label> <p id="solicitud_rut"></p></div><div class="col"> <label>Fecha de solicitud:</label> <p id="solicitud_fecha"></p></div><div class="col"> <label>FUM operacional</label> <p id="solicitud_fum"></p></div><div class="col"> <label>Edad Gestacional</label> <p id="solicitud_egestacional"></p></div></div><div class="row"> <div class="col form-group"> <label>Ege conocida precozmente</label> <p id="eg_precoz"></p></div><div class="col form-group"> <label>Ecografía previa de crecimiento</label> <p id="ecografia_previa"></p></div></div><div class="row"> <div class="col form-group"> <label>Diagnóstico de referencia</label> <p id="solicitud_diagnostico"></p></div></div><div class="row"> <div class="col form-group"> <label>Ciudad procedencia de la paciente</label> <p id="solicitud_ciudad"></p></div><div class="col form-group"> <label>Lugar de control prenatal</label> <p id="solicitud_lugar"></p></div></div><div class="row"> <div class="col form-group"> <label>Datos del profesional referente</label> <p id="interconsulta_profesional"></p></div><div class="col form-group"> <label>Nombre:</label> <p id="solicitud_nombreprofesional"></p></div><div class="col form-group"> <label>Email (de trabajo):</label> <p id="solicitud_email"></p></div></div><h4>Evaluación de solicitud ecográfica</h4><div class="row g-verde"> <div class="col-4 my-2 form-group"> <label class="text-white">Fecha</label> <input type="date" class="form-control" id="evaluacion_fecha"> </div><div class="col my-2 form-group"> <label class="text-white"><strong>Comentario</strong></label> <input type="text" class="form-control" id="comentario"> </div></div>');
                 $.get('dashboard/agendar/' + solicitud_id).done(function(data){
                     $("#solicitud_id").val(data.solicitud_id);
-                    $("#solicitud_nombre").html(data.solicitud_nombre);
-                    $("#solicitud_rut").html(data.solicitud_rut);
-                    $("#solicitud_fecha").html(data.solicitud_fecha);
-                    let eg = data.solicitud_eg;
-                    if (eg == "1"){
-                        eg = "Si";
-                    }
-                    else{
-                        eg = "No";
-                    }
-                    $("#eg_precoz").val(eg);
-                    
-                    let eco = data.solicitud_eco;
-                    if (eco == "1"){
-                        eco = "Si";
-                    }
-                    else{
-                        eco = "No";
-                    }
+                    $("#solicitud_nombre").html('<strong>' + data.solicitud_nombre + '</strong>');
+                    $("#solicitud_rut").html('<strong>' + data.solicitud_rut + '</strong>');
+                    $("#solicitud_fecha").html('<strong>' + data.solicitud_fecha + '</strong>');
 
-                    $("#ecografia_previa").html(eco);
-                    $("#solicitud_fum").html(data.solicitud_fum);
-                    $("#solicitud_egestacional").html(data.solicitud_egestacional);
-                    $("#solicitud_diagnostico").html(data.solicitud_diagnostico);
-                    $("#solicitud_ciudad").html(data.solicitud_ciudad);
-                    $("#solicitud_lugar").html(data.solicitud_lugar);
-                    $("#interconsulta_profesional").html(data.solicitud_profesional);
-                    $("#solicitud_nombreprofesional").html(data.solicitud_nombreprofesional);
-                    $("#solicitud_email").html(data.solicitud_email);
+                    let eg = data.solicitud_eg;
+                    if (eg == "1"){eg = "Si";}
+                    else{eg = "No";}
+
+                    let eco = data.solicitud_eco;
+                    if (eco == "1"){eco = "Si";}
+                    else{eco = "No";}
+
+                    $("#eg_precoz").html('<strong>' + eg + '</strong>');
+                    $("#ecografia_previa").html('<strong>' + eco + '</strong>');
+                    $("#solicitud_fum").html('<strong>' + data.solicitud_fum + '</strong>');
+                    $("#solicitud_egestacional").html('<strong>' + data.solicitud_egestacional + '</strong>');
+                    $("#solicitud_diagnostico").html('<strong>' + data.solicitud_diagnostico + '</strong>');
+                    $("#solicitud_ciudad").html('<strong>' + data.solicitud_ciudad + '</strong>');
+                    $("#solicitud_lugar").html('<strong>' + data.solicitud_lugar + '</strong>');
+                    $("#interconsulta_profesional").html('<strong>' + data.solicitud_profesional + '</strong>');
+                    $("#solicitud_nombreprofesional").html('<strong>' + data.solicitud_nombreprofesional + '</strong>');
+                    $("#solicitud_email").html('<strong>' + data.solicitud_email + '</strong>');
                 });
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty().prepend('<button id="boton.interconsulta.enviar" class="btn btn-primary">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
-                    $.get("dashboard/delete/" + solicitud_id).done(function(){
-                        loadNews();
-                    });
+                    $.get("dashboard/delete/" + solicitud_id).done(function(){loadNews();});
                     $("#ver\\.interconsulta").modal("hide");
                 });
                 $("#boton\\.interconsulta\\.enviar").on("click", function(){
                     $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
-                    $('#mensaje\\.dialogo').modal("show");
-                    $('#mensaje\\.dialogo').on('hidden.bs.modal', function (e) {
+                    $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
                         $('#mensaje\\.dialogo').modal("hide");
                         $(this).remove();
                     });
@@ -229,7 +218,6 @@ function loadNews(){
                     $.post('dashboard/editSave', dav).done(function(data){
                         $("#ver\\.interconsulta").modal("hide");
                         $("#interconsultas\\.estado\\.espera").button('toggle').trigger("click");
-
                         $('#mensaje\\.dialogo').modal("hide").remove();
                     });
                 });
