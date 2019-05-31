@@ -10,11 +10,14 @@
                         <input class="form-control" type="text" name="user_name" pattern="[a-zA-Z0-9 ]{2,64}" required />
                     </div>
                     <?php $interests = array('Matrona' => 'Matrona',  'Médico' => 'Médico',  'Otros' => 'Otros');?>
-                    <select name="user_profesion" class="form-control">
-                        <?php foreach($interests as $k => $v) { ?>
-                            <option value="<?php echo $k; ?>"><?php echo $v;?></option>
-                        <?php } ?>
-                    </select>
+                    <div class="form-group">
+                        <label>Profesión</label>
+                        <select name="user_profesion" class="form-control">
+                            <?php foreach($interests as $k => $v) { ?>
+                                <option value="<?php echo $k; ?>"><?php echo $v;?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Correo electrónico (un correo real)</label>
                         <input class="form-control" type="text" name="user_email" required />
