@@ -43,7 +43,7 @@
           <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
           <a class="dropdown-item" href="user/changePassword">Modificar contraseña</a>
           <a class="dropdown-item" href="user/editUserEmail">Cambiar correo</a>
-          <a class="dropdown-item" href="user/editProfesion">Profesional referente</a>
+          <a class="dropdown-item" href="user/editProfesion">Profesion del usuario</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
         </div>
