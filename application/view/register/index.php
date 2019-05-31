@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label>Escriba la captcha</label>
                         <input class="form-control" type="text" name="captcha" required />
-                        <a href="#" onclick="document.getElementById('captcha').src = '<?php echo Config::get('URL'); ?>register/showCaptcha?' + Math.random(); return false">Reload Captcha</a>
+                        <a href="#" onclick="document.getElementById('captcha').src = '<?php echo Config::get('URL'); ?>register/showCaptcha?' + Math.random(); return false">Recargar Captcha</a>
                     </div>
                     <input type="submit" class="btn btn-primary my-2" value="Registrar"/>
                 </form>
