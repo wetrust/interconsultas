@@ -37,7 +37,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Usuario: <?php echo Session::get('user_name'); ?>, Correo: <?php echo Session::get('user_email'); ?>
+        Usuario: <span id="user_name"><?php echo Session::get('user_name'); ?></span>, Correo: <span id="user_email"><?php echo Session::get('user_email'); ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
