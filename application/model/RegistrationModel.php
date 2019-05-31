@@ -6,9 +6,10 @@ class RegistrationModel
     {
         $user_name = strip_tags(Request::post('user_name'));
         $user_email = strip_tags(Request::post('user_email'));
-        $user_email_repeat = strip_tags(Request::post('user_email_repeat'));
+        $user_email_repeat = strip_tags(Request::post('user_email'));
         $user_password_new = Request::post('user_password_new');
-        $user_password_repeat = Request::post('user_password_repeat');
+        $user_password_repeat = Request::post('user_password_new');
+        $user_profesion = Request::post('user_profesion');
 
         $validation_result = self::registrationInputValidation(Request::post('captcha'), $user_name, $user_password_new, $user_password_repeat, $user_email, $user_email_repeat);
         if (!$validation_result) {
@@ -32,7 +33,7 @@ class RegistrationModel
         if (!$return) return false;
 
         $user_activation_hash = sha1(uniqid(mt_rand(), true));
-        if (!self::writeNewUserToDatabase($user_name, $user_password_hash, $user_email, time(), $user_activation_hash)) {
+        if (!self::writeNewUserToDatabase($user_name, $user_password_hash, $user_email, time(), $user_activation_hash, $user_profesion)) {
             Session::add('feedback_negative', Text::get('FEEDBACK_ACCOUNT_CREATION_FAILED'));
             return false;
         }
@@ -122,19 +123,20 @@ class RegistrationModel
         return true;
     }
 
-    public static function writeNewUserToDatabase($user_name, $user_password_hash, $user_email, $user_creation_timestamp, $user_activation_hash)
+    public static function writeNewUserToDatabase($user_name, $user_password_hash, $user_email, $user_creation_timestamp, $user_activation_hash, $user_profesion)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO users (user_name, user_password_hash, user_email, user_creation_timestamp, user_activation_hash, user_provider_type)
-                    VALUES (:user_name, :user_password_hash, :user_email, :user_creation_timestamp, :user_activation_hash, :user_provider_type)";
+        $sql = "INSERT INTO users (user_name, user_password_hash, user_email, user_creation_timestamp, user_activation_hash, user_provider_type, user_profesion)
+                    VALUES (:user_name, :user_password_hash, :user_email, :user_creation_timestamp, :user_activation_hash, :user_provider_type, :user_profesion)";
         $query = $database->prepare($sql);
         $query->execute(array(':user_name' => $user_name,
                               ':user_password_hash' => $user_password_hash,
                               ':user_email' => $user_email,
                               ':user_creation_timestamp' => $user_creation_timestamp,
                               ':user_activation_hash' => $user_activation_hash,
-                              ':user_provider_type' => 'DEFAULT'));
+                              ':user_provider_type' => 'DEFAULT'
+                              ':user_profesion' => $user_profesion));
         $count =  $query->rowCount();
         if ($count == 1) {
             return true;
