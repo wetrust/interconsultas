@@ -8,7 +8,7 @@
         <div class="card-body">
             <form method="post" action="<?php echo Config::get('URL'); ?>user/editProfesion_action">
                 <div class="form-group">
-                    <label>Seleccione su profesion</label>
+                    <label>¿Cual es su profesión?</label>
                     <?php $interests = array('Matrona' => 'Matrona',  'Médico' => 'Médico',  'Otros' => 'Otros');?>
                     <select name="user_profesion" class="form-control">
                         <?php foreach($interests as $k => $v) { ?>
