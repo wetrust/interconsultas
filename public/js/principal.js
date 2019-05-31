@@ -195,15 +195,15 @@ function loadNews(){
                         eco = "No";
                     }
 
-                    $("#ecografia_previa").val(eco);
-                    $("#solicitud_fum").val(data.solicitud_fum);
-                    $("#solicitud_egestacional").val(data.solicitud_egestacional);
-                    $("#solicitud_diagnostico").val(data.solicitud_diagnostico);
-                    $("#solicitud_ciudad").val(data.solicitud_ciudad);
-                    $("#solicitud_lugar").val(data.solicitud_lugar);
-                    $("#interconsulta_profesional").val(data.solicitud_profesional);
-                    $("#solicitud_nombreprofesional").val(data.solicitud_nombreprofesional);
-                    $("#solicitud_email").val(data.solicitud_email);
+                    $("#ecografia_previa").html(eco);
+                    $("#solicitud_fum").html(data.solicitud_fum);
+                    $("#solicitud_egestacional").html(data.solicitud_egestacional);
+                    $("#solicitud_diagnostico").html(data.solicitud_diagnostico);
+                    $("#solicitud_ciudad").html(data.solicitud_ciudad);
+                    $("#solicitud_lugar").html(data.solicitud_lugar);
+                    $("#interconsulta_profesional").html(data.solicitud_profesional);
+                    $("#solicitud_nombreprofesional").html(data.solicitud_nombreprofesional);
+                    $("#solicitud_email").html(data.solicitud_email);
                 });
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty().prepend('<button id="boton.interconsulta.enviar" class="btn btn-primary">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
