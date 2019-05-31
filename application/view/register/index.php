@@ -9,7 +9,7 @@
                         <label>Nombre</label>
                         <input class="form-control" type="text" name="user_name" pattern="[a-zA-Z0-9 ]{2,64}" required />
                     </div>
-                    <?php $interests = array('Matrona' => 'Matrona',  'Médico' => 'Médico',  'Otros' => 'Otros');?>
+                    <?php $interests = array('Médico' => 'Médico',  'Matrona' => 'Matrona',  'Otros' => 'Otros');?>
                     <div class="form-group">
                         <label>Profesión</label>
                         <select name="user_profesion" class="form-control">
