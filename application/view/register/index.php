@@ -12,7 +12,7 @@
                     <?php $interests = array('Matrona' => 'Matrona',  'Médico' => 'Médico',  'Otros' => 'Otros');?>
                     <select name="user_profesion" class="form-control">
                         <?php foreach($interests as $k => $v) { ?>
-                            <option value="<?php echo $k; ?>" <?php if($k == $this->user->user_profesion){ ?> selected <?php } ?>><?php echo $v;?></option>
+                            <option value="<?php echo $k; ?>"><?php echo $v;?></option>
                         <?php } ?>
                     </select>
                     <div class="form-group">
