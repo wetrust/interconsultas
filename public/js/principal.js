@@ -176,7 +176,9 @@ function loadNews(){
                     $("#solicitud_id").val(data.solicitud_id);
                     $("#solicitud_nombre").html('<strong>' + data.solicitud_nombre + '</strong>');
                     $("#solicitud_rut").html('<strong>' + data.solicitud_rut + '</strong>');
-                    $("#solicitud_fecha").html('<strong>' + data.solicitud_fecha + '</strong>');
+                    let fecha = data.solicitud_fecha.split('-');
+                    fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+                    $("#solicitud_fecha").html('<strong>' + fecha + '</strong>');
 
                     let eg = data.solicitud_eg;
                     if (eg == "1"){eg = "Si";}
@@ -188,7 +190,9 @@ function loadNews(){
 
                     $("#eg_precoz").html('<strong>' + eg + '</strong>');
                     $("#ecografia_previa").html('<strong>' + eco + '</strong>');
-                    $("#solicitud_fum").html('<strong>' + data.solicitud_fum + '</strong>');
+                    fecha = data.solicitud_fum.split('-');
+                    fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+                    $("#solicitud_fum").html('<strong>' + fecha + '</strong>');
                     $("#solicitud_egestacional").html('<strong>' + data.solicitud_egestacional + '</strong>');
                     $("#solicitud_diagnostico").html('<strong>' + data.solicitud_diagnostico + '</strong>');
                     $("#solicitud_ciudad").html('<strong>' + data.solicitud_ciudad + '</strong>');
