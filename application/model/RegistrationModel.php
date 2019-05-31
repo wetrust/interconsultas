@@ -135,7 +135,7 @@ class RegistrationModel
                               ':user_email' => $user_email,
                               ':user_creation_timestamp' => $user_creation_timestamp,
                               ':user_activation_hash' => $user_activation_hash,
-                              ':user_provider_type' => 'DEFAULT'
+                              ':user_provider_type' => 'DEFAULT',
                               ':user_profesion' => $user_profesion));
         $count =  $query->rowCount();
         if ($count == 1) {
