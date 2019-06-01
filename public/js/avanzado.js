@@ -576,6 +576,13 @@ function loadInProcess(){
                             }
                         });
 
+                        $("input[name='respuesta_bvm']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_dbp']").focus();
+                            }
+                        });
+
                         $("input[name='respuesta_dbp']").keypress(function( event ) {
                             if ( event.which == 13 ) {
                                event.preventDefault();
@@ -751,6 +758,13 @@ function loadInProcess(){
                         $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                         $("#editable").attr("rows", 3);
                         $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
+
+                        $("input[name='respuesta_bvm']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_dbp']").focus();
+                            }
+                        });
 
                         $("input[name='respuesta_uterina_derecha']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
@@ -996,6 +1010,12 @@ function loadInProcess(){
                                 $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
                             }
                         }
+                    }
+                });
+                $("input[name='respuesta_bvm']").keypress(function( event ) {
+                    if ( event.which == 13 ) {
+                       event.preventDefault();
+                       $("input[name='respuesta_dbp']").focus();
                     }
                 });
 
