@@ -2,15 +2,30 @@
 
 class EmailModel
 {
-    public static function sendContrareferenteEmail($solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
+    public static function sendContrareferenteEmail($solicitud_id)
     {
-        $solicitud_fecha = explode("-", $solicitud_fecha);
-        $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
+        $datos = SolicitudesModel::getSolicitud($solicitud_id);
 
-        $body =  "Junto con saludar, comentamos a ud que le ha solicitado una interconsulta ecográfica:" . "\n\nFecha: " . $solicitud_fecha . "\nNombre: " . $solicitud_nombre . "\nRut: " . $solicitud_rut . "\nCiudad: " . $solicitud_ciudad . "\nLugar de control: " . $solicitud_lugar . "\nFUM: ". $solicitud_fum . "\nEdad Gestacional:" . $solicitud_egestacional . "\nDiagnóstico de referencia: " . $solicitud_diagnostico .  "\nProfesional referente: " . $solicitud_profesional . "\nNombre profesional: " . $solicitud_nombreprofesional . "\nEmail: " . $solicitud_email . "\nSolicitud enviada a correo electrónico: " . $solicitud_profesionalemail . "\n\n";
+        $solicitud_fecha = explode("-", $datos->solicitud_fecha);
+        $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
+        $solicitud_fum = explode("-", $datos->solicitud_fum);
+        $solicitud_fum = $solicitud_fum[2] . "-". $solicitud_fum[1]. "-". $solicitud_fum[0];
+
+        $body =  "Junto con saludar, comentamos a ud que le ha solicitado una interconsulta ecográfica:" .
+        "\n\nFecha: " . $solicitud_fecha .
+        "\nNombre: " . $datos->solicitud_nombre .
+        "\nRut: " . $datos->solicitud_rut .
+        "\nCiudad: " . $datos->solicitud_ciudad .
+        "\nLugar de control: " . $datos->solicitud_lugar .
+        "\nFUM: ". $solicitud_fum .
+        "\nEdad Gestacional:" . $datos->solicitud_eg .
+        "\nDiagnóstico de referencia: " . $datos->solicitud_diagnostico .
+        "\nProfesional referente: " . $datos->solicitud_profesional .
+        "\nNombre profesional: " . $datos->solicitud_nombreprofesional .
+        "\nEmail: " . $datos->solicitud_email . "\n\n";
 
         $mail = new Mail;
-        $mail_sent = $mail->sendMail($solicitud_profesionalemail, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
+        $mail_sent = $mail->sendMail($datos->solicitud_profesionalemail, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
 
         if ($mail_sent) {
             return true;
@@ -19,11 +34,27 @@ class EmailModel
         }
     }
 
-    public static function sendSolicitanteEmail($solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
+    public static function sendSolicitanteEmail($solicitud_id)
     {
-        $solicitud_fecha = explode("-", $solicitud_fecha);
+        $datos = SolicitudesModel::getSolicitud($solicitud_id);
+
+        $solicitud_fecha = explode("-", $datos->solicitud_fecha);
         $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
-        $body =  "Recepcionada interconsulta solicitada al Email ". $solicitud_profesionalemail . " adjuntamos copia de los datos ingresados por ud. : \n\nFecha: " . $solicitud_fecha . "\nNombre: " . $solicitud_nombre . "\nRut: " . $solicitud_rut . "\nCiudad: " . $solicitud_ciudad . "\nLugar de control: " . $solicitud_lugar . "\nFUM: ". $solicitud_fum . "\nEdad Gestacional:" . $solicitud_egestacional . "\nDiagnóstico de referencia: " . $solicitud_diagnostico .  "\nProfesional referente: " . $solicitud_profesional . "\nNombre profesional: " . $solicitud_nombreprofesional . "\nCorreo electrónico: " . $solicitud_email;
+        $solicitud_fum = explode("-", $datos->solicitud_fum);
+        $solicitud_fum = $solicitud_fum[2] . "-". $solicitud_fum[1]. "-". $solicitud_fum[0];
+
+        $body =  "Recepcionada interconsulta solicitada al Email ". $datos->solicitud_profesionalemail .
+        " adjuntamos copia de los datos ingresados por ud. : \n\nFecha: " . $solicitud_fecha .
+        "\nNombre: " . $datos->solicitud_nombre .
+        "\nRut: " . $datos->solicitud_rut .
+        "\nCiudad: " . $datos->  .
+        "\nLugar de control: " . $datos->solicitud_lugar .
+        "\nFUM: ". $solicitud_fum .
+        "\nEdad Gestacional:" . $datos->solicitud_egestacional .
+        "\nDiagnóstico de referencia: " . $datos->solicitud_diagnostico .
+        "\nProfesional referente: " . $datos->solicitud_profesional .
+        "\nNombre profesional: " . $datos->solicitud_nombreprofesional .
+        "\nCorreo electrónico: " . $datos->solicitud_email;
 
         $mail = new Mail;
         $mail_sent = $mail->sendMail($solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);

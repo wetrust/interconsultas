@@ -10,27 +10,21 @@ class InterconsultaModel
 
         if (isset($contrareferente->user_email)){
             if ($contrareferente->user_email == $solicitud_profesionalemail){
-                //almacenar la interconsulta
-
                 if (Session::userIsLoggedIn()) {
                     $solicitud_profesional = UserModel::getPublicProfileOfUser(Session::get('user_id'))->user_profesion;
                     $solicitud_nombreprofesional = Session::get('user_name');
                     $solicitud_email = Session::get('user_email');
                 }
-                
-                SolicitudesModel::createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional);
-                
+                $solicitud_id = SolicitudesModel::createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional);
                 //enviar un email al médico contrareferente
-                EmailModel::sendContrareferenteEmail($solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional);
-                //enviar una copia al que solicito la interconsulta
-                EmailModel::sendSolicitanteEmail($solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional);
+                EmailModel::sendContrareferenteEmail($solicitud_id);
+                EmailModel::sendSolicitanteEmail($solicitud_id);
                 $response->result = true;
             }
         }
         else{
             $response->result = false;
         }
-        
         return $response;
     }
 
