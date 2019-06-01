@@ -55,7 +55,7 @@ class Mail
         }
     }
 
-    public function sendMailWithPHPMailerAndAttach($user_email, $from_email, $from_name, $subject, $body, $attach)
+    public function sendMailWithPHPMailerAndAttach($user_email, $from_email, $from_name, $subject, $body, $respuesta_crecimiento)
     {
         $mail = new PHPMailer;
         
@@ -85,8 +85,12 @@ class Mail
         $mail->AddAddress($user_email);
         $mail->Subject = $subject;
         $mail->Body = $body;
-        $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe',  $encoding = 'base64', $type = 'application/pdf');
+        $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
 
+        if ($respuesta_crecimiento == 0 || $respuesta_crecimiento == 2){
+            $mail->AddAttachment("$attach/informeGrafico.pdf", $name = 'Gráfico.pdf',  $encoding = 'base64', $type = 'application/pdf');
+        }
+        
         $wasSendingSuccessful = $mail->Send();
 
         if ($wasSendingSuccessful) {
