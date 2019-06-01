@@ -9,13 +9,13 @@
                     <h4>Acerca de la plataforma</h4>
                     <div class="row">
                         <div class="col">
-                            <p class="text-justify"><small>El sitio web <a href="https://crecimientofetal.cl">Crecimientofetal.cl</a>,  permite valoración del crecimiento fetal mediante <strong>protocolo estandarizado</strong>, generando informes  y graficas, la aplicación consta de tres módulos:</small></p>
+                            <p class="text-justify"><small>El sitio web <a href="https://crecimientofetal.cl">Crecimientofetal.cl</a> permite, siguiendo protocolo estandarizado, valoración del crecimiento fetal generando informes y graficas de examen.<br> Operativamente la aplicación consta de tres módulos:</small></p>
                             <ul>
                                 <li><small>Determinación de la edad gestacional.</small></li>
                                 <li><small>Valoración ecográfica del crecimiento.</small></li>
                                 <li><small>Evaluación de flujometria Doppler materno/fetal.</small></li>
                             </ul>
-                            <p class="text-justify"><small>El anexo <a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a> permite además enviar via Email resultado del exámen al profesional referente, de esta forma se pretende <strong>optimizar el sistema de referencia y contrarreferencia</strong> entre los distintos niveles de atención en salud materna. La plataforma consta de tres categorías de usuario: <strong>Invitado</strong>, <strong>Referente</strong> y <strong>Contrarreferente</strong>; el primero solo puede visitar el sitio y enviar solicitud de examen, el profesional referente ademas ver y almacenar resultado del examen ecografico, y el profesional contrarreferente realiza examen y almacena informacion en base de datos.</small></p>
+                            <p class="text-justify"><small>El anexo <a href="https://crecimientofetal.cl/interconsulta">Crecimientofetal.cl/interconsulta</a>, además permite responder a profesional referente vía Email los resultados del exámen ecográfico solicitado, de esta forma se pretende <strong>optimizar el sistema de referencia y contrarreferencia</strong> entre los distintos niveles de atención en salud materna.<br><br>La plataforma consta de tres categorías de usuario: <strong>Invitado</strong>, <strong>Referente</strong> y <strong>Contrarreferente</strong>. Usuario invitado debe primero registrarse, usuario referente y contrarreferente deben además solicitar suscripción en la plataforma. <a href="<?php echo Config::get('URL'); ?>contacto">(anexo suscripción al sistema)</a></small></p>
                         </div>
                     </div>
                 </div>
