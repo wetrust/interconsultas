@@ -47,7 +47,7 @@ class EmailModel
         " adjuntamos copia de los datos ingresados por ud. : \n\nFecha: " . $solicitud_fecha .
         "\nNombre: " . $datos->solicitud_nombre .
         "\nRut: " . $datos->solicitud_rut .
-        "\nCiudad: " . $datos->  .
+        "\nCiudad: " . $datos->solicitud_ciudad .
         "\nLugar de control: " . $datos->solicitud_lugar .
         "\nFUM: ". $solicitud_fum .
         "\nEdad Gestacional:" . $datos->solicitud_egestacional .
