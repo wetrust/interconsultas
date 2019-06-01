@@ -41,7 +41,7 @@
                 <li><strong>** Usuario Referente:</strong> además de lo anterior,  ver resultado de examen ecográfico solicitado y almacenarlo en su cuenta.</li>
                 <li><strong>** Usuario Contrarreferente:</strong> Profesional quien realiza examen ecográfico, almacena en base de datos todos los exámenes referidos a su cuenta.</li>
                 </ul>
-                <p><small>*  Usuario invitado, vasta solo con registrarse en la plataforma.</small><br><small>** Referente y contrarreferente deben solicitar suscripción.</small></p>
+                <p><small>*  Usuario invitado, vasta solo con registrarse en la plataforma.</small><br><small>** Referente y contrarreferente deben además solicitar suscripción.</small></p>
             </form>
         </div>
     </div>
