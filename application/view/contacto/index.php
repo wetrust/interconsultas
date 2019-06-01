@@ -36,11 +36,9 @@
                 <p class="d-none">Para acceder a esta plataforma y guardar datos de exámenes ecográficos, es necesario contratar un servidor Cloud, ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
                 <button type="submit" class="btn btn-primary">Enviar mensajes</button>
                 <h4 class="mt-3">La plataforma consta de tres categorías de usuario:</h4>
-                <ul>
-                <li><strong>* Usuario Invitado:</strong> puede visitar plataforma y enviar solicitud de examen ecográfico a profesional contrarreferente.</li>
-                <li><strong>** Usuario Referente:</strong> además de lo anterior,  ver resultado de examen ecográfico solicitado y almacenarlo en su cuenta.</li>
-                <li><strong>** Usuario Contrarreferente:</strong> Profesional quien realiza examen ecográfico, almacena en base de datos todos los exámenes referidos a su cuenta.</li>
-                </ul>
+                <p><strong>* Usuario Invitado:</strong> puede visitar plataforma y enviar solicitud de examen ecográfico a profesional contrarreferente.<br>
+                <strong>** Usuario Referente:</strong> además de lo anterior,  ver resultado de examen ecográfico solicitado y almacenarlo en su cuenta.<br>
+                <strong>** Usuario Contrarreferente:</strong> Profesional quien realiza examen ecográfico, almacena en base de datos todos los exámenes referidos a su cuenta.</p>
                 <p><small>*  Usuario invitado, vasta solo con registrarse en la plataforma.</small><br><small>** Referente y contrarreferente deben además solicitar suscripción.</small></p>
             </form>
         </div>
