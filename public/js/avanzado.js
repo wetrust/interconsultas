@@ -1236,9 +1236,7 @@ function loadInProcess(){
                     }
 
                     $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><img src="https://crecimientofetal.cl/img/emoji.png" class="d-block mx-auto imng-fluid"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
-                    $('#mensaje\\.dialogo').modal("show");
-
-                    $('#mensaje\\.dialogo').on('hidden.bs.modal', function (e) {
+                    $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
                         $('#mensaje\\.dialogo').modal("hide");
                         $(this).remove();
                     });
@@ -1374,7 +1372,7 @@ function loadInProcess(){
                             respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
                             respuesta_umbilical_percentil: $('#respuesta_umbilical_percentil').html(),
                             respuesta_cm: $('input[name="respuesta_cm"]').val(),
-                            respuesta_cm_percentil: $('input[name="respuesta_cm_percentil"]').val(),
+                            respuesta_cm_percentil: $('input[name="respuesta_cm_percentil"]').html(),
                             respuesta_cmau: $('input[name="respuesta_cmau"]').val(),
                             respuesta_cmau_percentil: $('#respuesta_cmau_percentil').html(),
                             respuesta_hipotesis: $('select[name="respuesta_hipotesis"]').val(),
