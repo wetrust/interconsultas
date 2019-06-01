@@ -32,7 +32,6 @@ class DashboardController extends Controller
     }
 
     public function save(){
-
         $respuesta_crecimiento = Request::post('solicitud_crecimiento');
         $solicitud_id = Request::post('solicitud_id');
         $respuesta_fecha = Request::post('respuesta_fecha');
