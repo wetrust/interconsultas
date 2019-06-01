@@ -34,7 +34,6 @@ class DashboardController extends Controller
     public function save(){
 
         $respuesta_crecimiento = Request::post('solicitud_crecimiento');
-
         $solicitud_id = Request::post('solicitud_id');
         $respuesta_fecha = Request::post('respuesta_fecha');
         $respuesta_eg = Request::post('respuesta_eg');
@@ -125,11 +124,6 @@ class DashboardController extends Controller
             ));
 
             EmailModel::sendRespuestaEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_pct, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler_materno,$respuesta_anatomia);
-
-            if ($usuario->user_almacenamiento == 0){
-                EmailModel::sendRespuestaReferenteEmail(Session::get('user_email'),$solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_pct, $respuesta_liquido, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista,$respuesta_doppler_materno,$respuesta_anatomia);
-                SolicitudesModel::deleteSolicitud($solicitud_id);
-            }
         }
         else if ($respuesta_crecimiento == 1){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_lcn_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","","",$respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "","");
@@ -159,11 +153,6 @@ class DashboardController extends Controller
 
             EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
-
-            if ($usuario->user_almacenamiento == 0){
-                EmailModel::sendRespuestaEcoPrimerTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
-                SolicitudesModel::deleteSolicitud($solicitud_id);
-            }
         }
         else if ($respuesta_crecimiento == 2){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "","", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_presentacion, $respuesta_dorso_segundo, $respuesta_anatomia, $respuesta_pfe_pct, $respuesta_ccca_pct, $respuesta_hipotesis, "", "", "", "", "", "", "",$respuesta_crecimiento_ccca, "",$respuesta_cc_pct,$respuesta_ca_pct,$respuesta_lf_pct,$respuesta_anatomia_extra, "", "", "", "", "", "", $respuesta_dof, $respuesta_ic, $respuesta_bvm, $respuesta_lh, $respuesta_lh_pct, $respuesta_cerebelo, $respuesta_cerebelo_pct,$respuesta_sexo_fetal);
@@ -212,11 +201,6 @@ class DashboardController extends Controller
 
             EmailModel::sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
-
-            if ($usuario->user_almacenamiento == 0){
-                EmailModel::sendRespuestaEcoSegundoTrimestreEmail($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_placenta, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
-                SolicitudesModel::deleteSolicitud($solicitud_id);
-            }
         }
         else if ($respuesta_crecimiento == 3){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica,"","","","","", $respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "","");
@@ -245,10 +229,6 @@ class DashboardController extends Controller
             EmailModel::sendRespuestaGinecologiaEmail($solicitud_id, $respuesta_fecha, $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
 
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
-            if ($usuario->user_almacenamiento == 0){
-                EmailModel::sendRespuestaGinecologiaEmail($solicitud_id, $respuesta_fecha, $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica, $respuesta_comentariosexamen, $respuesta_ecografista, Session::get('user_email'));
-                SolicitudesModel::deleteSolicitud($solicitud_id);
-            }
         }
         else if($respuesta_crecimiento == 4){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, $respuesta_translucencia_nucal, "", "", "", "", "", "", "","");
@@ -282,10 +262,6 @@ class DashboardController extends Controller
                 'comentariosexamen' => $respuesta_comentariosexamen
             ));
         }
-        
-        //updateStateSolicitud($solicitud_id,$solicitud_respuesta)
-        //SolicitudesModel::updateStateSolicitud(Request::post('solicitud_id'), Request::post('note_text'));
-
     }
 
     public function edit($solicitud_id)
