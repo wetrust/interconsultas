@@ -57,7 +57,7 @@ class EmailModel
         "\nCorreo electrónico: " . $datos->solicitud_email;
 
         $mail = new Mail;
-        $mail_sent = $mail->sendMail($solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
+        $mail_sent = $mail->sendMail($datos->solicitud_email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), 'Solicitud eco crecimiento', $body);
 
         if ($mail_sent) {
             return true;
