@@ -931,15 +931,12 @@ function loadInProcess(){
                         $("input[name='respuesta_cm']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var acm = $("input[name='respuesta_cm']").val();
-
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
-
                             if (eg.length > 0){
                                 eg =  parseFloat(eg).toFixed();
                                 $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
                             }
-
                             if (acm > 0){
                                 if ($("input[name='respuesta_umbilical']").val() > 0){
                                     var ccp = (acm / $("input[name='respuesta_umbilical']").val());
@@ -976,10 +973,8 @@ function loadInProcess(){
                         $("input[name='respuesta_cmau']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var cmau = $("input[name='respuesta_cmau']").val();
-            
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
-            
                             if (eg.length > 0){
                                 eg =  parseFloat(eg).toFixed();
                                 $("#respuesta_cmau_percentil").html("Pct. " + pctcmauAdvanced(eg,cmau));

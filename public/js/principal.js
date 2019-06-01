@@ -1065,7 +1065,7 @@ function loadInProcess(){
                             respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
                             respuesta_umbilical_percentil: $('#respuesta_umbilical_percentil').html(),
                             respuesta_cm: $('input[name="respuesta_cm"]').val(),
-                            respuesta_cm_percentil: $('input[name="respuesta_cm_percentil"]').val(),
+                            respuesta_cm_percentil: $('#respuesta_cm_percentil').html(),
                             respuesta_cmau: $('input[name="respuesta_cmau"]').val(),
                             respuesta_cmau_percentil: $('#respuesta_cmau_percentil').html(),
                             respuesta_hipotesis: $('select[name="respuesta_hipotesis"]').val(),
