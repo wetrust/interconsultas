@@ -11,14 +11,14 @@ class EmailModel
         $solicitud_fum = explode("-", $datos->solicitud_fum);
         $solicitud_fum = $solicitud_fum[2] . "-". $solicitud_fum[1]. "-". $solicitud_fum[0];
 
-        $body =  "Junto con saludar, comentamos a ud que le ha solicitado una interconsulta ecográfica:" .
+        $body =  "Nueva solicitud de interconsulta ecográfica" .
         "\n\nFecha: " . $solicitud_fecha .
         "\nNombre: " . $datos->solicitud_nombre .
         "\nRut: " . $datos->solicitud_rut .
         "\nCiudad: " . $datos->solicitud_ciudad .
         "\nLugar de control: " . $datos->solicitud_lugar .
         "\nFUM: ". $solicitud_fum .
-        "\nEdad Gestacional:" . $datos->solicitud_eg .
+        "\nEdad Gestacional:" . $datos->solicitud_egestacional .
         "\nDiagnóstico de referencia: " . $datos->solicitud_diagnostico .
         "\nProfesional referente: " . $datos->solicitud_profesional .
         "\nNombre profesional: " . $datos->solicitud_nombreprofesional .
