@@ -65,9 +65,8 @@ class ProcesadorModel
         $resultado->linea_cuarta = "<strong>Placenta</strong> inserción " . $insercion . " y de ubicación " . $ubicacion . ", grado " . $grado;
         $resultado->linea_quinta = "<strong>Cordón umbilical</strong> " . $cordon . ", identificandose " . $vasos . " vasos.";
         $resultado->linea_sexta = "<strong>Líquido amniótico **</strong>" . $liquido . ", con bolsillo vertical mayor de " . $bvm . " mm.";
-	
+
         $resultado->comentario = Request::post('comentario');
-    
         return $resultado;
     }
 }
