@@ -85,6 +85,9 @@ class Mail
         $mail->AddAddress($user_email);
         $mail->Subject = $subject;
         $mail->Body = $body;
+        
+        $attach = Config::get('PATH_AVATARS');
+
         $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
 
         if ($respuesta_crecimiento == 0 || $respuesta_crecimiento == 2){
