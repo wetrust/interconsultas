@@ -2,7 +2,7 @@ var nombreprofesionalPegar = "";
 $(document).ready(function(){
 	$("#interconsultas\\.estado\\.espera").remove();
 	$("#interconsultas\\.estado\\.finalizadas").remove();
-    $("#interconsultas\\.estado\\.nuevas").parent().prepend('<label id="interconsultas.estado.solicitar" class="btn btn-secondary active"><input type="radio" value="1" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta</label><label id="interconsultas.estado.finalizadas" class="btn btn-secondary active"><input type="radio" value="3" name="interconsultas" autocomplete="off"> Respuesta del ecografista</label>');
+    $("#interconsultas\\.estado\\.nuevas").parent().prepend('<label id="interconsultas.estado.solicitar" class="btn btn-secondary active"><input type="radio" value="1" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta</label><label id="interconsultas.estado.finalizadas" class="btn btn-secondary"><input type="radio" value="3" name="interconsultas" autocomplete="off"> Respuesta del ecografista</label>');
 	$("#interconsultas\\.estado\\.nuevas").remove();
 
     construir();
