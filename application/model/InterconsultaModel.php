@@ -35,9 +35,8 @@ class InterconsultaModel
         $solicitud_profesional = UserModel::getPublicProfileOfUser(Session::get('user_id'))->user_profesion;
 
         $solicitud_nombreprofesional = Session::get('user_name');
-        $solicitud_email = Session::get('user_email');
 
-        $solicitud_nombreprofesional = Session::get('user_name');
+        $solicitud_nombre_referente = Session::get('user_name');
         $solicitud_email = Session::get('user_email');
         $solicitud_profesionalemail = Session::get('user_email');
 
