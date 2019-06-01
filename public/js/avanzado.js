@@ -124,12 +124,8 @@ $(document).ready(function(){
         let informe = $("#exampleModal").data("informe");
         let solicitud = $("#exampleModal").data("solicitud");
 
-        if (selecciono){
-            email = $("#interfaz\\.email option:selected").val();
-        }
-        else{
-            email = $("#interfaz\\.email\\.write").val();
-        }
+        if (selecciono){ email = $("#interfaz\\.email option:selected").val(); }
+        else{ email = $("#interfaz\\.email\\.write").val(); }
 
         let args = {email: email,informe: informe,solicitud: solicitud}
 
