@@ -223,10 +223,8 @@ class DashboardController extends Controller
             ));
 
             $solicitud = SolicitudesModel::getSolicitud($solicitud_id, Session::get('user_email'));
-
             $solicitud = $solicitud->solicitud_email;
             EmailModel::sendRespuestaGinecologiaEmail($solicitud_id, $respuesta_fecha, $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica, $respuesta_comentariosexamen, $respuesta_ecografista, $solicitud);
-
             $usuario = UserModel::getPublicProfileOfUser(Session::get('user_id'));
         }
         else if($respuesta_crecimiento == 4){
