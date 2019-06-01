@@ -35,7 +35,7 @@
                 <input type="hidden" name="csrf_token" value="<?= Csrf::makeToken(); ?>" />
                 <p class="d-none">Para acceder a esta plataforma y guardar datos de exámenes ecográficos, es necesario contratar un servidor Cloud, ejemplo: "Google Cloud Platform",  "Amazon AWZ"</p>
                 <button type="submit" class="btn btn-primary">Enviar mensajes</button>
-                <p>En respuesta a su solicitud obtendrá ud. el calificativo de invitado, referente o contrarreferente:</p>
+                <p>La plataforma consta de tres categorías de usuario: <strong>Invitado</strong>, <strong>Referente</strong> y <strong>Contrarreferente</strong>; el primero solo puede visitar el sitio y enviar solicitud de examen, el profesional referente ademas ver y almacenar resultado del examen ecografico, y el profesional contrarreferente realiza examen y almacena informacion en base de datos.</p>
             </form>
         </div>
     </div>
