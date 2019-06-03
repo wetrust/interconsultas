@@ -75,7 +75,7 @@
     $html = '<table><tbody><tr><td>Placenta: '.htmlentities($this->solicitud_resultado->placenta).', '.$this->solicitud_resultado->placenta_insercion.'</td><td>Sexo: '.htmlentities($this->solicitud_resultado->sexo_fetal).'</td><td>Líquido amniótico: '.htmlentities($this->solicitud_resultado->liquido).'</td><td>BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->solicitud_resultado->anatomia_fetal). " ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->solicitud_resultado->anatomia_fetal). " ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Peso fetal estimado:</td><td>'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td>Percentil: '.$this->solicitud_resultado->pfe_percentil.'</td></tr></tbody></table>';
