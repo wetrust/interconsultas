@@ -128,7 +128,7 @@ class DashboardController extends Controller
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                'solicitud' => $data,
                 'respuesta' => $respuesta,
                 'grafico_uno' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
                 'grafico_dos' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
@@ -219,7 +219,7 @@ class DashboardController extends Controller
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                'solicitud' => $data,
                 'respuesta' => $respuesta,
                 'grafico_uno' => GraphModel::cc($respuesta->eg, $respuesta->cc),
                 'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
