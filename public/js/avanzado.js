@@ -438,6 +438,7 @@ function loadInProcess(){
 
                 $.get('dashboard/agendar/' + solicitud_id).done(function(data){
                     nombreprofesionalPegar = data.solicitud_nombre_referente;
+                    $("#solicitud_id").val(data.solicitud_id);
                     $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
                     $('#interconsulta\\.fum\\.copia').val(data.solicitud_fum);
                 });
