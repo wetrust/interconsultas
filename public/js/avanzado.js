@@ -402,6 +402,11 @@ function cargarLugar(){
 }
 
 function callModal(informe, solicitud){
+    $("#Mhome").addClass("d-none");
+    $("#Mprofile").addClass("show active");
+    $("#home-tab").addClass("d-none").removeClass("active");
+    $("#profile-tab").addClass("active");
+    $("#interfaz\\.email\\.write").val($("#user_email").html());
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
 
