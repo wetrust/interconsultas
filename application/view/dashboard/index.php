@@ -29,7 +29,7 @@
 
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-  <a class="navbar-brand" href="#">Interconsultas</a>
+  <a class="navbar-brand" href="#">Administración de interconsultas</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -52,7 +52,6 @@
   </div>
 </nav>
 <div class="container">
-    <h1 class="my-2 text-center text-secondary">Administración de interconsultas</h1>
     <?php $this->renderFeedbackMessages(); ?>
     <div class="card my-2 shadow">
         <div class="card-body d-flex flex-row">
