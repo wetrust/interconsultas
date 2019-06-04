@@ -27,6 +27,10 @@
     max-width:8000px !important;
 }
 
+a{
+    color:#000;
+}
+
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <a class="navbar-brand" href="#">Administración de interconsultas</a>
@@ -55,10 +59,10 @@
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Interconsultas ecográficas</a>
+                <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Datos del parto</a>
+                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo datos del recién nacido</a>
             </li>
         </ul>
     </div>
@@ -80,7 +84,7 @@
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> En espera
                             </label>
                             <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
-                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Finalizadas
+                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Examenes realizados
                             </label>
                         </div>
                     </div>
