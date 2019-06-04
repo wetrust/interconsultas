@@ -137,7 +137,7 @@ class EmailModel
             $respuesta->eg = explode (".", $respuesta->eg);
             $respuesta->eg = $respuesta->eg[0];
     
-            $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico', 
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => $data,
