@@ -62,7 +62,7 @@ a{
                 <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo datos del recién nacido</a>
+                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo de parto y recién nacido</a>
             </li>
         </ul>
     </div>
@@ -145,7 +145,6 @@ a{
         <div class="tab-pane fade" id="parto" role="tabpanel" aria-labelledby="parto-tab">
             <div class="card my-2 shadow">
                 <div class="card-body d-flex flex-row">
-                    <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
                     <div class="btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
                             <input type="radio" value="1" name="parto" checked autocomplete="off"> Pacientes
