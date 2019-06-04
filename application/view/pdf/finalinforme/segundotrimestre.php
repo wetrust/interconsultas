@@ -44,7 +44,7 @@
     $html = '<h2 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA DE CRECIMIENTO</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
-    $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">A- Formulario referencia para evaluación ecográfica del crecimiento fetal</h4>';
+    $html = '<h3 style="border-bottom:1px solid #000;color:#0275d8;">A- Formulario de referencia para evaluación ecográfica del crecimiento fetal</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
@@ -68,7 +68,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
-    $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
+    $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">B- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
