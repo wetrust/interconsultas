@@ -142,7 +142,21 @@ a{
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="parto" role="tabpanel" aria-labelledby="parto-tab">...</div>
+        <div class="tab-pane fade" id="parto" role="tabpanel" aria-labelledby="parto-tab">
+            <div class="card my-2 shadow">
+                <div class="card-body d-flex flex-row">
+                    <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label id="interconsultas.estado.nuevas" class="btn btn-secondary active">
+                            <input type="radio" value="1" name="parto" checked autocomplete="off"> Pacientes
+                        </label>
+                        <label id="interconsultas.estado.espera" class="btn btn-secondary">
+                            <input type="radio" value="2" name="parto" autocomplete="off"> Ver información
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
