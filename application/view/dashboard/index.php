@@ -69,7 +69,6 @@ a{
 </section>
 <div class="container">
     <?php $this->renderFeedbackMessages(); ?>
-
     <div class="tab-content" id="myPrincipaTab">
         <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
             <div class="card my-2 shadow">
@@ -147,7 +146,7 @@ a{
                 <div class="card-body d-flex flex-row">
                     <div class="btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active">
-                            <input type="radio" value="1" name="parto" checked autocomplete="off"> Pacientes
+                            <input type="radio" value="1" name="parto" checked autocomplete="off">Listado de pacientes
                         </label>
                         <label class="btn btn-secondary">
                             <input type="radio" value="2" name="parto" autocomplete="off"> Ver información
