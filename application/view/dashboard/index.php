@@ -28,7 +28,7 @@
 }
 
 a{
-    color:#000;
+    color:#FFF;
 }
 
 </style>
