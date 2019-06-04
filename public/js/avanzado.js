@@ -402,7 +402,7 @@ function cargarLugar(){
 }
 
 function callModal(informe, solicitud){
-    $("#Mhome").addClass("d-none");
+    $("#Mhome").addClass("d-none").removeClass("active show");
     $("#Mprofile").addClass("show active");
     $("#home-tab").addClass("d-none").removeClass("active");
     $("#profile-tab").addClass("active");
