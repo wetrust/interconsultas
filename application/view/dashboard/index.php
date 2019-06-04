@@ -78,7 +78,7 @@ a{
                         <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
                         <div class="btn-group-toggle" data-toggle="buttons">
                             <label id="interconsultas.estado.nuevas" class="btn btn-secondary active">
-                                <input type="radio" value="1" name="interconsultas" checked autocomplete="off"> Nuevas
+                                <input type="radio" value="1" name="interconsultas" checked autocomplete="off"> Nuevas solicitudes
                             </label>
                             <label id="interconsultas.estado.espera" class="btn btn-secondary">
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> En espera
