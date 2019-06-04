@@ -51,16 +51,21 @@
     </ul>
   </div>
 </nav>
+<section class="bg-secondary">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Interconsultas ecográficas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Datos del parto</a>
+            </li>
+        </ul>
+    </div>
+</section>
 <div class="container">
     <?php $this->renderFeedbackMessages(); ?>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Interconsultas ecográficas</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Datos del parto</a>
-        </li>
-    </ul>
+
     <div class="tab-content" id="myPrincipaTab">
         <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
             <div class="card my-2 shadow">
