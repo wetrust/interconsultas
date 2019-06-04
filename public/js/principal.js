@@ -3,6 +3,7 @@ $(document).ready(function(){
     loadNews();
     cargarCiudad();
     cargarLugar();
+    cargarCorreosProfesionales();
 
     $('.btn-group-toggle .btn').on("click", function(){
         let valor = parseInt($(this).find('input').val());
@@ -1847,4 +1848,17 @@ function pctcerebeloAdvanced(eg,cerebelo) {
 function valCC(dof,dbp){
     var delta = parseFloat(1.60);
     return Math.round((parseInt(dof) + parseInt(dbp)) * delta);
+}
+function cargarCorreosProfesionales(){
+    $.get(_api + 'profesionales_email').done(function(data){
+        $('#interfaz\\.email').empty();
+        if (Object.keys(data).length > 0) {
+            let response = '<option value=""></option>';
+
+            $.each(data, function(i, value) {
+                response = '<option value="' + data[i].solicitud_email +'">' + data[i].solicitud_email +'</option>';
+                $('#interfaz\\.email').append(response);
+            });
+        }
+    });
 }
