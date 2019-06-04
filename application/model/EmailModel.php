@@ -97,6 +97,18 @@ class EmailModel
         if ($mail_sent) { return true; } else { return false; }
     }
 
+    public static function sendRespuestaEmailManual($data, $titulo_email,$respuesta_crecimiento, $correo)
+    {
+        $body = "Estimado(a) ". $data->solicitud_nombreprofesional . "\n\n" .
+        "Junto con saludar, envío informe de paciente: " . 
+        $data->solicitud_nombre . "\n RUT (DNI): " .$data->solicitud_rut ;
+
+        $mail = new Mail;
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($correo, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, $respuesta_crecimiento);
+
+        if ($mail_sent) { return true; } else { return false; }
+    }
+
     public static function sendEmailManual()
     {
         $solicitud_id = intval(Request::post('solicitud'));
@@ -150,7 +162,7 @@ class EmailModel
                 'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($respuesta->eg, $respuesta->cmau),
             ));
 
-            $response->result = EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco crecimiento',$informe);
+            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco crecimiento',$informe, $email);
         }
         else if ($informe == 1){
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
@@ -172,7 +184,7 @@ class EmailModel
                 'respuesta_lcn_eg' => $respuesta->lcn_eg
             ));
             
-            $response->result = EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco primer trimestre',$informe);
+            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco primer trimestre',$informe, $email);
         }
         else if ($informe == 2){
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
@@ -230,7 +242,7 @@ class EmailModel
                 'grafico_seis' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
             ));
 
-            $response->result = EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco primer trimestre',$informe);
+            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco segundo trimestre',$informe, $email);
         }
         else if ($informe == 3){
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
@@ -250,8 +262,7 @@ class EmailModel
                 'comentariosexamen' => $respuesta->comentariosexamen
             ));
 
-            $response->result = EmailModel::sendRespuestaContrarreferente($data, 'Solicitud de examen ecografico',$informe);
-
+            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud de examen ecografico',$informe, $email);
         }
         else if($informe == 4){
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler', 
@@ -282,7 +293,7 @@ class EmailModel
                 'comentariosexamen' => $respuesta->comentariosexamen
             ));
 
-            $response->result = EmailModel::sendRespuestaContrarreferente($data, 'Solicitud de ecografia 11-14',$informe);
+            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud de ecografia 11-14',$informe, $email);
         }
 
         return $response;
