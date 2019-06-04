@@ -53,74 +53,87 @@
 </nav>
 <div class="container">
     <?php $this->renderFeedbackMessages(); ?>
-    <div class="card my-2 shadow">
-        <div class="card-body d-flex flex-row">
-            <div class="w-100 d-flex flex-row">
-                <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
-                <div class="btn-group-toggle" data-toggle="buttons">
-                    <label id="interconsultas.estado.nuevas" class="btn btn-secondary active">
-                        <input type="radio" value="1" name="interconsultas" checked autocomplete="off"> Nuevas
-                    </label>
-                    <label id="interconsultas.estado.espera" class="btn btn-secondary">
-                        <input type="radio" value="2" name="interconsultas" autocomplete="off"> En espera
-                    </label>
-                    <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
-                        <input type="radio" value="3" name="interconsultas" autocomplete="off"> Finalizadas
-                    </label>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Interconsultas ecográficas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Datos del parto</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myPrincipaTab">
+        <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
+            <div class="card my-2 shadow">
+                <div class="card-body d-flex flex-row">
+                    <div class="w-100 d-flex flex-row">
+                        <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <label id="interconsultas.estado.nuevas" class="btn btn-secondary active">
+                                <input type="radio" value="1" name="interconsultas" checked autocomplete="off"> Nuevas
+                            </label>
+                            <label id="interconsultas.estado.espera" class="btn btn-secondary">
+                                <input type="radio" value="2" name="interconsultas" autocomplete="off"> En espera
+                            </label>
+                            <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
+                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Finalizadas
+                            </label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-animado d-none" id="filtro.activar">Ver Filtros</button>
                 </div>
             </div>
-            <button type="button" class="btn btn-animado d-none" id="filtro.activar">Ver Filtros</button>
-        </div>
-    </div>
-    <div class="card my-2 shadow d-none" id="filtro.contenedor">
-        <div class="card-body">
-            <div class="row">
-                <div class="col">
-                    <label>Ciudad</label>
-                    <select class="form-control" id="filtro.ciudad"></select></div>
-                <div class="col">
-                    <label>Lugar de control</label>
-                    <select class="form-control" id="filtro.lugar"></select></div>
-                <div class="col">
-                    <label>Fecha desde</label>
-                    <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha"></div>
-                <div class="col">
-                    <label>Fecha hasta</label>
-                    <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha"></div>
-                <div class="col">
-                    <label>Tipo de exámen</label>
-                    <select class="form-control" id="filtro.tipo">
-                        <option value="8">No Seleccionado</option>
-                        <option value="1">1.- Ecografía precoz de urgencia</option>
-                        <option value="4">2.- Ecografía 11-14 semanas</option>
-                        <option value="2">3.- Eco 2do / 3cer trimestre</option>
-                        <option value="0">4.- Doppler + Eco. crecimiento</option>
-                        <option value="3">5.- Eco Ginecológica</option>
-                    </select></div>
-                <div class="col">
-                    <label>Filtro</label>
-                    <div class="btn-group" role="group">
-                        <button id="filtro.accion" class="btn btn-primary">Aplicar</button>
-                        <button id="filtro.borrar" class="btn btn-danger">Borrar</button>
-                    </div></div>
+            <div class="card my-2 shadow d-none" id="filtro.contenedor">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label>Ciudad</label>
+                            <select class="form-control" id="filtro.ciudad"></select></div>
+                        <div class="col">
+                            <label>Lugar de control</label>
+                            <select class="form-control" id="filtro.lugar"></select></div>
+                        <div class="col">
+                            <label>Fecha desde</label>
+                            <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha"></div>
+                        <div class="col">
+                            <label>Fecha hasta</label>
+                            <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha"></div>
+                        <div class="col">
+                            <label>Tipo de exámen</label>
+                            <select class="form-control" id="filtro.tipo">
+                                <option value="8">No Seleccionado</option>
+                                <option value="1">1.- Ecografía precoz de urgencia</option>
+                                <option value="4">2.- Ecografía 11-14 semanas</option>
+                                <option value="2">3.- Eco 2do / 3cer trimestre</option>
+                                <option value="0">4.- Doppler + Eco. crecimiento</option>
+                                <option value="3">5.- Eco Ginecológica</option>
+                            </select></div>
+                        <div class="col">
+                            <label>Filtro</label>
+                            <div class="btn-group" role="group">
+                                <button id="filtro.accion" class="btn btn-primary">Aplicar</button>
+                                <button id="filtro.borrar" class="btn btn-danger">Borrar</button>
+                            </div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card my-2 shadow">
+                <div class="card-body">
+                    <div class="alert alert-primary d-none" role="alert" id="mensaje.resultado">No tienes interconsultas en este ítem</div>
+                    <table class="table table-bordered mt-2" id="tabla.resultado">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Rut</th>
+                                <th>Fecha</th>
+                                <th>Diagnóstico</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="card my-2 shadow">
-        <div class="card-body">
-            <div class="alert alert-primary d-none" role="alert" id="mensaje.resultado">No tienes interconsultas en este ítem</div>
-            <table class="table table-bordered mt-2" id="tabla.resultado">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Rut</th>
-                        <th>Fecha</th>
-                        <th>Diagnóstico</th>
-                        <th>Accion</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+        <div class="tab-pane fade" id="parto" role="tabpanel" aria-labelledby="parto-tab">...</div>
     </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
