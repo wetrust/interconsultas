@@ -66,19 +66,19 @@
                     <div class="w-100 d-flex flex-row">
                         <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
                         <div class="btn-group-toggle" data-toggle="buttons">
-                            <label id="interconsultas.estado.solicitar" class="btn btn-secondary active">
+                            <label id="interconsultas.estado.solicitar" class="btn interconsulta btn-secondary active">
                                 <input type="radio" value="0" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta
                             </label>
-                            <label id="interconsultas.estado.nuevas" class="btn btn-secondary">
+                            <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="1" name="interconsultas" autocomplete="off"> Nuevas solicitudes
                             </label>
-                            <label id="interconsultas.estado.espera" class="btn btn-secondary">
+                            <label id="interconsultas.estado.espera" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> En espera
                             </label>
-                            <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
+                            <label id="interconsultas.estado.finalizadas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="3" name="interconsultas" autocomplete="off"> Examenes realizados
                             </label>
-                            <label id="interconsultas.estado.respuesta" class="btn btn-secondary">
+                            <label id="interconsultas.estado.respuesta" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="4" name="interconsultas" autocomplete="off"> Respuesta del ecografista
                             </label>
                         </div>
