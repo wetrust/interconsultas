@@ -87,7 +87,7 @@ a{
                             </label>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-animado d-none" id="filtro.activar">Ver Filtros</button>
+                    <button type="button" class="btn btn-animado" id="filtro.activar">Ver Filtros</button>
                 </div>
             </div>
             <div class="card my-2 shadow d-none" id="filtro.contenedor">
