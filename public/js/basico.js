@@ -92,7 +92,7 @@ function buildRespuestaTable(data){
                 let solicitud_id =  $(this).data("id");
                 $.get("dashboard/delete/" + solicitud_id).done(function(data){
                     $("#ver\\.interconsulta").modal("hide");
-                    buildRespuestaTable();
+                    loadInRespuesta();
                 });
             });
             $("#ver\\.interconsulta\\.enviar").on("click", function(){
