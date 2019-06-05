@@ -309,7 +309,12 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT solicitud_ciudad FROM solicitudes Where solicitud_profesionalemail = :solicitud_profesionalemail group by solicitud_ciudad";
+        if (Session::get('user_account_type') == 2){
+            $sql = "SELECT solicitud_ciudad FROM solicitudes Where solicitud_email = :solicitud_profesionalemail group by solicitud_ciudad";
+        }
+        else{
+            $sql = "SELECT solicitud_ciudad FROM solicitudes Where solicitud_profesionalemail = :solicitud_profesionalemail group by solicitud_ciudad";
+        }
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
@@ -320,7 +325,12 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT solicitud_lugar FROM solicitudes Where solicitud_profesionalemail = :solicitud_profesionalemail group by solicitud_lugar";
+        if (Session::get('user_account_type') == 2){
+            $sql = "SELECT solicitud_lugar FROM solicitudes Where solicitud_email = :solicitud_profesionalemail group by solicitud_lugar";
+        }
+        else{
+            $sql = "SELECT solicitud_lugar FROM solicitudes Where solicitud_profesionalemail = :solicitud_profesionalemail group by solicitud_lugar";
+        }
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
