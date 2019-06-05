@@ -13,6 +13,7 @@ $(document).ready(function(){
         $("#interconsultas\\.estado\\.espera").addClass("d-none");
         $("#interconsultas\\.estado\\.finalizadas").addClass("d-none");
         $("#filtro\\.activar").addClass("d-none");
+        $("#filtro\\.contenedor").addClass("d-none");
         loadSolicitud();
     }else if (a == 3){
         $("#interconsultas\\.estado\\.solicitar").addClass("d-none");

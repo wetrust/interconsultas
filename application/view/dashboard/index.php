@@ -58,6 +58,8 @@
 <div class="container">
     <?php $this->renderFeedbackMessages(); ?>
     <div class="tab-content" id="myPrincipaTab">
+        <div class="tab-pane fade" id="consentimiento" role="tabpanel" aria-labelledby="consentimiento-tab">
+        </div>
         <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
             <div class="card my-2 shadow">
                 <div class="card-body d-flex flex-row">
