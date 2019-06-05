@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	loadReferentes();
 	$("#interfaz\\.enviar").on("click", function(){
 		let selecciono = false;
 		selecciono = $("#Mhome").hasClass("active");
@@ -135,5 +134,10 @@ function buildRespuestaTable(data){
 }
 
 function callModal(informe, solicitud){
+    $("#Mhome").addClass("d-none").removeClass("active show");
+    $("#Mprofile").addClass("show active");
+    $("#home-tab").addClass("d-none").removeClass("active");
+    $("#profile-tab").addClass("active");
+    $("#interfaz\\.email\\.write").val($("#user_email").html());
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
