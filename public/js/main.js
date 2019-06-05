@@ -5,6 +5,8 @@ $(document).ready(function(){
         $("#interconsultas\\.estado\\.finalizadas").addClass("d-none");
         $("#interconsultas\\.estado\\.respuesta").addClass("d-none");
         $("#filtro\\.activar").addClass("d-none");
+        $("#parto-tab").addClass("d-none");
+        $("#consentimiento-tab").addClass("d-none");
         loadSolicitud();
     }else if (a == 2){
         $("#interconsultas\\.estado\\.nuevas").addClass("d-none");

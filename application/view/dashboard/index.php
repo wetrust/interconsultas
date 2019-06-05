@@ -44,10 +44,10 @@
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a>
+                <a class="nav-link" id="consentimiento-tab" data-toggle="tab" href="#consentimiento" role="tab" aria-controls="consentimiento" aria-selected="false">Módulo consentimiento informado</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#consentimiento" role="tab" aria-controls="parto" aria-selected="false">Módulo consentimiento informado</a>
+                <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo de parto y recién nacido</a>
