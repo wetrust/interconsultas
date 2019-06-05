@@ -36,7 +36,9 @@ function loadInRespuesta(){
 }
 
 function buildRespuestaTable(data){
-    $('#tabla\\.resultado').empty();
+	$('#tabla\\.resultado').empty();
+	cargarCiudad();
+    cargarLugar();
 
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
