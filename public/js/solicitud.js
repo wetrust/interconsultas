@@ -9,7 +9,7 @@ function construir(){
 	$("input[name='interconsulta_para']").val($("#user_email").html());
 }
 
-function loadsolicitud(){
+function loadSolicitud(){
     $("#tabla\\.resultado").addClass("d-none");
     $("#mensaje\\.resultado").addClass("d-none");
     $("#card\\.header").removeClass("d-none");
