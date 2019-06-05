@@ -32,13 +32,13 @@ function loadInRespuesta(){
 
     $.get('dashboard/finish').done(function(data){
         buildRespuestaTable(data);
-    });
+	});
+	cargarCiudad();
+    cargarLugar();
 }
 
 function buildRespuestaTable(data){
 	$('#tabla\\.resultado').empty();
-	cargarCiudad();
-    cargarLugar();
 
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
