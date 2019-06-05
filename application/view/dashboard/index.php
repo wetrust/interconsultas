@@ -141,19 +141,19 @@
             <div class="card my-2 shadow">
                 <div class="card-body d-flex flex-row">
                     <div class="btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                            <input type="radio" value="1" name="parto" checked autocomplete="off">Listado de pacientes
+                        <label class="btn parto btn-secondary active">
+                            <input type="radio" value="0" name="parto" checked autocomplete="off">Listado de pacientes
                         </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" value="2" name="parto" autocomplete="off"> Ver información
+                        <label class="btn parto btn-secondary">
+                            <input type="radio" value="1" name="parto" autocomplete="off"> Ver información
                         </label>
                     </div>
                 </div>
             </div>
             <div class="card my-2 shadow">
                 <div class="card-body">
-                    <div class="alert alert-primary d-none" role="alert" id="mensaje.pacientes">No tienes interconsultas en este ítem</div>
-                    <table class="table table-bordered mt-2" id="tabla.pacientes">
+                    <div class="alert alert-primary d-none" role="alert" id="mensaje.parto">No tiene pacientes</div>
+                    <table class="table table-bordered mt-2" id="tabla.parto">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Nombre</th>

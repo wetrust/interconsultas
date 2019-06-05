@@ -308,6 +308,7 @@ class DashboardController extends Controller
             'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id)
         ));
     }
+
     public function delete($note_id)
     {
         RespuestaModel::deleteRespuesta($note_id);

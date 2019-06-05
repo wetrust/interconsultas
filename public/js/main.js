@@ -52,6 +52,15 @@ $(document).ready(function(){
         }
     });
     
+    $('.btn-group-toggle .btn.parto').on("click", function(){
+        let valor = parseInt($(this).find('input').val());
+        if (valor == 0){
+            loadPartoPacientes();
+        }else if (valor == 1){
+            loadNews();
+        }
+    });
+    
     $("#filtro\\.activar").on("click", function(){
         var toggle = $("#filtro\\.contenedor").hasClass("d-none");
 
