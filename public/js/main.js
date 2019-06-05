@@ -43,7 +43,59 @@ $(document).ready(function(){
             loadInRespuesta();
             $("#filtro\\.activar").removeClass("d-none");
         }
-	});
+    });
+    
+    $("#filtro\\.activar").on("click", function(){
+        var toggle = $("#filtro\\.contenedor").hasClass("d-none");
+
+        if (toggle){
+            $("#filtro\\.contenedor").removeClass("d-none");
+        }else{
+            $("#filtro\\.contenedor").addClass("d-none");
+        }
+    });
+
+    $("#filtro\\.accion").on("click", function(){
+        let ciudad = $("#filtro\\.ciudad option:selected").val();
+        let lugar = $("#filtro\\.lugar option:selected").val();
+        let desde = $("#filtro\\.fecha").val();
+        let hasta = $("#filtro\\.fecha\\.hasta").val();
+        let tipo = $("#filtro\\.tipo option:selected").val();
+
+        let args = {ciudad: ciudad, lugar: lugar, desde: desde, hasta: hasta, tipo: tipo}
+        
+        $('#tabla\\.resuelta').empty();
+
+        let finalizadas = $("#interconsultas\\.estado\\.finalizadas").hasClass("d-none");
+        let respuesta = $("#interconsultas\\.estado\\.respuesta").hasClass("d-none");
+
+        if(finalizadas == true){
+            $.post(_api  + 'filtro_resuelto', args).done(function(data){
+                buildFinishTable(data);
+            });
+        }else if(respuesta == true){
+            $.post(_api  + 'filtro_respuestas', args).done(function(data){
+                buildRespuestaTable(data);
+            });
+        }
+    });
+
+    $("#filtro\\.borrar").on("click", function(){
+        let finalizadas = $("#interconsultas\\.estado\\.finalizadas").hasClass("d-none");
+        let respuesta = $("#interconsultas\\.estado\\.respuesta").hasClass("d-none");
+
+        if(finalizadas == true){
+            loadInFinish();
+        }else if(respuesta == true){
+            loadInRespuesta();
+        }
+        
+        $("#filtro\\.ciudad").val("");
+        $("#filtro\\.lugar").val("");
+        $("#filtro\\.fecha").val("");
+        $("#filtro\\.fecha\\.hasta").val("");
+        $("#filtro\\.tipo").val(8);
+    });
 });
 
 function loadContrarreferentes(){

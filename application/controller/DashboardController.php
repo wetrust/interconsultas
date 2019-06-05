@@ -380,6 +380,10 @@ class DashboardController extends Controller
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesFilter(Session::get('user_email'),Request::post('ciudad'),Request::post('lugar'),Request::post('desde'),Request::post('hasta'),Request::post('tipo')));
     }
 
+    public function filtro_respuestas(){
+        $this->View->renderJSON(SolicitudesModel::getAllOldRespuestasFilter(Session::get('user_email'),Request::post('ciudad'),Request::post('lugar'),Request::post('desde'),Request::post('hasta'),Request::post('tipo')));
+    }
+
     public function ciudades(){
         $this->View->renderJSON(SolicitudesModel::getAllCiudades(Session::get('user_email')));
     }
