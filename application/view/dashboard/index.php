@@ -76,7 +76,7 @@
                             <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
                                 <input type="radio" value="3" name="interconsultas" autocomplete="off"> Examenes realizados
                             </label>
-                            <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
+                            <label id="interconsultas.estado.respuesta" class="btn btn-secondary">
                                 <input type="radio" value="4" name="interconsultas" autocomplete="off"> Respuesta del ecografista
                             </label>
                         </div>
@@ -231,6 +231,7 @@
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
     var _URL = "<?= Config::get('URL') ?>";
 </script>
+<script src="js/main.js"></script>
 <?php if (Session::get("user_account_type") < 3) { ?>
     <script src="js/solicitud.js"></script>
 <?php } else if (Session::get("user_account_type") == 3) { ?>
