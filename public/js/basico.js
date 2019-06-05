@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	loadReferentes();
 	$("#interfaz\\.enviar").on("click", function(){
 		let selecciono = false;
 		selecciono = $("#Mhome").hasClass("active");
