@@ -233,6 +233,7 @@ a{
     </div>
 </div>
 <script>
+    var a = <?= Session::get('user_account_type'); ?>;
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
     var _URL = "<?= Config::get('URL') ?>";
 </script>

@@ -12,8 +12,7 @@ $(document).ready(function(){
 
         if (valor == 1){
             loadsolicitud();
-            $("#filtro\\.activar").addClass("d-none");
-            $("#filtro\\.contenedor").addClass("d-none");
+            $("#filtro\\.activar").removeClass("d-none");
         }else if (valor == 2){
             loadInProcess();
             $("#filtro\\.activar").addClass("d-none");
