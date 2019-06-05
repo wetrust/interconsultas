@@ -8,3 +8,10 @@ function construir(){
 	$("input[name='interconsulta_para_nombre']").val($("#user_name").html());
 	$("input[name='interconsulta_para']").val($("#user_email").html());
 }
+
+function loadsolicitud(){
+    $("#tabla\\.resultado").addClass("d-none");
+    $("#mensaje\\.resultado").addClass("d-none");
+    $("#card\\.header").removeClass("d-none");
+    $("#formulario\\.solicitud").removeClass("d-none");
+}
