@@ -235,6 +235,7 @@
 <script src="js/textos.js"></script>
 <?php if (Session::get("user_account_type") < 3) { ?>
     <script src="js/solicitud.js"></script>
+    <script src="js/basico.js"></script>
 <?php } else if (Session::get("user_account_type") == 3) { ?>
     //<script src="js/principal.js"></script>
 <?php } else if (Session::get("user_account_type") == 4) { ?>
