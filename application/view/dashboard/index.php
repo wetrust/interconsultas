@@ -65,7 +65,7 @@
                     <p class="text-danger">El uso de la información total o parcial, para fines de estudios requiere de autorización escrita por parte del paciente.</p>
                     <p>Para tal efecto se requiere de “consentimiento informado”, siguiendo protocolos estándares de los comité científicos respectivos.</p>
                     <div class="row">
-                        <div class="col-9">Protocolo para para estudio de modulo prenatal ultrasonográfico, datos ultrasonográficos.</div>
+                        <div class="col-8">Protocolo para para estudio de modulo prenatal ultrasonográfico, datos ultrasonográficos.</div>
                         <div class="col-2">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="uno" value="option1">
@@ -76,10 +76,10 @@
                                 <label class="form-check-label">No</label>
                             </div>
                         </div>
-                        <div class="col-1"><a class="btn btn-primary" href="#">Formulario</a></div>
+                        <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-9">Protocolo para para estudio de modulo postnatal datos clínicos de parto y recién nacido.</div>
+                        <div class="col-8">Protocolo para para estudio de modulo postnatal datos clínicos de parto y recién nacido.</div>
                         <div class="col-2">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="dos" value="option1">
@@ -90,7 +90,7 @@
                                 <label class="form-check-label">No</label>
                             </div>
                         </div>
-                        <div class="col-1"><a class="btn btn-primary" href="#">Formulario</a></div>
+                        <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
                     </div>
                     <div class="form-group">
                         <label>Comentarios y observaciones</label>
