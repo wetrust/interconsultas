@@ -45,3 +45,13 @@ $(document).ready(function(){
         }
 	});
 });
+
+function loadContrarreferentes(){
+	$.get("api/profesionales").done(function(data){
+		$("#interconsulta\\.para\\.select").empty();
+		$.each(data, function(element, value){
+			let option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
+			$("#interconsulta\\.para\\.select").append(option);
+		});
+	});
+}
