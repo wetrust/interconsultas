@@ -22,6 +22,16 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	$("#filtro\\.activar").on("click", function(){
+        var toggle = $("#filtro\\.contenedor").hasClass("d-none");
+
+        if (toggle){
+            $("#filtro\\.contenedor").removeClass("d-none");
+        }else{
+            $("#filtro\\.contenedor").addClass("d-none");
+        }
+    });
 });
 
 function loadInRespuesta(){
