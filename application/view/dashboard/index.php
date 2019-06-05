@@ -64,7 +64,7 @@
                     <p>Según la legislación vigente, la información recopilada en base de datos es solo con fines de conocer el historial clínico del paciente.</p>
                     <p class="text-danger">El uso de la información total o parcial, para fines de estudios requiere de autorización escrita por parte del paciente.</p>
                     <p>Para tal efecto se requiere de “consentimiento informado”, siguiendo protocolos estándares de los comité científicos respectivos.</p>
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-8">Protocolo para para estudio de modulo prenatal ultrasonográfico, datos ultrasonográficos.</div>
                         <div class="col-2">
                             <div class="form-check form-check-inline">
