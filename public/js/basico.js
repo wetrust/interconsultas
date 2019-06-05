@@ -1,8 +1,3 @@
-var nombreprofesionalPegar = "";
-$(document).ready(function(){
-	loadProfesionales();
-});
-
 function loadInRespuesta(){
     $("#tabla\\.resultado").removeClass("d-none");
     $("#mensaje\\.resultado").removeClass("d-none");
