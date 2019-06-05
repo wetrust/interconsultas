@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
             </div>
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-7">Protocolo para para estudio de modulo postnatal datos clínicos de parto y recién nacido.</div>
                 <div class="col-3">
                     <div class="form-check form-check-inline">
@@ -89,6 +89,10 @@
                     </div>
                 </div>
                 <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
+            </div>
+            <div class="form-group">
+                <label>Comentarios y observaciones</label>
+                <input type="text" class="form-control">
             </div>
         </div>
         <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
