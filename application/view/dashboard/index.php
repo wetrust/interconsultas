@@ -62,6 +62,34 @@
             <p>Según la legislación vigente, la información recopilada en base de datos es solo con fines de conocer el historial clínico del paciente.</p>
             <p class="text-danger">El uso de la información total o parcial, para fines de estudios requiere de autorización escrita por parte del paciente.</p>
             <p>Para tal efecto se requiere de “consentimiento informado”, siguiendo protocolos estándares de los comité científicos respectivos.</p>
+            <div class="row">
+                <div class="col-6">Protocolo para para estudio de modulo prenatal ultrasonográfico, datos ultrasonográficos.</div>
+                <div class="col-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="uno" value="option1">
+                        <label class="form-check-label">Si</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="uno" value="option2">
+                        <label class="form-check-label">No</label>
+                    </div>
+                </div>
+                <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
+            </div>
+            <div class="row">
+                <div class="col-6">Protocolo para para estudio de modulo postnatal datos clínicos de parto y recién nacido.</div>
+                <div class="col-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dos" value="option1">
+                        <label class="form-check-label">Si</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dos" value="option2">
+                        <label class="form-check-label">No</label>
+                    </div>
+                </div>
+                <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
+            </div>
         </div>
         <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
             <div class="card my-2 shadow">
