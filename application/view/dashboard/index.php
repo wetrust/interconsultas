@@ -59,6 +59,9 @@
     <?php $this->renderFeedbackMessages(); ?>
     <div class="tab-content" id="myPrincipaTab">
         <div class="tab-pane fade" id="consentimiento" role="tabpanel" aria-labelledby="consentimiento-tab">
+            <p>Según la legislación vigente, la información recopilada en base de datos es solo con fines de conocer el historial clínico del paciente.</p>
+            <p class="text-danger">El uso de la información total o parcial, para fines de estudios requiere de autorización escrita por parte del paciente.</p>
+            <p>Para tal efecto se requiere de “consentimiento informado”, siguiendo protocolos estándares de los comité científicos respectivos.</p>
         </div>
         <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
             <div class="card my-2 shadow">
