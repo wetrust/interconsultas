@@ -1,61 +1,6 @@
 var nombreprofesionalPegar = "";
 $(document).ready(function(){
-    loadNews();
-    cargarCiudad();
-    cargarLugar();
-    cargarCorreosProfesionales();
-
-    $('.btn-group-toggle .btn').on("click", function(){
-        let valor = parseInt($(this).find('input').val());
-        if (valor == 1){
-            loadNews();
-            $("#filtro\\.activar").addClass("d-none");
-            $("#filtro\\.contenedor").addClass("d-none");
-        }else if (valor == 2){
-            loadInProcess();
-            $("#filtro\\.activar").addClass("d-none");
-            $("#filtro\\.contenedor").addClass("d-none");
-        }else if (valor == 3){
-            loadInFinish();
-            $("#filtro\\.activar").removeClass("d-none");
-        }
-    });
-    $("#filtro\\.activar").on("click", function(){
-        var toggle = $("#filtro\\.contenedor").hasClass("d-none");
-        if (toggle){
-            $("#filtro\\.contenedor").removeClass("d-none");
-        }else{
-            $("#filtro\\.contenedor").addClass("d-none");
-        }
-    });
-    $("#filtro\\.accion").on("click", function(){
-        let ciudad = $("#filtro\\.ciudad option:selected").val();
-        let lugar = $("#filtro\\.lugar option:selected").val();
-        let desde = $("#filtro\\.fecha").val();
-        let hasta = $("#filtro\\.fecha\\.hasta").val();
-        let tipo = $("#filtro\\.tipo option:selected").val();
-
-        let args = {
-            ciudad: ciudad,
-            lugar: lugar,
-            desde: desde,
-            hasta: hasta,
-            tipo: tipo
-        }
-        $('#tabla\\.resuelta').empty();
-        $.post(_api  + 'filtro_resuelto', args).done(function(data){
-            buildFinishTable(data);
-        });
-    });
-
-    $("#filtro\\.borrar").on("click", function(){
-        loadInFinish();
-        $("#filtro\\.ciudad").val("");
-        $("#filtro\\.lugar").val("");
-        $("#filtro\\.fecha").val("");
-        $("#filtro\\.fecha\\.hasta").val("");
-        $("#filtro\\.tipo").val(8);
-    });
+    loadReferentes();
 
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
         var correo = $(this).data("email");
@@ -122,32 +67,6 @@ $(document).ready(function(){
         });
     });
 });
-
-function cargarCiudad(){
-    $.get(_api + 'ciudades').done(function(data){
-        $('#filtro\\.ciudad').empty().append('<option value="">No Seleccionado</option>');
-        if (Object.keys(data).length > 0) {
-            let response = '<option value=""></option>';
-            $.each(data, function(i, value) {
-                response = '<option value="' + value.solicitud_ciudad +'">' + value.solicitud_ciudad +'</option>';
-                $('#filtro\\.ciudad').append(response);
-            });
-        }
-    });
-}
-
-function cargarLugar(){
-    $.get(_api + 'lugar').done(function(data){
-        $('#filtro\\.lugar').empty().append('<option value="">No Seleccionado</option>');
-        if (Object.keys(data).length > 0) {
-            let response = '<option value=""></option>';
-            $.each(data, function(i, value) {
-                response = '<option value="' + value.solicitud_lugar +'">' + value.solicitud_lugar +'</option>';
-                $('#filtro\\.lugar').append(response);
-            });
-        }
-    });
-}
 
 function callModal(informe, solicitud){
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
@@ -1848,17 +1767,4 @@ function pctcerebeloAdvanced(eg,cerebelo) {
 function valCC(dof,dbp){
     var delta = parseFloat(1.60);
     return Math.round((parseInt(dof) + parseInt(dbp)) * delta);
-}
-function cargarCorreosProfesionales(){
-    $.get(_api + 'profesionales_email').done(function(data){
-        $('#interfaz\\.email').empty();
-        if (Object.keys(data).length > 0) {
-            let response = '<option value=""></option>';
-
-            $.each(data, function(i, value) {
-                response = '<option value="' + data[i].solicitud_email +'">' + data[i].solicitud_email +'</option>';
-                $('#interfaz\\.email').append(response);
-            });
-        }
-    });
 }
