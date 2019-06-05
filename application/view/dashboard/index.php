@@ -232,7 +232,7 @@
     var _URL = "<?= Config::get('URL') ?>";
 </script>
 <script src="js/main.js"></script>
-<script src="js/text.js"></script>
+<script src="js/textos.js"></script>
 <?php if (Session::get("user_account_type") < 3) { ?>
     <script src="js/solicitud.js"></script>
 <?php } else if (Session::get("user_account_type") == 3) { ?>
