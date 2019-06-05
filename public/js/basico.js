@@ -1,3 +1,29 @@
+$(document).ready(function(){
+	$("#interfaz\\.enviar").on("click", function(){
+		let selecciono = false;
+		selecciono = $("#Mhome").hasClass("active");
+		let email = "";
+		let informe = $("#exampleModal").data("informe");
+		let solicitud = $("#exampleModal").data("solicitud");
+
+		if (selecciono){ email = $("#interfaz\\.email option:selected").val(); }
+		else{ email = $("#interfaz\\.email\\.write").val(); }
+
+		let args = {email: email,informe: informe,solicitud: solicitud}
+
+		$.post(_api  + 'email_manual', args).done(function(data){
+			if (Object.keys(data).length > 0) {
+				if (data.result){
+					alert("Enviado exitosamente");
+				}
+				else{
+					alert("Hubo un error al enviar el correo");
+				}
+			}
+		});
+	});
+});
+
 function loadInRespuesta(){
     $("#tabla\\.resultado").removeClass("d-none");
     $("#mensaje\\.resultado").removeClass("d-none");
@@ -66,7 +92,7 @@ function buildRespuestaTable(data){
                 let solicitud_id =  $(this).data("id");
                 $.get("dashboard/delete/" + solicitud_id).done(function(data){
                     $("#ver\\.interconsulta").modal("hide");
-                    loadInFinish();
+                    buildRespuestaTable();
                 });
             });
             $("#ver\\.interconsulta\\.enviar").on("click", function(){
@@ -105,4 +131,8 @@ function buildRespuestaTable(data){
         $("#mensaje\\.resultado").removeClass("d-none");
         $("#mensaje\\.resultado").html("No tienes interconsultas finalizadas o no estas autorizado para guardar interconsultas finalizadas");
     }
+}
+
+function callModal(informe, solicitud){
+    $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
