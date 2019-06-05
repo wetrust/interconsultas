@@ -24,6 +24,9 @@ $(document).ready(function(){
         loadSolicitud();
     }
 
+    cargarCiudad();
+    cargarLugar();
+    
     $('.btn-group-toggle .btn').on("click", function(){
         let valor = parseInt($(this).find('input').val());
 
@@ -116,6 +119,32 @@ function loadReferentes(){
             $.each(data, function(i, value) {
                 response = '<option value="' + data[i].solicitud_email +'">' + data[i].solicitud_email +'</option>';
                 $('#interfaz\\.email').append(response);
+            });
+        }
+    });
+}
+
+function cargarLugar(){
+    $.get(_api + 'lugar').done(function(data){
+        $('#filtro\\.lugar').empty().append('<option value="">No Seleccionado</option>');
+        if (Object.keys(data).length > 0) {
+            let response = '<option value=""></option>';
+            $.each(data, function(i, value) {
+                response = '<option value="' + value.solicitud_lugar +'">' + value.solicitud_lugar +'</option>';
+                $('#filtro\\.lugar').append(response);
+            });
+        }
+    });
+}
+
+function cargarCiudad(){
+    $.get(_api + 'ciudades').done(function(data){
+        $('#filtro\\.ciudad').empty().append('<option value="">No Seleccionado</option>');
+        if (Object.keys(data).length > 0) {
+            let response = '<option value=""></option>';
+            $.each(data, function(i, value) {
+                response = '<option value="' + value.solicitud_ciudad +'">' + value.solicitud_ciudad +'</option>';
+                $('#filtro\\.ciudad').append(response);
             });
         }
     });
