@@ -1,36 +1,21 @@
 <style> 
-.btn-animado {
-  background-color: red;
-  animation: example 5s infinite;
-  color:#000
-}
-
-@keyframes example {
-  0% { background-color: #BDCE30; }
-  11% { background-color: #6ABB81; }
-  23% { background-color: #00B29A; }
-  33% { background-color: #0099AE; }
-  45% { background-color: #4F72B8; }
-  54% { background-color: #A065AA; }
-  66% { background-color: #EE4D7A; }
-  77% { background-color: #EF4C45; }
-  89% { background-color: #F4792B;; color:#FFF;}
-  100% { background-color: #FAA634; color:#FFF;}
-}
-
-.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle{
-    background-color: var(--gray-dark) !important;
-    border-color: var(--gray-dark) !important;
-}
-
-.modal-dialog.modal-lg{
-    max-width:8000px !important;
-}
-
-a{
-    color:#FFF;
-}
-
+    .btn-animado { background-color: red; animation: example 5s infinite; color:#000;}
+    @keyframes example {
+    0% { background-color: #BDCE30; }
+    11% { background-color: #6ABB81; }
+    23% { background-color: #00B29A; }
+    33% { background-color: #0099AE; }
+    45% { background-color: #4F72B8; }
+    54% { background-color: #A065AA; }
+    66% { background-color: #EE4D7A; }
+    77% { background-color: #EF4C45; }
+    89% { background-color: #F4792B; color:#FFF;}
+    100% { background-color: #FAA634; color:#FFF;}
+    }
+    .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle{
+        background-color: var(--gray-dark) !important; border-color: var(--gray-dark) !important;}
+    .modal-dialog.modal-lg{ max-width:8000px !important;}
+    a{ color:#FFF;}
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <a class="navbar-brand" href="#">Administración de interconsultas</a>
@@ -62,6 +47,9 @@ a{
                 <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#consentimiento" role="tab" aria-controls="parto" aria-selected="false">Módulo consentimiento informado</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo de parto y recién nacido</a>
             </li>
         </ul>
@@ -76,14 +64,20 @@ a{
                     <div class="w-100 d-flex flex-row">
                         <p class="my-2 mr-2"><strong>Interconsultas</strong></p>
                         <div class="btn-group-toggle" data-toggle="buttons">
-                            <label id="interconsultas.estado.nuevas" class="btn btn-secondary active">
-                                <input type="radio" value="1" name="interconsultas" checked autocomplete="off"> Nuevas solicitudes
+                            <label id="interconsultas.estado.solicitar" class="btn btn-secondary active">
+                                <input type="radio" value="0" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta
+                            </label>
+                            <label id="interconsultas.estado.nuevas" class="btn btn-secondary">
+                                <input type="radio" value="1" name="interconsultas" autocomplete="off"> Nuevas solicitudes
                             </label>
                             <label id="interconsultas.estado.espera" class="btn btn-secondary">
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> En espera
                             </label>
                             <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
                                 <input type="radio" value="3" name="interconsultas" autocomplete="off"> Examenes realizados
+                            </label>
+                            <label id="interconsultas.estado.finalizadas" class="btn btn-secondary">
+                                <input type="radio" value="4" name="interconsultas" autocomplete="off"> Respuesta del ecografista
                             </label>
                         </div>
                     </div>
@@ -238,9 +232,9 @@ a{
     var _URL = "<?= Config::get('URL') ?>";
 </script>
 <?php if (Session::get("user_account_type") < 3) { ?>
-    <script src="js/basico.js"></script>
+    <script src="js/solicitud.js"></script>
 <?php } else if (Session::get("user_account_type") == 3) { ?>
-    <script src="js/principal.js"></script>
+    //<script src="js/principal.js"></script>
 <?php } else if (Session::get("user_account_type") == 4) { ?>
-    <script src="js/avanzado.js"></script>
+    <script src="js/solicitud.js"></script>
 <?php } ?>
