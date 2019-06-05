@@ -66,8 +66,8 @@ $(document).ready(function(){
         
         $('#tabla\\.resuelta').empty();
 
-        let finalizadas = $("#interconsultas\\.estado\\.finalizadas").hasClass("d-none");
-        let respuesta = $("#interconsultas\\.estado\\.respuesta").hasClass("d-none");
+        let finalizadas = $("#interconsultas\\.estado\\.finalizadas").hasClass("active");
+        let respuesta = $("#interconsultas\\.estado\\.respuesta").hasClass("active");
 
         if(finalizadas == true){
             $.post(_api  + 'filtro_resuelto', args).done(function(data){
@@ -81,8 +81,8 @@ $(document).ready(function(){
     });
 
     $("#filtro\\.borrar").on("click", function(){
-        let finalizadas = $("#interconsultas\\.estado\\.finalizadas").hasClass("d-none");
-        let respuesta = $("#interconsultas\\.estado\\.respuesta").hasClass("d-none");
+        let finalizadas = $("#interconsultas\\.estado\\.finalizadas").hasClass("active");
+        let respuesta = $("#interconsultas\\.estado\\.respuesta").hasClass("active");
 
         if(finalizadas == true){
             loadInFinish();
