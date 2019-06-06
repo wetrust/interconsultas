@@ -72,7 +72,7 @@ function buildRespuestaTable(data){
 
         //tabla para parto y recién nacido
         tablaRN += '</tbody>';
-        $('#tabla\\.pacientes').append(tablaRN);
+        $('#tabla\\.parto').append(tablaRN);
 
         $('#tabla\\.resultado tr > td > button.informe').on("click", function(){
             let solicitud_id =  $(this).data("id");
