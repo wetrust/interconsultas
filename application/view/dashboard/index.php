@@ -193,13 +193,6 @@
                 <div class="card-body">
                     <div class="alert alert-primary d-none" role="alert" id="mensaje.parto">No tiene pacientes</div>
                     <table class="table table-bordered mt-2" id="tabla.parto">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Rut</th>
-                                <th>Accion</th>
-                            </tr>
-                        </thead>
                     </table>
                 </div>
             </div>
