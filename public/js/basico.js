@@ -38,7 +38,8 @@ function loadInRespuesta(){
 }
 
 function buildRespuestaTable(data){
-	$('#tabla\\.resultado').empty();
+    $('#tabla\\.resultado').empty();
+    $('#tabla\\.parto').empty();
 
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
@@ -138,8 +139,7 @@ function buildRespuestaTable(data){
         });
     }
     else{
-        $("#mensaje\\.resultado").removeClass("d-none");
-        $("#mensaje\\.resultado").html("No tienes interconsultas finalizadas o no estas autorizado para guardar interconsultas finalizadas");
+        $("#mensaje\\.resultado").removeClass("d-none").html("No tienes interconsultas finalizadas o no estas autorizado para guardar interconsultas finalizadas");
     }
 }
 

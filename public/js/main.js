@@ -51,6 +51,10 @@ $(document).ready(function(){
             $("#filtro\\.activar").removeClass("d-none");
         }
     });
+
+    $("#parto-tab").on("click", function(){
+        loadInRespuesta();
+    });
     
     $('.btn-group-toggle .btn.parto').on("click", function(){
         let valor = parseInt($(this).find('input').val());
