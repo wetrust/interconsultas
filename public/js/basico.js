@@ -44,7 +44,6 @@ function buildRespuestaTable(data){
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
         var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Tipo de exámen</th><th>Realizado</th><th>Accion</th></tr></thead><tbody>';
-        var tablaRN = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Exámen realizado</th><th>Accion</th></tr></thead><tbody>';
         //tabla para exámenes ecográficos
         $.each(data, function(i, value) {
             let tipo = "";
@@ -63,17 +62,10 @@ function buildRespuestaTable(data){
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
             tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>'+ fecha +'</td>';
             tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Grafico</button></td></tr>';
-        
-            tablaRN += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>'+ fecha +'</td>';
-            tablaRN += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Datos del parto</button></td></tr>';
         });
 
         tabla += '</tbody>';
         $('#tabla\\.resultado').append(tabla);
-
-        //tabla para parto y recién nacido
-        tablaRN += '</tbody>';
-        $('#tabla\\.parto').append(tablaRN);
 
         $('#tabla\\.resultado tr > td > button.informe').on("click", function(){
             let solicitud_id =  $(this).data("id");

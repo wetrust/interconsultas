@@ -53,13 +53,13 @@ $(document).ready(function(){
     });
 
     $("#parto-tab").on("click", function(){
-        loadInRespuesta();
+        loadInPartos();
     });
     
     $('.btn-group-toggle .btn.parto').on("click", function(){
         let valor = parseInt($(this).find('input').val());
         if (valor == 0){
-            loadPartoPacientes();
+            loadInPartos();
         }else if (valor == 1){
             loadNews();
         }
