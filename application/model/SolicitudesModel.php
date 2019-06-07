@@ -50,6 +50,22 @@ class SolicitudesModel
         return $query->fetchAll();
     }
 
+    public static function getOldSolicitudes($solicitud_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        if (Session::get('user_account_type') == 2){
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_id = :solicitud_id AND solicitudes.solicitud_respuesta = 2";
+        }
+        else{
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_id = :solicitud_id AND solicitudes.solicitud_respuesta = 2";
+        }
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_id' => $solicitud_id));
+
+        return $query->fetch();
+    }
+
     public static function getAllOldSolicitudesFilter($solicitud_email,$ciudad,$lugar,$desde,$hasta,$tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
