@@ -14,7 +14,7 @@
     }
     .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle{
         background-color: var(--gray-dark) !important; border-color: var(--gray-dark) !important;}
-    .modal-dialog.modal-lg{ max-width:8000px !important;}
+    .modal-dialog.modal-lgx{ max-width:8000px !important;}
     a{ color:#FFF;}
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
@@ -200,7 +200,7 @@
     </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg h-100" role="document">
+    <div class="modal-dialog modal-lgx h-100" role="document">
         <div class="modal-content  h-100">
             <div class="modal-header">
                 <h5 class="modal-title" id="ver.interconsulta.titulo">Interconsulta</h5>
@@ -214,7 +214,7 @@
     </div>
 </div>
 <div class="modal fade" id="expandir.informacion" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lgx" role="document">
         <div class="modal-content">
             <div class="modal-header"><h5 class="modal-title">Solicitudes enviadas por este correo</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
             <div class="modal-body" id="expandir.informacion.contenedor"></div>
