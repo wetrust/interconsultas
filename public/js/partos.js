@@ -86,7 +86,6 @@ function buildPartosTable(data){
                     imcD = imc(peso,talla);
                     $("#imc").val(imcD);
                     $("#estadonutricional").val(imcCondicion(imcD));
-                    $("#ipnparto").val(ipn(peso,talla));
                 }
             });
             $("#tallamaterna").on("change", function(){
@@ -99,7 +98,6 @@ function buildPartosTable(data){
                     imcD = imc(peso,talla);
                     $("#imc").val(imcD);
                     $("#estadonutricional").val(imcCondicion(imcD));
-                    $("#ipnparto").val(ipn(peso,talla));
                 }
             });
 
