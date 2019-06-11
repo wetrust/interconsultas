@@ -82,10 +82,10 @@ function buildPartosTable(data){
                 talla = $("#tallamaterna").val();
                 
                 if (peso.length > 1 && talla.length > 1){
-                    let imc = 0;
-                    imc = imc(peso,talla);
-                    $("#imc").val(imc);
-                    $("#estadonutricional").val(imcCondicion(imc));
+                    let imcD = 0;
+                    imcD = imc(peso,talla);
+                    $("#imc").val(imcD);
+                    $("#estadonutricional").val(imcCondicion(imcD));
                 }
             });
             $("#tallamaterna").on("change", function(){
@@ -94,10 +94,10 @@ function buildPartosTable(data){
                 talla = $(this).val();
                 
                 if (peso.length > 1 && talla.length > 1){
-                    let imc = 0;
-                    imc = imc(peso,talla);
-                    $("#imc").val(imc);
-                    $("#estadonutricional").val(imcCondicion(imc));
+                    let imcD = 0;
+                    imcD = imc(peso,talla);
+                    $("#imc").val(imcD);
+                    $("#estadonutricional").val(imcCondicion(imcD));
                 }
             });
 
