@@ -49,6 +49,8 @@ function buildPartosTable(data){
             $.get("dashboard/baseParto/" + solicitud_id).done(function(data){
                 $("#nombreparto").val(data.solicitud_nombre);
                 $("#rutparto").val(data.solicitud_rut);
+                $("#idpacienteparto").val(data.solicitud_id);
+                $("#idpacientefur").val(data.solicitud_fum);
             });
 
             $('#cautivo\\.dialogo').modal("show");
