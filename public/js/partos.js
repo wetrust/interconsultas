@@ -36,12 +36,12 @@ function buildPartosTable(data){
                 $("#tallamaterna").append(option);
             }
 
-            for (var i = 20; i < 42; i++) {
+            for (var i = 20; i < 43; i++) {
                 let option = '<option value="'+i+'">'+i+' semanas.</option>';
                 $("#egparto").append(option);
             }
 
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < 7; i++) {
                 let option = '<option value="'+i+'">'+i+' dias.</option>';
                 $("#diasparto").append(option);
             }
@@ -53,7 +53,7 @@ function buildPartosTable(data){
                     return;
                 }
 
-                var FExamen,FUM,EdadGestacional;
+                var FExamen,FUM;
                 var undia = 1000 * 60 * 60 * 24;
                 var unasemana = undia * 7;
                 FExamen = $(this).val();
