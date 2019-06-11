@@ -71,7 +71,8 @@ function buildPartosTable(data){
                 } 
                 else {
                     $('#egparto').val(Math.trunc(EdadGestacional));
-                    $('#diasparto').val(Math.trunc((EdadGestacional - Math.trunc(EdadGestacional)) * 7));
+                    undia = Math.trunc((EdadGestacional - Math.trunc(EdadGestacional)) * 10)
+                    $('#diasparto').val(undia);
                 }
             });
 
