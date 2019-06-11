@@ -109,7 +109,7 @@ function buildPartosTable(data){
 
                 if (peso.length > 1){
                     $("#pesoegparto").val(pesoEg(peso,eg));
-                    $("#pesoegpartoestado").val(pesoEgCondicion(peso,eg));
+                    $("#pesoegpartoestado").html(pesoEgCondicion(peso,eg));
                 }
                 
                 if (peso.length > 1 && talla.length > 1){
