@@ -82,7 +82,8 @@ function buildPartosTable(data){
                 talla = $("#tallamaterna").val();
                 
                 if (peso.length > 1 && talla.length > 1){
-                    let imc = imc(peso,talla);
+                    let imc = 0;
+                    imc = imc(peso,talla);
                     $("#imc").val(imc);
                     $("#estadonutricional").val(imcCondicion(imc));
                 }
@@ -93,7 +94,8 @@ function buildPartosTable(data){
                 talla = $(this).val();
                 
                 if (peso.length > 1 && talla.length > 1){
-                    let imc = imc(peso,talla);
+                    let imc = 0;
+                    imc = imc(peso,talla);
                     $("#imc").val(imc);
                     $("#estadonutricional").val(imcCondicion(imc));
                 }
