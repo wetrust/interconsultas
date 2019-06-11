@@ -60,7 +60,8 @@ function buildPartosTable(data){
                 
                 FUM = new Date(FUM);
                 FExamen = new Date(FExamen);
-                EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana);
+                semanas = Math.trunc((FExamen.getTime() - FUM.getTime()) / unasemana);
+                dias = ((FExamen.getTime() - FUM.getTime()) - (unasemana * semanas)) / undia;
                 if (FExamen.getTime() < FUM.getTime()) {
                     $('#egparto').val(0);
                     $('#diasparto').val(20);
@@ -70,9 +71,8 @@ function buildPartosTable(data){
                     $('#diasparto').val(6);
                 } 
                 else {
-                    $('#egparto').val(Math.trunc(EdadGestacional));
-                    undia = Math.trunc((EdadGestacional - Math.trunc(EdadGestacional)) * 10)
-                    $('#diasparto').val(undia);
+                    $('#egparto').val(semanas);
+                    $('#diasparto').val(dias);
                 }
             });
 
