@@ -60,7 +60,7 @@ function buildPartosTable(data){
                 
                 FUM = new Date(FUM);
                 FExamen = new Date(FExamen);
-                EdadGestacional = Math.trunc((FExamen.getTime() - FUM.getTime()) / unasemana);
+                EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
                 if (FExamen.getTime() < FUM.getTime()) {
                     $('#egparto').val(0);
                     $('#diasparto').val(20);
