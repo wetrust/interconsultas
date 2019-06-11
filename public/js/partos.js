@@ -76,6 +76,25 @@ function buildPartosTable(data){
                 }
             });
 
+            $("#pesomaterno").on("change", function(){
+                var peso,talla;
+                peso = $(this).val();
+                talla = $("#tallamaterna").val();
+                
+                if (peso.length > 1 && talla.length > 1){
+                    $("#imc").val(imc(peso,talla));
+                }
+            });
+            $("#tallamaterna").on("change", function(){
+                var peso,talla;
+                peso = $("#pesomaterno").val();
+                talla = $(this).val();
+                
+                if (peso.length > 1 && talla.length > 1){
+                    $("#imc").val(imc(peso,talla));
+                }
+            });
+
             $.get("dashboard/baseParto/" + solicitud_id).done(function(data){
                 $("#nombreparto").val(data.solicitud_nombre);
                 $("#rutparto").val(data.solicitud_rut);
@@ -93,3 +112,20 @@ function buildPartosTable(data){
         $("#mensaje\\.parto").removeClass("d-none").html("No tienes pacientes para ingresar datos del parto");
     }
 }
+
+function imc(peso,talla) {
+    var valor = ((peso / (Math.pow(talla, 2))) * 10000);
+    return Math.trunc(valor);
+};
+
+function imcCondicion(imc) {
+    if (imc < 20) {
+        return 'Enflaquecida';
+    } else if (imc < 25) {
+        return 'Normal';
+    } else if (imc <= 30) {
+        return 'Sobrepeso';
+    } else if (imc > 30) {
+        return 'Obesidad';
+    }
+};
