@@ -46,6 +46,35 @@ function buildPartosTable(data){
                 $("#diasparto").append(option);
             }
 
+            $("#fechaparto").on("change", function(){
+                var FUM = $("#idpacientefur").val();
+
+                if (FUM.length < 1){
+                    return;
+                }
+
+                var FExamen,FUM,EdadGestacional;
+                var undia = 1000 * 60 * 60 * 24;
+                var unasemana = undia * 7;
+                FExamen = $(this).val();
+                
+                FUM = new Date(FUM);
+                FExamen = new Date(FExamen);
+                EdadGestacional = Math.trunc((FExamen.getTime() - FUM.getTime()) / unasemana);
+                if (FExamen.getTime() < FUM.getTime()) {
+                    $('#egparto').val(0);
+                    $('#diasparto').val(20);
+                } 
+                else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
+                    $('#egparto').val(41);
+                    $('#diasparto').val(6);
+                } 
+                else {
+                    $('#egparto').val(Math.trunc(EdadGestacional));
+                    $('#diasparto').val(Math.trunc((EdadGestacional - Math.trunc(EdadGestacional)) * 7));
+                }
+            });
+
             $.get("dashboard/baseParto/" + solicitud_id).done(function(data){
                 $("#nombreparto").val(data.solicitud_nombre);
                 $("#rutparto").val(data.solicitud_rut);
