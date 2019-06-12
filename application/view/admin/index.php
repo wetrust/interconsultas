@@ -31,6 +31,7 @@
                 <th>Nombre</th>
                 <th>Email</th>
                 <th>Tipo de usuario</th>
+                <th>Estadistica</th>
                 <th>Guardar</th>
                 <th>Eliminar</th>
             </tr>
@@ -50,7 +51,8 @@
                     }
                 ?>
                     </select>
-                    </td>
+                </td>
+                <td><?= $user->user_estadistica; ?></td>
                     <td>
                         <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
                         <button type="submit" class="btn btn-primary">Guardar</button>
