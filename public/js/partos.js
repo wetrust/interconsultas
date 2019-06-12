@@ -113,7 +113,7 @@ function buildPartosTable(data){
                 }
                 
                 if (peso.length > 1 && talla.length > 1){
-                    $("#ipnparto").val(ipn(peso,talla));
+                    $("#ipnparto").val(ipn(peso,talla)).trigger("change");
                 }
             });
 
@@ -123,7 +123,18 @@ function buildPartosTable(data){
                 talla = $(this).val();
                 
                 if (peso.length > 1 && talla.length > 1){
-                    $("#ipnparto").val(ipn(peso,talla));
+                    $("#ipnparto").val(ipn(peso,talla)).trigger("change");
+                }
+            });
+
+            $("#ipnparto").on("change", function(){
+                var ipn,eg;
+                ipn = $(this).val();
+                eg = $('#egparto').val();
+
+                if (ipn.length > 1 && eg > 23){
+                    $("#ipnegparto").val(ipnEg(ipn,eg));
+                    $("#ipnegpartoestado").html(ipnEgCondicion(ipn,eg));
                 }
             });
 
@@ -191,5 +202,31 @@ function pesoEgCondicion(peso,eg){
         return "Adecuado";
     } else if (peso > pct90PesoNacional[eg]) {
         return "Grande";
+    }
+}
+
+function ipnEg(ipn,eg){
+    var pct10IpnNacional,pct90IpnNacional;
+    pct10IpnNacional = [1.79, 1.83, 1.87, 1.91, 1.95, 1.99, 2.04, 2.08, 2.12, 2.16, 2.2, 2.25, 2.29, 2.33, 2.37, 2.41, 2.45, 2.5, 2.54];
+    pct90IpnNacional = [2.54, 2.57, 2.59, 2.62, 2.65, 2.68, 2.71, 2.74, 2.77, 2.8, 2.83, 2.86, 2.89, 2.92, 2.95, 2.98, 3.01, 3.04, 3.07];
+    eg = eg - 24;
+
+    var uno = pct90IpnNacional[eg] - pct10IpnNacional[eg];
+    var dos = ipn - pct10IpnNacional[eg];
+    return parseInt((80 / (uno)) * (dos)) + 10;
+}
+
+function ipnEgCondicion(ipn,eg){
+    var pct10IpnNacional,pct90IpnNacional;
+    pct10IpnNacional = [1.79, 1.83, 1.87, 1.91, 1.95, 1.99, 2.04, 2.08, 2.12, 2.16, 2.2, 2.25, 2.29, 2.33, 2.37, 2.41, 2.45, 2.5, 2.54];
+    pct90IpnNacional = [2.54, 2.57, 2.59, 2.62, 2.65, 2.68, 2.71, 2.74, 2.77, 2.8, 2.83, 2.86, 2.89, 2.92, 2.95, 2.98, 3.01, 3.04, 3.07];
+    eg = eg - 24;
+
+    if (ipn < pct10IpnNacional[eg]) {
+        return "Enflaquecido";
+    } else if (ipn <= pct90IpnNacional[eg]) {
+        return "Eutrófico";
+    } else if (ipn > pct90IpnNacional[eg]) {
+        return "RN Obeso";
     }
 }
