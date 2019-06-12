@@ -444,7 +444,7 @@ class DashboardController extends Controller
         $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios));
     }
 
-    public function deleteParto($parto_id){
-        $this->View->renderJSON(PartosModel::deleteParto($parto_id));
+    public function deleteParto($solicitud_id){
+        $this->View->renderJSON(PartosModel::deleteParto($solicitud_id));
     }
 }

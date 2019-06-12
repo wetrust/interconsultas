@@ -56,17 +56,17 @@ class PartosModel
         return false;
     }
 
-    public static function deleteParto($parto_id)
+    public static function deleteParto($solicitud_id)
     {
-        if (!$parto_id) {
+        if (!$solicitud_id) {
             return false;
         }
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "DELETE FROM partos WHERE parto_id = :parto_id LIMIT 1";
+        $sql = "DELETE FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':parto_id' => $parto_id));
+        $query->execute(array(':solicitud_id' => $solicitud_id));
 
         if ($query->rowCount() == 1) {
             return true;
