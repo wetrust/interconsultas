@@ -52,7 +52,7 @@
                 ?>
                     </select>
                 </td>
-                <td><?= $user->user_estadistica; ?></td>
+                <td class="text-center"><?= $user->user_estadistica; ?></td>
                     <td>
                         <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
                         <button type="submit" class="btn btn-primary">Guardar</button>
