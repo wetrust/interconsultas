@@ -181,7 +181,7 @@ function buildPartosTable(data){
                    $("#tallafetal").focus();
                 }
                 else{
-                    if ((this).val().length >= 4){
+                    if ($(this).val().length >= 4){
                         event.preventDefault();
                     }
                 }
@@ -192,7 +192,7 @@ function buildPartosTable(data){
                    $("#craneo").focus();
                 }
                 else{
-                    if ((this).val().length >= 3){
+                    if ($(this).val().length >= 3){
                         event.preventDefault();
                     }
                 }
@@ -203,7 +203,7 @@ function buildPartosTable(data){
                    $("#apgar_uno").focus();
                 }
                 else{
-                    if ((this).val().length >= 3){
+                    if ($(this).val().length >= 3){
                         event.preventDefault();
                     }
                 }
