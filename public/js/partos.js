@@ -156,29 +156,31 @@ function buildPartosTable(data){
 
             $.get("dashboard/dataPartos/" + solicitud_id).done(function(data){
                 $("#fechaparto").val(data.fecha_parto);
-                $("#egparto").val(data.semanas),
-                $("#diasparto").val(data.dias),
-                $("#pesomaterno").val(data.peso),
-                $("#tallamaterna").val(data.talla),
-                $("#imc").val(data.imc),
-                $("#estadonutricional").val(data.estado_nutricional),
-                $("#etniamaterna").val(data.etnia),
-                $("#paridadmaterna").val(data.paridad),
-                $("#tipomaterna").val(data.tipo),
-                $("#lugarparto").val(data.lugar),
-                $("#pesofetal").val(data.pesofetal),
-                $("#tallafetal").val(data.tallafetal),
-                $("#craneo").val(data.craneofetal),
-                $("#apgar_uno").val(data.apgar_uno),
-                $("#apgar_cinco").val(data.apgar_cinco),
-                $("#sexofetal").val(data.sexo),
-                $("#meconio").val(data.meconio),
-                $("#ipnparto").val(data.ipn),
-                $("#pesoegparto").val(data.peso_eg),
-                $("#pesoegpartoestado").html(data.peso_eg_estado),
-                $("#ipnegparto").val(data.ipn_eg),
-                $("#ipnegpartoestado").html(data.ipn_eg_estado),
-                $("#comentariosparto").val(data.comentarios)
+                $("#egparto").val(data.semanas);
+                $("#diasparto").val(data.dias);
+                $("#pesomaterno").val(data.peso);
+                $("#tallamaterna").val(data.talla);
+                $("#imc").val(data.imc);
+                $("#estadonutricional").val(data.estado_nutricional);
+                $("#etniamaterna").val(data.etnia);
+                $("#paridadmaterna").val(data.paridad);
+                $("#tipomaterna").val(data.tipo);
+                $("#lugarparto").val(data.lugar);
+                $("#pesofetal").val(data.pesofetal);
+                $("#tallafetal").val(data.tallafetal);
+                $("#craneo").val(data.craneofetal);
+                $("#apgar_uno").val(data.apgar_uno);
+                $("#apgar_cinco").val(data.apgar_cinco);
+                $("#sexofetal").val(data.sexo);
+                $("#meconio").val(data.meconio);
+                $("#ipnparto").val(data.ipn);
+                $("#pesoegparto").val(data.peso_eg);
+                $("#pesoegpartoestado").html(data.peso_eg_estado);
+                $("#ipnegparto").val(data.ipn_eg);
+                $("#ipnegpartoestado").html(data.ipn_eg_estado);
+                $("#comentariosparto").val(data.comentarios);
+                $("#hipoglicemia").val(data.hipoglicemia);
+                $("#alta").val(data.alta);
             });
 
             $("#pesofetal").keypress(function( event ) {
@@ -236,7 +238,9 @@ function buildPartosTable(data){
                     peso_eg_estado: $("#pesoegpartoestado").html(),
                     ipn_eg: $("#ipnegparto").val(),
                     ipn_eg_estado: $("#ipnegpartoestado").html(),
-                    comentarios: $("#comentariosparto").val()
+                    comentarios: $("#comentariosparto").val(),
+                    hipoglicemia: $("#hipoglicemia").val(),
+                    alta: $("#alta").val()
                 }
 
                 $.post("dashboard/savePartos", data).done(function(result){
