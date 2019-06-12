@@ -38,6 +38,9 @@ function buildPartosTable(data){
 
             for (var i = 20; i < 43; i++) {
                 let option = '<option value="'+i+'">'+i+' semanas.</option>';
+                if (i == 40){
+                    option = '<option value="'+i+'" selected>'+i+' semanas.</option>';  
+                }
                 $("#egparto").append(option);
             }
 
