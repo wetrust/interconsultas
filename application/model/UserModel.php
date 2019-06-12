@@ -26,6 +26,7 @@ class UserModel
             $all_users_profiles[$user->user_id]->user_deleted = $user->user_deleted;
             $all_users_profiles[$user->user_id]->user_almacenamiento = $user->user_almacenamiento;
             $all_users_profiles[$user->user_id]->user_avatar_link = (Config::get('USE_GRAVATAR') ? AvatarModel::getGravatarLinkByEmail($user->user_email) : AvatarModel::getPublicAvatarFilePathOfUser($user->user_has_avatar, $user->user_id));
+            $all_users_profiles[$user->user_id]->user_estadistica = SolicitudesModel::getEstadistica($user->user_email);
         }
 
         return $all_users_profiles;

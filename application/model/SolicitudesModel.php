@@ -50,6 +50,22 @@ class SolicitudesModel
         return $query->fetchAll();
     }
 
+    public static function getEstadistica($solicitud_profesionalemail)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        if (Session::get('user_account_type') == 2){
+            $sql = "SELECT * FROM solicitudes where solicitud_email = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
+        }
+        else{
+            $sql = "SELECT * FROM solicitudes where solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
+        }
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_profesionalemail));
+
+        return $query->rowCount();
+    }
+
     public static function getOldSolicitudes($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
