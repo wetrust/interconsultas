@@ -180,17 +180,32 @@ function buildPartosTable(data){
                    event.preventDefault();
                    $("#tallafetal").focus();
                 }
+                else{
+                    if (($this).val().length >= 4){
+                        event.preventDefault();
+                    }
+                }
             });
             $("#tallafetal").keypress(function( event ) {
                 if ( event.which == 13 ) {
                    event.preventDefault();
                    $("#craneo").focus();
                 }
+                else{
+                    if (($this).val().length >= 3){
+                        event.preventDefault();
+                    }
+                }
             });
             $("#craneo").keypress(function( event ) {
                 if ( event.which == 13 ) {
                    event.preventDefault();
                    $("#apgar_uno").focus();
+                }
+                else{
+                    if (($this).val().length >= 3){
+                        event.preventDefault();
+                    }
                 }
             });
             $('#cautivo\\.dialogo').modal("show");
