@@ -175,6 +175,24 @@ function buildPartosTable(data){
                 $("#comentariosparto").val(data.comentarios)
             });
 
+            $("#pesofetal").keypress(function( event ) {
+                if ( event.which == 13 ) {
+                   event.preventDefault();
+                   $("#tallafetal").focus();
+                }
+            });
+            $("#tallafetal").keypress(function( event ) {
+                if ( event.which == 13 ) {
+                   event.preventDefault();
+                   $("#craneo").focus();
+                }
+            });
+            $("#craneo").keypress(function( event ) {
+                if ( event.which == 13 ) {
+                   event.preventDefault();
+                   $("#apgar_uno").focus();
+                }
+            });
             $('#cautivo\\.dialogo').modal("show");
 
             $("#guardarparto").on("click", function(){
