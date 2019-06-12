@@ -39,6 +39,7 @@ $(document).ready(function(){
         }else if (valor == 1){
             loadNews();
             $("#filtro\\.activar").removeClass("d-none");
+            $("#filtro\\.tipo").parent().addClass("d-none");
         }else if (valor == 2){
             loadInProcess();
             $("#filtro\\.activar").addClass("d-none");
@@ -46,9 +47,11 @@ $(document).ready(function(){
         }else if (valor == 3){
             loadInFinish();
             $("#filtro\\.activar").removeClass("d-none");
+            $("#filtro\\.tipo").parent().removeClass("d-none");
         }else if (valor == 4){
             loadInRespuesta();
             $("#filtro\\.activar").removeClass("d-none");
+            $("#filtro\\.tipo").parent().removeClass("d-none");
         }
     });
 
