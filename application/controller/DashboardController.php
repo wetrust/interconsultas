@@ -408,8 +408,43 @@ class DashboardController extends Controller
     public function finish(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudes(Session::get('user_email')));
     }
-
     public function baseParto($user_id){
         $this->View->renderJSON(SolicitudesModel::getOldSolicitudes($user_id));
+    }
+    public function dataPartos($parto_id){
+        $this->View->renderJSON(PartosModel::getPartos($parto_id));
+    }
+    public function savePartos(){
+        $solicitud_id = Request::post('solicitud_id');
+        $fecha_parto = Request::post('fecha_parto');
+        $semanas = Request::post('semanas');
+        $dias = Request::post('dias');
+        $peso = Request::post('peso');
+        $talla = Request::post('talla');
+        $imc = Request::post('imc');
+        $estado_nutricional = Request::post('estado_nutricional');
+        $etnia = Request::post('etnia');
+        $paridad = Request::post('paridad');
+        $tipo = Request::post('tipo');
+        $lugar = Request::post('lugar');
+        $pesofetal = Request::post('pesofetal');
+        $tallafetal = Request::post('tallafetal');
+        $craneofetal = Request::post('craneofetal');
+        $apgar_uno = Request::post('apgar_uno');
+        $apgar_cinco = Request::post('apgar_cinco');
+        $sexo = Request::post('sexo');
+        $meconio = Request::post('meconio');
+        $ipn = Request::post('ipn');
+        $peso_eg = Request::post('peso_eg');
+        $peso_eg_estado = Request::post('peso_eg_estado');
+        $ipn_eg = Request::post('ipn_eg');
+        $ipn_eg_estado = Request::post('ipn_eg_estado');
+        $comentarios = Request::post('comentarios');
+
+        $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios));
+    }
+
+    public function deleteParto($parto_id){
+        $this->View->renderJSON(PartosModel::deleteParto($parto_id));
     }
 }
