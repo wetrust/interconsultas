@@ -50,11 +50,11 @@ class SolicitudesModel
         return $query->fetchAll();
     }
 
-    public static function getEstadistica($solicitud_profesionalemail)
+    public static function getEstadistica($solicitud_profesionalemail, $tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        if (Session::get('user_account_type') == 2){
+        if ($tipo == 2){
             $sql = "SELECT * FROM solicitudes where solicitud_email = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
         }
         else{
