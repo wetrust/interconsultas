@@ -61,7 +61,7 @@ $(document).ready(function(){
         if (valor == 0){
             loadInPartos();
         }else if (valor == 1){
-            loadNews();
+            loadReadyPartos();
         }
     });
     

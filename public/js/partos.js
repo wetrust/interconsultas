@@ -1,7 +1,7 @@
 function loadInPartos(){
     $("#mensaje\\.parto").addClass("d-none");
     $("#tabla\\.parto").removeClass("d-none");
-    $.get('dashboard/finish').done(function(data){
+    $.get('dashboard/sinpartos').done(function(data){
         buildPartosTable(data);
 	});
 }

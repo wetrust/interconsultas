@@ -50,6 +50,22 @@ class SolicitudesModel
         return $query->fetchAll();
     }
 
+    public static function getAllOldSolicitudesSinParto($solicitud_email)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        if (Session::get('user_account_type') == 2){
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2  AND solicitud_id NOT IN (select solicitud_id from partos)";
+        }
+        else{
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitud_id NOT IN (select solicitud_id from partos)";
+        }
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
+
+        return $query->fetchAll();
+    }
+
     public static function getEstadistica($solicitud_profesionalemail, $tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

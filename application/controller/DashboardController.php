@@ -408,6 +408,10 @@ class DashboardController extends Controller
     public function finish(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudes(Session::get('user_email')));
     }
+    public function sinpartos(){
+        $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesSinParto(Session::get('user_email')));
+    }
+
     public function baseParto($user_id){
         $this->View->renderJSON(SolicitudesModel::getOldSolicitudes($user_id));
     }
