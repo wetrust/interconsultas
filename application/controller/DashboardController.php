@@ -446,8 +446,8 @@ class DashboardController extends Controller
         $ipn_eg = Request::post('ipn_eg');
         $ipn_eg_estado = Request::post('ipn_eg_estado');
         $comentarios = Request::post('comentarios');
-        $hipoglicemia: Request::post('hipoglicemia');
-        $alta: Request::post('alta');
+        $hipoglicemia = Request::post('hipoglicemia');
+        $alta = Request::post('alta');
 
         $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta));
     }
