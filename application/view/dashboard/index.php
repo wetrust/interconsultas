@@ -108,7 +108,7 @@
                             <label id="interconsultas.estado.solicitar" class="btn interconsulta btn-secondary active">
                                 <input type="radio" value="0" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta
                             </label>
-                            <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
+                            <label id="interconsultas.estado.solicitadas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> Solicitudes en espera
                             </label>
                             <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
