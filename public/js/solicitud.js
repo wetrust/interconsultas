@@ -123,7 +123,22 @@ $(document).ready(function(){
 				}
 				else if (response.result == true){
 					$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Información</h5></div><div class="modal-body"><p>Su Solicitud de interconsulta ha sido enviada correctamente</p>'+ footerModal);
-                }
+					$("#interconsulta\\.nombre").val("");
+					$("#interconsulta\\.rut").val("");
+					$("#interconsulta\\.telefono").val("");
+					var now = new Date();
+					var day = ("0" + now.getDate()).slice(-2);
+					var month = ("0" + (now.getMonth() + 1)).slice(-2);
+					var today = now.getFullYear()+"-"+(month)+"-"+(day);
+					$("#interconsulta\\.fecha").val(today);
+					$("#interconsulta\\.eg\\.no").attr("checked", true);
+					$("#interconsulta\\.eco\\.no").attr("checked", true);
+					$("#interconsulta\\.fum").val(today).trigger("change");
+					$("#interconsulta\\.diagnostico\\.select").val(0);
+					$("#interconsulta\\.diagnostico").val("");
+					$("#interconsulta\\.lugar").val("");
+					$("#interconsulta\\.ciudad").val("");
+				}
                 $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
                     $('#cautivo\\.dialogo').modal("hide").remove();
                     $(this).remove();
