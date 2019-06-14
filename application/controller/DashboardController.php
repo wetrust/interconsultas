@@ -411,7 +411,9 @@ class DashboardController extends Controller
     public function sinpartos(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesSinParto(Session::get('user_email')));
     }
-
+    public function partos(){
+        $this->View->renderJSON(SolicitudesModel::getAllPartos(Session::get('user_email')));
+    }
     public function baseParto($user_id){
         $this->View->renderJSON(SolicitudesModel::getOldSolicitudes($user_id));
     }
@@ -444,8 +446,10 @@ class DashboardController extends Controller
         $ipn_eg = Request::post('ipn_eg');
         $ipn_eg_estado = Request::post('ipn_eg_estado');
         $comentarios = Request::post('comentarios');
+        $hipoglicemia: Request::post('hipoglicemia');
+        $alta: Request::post('alta');
 
-        $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios));
+        $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta));
     }
 
     public function deleteParto($solicitud_id){

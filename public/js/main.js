@@ -35,7 +35,11 @@ $(document).ready(function(){
         if (valor == 0){
             loadSolicitud();
             $("#filtro\\.activar").addClass("d-none");
-            $("#filtro\\.contenedor").addClass("d-none")
+            $("#filtro\\.contenedor").addClass("d-none");
+        }else if (valor == 2){
+            loadSolicitadas();
+            $("#filtro\\.activar").removeClass("d-none");
+            $("#filtro\\.tipo").parent().addClass("d-none");
         }else if (valor == 2){
             loadNews();
             $("#filtro\\.activar").removeClass("d-none");

@@ -12,5 +12,6 @@ var textos = {
     lugar_control_error: "¿Cual es el lugar de control prenatal?",
     fechas_error: "La fecha de solicitud y la FUM operacional no permiten calcular una edad gestacional, ¿Habr&aacute; ingresado mal estas fechas?",
     referente_error: "¿C&oacute;mo se llama el m&eacute;dico referente?",
-    contrarreferente_error: "¿A quien usted solicita la interconsulta?"
+    contrarreferente_error: "¿A quien usted solicita la interconsulta?",
+    telefono_error: "No ha ingresado teléfono o el número que ha ingresado no corresponde a un teléfono"
 }

@@ -43,6 +43,7 @@ $(document).ready(function(){
 		var nombre = String($("#interconsulta\\.nombre").val());
 		var rut = String($("#interconsulta\\.rut").val());
 		var fecha = String($("#interconsulta\\.fecha").val());
+		var telefono = String($("#interconsulta\\.telefono").val());
 		var eg = String($('input[name=interconsulta_eg]:checked').val());
 		var eco = String($('input[name=interconsulta_eco]:checked').val());
 		var fum = String($("#interconsulta\\.fum").val());
@@ -56,13 +57,15 @@ $(document).ready(function(){
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
         
-        if (nombre.length < 3 || rut.length < 4 || fecha.length < 4 || eg == 'undefined' || eg.length < 1 || eco == 'undefined' || eco.length  < 0 || fum.length < 4 || diagnostico.length  < 3 || ciudad.length < 2 || lugar.length  < 3 || egestacional.length < 3 || nombre_para.length < 2 || para.length < 5){
+        if (nombre.length < 3 || rut.length < 4 || telefono.length < 6 || fecha.length < 4 || eg == 'undefined' || eg.length < 1 || eco == 'undefined' || eco.length  < 0 || fum.length < 4 || diagnostico.length  < 3 || ciudad.length < 2 || lugar.length  < 3 || egestacional.length < 3 || nombre_para.length < 2 || para.length < 5){
             var mensaje = "";
 
             if (nombre.length < 3){
                 mensaje = textos.paciente_name_error;
             }else if (rut.length < 4){
-                mensaje = textos.paciente_rut_error;
+				mensaje = textos.paciente_rut_error;
+			}else if (telefono.length < 6){
+                mensaje = textos.telefono_error;
             }else if (fecha.length < 4){
                 mensaje = textos.form_error;
             }else if (eg == 'undefined' || eg.length < 1){
@@ -99,6 +102,7 @@ $(document).ready(function(){
 			var data = {
 				nombre: $("#interconsulta\\.nombre").val(),
 				rut: $("#interconsulta\\.rut").val(),
+				telefono: $("#interconsulta\\.telefono").val(),
 				fecha: $("#interconsulta\\.fecha").val(),
 				eg: $('input[name=interconsulta_eg]:checked').val(),
 				eco: $('input[name=interconsulta_eco]:checked').val(),
