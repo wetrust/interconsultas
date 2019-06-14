@@ -109,19 +109,19 @@
                                 <input type="radio" value="0" name="interconsultas" checked autocomplete="off">Solicitud de interconsulta
                             </label>
                             <label id="interconsultas.estado.solicitadas" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="2" name="interconsultas" autocomplete="off"> Solicitudes en espera
+                                <input type="radio" value="1" name="interconsultas" autocomplete="off"> Solicitudes en espera
                             </label>
                             <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Nuevas solicitudes
+                                <input type="radio" value="2" name="interconsultas" autocomplete="off"> Nuevas solicitudes
                             </label>
                             <label id="interconsultas.estado.espera" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="4" name="interconsultas" autocomplete="off"> En espera
+                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> En espera
                             </label>
                             <label id="interconsultas.estado.finalizadas" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="5" name="interconsultas" autocomplete="off"> Examenes realizados
+                                <input type="radio" value="4" name="interconsultas" autocomplete="off"> Examenes realizados
                             </label>
                             <label id="interconsultas.estado.respuesta" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="6" name="interconsultas" autocomplete="off"> Respuesta del ecografista
+                                <input type="radio" value="5" name="interconsultas" autocomplete="off"> Respuesta del ecografista
                             </label>
                         </div>
                     </div>
