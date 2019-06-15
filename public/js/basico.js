@@ -148,7 +148,6 @@ function loadSolicitadas(){
 
 function buildSolicitadasTable(data){
     $('#tabla\\.resultado').empty();
-    $('#tabla\\.parto').empty();
 
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");

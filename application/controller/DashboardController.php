@@ -457,6 +457,6 @@ class DashboardController extends Controller
     }
 
     public function solicitadas(){
-        $this->View->renderJSON(PartosModel::getAllMyNewSolicitudes(Session::get('user_email')));
+        $this->View->renderJSON(SolicitudesModel::getAllMyNewSolicitudes(Session::get('user_email')));
     }
 }
