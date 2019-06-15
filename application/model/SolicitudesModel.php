@@ -47,7 +47,7 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_respuesta = 1";
+        $sql = "SELECT * FROM solicitudes INNER JOIN evaluacion ON soliciutdes.soliciutd_id = evaluacion.soliciutd_id WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_respuesta = 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
