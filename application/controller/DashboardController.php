@@ -455,4 +455,8 @@ class DashboardController extends Controller
     public function deleteParto($solicitud_id){
         $this->View->renderJSON(PartosModel::deleteParto($solicitud_id));
     }
+
+    public function solicitadas(){
+        $this->View->renderJSON(PartosModel::getAllMyNewSolicitudes(Session::get('user_email')));
+    }
 }

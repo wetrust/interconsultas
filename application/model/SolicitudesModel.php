@@ -13,6 +13,17 @@ class SolicitudesModel
         return $query->fetchAll();
     }
 
+    public static function getAllMyNewSolicitudes($solicitud_email)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT * FROM solicitudes WHERE solicitud_email = :solicitud_email AND solicitud_respuesta = 0";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_email' => $solicitud_email));
+
+        return $query->fetchAll();
+    }
+
     public static function getAllSolicitudes($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

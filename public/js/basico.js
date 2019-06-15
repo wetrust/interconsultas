@@ -141,7 +141,7 @@ function loadSolicitadas(){
     $("#card\\.header").addClass("d-none");
     $("#formulario\\.solicitud").addClass("d-none");
 
-    $.get('dashboard/finish').done(function(data){
+    $.get('dashboard/solicitadas').done(function(data){
         buildSolicitadasTable(data);
 	});
 }
@@ -157,14 +157,14 @@ function buildSolicitadasTable(data){
         $.each(data, function(i, value) {
             let fecha = value.fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>'+ fecha +'</td>';
-            tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Grafico</button></td></tr>';
+            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td><td>No</td>';
+            tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
         });
 
         tabla += '</tbody>';
         $('#tabla\\.resultado').append(tabla);
 
-        $('#tabla\\.resultado tr > td > button.informe').on("click", function(){
+        $('#tabla\\.resultado tr > td > button').on("click", function(){
             let solicitud_id =  $(this).data("id");
             let tipo =  $(this).data("tipo");
             let url = '';
@@ -199,36 +199,6 @@ function buildSolicitadasTable(data){
                 callModal($(this).data("informe"), $(this).data("id"));
             });
         });
-
-        $('#tabla\\.resultado tr > td > button.grafico').on("click", function(){
-            let solicitud_id =  $(this).data("id");
-            let tipo =  $(this).data("tipo");
-            let url = '';
-            if (tipo == "0"){
-                url = 'graph/informe_dopplercrecimiento/';
-                $("#ver\\.interconsulta > div").addClass("h-100");
-                $("#ver\\.interconsulta > div > div").addClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty();
-                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-            } else  if (tipo == "2"){
-                url = 'graph/informe_segundotrimestre/';
-                $("#ver\\.interconsulta > div").addClass("h-100");
-                $("#ver\\.interconsulta > div > div").addClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty();
-                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-            }
-        });
-    }
-    else{
-        $("#mensaje\\.resultado").removeClass("d-none").html("No tienes interconsultas finalizadas o no estas autorizado para guardar interconsultas finalizadas");
     }
 }
 

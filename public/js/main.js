@@ -36,7 +36,7 @@ $(document).ready(function(){
             loadSolicitud();
             $("#filtro\\.activar").addClass("d-none");
             $("#filtro\\.contenedor").addClass("d-none");
-        }else if (valor == 2){
+        }else if (valor == 1){
             loadSolicitadas();
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().addClass("d-none");
