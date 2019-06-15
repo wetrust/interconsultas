@@ -164,9 +164,9 @@ function loadInProcess(){
             $("#mensaje\\.resultado").addClass("d-none");
             var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Telefono</th><th>Ciudad</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
             $.each(data, function(i, value) {
-                let fecha = value.solicitud_fecha.split('-');
+                let fecha = value.evaluacion_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>'+ value.solicitud_ciudad +'</td><td>' + value.solicitud_diagnostico +'</td><td>agendada</td><td>'+ value.solicitud_confirmada+'</td>';
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>'+ value.solicitud_ciudad +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
                 if (value.solicitud_confirmada == 'Si'){
                     tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Examen</button></td></tr>';
                 }
