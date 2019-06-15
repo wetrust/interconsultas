@@ -196,6 +196,7 @@ function loadInProcess(){
                     }
                     $.post('dashboard/confirmar',data).done(function(response){
                         loadInProcess();
+                        $("#ver\\.interconsulta").modal("hide");
                     });
                 });
             });
