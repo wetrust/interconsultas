@@ -162,12 +162,12 @@ function loadInProcess(){
         $('#tabla\\.resultado').empty();
         if (Object.keys(data).length > 0) {
             $("#mensaje\\.resultado").addClass("d-none");
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Accion</th></tr></thead><tbody>';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
             $.each(data, function(i, value) {
                 let fecha = value.solicitud_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>' + fecha +'</td>';
-                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>' + fecha +'</td><td>agendada</td><td>'+ value.solicitud_confirmada+'</td>';
+                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Examen</button></td></tr>';
             });
             tabla += '</tbody>';
             $('#tabla\\.resultado').append(tabla);
