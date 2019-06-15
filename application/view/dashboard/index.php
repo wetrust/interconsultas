@@ -108,7 +108,7 @@
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> Nuevas solicitudes
                             </label>
                             <label id="interconsultas.estado.espera" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> En espera
+                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Interconsulta en espera
                             </label>
                             <label id="interconsultas.estado.finalizadas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="4" name="interconsultas" autocomplete="off"> Examenes realizados
