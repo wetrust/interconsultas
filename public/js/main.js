@@ -16,7 +16,7 @@ $(document).ready(function(){
         loadSolicitud();
     }else if (a == 3){
         $("#interconsultas\\.estado\\.solicitar").addClass("d-none");
-        $("#interconsultas\\.estado\\.nuevas").addClass("d-none");
+        $("#interconsultas\\.estado\\.solicitadas").addClass("d-none");
         $("#interconsultas\\.estado\\.respuesta").addClass("d-none");
         loadNews();
     }
