@@ -154,7 +154,7 @@ function buildSolicitadasTable(data){
         var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Teléfono</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Confirmado</th><th>Accion</th></tr></thead><tbody>';
         //tabla para ver las interconsultas solicitadas
         $.each(data, function(i, value) {
-            let fecha = value.fecha.split('-');
+            let fecha = value.solicitud_fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
             tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td><td>No</td>';
             tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
