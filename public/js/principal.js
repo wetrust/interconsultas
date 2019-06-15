@@ -82,7 +82,7 @@ function loadNews(){
                 let fecha = value.solicitud_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
-                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
+                tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_id + '>Agendar</button></td></tr>';
             });
             tabla += '</tbody>';
             $('#tabla\\.resultado').append(tabla);
