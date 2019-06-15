@@ -12,7 +12,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getAllMyNewSolicitudes($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -23,7 +22,27 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
+    public static function confirmarSolicitud($solicitud_id)
+    {
+        $respuesta = new stdClass();
+        $respuesta->result = false;
 
+        if (!$solicitud_id) {
+            return $respuesta;
+        }
+
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "UPDATE solicitudes SET solicitud_confirmada = :solicitud_confirmada WHERE solicitud_id = :solicitud_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_confirmada' => 'Si', ':solicitud_id' => $solicitud_id));
+
+        if ($query->rowCount() == 1) {
+            $respuesta->result = true;
+        }
+
+        return $respuesta;
+    }
     public static function getAllSolicitudes($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -34,7 +53,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getAllOldSolicitudesWhereSolicitante($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -44,7 +62,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getAllOldSolicitudes($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -60,7 +77,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getAllOldSolicitudesSinParto($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -76,7 +92,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getEstadistica($solicitud_profesionalemail, $tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -92,7 +107,6 @@ class SolicitudesModel
 
         return $query->rowCount();
     }
-
     public static function getOldSolicitudes($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -108,7 +122,6 @@ class SolicitudesModel
 
         return $query->fetch();
     }
-
     public static function getAllOldSolicitudesFilter($solicitud_email,$ciudad,$lugar,$desde,$hasta,$tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -214,7 +227,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getAllOldRespuestasFilter($solicitud_email,$ciudad,$lugar,$desde,$hasta,$tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -320,7 +332,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getSolicitud($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -331,7 +342,6 @@ class SolicitudesModel
 
         return $query->fetch();
     }
-    
     public static function createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional,$telefono)
     {
         if (!$solicitud_profesionalemail || strlen($solicitud_profesionalemail) == 0) {
@@ -352,7 +362,6 @@ class SolicitudesModel
         Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
         return false;
     }
-
     public static function getAllProfesionales($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -363,7 +372,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getAllCiudades($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -379,7 +387,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function getAllLugar($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -395,7 +402,6 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-
     public static function updateSolicitud($solicitud_id,$solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
     {
         if (!$solicitud_id || !$solicitud_profesionalemail) {
@@ -415,7 +421,6 @@ class SolicitudesModel
         Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
         return false;
     }
-
     public static function updateStateSolicitud($solicitud_id,$solicitud_respuesta)
     {
         if (!$solicitud_id || !$solicitud_respuesta) {
@@ -435,7 +440,6 @@ class SolicitudesModel
         Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
         return false;
     }
-
     public static function deleteSolicitud($solicitud_id)
     {
         if (!$solicitud_id) {

@@ -2,19 +2,16 @@
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         Auth::checkAuthentication();
     }
 
-    public function index()
-    {
+    public function index(){
         $this->View->render('dashboard/index');
     }
 
-    public function agendar($solicitud_id)
-    {
+    public function agendar($solicitud_id){
         $this->View->renderJSON(SolicitudesModel::getSolicitud($solicitud_id));
     }
 
@@ -295,13 +292,11 @@ class DashboardController extends Controller
         }
     }
 
-    public function edit($solicitud_id)
-    {
+    public function edit($solicitud_id){
         $this->View->renderJSON(EvaluacionModel::getEvaluacion($solicitud_id));
     }
 
-    public function ver($solicitud_id)
-    {
+    public function ver($solicitud_id){
         $this->View->render('dashboard/ver', array(
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
@@ -309,8 +304,7 @@ class DashboardController extends Controller
         ));
     }
 
-    public function delete($note_id)
-    {
+    public function delete($note_id){
         RespuestaModel::deleteRespuesta($note_id);
         Redirect::to('dashboard');
     }
@@ -458,5 +452,9 @@ class DashboardController extends Controller
 
     public function solicitadas(){
         $this->View->renderJSON(SolicitudesModel::getAllMyNewSolicitudes(Session::get('user_email')));
+    }
+    public function confirmar(){
+        $solicitud_id = Request::post('solicitud_id');
+        $this->View->renderJSON(SolicitudesModel::confirmarSolicitud($solicitud_id));
     }
 }

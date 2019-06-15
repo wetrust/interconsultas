@@ -10,8 +10,7 @@
     66% { background-color: #EE4D7A; }
     77% { background-color: #EF4C45; }
     89% { background-color: #F4792B; color:#FFF;}
-    100% { background-color: #FAA634; color:#FFF;}
-    }
+    100% { background-color: #FAA634; color:#FFF;}}
     .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show > .btn-secondary.dropdown-toggle{
         background-color: var(--gray-dark) !important; border-color: var(--gray-dark) !important;}
     .modal-dialog.modal-lgx{ max-width:8000px !important;}
@@ -43,15 +42,9 @@
 <section class="bg-secondary">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" id="consentimiento-tab" data-toggle="tab" href="#consentimiento" role="tab" aria-controls="consentimiento" aria-selected="false">Módulo consentimiento informado</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo de parto y recién nacido</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" id="consentimiento-tab" data-toggle="tab" href="#consentimiento" role="tab" aria-controls="consentimiento" aria-selected="false">Módulo consentimiento informado</a></li>
+            <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a></li>
+            <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo de parto y recién nacido</a></li>
         </ul>
     </div>
 </section>
