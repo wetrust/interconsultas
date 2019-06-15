@@ -205,7 +205,7 @@ function loadInProcess(){
                 $("#ver\\.interconsulta > div").removeClass("h-100");
                 $("#ver\\.interconsulta > div > div").removeClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("Cambiar fecha de interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty().append('<div class="row"> <div class="col-3 form-group"> <label for="interconsulta.para">Fecha</label> <input type="date" class="form-control" id="evaluacion_fecha"> </div><div class="col form-group"> <label for="interconsulta.comentario.respuesta">Comentario</label> <input class="form-control" id="evaluacion_comentarios"/> </div></div>');
+                $('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col-3 form-group"> <label for="interconsulta.para">Fecha</label> <input type="date" class="form-control" id="evaluacion_fecha"> </div><div class="col form-group"> <label for="interconsulta.comentario.respuesta">Comentario</label> <input class="form-control" id="evaluacion_comentarios"/> </div></div>');
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
                 $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Reagendar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
