@@ -202,7 +202,7 @@ function buildSolicitadasTable(data){
                 $("#ver\\.interconsulta\\.footer").empty().prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Cancelar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
-                    $.get("dashboard/delete/" + solicitud_id).done(function(){loadNews();});
+                    $.get("dashboard/delete/" + solicitud_id).done(function(){loadSolicitadas();});
                     $("#ver\\.interconsulta").modal("hide");
                 });
         });
