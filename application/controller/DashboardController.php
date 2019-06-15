@@ -457,4 +457,10 @@ class DashboardController extends Controller
         $solicitud_id = Request::post('solicitud_id');
         $this->View->renderJSON(SolicitudesModel::confirmarSolicitud($solicitud_id));
     }
+    public function reagendar(){
+        $solicitud_id = Request::post('solicitud_id');
+        $solicitud_fecha = Request::post('solicitud_fecha');
+        $solicitud_comentarios = Request::post('solicitud_comentarios');
+        $this->View->renderJSON(EvaluacionModel::updateEvaluacion($solicitud_id,$solicitud_fecha,$solicitud_comentarios));
+    }
 }

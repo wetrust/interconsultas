@@ -45,17 +45,17 @@ class EvaluacionModel
         return false;
     }
 
-    public static function updateNote($note_id, $note_text)
+    public static function updateEvaluacion($solicitud_id, $evaluacion_fecha, $evaluacion_comentarios)
     {
-        if (!$note_id || !$note_text) {
+        if (!$solicitud_id || !$evaluacion_fecha) {
             return false;
         }
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE notes SET note_text = :note_text WHERE note_id = :note_id AND user_id = :user_id LIMIT 1";
+        $sql = "UPDATE evaluacion SET evaluacion_fecha = :evaluacion_fecha, evaluacion_comentarios = :evaluacion_comentarios WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':note_id' => $note_id, ':note_text' => $note_text, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':solicitud_id' => $solicitud_id, ':evaluacion_fecha' => $evaluacion_fecha, ':evaluacion_comentarios' => $evaluacion_comentarios));
 
         if ($query->rowCount() == 1) {
             return true;

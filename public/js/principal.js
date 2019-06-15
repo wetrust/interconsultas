@@ -205,10 +205,26 @@ function loadInProcess(){
                 $("#ver\\.interconsulta > div").removeClass("h-100");
                 $("#ver\\.interconsulta > div > div").removeClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("Cambiar fecha de interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty().append('<h5 class="my-3 text-center">Responder a esta solicitud de interconsulta</h5><div class="row"> <div class="col-3 form-group" id="jaja.papapa"> <label for="interconsulta.para">Fecha</label> <input type="text" disabled class="form-control" id="evaluacion_fecha"> </div><div class="col form-group"> <label for="interconsulta.comentario.respuesta">Comentario</label> <input disabled class="form-control" id="evaluacion_comentarios"/> </div></div>');
+                $('#ver\\.interconsulta\\.contenedor').empty().append('<div class="row"> <div class="col-3 form-group"> <label for="interconsulta.para">Fecha</label> <input type="text" class="form-control" id="evaluacion_fecha"> </div><div class="col form-group"> <label for="interconsulta.comentario.respuesta">Comentario</label> <input class="form-control" id="evaluacion_comentarios"/> </div></div>');
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
                 $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Reagendar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                $("#solicitud_id").val(solicitud_id);
+                $.get('dashboard/edit/' + solicitud_id).done(function(data){
+                    $("#evaluacion_fecha").val(data.evaluacion_fecha);
+                    $("#evaluacion_comentarios").val(data.evaluacion_comentarios);
+                });
+                $("#enviar\\.respuesta\\.botton").on("click", function(){
+                    var data = {
+                        solicitud_id: $("#solicitud_id").val(),
+                        solicitud_fecha: $("#evaluacion_fecha").val(),
+                        solicitud_comentarios: $("#evaluacion_comentarios").val()
+                    }
+                    $.post('dashboard/reagendar',data).done(function(response){
+                        loadInProcess();
+                        $("#ver\\.interconsulta").modal("hide");
+                    });
+                });
             });
             $('#tabla\\.resultado tr > td > button.examen').on("click", function(){
                 let solicitud_id =  $(this).data("id");
