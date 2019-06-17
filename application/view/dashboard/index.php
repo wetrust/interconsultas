@@ -116,7 +116,7 @@
                                 <input type="radio" value="5" name="interconsultas" autocomplete="off"> Examenes realizados
                             </label>
                             <label id="interconsultas.estado.respuesta" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="6" name="interconsultas" autocomplete="off"> Respuesta desde unidad ecografica
+                                <input type="radio" value="6" name="interconsultas" autocomplete="off"> Examenes ecograficos realizados
                             </label>
                         </div>
                     </div>
