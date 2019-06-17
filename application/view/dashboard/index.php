@@ -106,7 +106,7 @@
                             <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> Nuevas solicitudes
                             </label>
-                            <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
+                            <label id="interconsultas.estado.agendadas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="3" name="interconsultas" autocomplete="off"> Solicitudes ecográficas agendadas
                             </label>
                             <label id="interconsultas.estado.espera" class="btn interconsulta btn-secondary">
