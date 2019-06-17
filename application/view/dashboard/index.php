@@ -106,14 +106,17 @@
                             <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> Nuevas solicitudes
                             </label>
+                            <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
+                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Solicitudes ecográficas agendadas
+                            </label>
                             <label id="interconsultas.estado.espera" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Interconsulta en espera
+                                <input type="radio" value="4" name="interconsultas" autocomplete="off"> Interconsulta en espera
                             </label>
                             <label id="interconsultas.estado.finalizadas" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="4" name="interconsultas" autocomplete="off"> Examenes realizados
+                                <input type="radio" value="5" name="interconsultas" autocomplete="off"> Examenes realizados
                             </label>
                             <label id="interconsultas.estado.respuesta" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="5" name="interconsultas" autocomplete="off"> Respuesta desde unidad ecografica
+                                <input type="radio" value="6" name="interconsultas" autocomplete="off"> Respuesta desde unidad ecografica
                             </label>
                         </div>
                     </div>

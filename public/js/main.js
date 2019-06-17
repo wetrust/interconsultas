@@ -46,14 +46,18 @@ $(document).ready(function(){
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().addClass("d-none");
         }else if (valor == 3){
+            //solicitud de interconsulta agendada
+            $("#filtro\\.activar").removeClass("d-none");
+            $("#filtro\\.tipo").parent().addClass("d-none");
+        }else if (valor == 4){
             loadInProcess();
             $("#filtro\\.activar").addClass("d-none");
             $("#filtro\\.contenedor").addClass("d-none")
-        }else if (valor == 4){
+        }else if (valor == 5){
             loadInFinish();
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().removeClass("d-none");
-        }else if (valor == 5){
+        }else if (valor == 6){
             loadInRespuesta();
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().removeClass("d-none");
