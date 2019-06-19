@@ -51,8 +51,8 @@ $(document).ready(function(){
         }else if (valor == 3){
             //solicitud de interconsulta agendada
             loadAgendadas();
-            $("#filtro\\.activar").removeClass("d-none");
-            $("#filtro\\.tipo").parent().addClass("d-none");
+            $("#filtro\\.activar").addClass("d-none");
+            $("#filtro\\.contenedor").addClass("d-none");
         }else if (valor == 4){
             loadInProcess();
             $("#filtro\\.activar").addClass("d-none");
