@@ -156,7 +156,85 @@ function buildSolicitadasTable(data){
         $.each(data, function(i, value) {
             let fecha = value.solicitud_fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td><';
+            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
+            tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
+        });
+
+        tabla += '</tbody>';
+        $('#tabla\\.resultado').append(tabla);
+
+        $('#tabla\\.resultado tr > td > button').on("click", function(){
+            let solicitud_id =  $(this).data("id");
+                $("#ver\\.interconsulta > div").removeClass("h-100");
+                $("#ver\\.interconsulta > div > div").removeClass("h-100");
+                $("#ver\\.interconsulta\\.titulo").html("Datos de la interconsulta");
+                $('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col"> <label><small>Nombre del paciente:</small></label> <p id="solicitud_nombre"></p></div><div class="col"> <label><small>RUT del paciente:</small></label> <p id="solicitud_rut"></p></div><div class="col"> <label><small>Fecha de solicitud:</small></label> <p id="solicitud_fecha"></p></div><div class="col"> <label><small>FUM operacional</small></label> <p id="solicitud_fum"></p></div><div class="col"> <label><small>Edad Gestacional</small></label> <p id="solicitud_egestacional"></p></div></div><div class="row"> <div class="col form-group"> <label><small>Ege conocida precozmente</small></label> <p id="eg_precoz"></p></div><div class="col form-group"> <label><small>Ecografía previa de crecimiento</small></label> <p id="ecografia_previa"></p></div><div class="col form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="solicitud_diagnostico"></p></div><div class="col form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="solicitud_ciudad"></p></div></div><div class="row"> <div class="col form-group"> <label><small>Lugar de control prenatal</small></label> <p id="solicitud_lugar"></p></div><div class="col form-group"> <label><small>Datos del profesional referente</small></label> <p id="interconsulta_profesional"></p></div><div class="col form-group"> <label><small>Nombre:</small></label> <p id="solicitud_nombreprofesional"></p></div><div class="col form-group"> <label><small>Email (de trabajo):</small></label> <p id="solicitud_email"></p></div></div>');
+                $.get('dashboard/agendar/' + solicitud_id).done(function(data){
+                    $("#solicitud_id").val(data.solicitud_id);
+                    $("#solicitud_nombre").html('<strong>' + data.solicitud_nombre + '</strong>');
+                    $("#solicitud_rut").html('<strong>' + data.solicitud_rut + '</strong>');
+                    let fecha = data.solicitud_fecha.split('-');
+                    fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+                    $("#solicitud_fecha").html('<strong>' + fecha + '</strong>');
+
+                    let eg = data.solicitud_eg;
+                    if (eg == "1"){eg = "Si";}
+                    else{eg = "No";}
+
+                    let eco = data.solicitud_eco;
+                    if (eco == "1"){eco = "Si";}
+                    else{eco = "No";}
+
+                    $("#eg_precoz").html('<strong>' + eg + '</strong>');
+                    $("#ecografia_previa").html('<strong>' + eco + '</strong>');
+                    fecha = data.solicitud_fum.split('-');
+                    fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+                    $("#solicitud_fum").html('<strong>' + fecha + '</strong>');
+                    $("#solicitud_egestacional").html('<strong>' + data.solicitud_egestacional + '</strong>');
+                    $("#solicitud_diagnostico").html('<strong>' + data.solicitud_diagnostico + '</strong>');
+                    $("#solicitud_ciudad").html('<strong>' + data.solicitud_ciudad + '</strong>');
+                    $("#solicitud_lugar").html('<strong>' + data.solicitud_lugar + '</strong>');
+                    $("#interconsulta_profesional").html('<strong>' + data.solicitud_profesional + '</strong>');
+                    $("#solicitud_nombreprofesional").html('<strong>' + data.solicitud_nombreprofesional + '</strong>');
+                    $("#solicitud_email").html('<strong>' + data.solicitud_email + '</strong>');
+                });
+                $("#ver\\.interconsulta").modal("show");
+                $("#ver\\.interconsulta\\.footer").empty().prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Cancelar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                $("#ver\\.interconsulta\\.eliminar").on("click", function(){
+                    let solicitud_id =  $(this).data("id");
+                    $.get("dashboard/delete/" + solicitud_id).done(function(){loadSolicitadas();});
+                    $("#ver\\.interconsulta").modal("hide");
+                });
+        });
+    }
+}
+
+function loadAgendadas(){
+    $("#tabla\\.resultado").removeClass("d-none");
+    $("#mensaje\\.resultado").removeClass("d-none");
+    $("#card\\.header").addClass("d-none");
+    $("#formulario\\.solicitud").addClass("d-none");
+
+    $.get('dashboard/agendadas').done(function(data){
+        buildAgendadasTable(data);
+	});
+}
+
+function buildAgendadasTable(data){
+    $('#tabla\\.resultado').empty();
+
+    if (Object.keys(data).length > 0) {
+        $("#mensaje\\.resultado").addClass("d-none");
+        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Teléfono</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Agendado</th><th>Accion</th></tr></thead><tbody>';
+        //tabla para ver las interconsultas solicitadas
+        $.each(data, function(i, value) {
+            let fecha = value.solicitud_fecha.split('-');
+            fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+
+            let fecha2 = value.evaluacion_fecha.split('-');
+            fecha2 = fecha2[2] + "-" + fecha2[1] + "-" + fecha2[0];
+
+            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td><td>'+ fecha2 +'</td>';
             tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
         });
 

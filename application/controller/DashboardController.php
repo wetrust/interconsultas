@@ -453,6 +453,9 @@ class DashboardController extends Controller
     public function solicitadas(){
         $this->View->renderJSON(SolicitudesModel::getAllMyNewSolicitudes(Session::get('user_email')));
     }
+    public function agendadas(){
+        $this->View->renderJSON(SolicitudesModel::getAllAgendadasSolicitudes(Session::get('user_email')));
+    }
     public function confirmar(){
         $solicitud_id = Request::post('solicitud_id');
         $this->View->renderJSON(SolicitudesModel::confirmarSolicitud($solicitud_id));

@@ -50,6 +50,7 @@ $(document).ready(function(){
             $("#filtro\\.tipo").parent().addClass("d-none");
         }else if (valor == 3){
             //solicitud de interconsulta agendada
+            loadAgendadas();
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().addClass("d-none");
         }else if (valor == 4){

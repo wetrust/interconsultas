@@ -22,6 +22,17 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
+    public static function getAllAgendadasSolicitudes($solicitud_email)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT * FROM solicitudes INNER JOIN evaluacion ON solicitudes.solicitud_id = evaluacion.solicitud_id WHERE solicitud_email = :solicitud_email AND solicitud_respuesta = 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_email' => $solicitud_email));
+
+        return $query->fetchAll();
+    }
+
     public static function confirmarSolicitud($solicitud_id)
     {
         $respuesta = new stdClass();
