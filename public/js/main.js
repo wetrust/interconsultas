@@ -2,6 +2,7 @@ $(document).ready(function(){
     if (a == 1){
         $("#interconsultas\\.estado\\.nuevas").addClass("d-none");
         $("#interconsultas\\.estado\\.espera").addClass("d-none");
+        $("#interconsultas\\.estado\\.agendadas").addClass("d-none");
         $("#interconsultas\\.estado\\.finalizadas").addClass("d-none");
         $("#interconsultas\\.estado\\.respuesta").addClass("d-none");
         $("#filtro\\.activar").addClass("d-none");
@@ -16,12 +17,14 @@ $(document).ready(function(){
         loadSolicitud();
     }else if (a == 3){
         $("#interconsultas\\.estado\\.solicitar").addClass("d-none");
+        $("#interconsultas\\.estado\\.agendadas").addClass("d-none");
         $("#interconsultas\\.estado\\.solicitadas").addClass("d-none");
         $("#interconsultas\\.estado\\.respuesta").addClass("d-none");
         loadNews();
     }
     else if (a == 4){
         $("#interconsultas\\.estado\\.nuevas").addClass("d-none");
+        $("#interconsultas\\.estado\\.agendadas").addClass("d-none");
         $("#interconsultas\\.estado\\.respuesta").addClass("d-none");
         $("#filtro\\.activar").addClass("d-none");
         loadSolicitud();
