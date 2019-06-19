@@ -275,12 +275,17 @@ function buildAgendadasTable(data){
                     $("#interconsulta_profesional").html('<strong>' + data.solicitud_profesional + '</strong>');
                     $("#solicitud_nombreprofesional").html('<strong>' + data.solicitud_nombreprofesional + '</strong>');
                     $("#solicitud_email").html('<strong>' + data.solicitud_email + '</strong>');
+
+                    $("#solicitud_contrarreferente").html('<strong>' + data.solicitud_nombre_referente + '</strong>');
+                    $("#interconsulta_contrarreferente_email").html('<strong>' + data.solicitud_profesionalemail + '</strong>');
+                    $("#evaluacion_agenda").html('<strong>' + data.evaluacion_fecha + '</strong>');
+                    $("#evaluacion_comentario").html('<strong>' + data.evaluacion_comentarios + '</strong>');
                 });
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty().prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Cancelar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
-                    $.get("dashboard/delete/" + solicitud_id).done(function(){loadSolicitadas();});
+                    $.get("dashboard/delete/" + solicitud_id).done(function(){loadAgendadas();});
                     $("#ver\\.interconsulta").modal("hide");
                 });
         });
