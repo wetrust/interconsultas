@@ -15,6 +15,10 @@ class DashboardController extends Controller
         $this->View->renderJSON(SolicitudesModel::getSolicitud($solicitud_id));
     }
 
+    public function veragendadas($solicitud_id){
+        $this->View->renderJSON(SolicitudesModel::getSolicitudJoin($solicitud_id));
+    }
+
     public function editSave(){ 
         $solicitud_id = Request::post('solicitud_id');
         $evaluacion_fecha = Request::post('evaluacion_fecha');

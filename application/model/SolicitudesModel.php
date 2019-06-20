@@ -347,6 +347,16 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
+        $sql = "SELECT * FROM solicitudes WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_id' => $solicitud_id));
+
+        return $query->fetch();
+    }
+    public static function getSolicitudJoin($solicitud_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
         $sql = "SELECT * FROM solicitudes INNER JOIN evaluacion ON solicitudes.solicitud_id = evaluacion.solicitud_id WHERE solicitudes.solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id));
