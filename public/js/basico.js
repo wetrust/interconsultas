@@ -225,7 +225,7 @@ function buildAgendadasTable(data){
 
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
-        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Teléfono</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitado</th><th>Agendado</th><th>Accion</th></tr></thead><tbody>';
+        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Teléfono</th><th>Ciudad</th><th>Lugar de control</th><th>Motivo de exámen</th><th>Solicitada</th><th>Agendada</th><th>Accion</th></tr></thead><tbody>';
         //tabla para ver las interconsultas solicitadas
         $.each(data, function(i, value) {
             let fecha = value.solicitud_fecha.split('-');
