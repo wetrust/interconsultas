@@ -110,7 +110,7 @@
                                 <input type="radio" value="3" name="interconsultas" autocomplete="off"> Solicitudes ecográficas agendadas
                             </label>
                             <label id="interconsultas.estado.espera" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="4" name="interconsultas" autocomplete="off"> Interconsulta en espera
+                                <input type="radio" value="4" name="interconsultas" autocomplete="off"> Solicitudes en espera
                             </label>
                             <label id="interconsultas.estado.finalizadas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="5" name="interconsultas" autocomplete="off"> Examenes realizados
