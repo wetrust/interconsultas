@@ -199,7 +199,7 @@ function buildSolicitadasTable(data){
                     $("#solicitud_email").html('<strong>' + data.solicitud_email + '</strong>');
                 });
                 $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty().prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Cancelar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                $("#ver\\.interconsulta\\.footer").empty().prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
                     $.get("dashboard/delete/" + solicitud_id).done(function(){loadSolicitadas();});
