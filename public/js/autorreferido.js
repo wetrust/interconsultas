@@ -154,6 +154,11 @@ function loadSolicitud(){
 }
 
 function loadInFinish(){
+	$("#tabla\\.resultado").removeClass("d-none");
+    $("#mensaje\\.resultado").removeClass("d-none");
+    $("#card\\.header").addClass("d-none");
+	$("#formulario\\.solicitud").addClass("d-none");
+	
     $.get('dashboard/finish').done(function(data){
         buildFinishTable(data);
     });
