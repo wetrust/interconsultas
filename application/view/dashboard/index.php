@@ -98,16 +98,16 @@
                     <div class="w-100 d-flex flex-row">
                         <div class="btn-group-toggle" data-toggle="buttons">
                             <label id="interconsultas.estado.solicitar" class="btn interconsulta btn-secondary active">
-                                <input type="radio" value="0" name="interconsultas" checked autocomplete="off">Solicitud de exámen ecográfico
+                                <input type="radio" value="0" name="interconsultas" checked autocomplete="off">Solicitud de exámen
                             </label>
                             <label id="interconsultas.estado.solicitadas" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="1" name="interconsultas" autocomplete="off"> Solicitudes ecográficas en espera
+                                <input type="radio" value="1" name="interconsultas" autocomplete="off"> Solicitudes en espera
                             </label>
                             <label id="interconsultas.estado.nuevas" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="2" name="interconsultas" autocomplete="off"> Nuevas solicitudes
                             </label>
                             <label id="interconsultas.estado.agendadas" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Solicitudes ecográficas agendadas
+                                <input type="radio" value="3" name="interconsultas" autocomplete="off"> Solicitudes agendadas
                             </label>
                             <label id="interconsultas.estado.espera" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="4" name="interconsultas" autocomplete="off"> Solicitudes en espera
@@ -116,7 +116,7 @@
                                 <input type="radio" value="5" name="interconsultas" autocomplete="off"> Examenes realizados
                             </label>
                             <label id="interconsultas.estado.respuesta" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="6" name="interconsultas" autocomplete="off"> Examenes ecograficos realizados
+                                <input type="radio" value="6" name="interconsultas" autocomplete="off"> Ecografías realizadas
                             </label>
                         </div>
                     </div>
