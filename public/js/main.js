@@ -25,6 +25,7 @@ $(document).ready(function(){
     else if (a == 4){
         $("#interconsultas\\.estado\\.nuevas").addClass("d-none");
         $("#interconsultas\\.estado\\.agendadas").addClass("d-none");
+        $("#interconsultas\\.estado\\.solicitadas").addClass("d-none");
         $("#interconsultas\\.estado\\.respuesta").addClass("d-none");
         $("#filtro\\.activar").addClass("d-none");
         loadSolicitud();
