@@ -168,7 +168,7 @@ function loadInProcess(){
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>'+ value.solicitud_ciudad +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
                 if (value.solicitud_confirmada == 'Si'){
-                    tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Examen</button></td></tr>';
+                    tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen</button></td></tr>';
                 }
                 else{
                     tabla += '<td><button class="btn confirmar btn-secondary" data-id='+ value.solicitud_id + '>Confirmar fecha de eco</button><button class="btn reagendar btn-secondary" data-id='+ value.solicitud_id + '>Reagendar paciente</button></td></tr>';
