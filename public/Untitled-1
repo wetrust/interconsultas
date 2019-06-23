@@ -1,0 +1,25 @@
+__Boton__
+(Reenviar datos post-natales)
+__Boton__
+
+__FORMULARIO__
+Datos del parto
+-RUT de madre
+*Datos maternos
+Fecha de parto
+Lugar de Parto
+Peso Materno () kgr
+Talla Materna () cm
+Paridad (Primípara, Multípara)
+Tipo de parto (Vagina, Cesárea)
+*Datos neonatales
+Eg al nacer () semanas/dias
+Peso fetal ()gr
+Talla () mm
+Cráneo ()mm
+Apgar 1, 5
+Sexo RN (Femenino, Masculino)
+Meconio (Si,No)
+
+Comentarios_
+__FORMULARIO DE CONSENTIMIENTO MATERNO__
