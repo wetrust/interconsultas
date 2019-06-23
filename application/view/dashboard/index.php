@@ -113,7 +113,7 @@
                                 <input type="radio" value="4" name="interconsultas" autocomplete="off"> Solicitudes en espera
                             </label>
                             <label id="interconsultas.estado.finalizadas" class="btn interconsulta btn-secondary">
-                                <input type="radio" value="5" name="interconsultas" autocomplete="off"> Examenes realizados
+                                <input type="radio" value="5" name="interconsultas" autocomplete="off"> Ecografías realizadas
                             </label>
                             <label id="interconsultas.estado.respuesta" class="btn interconsulta btn-secondary">
                                 <input type="radio" value="6" name="interconsultas" autocomplete="off"> Ecografías realizadas
