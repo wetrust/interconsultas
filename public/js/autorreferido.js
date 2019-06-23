@@ -181,62 +181,9 @@ function loadInProcess(){
                 if (value.solicitud_confirmada == 'Si'){
                     tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen</button></td></tr>';
                 }
-                else{
-                    tabla += '<td><button class="btn confirmar btn-secondary" data-id='+ value.solicitud_id + '>Confirmar fecha de eco</button><button class="btn reagendar btn-secondary" data-id='+ value.solicitud_id + '>Reagendar paciente</button></td></tr>';
-                }
             });
             tabla += '</tbody>';
             $('#tabla\\.resultado').append(tabla);
-            $('#tabla\\.resultado tr > td > button.confirmar').on("click", function(){
-                let solicitud_id =  $(this).data("id");
-                $("#ver\\.interconsulta > div").removeClass("h-100");
-                $("#ver\\.interconsulta > div > div").removeClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("Confirmar interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col-3 form-group"> <label for="interconsulta.para">Fecha</label> <input type="text" disabled class="form-control" id="evaluacion_fecha"> </div><div class="col form-group"> <label for="interconsulta.comentario.respuesta">Comentario</label> <input disabled class="form-control" id="evaluacion_comentarios"/> </div></div>');
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Confirmar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-                $("#solicitud_id").val(solicitud_id);
-                $.get('dashboard/edit/' + solicitud_id).done(function(data){
-                    $("#evaluacion_fecha").val(data.evaluacion_fecha);
-                    $("#evaluacion_comentarios").val(data.evaluacion_comentarios);
-                });
-                $("#enviar\\.respuesta\\.botton").on("click", function(){
-                    var data = {
-                        solicitud_id: $("#solicitud_id").val()
-                    }
-                    $.post('dashboard/confirmar',data).done(function(response){
-                        loadInProcess();
-                        $("#ver\\.interconsulta").modal("hide");
-                    });
-                });
-            });
-            $('#tabla\\.resultado tr > td > button.reagendar').on("click", function(){
-                let solicitud_id =  $(this).data("id");
-                $("#ver\\.interconsulta > div").removeClass("h-100");
-                $("#ver\\.interconsulta > div > div").removeClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("Cambiar fecha de interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col-3 form-group"> <label for="interconsulta.para">Fecha</label> <input type="date" class="form-control" id="evaluacion_fecha"> </div><div class="col form-group"> <label for="interconsulta.comentario.respuesta">Comentario</label> <input class="form-control" id="evaluacion_comentarios"/> </div></div>');
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Reagendar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-                $("#solicitud_id").val(solicitud_id);
-                $.get('dashboard/edit/' + solicitud_id).done(function(data){
-                    $("#evaluacion_fecha").val(data.evaluacion_fecha);
-                    $("#evaluacion_comentarios").val(data.evaluacion_comentarios);
-                });
-                $("#enviar\\.respuesta\\.botton").on("click", function(){
-                    var data = {
-                        solicitud_id: $("#solicitud_id").val(),
-                        solicitud_fecha: $("#evaluacion_fecha").val(),
-                        solicitud_comentarios: $("#evaluacion_comentarios").val()
-                    }
-                    $.post('dashboard/reagendar',data).done(function(response){
-                        loadInProcess();
-                        $("#ver\\.interconsulta").modal("hide");
-                    });
-                });
-            });
             $('#tabla\\.resultado tr > td > button.examen').on("click", function(){
                 let solicitud_id =  $(this).data("id");
                 $("#ver\\.interconsulta > div").removeClass("h-100");
