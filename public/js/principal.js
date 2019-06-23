@@ -171,7 +171,7 @@ function loadInProcess(){
                     tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Examen</button></td></tr>';
                 }
                 else{
-                    tabla += '<td><button class="btn confirmar btn-secondary" data-id='+ value.solicitud_id + '>Confirmar</button><button class="btn reagendar btn-secondary" data-id='+ value.solicitud_id + '>Reagendar</button></td></tr>';
+                    tabla += '<td><button class="btn confirmar btn-secondary" data-id='+ value.solicitud_id + '>Confirmar fecha</button><button class="btn reagendar btn-secondary" data-id='+ value.solicitud_id + '>Reagendar paciente</button></td></tr>';
                 }
             });
             tabla += '</tbody>';
