@@ -1,35 +1,25 @@
 $(document).ready(function(){
     construir();
-
     $("#interconsulta\\.fum").on("change", function(){
 		var FExamen, FUM, EdadGestacional;
 		var undia = 1000 * 60 * 60 * 24;
 		var unasemana = undia * 7;
-
 		FUM = $("#interconsulta\\.fum").val();
 		FExamen = $("#interconsulta\\.fecha").val();
-
 		FUM = new Date (FUM);
 		FExamen = new Date (FExamen);
-
 		EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
-
 		if (FExamen.getTime() < FUM.getTime()) {
 			$('#interconsulta\\.egestacional').val("0 semanas");
 		}
-		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-			$('#interconsulta\\.egestacional').val("42 semanas");
-		}
+		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) { $('#interconsulta\\.egestacional').val("42 semanas"); }
 		else {
 			$('#interconsulta\\.egestacional').val(Math.floor(EdadGestacional) + "." + Math.round((EdadGestacional - Math.floor(EdadGestacional))*7) + " semanas");
 		}
-
     });
-
     $("#interconsulta\\.enviar").on("click", function(){
 		var listo = false;
 		//revisar si el usuario lleno todas las cajas
-			
 		var nombre = String($("#interconsulta\\.nombre").val());
 		var rut = String($("#interconsulta\\.rut").val());
 		var fecha = String($("#interconsulta\\.fecha").val());
@@ -43,13 +33,10 @@ $(document).ready(function(){
 		var egestacional = String($("#interconsulta\\.egestacional").val());
 		var para = $("input[name='interconsulta_para_nombre']").val();
 		var nombre_para = $("input[name='interconsulta_para']").val();
-        
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
-        
         if (nombre.length < 3 || rut.length < 4 || telefono.length < 6 || fecha.length < 4 || eg == 'undefined' || eg.length < 1 || eco == 'undefined' || eco.length  < 0 || fum.length < 4 || diagnostico.length  < 3 || ciudad.length < 2 || lugar.length  < 3 || egestacional.length < 3){
             var mensaje = "";
-
             if (nombre.length < 3){
                 mensaje = textos.paciente_name_error;
             }else if (rut.length < 4){
@@ -73,18 +60,15 @@ $(document).ready(function(){
             }else if (egestacional.length < 3){
                 mensaje = textos.fechas_error;
             }
-
             $('body').append(baseModal + '<h5 class="modal-title">' + textos.form_error+'</h5></div><div class="modal-body"><p>'+ mensaje+'</p>'+ footerModal);
             $('#cautivo\\.dialogo').modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
             return;
         } else{
             listo = true;
         }
-
 		if (listo == true){
 			$('#interconsulta\\.enviar').prop("disabled", true);
 			var eLdiagnostico = $("#interconsulta\\.diagnostico\\.select").val() + ", "+ $("#interconsulta\\.diagnostico").val();
-
 			var data = {
 				nombre: $("#interconsulta\\.nombre").val(),
 				rut: $("#interconsulta\\.rut").val(),
@@ -102,7 +86,6 @@ $(document).ready(function(){
 			};
 			$('body').append(baseModal + textos.form_send + '</h5></div><div class="modal-body"><p>Enviando solicitud de interconsulta, por favor espere</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div></div></div></div></div>');
 			$('#cautivo\\.dialogo').modal("show");
-		
 			$.post("https://administrador.crecimientofetal.cl/api/send", data).done(function(response){
 				if (response.result == false){
 					$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">ERROR</h5></div><div class="modal-body"><p>Usted NO puede solicitar interconsulta para este profesional</p>'+ footerModal);
@@ -133,26 +116,22 @@ $(document).ready(function(){
 			});
 		}
     });
-	
 	var now = new Date();
 	var day = ("0" + now.getDate()).slice(-2);
 	var month = ("0" + (now.getMonth() + 1)).slice(-2);
 	var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 	$("#interconsulta\\.fecha").val(today);
 });
-
 function construir(){
     $("#mensaje\\.resultado").parent().parent().prepend('<div class="card-header bg-secondary" id="card.header"><h4 class="text-white text-center">Formulario de referencia para evaluación ecográfica gineco - Obstétrica</h4></div>');
     $("#mensaje\\.resultado").parent().prepend('<div id="formulario.solicitud"> <div class="row"> <div class="col form-group"> <label>Nombre del paciente</label> <input type="text" class="form-control" id="interconsulta.nombre"> </div><div class="col form-group"> <label>RUT del paciente</label> <input type="text" class="form-control" id="interconsulta.rut"> </div><div class="col form-group"> <label>Teléfono</label> <input type="number" class="form-control" id="interconsulta.telefono"> </div></div><div class="row"> <div class="col form-group"> <label>Fecha de solicitud del exámen</label> <input type="date" class="form-control" id="interconsulta.fecha"> </div><div class="col form-group"> <label class="d-block">Ege conocida precozmente</label> <div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eg.si" value="1" name="interconsulta_eg" class="form-check-input"> <label class="form-check-label">Si</label> </div><div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eg.no" value="0" name="interconsulta_eg" class="form-check-input" checked=""> <label class="form-check-label">No</label> </div></div><div class="col form-group"> <label class="d-block">Ecografía previa de crecimiento</label> <div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eco.si" value="1" name="interconsulta_eco" class="form-check-input"> <label class="form-check-label">Si</label> </div><div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eco.no" value="0" name="interconsulta_eco" class="form-check-input" checked=""> <label class="form-check-label">No</label> </div></div></div><div class="row"> <div class="col form-group"> <label>FUM operacional</label> <input type="date" class="form-control" id="interconsulta.fum"> </div><div class="col-2 form-group"> <label>Edad Gestacional</label> <input type="text" class="form-control" id="interconsulta.egestacional" disabled=""> </div><div class="col form-group"> <label>Diagnóstico de referencia 1</label> <select class="form-control" id="interconsulta.diagnostico.select"> <option value="Referido por" selected>Referido por</option> <option value="Patología 1° trimestre">Patología 1° trimestre</option> <option value="Patología 2° trimestre">Patología 2° trimestre</option> <option value="Patología 3° trimestre">Patología 3° trimestre</option> <option value="No señalado">No señalado</option> </select> </div><div class="col form-group"> <label>Diagnóstico de referencia2</label> <input type="text" class="form-control" id="interconsulta.diagnostico"> </div></div><div class="row"> <div class="col form-group"> <label>Ciudad procedencia de la paciente</label> <input type="text" class="form-control" id="interconsulta.ciudad"> </div><div class="col form-group"> <label>Lugar de control prenatal</label> <input type="text" class="form-control" id="interconsulta.lugar"> </div></div><div class="row"> <div class="col"> <button class="btn btn-primary" id="interconsulta.enviar">Enviar solicitud de exámen ecográfico</button> </div></div></div>');
 }
-
 function loadSolicitud(){
     $("#tabla\\.resultado").addClass("d-none");
     $("#mensaje\\.resultado").addClass("d-none");
     $("#card\\.header").removeClass("d-none");
     $("#formulario\\.solicitud").removeClass("d-none");
 }
-
 function loadInFinish(){
 	$("#tabla\\.resultado").removeClass("d-none");
     $("#mensaje\\.resultado").removeClass("d-none");
@@ -163,7 +142,6 @@ function loadInFinish(){
         buildFinishTable(data);
     });
 }
-
 function loadInProcess(){
     $("#tabla\\.resultado").removeClass("d-none");
     $("#mensaje\\.resultado").removeClass("d-none");
@@ -1054,7 +1032,6 @@ function loadInProcess(){
         }
     });
 }
-
 function buildFinishTable(data){
     $('#tabla\\.resultado').empty();
     if (Object.keys(data).length > 0) {
@@ -1614,7 +1591,6 @@ function pctccAdvanced(eg, cc) {
         }
     }
 }
-
 function pctlfAdvanced(eg, lf) {
     var pct3 = [];
     var pct97 = [];
@@ -1666,8 +1642,6 @@ function pctlfAdvanced(eg, lf) {
         }
     }
 }
-
-
 function ICAdvanced(dbp, dof) {
     if (dbp > 0) {
         if (dof > 0) {
@@ -1680,7 +1654,6 @@ function ICAdvanced(dbp, dof) {
         return 0;
     }
 }
-
 function pctlhAdvanced(eg, lh) {
     var pct05 = [];
     var pct95 = [];
@@ -1722,11 +1695,8 @@ function pctlhAdvanced(eg, lh) {
         }
     }
 }
-
 function pctcerebeloAdvanced(eg,cerebelo) {
-    var pct2ds = [];
-    var pctmedia = [];
-    var pct2dsmas = [];
+    var pct2ds = [], pctmedia = [], pct2dsmas = [];
     pct2ds[0] = 12;pct2ds[1] = 14;pct2ds[2] = 15;pct2ds[3] = 16;pct2ds[4] = 17;pct2ds[5] = 18;
     pct2ds[6] = 19;pct2ds[7] = 20;pct2ds[8] = 21;pct2ds[9] = 22;pct2ds[10] = 24;
     pct2ds[11] = 26;pct2ds[12] = 27;pct2ds[13] = 29;pct2ds[14] = 30;pct2ds[15] = 31;
@@ -1745,27 +1715,17 @@ function pctcerebeloAdvanced(eg,cerebelo) {
     pct2dsmas[20] = 56;pct2dsmas[21] = 58;pct2dsmas[22] = 60;pct2dsmas[23] = 62;pct2dsmas[24] = 62;
     pct2dsmas[25] = 62;
 
-    if (eg < 15) {
-        return 0;
-    } 
+    if (eg < 15) { return 0; } 
     else if (eg > 40)
-    {
-        return 0;
-    } 
+    { return 0; } 
     else {
         eg = parseInt(eg) - 15;
         var uno = pct2dsmas[eg] - pct2ds[eg];
         var dos = cerebelo - pct2ds[eg];
         var resultado = parseInt(95 / (uno) * (dos) + 5);
-        if (resultado > 99) {
-            return '> 99';
-        }
-        else if (resultado < 1) {
-            return '< 1';
-        }
-        else {
-            return resultado;
-        }
+        if (resultado > 99) {return '> 99';}
+        else if (resultado < 1) {return '< 1';}
+        else {return resultado;}
     }
 };
 function valCC(dof,dbp){
