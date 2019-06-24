@@ -42,7 +42,6 @@
 <section class="bg-secondary">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item"><a class="nav-link" id="consentimiento-tab" data-toggle="tab" href="#consentimiento" role="tab" aria-controls="consentimiento" aria-selected="false">Módulo consentimiento informado</a></li>
             <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a></li>
             <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo de parto y recién nacido</a></li>
         </ul>
@@ -51,47 +50,6 @@
 <div class="container">
     <?php $this->renderFeedbackMessages(); ?>
     <div class="tab-content" id="myPrincipaTab">
-        <div class="tab-pane fade" id="consentimiento" role="tabpanel" aria-labelledby="consentimiento-tab">
-            <div class="card my-2 shadow mt-4">
-                <div class="card-body">
-                    <p><strong><em>Según la legislación vigente, la información recopilada en base de datos es solo con fines de conocer el historial clínico del paciente.</em></strong></p>
-                    <p class="text-danger"><strong><em>El uso de la información total o parcial, para fines de estudios requiere de autorización escrita por parte del paciente.</em></strong></p>
-                    <p><strong><em>Para tal efecto se requiere de “consentimiento informado”, siguiendo protocolos estándares de los comité científicos respectivos.</em></strong></p>
-                    <div class="row mt-5">
-                        <div class="col-8"><p><strong><em>Protocolo para para estudio de modulo prenatal ultrasonográfico, datos ultrasonográficos.</em></strong></p></div>
-                        <div class="col-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="uno" value="option1">
-                                <label class="form-check-label">Si</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="uno" value="option2">
-                                <label class="form-check-label">No</label>
-                            </div>
-                        </div>
-                        <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
-                    </div>
-                    <div class="row mt-2 mb-5">
-                        <div class="col-8"><p><strong><em>Protocolo para para estudio de modulo postnatal datos clínicos de parto y recién nacido.</em></strong></div>
-                        <div class="col-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="dos" value="option1">
-                                <label class="form-check-label">Si</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="dos" value="option2">
-                                <label class="form-check-label">No</label>
-                            </div>
-                        </div>
-                        <div class="col-2"><a class="btn btn-primary" href="#">Formulario</a></div>
-                    </div>
-                    <div class="form-group">
-                        <label><strong><em>Comentarios y observaciones</em></strong></label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="tab-pane fade show active" id="interconsulta" role="tabpanel" aria-labelledby="interconsulta-tab">
             <div class="card my-2 shadow">
                 <div class="card-body d-flex flex-row">
