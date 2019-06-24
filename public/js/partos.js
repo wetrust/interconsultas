@@ -351,7 +351,7 @@ function buildPartosGuardadosTable(data){
 
                 $.post("dashboard/actualizarPartos", data).done(function(result){
                     $('#cautivo\\.dialogo').modal("hide");
-                    loadInPartos();
+                    loadReadyPartos();
                 });
             });
 
