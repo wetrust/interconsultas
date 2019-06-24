@@ -245,6 +245,7 @@ function buildPartosTable(data){
 
                 $.post("dashboard/savePartos", data).done(function(result){
                     $('#cautivo\\.dialogo').modal("hide");
+                    loadInPartos();
                 });
             });
 

@@ -410,7 +410,7 @@ class DashboardController extends Controller
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesSinParto(Session::get('user_email')));
     }
     public function partos(){
-        $this->View->renderJSON(SolicitudesModel::getAllPartos(Session::get('user_email')));
+        $this->View->renderJSON(PartosModel::getAllPartos(Session::get('user_email')));
     }
     public function baseParto($user_id){
         $this->View->renderJSON(SolicitudesModel::getOldSolicitudes($user_id));
