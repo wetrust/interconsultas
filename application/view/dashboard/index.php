@@ -274,3 +274,4 @@
 <?php } else if (Session::get("user_account_type") == 4) { ?>
     <script src="js/autorreferido.js"></script>
 <?php } ?>
+<script src="js/jquery.rut.chileno.min.js"></script>
