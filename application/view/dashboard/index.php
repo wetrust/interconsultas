@@ -42,8 +42,8 @@
 <section class="bg-secondary">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo interconsultas ecográficas</a></li>
-            <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo de parto y recién nacido</a></li>
+            <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo prenatal, exámenes ecográficos</a></li>
+            <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo postnatal, datos del parto y recién nacido</a></li>
         </ul>
     </div>
 </section>
