@@ -450,7 +450,7 @@ class DashboardController extends Controller
         $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta));
     }
 
-    public function savePartos(){
+    public function actualizarPartos(){
         $apgar_uno = Request::post('apgar_uno');
         $apgar_cinco = Request::post('apgar_cinco');
         $parto_id = Request::post('parto_id');
