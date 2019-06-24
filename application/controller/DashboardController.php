@@ -454,7 +454,7 @@ class DashboardController extends Controller
         $apgar_uno = Request::post('apgar_uno');
         $apgar_cinco = Request::post('apgar_cinco');
         $parto_id = Request::post('parto_id');
-        $this->View->renderJSON(PartosModel::createPartos($parto_id, $apgar_uno, $apgar_cinco));
+        $this->View->renderJSON(PartosModel::updatePartos($parto_id, $apgar_uno, $apgar_cinco));
     }
 
     public function deleteParto($solicitud_id){
