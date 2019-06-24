@@ -128,10 +128,12 @@ function construir(){
     $('#interconsulta\\.rut').rut({
         fn_error : function(input){
             $(input).removeClass("is-valid").addClass("is-invalid");
+            input.closest('.rut-container').find('span').remove();
             input.closest('.rut-container').append('<span class="invalid-feedback">Rut incorrecto</span>');
         },
         fn_validado : function(input){
             $(input).removeClass("is-invalid").addClass("is-valid");
+            input.closest('.rut-container').find('span').remove();
             input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
         },
         placeholder: false
