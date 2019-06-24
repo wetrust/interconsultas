@@ -86,7 +86,7 @@ $(document).ready(function(){
 			};
 			$('body').append(baseModal + textos.form_send + '</h5></div><div class="modal-body"><p>Enviando solicitud de interconsulta, por favor espere</p><div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div></div></div></div></div>');
 			$('#cautivo\\.dialogo').modal("show");
-			$.post("https://administrador.crecimientofetal.cl/api/send", data).done(function(response){
+			$.post("https://administrador.crecimientofetal.cl/api/internal", data).done(function(response){
 				if (response.result == false){
 					$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">ERROR</h5></div><div class="modal-body"><p>Usted NO puede solicitar interconsulta para este profesional</p>'+ footerModal);
 				}
