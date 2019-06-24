@@ -272,7 +272,9 @@
     <script src="js/partos.js"></script>
 <?php } else if (Session::get("user_account_type") == 3) { ?>
     <script src="js/principal.js"></script>
+    <script src="js/partos.js"></script>
 <?php } else if (Session::get("user_account_type") == 4) { ?>
     <script src="js/jquery.rut.chileno.min.js"></script>
     <script src="js/autorreferido.js"></script>
+    <script src="js/partos.js"></script>
 <?php } ?>
