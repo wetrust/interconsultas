@@ -451,6 +451,7 @@ function buildPartosGuardadosTable(data, filtro){
             });
 
             $.get("dashboard/dataPartos/" + solicitud_id).done(function(data){
+                $("#idparto").val(data.parto_id);
                 $("#fechaparto").val(data.fecha_parto);
                 $("#egparto").val(data.semanas);
                 $("#diasparto").val(data.dias);
