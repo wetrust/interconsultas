@@ -477,4 +477,13 @@ class DashboardController extends Controller
         $solicitud_comentarios = Request::post('solicitud_comentarios');
         $this->View->renderJSON(EvaluacionModel::updateEvaluacion($solicitud_id,$solicitud_fecha,$solicitud_comentarios));
     }
+
+    public function filtroparto(){
+        $ciudad = Request::post('ciudad');
+        $lugar = Request::post('lugar');
+        $desde = Request::post('desde');
+        $hasta = Request::post('hasta');
+        $fecha = Request::post('fecha');
+        $this->View->renderJSON(InterconsultaModel::getFiltroParto($ciudad,$lugar,$desde,$hasta,$fecha));
+    }
 }

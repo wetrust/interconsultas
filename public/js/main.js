@@ -77,8 +77,11 @@ $(document).ready(function(){
         let valor = parseInt($(this).find('input').val());
         if (valor == 0){
             loadInPartos();
+            $("#filtro\\.parto\\.contenedor").addClass("d-none");
+            $("#filtro\\.parto\\.activar").addClass("d-none");
         }else if (valor == 1){
             loadReadyPartos();
+            $("#filtro\\.parto\\.activar").removeClass("d-none");
         }
     });
     

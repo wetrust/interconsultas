@@ -135,13 +135,69 @@
         <div class="tab-pane fade" id="parto" role="tabpanel" aria-labelledby="parto-tab">
             <div class="card my-2 shadow">
                 <div class="card-body d-flex flex-row">
-                    <div class="btn-group-toggle" data-toggle="buttons">
-                        <label class="btn parto btn-secondary active">
-                            <input type="radio" value="0" name="parto" checked autocomplete="off">Listado de pacientes
-                        </label>
-                        <label class="btn parto btn-secondary">
-                            <input type="radio" value="1" name="parto" autocomplete="off"> Ver información
-                        </label>
+                    <div class="w-100 d-flex flex-row">
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <label class="btn parto btn-secondary active">
+                                <input type="radio" value="0" name="parto" checked autocomplete="off">Listado de pacientes
+                            </label>
+                            <label class="btn parto btn-secondary">
+                                <input type="radio" value="1" name="parto" autocomplete="off"> Ver información
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-animado d-none" id="filtro.parto.activar">Ver Filtros</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card my-2 shadow d-none" id="filtro.parto.contenedor">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label>Ciudad</label>
+                            <select class="form-control" id="filtro.parto.ciudad"></select></div>
+                        <div class="col">
+                            <label>Lugar de control</label>
+                            <select class="form-control" id="filtro.parto.lugar"></select></div>
+                        <div class="col">
+                            <label>Fecha desde</label>
+                            <input type="date" id="filtro.parto.fecha" class="form-control" placeholder="Fecha"></div>
+                        <div class="col">
+                            <label>Fecha hasta</label>
+                            <input type="date" id="filtro.parto.fecha.hasta" class="form-control" placeholder="Fecha"></div>
+                        <div class="col">
+                            <label>Tipo de exámen</label>
+                            <select class="form-control" id="filtro.parto.tipo">
+                                <option value="" selected>No Seleccionado</option>
+                                <option value="43">43</option>
+                                <option value="42">42</option>
+                                <option value="41">41</option>
+                                <option value="40">40</option>
+                                <option value="39">39</option>
+                                <option value="38">38</option>
+                                <option value="37">37</option>
+                                <option value="36">36</option>
+                                <option value="35">35</option>
+                                <option value="34">34</option>
+                                <option value="33">33</option>
+                                <option value="32">32</option>
+                                <option value="31">31</option>
+                                <option value="30">30</option>
+                                <option value="29">29</option>
+                                <option value="28">28</option>
+                                <option value="27">27</option>
+                                <option value="26">26</option>
+                                <option value="25">25</option>
+                                <option value="24">24</option>
+                                <option value="23">23</option>
+                                <option value="22">22</option>
+                                <option value="21">21</option>
+                                <option value="20">20</option>
+                            </select></div>
+                        <div class="col">
+                            <label>Filtro</label>
+                            <div class="btn-group" role="group">
+                                <button id="filtro.parto.accion" class="btn btn-primary">Aplicar</button>
+                                <button id="filtro.parto.borrar" class="btn btn-danger">Borrar</button>
+                            </div></div>
                     </div>
                 </div>
             </div>

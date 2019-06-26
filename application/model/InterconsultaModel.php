@@ -39,4 +39,17 @@ class InterconsultaModel
         $response->result = true;
         return $response;
     }
+
+    public static function getFiltroParto($ciudad,$lugar,$desde,$hasta,$fecha)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $ciudad = strval($ciudad);
+        $lugar = strval($lugar);
+        $desde = strval($desde);
+        $hasta = strval($hasta);
+        $tipo = intval($tipo);
+        $sql = "";
+        $query = "";
+    }
 }
