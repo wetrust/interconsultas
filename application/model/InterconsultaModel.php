@@ -48,21 +48,101 @@ class InterconsultaModel
         $lugar = strval($lugar);
         $desde = strval($desde);
         $hasta = strval($hasta);
-        $tipo = intval($tipo);
+        $fecha = intval($fecha);
         $sql = "";
         $query = "";
-    }
 
-    public static function getCiudadParto(){
-        $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_email AND solicitudes.solicitud_respuesta = 2";
-        $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_email' => $solicitud_email));
+        if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
+            //no filtra
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
+        }
+        else if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) > 0){
+            //filtra por tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.semanas = :semanas";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':semanas' => $fecha));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
+            //filtra por ciudad
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad));
+        }
+        else if (strlen($ciudad) == 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
+            //filtra por lugar
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_email = :solicitud_profesionalemail";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar));
+        }
+        else if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($hasta) > 0 && strlen($fecha) == 0){
+            //filtra por fecha
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.fecha_parto between :fechauno AND :fechados";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':fechauno' => $desde, ':fechados' => $hasta));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
+            //filtra por fciudad y lugar
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) > 0){
+            //filtra por ciudad y tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.semanas = :tipo";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad, ':tipo' => $tipo));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($hasta) > 0 && strlen($fecha) == 0){
+            //filtra por ciudad y fecha
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.fecha_parto between :fechauno AND :fechados";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad,':fechauno' => $desde, ':fechados' => $hasta));
+        }
+        else if (strlen($ciudad) == 0 && strlen($lugar) > 0 && strlen($desde) > 0 && strlen($hasta) > 0 && strlen($fecha) == 0){
+            //filtra por lugar y fecha
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.fecha_parto between :fechauno AND :fechados";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':fechauno' => $desde, ':fechados' => $hasta));
+        }
+        else if (strlen($ciudad) == 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) > 0){
+            //filtra por lugar y tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.semanas = :tipo";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':tipo' => $tipo));
+        }
+        else if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($hasta) > 0 && strlen($fecha) > 0){
+            //filtra por fecha y tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.semanas = :tipo AND partos.fecha_parto between :fechauno AND :fechados";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':fechauno' => $desde, ':fechados' => $hasta, ':tipo' => $tipo));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($hasta) > 0 && strlen($fecha) > 0){
+            //filtra por ciudad, fecha y tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.semanas = :tipo AND partos.fecha_parto between :fechauno AND :fechados";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad,':fechauno' => $desde, ':fechados' => $hasta, ':tipo' => $tipo));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) > 0){
+            //filtra por ciudad, lugar, fecha y tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.semanas = :tipo";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad, ':tipo' => $tipo));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) > 0 && strlen($hasta) > 0 && strlen($fecha) == 0){
+            //filtra por ciudad, lugar, fecha y tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.fecha_parto between :fechauno AND :fechados";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad,':fechauno' => $desde, ':fechados' => $hasta));
+        }
+        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) > 0 && strlen($hasta) > 0 && strlen($fecha) > 0){
+            //filtra por ciudad, lugar, fecha y tipo
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_email = :solicitud_profesionalemail AND partos.semanas = :tipo AND partos.fecha_parto between :fechauno AND :fechados";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad,':fechauno' => $desde, ':fechados' => $hasta, ':tipo' => $tipo));
+        }
 
         return $query->fetchAll();
-    }
-
-    public static function getLugarParto(){
-
     }
 }

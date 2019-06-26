@@ -8,6 +8,31 @@ $(document).ready(function(){
             $("#filtro\\.parto\\.contenedor").addClass("d-none");
         }
     });
+
+    $("#filtro\\.parto\\.borrar").on("click", function(){
+        loadReadyPartos();
+    });
+
+    $("#filtro\\.parto\\.accion").on("click", function(){
+        var ciudad = $("#filtro\\.parto\\.ciudad").val();
+        var lugar = $("#filtro\\.parto\\.lugar").val();
+        var desde = $("#filtro\\.parto\\.fecha").val();
+        var hasta = $("#filtro\\.parto\\.fecha.hasta").val();
+        var fecha = $("#filtro\\.parto\\.tipo").val();
+
+        var datos = {
+            ciudad : ciudad,
+            lugar : lugar,
+            desde : desde,
+            hasta : hasta,
+            fecha : fecha
+        }
+
+        $.post('dashboard/partos', datos).done(function(data){
+            buildPartosGuardadosTable(data, false);
+        });
+    });
+    
 });
 
 function loadInPartos(){
@@ -22,7 +47,7 @@ function loadReadyPartos(){
     $("#mensaje\\.parto").addClass("d-none");
     $("#tabla\\.parto").removeClass("d-none");
     $.get('dashboard/partos').done(function(data){
-        buildPartosGuardadosTable(data);
+        buildPartosGuardadosTable(data, true);
 	});
 }
 
@@ -276,25 +301,28 @@ function buildPartosTable(data){
     }
 }
 
-function buildPartosGuardadosTable(data){
+function buildPartosGuardadosTable(data, filtro){
     $('#tabla\\.parto').empty();
-    $('#filtro\\.parto\\.ciudad').empty().append('<option value="">No Seleccionado</option>');
-    $('#filtro\\.parto\\.lugar').empty().append('<option value="">No Seleccionado</option>');
 
-    if (Object.keys(data).length > 0) {
-        let response = '<option value=""></option>';
-        $.each(data, function(i, value) {
-            response = '<option value="' + value.solicitud_ciudad +'">' + value.solicitud_ciudad +'</option>';
-            $('#filtro\\.parto\\.ciudad').append(response);
-        });
-    }
-
-    if (Object.keys(data).length > 0) {
-        let response = '<option value=""></option>';
-        $.each(data, function(i, value) {
-            response = '<option value="' + value.solicitud_lugar +'">' + value.solicitud_lugar +'</option>';
-            $('#filtro\\.parto\\.lugar').append(response);
-        });
+    if (filtro){
+        $('#filtro\\.parto\\.ciudad').empty().append('<option value="">No Seleccionado</option>');
+        $('#filtro\\.parto\\.lugar').empty().append('<option value="">No Seleccionado</option>');
+    
+        if (Object.keys(data).length > 0) {
+            let response = '<option value=""></option>';
+            $.each(data, function(i, value) {
+                response = '<option value="' + value.solicitud_ciudad +'">' + value.solicitud_ciudad +'</option>';
+                $('#filtro\\.parto\\.ciudad').append(response);
+            });
+        }
+    
+        if (Object.keys(data).length > 0) {
+            let response = '<option value=""></option>';
+            $.each(data, function(i, value) {
+                response = '<option value="' + value.solicitud_lugar +'">' + value.solicitud_lugar +'</option>';
+                $('#filtro\\.parto\\.lugar').append(response);
+            });
+        }
     }
     
     if (Object.keys(data).length > 0) {
