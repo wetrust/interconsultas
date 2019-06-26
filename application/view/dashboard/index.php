@@ -164,7 +164,7 @@
                             <label>Fecha hasta</label>
                             <input type="date" id="filtro.parto.fecha.hasta" class="form-control" placeholder="Fecha"></div>
                         <div class="col">
-                            <label>Tipo de exámen</label>
+                            <label>Semanas</label>
                             <select class="form-control" id="filtro.parto.tipo">
                                 <option value="" selected>No Seleccionado</option>
                                 <option value="43">43</option>
