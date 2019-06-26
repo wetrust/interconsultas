@@ -52,4 +52,17 @@ class InterconsultaModel
         $sql = "";
         $query = "";
     }
+
+    public static function getCiudadParto(){
+        $database = DatabaseFactory::getFactory()->getConnection();
+        $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_email AND solicitudes.solicitud_respuesta = 2";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_email' => $solicitud_email));
+
+        return $query->fetchAll();
+    }
+
+    public static function getLugarParto(){
+
+    }
 }

@@ -278,6 +278,25 @@ function buildPartosTable(data){
 
 function buildPartosGuardadosTable(data){
     $('#tabla\\.parto').empty();
+    $('#filtro\\.parto\\.ciudad').empty().append('<option value="">No Seleccionado</option>');
+    $('#filtro\\.parto\\.lugar').empty().append('<option value="">No Seleccionado</option>');
+
+    if (Object.keys(data).length > 0) {
+        let response = '<option value=""></option>';
+        $.each(data, function(i, value) {
+            response = '<option value="' + value.solicitud_ciudad +'">' + value.solicitud_ciudad +'</option>';
+            $('#filtro\\.parto\\.ciudad').append(response);
+        });
+    }
+
+    if (Object.keys(data).length > 0) {
+        let response = '<option value=""></option>';
+        $.each(data, function(i, value) {
+            response = '<option value="' + value.solicitud_lugar +'">' + value.solicitud_lugar +'</option>';
+            $('#filtro\\.parto\\.lugar').append(response);
+        });
+    }
+    
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
         var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Fecha de nacimiento</th><th>Semanas al parto</th><th>Accion</th></tr></thead><tbody>';
