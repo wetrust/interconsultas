@@ -51,6 +51,7 @@ class InterconsultaModel
         $fecha = intval($fecha);
         $sql = "";
         $query = "";
+        $solicitud_email = Session::get('user_email')
 
         if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
             //no filtra
