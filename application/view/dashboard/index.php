@@ -138,10 +138,10 @@
                     <div class="w-100 d-flex flex-row">
                         <div class="btn-group-toggle" data-toggle="buttons">
                             <label class="btn parto btn-secondary active">
-                                <input type="radio" value="0" name="parto" checked autocomplete="off">Listado de pacientes
+                                <input type="radio" value="0" name="parto" checked autocomplete="off">En espera de parto
                             </label>
                             <label class="btn parto btn-secondary">
-                                <input type="radio" value="1" name="parto" autocomplete="off"> Ver información
+                                <input type="radio" value="1" name="parto" autocomplete="off">Parto atendido
                             </label>
                         </div>
                     </div>
