@@ -144,8 +144,8 @@
                                 <input type="radio" value="1" name="parto" autocomplete="off"> Ver información
                             </label>
                         </div>
-                        <button type="button" class="btn btn-animado d-none" id="filtro.parto.activar">Ver Filtros</button>
                     </div>
+                    <button type="button" class="btn btn-animado d-none" id="filtro.parto.activar">Ver Filtros</button>
                 </div>
             </div>
             <div class="card my-2 shadow d-none" id="filtro.parto.contenedor">
