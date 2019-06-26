@@ -17,7 +17,7 @@ $(document).ready(function(){
         var ciudad = $("#filtro\\.parto\\.ciudad").val();
         var lugar = $("#filtro\\.parto\\.lugar").val();
         var desde = $("#filtro\\.parto\\.fecha").val();
-        var hasta = $("#filtro\\.parto\\.fecha.hasta").val();
+        var hasta = $("#filtro\\.parto\\.fecha\\.hasta").val();
         var fecha = $("#filtro\\.parto\\.tipo").val();
 
         var datos = {
