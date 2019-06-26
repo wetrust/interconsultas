@@ -28,7 +28,7 @@ $(document).ready(function(){
             fecha : fecha
         }
 
-        $.post('dashboard/partos', datos).done(function(data){
+        $.post('dashboard/filtroparto', datos).done(function(data){
             buildPartosGuardadosTable(data, false);
         });
     });
