@@ -48,7 +48,7 @@ class InterconsultaModel
         $lugar = strval($lugar);
         $desde = strval($desde);
         $hasta = strval($hasta);
-        $fecha = intval($fecha);
+        $fecha = strval($fecha);
         $sql = "";
         $query = "";
             
@@ -66,7 +66,7 @@ class InterconsultaModel
         }
         else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
             //filtra por ciudad
-            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad ";
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad";
             $query = $database->prepare($sql);
             $query->execute(array(':ciudad' => $ciudad));
         }
