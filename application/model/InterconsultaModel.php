@@ -48,12 +48,12 @@ class InterconsultaModel
         $lugar = strval($lugar);
         $desde = strval($desde);
         $hasta = strval($hasta);
-        $fecha = intval($fecha);
+        $fecha = strval($fecha);
         $sql = "";
         $query = "";
         $solicitud_email = Session::get('user_email');
 
-        if (Session::get('user_account_type') == 2){ 
+        if (Session::get('user_account_type') == 2){
             if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
                 //no filtra
                 $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail";
@@ -144,7 +144,7 @@ class InterconsultaModel
                 $query = $database->prepare($sql);
                 $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad,':fechauno' => $desde, ':fechados' => $hasta, ':tipo' => $fecha));
             }
-        else{
+        }else{
             if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($hasta) == 0 && strlen($fecha) == 0){
                 //no filtra
                 $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, partos.fecha_parto, partos.semanas FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail";
