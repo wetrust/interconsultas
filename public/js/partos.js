@@ -559,6 +559,15 @@ function buildPartosGuardadosTable(data, filtro){
 				$(this).remove();
 			});
         });
+
+        $('#tabla\\.parto tr > td > button.informe').on("click", function(){
+            let solicitud_id =  $(this).data("id");
+            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"> <div class="modal-dialog modal-lgx" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">PDF parto y recién nacido</h5></div><div class="modal-body" id="cautivo.dialog.body"> </div><div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> </div></div></div></div>');
+            $("#cautivo\\.dialog\\.body").html('<iframe class="embed-responsive-item w-100 h-100" src="graph/informe_parto/'+ solicitud_id +'"></iframe>');
+            $('#cautivo\\.dialogo').modal("show");
+            
+            $('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) { $(this).remove(); });
+        });
     }
     else{
         $("#mensaje\\.resultado").removeClass("d-none");
