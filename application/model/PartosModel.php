@@ -7,10 +7,10 @@ class PartosModel
         $database = DatabaseFactory::getFactory()->getConnection();
 
         if (Session::get('user_account_type') == 2){
-            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, solicitudes.solicitud_fum,partos.fecha_parto, partos.semanas, partos.dias, partos.peso, partos.talla, partos.imc, partos.estado_nutricional, partos.etnia, partos.paridad, partos.tipo, partos.lugar, partos.pesofetal, partos.tallafetal, partos.craneofetal, partos.apgar_uno, partos.apgar_cinco, partos.sexo, partos.meconio, partos.ipn, partos.peso_eg, partos.peso_eg_estado, partos.ipn_eg, partos.ipn_eg_estado, partos.comentarios FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id where solicitudes.solicitud_email = :solicitud_profesionalemail";
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, solicitudes.solicitud_fum,partos.fecha_parto, partos.semanas, partos.dias, partos.peso, partos.talla, partos.imc, partos.estado_nutricional, partos.etnia, partos.paridad, partos.tipo, partos.lugar, partos.pesofetal, partos.tallafetal, partos.craneofetal, partos.apgar_uno, partos.apgar_cinco, partos.sexo, partos.meconio, partos.ipn, partos.peso_eg, partos.peso_eg_estado, partos.ipn_eg, partos.ipn_eg_estado, partos.comentarios,partos.hipoglicemia,partos.alta FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id where solicitudes.solicitud_email = :solicitud_profesionalemail";
         }
         else{
-            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, solicitudes.solicitud_fum,partos.fecha_parto, partos.semanas, partos.dias, partos.peso, partos.talla, partos.imc, partos.estado_nutricional, partos.etnia, partos.paridad, partos.tipo, partos.lugar, partos.pesofetal, partos.tallafetal, partos.craneofetal, partos.apgar_uno, partos.apgar_cinco, partos.sexo, partos.meconio, partos.ipn, partos.peso_eg, partos.peso_eg_estado, partos.ipn_eg, partos.ipn_eg_estado, partos.comentarios FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id where solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail";
+            $sql = "SELECT partos.parto_id, partos.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, solicitudes.solicitud_fum,partos.fecha_parto, partos.semanas, partos.dias, partos.peso, partos.talla, partos.imc, partos.estado_nutricional, partos.etnia, partos.paridad, partos.tipo, partos.lugar, partos.pesofetal, partos.tallafetal, partos.craneofetal, partos.apgar_uno, partos.apgar_cinco, partos.sexo, partos.meconio, partos.ipn, partos.peso_eg, partos.peso_eg_estado, partos.ipn_eg, partos.ipn_eg_estado, partos.comentarios,partos.hipoglicemia,partos.alta FROM partos INNER JOIN solicitudes ON partos.solicitud_id = solicitudes.solicitud_id where solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail";
         }
         
         $query = $database->prepare($sql);
@@ -22,7 +22,7 @@ class PartosModel
     public static function getPartos($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, tipo, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, tipo, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id));
         return $query->fetch();
