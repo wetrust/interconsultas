@@ -50,7 +50,7 @@
     $html = '<table><tbody><tr><td>Cráneo: '.htmlentities($this->parto->craneofetal).'</td><td>Sexo: '.htmlentities($this->parto->sexo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>IPN: '.htmlentities($this->parto->ipn).'</td><td>Lugar de control: ''</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>IPN: '.htmlentities($this->parto->ipn).'</td><td>Lugar de control: </td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     
