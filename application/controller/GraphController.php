@@ -58,13 +58,7 @@ class GraphController extends Controller
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'paciente' => $paciente,
-            'parto' => $respuesta,
-            'grafico_uno' => GraphModel::cc($respuesta->eg, $respuesta->cc),
-            'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
-            'grafico_tres' => GraphModel::lf($respuesta->eg, $respuesta->lf),
-            'grafico_cuatro' => GraphModel::lh($respuesta->eg, $respuesta->respuesta_lh),
-            'grafico_cinco' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe_segundo),
-            'grafico_seis' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
+            'parto' => $respuesta
         ));
     }
 }
