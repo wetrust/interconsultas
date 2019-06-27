@@ -52,7 +52,7 @@ class GraphController extends Controller
     public function informe_parto($solicitud_id)
     {
         $respuesta = PartosModel::getPartos($solicitud_id);
-        $paciente = SolicitudesModel::getOldSolicitudes($user_id);
+        $paciente = SolicitudesModel::getOldSolicitudes($solicitud_id);
 
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/parto_ver', 
         array(
