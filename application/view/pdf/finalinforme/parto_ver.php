@@ -58,10 +58,10 @@
     $html = '<table><tbody><tr><td>Edad gestacional al parto: '.$this->parto->semanas. "," .$this->parto->dias.' semanas</td><td>Protocolo Hipoglicemia: '.htmlentities($this->parto->tipo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=65, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=65, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=140, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=140, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=85, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=85, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=170, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=170, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
 
     //para enviar por email
     //$tmp = Config::get('PATH_AVATARS');
