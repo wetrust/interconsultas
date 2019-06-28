@@ -22,7 +22,7 @@ class PartosModel
     public static function getPartos($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, tipo, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta, protocolo_hipoglicemia FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, tipo, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta,protocolo_hipoglicemia FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id));
         return $query->fetch();
