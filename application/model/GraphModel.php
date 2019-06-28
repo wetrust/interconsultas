@@ -275,7 +275,7 @@ class GraphModel
         $settings["axis_min_h"] = '24';
         $settings["axis_max_h"] = '42';
         $settings["axis_min_v"] = '200';
-        $settings["axis_max_v"] = '340';
+        $settings["axis_max_v"] = '400';
         $settings["grid_division_v"] = '40';
         $settings["grid_division_h"] = '6';
         $values = DataModel::CraneoNacionalRN();
