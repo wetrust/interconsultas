@@ -32,8 +32,7 @@
     $this->pdf->Ln(5);
     $html = '<h2 style="border-bottom:2px double #000;text-align: center;">INFORME DATOS DE PARTO</h2>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
-    $this->pdf->Ln(2);
-
+    $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td><strong>Datos maternos</strong></td><td><strong>Datos neonatales</strong></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
@@ -57,12 +56,11 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Edad gestacional al parto: '.$this->parto->semanas. "," .$this->parto->dias.' semanas</td><td>Protocolo Hipoglicemia: '.htmlentities($this->parto->tipo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(2);
-    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=80, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=80, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=75, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=75, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=150, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=150, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $html = '<p>Gráficas de referencia: Curva Neonatal Chilena SOCHIPE - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</p>';
+    $html = '<p style="border-top:2px double #000;text-align: center;">Gráficas de referencia: Curva Neonatal Chilena SOCHIPE - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</p>';
     $this->pdf->writeHTMLCell('', '', $x=10, $y=225, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     //para enviar por email
