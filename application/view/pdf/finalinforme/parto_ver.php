@@ -42,13 +42,13 @@
     $html = '<table><tbody><tr><td>RUT (DNI): '.htmlentities($this->paciente->solicitud_rut).'</td><td>Peso: '.htmlentities($this->parto->pesofetal).' grs.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Lugar de parto: '.htmlentities($this->paciente->lugar).'</td><td>Talla: '.htmlentities($this->parto->tallafetal).' mm.</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Lugar de parto: '.htmlentities($this->parto->lugar).'</td><td>Talla: '.htmlentities($this->parto->tallafetal).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Tipo de parto: '.htmlentities($this->paciente->tipo).'</td><td>Cráneo: '.htmlentities($this->parto->craneofetal).' mm.</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Tipo de parto: '.htmlentities($this->parto->tipo).'</td><td>Cráneo: '.htmlentities($this->parto->craneofetal).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Paridad: '.htmlentities($this->paciente->paridad).'</td><td>Peso / Ege: pct. '.htmlentities($this->parto->peso_eg).', '.htmlentities($this->parto->peso_eg_estado).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Paridad: '.htmlentities($this->parto->paridad).'</td><td>Peso / Ege: pct. '.htmlentities($this->parto->peso_eg).', '.htmlentities($this->parto->peso_eg_estado).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Fecha de parto: '.$fecha.'</td><td>IPN / Ege: pct. '.htmlentities($this->parto->ipn_eg). ', '.htmlentities($this->parto->ipn_eg_estado).'</td></tr></tbody></table>';
