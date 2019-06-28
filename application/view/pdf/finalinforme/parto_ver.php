@@ -60,11 +60,11 @@
     $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=72, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=134, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=134, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $html = '<p class="text-center"><small>Gráficas de referencia: Curva Neonatal Chilena (SOCHIPE) - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</small></p>';
+    $html = '<p style="text-center"><small>Gráficas de referencia: Curva Neonatal Chilena (SOCHIPE) - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</small></p>';
     $this->pdf->writeHTMLCell('', '', $x=10, $y=209, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<p><strong>Comentario y observaciones:</strong><br> '.$this->parto->comentarios.'</p>';
-    $this->pdf->writeHTMLCell('', '', $x=10, $y=212, $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->writeHTMLCell('', '', $x=10, $y=213, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<p style="border-top:2px double #000;text-align: center; color:#007bff">La utilizacion de información con fines de investigación, requiere consentimiento informado de la madre. para tal efecto ver formularios en pagina inicial de la plataforma</p>';
     $this->pdf->writeHTMLCell('', '', $x=10, $y=230, $html, 0, 1, 0, true, 'J', true);
