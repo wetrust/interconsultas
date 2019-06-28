@@ -222,6 +222,97 @@ class GraphModel
         return $graph->fetch('MultiLineGraph');
     }
 
+    public static function pesoNacionalRN($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'Peso Fetal';
+        $settings["axis_min_h"] = '24';
+        $settings["axis_min_v"] = '600';
+        $settings["axis_max_v"] = '4400';
+        $settings["grid_division_v"] = '200';
+        $settings["grid_division_h"] = '7';
+        $values = DataModel::PesoNacionalRN();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+
+    public static function tallaNacionalRN($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'Talla fetal';
+        $settings["axis_min_h"] = '26';
+        $settings["axis_min_v"] = '30';
+        $settings["axis_max_v"] = '52';
+        $settings["grid_division_v"] = '5';
+        $settings["grid_division_h"] = '7';
+        $values = DataModel::TallaNacionalRN();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+
+    public static function craneoNacionalRN($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'Craneo fetal';
+        $settings["axis_min_h"] = '24';
+        $settings["axis_min_v"] = '200';
+        $settings["axis_max_v"] = '3400';
+        $settings["grid_division_v"] = '40';
+        $settings["grid_division_h"] = '7';
+        $values = DataModel::CraneoNacionalRN();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+
+    public static function ipnNacionalRN($EG, $valor)
+    {
+        $settings = self::settings();
+        $settings["graph_title"] = 'IPN';
+        $settings["axis_min_h"] = '24';
+        $settings["axis_min_v"] = '0.7';
+        $settings["axis_max_v"] = '3.5';
+        $settings["grid_division_v"] = '0.3';
+        $settings["grid_division_h"] = '7';
+        $values = DataModel::IPNNacionalRN();
+
+        if (is_numeric($valor)){
+            $punto = array($EG => $valor);
+            array_push($values,$punto);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+
+    
+
+
     public static function settings(){
         $settings = array(
             'auto_fit'          => true,

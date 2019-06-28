@@ -58,7 +58,11 @@ class GraphController extends Controller
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'paciente' => $paciente,
-            'parto' => $respuesta
+            'parto' => $respuesta,
+            'grafico_uno' => GraphModel::pesoNacionalRN($respuesta->semanas, $respuesta->pesofetal),
+            'grafico_dos' => GraphModel::tallaNacionalRN($respuesta->semanas, ($respuesta->tallafetal / 10)),
+            'grafico_tres' => GraphModel::craneoNacionalRN($respuesta->semanas, $respuesta->craneofetal),
+            'grafico_cuatro' => GraphModel::ipnNacionalRN($respuesta->semanas, $respuesta->ipn)
         ));
     }
 }
