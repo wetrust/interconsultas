@@ -34,7 +34,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
-    $html = '<table><tbody><tr><td><strong>Datos maternos</strong></td><td><strong>Datos del recien nacido</strong></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Datos maternos</strong></td><td><strong>Datos neonatales</strong></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Nombre de la madre: '.htmlentities($this->paciente->solicitud_nombre).'</td><td>Sexo: '.htmlentities($this->parto->sexo).'</td></tr></tbody></table>';
