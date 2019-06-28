@@ -56,8 +56,8 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Edad gestacional al parto: '.$this->parto->semanas. "," .$this->parto->dias.' semanas</td><td>Protocolo Hipoglicemia: '.htmlentities($this->parto->tipo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=75, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=75, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=70, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=70, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=150, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=150, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $html = '<p style="border-top:2px double #000;text-align: center;">Gráficas de referencia: Curva Neonatal Chilena SOCHIPE - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</p>';
