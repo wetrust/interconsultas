@@ -294,7 +294,7 @@ class GraphModel
     public static function ipnNacionalRN($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'IPN';
+        $settings["graph_title"] = 'IPN [((peso*talla)^3) * 100]';
         $settings["axis_min_h"] = '24';
         $settings["axis_max_h"] = '42';
         $settings["axis_max_h"] = '42';
