@@ -60,7 +60,7 @@
     $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=72, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=134, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=134, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $html = '<p style="text-center"><small>Gráficas de referencia: Curva Neonatal Chilena (SOCHIPE) - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</small></p>';
+    $html = '<p style="text-align: center;"><small>Gráficas de referencia: Curva Neonatal Chilena (SOCHIPE) - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</small></p>';
     $this->pdf->writeHTMLCell('', '', $x=10, $y=209, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<p><strong>Comentario y observaciones:</strong><br> '.$this->parto->comentarios.'</p>';
