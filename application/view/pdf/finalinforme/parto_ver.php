@@ -58,9 +58,9 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=72, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=72, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=130, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=130, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $html = '<p style="border-top:2px double #000;text-align: center;">Gráficas de referencia: Curva Neonatal Chilena SOCHIPE - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</p>';
+    $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=140, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=140, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $html = '<p style="border-top:2px double #000;text-align: center;">Gráficas de referencia: Curva Neonatal Chilena (SOCHIPE) - M. Milad. A y Col.; Rev. Chil. Pediatr. 2010; 81(3): 1264-274</p>';
     $this->pdf->writeHTMLCell('', '', $x=10, $y=225, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     //para enviar por email
