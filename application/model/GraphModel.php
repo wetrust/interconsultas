@@ -225,7 +225,7 @@ class GraphModel
     public static function pesoNacionalRN($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Peso Fetal';
+        $settings["graph_title"] = 'Peso Fetal (grs.)';
         $settings["axis_min_h"] = '24';
         $settings["axis_max_h"] = '42';
         $settings["axis_min_v"] = '600';
@@ -248,7 +248,7 @@ class GraphModel
     public static function tallaNacionalRN($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Talla fetal';
+        $settings["graph_title"] = 'Talla fetal (mm.)';
         $settings["axis_min_h"] = '26';
         $settings["axis_max_h"] = '42';
         $settings["axis_min_v"] = '30';
@@ -271,7 +271,7 @@ class GraphModel
     public static function craneoNacionalRN($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Craneo fetal';
+        $settings["graph_title"] = 'Craneo fetal (mm)';
         $settings["axis_min_h"] = '24';
         $settings["axis_max_h"] = '42';
         $settings["axis_min_v"] = '200';
