@@ -249,6 +249,7 @@ class GraphModel
         $settings = self::settings();
         $settings["graph_title"] = 'Talla fetal';
         $settings["axis_min_h"] = '26';
+        $settings["axis_max_h"] = '42';
         $settings["axis_min_v"] = '30';
         $settings["axis_max_v"] = '52';
         $settings["grid_division_v"] = '5';
@@ -272,7 +273,7 @@ class GraphModel
         $settings["graph_title"] = 'Craneo fetal';
         $settings["axis_min_h"] = '24';
         $settings["axis_min_v"] = '200';
-        $settings["axis_max_v"] = '3400';
+        $settings["axis_max_v"] = '340';
         $settings["grid_division_v"] = '40';
         $settings["grid_division_h"] = '7';
         $values = DataModel::CraneoNacionalRN();
@@ -293,6 +294,7 @@ class GraphModel
         $settings = self::settings();
         $settings["graph_title"] = 'IPN';
         $settings["axis_min_h"] = '24';
+        $settings["axis_max_h"] = '42';
         $settings["axis_min_v"] = '0.7';
         $settings["axis_max_v"] = '3.5';
         $settings["grid_division_v"] = '0.3';
