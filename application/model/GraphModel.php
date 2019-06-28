@@ -227,10 +227,11 @@ class GraphModel
         $settings = self::settings();
         $settings["graph_title"] = 'Peso Fetal';
         $settings["axis_min_h"] = '24';
+        $settings["axis_max_h"] = '42';
         $settings["axis_min_v"] = '600';
         $settings["axis_max_v"] = '4400';
         $settings["grid_division_v"] = '200';
-        $settings["grid_division_h"] = '5';
+        $settings["grid_division_h"] = '6';
         $values = DataModel::PesoNacionalRN();
 
         if (is_numeric($valor)){
