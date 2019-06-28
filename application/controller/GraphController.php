@@ -60,9 +60,9 @@ class GraphController extends Controller
             'paciente' => $paciente,
             'parto' => $respuesta,
             'grafico_uno' => GraphModel::pesoNacionalRN($respuesta->semanas, $respuesta->pesofetal),
-            'grafico_dos' => GraphModel::tallaNacionalRN($respuesta->semanas, ($respuesta->tallafetal / 10)),
-            'grafico_tres' => GraphModel::craneoNacionalRN($respuesta->semanas, $respuesta->craneofetal),
-            'grafico_cuatro' => GraphModel::ipnNacionalRN($respuesta->semanas, $respuesta->ipn)
+            'grafico_dos' => GraphModel::ipnNacionalRN($respuesta->semanas, $respuesta->ipn),
+            'grafico_tres' => GraphModel::tallaNacionalRN($respuesta->semanas, ($respuesta->tallafetal / 10)),
+            'grafico_cuatro' => GraphModel::craneoNacionalRN($respuesta->semanas, $respuesta->craneofetal) 
         ));
     }
 }
