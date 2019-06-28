@@ -53,8 +53,8 @@
     $html = '<table><tbody><tr><td>IPN: '.htmlentities($this->parto->ipn).'</td><td>Protocolo Hipoglicemia: '.htmlentities($this->parto->tipo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=80, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=80, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=169, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=169, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     
