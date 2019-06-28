@@ -58,8 +58,8 @@
     $this->pdf->Ln(2);
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=65, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=65, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=129, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=129, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=140, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=140, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     
     //para enviar por email
     //$tmp = Config::get('PATH_AVATARS');
