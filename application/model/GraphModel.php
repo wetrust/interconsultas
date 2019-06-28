@@ -230,7 +230,7 @@ class GraphModel
         $settings["axis_min_v"] = '600';
         $settings["axis_max_v"] = '4400';
         $settings["grid_division_v"] = '200';
-        $settings["grid_division_h"] = '6';
+        $settings["grid_division_h"] = '5';
         $values = DataModel::PesoNacionalRN();
 
         if (is_numeric($valor)){
