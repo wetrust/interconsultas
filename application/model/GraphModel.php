@@ -254,7 +254,7 @@ class GraphModel
         $settings["axis_min_v"] = '30';
         $settings["axis_max_v"] = '52';
         $settings["grid_division_v"] = '5';
-        $settings["grid_division_h"] = '5';
+        $settings["grid_division_h"] = '4';
         $values = DataModel::TallaNacionalRN();
 
         if (is_numeric($valor)){
