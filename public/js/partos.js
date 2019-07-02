@@ -480,7 +480,7 @@ function buildPartosGuardadosTable(data, filtro){
                 $("#comentariosparto").val(data.comentarios);
                 $("#hipoglicemia").val(data.hipoglicemia);
                 $("#alta").val(data.alta);
-                $("#protocolo_hipoglicemia").val(val.protocolo_hipoglicemia);
+                $("#protocolo_hipoglicemia").val(data.protocolo_hipoglicemia);
             });
 
             $("#pesofetal").keypress(function( event ) {
