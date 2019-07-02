@@ -447,6 +447,7 @@ class DashboardController extends Controller
         $hipoglicemia = Request::post('hipoglicemia');
         $alta = Request::post('alta');
         $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
+
         $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta,$protocolo_hipoglicemia));
     }
 
@@ -480,6 +481,7 @@ class DashboardController extends Controller
         $hipoglicemia = Request::post('hipoglicemia');
         $alta = Request::post('alta');
         $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
+        
         $this->View->renderJSON(PartosModel::updatePartos($parto_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia));
     }
 
