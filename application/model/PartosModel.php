@@ -74,7 +74,7 @@ class PartosModel
                               comentarios = :comentarios,
                               hipoglicemia = :hipoglicemia,
                               alta = :alta,
-                               protocolo_hipoglicemia = :protocolo_hipoglicemia  WHERE parto_id = :parto_id LIMIT 1";
+                               protocolo_hipoglicemia = :protocolo_hipoglicemia  WHERE parto_id = :parto_id";
         $query = $database->prepare($sql);
         $query->execute(array(':parto_id' => $parto_id, ':fecha_parto' => $fecha_parto,':semanas' => $semanas,':dias' => $dias,':peso' => $peso,':talla' => $talla,':imc' => $imc,':estado_nutricional' => $estado_nutricional,':etnia' => $etnia,':paridad' => $paridad,':tipo' => $tipo,':lugar' => $lugar,':pesofetal' => $pesofetal,':tallafetal' => $tallafetal,':craneofetal' => $craneofetal,':apgar_uno' => $apgar_uno,':apgar_cinco' => $apgar_cinco,':sexo' => $sexo,':meconio' => $meconio,':ipn' => $ipn,':peso_eg' => $peso_eg,':peso_eg_estado' => $peso_eg_estado,':ipn_eg' => $ipn_eg,':ipn_eg_estado' => $ipn_eg_estado,':comentarios' => $comentarios,':hipoglicemia' => $hipoglicemia,':alta' => $alta, ':protocolo_hipoglicemia' => $protocolo_hipoglicemia));
         if ($query->rowCount() == 1) { 
