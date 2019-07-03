@@ -54,7 +54,7 @@
     $html = '<table><tbody><tr><td>Paridad: '.htmlentities($this->parto->paridad).'</td><td>IPN / Ege: pct. '.htmlentities($this->parto->ipn_eg). ', '.htmlentities($this->parto->ipn_eg_estado).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Fecha de parto: '.$fecha.'</td<td>Protocolo Hipoglicemia: '.htmlentities($this->parto->protocolo_hipoglicemia).'</td>></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Fecha de parto: '.$fecha.'</td><td>Protocolo Hipoglicemia: '.htmlentities($this->parto->protocolo_hipoglicemia).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Edad gestacional al parto: '.$this->parto->semanas. "," .$this->parto->dias.' semanas</td><td>Alta con su madre: '.htmlentities($this->parto->alta).'</td></tr></tbody></table>';
