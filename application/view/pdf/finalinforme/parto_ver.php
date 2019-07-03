@@ -57,7 +57,7 @@
     $html = '<table><tbody><tr><td>Fecha de parto: '.$fecha.'</td><td>Protocolo de Hipoglicemia: '.htmlentities($this->parto->protocolo_hipoglicemia).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Edad gestacional al parto: '.$this->parto->semanas. "," .$this->parto->dias.' semanas</td><td>Alta con su madre: '.htmlentities($this->parto->alta).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Edad gestacional al parto: '.$this->parto->semanas. "," .$this->parto->dias.' semanas</td><td>Alta del RN con su madre: '.htmlentities($this->parto->alta).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=77, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=77, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
