@@ -45,7 +45,7 @@
     $html = '<table><tbody><tr><td>Lugar de parto: '.htmlentities($this->parto->lugar).'</td><td>Talla: '.htmlentities($this->parto->tallafetal).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>IMC Materno (peso * talla)&#94;2: '.htmlentities($this->parto->imc).'</td><td>IPN: '.htmlentities($this->parto->ipn).' ((peso*talla)^3)</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>IMC Materno: '.htmlentities($this->parto->imc).' (peso * talla)&#94;2</td><td>IPN: '.htmlentities($this->parto->ipn).' ((peso*talla)^3)</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Tipo de parto: '.htmlentities($this->parto->tipo).'</td><td>Peso / Ege: pct. '.htmlentities($this->parto->peso_eg).', '.htmlentities($this->parto->peso_eg_estado).'</td></tr></tbody></table>';
