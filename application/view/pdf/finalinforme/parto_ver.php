@@ -70,7 +70,7 @@
     $this->pdf->writeHTMLCell('', '', $x=10, $y=219, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<p style="border-top:2px double #000;text-align: center; color:#007bff">La utilizacion de información con fines de investigación, requiere consentimiento informado de la madre. para tal efecto ver formularios en pagina inicial de la plataforma</p>';
-    $this->pdf->writeHTMLCell('', '', $x=10, $y=230, $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->writeHTMLCell('', '', $x=10, $y=240, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     //para enviar por email
     //$tmp = Config::get('PATH_AVATARS');
