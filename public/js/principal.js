@@ -104,9 +104,19 @@ function loadNews(){
                     if (eg == "1"){eg = "Si";}
                     else{eg = "No";}
 
-                    let eco = data.solicitud_eco;
-                    if (eco == "1"){eco = "Si";}
-                    else{eco = "No";}
+                    let eco = data.solicitud_alteraciones;
+
+                    if (eco == 0){
+                        eco = "No, es primigesta";
+                    }else if (eco == 1){
+                        eco = "Si hubo feto pequeño";
+                    }else if (eco == 2){
+                        eco = "Si hubo feto grande";
+                    }else if (eco == 3){
+                        eco = "No hay antecedentes";
+                    }else if (eco == 4){
+                        eco = "Desconoce información";
+                    }
 
                     $("#eg_precoz").html('<strong>' + eg + '</strong>');
                     $("#ecografia_previa").html('<strong>' + eco + '</strong>');
