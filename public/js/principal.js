@@ -237,6 +237,13 @@ function loadInProcess(){
                 });
             });
             $('#tabla\\.resultado tr > td > button.examen').on("click", function(){
+
+                var now = new Date();
+                var day = ("0" + now.getDate()).slice(-2);
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+                $("#interconsulta\\.respuesta\\.fecha").val(today);
+
                 let solicitud_id =  $(this).data("id");
                 $("#ver\\.interconsulta > div").removeClass("h-100");
                 $("#ver\\.interconsulta > div > div").removeClass("h-100");
