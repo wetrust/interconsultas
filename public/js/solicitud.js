@@ -44,7 +44,7 @@ $(document).ready(function(){
 		var fecha = String($("#interconsulta\\.fecha").val());
 		var telefono = String($("#interconsulta\\.telefono").val());
 		var eg = String($('input[name=interconsulta_eg]:checked').val());
-		var eco = String($('input[name=interconsulta_eco]:checked').val());
+		var alteraciones = $("#interconsulta\\.alteraciones").val();
 		var fum = String($("#interconsulta\\.fum").val());
 		var diagnostico = String($("#interconsulta\\.diagnostico").val());
 		var lugar = String($("#interconsulta\\.lugar").val());
@@ -56,7 +56,7 @@ $(document).ready(function(){
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
         
-        if (nombre.length < 3 || rut.length < 4 || telefono.length < 6 || fecha.length < 4 || eg == 'undefined' || eg.length < 1 || eco == 'undefined' || eco.length  < 0 || fum.length < 4 || diagnostico.length  < 3 || ciudad.length < 2 || lugar.length  < 3 || egestacional.length < 3 || nombre_para.length < 2 || para.length < 5){
+        if (nombre.length < 3 || rut.length < 4 || telefono.length < 6 || fecha.length < 4 || eg == 'undefined' || eg.length < 1 || fum.length < 4 || diagnostico.length  < 3 || ciudad.length < 2 || lugar.length  < 3 || egestacional.length < 3 || nombre_para.length < 2 || para.length < 5){
             var mensaje = "";
 
             if (nombre.length < 3){
@@ -69,8 +69,6 @@ $(document).ready(function(){
                 mensaje = textos.form_error;
             }else if (eg == 'undefined' || eg.length < 1){
                 mensaje = textos.eg_error;
-            }else if (eco == 'undefined' || eco.length  < 0){
-                mensaje = textos.eco_previa_error;
             }else if (fum.length < 4){
                 mensaje = textos.fur_error;
             }else if (diagnostico.length  < 3){
@@ -101,7 +99,7 @@ $(document).ready(function(){
 				telefono: $("#interconsulta\\.telefono").val(),
 				fecha: $("#interconsulta\\.fecha").val(),
 				eg: $('input[name=interconsulta_eg]:checked').val(),
-				eco: $('input[name=interconsulta_eco]:checked').val(),
+				alteraciones: alteraciones,
 				fum: $("#interconsulta\\.fum").val(),
 				diagnostico: eLdiagnostico,
 				lugar: $("#interconsulta\\.lugar").val(),
@@ -130,7 +128,7 @@ $(document).ready(function(){
 					$("#interconsulta\\.eg\\.no").attr("checked", true);
 					$("#interconsulta\\.eco\\.no").attr("checked", true);
 					$("#interconsulta\\.fum").val(today).trigger("change");
-					$("#interconsulta\\.diagnostico\\.select").val(0);
+					$("#interconsulta\\.alteraciones").val(0);
 					$("#interconsulta\\.diagnostico").val("");
 					$("#interconsulta\\.lugar").val("");
 					$("#interconsulta\\.ciudad").val("");
@@ -155,7 +153,7 @@ $(document).ready(function(){
 
 function construir(){
     $("#mensaje\\.resultado").parent().parent().prepend('<div class="card-header bg-secondary" id="card.header"><h4 class="text-white text-center">Formulario de referencia para evaluación ecográfica gineco - Obstétrica</h4></div>');
-    $("#mensaje\\.resultado").parent().prepend('<div id="formulario.solicitud"> <div class="row"> <div class="col form-group"> <label>Nombre del paciente</label> <input type="text" class="form-control" id="interconsulta.nombre"> </div><div class="col form-group"> <label>RUT del paciente</label> <input type="text" class="form-control" id="interconsulta.rut"> </div><div class="col form-group"> <label>Teléfono materno</label> <input type="number" class="form-control" id="interconsulta.telefono"> </div></div><div class="row"> <div class="col form-group"> <label>Ciudad procedencia de la paciente</label> <input type="text" class="form-control" id="interconsulta.ciudad"> </div><div class="col form-group"> <label>Lugar de control prenatal</label> <input type="text" class="form-control" id="interconsulta.lugar"> </div><div class="col form-group"> <label>Fecha de solicitud del exámen</label> <input type="date" class="form-control" id="interconsulta.fecha"> </div></div><div class="row"> <div class="col form-group"> <label>FUM operacional</label> <input type="date" class="form-control" id="interconsulta.fum"> </div><div class="col form-group"> <label>Edad Gestacional (Ege)</label> <input type="text" class="form-control" id="interconsulta.egestacional" disabled=""> </div><div class="col form-group"> <label class="d-block">La Ege es conocida precozmente</label> <div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eg.si" value="1" name="interconsulta_eg" class="form-check-input" checked> <label class="form-check-label">Si</label> </div><div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eg.no" value="0" name="interconsulta_eg" class="form-check-input"> <label class="form-check-label">No</label> </div></div></div><div class="row"> <div class="col form-group"> <label>Alteraciones en gestaciones previas</label> <select class="form-control" id="interconsulta.diagnostico"> <option value="No, es primigesta">No, es primigesta</option> <option value="Si hubo feto pequeño">Si hubo feto pequeño</option> <option value="Si hubo feto grande">Si hubo feto grande</option> <option value="No hay antecedentes">No hay antecedentes</option> <option value="Desconoce información">Desconoce información</option> </select> </div><div class="col-8 form-group"> <label>Diagnóstico de referencia</label> <input type="text" class="form-control" id="interconsulta.diagnostico"> </div></div><h5>Datos profesional referente a exámen ecográfico</h5> <div class="row"> <div class="col form-group"> <label>Nombre del profesional</label> <input type="text" class="form-control" name="interconsulta_para_nombre" disabled> </div><div class="col form-group"> <label>Email (profesional referente)</label> <input type="email" class="form-control" name="interconsulta_para" disabled> </div></div><div class="row"> <div class="col form-group"> <label><strong>Seleccione profesional de contrareferencia</strong></label> <select class="form-control" id="interconsulta.para.select"> </select> </div><div class="col form-group"> <label>Nombre del profesional</label> <input type="text" class="form-control" id="interconsulta.para.nombre" disabled> </div><div class="col form-group"> <label>Email (profesional de contrareferencia)</label> <input type="email" class="form-control" id="interconsulta.para" disabled> </div></div><div class="row"> <div class="col"> <button class="btn btn-primary" id="interconsulta.enviar">Enviar solicitud de exámen ecográfico</button> </div></div></div>');
+    $("#mensaje\\.resultado").parent().prepend('<div id="formulario.solicitud"> <div class="row"> <div class="col form-group"> <label>Nombre del paciente</label> <input type="text" class="form-control" id="interconsulta.nombre"> </div><div class="col form-group"> <label>RUT del paciente</label> <input type="text" class="form-control" id="interconsulta.rut"> </div><div class="col form-group"> <label>Teléfono materno</label> <input type="number" class="form-control" id="interconsulta.telefono"> </div></div><div class="row"> <div class="col form-group"> <label>Ciudad procedencia de la paciente</label> <input type="text" class="form-control" id="interconsulta.ciudad"> </div><div class="col form-group"> <label>Lugar de control prenatal</label> <input type="text" class="form-control" id="interconsulta.lugar"> </div><div class="col form-group"> <label>Fecha de solicitud del exámen</label> <input type="date" class="form-control" id="interconsulta.fecha"> </div></div><div class="row"> <div class="col form-group"> <label>FUM operacional</label> <input type="date" class="form-control" id="interconsulta.fum"> </div><div class="col form-group"> <label>Edad Gestacional (Ege)</label> <input type="text" class="form-control" id="interconsulta.egestacional" disabled=""> </div><div class="col form-group"> <label class="d-block">La Ege es conocida precozmente</label> <div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eg.si" value="1" name="interconsulta_eg" class="form-check-input" checked> <label class="form-check-label">Si</label> </div><div class="form-check form-check-inline"> <input type="radio" id="interconsulta.eg.no" value="0" name="interconsulta_eg" class="form-check-input"> <label class="form-check-label">No</label> </div></div></div><div class="row"> <div class="col form-group"> <label>Alteraciones en gestaciones previas</label> <select class="form-control" id="interconsulta.alteraciones"> <option value="0">No, es primigesta</option> <option value="1">Si hubo feto pequeño</option> <option value="2">Si hubo feto grande</option> <option value="3">No hay antecedentes</option> <option value="4">Desconoce información</option> </select> </div><div class="col-8 form-group"> <label>Diagnóstico de referencia</label> <input type="text" class="form-control" id="interconsulta.diagnostico"> </div></div><h5>Datos profesional referente a exámen ecográfico</h5> <div class="row"> <div class="col form-group"> <label>Nombre del profesional</label> <input type="text" class="form-control" name="interconsulta_para_nombre" disabled> </div><div class="col form-group"> <label>Email (profesional referente)</label> <input type="email" class="form-control" name="interconsulta_para" disabled> </div></div><div class="row"> <div class="col form-group"> <label><strong>Seleccione profesional de contrareferencia</strong></label> <select class="form-control" id="interconsulta.para.select"> </select> </div><div class="col form-group"> <label>Nombre del profesional</label> <input type="text" class="form-control" id="interconsulta.para.nombre" disabled> </div><div class="col form-group"> <label>Email (profesional de contrareferencia)</label> <input type="email" class="form-control" id="interconsulta.para" disabled> </div></div><div class="row"> <div class="col"> <button class="btn btn-primary" id="interconsulta.enviar">Enviar solicitud de exámen ecográfico</button> </div></div></div>');
 	$("input[name='interconsulta_para_nombre']").val($("#user_name").html());
 	$("input[name='interconsulta_para']").val($("#user_email").html());
 	$('#interconsulta\\.rut').rut({
