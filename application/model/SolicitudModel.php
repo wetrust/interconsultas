@@ -24,7 +24,7 @@ class SolicitudModel
         return $query->fetch();
     }
 
-    public static function createSolicitud($referente_id, $contrarreferente_id, $solicitud_nombre, $solicitud_rut, $solicitud_telefono, $solicitud_fecha_solicitud, $solicitud_fecha_agendada, $solicitud_eg_conocida, $solicitud_eco_previa, $solicitud_fum, $solicitud_eg, $solicitud_diagnostico, $solicitud_diagnostico_extra, $solicitud_ciudad, $solicitud_lugar)
+    public static function createSolicitud($referente_id, $contrarreferente_id, $solicitud_nombre, $solicitud_rut, $solicitud_telefono, $solicitud_fecha_solicitud, $solicitud_fecha_agendada, $solicitud_eg_conocida, $solicitud_alteraciones, $solicitud_fum, $solicitud_eg, $solicitud_diagnostico, $solicitud_diagnostico_extra, $solicitud_ciudad, $solicitud_lugar)
     {
         if (!$referente_id || $contrarreferente_id) {
             Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
@@ -33,7 +33,7 @@ class SolicitudModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO solicitud (referente_id, contrarreferente_id, solicitud_nombre, solicitud_rut, solicitud_telefono, solicitud_fecha_solicitud, solicitud_fecha_agendada, solicitud_eg_conocida, solicitud_eco_previa, solicitud_fum, solicitud_eg, solicitud_diagnostico, solicitud_diagnostico_extra, solicitud_ciudad, solicitud_lugar, solicitud_estado) VALUES (:referente_id, :contrarreferente_id, :solicitud_nombre, :solicitud_rut, :solicitud_telefono, :solicitud_fecha_solicitud, :solicitud_fecha_agendada, :solicitud_eg_conocida, :solicitud_eco_previa, :solicitud_fum, :solicitud_eg, :solicitud_diagnostico, :solicitud_diagnostico_extra, :solicitud_ciudad, :solicitud_lugar, 0)";
+        $sql = "INSERT INTO solicitud (referente_id, contrarreferente_id, solicitud_nombre, solicitud_rut, solicitud_telefono, solicitud_fecha_solicitud, solicitud_fecha_agendada, solicitud_eg_conocida, solicitud_alteraciones, solicitud_fum, solicitud_eg, solicitud_diagnostico, solicitud_diagnostico_extra, solicitud_ciudad, solicitud_lugar, solicitud_estado) VALUES (:referente_id, :contrarreferente_id, :solicitud_nombre, :solicitud_rut, :solicitud_telefono, :solicitud_fecha_solicitud, :solicitud_fecha_agendada, :solicitud_eg_conocida, :solicitud_alteraciones, :solicitud_fum, :solicitud_eg, :solicitud_diagnostico, :solicitud_diagnostico_extra, :solicitud_ciudad, :solicitud_lugar, 0)";
         $query = $database->prepare($sql);
         $query->execute(array(':referente_id' => $referente_id,
         ':contrarreferente_id' => $contrarreferente_id,
@@ -43,7 +43,7 @@ class SolicitudModel
         ':solicitud_fecha_solicitud' => $solicitud_fecha_solicitud,
         ':solicitud_fecha_agendada' => $solicitud_fecha_agendada,
         ':solicitud_eg_conocida' => $solicitud_eg_conocida,
-        ':solicitud_eco_previa' => $solicitud_eco_previa,
+        ':solicitud_alteraciones' => $solicitud_alteraciones,
         ':solicitud_fum' => $solicitud_fum,
         ':solicitud_eg' => $solicitud_eg,
         ':solicitud_diagnostico' => $solicitud_diagnostico,
