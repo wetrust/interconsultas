@@ -89,7 +89,7 @@ function loadNews(){
             $('#tabla\\.resultado tr > td > button').on("click", function(){
                 let solicitud_id =  $(this).data("id");
                 var contenedor = createCarcasaNuevasModal(solicitud_id);
-                createNuevasModal(id, contenedor);
+                createNuevasModal(solicitud_id, contenedor);
             });
         }
         else{
