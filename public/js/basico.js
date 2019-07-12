@@ -167,84 +167,34 @@ function buildSolicitadasTable(data){
             let id =  $(this).data("id");
             var contenedor_id = createCarcasaInterconsultaModal();
             createInterconsultaModal(id,contenedor_id);
-            
-            
-                //$("#ver\\.interconsulta > div").removeClass("h-100 modal-lgx").addClass("modal-lg");
-                //$("#ver\\.interconsulta > div > div").removeClass("h-100");
-                //$("#ver\\.interconsulta\\.titulo").html("Datos de la interconsulta");
-                //$('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col"> <label><small>Nombre del paciente:</small></label> <p id="solicitud_nombre" class="text-primary"></p></div><div class="col"> <label><small>RUT del paciente:</small></label> <p id="solicitud_rut"></p></div><div class="col"> <label><small>Fecha de solicitud:</small></label> <p id="solicitud_fecha" class="text-primary"></p></div><div class="col"> <label><small>FUM operacional</small></label> <p id="solicitud_fum" class="text-primary"></p></div><div class="col"> <label><small>Edad Gestacional</small></label> <p id="solicitud_egestacional" class="text-primary"></p></div></div><div class="row"> <div class="col form-group"> <label><small>Ege conocida precozmente</small></label> <p id="eg_precoz"></p></div><div class="col form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="ecografia_previa"></p></div><div class="col form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="solicitud_diagnostico"></p></div><div class="col form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="solicitud_ciudad"></p></div></div><div class="row"> <div class="col form-group"> <label><small>Lugar de control prenatal</small></label> <p id="solicitud_lugar"></p></div><div class="col form-group"> <label><small>Datos del profesional referente</small></label> <p id="interconsulta_profesional"></p></div><div class="col form-group"> <label><small>Nombre:</small></label> <p id="solicitud_nombreprofesional"></p></div><div class="col form-group"> <label><small>Email (de trabajo):</small></label> <p id="solicitud_email"></p></div></div>');
-                //$.get('dashboard/agendar/' + solicitud_id).done(function(data){
-                //    $("#solicitud_id").val(data.solicitud_id);
-                //    $("#solicitud_nombre").html('<strong>' + data.solicitud_nombre + '</strong>');
-                //    $("#solicitud_rut").html('<strong>' + data.solicitud_rut + '</strong>');
-                //    let fecha = data.solicitud_fecha.split('-');
-                //    fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-                //    $("#solicitud_fecha").html('<strong>' + fecha + '</strong>');
-                //    let eg = data.solicitud_eg;
-                //    if (eg == "1"){eg = "Si";}
-                //    else{eg = "No";}
-                //    let eco = data.solicitud_alteraciones;
-                //    if (eco == 0){
-                //        eco = "No, es primigesta";
-                //    }else if (eco == 1){
-                //        eco = "Si hubo feto pequeño";
-                //    }else if (eco == 2){
-                //        eco = "Si hubo feto grande";
-                //    }else if (eco == 3){
-                //        eco = "No hay antecedentes";
-                //    }else if (eco == 4){
-                //        eco = "Desconoce información";
-                //    }
-
-                //    $("#eg_precoz").html('<strong>' + eg + '</strong>');
-                //    $("#ecografia_previa").html('<strong>' + eco + '</strong>');
-                //    fecha = data.solicitud_fum.split('-');
-                //    fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-                //    $("#solicitud_fum").html('<strong>' + fecha + '</strong>');
-                //    $("#solicitud_egestacional").html('<strong>' + data.solicitud_egestacional + '</strong>');
-                //    $("#solicitud_diagnostico").html('<strong>' + data.solicitud_diagnostico + '</strong>');
-                //    $("#solicitud_ciudad").html('<strong>' + data.solicitud_ciudad + '</strong>');
-                //    $("#solicitud_lugar").html('<strong>' + data.solicitud_lugar + '</strong>');
-                //    $("#interconsulta_profesional").html('<strong>' + data.solicitud_profesional + '</strong>');
-                //    $("#solicitud_nombreprofesional").html('<strong>' + data.solicitud_nombreprofesional + '</strong>');
-                //    $("#solicitud_email").html('<strong>' + data.solicitud_email + '</strong>');
-                //});
-                //$("#ver\\.interconsulta").modal("show");
-                //$("#ver\\.interconsulta\\.footer").empty().prepend('<button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>');
-                //$("#ver\\.interconsulta\\.eliminar").on("click", function(){
-                //    let solicitud_id =  $(this).data("id");
-                //    $.get("dashboard/delete/" + solicitud_id).done(function(){loadSolicitadas();});
-                //    $("#ver\\.interconsulta").modal("hide");
-                //});
         });
     }
 }
 
-function createCarcasaInterconsultaModal(){
+function createCarcasaInterconsultaModal(id){
     var modal_id, div_id;
 
     modal_id = uuidv4();
     div_id = uuidv4();
+    btn_id = uuidv4();
 
-    console.log(modal_id);
-    console.log(div_id);
-
-    var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
+    var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-danger" id="'+btn_id+'" data-id="'+id+'" data-modal="'+modal_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button></div></div></div></div>';
     $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Interconsulta</h5></div><div class="modal-body"><div class="row" id="'+div_id+'"><div class="progress col-12 my-4"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong>CARGANDO</strong></div></div></div>'+ footerModal);
 
     $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
         $(this).remove();
     });
-
-    console.log(modal_id);
-    console.log(div_id);
+    $("#"+btn_id).on("click", function(){
+        let solicitud_id =  $(this).data("id");
+        let modal_id = $(this).data("modal");
+        $.get("dashboard/delete/" + solicitud_id).done(function(){loadSolicitadas();});
+        $('#'+modal_id).modal("hide");
+    });
 
     return div_id;
 }
 
 function createInterconsultaModal(id, contenedor){
-    console.log(contenedor);
-
     $.get('dashboard/agendar/' + id).done(function(data){
         $('#'+contenedor).empty().append('<input type="hidden" id="a"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="b"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="c"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="d"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="k"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="l"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="e"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="f"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="g"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="h"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="i"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="j"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="ll"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="m"></p></div>');        
         $("#a").val(data.solicitud_id);
