@@ -165,7 +165,7 @@ function buildSolicitadasTable(data){
 
         $('#tabla\\.resultado tr > td > button').on("click", function(){
             let id =  $(this).data("id");
-            var contenedor_id = createCarcasaInterconsultaModal();
+            var contenedor_id = createCarcasaInterconsultaModal(id);
             createInterconsultaModal(id,contenedor_id);
         });
     }
