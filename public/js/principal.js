@@ -133,7 +133,7 @@ function createCarcasaNuevasModal(id){
     $("#"+btn_id).on("click", function(){
         let solicitud_id =  $(this).data("id");
         let modal_id = $(this).data("modal");
-        $.get("dashboard/delete/" + solicitud_id).done(function(){loadAgendadas();});
+        $.get("dashboard/delete/" + solicitud_id).done(function(){loadNews();});
         $('#'+modal_id).modal("hide");
     });
 
