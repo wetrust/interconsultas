@@ -226,16 +226,25 @@ function createCarcasaInterconsultaModal(){
     modal_id = uuidv4();
     div_id = uuidv4();
 
+    console.log(modal_id);
+    console.log(div_id);
+
     var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
-    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Interconsulta</h5></div><div class="modal-body"><div class="row" id="'+modal_id+'"><div class="progress col-12 my-4"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong>CARGANDO</strong></div></div></div>'+ footerModal);
+    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Interconsulta</h5></div><div class="modal-body"><div class="row" id="'+div_id+'"><div class="progress col-12 my-4"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong>CARGANDO</strong></div></div></div>'+ footerModal);
 
     $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
         $(this).remove();
     });
 
+    console.log(modal_id);
+    console.log(div_id);
+
     return div_id;
 }
+
 function createInterconsultaModal(id, contenedor){
+    console.log(contenedor);
+
     $.get('dashboard/agendar/' + id).done(function(data){
         $('#'+contenedor).empty().append('<input type="hidden" id="a"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="b"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="c"></p></div><div class="col-4"> <label><small>Teléfono:</small></label> <p id="d"></p></div><div class="col-4"> <label><small>Fecha de solicitud:</small></label> <p id="e"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="f"></p></div><div class="col-4"> <label><small>Edad Gestacional</small></label> <p id="g"></p></div><div class="col-4 form-group"> <label><small>Ege conocida precozmente</small></label> <p id="h"></p></div><div class="col-4 form-group"> <label><small>Ecografía previa de crecimiento</small></label> <p id="i"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="j"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="k"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="l"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="ll"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="m"></p></div></div>');        
         $("#a").val(data.solicitud_id);
