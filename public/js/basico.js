@@ -221,8 +221,10 @@ function buildSolicitadasTable(data){
 }
 
 function createCarcasaInterconsultaModal(){
-    var modal_id = uuidv4();
-    var div_id = uuidv4();
+    var modal_id, div_id;
+
+    modal_id = uuidv4();
+    div_id = uuidv4();
 
     var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
     $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Interconsulta</h5></div><div class="modal-body"><div class="row" id="'+modal_id+'"><div class="progress col-12 my-4"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong>CARGANDO</strong></div></div></div>'+ footerModal);
