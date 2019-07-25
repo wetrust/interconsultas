@@ -841,7 +841,6 @@ function loadInProcess(){
                         $("#respuesta_cmau_percentil").html("Pct. " + pctcmauAdvanced(eg,cmau));
                     }
                 });
-                $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
                 $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
