@@ -15,39 +15,43 @@
         background-color: var(--gray-dark) !important; border-color: var(--gray-dark) !important;}
     .modal-dialog.modal-lgx{ max-width:8000px !important;}
     a{ color:#FFF;}
+    .headTop{
+        color:#FFF; 
+    }
+    .headTop:hover{
+        color:#FFF; 
+        text-decoration:none;
+    }
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0">
-  <a class="navbar-brand" href="#">Administración de interconsultas</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle pb-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?php $interests = array(1 => 'Usuario invitado',  2 => 'Referente', 3 => 'Contrarreferente', 4 => 'Autorreferido'); ?>
-        Tipo de usuario: <?php echo $interests[Session::get('user_account_type')]; ?><br>Nombre de usuario: <span id="user_name"><?php echo Session::get('user_name'); ?></span><br>Correo: <span id="user_email"><?php echo Session::get('user_email'); ?></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
-          <a class="dropdown-item" href="user/changePassword">Modificar contraseña</a>
-          <a class="dropdown-item" href="user/editUserEmail">Cambiar correo</a>
-          <a class="dropdown-item" href="user/editProfesion">Profesion del usuario</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-<section class="bg-secondary">
+<nav class="bg-secondary">
     <div class="container">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo prenatal, exámenes ecográficos</a></li>
-            <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo postnatal, datos del parto y recién nacido</a></li>
-        </ul>
+        <div class="row">
+            <div class="col-8">
+                <a class="navbar-brand" href="#">Administración de interconsultas</a>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo prenatal, exámenes ecográficos</a></li>
+                    <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo postnatal, datos del parto y recién nacido</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="dropdown float-right">
+                    <a class="text-decoration-none dropdown-toggle headTop" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php $interests = array(1 => 'Usuario invitado',  2 => 'Referente', 3 => 'Contrarreferente', 4 => 'Autorreferido'); ?>
+                        Nombre de usuario: <span id="user_name"><?php echo Session::get('user_name'); ?></span><br>Correo: <span id="user_email"><?php echo Session::get('user_email'); ?></span><br>Tipo de usuario: <?php echo $interests[Session::get('user_account_type')]; ?>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
+                        <a class="dropdown-item" href="user/changePassword">Modificar contraseña</a>
+                        <a class="dropdown-item" href="user/editUserEmail">Cambiar correo</a>
+                        <a class="dropdown-item" href="user/editProfesion">Profesion del usuario</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login/logout">Cerrar sesion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
+</nav>
 <div class="container">
     <?php $this->renderFeedbackMessages(); ?>
     <div class="tab-content" id="myPrincipaTab">
