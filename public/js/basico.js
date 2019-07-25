@@ -226,8 +226,8 @@ function createInterconsultaModal(id, contenedor){
         $("#j").html('<strong>'+data.solicitud_diagnostico+'</strong>');
         $("#k").html('<strong>'+data.solicitud_ciudad+'</strong>');
         $("#l").html('<strong>'+data.solicitud_lugar+'</strong>');
-        $("#ll").html('<strong>'+data.solicitud_nombreprofesional+'</strong>');
-        $("#m").html('<strong>'+data.solicitud_email+'</strong>');
+        $("#ll").html('<strong>'+data.solicitud_nombre_referente+'</strong>');
+        $("#m").html('<strong>'+data.solicitud_profesionalemail+'</strong>');
     });
 }
 
@@ -327,8 +327,8 @@ function createAgendaModal(id, contenedor){
         $("#j").html('<strong>'+data.solicitud_diagnostico+'</strong>');
         $("#k").html('<strong>'+data.solicitud_ciudad+'</strong>');
         $("#l").html('<strong>'+data.solicitud_lugar+'</strong>');
-        $("#ll").html('<strong>'+data.solicitud_nombreprofesional+'</strong>');
-        $("#m").html('<strong>'+data.solicitud_email+'</strong>');
+        $("#ll").html('<strong>'+data.solicitud_nombre_referente+'</strong>');
+        $("#m").html('<strong>'+data.solicitud_profesionalemail+'</strong>');
         $("#n").html('<strong>' + data.evaluacion_fecha + '</strong>');
         $("#o").html('<strong>' + data.evaluacion_comentarios + '</strong>');
     });
