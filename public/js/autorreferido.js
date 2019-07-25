@@ -25,7 +25,6 @@ $(document).ready(function(){
 		var fecha = String($("#interconsulta\\.fecha").val());
 		var telefono = String($("#interconsulta\\.telefono").val());
 		var eg = String($('input[name=interconsulta_eg]:checked').val());
-		var eco = String($('input[name=interconsulta_eco]:checked').val());
 		var fum = String($("#interconsulta\\.fum").val());
 		var diagnostico = String($("#interconsulta\\.diagnostico").val());
 		var lugar = String($("#interconsulta\\.lugar").val());
@@ -35,7 +34,7 @@ $(document).ready(function(){
 		var nombre_para = $("input[name='interconsulta_para']").val();
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
-        if (nombre.length < 3 || rut.length < 4 || telefono.length < 6 || fecha.length < 4 || eg == 'undefined' || eg.length < 1 || eco == 'undefined' || eco.length  < 0 || fum.length < 4 || diagnostico.length  < 3 || ciudad.length < 2 || lugar.length  < 3 || egestacional.length < 3){
+        if (nombre.length < 3 || rut.length < 4 || telefono.length < 6 || fecha.length < 4 || eg == 'undefined' || eg.length < 1 || fum.length < 4 || diagnostico.length  < 3 || ciudad.length < 2 || lugar.length  < 3 || egestacional.length < 3){
             var mensaje = "";
             if (nombre.length < 3){
                 mensaje = textos.paciente_name_error;
@@ -47,8 +46,6 @@ $(document).ready(function(){
                 mensaje = textos.form_error;
             }else if (eg == 'undefined' || eg.length < 1){
                 mensaje = textos.eg_error;
-            }else if (eco == 'undefined' || eco.length  < 0){
-                mensaje = textos.eco_previa_error;
             }else if (fum.length < 4){
                 mensaje = textos.fur_error;
             }else if (diagnostico.length  < 3){
