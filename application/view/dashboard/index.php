@@ -16,7 +16,7 @@
     .modal-dialog.modal-lgx{ max-width:8000px !important;}
     a{ color:#FFF;}
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0">
   <a class="navbar-brand" href="#">Administración de interconsultas</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,9 +24,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle pb-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?php $interests = array(1 => 'Usuario invitado',  2 => 'Referente', 3 => 'Contrarreferente', 4 => 'Autorreferido'); ?>
-        Tipo: <?php echo $interests[Session::get('user_account_type')]; ?><br>Usuario: <span id="user_name"><?php echo Session::get('user_name'); ?></span><br>Correo: <span id="user_email"><?php echo Session::get('user_email'); ?></span>
+        Tipo de usuario: <?php echo $interests[Session::get('user_account_type')]; ?><br>Nombre de usuario: <span id="user_name"><?php echo Session::get('user_name'); ?></span><br>Correo: <span id="user_email"><?php echo Session::get('user_email'); ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
