@@ -16,15 +16,15 @@
     .modal-dialog.modal-lgx{ max-width:8000px !important;}
     a{ color:#FFF;}
     .headTop{
-        color:#FFF; 
+        color:#b3b5b7; 
     }
     .headTop:hover{
-        color:#FFF; 
+        color:#b3b5b7; 
         text-decoration:none;
     }
 </style>
 <nav class="bg-secondary">
-    <div class="container">
+    <div class="px-5">
         <div class="row">
             <div class="col-8">
                 <a class="navbar-brand" href="#">Administración de interconsultas</a>
