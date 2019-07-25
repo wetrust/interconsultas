@@ -202,7 +202,7 @@ function loadInProcess(){
                     $("#interconsulta_profesional").val(data.solicitud_profesional);
                     $("#solicitud_nombreprofesional").val(data.solicitud_nombreprofesional);
                     $("#solicitud_email").val(data.solicitud_email);
-                    nombreprofesionalPegar = data.solicitud_nombre_referente;
+                    var nombreprofesionalPegar = data.solicitud_nombre_referente;
                     $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
                 });
                 $.get('dashboard/edit/' + solicitud_id).done(function(data){
