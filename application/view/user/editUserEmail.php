@@ -5,7 +5,7 @@
     <h1>Cambiar correo electrónico de usuario</h1>
     <!-- echo out the system feedback (error and success messages) -->
     <?php $this->renderFeedbackMessages(); ?>
-    <p>Al cambiar el correo electrónico, todas las interconsultas solicitadas a su correo actual se eliminarán, considere cambiar o corregir el correo electrónico antes de empezar a recibir interconsultas.</p>
+    <p class="text-danger">Al cambiar el correo electrónico, todas las interconsultas solicitadas a su correo actual se eliminarán, considere cambiar o corregir el correo electrónico antes de empezar a recibir interconsultas.</p>
     <form action="<?php echo Config::get('URL'); ?>user/editUserEmail_action" method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Escriba el nuevo correo electrónico de usuario:</label>
