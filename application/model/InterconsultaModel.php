@@ -252,3 +252,5 @@ class InterconsultaModel
         return $query->fetchAll();
     }
 }
+
+
