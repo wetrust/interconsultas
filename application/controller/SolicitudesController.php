@@ -27,4 +27,12 @@ class SolicitudesController extends Controller
             Session::get('solicitud_lugar')
         ));
     }
+
+    public function actualizar(){
+        $this->View->renderJSON(SolicitudModel::updateSolicitudReferente(
+            Session::get('solicitud_id'),
+            Session::get('solicitud_nombre'),
+            Session::get('solicitud_email')
+        );
+    }
 }

@@ -442,6 +442,25 @@ class SolicitudesModel
         Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
         return false;
     }
+
+    public static function updateSolicitudReferente($solicitud_id,$solicitud_nombreprofesional,$solicitud_email)
+    {
+        if (!$solicitud_id || !$solicitud_email) {
+            return false;
+        }
+
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "UPDATE solicitudes SET solicitud_nombreprofesional = :solicitud_nombreprofesional, solicitud_email = :solicitud_email WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_id' => $solicitud_id,':solicitud_nombreprofesional' => $solicitud_nombreprofesional,':solicitud_email' => $solicitud_email));
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
+        return false;
+    }
     public static function updateStateSolicitud($solicitud_id,$solicitud_respuesta)
     {
         if (!$solicitud_id || !$solicitud_respuesta) {
