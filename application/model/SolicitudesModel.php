@@ -451,7 +451,7 @@ class SolicitudesModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE solicitudes SET solicitud_nombreprofesional = :solicitud_nombreprofesional, solicitud_email = :solicitud_email WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "UPDATE solicitudes SET solicitud_nombreprofesional = :solicitud_nombreprofesional, solicitud_email = :solicitud_email WHERE solicitud_id = :solicitud_id";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id,':solicitud_nombreprofesional' => $solicitud_nombreprofesional,':solicitud_email' => $solicitud_email));
         if ($query->rowCount() == 1) {
