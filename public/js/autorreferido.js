@@ -1083,7 +1083,7 @@ function buildFinishTable(data){
             $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
             $("#ver\\.interconsulta").modal("show");
             $("#ver\\.interconsulta\\.footer").empty();
-            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-primary" id="ver.interconsulta.enviar" data-id="'+solicitud_id+'">Enviar exámen</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar exámen</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-primary" id="ver.interconsulta.enviar" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Enviar exámen</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar exámen</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                 let solicitud_id =  $(this).data("id");
                 $.get("dashboard/delete/" + solicitud_id).done(function(data){
@@ -1128,17 +1128,10 @@ function buildFinishTable(data){
     }
 
     $("#interfaz\\.enviar").on("click", function(){
-        let selecciono = false;
-        selecciono = $("#Mhome").hasClass("active");
         let email = "";
         let informe = $("#exampleModal").data("informe");
         let solicitud = $("#exampleModal").data("solicitud");
-        if (selecciono){
-            email = $("#interfaz\\.email option:selected").val();
-        }
-        else{
-            email = $("#interfaz\\.email\\.write").val();
-        }
+        email = $("#interfaz\\.email\\.write").val();
         let args = {email: email,informe: informe,solicitud: solicitud}
         $.post(_api  + 'email_manual', args).done(function(data){
             if (Object.keys(data).length > 0) {
@@ -1765,5 +1758,9 @@ function valCC(dof,dbp){
     return Math.round((parseInt(dof) + parseInt(dbp)) * delta);
 }
 function callModal(informe, solicitud){
+    $("#home-tab").parent().remove();
+    $("#Mhome").remove();
+    $("#hprofile-tab").addClass("active show");
+    $("#Mprofile").addClass("active show");
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
