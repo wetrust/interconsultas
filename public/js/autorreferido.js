@@ -1760,7 +1760,7 @@ function valCC(dof,dbp){
 function callModal(informe, solicitud){
     $("#home-tab").parent().remove();
     $("#Mhome").remove();
-    $("#hprofile-tab").addClass("active show");
+    $("#profile-tab").addClass("active show");
     $("#Mprofile").addClass("active show");
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
