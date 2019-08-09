@@ -30,9 +30,9 @@ class SolicitudesController extends Controller
 
     public function actualizar(){
         $this->View->renderJSON(SolicitudesModel::updateSolicitudReferente(
-            Session::get('solicitud_id'),
-            Session::get('solicitud_nombre'),
-            Session::get('solicitud_email')
+            Request::post('solicitud_id'),
+            Request::post('solicitud_nombre'),
+            Request::post('solicitud_email')
         ));
     }
 }
