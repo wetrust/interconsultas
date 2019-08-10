@@ -1784,10 +1784,6 @@ function valCC(dof,dbp){
     return Math.round((parseInt(dof) + parseInt(dbp)) * delta);
 }
 function callModal(informe, solicitud){
-    $("#home-tab").parent().remove();
-    $("#Mhome").remove();
-    $("#profile-tab").addClass("active show");
-    $("#Mprofile").addClass("active show");
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
 }
 
