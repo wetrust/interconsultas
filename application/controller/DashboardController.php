@@ -522,4 +522,8 @@ class DashboardController extends Controller
     public function directorioSave(){
         $this->View->renderJSON(DirectorioModel::createDirectorio(Request::post('nombre'), Request::post('email'), Request::post('profesion'))); 
     }
+
+    public function directorioDelete($id){
+        $this->View->renderJSON(DirectorioModel::deleteDirectorio($id)); 
+    }
 }

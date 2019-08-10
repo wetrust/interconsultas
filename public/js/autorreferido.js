@@ -1156,10 +1156,19 @@ function loadDirectorio(){
         $('#tabla\\.directorio\\.email').empty();
         if (Object.keys(data).length > 0) {
             $.each(data, function(i, value) {
-                var fila = '<tr><td>' + value.email_profesion + '</td><td>' + value.email_nombre + '</td><td>'+ value.email_value +'</td></tr>';
+                var fila = '<tr><td>' + value.email_profesion + '</td><td>' + value.email_nombre + '</td><td>'+ value.email_value +'</td><td><button class="btn btn-danger" data-id="' + value.email_id + '">Eliminar</button></td></tr>';
                 $("#tabla\\.directorio\\.email").append(fila);
             });
         }
+
+        $("#tabla\\.directorio\\.email .btn").on("click", function(){
+            var id = $(this).data("id");
+
+            $.get('dashboard/directorioDelete/'+id).done(function(data){
+                loadDirectorio();
+            });
+
+        });
     });
 }
 function pctcmauAdvanced(eg, cmau){
