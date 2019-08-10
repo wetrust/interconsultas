@@ -218,8 +218,8 @@
             </div>
         </div>
         <div class="tab-pane fade d-none" id="directorio" role="tabpanel" aria-labelledby="directorio-tab">
-            <div class="d-flex justify-content-between">
-                <h6>Directorio de eMails</h6>
+            <div class="d-flex justify-content-between py-sm-3">
+                <h4>Directorio de eMails</h4>
                 <button type="button" class="btn btn-primary" id="directorio.nuevo">Nuevo eMail</button>
             </div>
             <table class="table">
