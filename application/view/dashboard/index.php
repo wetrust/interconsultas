@@ -29,9 +29,9 @@
             <div class="col-8">
                 <a class="navbar-brand" href="#">Administración de interconsultas</a>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo prenatal, exámenes ecográficos</a></li>
-                    <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo postnatal, datos del parto y recién nacido</a></li>
-                    <li class="nav-item d-none"><a class="nav-link" id="directorio-tab" data-toggle="tab" href="#directorio" role="tab" aria-controls="directorio" aria-selected="false">Directorio</a></li>
+                    <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true"><small>Módulo prenatal, exámenes ecográficos</small></a></li>
+                    <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false"><small>Módulo postnatal, datos del parto y recién nacido</small></a></li>
+                    <li class="nav-item d-none"><a class="nav-link" id="directorio-tab" data-toggle="tab" href="#directorio" role="tab" aria-controls="directorio" aria-selected="false"><small>Directorio</small></a></li>
                 </ul>
             </div>
             <div class="col">
