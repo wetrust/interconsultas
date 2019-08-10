@@ -100,3 +100,11 @@ class RespuestaModel
         return false;
     }
 }
+
+
+// color a fur y fecha de exámen
+// formulario de ingreso de datos
+//-----
+//tipo de usuario
+//nombre 
+//correo
