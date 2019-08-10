@@ -514,4 +514,8 @@ class DashboardController extends Controller
         $fecha = Request::post('fecha');
         $this->View->renderJSON(InterconsultaModel::getFiltroParto($ciudad,$lugar,$desde,$hasta,$fecha));
     }
+
+    public function directorio(){
+        $this->View->renderJSON(DirectorioModel::getAllDirectorios());
+    }
 }

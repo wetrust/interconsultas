@@ -1,4 +1,13 @@
 $(document).ready(function(){
+
+    $("#directorio-tab").parent().removeClass("d-none");
+    $("#directorio").removeClass("d-none");
+    loadDirectorio();
+
+    $("#directorio\\.nuevo").on("click", function(){
+
+    });
+
     construir();
     $("#interconsulta\\.fum").on("change", function(){
 		var FExamen, FUM, EdadGestacional;
@@ -1139,6 +1148,19 @@ function buildFinishTable(data){
                 }
             }
         });
+    });
+}
+
+
+function loadDirectorio(){
+    $.get("dashboard/directorio").done(function(data){
+        $('#tabla\\.directorio\\.email').empty();
+        if (Object.keys(data).length > 0) {
+            $.each(data, function(i, value) {
+                var fila = '<tr><td>' + value.email_profesion + '</td><td>' + value.email_nombre + '</td><td>'+ value.email_value +'</td></tr>';
+                $("#tabla\\.directorio\\.email").append(fila);
+            });
+        }
     });
 }
 function pctcmauAdvanced(eg, cmau){

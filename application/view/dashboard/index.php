@@ -31,6 +31,7 @@
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true">Módulo prenatal, exámenes ecográficos</a></li>
                     <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false">Módulo postnatal, datos del parto y recién nacido</a></li>
+                    <li class="nav-item d-none"><a class="nav-link" id="directorio-tab" data-toggle="tab" href="#directorio" role="tab" aria-controls="directorio" aria-selected="false">Directorio</a></li>
                 </ul>
             </div>
             <div class="col">
@@ -216,11 +217,23 @@
                 </div>
             </div>
         </div>
+        <div class="tab-pane fade d-none" id="directorio" role="tabpanel" aria-labelledby="directorio-tab">
+            <div class="d-flex justify-content-between">
+                <h6>Directorio de eMails</h6>
+                <button type="button" class="btn btn-primary" id="directorio.nuevo">Nuevo eMail</button>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr><th scope="col">Profesion</th><th scope="col">Nombre</th><th scope="col">Email</th><th scope="col">Opciones</th></tr>
+                </thead>
+                <tbody id="tabla.directorio.email"></tbody>
+            </table>
+        </div>
     </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lgx h-100" role="document">
-        <div class="modal-content  h-100">
+        <div class="modal-content h-100">
             <div class="modal-header">
                 <h5 class="modal-title" id="ver.interconsulta.titulo">Interconsulta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
