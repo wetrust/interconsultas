@@ -375,6 +375,10 @@ class DashboardController extends Controller
         $this->View->renderJSON(EmailModel::sendEmailManual());
     }
 
+    public function email_manual_autorreferido(){
+        $this->View->renderJSON(EmailModel::sendEmailManualAutorreferido());
+    }
+
     public function filtro_resuelto(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesFilter(Session::get('user_email'),Request::post('ciudad'),Request::post('lugar'),Request::post('desde'),Request::post('hasta'),Request::post('tipo')));
     }
@@ -406,6 +410,7 @@ class DashboardController extends Controller
     public function finish(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudes(Session::get('user_email')));
     }
+
     public function sinpartos(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesSinParto(Session::get('user_email')));
     }

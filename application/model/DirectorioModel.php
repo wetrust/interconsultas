@@ -24,6 +24,17 @@ class DirectorioModel
         return $query->fetch();
     }
 
+    public static function getDirectorioEmail($email_value)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, email_id, email_nombre, email_value, email_profesion FROM email WHERE user_id = :user_id AND email_value = :email_value LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':user_id' => Session::get('user_id'), ':email_value' => $email_value));
+
+        return $query->fetch();
+    }
+
     public static function createDirectorio($email_nombre, $email_value, $email_profesion)
     {
         if (!$email_nombre || strlen($email_nombre) == 0 || !$email_value || strlen($email_value) == 0 || !$email_profesion || strlen($email_profesion) == 0) {

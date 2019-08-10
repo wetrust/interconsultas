@@ -1133,12 +1133,19 @@ function buildFinishTable(data){
     }
 
     $("#interfaz\\.enviar").on("click", function(){
+        let selecciono = false;
+        selecciono = $("#Mhome").hasClass("active");
         let email = "";
         let informe = $("#exampleModal").data("informe");
         let solicitud = $("#exampleModal").data("solicitud");
-        email = $("#interfaz\\.email\\.write").val();
+        if (selecciono){
+            email = $("#interfaz\\.email option:selected").val();
+        }
+        else{
+            email = $("#interfaz\\.email\\.write").val();
+        }
         let args = {email: email,informe: informe,solicitud: solicitud}
-        $.post(_api  + 'email_manual', args).done(function(data){
+        $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
             if (Object.keys(data).length > 0) {
                 if (data.result){
                     alert("Enviado exitosamente");
