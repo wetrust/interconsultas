@@ -1746,7 +1746,6 @@ function pctlfAdvanced(eg, lf) {
     }
 }
 
-
 function ICAdvanced(dbp, dof) {
     if (dbp > 0) {
         if (dof > 0) {

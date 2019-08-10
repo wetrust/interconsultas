@@ -5,7 +5,7 @@ $(document).ready(function(){
     loadDirectorio();
 
     $("#directorio\\.nuevo").on("click", function(){
-
+        createCarcasaDirectorio();
     });
 
     construir();
@@ -1151,7 +1151,6 @@ function buildFinishTable(data){
     });
 }
 
-
 function loadDirectorio(){
     $.get("dashboard/directorio").done(function(data){
         $('#tabla\\.directorio\\.email').empty();
@@ -1781,4 +1780,45 @@ function callModal(informe, solicitud){
     $("#profile-tab").addClass("active show");
     $("#Mprofile").addClass("active show");
     $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
+}
+
+function uuidv4() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    )
+}
+
+function createCarcasaDirectorio(){
+    var modal_id, div_id;
+
+    modal_id = uuidv4();
+    div_id = uuidv4();
+    btn_responder_id = uuidv4();
+
+    var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-id="'+id+'" data-modal="'+modal_id+'" class="btn btn-primary">Enviar respuesta</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button></div></div></div></div>';
+    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Interconsulta</h5></div><div class="modal-body"><div class="row" id="'+div_id+'"><div class="progress col-12 my-4"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong>CARGANDO</strong></div></div></div><div class="row g-verde"><div class="col-4 my-2 form-group"><label class="text-white">Fecha</label><input type="date" class="form-control" id="evaluacion_fecha"></div><div class="col my-2 form-group"><label class="text-white"><strong>Comentario</strong></label><input type="text" class="form-control" id="comentario"> </div></div>'+ footerModal);
+
+    $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
+        $(this).remove();
+    });
+    $('#'+btn_responder_id).on("click", function(){
+        var modal_id = $(this).data("modal");
+        var solicitud_id = $(this).data("id");
+        $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+        $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
+            $(this).remove();
+        });
+        let dav = {
+            solicitud_id: solicitud_id,
+            evaluacion_fecha: $("#evaluacion_fecha").val(),
+            comentario: $("#comentario").val()
+        }
+        $.post('dashboard/editSave', dav).done(function(data){
+            $('#'+modal_id).modal("hide");
+            $("#interconsultas\\.estado\\.espera").button('toggle').trigger("click");
+            $('#mensaje\\.dialogo').modal("hide");
+        });
+    });
+
+    return div_id;
 }
