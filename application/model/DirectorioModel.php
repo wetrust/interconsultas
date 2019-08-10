@@ -26,7 +26,7 @@ class DirectorioModel
 
     public static function createDirectorio($email_nombre, $email_value, $email_profesion)
     {
-        if (!$email_nombre || strlen($email_nombre) == 0 || !$email_value || strlen($email_value) || !$email_profesion || strlen($email_profesion)) {
+        if (!$email_nombre || strlen($email_nombre) == 0 || !$email_value || strlen($email_value) == 0 || !$email_profesion || strlen($email_profesion) == 0) {
             Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
             return false;
         }
