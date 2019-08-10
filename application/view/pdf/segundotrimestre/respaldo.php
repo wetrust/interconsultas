@@ -49,7 +49,7 @@
     $html = '<table><tbody><tr><td>Ciudad procedencia: Loncoche</td><td>Lugar de control: Consultorio La Paz</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td style="background-color:#eceeef;">Profesional referente</td><td>Matrona</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="background-color:#eceeef;">Referente a exámen</td><td>Matrona</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td></td><td>Nombre: Maria Angelica A.</td></tr><tr><td></td><td>Email: rudecindo.lagos@ufrontera.cl</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
