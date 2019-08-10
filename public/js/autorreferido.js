@@ -1810,22 +1810,19 @@ function createCarcasaDirectorio(){
     $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
         $(this).remove();
     });
+
     $('#'+btn_responder_id).on("click", function(){
         var modal_id = $(this).data("modal");
+        
         $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
         $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
             $(this).remove();
         });
-        let dav = {
-            profesion: $("#modal\\.directorio\\.profesion").val(),
-            nombre: $("#modal\\.directorio\\.nombre").val(),
-            email: $("#modal\\.directorio\\.email").val()
-        }
+
+        let dav = {profesion: $("#modal\\.directorio\\.profesion").val(), nombre: $("#modal\\.directorio\\.nombre").val(), email: $("#modal\\.directorio\\.email").val()}
+        
         $.post('dashboard/directorioSave', dav).done(function(data){
-            $('#'+modal_id).modal("hide");
-            $('#mensaje\\.dialogo').modal("hide");
+            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadDirectorio();
         });
     });
-
-    return div_id;
 }
