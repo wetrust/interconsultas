@@ -518,4 +518,8 @@ class DashboardController extends Controller
     public function directorio(){
         $this->View->renderJSON(DirectorioModel::getAllDirectorios());
     }
+
+    public function directorioSave(){
+        $this->View->renderJSON(DirectorioModel::createDirectorio(Request::post('nombre'), Request::post('email'), Request::post('profesion'))); 
+    }
 }
