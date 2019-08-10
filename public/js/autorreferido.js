@@ -1783,9 +1783,8 @@ function valCC(dof,dbp){
     var delta = parseFloat(1.60);
     return Math.round((parseInt(dof) + parseInt(dbp)) * delta);
 }
-function callModal(informe, solicitud){
-    $("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");
-}
+
+function callModal(informe, solicitud){$("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");}
 
 function uuidv4() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
