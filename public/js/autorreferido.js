@@ -145,7 +145,7 @@ function construir(){
         },
         placeholder: false
     });
-    $("#interconsulta\\.texto\\.para").html($("span[name='user_name']").html() + ", " + $("span[name='user_email']").html());
+    $("#interconsulta\\.texto\\.para").html($("#user_name").html() + ", " + $("#user_email").html());
 }
 
 function loadSolicitud(){
