@@ -272,12 +272,12 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="Mhome" role="tabpanel" aria-labelledby="home-tab">
                         <div class="form-group">
-                            <label for="interconsulta.respuesta.fecha">Seleccione un correo electónico</label>
                             <select class="form-control" id="interfaz.email"></select>
                         </div>
                     </div>
                     <div class="tab-pane fade d-none" id="Mprofile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="form-group">
+                            <label for="interfaz.email.write">Escriba un correo electrónico</label>
                             <input type="email" class="form-control" id="interfaz.email.write">
                         </div>
                     </div>
