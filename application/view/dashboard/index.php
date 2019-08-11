@@ -278,7 +278,6 @@
                     </div>
                     <div class="tab-pane fade d-none" id="Mprofile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="form-group">
-                            <label for="interfaz.email.write">Escriba un correo electrónico</label>
                             <input type="email" class="form-control" id="interfaz.email.write">
                         </div>
                     </div>
