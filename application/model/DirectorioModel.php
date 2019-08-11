@@ -6,7 +6,7 @@ class DirectorioModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT user_id, email_id, email_nombre, email_value, email_profesion FROM email WHERE user_id = :user_id";
+        $sql = "SELECT user_id, email_id, email_nombre, email_value, email_profesion FROM email WHERE user_id = :user_id ORDER BY email_nombre";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id')));
 

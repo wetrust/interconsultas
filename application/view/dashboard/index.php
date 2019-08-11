@@ -257,15 +257,15 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Enviar por email</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Enviar informe por email</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link text-dark active" id="home-tab" data-toggle="tab" href="#Mhome" role="tab" aria-controls="home" aria-selected="true">Elegir correo</a>
+                        <a class="nav-link text-dark active" id="home-tab" data-toggle="tab" href="#Mhome" role="tab" aria-controls="home" aria-selected="true">Elegir otro correo de destino</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-none">
                         <a class="nav-link text-dark" id="profile-tab" data-toggle="tab" href="#Mprofile" role="tab" aria-controls="profile" aria-selected="false">Escribir correo</a>
                     </li>
                 </ul>
@@ -276,7 +276,7 @@
                             <select class="form-control" id="interfaz.email"></select>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="Mprofile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade d-none" id="Mprofile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="form-group">
                             <label for="interfaz.email.write">Escriba un correo electrónico</label>
                             <input type="email" class="form-control" id="interfaz.email.write">
