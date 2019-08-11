@@ -263,7 +263,7 @@
             <div class="modal-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item bg-secondary">
-                        <a class="nav-link text-white active" id="home-tab" data-toggle="tab" href="#Mhome" role="tab" aria-controls="home" aria-selected="true">Elegir otro correo de destino</a>
+                        <a class="nav-link bg-secondary text-white active" id="home-tab" data-toggle="tab" href="#Mhome" role="tab" aria-controls="home" aria-selected="true">Elegir otro correo de destino</a>
                     </li>
                     <li class="nav-item d-none">
                         <a class="nav-link text-dark" id="profile-tab" data-toggle="tab" href="#Mprofile" role="tab" aria-controls="profile" aria-selected="false">Escribir correo</a>
