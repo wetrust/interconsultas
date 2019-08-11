@@ -220,9 +220,9 @@
         <div class="tab-pane fade d-none" id="directorio" role="tabpanel" aria-labelledby="directorio-tab">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between py-sm-3"><h4>Datos relativos a destinatario opcional</h4><button type="button" class="btn btn-primary" id="directorio.nuevo">Nuevo destinatario</button></div>
+                    <div class="d-flex justify-content-between py-sm-3"><h4>Datos relativos a destinatario opcional</h4><button type="button" class="btn btn-primary" id="directorio.nuevo">Generar nuevo destinatario</button></div>
                     <table class="table table-hover">
-                        <thead class="table-secondary"><tr><th scope="col">Destinatario</th><th scope="col">Nombre del destinatario</th><th scope="col">Email destinatario</th><th scope="col">Opciones</th></tr></thead>
+                        <thead class="table-secondary"><tr><th scope="col">Tipo de destinatario</th><th scope="col">Nombre del destinatario</th><th scope="col">Email destinatario</th><th scope="col">Opciones</th></tr></thead>
                         <tbody id="tabla.directorio.email"></tbody>
                     </table>
                 </div>
