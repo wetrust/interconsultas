@@ -100,8 +100,8 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
 
-    if (is_null($this->respuesta_lcn) == false){
-        $html = '<table><tbody><tr><td>LCN : '.gettype($this->respuesta_lcn). "/".$this->respuesta_lcn.'</td><td><strong>Edad Gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
+    if ($this->respuesta_lcn != ""){
+        $html = '<table><tbody><tr><td>LCN : '.$this->respuesta_lcn.'</td><td><strong>Edad Gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
 

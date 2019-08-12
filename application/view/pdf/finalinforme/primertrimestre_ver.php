@@ -99,39 +99,53 @@
     $html = '<table><tbody><tr><td>Embrión: '. $this->respuesta_embrion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>LCN : '. $this->respuesta_lcn.' mm.</td><td><strong>Edad Gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
+    if ($this->respuesta_lcn != ""){
+        $html = '<table><tbody><tr><td>LCN : '.$this->respuesta_lcn.'</td><td><strong>Edad Gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);
 
-    //fecha del examen
-    $fExamen = strtotime($this->solicitud_evaluacion->evaluacion_fecha);
-    //convertir eg a dias
-    $egXLCN = $this->respuesta_lcn_eg;
+        //fecha del examen
+        $fExamen = strtotime($this->solicitud_evaluacion->evaluacion_fecha);
+        //convertir eg a dias
+        $egXLCN = $this->respuesta_lcn_eg;
 
-    if ($egXLCN != ""){
-        $egXLCN = explode(".", $egXLCN);
+        if ($egXLCN != ""){
+            $egXLCN = str_replace(",", ".",$egXLCN);
+            $egXLCN = explode(".", $egXLCN);
 
-        if (count($egXLCN) == 1){
-            $egXLCN = $egXLCN * 7;
-        }else if (count($egXLCN) == 2){
-            $egXLCN = ($egXLCN[0] * 7) + $egXLCN[1];
+            if (is_array($egXLCN) == true){
+                if (count($egXLCN) == 1){
+                    $egXLCN = $egXLCN * 7;
+                }else if (count($egXLCN) == 2){
+                    $egXLCN = ($egXLCN[0] * 7) + $egXLCN[1];
+                }
+            }else{
+                $egXLCN = $egXLCN * 7; 
+            }
         }
-    }
     
-    $furlcn = strtotime("-". strval($egXLCN) . "day", $fExamen);
-    $fpplcn = date("Y-m-d", strtotime("+240 day", $furlcn));
-    $furlcn = date("Y-m-d", strtotime("-". strval($egXLCN) . "day", $fExamen));
-    $furlcn = explode("-", $furlcn);
-    $furlcn = $furlcn[2] . "-". $furlcn[1]. "-". $furlcn[0];
-    $fpplcn = explode("-", $fpplcn);
-    $fpplcn = $fpplcn[2] . "-". $fpplcn[1]. "-". $fpplcn[0];
+        $furlcn = strtotime("-". strval($egXLCN) . "day", $fExamen);
+        $fpplcn = date("Y-m-d", strtotime("+240 day", $furlcn));
+        $furlcn = date("Y-m-d", strtotime("-". strval($egXLCN) . "day", $fExamen));
+        $furlcn = explode("-", $furlcn);
+        $furlcn = $furlcn[2] . "-". $furlcn[1]. "-". $furlcn[0];
+        $fpplcn = explode("-", $fpplcn);
+        $fpplcn = $fpplcn[2] . "-". $fpplcn[1]. "-". $fpplcn[0];
 
-    $html = '<table><tbody><tr><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td><strong>FUR según LCN:</strong> '. $furlcn.'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_primertrimestre.'</td><td><strong>FPP según LCN:</strong> '. $fpplcn.'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
+        $html = '<table><tbody><tr><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td><strong>FUR según LCN:</strong> '. $furlcn.'</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);
+        $html = '<table><tbody><tr><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_primertrimestre.'</td><td><strong>FPP según LCN:</strong> '. $fpplcn.'</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);
+    }else{
+        $html = '<table><tbody><tr><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);
+        $html = '<table><tbody><tr><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);
+    }
     $html = '<table><tbody><tr><td>Douglas: '. $this->respuesta_douglas_primertrimestre.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
