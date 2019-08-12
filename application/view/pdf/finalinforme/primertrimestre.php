@@ -87,14 +87,14 @@
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha.'</td><td>Edad Gestacional por FUR: '. $this->respuesta_eg.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha.'</td><td>Edad gestacional por FUR: '. $this->respuesta_eg.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Utero: '. $this->respuesta_utero.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_saco_valor > 0){
-        $html = '<table><tbody><tr><td>Saco Gestacional: '. $this->respuesta_saco_gestacional.'</td>Saco Gestional valor: '. $this->respuesta_saco_valor . ' mm.</tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Saco Gestacional: '. $this->respuesta_saco_gestacional.'</td>Saco gestional promedio: '. $this->respuesta_saco_valor . ' mm.</tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
@@ -108,7 +108,7 @@
     $this->pdf->Ln(1);
 
     if ($this->respuesta_lcn != ""){
-        $html = '<table><tbody><tr><td>LCN : '.$this->respuesta_lcn.'</td><td><strong>Edad Gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>LCN : '.$this->respuesta_lcn.'</td><td><strong>Edad gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
 
