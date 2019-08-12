@@ -303,7 +303,7 @@ function loadInProcess(){
                         $('input[name="respuesta_uterina_izquierda"]').keypress(function( event ) {
                             if ( event.which == 13 ) {
                                event.preventDefault();
-                               $("input[name='respuesta_dbp']").focus();
+                               $("input[name='respuesta_translucencia_nucal']").focus();
                             }
                         });
                         $("input[name='respuesta_uterinas']").on("change", function(){
@@ -903,7 +903,7 @@ function loadInProcess(){
                             respuesta_uterina_izquierda: $('input[name="respuesta_uterina_izquierda"]').val(),
                             respuesta_uterina_izquierda_percentil: $('input[name="respuesta_uterina_izquierda_percentil"]').val(),
                             respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
-                            respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_promedio"]').html(),
+                            respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_promedio"]').val(),
                             respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val()
                         }
