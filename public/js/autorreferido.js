@@ -277,6 +277,12 @@ function loadInProcess(){
                                 }
                             }
                         });
+                        $('input[name="respuesta_uterina_derecha"]').keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_uterina_izquierda']").focus();
+                            }
+                        });
                         $("input[name='respuesta_uterina_izquierda']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ut = $(this).val();
@@ -294,6 +300,12 @@ function loadInProcess(){
                                 }
                             }
                         });
+                        $('input[name="respuesta_uterina_izquierda"]').keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_dbp']").focus();
+                            }
+                        });
                         $("input[name='respuesta_uterinas']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ut = $(this).val();
@@ -306,6 +318,12 @@ function loadInProcess(){
                         });
                         $('input[name="respuesta_lcn"]').on("change", function(){
                             eglcn();
+                        });
+                        $('input[name="respuesta_lcn"]').keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_uterina_derecha']").focus();
+                            }
                         });
                         $("select[name='respuesta_anatomia']").on("change", function(){
                             if ($(this).val() == "hallazgos ecográficos compatibles con:"){
