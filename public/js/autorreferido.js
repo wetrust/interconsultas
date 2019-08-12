@@ -305,7 +305,7 @@ function loadInProcess(){
                                 $("input[name='respuesta_uterinas_promedio']").val(pctUtAdvanced(eg,ut));
                             }
                         });
-                        $("input[name='respuesta_lcn']").on("change", function(){
+                        $('input[name="respuesta_lcn"]').on("change", function(){
                             eglcn();
                         });
                         $("select[name='respuesta_anatomia']").on("change", function(){
