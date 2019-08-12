@@ -124,7 +124,32 @@ $(document).ready(function(){
 	var day = ("0" + now.getDate()).slice(-2);
 	var month = ("0" + (now.getMonth() + 1)).slice(-2);
 	var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-	$("#interconsulta\\.fecha").val(today);
+    $("#interconsulta\\.fecha").val(today);
+    
+    $("#interfaz\\.enviar").on("click", function(){
+        let selecciono = false;
+        selecciono = $("#Mhome").hasClass("active");
+        let email = "";
+        let informe = $("#exampleModal").data("informe");
+        let solicitud = $("#exampleModal").data("solicitud");
+        if (selecciono){
+            email = $("#interfaz\\.email option:selected").val();
+        }
+        else{
+            email = $("#interfaz\\.email\\.write").val();
+        }
+        let args = {email: email,informe: informe,solicitud: solicitud}
+        $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
+            if (Object.keys(data).length > 0) {
+                if (data.result){
+                    alert("Enviado exitosamente");
+                }
+                else{
+                    alert("Hubo un error al enviar el correo");
+                }
+            }
+        });
+    });
 });
 
 function construir(){
@@ -1159,31 +1184,6 @@ function buildFinishTable(data){
         $("#mensaje\\.resultado").removeClass("d-none");
         $("#mensaje\\.resultado").html("No tienes interconsultas finalizadas o no estas autorizado para guardar interconsultas finalizadas");
     }
-
-    $("#interfaz\\.enviar").on("click", function(){
-        let selecciono = false;
-        selecciono = $("#Mhome").hasClass("active");
-        let email = "";
-        let informe = $("#exampleModal").data("informe");
-        let solicitud = $("#exampleModal").data("solicitud");
-        if (selecciono){
-            email = $("#interfaz\\.email option:selected").val();
-        }
-        else{
-            email = $("#interfaz\\.email\\.write").val();
-        }
-        let args = {email: email,informe: informe,solicitud: solicitud}
-        $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
-            if (Object.keys(data).length > 0) {
-                if (data.result){
-                    alert("Enviado exitosamente");
-                }
-                else{
-                    alert("Hubo un error al enviar el correo");
-                }
-            }
-        });
-    });
 }
 
 function loadDirectorio(){

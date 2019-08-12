@@ -475,6 +475,7 @@ class EmailModel
                 'respuesta_fcf' => $respuesta->respuesta_fcf,
                 'respuesta_dbp' => $respuesta->dbp,
                 'respuesta_translucencia_nucal' => $respuesta->translucencia_nucal,
+                'respuesta_hueso_nasal_valor' => $respuesta->hueso_nasal,
                 'respuesta_cc' => $respuesta->cc,
                 'respuesta_ca' => $respuesta->ca,
                 'respuesta_lf' => $respuesta->lf,
