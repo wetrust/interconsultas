@@ -299,6 +299,21 @@ function loadInProcess(){
                             if ( event.which == 13 ) {
                                event.preventDefault();
                                $("input[name='respuesta_hueso_nasal_valor']").focus();
+                            }else if(event.which == 8|| event.which ==9|| event.which ==46|| event.which ==110 || event.which ==190 || (event.which >= 35 && event.which <= 40) ||
+                                (event.which  >= 48 && event.which  <= 57) || (event.which  >= 96 && event.which  <= 105)){
+                            }else{
+                                event.preventDefault();
+                            }
+                        });
+
+                        $("input[name='respuesta_hueso_nasal_valor']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("textarea[name='respuesta_comentariosexamen']").focus();
+                            }else if(event.which == 8|| event.which ==9|| event.which ==46|| event.which ==110 || event.which ==190 || (event.which >= 35 && event.which <= 40) ||
+                                (event.which  >= 48 && event.which  <= 57) || (event.which  >= 96 && event.which  <= 105)){
+                            }else{
+                                event.preventDefault();
                             }
                         });
 
