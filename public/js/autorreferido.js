@@ -269,6 +269,14 @@ function loadInProcess(){
                                 $("#translucencia").addClass("d-none");
                             }
                         });
+
+                        $("input[name='respuesta_translucencia_nucal']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_hueso_nasal_valor']").focus();
+                            }
+                        });
+
                         $("input[name='respuesta_uterina_derecha']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ut = $(this).val();
@@ -902,11 +910,12 @@ function loadInProcess(){
                             respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
                             respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
                             respuesta_fcf: $('select[name="respuesta_fcf"]').val(),
-                            respuesta_cc: $('select[name="respuesta_cc"]').val(),
+                            respuesta_cc: $('select[name="respuesta_hueso_nasal"]').val(),
                             respuesta_ca: $('select[name="respuesta_ca"]').val(),
                             respuesta_lf: $('select[name="respuesta_lf"]').val(),
                             respuesta_dbp: $('select[name="respuesta_dbp"]').val(),
                             respuesta_translucencia_nucal: $('input[name="respuesta_translucencia_nucal"]').val(),
+                            respuesta_hueso_nasal_valor: $('input[name="respuesta_hueso_nasal_valor"]').val(),
                             respuesta_uterina_derecha: $('input[name="respuesta_uterina_derecha"]').val(),
                             respuesta_uterina_derecha_percentil: $('input[name="respuesta_uterina_derecha_percentil"]').val(),
                             respuesta_uterina_izquierda: $('input[name="respuesta_uterina_izquierda"]').val(),
