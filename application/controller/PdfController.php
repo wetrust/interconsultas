@@ -53,6 +53,7 @@ class PdfController extends Controller
             'respuesta_utero' => $respuesta->utero_primertrimestre,
             'respuesta_saco_gestacional' => $respuesta->saco_gestacional,
             'respuesta_embrion' => $respuesta->embrion,
+            'respuesta_saco_valor' => $respuesta->saco_gestacional_valor,
             'respuesta_lcn' => $respuesta->lcn,
             'respuesta_anexo_izquierdo_primertrimestre' => $respuesta->anexo_izquierdo_primertrimestre,
             'respuesta_anexo_derecho_primertrimestre' => $respuesta->anexo_derecho_primertrimestre,

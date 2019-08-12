@@ -93,9 +93,16 @@
     $html = '<table><tbody><tr><td>Utero: '. $this->respuesta_utero.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Saco Gestacional: '. $this->respuesta_saco_gestacional.'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
+    if ($this->respuesta_saco_valor != ""){
+        $html = '<table><tbody><tr><td>Saco Gestacional: '. $this->respuesta_saco_gestacional.'</td>Saco Gestional valor: '. $this->respuesta_saco_valor . ' mm.</tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);
+    }
+    else{
+        $html = '<table><tbody><tr><td>Saco Gestacional: '. $this->respuesta_saco_gestacional.'</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);  
+    }
     $html = '<table><tbody><tr><td>Embrión: '. $this->respuesta_embrion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
