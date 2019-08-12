@@ -93,7 +93,7 @@
     $html = '<table><tbody><tr><td>Utero: '. $this->respuesta_utero.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    if ($this->respuesta_saco_valor != ""){
+    if ($this->respuesta_saco_valor > 0){
         $html = '<table><tbody><tr><td>Saco Gestacional: '. $this->respuesta_saco_gestacional.'</td><td>Saco Gestional valor: '. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
