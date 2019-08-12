@@ -67,7 +67,7 @@ class DashboardController extends Controller
         $respuesta_anexo_derecho_primertrimestre = Request::post('respuesta_anexo_derecho_primertrimestre');
         $respuesta_douglas_primertrimestre = Request::post('respuesta_douglas_primertrimestre');
         $respuesta_lcn_eg = Request::post('respuesta_lcn_eg');
-        $respuesta_saco_valor = Request::post('respuesta_saco_valor');
+        $respuesta_saco_valor = Request::post('respuesta_saco');
 
         //para ecografía de segundo trimestre
         $respuesta_placenta = Request::post('respuesta_placenta');

@@ -958,6 +958,7 @@ function loadInProcess(){
                             respuesta_eg: $('input[name="respuesta_eg"]').val(),
                             respuesta_utero_primertrimestre: $('select[name="respuesta_utero_primertrimestre"]').val(),
                             respuesta_saco_gestacional: $('select[name="respuesta_saco_gestacional"]').val(),
+                            respuesta_saco : $('input[name="respuesta_saco"]').val(),
                             respuesta_embrion: $('select[name="respuesta_embrion"]').val(),
                             respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
                             respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
