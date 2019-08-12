@@ -122,7 +122,7 @@
 
             if (is_array($egXLCN) == true){
                 if (count($egXLCN) == 1){
-                    $egXLCN = $egXLCN * 7;
+                    $egXLCN = $egXLCN[0] * 7;
                 }else if (count($egXLCN) == 2){
                     $egXLCN = ($egXLCN[0] * 7) + $egXLCN[1];
                 }
