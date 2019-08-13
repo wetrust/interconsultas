@@ -44,7 +44,7 @@ class PdfController extends Controller
     public function informe_primertrimestre($solicitud_id){
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
-
+        header("Access-Control-Allow-Origin: *");
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -69,7 +69,7 @@ class PdfController extends Controller
     public function informe_segundotrimestre($solicitud_id){
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
-
+        header("Access-Control-Allow-Origin: *");
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -112,7 +112,7 @@ class PdfController extends Controller
     public function informe_ginecologico($solicitud_id){
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
-
+        header("Access-Control-Allow-Origin: *");
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -132,6 +132,7 @@ class PdfController extends Controller
     }
 
     public function informe_dopplercrecimiento($solicitud_id){
+        header("Access-Control-Allow-Origin: *");
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -142,7 +143,7 @@ class PdfController extends Controller
     }
 
     public function informe_doppler($solicitud_id){
-
+        header("Access-Control-Allow-Origin: *");
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
 
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler_ver', 
