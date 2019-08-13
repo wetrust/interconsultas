@@ -1169,7 +1169,7 @@ function buildFinishTable(data){
             });
 
             $("#ver\\.interconsulta\\.cambiar\\.referente").on("click", function(){
-
+                var id = $(this).data("id");
                 var modal_id, div_id;
 
                 modal_id = uuidv4();
@@ -1177,7 +1177,7 @@ function buildFinishTable(data){
                 btn_responder_id = uuidv4();
             
                 var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-modal="'+modal_id+'" class="btn btn-primary">Guardar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
-                $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Cambiar referente</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Tipo de destinatario</label> <select class="form-control" id="modal.directorio.profesion"> <option value="Medico">Médico</option> <option value="Matrona">Matrona</option> <option value="Paciente">Paciente</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option> </select> </div><div class="col-4 form-group"> <label>Nombre del destinatario</label> <input type="text" class="form-control" id="modal.directorio.nombre"> </div><div class="col-4 form-group"> <label>Email destinatario</label> <input type="email" class="form-control" id="modal.directorio.email"> </div></div>'+ footerModal);
+                $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Cambiar referente</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Nombre del destinatario</label> <input type="text" class="form-control" id="modal.directorio.nombre"> </div><div class="col-4 form-group"> <label>Email destinatario</label> <input type="email" class="form-control" id="modal.directorio.email"> </div></div>'+ footerModal);
             
                 $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
                     $(this).remove();
@@ -1186,20 +1186,22 @@ function buildFinishTable(data){
                 $('#'+btn_responder_id).on("click", function(){
                     var modal_id = $(this).data("modal");
                     
-                    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+                    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h3 class="text-danger text-center">Guardando.... espere</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
                     $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
                         $(this).remove();
                     });
             
-                    let dav = {profesion: $("#modal\\.directorio\\.profesion").val(), nombre: $("#modal\\.directorio\\.nombre").val(), email: $("#modal\\.directorio\\.email").val()}
-                    
-                    $.post('dashboard/directorioSave', dav).done(function(data){
+                    var args = {
+                        solicitud_id: $(this).data(id),
+                        solicitud_nombre: $("#modal\\.directorio\\.nombre").val(),
+                        solicitud_email: $("#modal\\.directorio\\.email").val()
+                    }
+
+                    $.post('solicitudes/actualizar', args).done(function(data){
                         document.getElementById("contenedorpdf").contentDocument.location.reload(true);
                         $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide");
                     });
-                });
-
-                
+                }).data("id",id);
             })
         });
         $('#tabla\\.resultado tr > td > button.grafico').on("click", function(){
