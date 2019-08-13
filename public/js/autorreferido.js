@@ -1199,7 +1199,7 @@ function buildFinishTable(data){
                     }
 
                     $.post('solicitudes/actualizar', args).done(function(data){
-                        document.getElementById("contenedorpdf").contentDocument.location.reload(true);
+                        document.getElementById("contenedorpdf").contentWindow.location.reload(true);
                         $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide");
                     });
                 }).data("id",id);
