@@ -912,7 +912,7 @@ function loadInProcess(){
                 });
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn g-verde text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
                     $.get("dashboard/delete/" + solicitud_id).done(function(){
