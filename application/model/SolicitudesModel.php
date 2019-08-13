@@ -443,17 +443,19 @@ class SolicitudesModel
         return false;
     }
 
-    public static function updateSolicitudReferente($solicitud_id,$solicitud_nombreprofesional,$solicitud_email)
+    public static function updateSolicitudReferente($solicitud_id,$solicitud_email)
     {
         if (!$solicitud_id || !$solicitud_email) {
             return false;
         }
 
+        $profesionalEmail = DirectorioModel::getDirectorioEmail($solicitud_email);
+
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE solicitudes SET solicitud_nombreprofesional = :solicitud_nombreprofesional, solicitud_email = :solicitud_email WHERE solicitud_id = :solicitud_id";
+        $sql = "UPDATE solicitudes SET solicitud_nombreprofesional = :solicitud_nombreprofesional, solicitud_email = :solicitud_email, solicitud_profesional = :solicitud_profesional WHERE solicitud_id = :solicitud_id";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_id' => $solicitud_id,':solicitud_nombreprofesional' => $solicitud_nombreprofesional,':solicitud_email' => $solicitud_email));
+        $query->execute(array(':solicitud_id' => $solicitud_id,':solicitud_nombreprofesional' => $profesionalEmail->email_nombre,':solicitud_email' => $profesionalEmail->email_value, ':solicitud_profesional' => $profesionalEmail.->email_profesion));
         if ($query->rowCount() == 1) {
             return true;
         }
