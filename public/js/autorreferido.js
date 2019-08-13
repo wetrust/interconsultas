@@ -1156,7 +1156,7 @@ function buildFinishTable(data){
             $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
             $("#ver\\.interconsulta").modal("show");
             $("#ver\\.interconsulta\\.footer").empty();
-            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-primary" id="ver.interconsulta.enviar" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Enviar exámen</button><button type="button" class="btn btn-primary" id="ver.interconsulta.cambiar.referente" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Cambiar referente</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar exámen</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" id="ver.interconsulta.enviar" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Enviar exámen</button><button type="button" class="btn btn-primary" id="ver.interconsulta.cambiar.referente" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Cambiar referente</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar exámen</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                 let solicitud_id =  $(this).data("id");
                 $.get("dashboard/delete/" + solicitud_id).done(function(data){
@@ -1167,6 +1167,40 @@ function buildFinishTable(data){
             $("#ver\\.interconsulta\\.enviar").on("click", function(){
                 callModal($(this).data("informe"), $(this).data("id"));
             });
+
+            $("#ver\\.interconsulta\\.cambiar\\.referente").on("click", function(){
+
+                var modal_id, div_id;
+
+                modal_id = uuidv4();
+                div_id = uuidv4();
+                btn_responder_id = uuidv4();
+            
+                var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-modal="'+modal_id+'" class="btn btn-primary">Guardar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
+                $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Cambiar referente</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Tipo de destinatario</label> <select class="form-control" id="modal.directorio.profesion"> <option value="Medico">Médico</option> <option value="Matrona">Matrona</option> <option value="Paciente">Paciente</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option> </select> </div><div class="col-4 form-group"> <label>Nombre del destinatario</label> <input type="text" class="form-control" id="modal.directorio.nombre"> </div><div class="col-4 form-group"> <label>Email destinatario</label> <input type="email" class="form-control" id="modal.directorio.email"> </div></div>'+ footerModal);
+            
+                $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
+                    $(this).remove();
+                });
+            
+                $('#'+btn_responder_id).on("click", function(){
+                    var modal_id = $(this).data("modal");
+                    
+                    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+                    $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
+                        $(this).remove();
+                    });
+            
+                    let dav = {profesion: $("#modal\\.directorio\\.profesion").val(), nombre: $("#modal\\.directorio\\.nombre").val(), email: $("#modal\\.directorio\\.email").val()}
+                    
+                    $.post('dashboard/directorioSave', dav).done(function(data){
+                        document.getElementById("contenedorpdf").contentDocument.location.reload(true);
+                        $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide");
+                    });
+                });
+
+                
+            })
         });
         $('#tabla\\.resultado tr > td > button.grafico').on("click", function(){
             let solicitud_id =  $(this).data("id");
@@ -1178,7 +1212,7 @@ function buildFinishTable(data){
                 $("#ver\\.interconsulta > div > div").addClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
                 $('#ver\\.interconsulta\\.contenedor').empty();
-                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"></iframe>')
+                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'" id="contenedorpdf"></iframe>')
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
                 $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
