@@ -1170,15 +1170,17 @@ function buildFinishTable(data){
 
             $("#ver\\.interconsulta\\.cambiar\\.referente").on("click", function(){
                 var id = $(this).data("id");
-                var modal_id, div_id;
+                var modal_id;
 
                 modal_id = uuidv4();
-                div_id = uuidv4();
                 btn_responder_id = uuidv4();
             
                 var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-modal="'+modal_id+'" class="btn btn-primary">Guardar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
-                $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Cambiar referente</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Nombre del destinatario</label> <input type="text" class="form-control" id="modal.directorio.nombre"> </div><div class="col-4 form-group"> <label>Email destinatario</label> <input type="email" class="form-control" id="modal.directorio.email"> </div></div>'+ footerModal);
+                $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Cambiar referente</h5></div><div class="modal-body"><ul class="nav nav-tabs" id="referenteTab" role="tablist"> <li class="nav-item bg-secondary"> <a class="nav-link bg-secondary text-white active" id="home-tab" data-toggle="tab" href="#referenteCambio" role="tab" aria-controls="home" aria-selected="true">Elegir otro referente</a> </li></ul><div class="tab-content" id="referenteTabContent"> <div class="tab-pane fade show active" id="referenteCambio" role="tabpanel" aria-labelledby="home-tab"> <div class="form-group"> <select class="form-control" id="interfaz.email.referente.cambio"></select> </div></div></div></div>'+ footerModal);
             
+                var options = $("#interfaz\\.email > option").clone();
+                $("#interfaz\\.email\\.referente\\.cambio").empty();
+                $("#interfaz\\.email\\.referente\\.cambio").append(options);
                 $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
                     $(this).remove();
                 });
@@ -1193,8 +1195,7 @@ function buildFinishTable(data){
             
                     var args = {
                         solicitud_id: $(this).data("id"),
-                        solicitud_nombre: $("#modal\\.directorio\\.nombre").val(),
-                        solicitud_email: $("#modal\\.directorio\\.email").val()
+                        solicitud_data: $("#interfaz\\.email\\.referente\\.cambio").val()
                     }
 
                     $.post('solicitudes/actualizar', args).done(function(data){
