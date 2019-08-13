@@ -1192,7 +1192,7 @@ function buildFinishTable(data){
                     });
             
                     var args = {
-                        solicitud_id: $(this).data(id),
+                        solicitud_id: $(this).data("id"),
                         solicitud_nombre: $("#modal\\.directorio\\.nombre").val(),
                         solicitud_email: $("#modal\\.directorio\\.email").val()
                     }
