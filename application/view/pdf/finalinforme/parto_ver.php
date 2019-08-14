@@ -30,7 +30,7 @@
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
     $this->pdf->Ln(5);
-    $html = '<h2 style="border-bottom:2px double #000;text-align: center;">INFORME DATOS DE PARTO</h2>';
+    $html = '<h3 style="border-bottom:2px double #000;text-align: center;">INFORME DATOS DE PARTO</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td><strong>Datos maternos</strong></td><td><strong>Datos neonatales</strong></td></tr></tbody></table>';

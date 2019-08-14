@@ -41,7 +41,7 @@
     $solicitud_fum = explode("-", $this->solicitud->solicitud_fum);
     $solicitud_fum = $solicitud_fum[2] . "-". $solicitud_fum[1]. "-". $solicitud_fum[0];
 
-    $html = '<h2 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA DE CRECIMIENTO</h2>';
+    $html = '<h3 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA DE CRECIMIENTO</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
     $html = '<h3 style="border-bottom:1px solid #000;color:#0275d8;">A- Formulario de referencia para evaluación ecográfica del crecimiento fetal</h3>';

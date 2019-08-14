@@ -37,7 +37,7 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h2 style="border-bottom:2px double #000;text-align: center;">INFORME DATOS DE PARTO</h2>';
+    $html = '<h3 style="border-bottom:2px double #000;text-align: center;">INFORME DATOS DE PARTO</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
