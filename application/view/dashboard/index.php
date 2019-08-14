@@ -230,6 +230,15 @@
             </div>
         </div>
         <div class="tab-pane fade d-none" id="configuracion" role="tabpanel" aria-labelledby="configuracion-tab">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between py-sm-3"><h4>Membrete</h4><button type="button" class="btn btn-primary" id="membrete.guardar">Guardar Membrete</button></div>
+                    <div class="mb-3">
+                        <label for="membrete">Membrete</label>
+                        <textarea class="form-control" id="membrete" rows="3" required></textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
