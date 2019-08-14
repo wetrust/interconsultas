@@ -541,6 +541,6 @@ class DashboardController extends Controller
     }
 
     public function mymembrete(){
-        $this->View->renderJSON(MembreteModel::getMembrete())
+        $this->View->renderJSON(MembreteModel::getMembrete());
     }
 }
