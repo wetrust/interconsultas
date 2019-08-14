@@ -8,14 +8,14 @@ class PdfModel extends TCPDF {
         //$image_file = K_PATH_IMAGES.'logo_example.jpg';
         //$this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
         // Set font
-        //$this->SetFont('helvetica', 'B', 20);
+        $this->SetFont('helvetica', 'B', 9);
         // Title
         $have = MembreteModel::haveMembrete();
 
         if ($have == true){
             $membrete = MembreteModel::getMembrete();
 
-            $this->writeHTMLCell('', '', '', '', $membrete->membrete_text, 0, 1, 0, true, 'C', true);
+            $this->writeHTMLCell('', '', '', '', $membrete->membrete_text, 0, 1, 0, true, 'L', true);
         }
         
     }
