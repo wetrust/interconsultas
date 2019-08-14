@@ -229,6 +229,8 @@
                 </div>
             </div>
         </div>
+        <div class="tab-pane fade d-none" id="configuracion" role="tabpanel" aria-labelledby="configuracion-tab">
+        </div>
     </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
