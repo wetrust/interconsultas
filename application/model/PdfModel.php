@@ -10,7 +10,14 @@ class PdfModel extends TCPDF {
         // Set font
         //$this->SetFont('helvetica', 'B', 20);
         // Title
-        //$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $have = MembreteModel::haveMembrete();
+
+        if ($have == true){
+            $membrete = MembreteModel::getMembrete();
+
+            $this->writeHTMLCell('', '', '', '', $membrete->membrete_text, 0, 1, 0, true, 'C', true);
+        }
+        
     }
 
     // Page footer
