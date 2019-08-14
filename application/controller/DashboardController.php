@@ -535,4 +535,12 @@ class DashboardController extends Controller
     public function directorioDelete($id){
         $this->View->renderJSON(DirectorioModel::deleteDirectorio($id)); 
     }
+
+    public function membrete(){
+        $this->View->renderJSON(MembreteModel::createMembrete(Request::post('membrete')));
+    }
+
+    public function mymembrete(){
+        $this->View->renderJSON(MembreteModel::getMembrete())
+    }
 }

@@ -13,25 +13,45 @@ class MembreteModel
         return $query->fetch();
     }
 
-    public static function createMembrete($membrete_text)
+    public static function haveMembrete()
     {
-        if (!$membrete_text || strlen($membrete_text) == 0) {
-            Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
-            return false;
-        }
-
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO membrete (membrete_text, user_id) VALUES (:membrete_text, :user_id)";
+        $sql = "SELECT user_id, membrete_text FROM membrete WHERE user_id = :user_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':membrete_text' => $membrete_text, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':user_id' => Session::get('user_id')));
 
         if ($query->rowCount() == 1) {
             return true;
         }
 
-        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
         return false;
+    }
+
+    public static function createMembrete($membrete_text)
+    {
+        if (!$membrete_text || strlen($membrete_text) == 0) {
+            return false;
+        }
+
+        $have = self::haveMembrete();
+
+        if ($have == true){
+            return self::updateMembrete($membrete_text)
+        }
+        else{
+
+            $database = DatabaseFactory::getFactory()->getConnection();
+
+            $sql = "INSERT INTO membrete (membrete_text, user_id) VALUES (:membrete_text, :user_id)";
+            $query = $database->prepare($sql);
+            $query->execute(array(':membrete_text' => $membrete_text, ':user_id' => Session::get('user_id')));
+    
+            if ($query->rowCount() == 1) {
+                return true;
+            }
+            return false;
+        }
     }
 
     public static function updateMembrete($membrete_text)
@@ -50,7 +70,6 @@ class MembreteModel
             return true;
         }
 
-        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
         return false;
     }
 
@@ -66,7 +85,6 @@ class MembreteModel
             return true;
         }
 
-        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_DELETION_FAILED'));
         return false;
     }
 }
