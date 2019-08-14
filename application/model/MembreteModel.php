@@ -37,7 +37,7 @@ class MembreteModel
         $have = self::haveMembrete();
 
         if ($have == true){
-            return self::updateMembrete($membrete_text)
+            return self::updateMembrete($membrete_text);
         }
         else{
 
