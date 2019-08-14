@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     $("#directorio-tab").parent().removeClass("d-none");
     $("#directorio").removeClass("d-none");
+    $("#configuracion-tab").parent().removeClass("d-none");
     loadDirectorio();
 
     $("#directorio\\.nuevo").on("click", function(){createCarcasaDirectorio();});
