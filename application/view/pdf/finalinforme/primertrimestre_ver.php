@@ -176,13 +176,13 @@
     if ($edadGestacional < 84){
         //determinar cuantos días faltan para las 12 semanas
         $onceSemanas = 77 - $edadGestacional;
-        $catorceSemanas = 98 - $edadGestacional;
+        $catorceSemanas = 97 - $edadGestacional;
         //sumar esos días a la fecha de exámen
         $onceSemanas =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$onceSemanas.' days'));
         $catorceSemanas =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$catorceSemanas.' days'));
         //$solicitud_fecha_examen =  $this->solicitud->solicitud_fecha. ' + '.$edadGestacional.' days';
 
-        $_html .= '<br>Se recomienda realizar eco 11-14, entre las fechas '.$onceSemanas.' - '.$catorceSemanas;
+        $_html .= '<br>* Se recomienda realizar eco 11-14, entre las fechas '.$onceSemanas.' al '.$catorceSemanas;
     }
 
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
