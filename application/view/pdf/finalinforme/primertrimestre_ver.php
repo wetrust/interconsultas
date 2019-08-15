@@ -179,7 +179,7 @@
 
 
         $_html = 'Eco 11-14 corresponde a 12 semanas +- 7 dias, realizar eco 11-14 en fecha '.$solicitud_fecha_examen.'<br>';
-        $_html += strip_tags($this->comentariosexamen);
+        $_html .= strip_tags($this->comentariosexamen);
     }
     else{
         $_html = strip_tags($this->comentariosexamen);
