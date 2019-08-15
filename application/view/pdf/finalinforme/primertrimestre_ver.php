@@ -172,13 +172,14 @@
 
     if ($edadGestacional < 84){
         //determinar cuantos días faltan para las 12 semanas
-        $edadGestacional = 84 - $edadGestacional;
+        $onceSemanas = 77 - $edadGestacional;
+        $catorceSemanas = 98 - $edadGestacional;
         //sumar esos días a la fecha de exámen
-        $solicitud_fecha_examen =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$edadGestacional.' days'));
+        $onceSemanas =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$onceSemanas.' days'));
+        $catorceSemanas =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$catorceSemanas.' days'));
         //$solicitud_fecha_examen =  $this->solicitud->solicitud_fecha. ' + '.$edadGestacional.' days';
 
-
-        $_html = 'Eco 11-14 corresponde a 12 semanas +- 7 dias, realizar eco 11-14 en fecha '.$solicitud_fecha_examen.'<br>';
+        $_html = 'Se recomienda realizar eco 11-14, entre las fechas '.$onceSemanas.' - '.$catorceSemanas.'<br>';
         $_html .= strip_tags($this->comentariosexamen);
     }
     else{
