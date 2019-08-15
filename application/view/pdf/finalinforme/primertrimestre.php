@@ -168,6 +168,20 @@
     $html = '<table><tbody><tr><td style="width:450px"></td><td>Ecografista: '.htmlentities($this->ecografista).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
+
+    $edadGestacional = str_replace(",", ".",$this->solicitud->solicitud_egestacional);
+    $edadGestacional = explode(".", $edadGestacional);
+
+    if (is_array($edadGestacional) == true){
+        if (count($edadGestacional) == 1){
+            $edadGestacional = intval($edadGestacional[0]) * 7;
+        }else if (count($edadGestacional) == 2){
+            $edadGestacional = (intval($edadGestacional[0]) * 7) + intval($edadGestacional[1]);
+        }
+    }else{
+        $edadGestacional = $edadGestacional * 7; 
+    }
+    
     if ($edadGestacional < 84){
         //determinar cuantos días faltan para las 12 semanas
         $onceSemanas = 77 - $edadGestacional;
@@ -181,6 +195,7 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(4);
     }
+
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $html = '<p>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico.<br>Profesional quien finalmente evaluará clínicamente la información contenida en este exámen.</p>';

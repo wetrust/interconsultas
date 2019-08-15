@@ -157,6 +157,17 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
+    $_html = strip_tags($this->comentariosexamen);
+    $_html = str_replace("\n", "<br>", $_html);
+
+    $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->Ln(8);
+
+    $html = '<table><tbody><tr><td style="width:450px"></td><td>Ecografista: '.htmlentities($this->ecografista).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->Ln(4);
+
     $edadGestacional = str_replace(",", ".",$this->solicitud->solicitud_egestacional);
     $edadGestacional = explode(".", $edadGestacional);
 
@@ -169,17 +180,7 @@
     }else{
         $edadGestacional = $edadGestacional * 7; 
     }
-
-    $_html = strip_tags($this->comentariosexamen);
-    $_html = str_replace("\n", "<br>", $_html);
-
-    $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(8);
-
-    $html = '<table><tbody><tr><td style="width:450px"></td><td>Ecografista: '.htmlentities($this->ecografista).'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(4);
+    
     if ($edadGestacional < 84){
         //determinar cuantos días faltan para las 12 semanas
         $onceSemanas = 77 - $edadGestacional;
