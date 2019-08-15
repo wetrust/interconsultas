@@ -17,7 +17,7 @@
     $this->pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
     // set margins
-    $this->pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    $this->pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP+5, PDF_MARGIN_RIGHT);
     $this->pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $this->pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
     $this->pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
@@ -37,7 +37,7 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h3 style="border-bottom:2px double #000;text-align: center;">INFORME DATOS DE PARTO</h3>';
+    $html = '<h4 style="border-bottom:2px double #000;text-align: center;">INFORME DATOS DE PARTO</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 

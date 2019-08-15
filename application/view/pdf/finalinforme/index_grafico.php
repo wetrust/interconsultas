@@ -8,7 +8,7 @@
     // set default monospaced font
     $this->pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
     // set margins
-    $this->pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    $this->pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP+5, PDF_MARGIN_RIGHT);
     $this->pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $this->pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
     $this->pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
@@ -23,7 +23,7 @@
     $solicitud_fecha = explode("-", $this->respuesta->fecha);
     $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
     $this->pdf->Ln(2);
-    $html = '<h3 style="border-bottom:1px solid #000;color:#0275d8;">C- RESUMEN GRÁFICAS DE BIOMETRÍAS ECOGRÁFICAS Y FLUJOMETRÍA DOPPLER MATERNO FETAL</h3>';
+    $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">C- RESUMEN GRÁFICAS DE BIOMETRÍAS ECOGRÁFICAS Y FLUJOMETRÍA DOPPLER MATERNO FETAL</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
