@@ -29,16 +29,15 @@
 
     // set JPEG quality
     $this->pdf->setJPEGQuality(90);
-
     $this->pdf->SetFont('Helvetica', '', 9);
-    
+
     $fecha = explode("-", $this->respuesta_fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
     $solicitud_fecha = explode("-", $this->solicitud->solicitud_fecha);
     $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
     $solicitud_fum = explode("-", $this->solicitud->solicitud_fum);
     $solicitud_fum = $solicitud_fum[2] . "-". $solicitud_fum[1]. "-". $solicitud_fum[0];
-    
+
     $html = '<h4 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA GINECOLÓGICA</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
@@ -70,28 +69,28 @@
     $html = '<h4 style="border-bottom:1px solid #000;color:#0275d8;">B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Fecha de exámen:</strong></td><td>'. $fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Útero: '. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Útero:</strong></td><td>'. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Endometrio: '. $this->respuesta_endometrio.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Endometrio:</strong></td><td>'. $this->respuesta_endometrio.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Anexo Izquierdo:</strong></td><td>'. $this->respuesta_anexo_izquierdo_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td> - Ovario Izquierdo: '. $this->respuesta_ovario_izquierdo.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Ovario Izquierdo:</strong></td><td>'. $this->respuesta_ovario_izquierdo.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Anexo Derecho:</strong></td><td>'. $this->respuesta_anexo_derecho_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td> - Ovario Derecho: '. $this->respuesta_ovario_derecho.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Ovario Derecho:</strong></td><td>'. $this->respuesta_ovario_derecho.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td>Douglas: '. $this->respuesta_douglas_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Douglas:</strong></td><td>'. $this->respuesta_douglas_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
