@@ -170,6 +170,9 @@
         $edadGestacional = $edadGestacional * 7; 
     }
 
+    $_html = strip_tags($this->comentariosexamen);
+    $_html = str_replace("\n", "<br>", $_html);
+
     if ($edadGestacional < 84){
         //determinar cuantos días faltan para las 12 semanas
         $onceSemanas = 77 - $edadGestacional;
@@ -186,7 +189,6 @@
         $_html = strip_tags($this->comentariosexamen);
     }
 
-    $_html = str_replace("\n", "<br>", $_html);
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(8);
