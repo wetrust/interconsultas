@@ -179,8 +179,12 @@
 
 
         $_html = 'Eco 11-14 corresponde a 12 semanas +- 7 dias, realizar eco 11-14 en fecha '.$solicitud_fecha_examen.'<br>';
+        $_html += strip_tags($this->comentariosexamen);
     }
-    $_html += strip_tags($this->comentariosexamen);
+    else{
+        $_html = strip_tags($this->comentariosexamen);
+    }
+    
     $_html = str_replace("\n", "<br>", $_html);
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
