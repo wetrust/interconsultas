@@ -79,7 +79,7 @@
         $html = '<table><tbody><tr><td></td><td>Email: '.htmlentities($this->solicitud->solicitud_email).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     }
-    $this->pdf->Ln(2);
+    $this->pdf->Lneco 11-14(2);
     $html = '<table><tbody><tr><td style="background-color:#eceeef;">Ecografista de contrarreferencia</td><td>Nombre: '.htmlentities($this->solicitud->solicitud_nombre_referente).'</td></tr><tr><td></td><td>Email: '.htmlentities($this->solicitud->solicitud_profesionalemail).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
@@ -157,7 +157,30 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
-    $_html = strip_tags($this->comentariosexamen);
+    $edadGestacional = str_replace(",", ".",$this->solicitud->solicitud_egestacional);
+    $edadGestacional = explode(".", $edadGestacional);
+
+    if (is_array($edadGestacional) == true){
+        if (count($edadGestacional) == 1){
+            $edadGestacional = $edadGestacional[0] * 7;
+        }else if (count($edadGestacional) == 2){
+            $edadGestacional = ($edadGestacional[0] * 7) + $edadGestacional[1];
+        }
+    }else{
+        $edadGestacional = $edadGestacional * 7; 
+    }
+
+    if ($edadGestacional < 84){
+        //determinar cuantos días faltan para las 12 semanas
+        $edadGestacional = 84- $edadGestacional;
+        //sumar esos días a la fecha de exámen
+        $solicitud_fecha_examen = new DateTime($this->solicitud->solicitud_fecha);
+        $solicitud_fecha_examen =  date('d-m-Y', strtotime($solicitud_fecha_examen. ' + '.$edadGestacional.' days'));
+
+
+        $_html = 'Eco 11-14 corresponde a 12 semanas +- 7 dias, realizar eco 11-14 en fecha '.$solicitud_fecha_examen.'<br>';
+    }
+    $_html += strip_tags($this->comentariosexamen);
     $_html = str_replace("\n", "<br>", $_html);
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
