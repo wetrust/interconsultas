@@ -174,8 +174,7 @@
         //determinar cuantos días faltan para las 12 semanas
         $edadGestacional = 84- $edadGestacional;
         //sumar esos días a la fecha de exámen
-        $solicitud_fecha_examen = new DateTime($this->solicitud->solicitud_fecha);
-        $solicitud_fecha_examen =  date('d-m-Y', strtotime($solicitud_fecha_examen. ' + '.$edadGestacional.' days'));
+        $solicitud_fecha_examen =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$edadGestacional.' days'));
 
 
         $_html = 'Eco 11-14 corresponde a 12 semanas +- 7 dias, realizar eco 11-14 en fecha '.$solicitud_fecha_examen.'<br>';
@@ -184,7 +183,7 @@
     else{
         $_html = strip_tags($this->comentariosexamen);
     }
-    
+
     $_html = str_replace("\n", "<br>", $_html);
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
