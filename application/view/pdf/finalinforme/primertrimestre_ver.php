@@ -180,7 +180,7 @@
     }else{
         $edadGestacional = $edadGestacional * 7; 
     }
-    
+
     if ($edadGestacional < 84){
         //determinar cuantos días faltan para las 12 semanas
         $onceSemanas = 77 - $edadGestacional;
@@ -190,7 +190,7 @@
         $catorceSemanas =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$catorceSemanas.' days'));
         //$solicitud_fecha_examen =  $this->solicitud->solicitud_fecha. ' + '.$edadGestacional.' days';
 
-        $html = '<br>* Exámen ecográfico para 11 - 14 semanas corresponde entre las fechas '.$onceSemanas.' al '.$catorceSemanas;
+        $html = '<br>* Exámen ecográfico para 11 - 14 semanas correspondería entre las fechas  '.$onceSemanas.'  al  '.$catorceSemanas;
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(4);
     }
