@@ -162,9 +162,9 @@
 
     if (is_array($edadGestacional) == true){
         if (count($edadGestacional) == 1){
-            $edadGestacional = $edadGestacional[0] * 7;
+            $edadGestacional = intval($edadGestacional[0]) * 7;
         }else if (count($edadGestacional) == 2){
-            $edadGestacional = ($edadGestacional[0] * 7) + $edadGestacional[1];
+            $edadGestacional = (intval($edadGestacional[0]) * 7) + intval($edadGestacional[1]);
         }
     }else{
         $edadGestacional = $edadGestacional * 7; 
