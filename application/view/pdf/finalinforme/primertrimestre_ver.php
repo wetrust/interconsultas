@@ -182,11 +182,7 @@
         $catorceSemanas =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$catorceSemanas.' days'));
         //$solicitud_fecha_examen =  $this->solicitud->solicitud_fecha. ' + '.$edadGestacional.' days';
 
-        $_html = 'Se recomienda realizar eco 11-14, entre las fechas '.$onceSemanas.' - '.$catorceSemanas.'<br>';
-        $_html .= strip_tags($this->comentariosexamen);
-    }
-    else{
-        $_html = strip_tags($this->comentariosexamen);
+        $_html .= 'Se recomienda realizar eco 11-14, entre las fechas '.$onceSemanas.' - '.$catorceSemanas.'<br>';
     }
 
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
