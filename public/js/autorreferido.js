@@ -768,7 +768,6 @@ function loadInProcess(){
                         $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
                         $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
                     }
-
                 });
                 $("select[name='respuesta_anatomia']").on("change", function(){
                     if ($(this).val() == "hallazgos ecográficos compatibles con:"){
