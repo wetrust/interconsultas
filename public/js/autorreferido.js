@@ -394,7 +394,7 @@ function loadInProcess(){
                     else if ($(this).val() == 3){
                         $("#doppleruterinas").remove();
                         $("#multiproposito").remove();
-                        $("#contenedor\\.examenes").append('<div id="ginecologica"> <div class="row m-0 p-2"> <div class="col-8 border rounded p-3"> <div class="row"> <div class="col-6 form-group"> <label>Útero</label> <input type="text" class="form-control" name="respuesta_utero_ginecologica"> </div><div class="col-6 form-group"> <label>Endometrio</label> <input type="text" class="form-control" name="respuesta_endometrio"> </div><div class="col-6 form-group"> <label>Anexo Izquierdo</label> <input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"> </div><div class="col-6 form-group"> <label>Anexo Derecho</label> <input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"> </div><div class="col-6 form-group"> <label>Ovario Izquierdo</label> <input type="text" class="form-control" name="respuesta_ovario_izquierdo"> </div><div class="col-6 form-group"> <label>Ovario Derecho</label> <input type="text" class="form-control" name="respuesta_ovario_derecho"> </div><div class="col-6 form-group"> <label>Douglas</label> <input type="text" class="form-control" name="respuesta_douglas_ginecologica"> </div></div></div><div class="col"> <div class="border rounded p-3 mb-4"> <img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios" class="img-fluid d-block mx-auto"> </div><div class="border rounded"> <div role="group" aria-label="Basic example" class="btn-group"> <button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button> <button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button> <button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar</button> </div></div></div></div></div>');
+                        $("#contenedor\\.examenes").append('<div id="ginecologica"> <div class="row m-0 p-2"> <div class="col-8 border rounded p-3"> <div class="row"> <div class="col-6 form-group"> <label>Útero</label> <input type="text" class="form-control" name="respuesta_utero_ginecologica"> </div><div class="col-6 form-group"> <label>Endometrio</label> <input type="text" class="form-control" name="respuesta_endometrio"> </div><div class="col-6 form-group"> <label>Anexo Izquierdo</label> <input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"> </div><div class="col-6 form-group"> <label>Anexo Derecho</label> <input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"> </div><div class="col-6 form-group"> <label>Ovario Izquierdo</label> <input type="text" class="form-control" name="respuesta_ovario_izquierdo"> </div><div class="col-6 form-group"> <label>Ovario Derecho</label> <input type="text" class="form-control" name="respuesta_ovario_derecho"> </div><div class="col-6 form-group"> <label>Douglas</label> <input type="text" class="form-control" name="respuesta_douglas_ginecologica"> </div></div></div><div class="col"> <div class="border rounded p-3 mb-4"> <img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios" class="img-fluid d-block mx-auto"> </div><div class="border rounded"> <div role="group" aria-label="Basic example" class="btn-group text-center"> <button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button> <button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button> <button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar</button> </div></div></div></div></div>');
                         $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                         $("#segundotrimestre").remove();
                         $("#primertrimestre").remove();
@@ -760,6 +760,17 @@ function loadInProcess(){
                             }
                         });
                     }
+
+                    if ($(this).val() == 3){
+                        $("#enviar\\.respuesta\\.botton").addClass("d-none");
+                        $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
+                        $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
+                    }else {
+                        $("#enviar\\.respuesta\\.botton").removeClass("d-none");
+                        $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
+                        $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
+                    }
+
                 });
                 $("select[name='respuesta_anatomia']").on("change", function(){
                     if ($(this).val() == "hallazgos ecográficos compatibles con:"){
@@ -924,7 +935,7 @@ function loadInProcess(){
                 });
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar" data-dismiss="modal">Cerrar</button>');
                 $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                     let solicitud_id =  $(this).data("id");
                     $.get("dashboard/delete/" + solicitud_id).done(function(){
