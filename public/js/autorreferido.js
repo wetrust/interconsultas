@@ -2,8 +2,6 @@ $(document).ready(function(){
 
     $("#directorio-tab").parent().removeClass("d-none");
     $("#directorio").removeClass("d-none");
-    $("#configuracion-tab").parent().removeClass("d-none");
-    $("#configuracion").removeClass("d-none");
     loadDirectorio();
 
     $("#directorio\\.nuevo").on("click", function(){createCarcasaDirectorio();});
@@ -152,37 +150,7 @@ $(document).ready(function(){
             }
         });
     });
-    loadMembrete();
-    $("#membrete\\.guardar").on("click", function(){
-        var texto = $("#membrete").val();
-        if (typeof texto !== 'undefined'){
-            texto = texto.replace(/\r?\n/g, "<br>");
-        }
-        else{
-            texto='';
-        }
-        let args = {membrete: texto}
-        
-        $.post(_api  + 'membrete', args).done(function(data){
-            if (Object.keys(data).length > 0) {
-                if (data.result == true){
-                    alert("Guardado");
-                }
-                else{
-                    alert("Hubo un error al enviar el correo");
-                }
-            }
-            loadMembrete();
-        });
-    });
 });
-
-function loadMembrete(){
-    $.get('dashboard/mymembrete').done(function(data){
-        $("#membrete").empty()
-        $("#membrete").val(data.membrete_text.replace(/\r?<br>/g, "\n"));
-    });
-}
 
 function construir(){
     $("#mensaje\\.resultado").parent().parent().prepend('<div class="card-header bg-secondary" id="card.header"><h4 class="text-white text-center">Formulario de referencia para evaluación ecográfica gineco - Obstétrica</h4></div>');

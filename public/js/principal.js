@@ -1,7 +1,7 @@
 var nombreprofesionalPegar = "";
 $(document).ready(function(){
     loadReferentes();
-
+    
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
         var correo = $(this).data("email");
         $.get(_api + 'interconsultasEmail/' + correo).done(function(data){
