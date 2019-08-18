@@ -174,6 +174,12 @@ function createNuevasModal(id, contenedor){
         $("#l").html('<strong>'+data.solicitud_lugar+'</strong>');
         $("#ll").html('<strong>'+data.solicitud_nombreprofesional+'</strong>');
         $("#m").html('<strong>'+data.solicitud_email+'</strong>');
+
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = now.getFullYear()+"-"+(month)+"-"+(day);
+        $("#evaluacion_fecha").val(today);
     });
 }
 
