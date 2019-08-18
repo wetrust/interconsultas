@@ -394,10 +394,22 @@ function loadInProcess(){
                     else if ($(this).val() == 3){
                         $("#doppleruterinas").remove();
                         $("#multiproposito").remove();
-                        $("#contenedor\\.examenes").append('<div id="ginecologica"> <div class="row m-0 p-2"> <div class="col-8 border rounded p-3"> <div class="row"> <div class="col-6 form-group"> <label>Útero</label> <input type="text" class="form-control" name="respuesta_utero_ginecologica"> </div><div class="col-6 form-group"> <label>Endometrio</label> <input type="text" class="form-control" name="respuesta_endometrio"> </div><div class="col-6 form-group"> <label>Anexo Izquierdo</label> <input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"> </div><div class="col-6 form-group"> <label>Anexo Derecho</label> <input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"> </div><div class="col-6 form-group"> <label>Ovario Izquierdo</label> <input type="text" class="form-control" name="respuesta_ovario_izquierdo"> </div><div class="col-6 form-group"> <label>Ovario Derecho</label> <input type="text" class="form-control" name="respuesta_ovario_derecho"> </div><div class="col-6 form-group"> <label>Douglas</label> <input type="text" class="form-control" name="respuesta_douglas_ginecologica"> </div></div></div><div class="col"> <div class="border rounded p-3 mb-2"></div><div class="border rounded p-3"> <img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios"> </div></div></div></div>');
+                        $("#contenedor\\.examenes").append('<div id="ginecologica"> <div class="row m-0 p-2"> <div class="col-8 border rounded p-3"> <div class="row"> <div class="col-6 form-group"> <label>Útero</label> <input type="text" class="form-control" name="respuesta_utero_ginecologica"> </div><div class="col-6 form-group"> <label>Endometrio</label> <input type="text" class="form-control" name="respuesta_endometrio"> </div><div class="col-6 form-group"> <label>Anexo Izquierdo</label> <input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"> </div><div class="col-6 form-group"> <label>Anexo Derecho</label> <input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"> </div><div class="col-6 form-group"> <label>Ovario Izquierdo</label> <input type="text" class="form-control" name="respuesta_ovario_izquierdo"> </div><div class="col-6 form-group"> <label>Ovario Derecho</label> <input type="text" class="form-control" name="respuesta_ovario_derecho"> </div><div class="col-6 form-group"> <label>Douglas</label> <input type="text" class="form-control" name="respuesta_douglas_ginecologica"> </div></div></div><div class="col"> <div class="border rounded p-3 mb-2"> <div role="group" aria-label="Basic example" class="btn-group-vertical d-block mx-auto"> <button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button> <button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button> <button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar formulario</button> </div></div><div class="border rounded p-3"> <img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios"> </div></div></div></div>');
                         $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
                         $("#segundotrimestre").remove();
                         $("#primertrimestre").remove();
+
+                        $("#enviar\\.respuesta\\.botton\\.espejo").on("click", function(){
+                            $("#enviar\\.respuesta\\.botton").trigger("click");
+                        });
+
+                        $("#ver\\.interconsulta\\.eliminar\\.espejo").on("click", function(){
+                            $("#ver\\.interconsulta\\.eliminar").trigger("click");
+                        });
+
+                        $("#ver\\.interconsulta\\.cerrar\\.espejo").on("click", function(){
+                            $("#ver\\.interconsulta").modal("hideen");
+                        });
                     }
                     else if ($(this).val() == 2){
                         $("#doppleruterinas").remove();
