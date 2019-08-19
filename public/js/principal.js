@@ -275,18 +275,24 @@ function loadInProcess(){
                     FExamen = $('#interconsulta\\.respuesta\\.fecha').val();
                     FUM = new Date(FUM);
                     FExamen = new Date(FExamen);
-                    EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
-                    if (FExamen.getTime() < FUM.getTime()) {
-                        $('#interconsulta\\.respuesta\\.eg').val('0 semanas');
-                        $("input[name='respuesta_eg']").val('0 semanas');
-                    } 
-                    else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-                        $('#interconsulta\\.respuesta\\.eg').val('42 semanas');
-                        $("input[name='respuesta_eg']").val('42 semanas');
-                    } 
-                    else {
-                        $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
-                        $("input[name='respuesta_eg']").val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                    if ($('#interconsulta\\.respuesta\\.crecimiento').val() == 3){
+                        EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / undia).toFixed(0);
+                        $('#interconsulta\\.respuesta\\.eg').val(EdadGestacional);
+                        $("input[name='respuesta_eg']").val(EdadGestacional);
+                    }else{
+                        EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
+                        if (FExamen.getTime() < FUM.getTime()) {
+                            $('#interconsulta\\.respuesta\\.eg').val('0 semanas');
+                            $("input[name='respuesta_eg']").val('0 semanas');
+                        } 
+                        else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
+                            $('#interconsulta\\.respuesta\\.eg').val('42 semanas');
+                            $("input[name='respuesta_eg']").val('42 semanas');
+                        } 
+                        else {
+                            $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                            $("input[name='respuesta_eg']").val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                        }
                     }
                 });
 
@@ -768,6 +774,14 @@ function loadInProcess(){
                             }
                         });
                     }
+
+                    if ($(this).val() == 3){
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").text("Día del ciclo");
+                    }
+                    else{
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").text("Edad gestacional actual");
+                    }
+                    $('#interconsulta\\.respuesta\\.fecha').trigger("change");
                 });
                 $("select[name='respuesta_anatomia']").on("change", function(){
                     if ($(this).val() == "hallazgos ecográficos compatibles con:"){
