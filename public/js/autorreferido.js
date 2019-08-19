@@ -768,12 +768,12 @@ function loadInProcess(){
                         $("#enviar\\.respuesta\\.botton").addClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
                         $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('<strong class="text-white">Día del ciclo</strong>');
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Día del ciclo mestrual');
                     }else {
                         $("#enviar\\.respuesta\\.botton").removeClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
                         $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('<strong class="text-white">Edad gestacional actual</strong>');
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
                     }
                 });
                 $("select[name='respuesta_anatomia']").on("change", function(){
