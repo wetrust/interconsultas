@@ -226,18 +226,24 @@ function loadInProcess(){
                     FExamen = $('#interconsulta\\.respuesta\\.fecha').val();
                     FUM = new Date(FUM);
                     FExamen = new Date(FExamen);
-                    EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
-                    if (FExamen.getTime() < FUM.getTime()) {
-                        $('#interconsulta\\.respuesta\\.eg').val('0 semanas');
-                        $("input[name='respuesta_eg']").val('0 semanas');
-                    } 
-                    else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-                        $('#interconsulta\\.respuesta\\.eg').val('42 semanas');
-                        $("input[name='respuesta_eg']").val('42 semanas');
-                    } 
-                    else {
-                        $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
-                        $("input[name='respuesta_eg']").val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                    if ($('#interconsulta\\.respuesta\\.crecimiento').val() == 3){
+                        EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / undia).toFixed(0);
+                        $('#interconsulta\\.respuesta\\.eg').val(EdadGestacional);
+                        $("input[name='respuesta_eg']").val(EdadGestacional);
+                    }else{
+                        EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
+                        if (FExamen.getTime() < FUM.getTime()) {
+                            $('#interconsulta\\.respuesta\\.eg').val('0 semanas');
+                            $("input[name='respuesta_eg']").val('0 semanas');
+                        } 
+                        else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
+                            $('#interconsulta\\.respuesta\\.eg').val('42 semanas');
+                            $("input[name='respuesta_eg']").val('42 semanas');
+                        } 
+                        else {
+                            $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                            $("input[name='respuesta_eg']").val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
+                        }
                     }
                 });
                 $.get('dashboard/agendar/' + solicitud_id).done(function(data){
@@ -394,7 +400,7 @@ function loadInProcess(){
                     else if ($(this).val() == 3){
                         $("#doppleruterinas").remove();
                         $("#multiproposito").remove();
-                        $("#contenedor\\.examenes").append('<div id="ginecologica"> <div class="row m-0 p-2"> <div class="col-8 border rounded p-3"> <div class="row"> <div class="col-6 form-group"> <label>Útero</label> <input type="text" class="form-control" name="respuesta_utero_ginecologica"> </div><div class="col-6 form-group"> <label>Endometrio</label> <input type="text" class="form-control" name="respuesta_endometrio"> </div><div class="col-6 form-group"> <label>Anexo Izquierdo</label> <input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"> </div><div class="col-6 form-group"> <label>Anexo Derecho</label> <input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"> </div><div class="col-6 form-group"> <label>Ovario Izquierdo</label> <input type="text" class="form-control" name="respuesta_ovario_izquierdo"> </div><div class="col-6 form-group"> <label>Ovario Derecho</label> <input type="text" class="form-control" name="respuesta_ovario_derecho"> </div><div class="col-6 form-group"> <label>Douglas</label> <input type="text" class="form-control" name="respuesta_douglas_ginecologica"> </div></div></div><div class="col"> <div class="border rounded p-3 mb-5"> <img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios" class="img-fluid d-block mx-auto"> </div><div class="border rounded text-center"> <div role="group" aria-label="Basic example" class="btn-group text-center"> <button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button> <button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button> <button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar</button> </div></div></div></div></div>');
+                        $("#contenedor\\.examenes").append('<div id="ginecologica"> <div class="row m-0 p-2"> <div class="col-8 border rounded p-3"> <div class="row"> <div class="col-6 form-group"> <label>Útero</label> <input type="text" class="form-control" name="respuesta_utero_ginecologica"> </div><div class="col-6 form-group"> <label>Endometrio</label> <input type="text" class="form-control" name="respuesta_endometrio"> </div><div class="col-6 form-group"> <label>Anexo Izquierdo</label> <input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"> </div><div class="col-6 form-group"> <label>Anexo Derecho</label> <input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"> </div><div class="col-6 form-group"> <label>Ovario Izquierdo</label> <input type="text" class="form-control" name="respuesta_ovario_izquierdo"> </div><div class="col-6 form-group"> <label>Ovario Derecho</label> <input type="text" class="form-control" name="respuesta_ovario_derecho"> </div><div class="col-6 form-group"> <label>Douglas</label> <input type="text" class="form-control" name="respuesta_douglas_ginecologica"> </div></div></div><div class="col"> <div class="border rounded p-3 mb-5"> <img src="imagenes/uteroyovarios.png" alt="Utero y ovarios" class="img-fluid d-block mx-auto"> </div><div class="border rounded text-center"> <div role="group" aria-label="Basic example" class="btn-group text-center"> <button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button> <button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button> <button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar</button> </div></div></div></div></div>');
                         $("#segundotrimestre").remove();
                         $("#primertrimestre").remove();
 
@@ -757,16 +763,17 @@ function loadInProcess(){
                         });
                     }
 
+                    $('#interconsulta\\.respuesta\\.fecha').trigger("change");
                     if ($(this).val() == 3){
                         $("#enviar\\.respuesta\\.botton").addClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
                         $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
-                        $("#interconsulta\\.respuesta\\.edadgestacional").addClass("d-none");
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('<strong class="text-white">Día del ciclo</strong>');
                     }else {
                         $("#enviar\\.respuesta\\.botton").removeClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
                         $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
-                        $("#interconsulta\\.respuesta\\.edadgestacional").removeClass("d-none");
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('<strong class="text-white">Edad gestacional actual</strong>');
                     }
                 });
                 $("select[name='respuesta_anatomia']").on("change", function(){
