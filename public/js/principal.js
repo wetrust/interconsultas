@@ -793,7 +793,7 @@ function loadInProcess(){
                         $("#enviar\\.respuesta\\.botton").addClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
                         $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Día del ciclo');
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Día del ciclo mestrual');
                     }else {
                         $("#enviar\\.respuesta\\.botton").removeClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
