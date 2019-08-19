@@ -776,10 +776,10 @@ function loadInProcess(){
                     }
 
                     if ($(this).val() == 3){
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").text("Día del ciclo");
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('<strong class="text-white">Día del ciclo</strong>');
                     }
                     else{
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").text("Edad gestacional actual");
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('<strong class="text-white">Edad gestacional actual</strong>');
                     }
                     $('#interconsulta\\.respuesta\\.fecha').trigger("change");
                 });
