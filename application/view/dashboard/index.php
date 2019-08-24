@@ -30,7 +30,7 @@
                 <a class="navbar-brand" href="#">Administración de interconsultas</a>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true"><small>Módulo prenatal, exámenes ecográficos</small></a></li>
-                    <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false"><small>Módulo postnatal, datos del parto y recién nacido</small></a></li>
+                    <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false"><small>Módulo postnatal, parto y RN</small></a></li>
                     <li class="nav-item d-none"><a class="nav-link" id="directorio-tab" data-toggle="tab" href="#directorio" role="tab" aria-controls="directorio" aria-selected="false"><small>Lista de destinatario</small></a></li>
                     <li class="nav-item d-none"><a class="nav-link" id="configuracion-tab" data-toggle="tab" href="#configuracion" role="tab" aria-controls="configuracion" aria-selected="false"><small>Configuración</small></a></li>
                 </ul>
