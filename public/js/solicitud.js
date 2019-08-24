@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
 	if (a == 4){
-		$("div\\.a").addClass("d-none");
-		$("div\\.b").addClass("d-none");
+		$("#div\\.a").addClass("d-none");
+		$("#div\\.b").addClass("d-none");
 	}else {
 		loadContrarreferentes();
 	}
-	
-	$("input[name='interconsulta_para_nombre']").val($("#user_name").html());
-	$("input[name='interconsulta_para']").val($("#user_email").html());
+
+	$("#k").val($("#user_name").html());
+	$("#m").val($("#user_email").html());
 
 	$('#interconsulta\\.rut').rut({
         fn_error : function(input){
@@ -143,11 +143,8 @@ $(document).ready(function(){
 					$("#interconsulta\\.nombre").val("");
 					$("#interconsulta\\.rut").val("");
 					$("#interconsulta\\.telefono").val("");
-					var now = new Date();
-					var day = ("0" + now.getDate()).slice(-2);
-					var month = ("0" + (now.getMonth() + 1)).slice(-2);
-					var today = now.getFullYear()+"-"+(month)+"-"+(day);
-					$("#interconsulta\\.fecha").val(today);
+					resetFecha("#d");
+					resetFecha("#e");
 					$("#interconsulta\\.eg\\.no").attr("checked", true);
 					$("#interconsulta\\.eco\\.no").attr("checked", true);
 					$("#interconsulta\\.fum").val(today).trigger("change");
@@ -160,16 +157,14 @@ $(document).ready(function(){
                     $('#cautivo\\.dialogo').modal("hide").remove();
                     $(this).remove();
                     $('#interconsulta\\.enviar').prop("disabled", false);
-                });
+				});
+				loadContrarreferentes();
 			});
 		}
     });
 	
-	var now = new Date();
-	var day = ("0" + now.getDate()).slice(-2);
-	var month = ("0" + (now.getMonth() + 1)).slice(-2);
-	var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-	$("#interconsulta\\.fecha").val(today);
+	resetFecha("#d");
+	resetFecha("#e");
 });
 
 function loadSolicitud(){
@@ -177,4 +172,22 @@ function loadSolicitud(){
     $("#mensaje\\.resultado").addClass("d-none");
     $("#card\\.header").removeClass("d-none");
     $("#formulario\\.solicitud").removeClass("d-none");
+}
+
+function resetFecha(element){
+	var now = new Date();
+	var day = ("0" + now.getDate()).slice(-2);
+	var month = ("0" + (now.getMonth() + 1)).slice(-2);
+	var today = now.getFullYear()+"-"+(month)+"-"+(day);
+	$(element).val(today);
+}
+
+function loadContrarreferentes(){
+	$.get("api/profesionales").done(function(data){
+		$("#n").empty();
+		$.each(data, function(element, value){
+			let option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
+			$("#n").append(option);
+		});
+	});
 }
