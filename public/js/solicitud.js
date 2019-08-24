@@ -188,5 +188,5 @@ function loadContrarreferentes(){
 			$("#n").append(option);
 		});
 	});
-	$("#n").trigger("change");
+	$("#n").val($("#n option:first").val()).trigger("change");
 }
