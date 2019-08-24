@@ -1,6 +1,29 @@
 $(document).ready(function(){
-    construir();
 
+	if (a == 4){
+		$("div\\.a").addClass("d-none");
+		$("div\\.b").addClass("d-none");
+	}else {
+		loadContrarreferentes();
+	}
+	
+	$("input[name='interconsulta_para_nombre']").val($("#user_name").html());
+	$("input[name='interconsulta_para']").val($("#user_email").html());
+
+	$('#interconsulta\\.rut').rut({
+        fn_error : function(input){
+            $(input).removeClass("is-valid").addClass("is-invalid");
+            input.closest('.rut-container').find('span').remove();
+            input.closest('.rut-container').append('<span class="invalid-feedback">Rut incorrecto</span>');
+        },
+        fn_validado : function(input){
+            $(input).removeClass("is-invalid").addClass("is-valid");
+            input.closest('.rut-container').find('span').remove();
+            input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
+        },
+        placeholder: false
+	});
+	
     $("#interconsulta\\.fum").on("change", function(){
 		var FExamen, FUM, EdadGestacional;
 		var undia = 1000 * 60 * 60 * 24;
@@ -141,8 +164,6 @@ $(document).ready(function(){
 			});
 		}
     });
-    
-	loadContrarreferentes();
 	
 	var now = new Date();
 	var day = ("0" + now.getDate()).slice(-2);
@@ -150,24 +171,6 @@ $(document).ready(function(){
 	var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
 	$("#interconsulta\\.fecha").val(today);
 });
-
-function construir(){
-	$("input[name='interconsulta_para_nombre']").val($("#user_name").html());
-	$("input[name='interconsulta_para']").val($("#user_email").html());
-	$('#interconsulta\\.rut').rut({
-        fn_error : function(input){
-            $(input).removeClass("is-valid").addClass("is-invalid");
-            input.closest('.rut-container').find('span').remove();
-            input.closest('.rut-container').append('<span class="invalid-feedback">Rut incorrecto</span>');
-        },
-        fn_validado : function(input){
-            $(input).removeClass("is-invalid").addClass("is-valid");
-            input.closest('.rut-container').find('span').remove();
-            input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
-        },
-        placeholder: false
-    });
-}
 
 function loadSolicitud(){
     $("#tabla\\.resultado").addClass("d-none");
