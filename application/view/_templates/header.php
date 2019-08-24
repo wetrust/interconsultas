@@ -4,8 +4,8 @@
     <title>Administrador de interconsultas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <base href="<?php echo Config::get('URL'); ?>" target="_self">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/style.css">
     <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
