@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	if (a == 4){
 		$("#div\\.a").addClass("d-none");
 		$("#div\\.b").addClass("d-none");
@@ -10,7 +9,7 @@ $(document).ready(function(){
 	$("#k").val($("#user_name").html());
 	$("#m").val($("#user_email").html());
 
-	$('#interconsulta\\.rut').rut({
+	$('#b').rut({
         fn_error : function(input){
             $(input).removeClass("is-valid").addClass("is-invalid");
             input.closest('.rut-container').find('span').remove();
@@ -24,13 +23,13 @@ $(document).ready(function(){
         placeholder: false
 	});
 	
-    $("#interconsulta\\.fum").on("change", function(){
+    $("#d").on("change", function(){
 		var FExamen, FUM, EdadGestacional;
 		var undia = 1000 * 60 * 60 * 24;
 		var unasemana = undia * 7;
 
-		FUM = $("#interconsulta\\.fum").val();
-		FExamen = $("#interconsulta\\.fecha").val();
+		FUM = $("#d").val();
+		FExamen = $("#e").val();
 
 		FUM = new Date (FUM);
 		FExamen = new Date (FExamen);
@@ -38,25 +37,24 @@ $(document).ready(function(){
 		EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
 
 		if (FExamen.getTime() < FUM.getTime()) {
-			$('#interconsulta\\.egestacional').val("0 semanas");
+			$('#f').val("0 semanas");
 		}
 		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-			$('#interconsulta\\.egestacional').val("42 semanas");
+			$('#f').val("42 semanas");
 		}
 		else {
-			$('#interconsulta\\.egestacional').val(Math.floor(EdadGestacional) + "." + Math.round((EdadGestacional - Math.floor(EdadGestacional))*7) + " semanas");
+			$('#f').val(Math.floor(EdadGestacional) + "." + Math.round((EdadGestacional - Math.floor(EdadGestacional))*7) + " semanas");
 		}
-
     });
 
-    $("#interconsulta\\.para\\.select").on("click", function(){
+    $("#n").on("click", function(){
 		$(this).trigger("change");
 	}).on("change", function(){
 		let correo = $(this).val();
-		let nombre = $("#interconsulta\\.para\\.select option:selected").text();
+		let nombre = $("#n option:selected").text();
 
-		$("#interconsulta\\.para\\.nombre").val(nombre);
-		$("#interconsulta\\.para").val(correo);
+		$("#o").val(nombre);
+		$("#p").val(correo);
 	});
 
     $("#interconsulta\\.enviar").on("click", function(){
