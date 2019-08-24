@@ -4,7 +4,6 @@ var textos = {
     paciente_name_error: "¿C&oacute;mo se llama la paciente?",
     paciente_rut_error: "¿Cual es el RUT de la paciente?",
     solicitud_fecha_error:"¿Cual es la Fecha de solicitud de la interconsulta?, ¿Hoy?",
-    eg_error: "¿La Ege es conocida precozmente?",
     eco_previa_error: "¿Tiene una ecograf&iacute;a previa de crecimiento la paciente?",
     fur_error: "¿Cual es la Fecha de ultima mestruaci&oacute;n de la paciente?",
     diagnostico_referencia_error: "¿Cual es el Diagn&oacute;stico de referencia?",
