@@ -7,7 +7,7 @@ $(document).ready(function(){
 		loadContrarreferentes();
 	}
 
-	lugares();
+	loadLugares();
 	loadCiudadesSolicitud();
 
 	$("#q").val($("#user_name").html());
