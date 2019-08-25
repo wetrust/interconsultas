@@ -83,7 +83,7 @@ $(document).ready(function(){
 		if (B != ""){ B = parseInt(B); }
 
 		if (Number.isInteger(A) && Number.isInteger(B)){
-			var valor = ((A / (Math.pow(B, 2))) * 10000);
+			var valor = ((B / (Math.pow(A, 2))) * 10000);
 			$("#o").val(Math.trunc(valor));
 		}else{
 			$("#o").val(0);
@@ -98,7 +98,7 @@ $(document).ready(function(){
 		if (B != ""){ B = parseInt(B); }
 
 		if (Number.isInteger(A) && Number.isInteger(B)){
-			var valor = ((A / (Math.pow(B, 2))) * 10000);
+			var valor = ((B / (Math.pow(A, 2))) * 10000);
 			$("#o").val(Math.trunc(valor));
 		}else{
 			$("#o").val(0);
