@@ -53,8 +53,8 @@ $(document).ready(function(){
 		let correo = $(this).val();
 		let nombre = $("#s option:selected").text();
 
-		$("#t").val(nombre);
-		$("#u").val(correo);
+		$("#q").val(nombre);
+		$("#r").val(correo);
 	});
 
     $("#interconsulta\\.enviar").on("click", function(){
