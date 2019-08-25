@@ -93,3 +93,4 @@
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
 </script>
 <script src="js/membrete.js"></script>
+<script src="js/configuracion.js"></script>
