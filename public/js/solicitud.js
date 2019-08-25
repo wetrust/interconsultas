@@ -24,7 +24,7 @@ $(document).ready(function(){
         placeholder: false
 	});
 	
-    $("#d").on("change", function(){
+    $("#d, #e").on("change", function(){
 		var FExamen, FUM, EdadGestacional;
 		var undia = 1000 * 60 * 60 * 24;
 		var unasemana = undia * 7;
