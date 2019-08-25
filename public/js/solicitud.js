@@ -6,8 +6,8 @@ $(document).ready(function(){
 		loadContrarreferentes();
 	}
 
-	$("#p").val($("#user_name").html());
-	$("#q").val($("#user_email").html());
+	$("#q").val($("#user_name").html());
+	$("#r").val($("#user_email").html());
 
 	$('#b').rut({
         fn_error : function(input){
@@ -53,8 +53,8 @@ $(document).ready(function(){
 		let correo = $(this).val();
 		let nombre = $("#s option:selected").text();
 
-		$("#q").val(nombre);
-		$("#r").val(correo);
+		$("#t").val(nombre);
+		$("#u").val(correo);
 	});
 
     $("#interconsulta\\.enviar").on("click", function(){
