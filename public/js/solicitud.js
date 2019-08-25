@@ -2,6 +2,7 @@ $(document).ready(function(){
 	if (a == 4){
 		$("#div\\.a").addClass("d-none");
 		$("#div\\.b").addClass("d-none");
+		$("#div\\.c").addClass("d-none");
 	}else {
 		loadContrarreferentes();
 	}
