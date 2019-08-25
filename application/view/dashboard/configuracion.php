@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
+            <h5 class="card-title">Configuración</h5>
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-membrete-tab" data-toggle="tab" href="#nav-membrete" role="tab" aria-controls="nav-membrete" aria-selected="true">Membrete</a>
@@ -109,9 +110,3 @@
         </div>
     </div>
 </div>
-
-
-<h3>Configuración</h3>
-            <div id="almacenamiento">
-                
-            </div>
