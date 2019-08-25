@@ -48,7 +48,12 @@ $(document).ready(function(){
 		}
     });
 
-	$("#k").on("change", function(){
+	$("#k").on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#l").focus();
+		}
+
 		var A = $("#k").val();
 		var B = $("#l").val();
 
@@ -62,7 +67,11 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#l").on("change", function(){
+	$("#l").on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#m").focus();
+		}
 		var A = $("#k").val();
 		var B = $("#l").val();
 
@@ -76,7 +85,11 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#m").on("change", function(e){
+	$("#m").on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#n").focus();
+		}
 		var A = $("#m").val();
 		var B = $("#n").val();
 
@@ -91,7 +104,11 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#n").on("change", function(e){
+	$("#n").on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#p").focus();
+		}
 		var A = $("#m").val();
 		var B = $("#n").val();
 
