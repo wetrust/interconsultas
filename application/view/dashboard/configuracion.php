@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-12 col-sm-6">
                             <div class="btn-group my-2" role="group">
-                                <a class="btn btn-outline-primary" href="#">Nuevo</a>
+                            <button class="btn btn-outline-primary" id="lugar.nuevo">Nuevo</button>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">

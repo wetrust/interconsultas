@@ -546,6 +546,10 @@ class DashboardController extends Controller
         $this->View->renderJSON(MembreteModel::getMembrete());
     }
 
+    public function lugarSave(){
+        $this->View->renderJSON(LugarModel::createLugar(Request::post('lugar_name')));   
+    }
+
     public function lugares(){
         $this->View->renderJSON(LugarModel::getAllLugares());   
     }
