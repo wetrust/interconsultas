@@ -8,7 +8,7 @@ $(document).ready(function(){
 	}
 
 	lugares();
-	loadCiudades();
+	loadCiudadesSolicitud();
 
 	$("#q").val($("#user_name").html());
 	$("#r").val($("#user_email").html());
@@ -336,8 +336,8 @@ function loadContrarreferentes(){
 	$("#s").trigger("change");
 }
 
-function loadCiudades(){
-	$.get("dashboard/ciudades").done(function(data){
+function loadCiudadesSolicitud(){
+	$.get("dashboard/ciudadesSolicitud").done(function(data){
 		$("#h").empty();
 		var contador = 0;
 		$.each(data, function(element, value){
