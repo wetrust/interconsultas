@@ -543,4 +543,12 @@ class DashboardController extends Controller
     public function mymembrete(){
         $this->View->renderJSON(MembreteModel::getMembrete());
     }
+
+    public function lugares(){
+        $this->View->renderJSON(LugarModel::getAllLugares());   
+    }
+
+    public function ciudades(){
+        $this->View->renderJSON(CiudadModel::getAllCiudades());   
+    }
 }

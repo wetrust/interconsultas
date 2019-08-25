@@ -7,6 +7,9 @@ $(document).ready(function(){
 		loadContrarreferentes();
 	}
 
+	lugares();
+	loadCiudades();
+
 	$("#q").val($("#user_name").html());
 	$("#r").val($("#user_email").html());
 
@@ -141,8 +144,8 @@ $(document).ready(function(){
 		var fecha = String($("#e").val());
 		var eg = String($('#f').val()); //es obligatoria
 		var edadMaterna = String($('#g').val()); //es obligatoria
-		var ciudad = String($("#h").val()); //es obligatoria
-		var lugar = String($("#i").val()); //es obligatoria
+		var ciudad = String($("#h option:selected").val()); //es obligatoria
+		var lugar = String($("#i option:selected").val()); //es obligatoria
 		var diagnostico = String($("#j").val()); //es obligatoria
 
 		var sistolica = $("#k").val();
@@ -331,4 +334,38 @@ function loadContrarreferentes(){
 		});
 	});
 	$("#s").trigger("change");
+}
+
+function loadCiudades(){
+	$.get("dashboard/ciudades").done(function(data){
+		$("#h").empty();
+		var contador = 0;
+		$.each(data, function(element, value){
+			let option = "";
+			if (contador == 0){
+				option = '<option value="'+value.ciudad_name+'" selected>'+value.ciudad_name+'</option>';
+				contador++;
+			}else{
+				option = '<option value="'+value.ciudad_name+'">'+value.ciudad_name+'</option>';
+			}
+			$("#h").append(option);
+		});
+	});
+}
+
+function loadLugares(){
+	$.get("dashboard/lugares").done(function(data){
+		$("#i").empty();
+		var contador = 0;
+		$.each(data, function(element, value){
+			let option = "";
+			if (contador == 0){
+				option = '<option value="'+value.lugar_name+'" selected>'+value.lugar_name+'</option>';
+				contador++;
+			}else{
+				option = '<option value="'+value.lugar_name+'">'+value.lugar_name+'</option>';
+			}
+			$("#i").append(option);
+		});
+	});
 }
