@@ -42,10 +42,10 @@
                         Nombre de usuario: <span id="user_name"><?php echo Session::get('user_name'); ?></span><br>Correo: <span id="user_email"><?php echo Session::get('user_email'); ?></span><br>Tipo de usuario: <?php echo $interests[Session::get('user_account_type')]; ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
                         <?php if (Session::get('user_account_type') > 2 ){ ?>
                         <a class="dropdown-item" href="dashboard/configuracion">Configuración</a>
                         <?php } ?>
+                        <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
                         <?php if (Session::get('user_account_type') > 3){ ?>
                         <a class="dropdown-item" href="user/changePassword">Modificar contraseña</a>
                         <a class="dropdown-item" href="user/editUserEmail">Cambiar correo</a>
