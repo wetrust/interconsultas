@@ -110,8 +110,6 @@ $(document).ready(function(){
 		$(this).trigger("change");
 	}).on("change", function(){
 		let correo = $(this).val();
-		let nombre = $("#s option:selected").text();
-		$("#t").val(nombre);
 		$("#u").val(correo);
 	});
 
@@ -138,7 +136,7 @@ $(document).ready(function(){
 		var antecedentes = String($("#p").val());
 		var nombreReferente = String($("#q").val());
 		var correoReferente = String($("#r").val());
-		var nombreContrarreferente = String($("#t").val());
+		var nombreContrarreferente = String($("#s option:selected").text());
 		var correoContrarreferente = String($("#u").val());
 
 
