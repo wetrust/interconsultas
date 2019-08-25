@@ -550,6 +550,10 @@ class DashboardController extends Controller
         $this->View->renderJSON(LugarModel::getAllLugares());   
     }
 
+    public function ciudadSave(){
+        $this->View->renderJSON(CiudadModel::createCiudad(Request::post('ciudad_name')));   
+    }
+
     public function ciudadesSolicitud(){
         $this->View->renderJSON(CiudadModel::getAllCiudades());   
     }
