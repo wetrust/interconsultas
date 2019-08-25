@@ -1,7 +1,4 @@
 $(document).ready(function(){
-    $("#configuracion-tab").parent().removeClass("d-none");
-    document.getElementById("configuracion").classList.remove("d-none");
-
     loadMembrete();
     $("#membrete\\.guardar").on("click", function(){
         var texto = document.getElementById("membrete").value;

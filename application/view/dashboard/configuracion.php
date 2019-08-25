@@ -11,35 +11,14 @@
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-membrete" role="tabpanel" aria-labelledby="nav-membrete-tab">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <div class="btn-group my-2" role="group">
-                                <a class="btn btn-outline-primary" href="#">Nuevo</a>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between py-sm-3"><h4>Membrete</h4><button type="button" class="btn btn-primary" id="membrete.guardar">Guardar Membrete</button></div>
+                            <div class="mb-3">
+                                <label for="membrete">Membrete</label>
+                                <textarea class="form-control" id="membrete" rows="3" required></textarea>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <h3 class="text-right my-2" id="crud.title">Textos predefinidos</h3>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr id="table.head">
-                                    <td>Titulo</td>
-                                    <td>Texto</td>
-                                    <td>Opciones</td>
-                                </tr>
-                            </thead>
-                            <tbody id="table.body">
-                            <?php foreach ($this->textos as $text) { ?>
-                                <tr>
-                                <td><?= $text->texto_titulo; ?></td>
-                                <td><?= $text->texto_text; ?></td>
-                                <td class="w-25"><a class="btn btn-primary" href="">Modificar</a> <a class="btn btn-danger" href="">Eliminar</a></td>
-                                </tr>
-                            <?php } ?>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-ciudades" role="tabpanel" aria-labelledby="nav-ciudades-tab">
@@ -110,3 +89,4 @@
         </div>
     </div>
 </div>
+<script src="js/membrete.js"></script>

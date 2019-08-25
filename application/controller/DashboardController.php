@@ -319,7 +319,6 @@ class DashboardController extends Controller
     
     public function configuracion(){
         $this->View->render('dashboard/configuracion', array(
-            'textos' =>  TextModel::getAllTexts(),
             'ciudades' =>  CiudadModel::getAllCiudades(),
             'lugares' =>  LugarModel::getAllLugares()
             )

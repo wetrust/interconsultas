@@ -32,7 +32,6 @@
                     <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true"><small>Módulo prenatal, exámenes ecográficos</small></a></li>
                     <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false"><small>Módulo postnatal, parto y RN</small></a></li>
                     <li class="nav-item d-none"><a class="nav-link" id="directorio-tab" data-toggle="tab" href="#directorio" role="tab" aria-controls="directorio" aria-selected="false"><small>Lista de destinatario</small></a></li>
-                    <li class="nav-item d-none"><a class="nav-link" id="configuracion-tab" data-toggle="tab" href="#configuracion" role="tab" aria-controls="configuracion" aria-selected="false"><small>Configuración</small></a></li>
                 </ul>
             </div>
             <div class="col">
@@ -234,17 +233,6 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade d-none" id="configuracion" role="tabpanel" aria-labelledby="configuracion-tab">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between py-sm-3"><h4>Membrete</h4><button type="button" class="btn btn-primary" id="membrete.guardar">Guardar Membrete</button></div>
-                    <div class="mb-3">
-                        <label for="membrete">Membrete</label>
-                        <textarea class="form-control" id="membrete" rows="3" required></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
@@ -321,12 +309,10 @@
     <script src="js/partos.js"></script>
 <?php } else if (Session::get("user_account_type") == 3) { ?>
     <script src="js/principal.js"></script>
-    <script src="js/membrete.js"></script>
     <script src="js/partos.js"></script>
 <?php } else if (Session::get("user_account_type") == 4) { ?>
     <script src="js/jquery.rut.chileno.min.js"></script>
     <script src="js/solicitud.js"></script>
     <script src="js/autorreferido.js"></script>
-    <script src="js/membrete.js"></script>
     <script src="js/partos.js"></script>
 <?php } ?>
