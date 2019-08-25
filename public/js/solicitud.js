@@ -51,15 +51,11 @@ $(document).ready(function(){
 		var A = $("#k").val();
 		var B = $("#l").val();
 
-		if (A != ""){
-			A = parseInt(A);
-		}
-		if (B != ""){
-			B = parseInt(B);
-		}
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
 
 		if (Number.isInteger(A) && Number.isInteger(B)){
-			$("#ll").val((parseInt(A)+parseInt(B))/2);
+			$("#ll").val(Math.trunc((parseInt(A)+parseInt(B))/2));
 		}else{
 			$("#ll").val(0);
 		}
@@ -68,8 +64,14 @@ $(document).ready(function(){
 	$("#l").on("change", function(){
 		var A = $("#k").val();
 		var B = $("#l").val();
+
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
+
 		if (Number.isInteger(A) && Number.isInteger(B)){
-			$("#ll").val((parseInt(A)+parseInt(B))/2);
+			$("#ll").val(Math.trunc((parseInt(A)+parseInt(B))/2));
+		}else{
+			$("#ll").val(0);
 		}
 	});
 
