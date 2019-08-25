@@ -75,6 +75,36 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#m").on("change", function(e){
+		var A = $("#m").val();
+		var B = $("#n").val();
+
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
+
+		if (Number.isInteger(A) && Number.isInteger(B)){
+			var valor = ((A / (Math.pow(B, 2))) * 10000);
+			$("#o").val(Math.trunc(valor));
+		}else{
+			$("#o").val(0);
+		}
+	});
+
+	$("#n").on("change", function(e){
+		var A = $("#m").val();
+		var B = $("#n").val();
+
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
+
+		if (Number.isInteger(A) && Number.isInteger(B)){
+			var valor = ((A / (Math.pow(B, 2))) * 10000);
+			$("#o").val(Math.trunc(valor));
+		}else{
+			$("#o").val(0);
+		}
+	});
+
 
     $("#s").on("click", function(){
 		$(this).trigger("change");
