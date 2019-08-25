@@ -110,10 +110,10 @@ $(document).ready(function(){
 		$(this).trigger("change");
 	}).on("change", function(){
 		let correo = $(this).val();
-		$("#u").val(correo);
+		$("#t").val(correo);
 	});
 
-    $("#v").on("click", function(){
+    $("#u").on("click", function(){
 		var listo = false;
 		//revisar si el usuario lleno todas las cajas
 		var nombre = String($("#a").val()); //es obligatoria
@@ -137,7 +137,7 @@ $(document).ready(function(){
 		var nombreReferente = String($("#q").val());
 		var correoReferente = String($("#r").val());
 		var nombreContrarreferente = String($("#s option:selected").text());
-		var correoContrarreferente = String($("#u").val());
+		var correoContrarreferente = String($("#t").val());
 
 
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
