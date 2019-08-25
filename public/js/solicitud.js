@@ -6,8 +6,8 @@ $(document).ready(function(){
 		loadContrarreferentes();
 	}
 
-	$("#k").val($("#user_name").html());
-	$("#m").val($("#user_email").html());
+	$("#p").val($("#user_name").html());
+	$("#q").val($("#user_email").html());
 
 	$('#b').rut({
         fn_error : function(input){
@@ -47,14 +47,14 @@ $(document).ready(function(){
 		}
     });
 
-    $("#n").on("click", function(){
+    $("#s").on("click", function(){
 		$(this).trigger("change");
 	}).on("change", function(){
 		let correo = $(this).val();
-		let nombre = $("#n option:selected").text();
+		let nombre = $("#s option:selected").text();
 
-		$("#o").val(nombre);
-		$("#p").val(correo);
+		$("#t").val(nombre);
+		$("#u").val(correo);
 	});
 
     $("#interconsulta\\.enviar").on("click", function(){
@@ -182,11 +182,18 @@ function resetFecha(element){
 
 function loadContrarreferentes(){
 	$.get("api/profesionales").done(function(data){
-		$("#n").empty();
+		$("#s").empty();
+		var contador = 0;
 		$.each(data, function(element, value){
-			let option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
-			$("#n").append(option);
+			let option = "";
+			if (contador == 0){
+				option = '<option value="'+value.user_email+'" selected>'+value.user_name+'</option>';
+				contador++;
+			}else{
+				option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
+			}
+			$("#s").append(option);
 		});
 	});
-	$("#n").val($("#n option:first").val()).trigger("change");
+	$("#s").trigger("change");
 }
