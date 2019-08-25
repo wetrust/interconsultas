@@ -89,4 +89,7 @@
         </div>
     </div>
 </div>
+<script>
+    var _api = "<?php echo Config::get('URL'); ?>dashboard/";
+</script>
 <script src="js/membrete.js"></script>
