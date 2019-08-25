@@ -84,7 +84,7 @@ $(document).ready(function(){
 
 		if (Number.isInteger(A) && Number.isInteger(B)){
 			var valor = ((B / (Math.pow(A, 2))) * 10000);
-			$("#o").val(Math.trunc(valor));
+			$("#o").val(valor.toFixed(1));
 		}else{
 			$("#o").val(0);
 		}
@@ -99,7 +99,7 @@ $(document).ready(function(){
 
 		if (Number.isInteger(A) && Number.isInteger(B)){
 			var valor = ((B / (Math.pow(A, 2))) * 10000);
-			$("#o").val(Math.trunc(valor));
+			$("#o").val(valor.toFixed(1));
 		}else{
 			$("#o").val(0);
 		}
