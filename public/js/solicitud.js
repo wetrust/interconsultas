@@ -292,7 +292,7 @@ $(document).ready(function(){
                 $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
                     $('#cautivo\\.dialogo').modal("hide").remove();
                     $(this).remove();
-                    $('#interconsulta\\.enviar').prop("disabled", false);
+                    $('#u').prop("disabled", false);
 				});
 				loadContrarreferentes();
 			});
