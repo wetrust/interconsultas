@@ -194,7 +194,7 @@ $(document).ready(function(){
             $('body').append(baseModal + '<h5 class="modal-title">' + textos.form_error+ '</h5></div><div class="modal-body"><p>'+ mensaje +'</p>'+ footerModal);
             $('#cautivo\\.dialogo').modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
             return;
-		}else if (a == 4 && nombreContrarreferente.length < 5 || correoContrarreferente.length < 5){
+		}else if (a < 3 && nombreContrarreferente.length < 5 || correoContrarreferente.length < 5){
 			var mensaje = "";
 
             if (nombreContrarreferente.length < 3){
@@ -215,7 +215,7 @@ $(document).ready(function(){
 
 			var data = {};
 
-			if (a == 4){
+			if (a < 3){
 				data = {
 					nombre: nombre,
 					rut: rut,
