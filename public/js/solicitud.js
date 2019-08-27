@@ -273,27 +273,29 @@ $(document).ready(function(){
 			$.post("https://administrador.crecimientofetal.cl/api/send", data).done(function(response){
 				if (response.result == false){
 					$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">ERROR</h5></div><div class="modal-body"><p>Usted NO puede solicitar interconsulta para este profesional</p>'+ footerModal);
-				}
-				else if (response.result == true){
+				}else if (response.result == true){
 					$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Información</h5></div><div class="modal-body"><p>Su Solicitud de interconsulta ha sido enviada correctamente</p>'+ footerModal);
-					$("#interconsulta\\.nombre").val("");
-					$("#interconsulta\\.rut").val("");
-					$("#interconsulta\\.telefono").val("");
+					$("#a").val("");
+					$("#b").val("");
+					$("#c").val("");
 					resetFecha("#d");
 					resetFecha("#e");
-					$("#interconsulta\\.eg\\.no").attr("checked", true);
-					$("#interconsulta\\.eco\\.no").attr("checked", true);
-					$("#interconsulta\\.fum").val(today).trigger("change");
-					$("#interconsulta\\.alteraciones").val(0);
-					$("#interconsulta\\.diagnostico").val("");
-					$("#interconsulta\\.lugar").val("");
-					$("#interconsulta\\.ciudad").val("");
+					$("#g").val(25);
+					$("#j").val("");
+					$("#k").val("");
+					$("#l").val("");
+					$("#ll").val(0);
+					$("#m").val("");
+					$("#n").val("");
+					$("#o").val(0);
 				}
+
                 $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
                     $('#cautivo\\.dialogo').modal("hide").remove();
                     $(this).remove();
                     $('#u').prop("disabled", false);
 				});
+
 				loadContrarreferentes();
 			});
 		}
