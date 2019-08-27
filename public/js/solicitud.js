@@ -211,7 +211,7 @@ $(document).ready(function(){
 		}
 
 		if (listo == true){
-			$('#v').prop("disabled", true);
+			$('#u').prop("disabled", true);
 
 			var data = {};
 
