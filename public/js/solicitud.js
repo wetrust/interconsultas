@@ -154,7 +154,7 @@ $(document).ready(function(){
 		var talla = String($("#m").val());
 		var peso = String($("#n").val());
 		var imc = String($("#o").val());
-		var paridad = String($("#p").val());
+		var paridad = String($("#p option:selected").text());
 		var antecedentes = String($("#q").val());
 		var nombreReferente = String($("#r").val());
 		var correoReferente = String($("#s").val());
