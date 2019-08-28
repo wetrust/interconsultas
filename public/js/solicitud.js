@@ -134,7 +134,7 @@ $(document).ready(function(){
 		$("#t").val(correo);
 	});
 
-    $("#u").on("click", function(){
+    $("#v").on("click", function(){
 		var listo = false;
 		//revisar si el usuario lleno todas las cajas
 		var nombre = String($("#a").val()); //es obligatoria
@@ -154,11 +154,12 @@ $(document).ready(function(){
 		var talla = String($("#m").val());
 		var peso = String($("#n").val());
 		var imc = String($("#o").val());
-		var antecedentes = String($("#p").val());
-		var nombreReferente = String($("#q").val());
-		var correoReferente = String($("#r").val());
-		var nombreContrarreferente = String($("#s option:selected").text());
-		var correoContrarreferente = String($("#t").val());
+		var paridad = String($("#p").val());
+		var antecedentes = String($("#q").val());
+		var nombreReferente = String($("#r").val());
+		var correoReferente = String($("#s").val());
+		var nombreContrarreferente = String($("#t option:selected").text());
+		var correoContrarreferente = String($("#u").val());
 
 
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
@@ -211,7 +212,7 @@ $(document).ready(function(){
 		}
 
 		if (listo == true){
-			$('#u').prop("disabled", true);
+			$('#v').prop("disabled", true);
 
 			var data = {};
 
@@ -233,6 +234,7 @@ $(document).ready(function(){
 					talla: talla,
 					peso: peso,
 					imc: imc,
+					paridad:paridad,
 					antecedentes: antecedentes,
 					nombreReferente: nombreReferente,
 					correoReferente: correoReferente,
@@ -258,6 +260,7 @@ $(document).ready(function(){
 					peso: peso,
 					imc: imc,
 					antecedentes: antecedentes,
+					paridad: paridad,
 					nombreReferente: nombreReferente,
 					correoReferente: correoReferente
 				};
@@ -284,13 +287,14 @@ $(document).ready(function(){
 					$("#m").val("");
 					$("#n").val("");
 					$("#o").val(0);
-					$("#p").val("");
+					$("#p").val(0);
+					$("#q").val("");
 				}
 
                 $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
                     $('#cautivo\\.dialogo').modal("hide").remove();
                     $(this).remove();
-                    $('#u').prop("disabled", false);
+                    $('#v').prop("disabled", false);
 				});
 
 				loadContrarreferentes();
@@ -319,7 +323,7 @@ function resetFecha(element){
 
 function loadContrarreferentes(){
 	$.get("api/profesionales").done(function(data){
-		$("#s").empty();
+		$("#t").empty();
 		var contador = 0;
 		$.each(data, function(element, value){
 			let option = "";
@@ -329,10 +333,10 @@ function loadContrarreferentes(){
 			}else{
 				option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
 			}
-			$("#s").append(option);
+			$("#t").append(option);
 		});
 	});
-	$("#s").trigger("change");
+	$("#t").trigger("change");
 }
 
 function loadCiudadesSolicitud(){
