@@ -66,7 +66,7 @@ $(document).ready(function(){
 		if (Number.isInteger(A) && Number.isInteger(B)){
 			A = parseInt(A) / 3;
 			B = parseInt(B) / 3;
-			$("#ll").val(Math.trunc((B * 2) + (A)));
+			$("#ll").val(Math.trunc((A - (B/3))+B));
 		}else{
 			$("#ll").val(0);
 		}
@@ -86,7 +86,8 @@ $(document).ready(function(){
 		if (Number.isInteger(A) && Number.isInteger(B)){
 			A = parseInt(A) / 3;
 			B = parseInt(B) / 3;
-			$("#ll").val(Math.trunc((B * 2) + (A)));
+			 
+			$("#ll").val(Math.trunc((A - (B/3))+B));
 		}else{
 			$("#ll").val(0);
 		}
