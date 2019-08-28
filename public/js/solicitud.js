@@ -10,8 +10,8 @@ $(document).ready(function(){
 	loadLugares();
 	loadCiudadesSolicitud();
 
-	$("#q").val($("#user_name").html());
-	$("#r").val($("#user_email").html());
+	$("#r").val($("#user_name").html());
+	$("#s").val($("#user_email").html());
 
 	$('#b').rut({
         fn_error : function(input){
