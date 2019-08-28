@@ -284,6 +284,7 @@ $(document).ready(function(){
 					$("#m").val("");
 					$("#n").val("");
 					$("#o").val(0);
+					$("#p").val("");
 				}
 
                 $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
