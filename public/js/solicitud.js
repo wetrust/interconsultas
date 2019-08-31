@@ -344,7 +344,7 @@ function loadContrarreferentes(){
 }
 
 function loadCiudadesSolicitud(){
-	$.get("dashboard/ciudadesSolicitud").done(function(data){
+	$.get("dashboard/ciudades_configuracion").done(function(data){
 		$("#h").empty();
 		var contador = 0;
 		$.each(data, function(element, value){
@@ -361,7 +361,7 @@ function loadCiudadesSolicitud(){
 }
 
 function loadLugares(){
-	$.get("dashboard/lugares").done(function(data){
+	$.get("dashboard/lugares_configuracion").done(function(data){
 		$("#i").empty();
 		var contador = 0;
 		$.each(data, function(element, value){

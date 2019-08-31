@@ -542,16 +542,8 @@ class DashboardController extends Controller
         $this->View->renderJSON(LugarModel::createLugar(Request::post('lugar_name')));   
     }
 
-    public function lugares(){
-        $this->View->renderJSON(LugarModel::getAllLugares());   
-    }
-
     public function ciudadSave(){
         $this->View->renderJSON(CiudadModel::createCiudad(Request::post('ciudad_name')));   
-    }
-
-    public function ciudadesSolicitud(){
-        $this->View->renderJSON(CiudadModel::getAllCiudades());   
     }
 
     public function ciudades_configuracion(){
@@ -560,5 +552,13 @@ class DashboardController extends Controller
 
     public function ciudades_configuracion_delete($id){
         $this->View->renderJSON(DirectorioModel::deleteCiudad($id)); 
+    }
+
+    public function lugares_configuracion(){
+        $this->View->renderJSON(LugarModel::getAllLugares());
+    }
+
+    public function lugares_configuracion_delete($id){
+        $this->View->renderJSON(LugarModel::deleteLugar($id)); 
     }
 }

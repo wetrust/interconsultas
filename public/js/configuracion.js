@@ -46,8 +46,29 @@ function loadCiudadesConfiguracion(){
         $("#tabla\\.ciudad\\.configuracion .btn").on("click", function(){
             var id = $(this).data("id");
 
-            $.get('dashboard/directorioDelete/'+id).done(function(data){
+            $.get('dashboard/ciudades_configuracion_delete/'+id).done(function(data){
                 loadCiudadesConfiguracion();
+            });
+
+        });
+    });
+}
+
+function loadLugaresConfiguracion(){
+    $.get("dashboard/lugares_configuracion").done(function(data){
+        $('#tabla\\.lugar\\.configuracion').empty();
+        if (Object.keys(data).length > 0) {
+            $.each(data, function(i, value) {
+                var fila = '<tr><td>' + value.lugar_id + '</td><td>' + value.lugar_name + '</td><td><button class="btn btn-danger" data-id="' + value.lugar_id + '">Eliminar</button></td></tr>';
+                $("#tabla\\.lugar\\.configuracion").append(fila);
+            });
+        }
+
+        $("#tabla\\.lugar\\.configuracion .btn").on("click", function(){
+            var id = $(this).data("id");
+
+            $.get('dashboard/lugares_configuracion_delete/'+id).done(function(data){
+                loadLugaresConfiguracion();
             });
 
         });
@@ -145,7 +166,7 @@ function createCarcasaLugar(){
         let dav = {lugar_name: $("#modal\\.lugar\\.nombre").val()}
         
         $.post('dashboard/lugarSave', dav).done(function(data){
-            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); location.reload();
+            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadLugaresConfiguracion();
         });
     });
 }
