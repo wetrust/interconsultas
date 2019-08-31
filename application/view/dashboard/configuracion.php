@@ -7,6 +7,7 @@
                     <a class="nav-item nav-link active" id="nav-membrete-tab" data-toggle="tab" href="#nav-membrete" role="tab" aria-controls="nav-membrete" aria-selected="true">Membrete</a>
                     <a class="nav-item nav-link" id="nav-ciudades-tab" data-toggle="tab" href="#nav-ciudades" role="tab" aria-controls="nav-ciudades" aria-selected="false">Ciudades</a>
                     <a class="nav-item nav-link" id="nav-lugares-tab" data-toggle="tab" href="#nav-lugares" role="tab" aria-controls="nav-lugares" aria-selected="false">Lugares</a>
+                    <a class="nav-item nav-link" id="nav-lista-tab" data-toggle="tab" href="#nav-lista" role="tab" aria-controls="nav-lista" aria-selected="false">Lista de emails</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -82,6 +83,17 @@
                             <?php } ?>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-lista" role="tabpanel" aria-labelledby="nav-lista-tab">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between py-sm-3"><h4>Datos relativos a destinatario opcional</h4><button type="button" class="btn btn-primary" id="directorio.nuevo">Generar nuevo destinatario</button></div>
+                            <table class="table table-hover">
+                                <thead class="table-secondary"><tr><th scope="col">Nombre del destinatario</th><th scope="col">Tipo de destinatario</th><th scope="col">Email destinatario</th><th scope="col">Opciones</th></tr></thead>
+                                <tbody id="tabla.directorio.email"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
