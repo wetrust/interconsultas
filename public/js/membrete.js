@@ -18,6 +18,8 @@ $(document).ready(function(){
 
 function loadMembrete(){
     $.get('dashboard/mymembrete').done(function(data){
-        document.getElementById("membrete").value = data.membrete_text.replace(/\r?<br>/g, "\n");
+        if (data != false){
+            document.getElementById("membrete").value = data.membrete_text.replace(/\r?<br>/g, "\n");
+        } 
     });
 }
