@@ -559,6 +559,6 @@ class DashboardController extends Controller
     }
 
     public function ciudades_configuracion_delete($id){
-        $this->View->renderJSON(DirectorioModel::deleteCiudad(($id)); 
+        $this->View->renderJSON(DirectorioModel::deleteCiudad($id)); 
     }
 }
