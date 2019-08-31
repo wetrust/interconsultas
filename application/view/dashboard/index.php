@@ -257,20 +257,13 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover">
                                     <thead>
-                                        <tr id="table.head">
+                                        <tr>
                                             <td>id</td>
                                             <td>ciudad</td>
                                             <td>Opciones</td>
                                         </tr>
                                     </thead>
-                                    <tbody id="table.body">
-                                    <?php foreach ($this->ciudades as $ciudad) { ?>
-                                        <tr>
-                                        <td><?= $ciudad->ciudad_id; ?></td>
-                                        <td><?= $ciudad->ciudad_name; ?></td>
-                                        <td class="w-25"><a class="btn btn-primary" href="">Modificar</a> <a class="btn btn-danger" href="">Eliminar</a></td>
-                                        </tr>
-                                    <?php } ?>
+                                    <tbody id="tabla.ciudad.configuracion">
                                     </tbody>
                                 </table>
                             </div>

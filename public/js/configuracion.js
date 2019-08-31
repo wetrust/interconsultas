@@ -1,11 +1,7 @@
 $(document).ready(function(){
-    $("#ciudad\\.nuevo").on("click", function(){
-        createCarcasaCiudad();
-    });
+    $("#ciudad\\.nuevo").on("click", function(){createCarcasaCiudad();});
 
-    $("#lugar\\.nuevo").on("click", function(){
-        createCarcasaLugar();
-    });
+    $("#lugar\\.nuevo").on("click", function(){createCarcasaLugar();});
 
     loadDirectorio();
 
@@ -30,6 +26,27 @@ function loadDirectorio(){
 
             $.get('dashboard/directorioDelete/'+id).done(function(data){
                 loadDirectorio();
+            });
+
+        });
+    });
+}
+
+function loadCiudadesConfiguracion(){
+    $.get("dashboard/ciudades_configuracion").done(function(data){
+        $('#tabla\\.ciudad\\.configuracion').empty();
+        if (Object.keys(data).length > 0) {
+            $.each(data, function(i, value) {
+                var fila = '<tr><td>' + value.ciudad_id + '</td><td>' + value.ciudad_name + '</td><td><button class="btn btn-danger" data-id="' + value.ciudad_id + '">Eliminar</button></td></tr>';
+                $("#tabla\\.ciudad\\.configuracion").append(fila);
+            });
+        }
+
+        $("#tabla\\.ciudad\\.configuracion .btn").on("click", function(){
+            var id = $(this).data("id");
+
+            $.get('dashboard/directorioDelete/'+id).done(function(data){
+                loadCiudadesConfiguracion();
             });
 
         });
@@ -97,7 +114,7 @@ function createCarcasaCiudad(){
         let dav = {ciudad_name: $("#modal\\.ciudad\\.nombre").val()}
         
         $.post('dashboard/ciudadSave', dav).done(function(data){
-            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); location.reload();
+            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadCiudadesConfiguracion();
         });
     });
 }
