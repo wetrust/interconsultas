@@ -41,9 +41,6 @@
                         Nombre de usuario: <span id="user_name"><?php echo Session::get('user_name'); ?></span><br>Correo: <span id="user_email"><?php echo Session::get('user_email'); ?></span><br>Tipo de usuario: <?php echo $interests[Session::get('user_account_type')]; ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <?php if (Session::get('user_account_type') > 2 ){ ?>
-                        <a class="dropdown-item" href="dashboard/configuracion">Configuración</a>
-                        <?php } ?>
                         <a class="dropdown-item" href="user/editUsername">Modificar nombre</a>
                         <?php if (Session::get('user_account_type') > 3){ ?>
                         <a class="dropdown-item" href="user/changePassword">Modificar contraseña</a>
@@ -223,15 +220,7 @@
             </div>
         </div>
         <div class="tab-pane fade" id="configuracion" role="tabpanel" aria-labelledby="configuracion-tab">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between py-sm-3"><h4>Datos relativos a destinatario opcional</h4><button type="button" class="btn btn-primary" id="directorio.nuevo">Generar nuevo destinatario</button></div>
-                    <table class="table table-hover">
-                        <thead class="table-secondary"><tr><th scope="col">Nombre del destinatario</th><th scope="col">Tipo de destinatario</th><th scope="col">Email destinatario</th><th scope="col">Opciones</th></tr></thead>
-                        <tbody id="tabla.directorio.email"></tbody>
-                    </table>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
