@@ -139,7 +139,7 @@ function createCarcasaCiudad(){
         let dav = {ciudad_name: $("#modal\\.ciudad\\.nombre").val()}
         
         $.post('dashboard/ciudadSave', dav).done(function(data){
-            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadCiudadesConfiguracion();
+            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadCiudadesConfiguracion(); loadCiudadesSolicitud();
         });
     });
 }
@@ -169,7 +169,7 @@ function createCarcasaLugar(){
         let dav = {lugar_name: $("#modal\\.lugar\\.nombre").val()}
         
         $.post('dashboard/lugarSave', dav).done(function(data){
-            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadLugaresConfiguracion();
+            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadLugaresConfiguracion(); loadLugares();
         });
     });
 }
