@@ -554,7 +554,7 @@ class DashboardController extends Controller
         $this->View->renderJSON(CiudadModel::getAllCiudades());   
     }
 
-    public function ciudades_configuracion{
+    public function ciudades_configuracion(){
         $this->View->renderJSON(CiudadModel::getAllCiudades());
     }
 
