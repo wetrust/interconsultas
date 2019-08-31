@@ -49,7 +49,7 @@ function loadCiudadesConfiguracion(){
 
             $.get('dashboard/ciudades_configuracion_delete/'+id).done(function(data){
                 loadCiudadesConfiguracion();
-                cargarCiudad();
+                loadCiudadesSolicitud();
             });
 
         });
@@ -71,7 +71,7 @@ function loadLugaresConfiguracion(){
 
             $.get('dashboard/lugares_configuracion_delete/'+id).done(function(data){
                 loadLugaresConfiguracion();
-                cargarLugar();
+                loadLugares();
             });
 
         });
