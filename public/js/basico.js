@@ -297,20 +297,20 @@ function createCarcasaAgendaModal(id){
 
 function createAgendaModal(id, contenedor){
     $.get('dashboard/veragendadas/' + id).done(function(data){
-        $('#'+contenedor).empty().append('<input type="hidden" id="a"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="b"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="c"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="d"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="k"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="l"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="h"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="e"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="f"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="g"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="i"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="j"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="ll"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="m"></p></div><div class="col-4 form-group"> <label><small>Fecha agenda:</small></label> <p id="n"></p></div><div class="col-4 form-group"> <label><small>Comentario:</small></label> <p id="o"></p></div>');
-        $("#a").val(data.solicitud_id);
-        $("#b").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
-        $("#c").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
-        $("#d").html('<strong class="text-primary">'+data.solicitud_telefono+'</strong>');
+        $('#'+contenedor).empty().append('<input type="hidden" id="ax"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bx"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cx"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dx"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kx"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="lx"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="hx"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="ex"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fx"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gx"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="ix"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="llx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mx"></p></div><div class="col-4 form-group"> <label><small>Fecha agenda:</small></label> <p id="nx"></p></div><div class="col-4 form-group"> <label><small>Comentario:</small></label> <p id="ox"></p></div>');
+        $("#ax").val(data.solicitud_id);
+        $("#bx").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
+        $("#cx").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
+        $("#dx").html('<strong class="text-primary">'+data.solicitud_telefono+'</strong>');
         let fecha = data.solicitud_fecha.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        $("#e").html('<strong class="text-primary">'+fecha+'</strong>');
+        $("#ex").html('<strong class="text-primary">'+fecha+'</strong>');
         fecha = data.solicitud_fum.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        $("#f").html('<strong class="text-primary">'+fecha+'</strong>');
-        $("#g").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
+        $("#fx").html('<strong class="text-primary">'+fecha+'</strong>');
+        $("#gx").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
         data.solicitud_eg = (data.solicitud_eg == 1) ? "Si" : "No";
-        $("#h").html('<strong>'+data.solicitud_eg+'</strong>');
+        $("#hx").html('<strong>'+data.solicitud_eg+'</strong>');
         let eco = data.solicitud_alteraciones;
         if (eco == 0){
             eco = "No, es primigesta";
@@ -323,14 +323,14 @@ function createAgendaModal(id, contenedor){
         }else if (eco == 4){
             eco = "Desconoce información";
         }
-        $("#i").html('<strong>'+eco+'</strong>');
-        $("#j").html('<strong>'+data.solicitud_diagnostico+'</strong>');
-        $("#k").html('<strong>'+data.solicitud_ciudad+'</strong>');
-        $("#l").html('<strong>'+data.solicitud_lugar+'</strong>');
-        $("#ll").html('<strong>'+data.solicitud_nombre_referente+'</strong>');
-        $("#m").html('<strong>'+data.solicitud_profesionalemail+'</strong>');
-        $("#n").html('<strong>' + data.evaluacion_fecha + '</strong>');
-        $("#o").html('<strong>' + data.evaluacion_comentarios + '</strong>');
+        $("#ix").html('<strong>'+eco+'</strong>');
+        $("#jx").html('<strong>'+data.solicitud_diagnostico+'</strong>');
+        $("#kx").html('<strong>'+data.solicitud_ciudad+'</strong>');
+        $("#lx").html('<strong>'+data.solicitud_lugar+'</strong>');
+        $("#llx").html('<strong>'+data.solicitud_nombre_referente+'</strong>');
+        $("#mx").html('<strong>'+data.solicitud_profesionalemail+'</strong>');
+        $("#nx").html('<strong>' + data.evaluacion_fecha + '</strong>');
+        $("#ox").html('<strong>' + data.evaluacion_comentarios + '</strong>');
     });
 }
 
