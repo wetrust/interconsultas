@@ -207,7 +207,8 @@
                             <div class="btn-group" role="group">
                                 <button id="filtro.parto.accion" class="btn btn-primary">Aplicar</button>
                                 <button id="filtro.parto.borrar" class="btn btn-danger">Borrar</button>
-                            </div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -403,4 +404,6 @@
     <script src="js/solicitud.js"></script>
     <script src="js/autorreferido.js"></script>
     <script src="js/partos.js"></script>
+    <script src="js/membrete.js"></script>
+    <script src="js/configuracion.js"></script>
 <?php } ?>
