@@ -5,6 +5,7 @@ $(document).ready(function(){
 
     loadDirectorio();
     loadCiudadesConfiguracion();
+    loadLugaresConfiguracion();
 
     $("#directorio\\.nuevo").on("click", function(){createCarcasaDirectorio();});
 });
