@@ -13,9 +13,8 @@
                 <div class="tab-pane fade show active" id="nav-membrete" role="tabpanel" aria-labelledby="nav-membrete-tab">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between py-sm-3"><h4>Membrete</h4><button type="button" class="btn btn-primary" id="membrete.guardar">Guardar Membrete</button></div>
+                            <div class="d-flex justify-content-between py-sm-3"><h4>Membrete unidad ultrasonografica</h4><button type="button" class="btn btn-primary" id="membrete.guardar">Guardar Membrete</button></div>
                             <div class="mb-3">
-                                <label for="membrete">Membrete</label>
                                 <textarea class="form-control" id="membrete" rows="3" required></textarea>
                             </div>
                         </div>
@@ -29,7 +28,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <h3 class="text-right my-2">Ciudades</h3>
+                            <h3 class="text-right my-2">Ciudad procedencia de la paciente</h3>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -61,7 +60,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <h3 class="text-right my-2">Lugares</h3>
+                            <h3 class="text-right my-2">Lugar de control prenatal</h3>
                         </div>
                     </div>
                     <div class="table-responsive">
