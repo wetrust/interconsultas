@@ -131,11 +131,11 @@ $(document).ready(function(){
 	});
 
 
-    $("#s").on("click", function(){
+    $("#t").on("click", function(){
 		$(this).trigger("change");
 	}).on("change", function(){
 		let correo = $(this).val();
-		$("#t").val(correo);
+		$("#u").val(correo);
 	});
 
     $("#v").on("click", function(){
