@@ -21,6 +21,9 @@ $(document).ready(function(){
         $("#interconsultas\\.estado\\.solicitadas").addClass("d-none");
         $("#interconsultas\\.estado\\.respuesta").addClass("d-none");
         loadNews();
+        $("#nav-lista-tab").addClass("d-none");
+        $("#nav-lugares-tab").addClass("d-none");
+        $("#nav-ciudades-tab").addClass("d-none");
     }
     else if (a == 4){
         $("#interconsultas\\.estado\\.nuevas").addClass("d-none");
