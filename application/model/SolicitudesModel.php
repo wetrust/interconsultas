@@ -64,6 +64,17 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
+
+    public static function getAllSolicitudesFecha($solicitud_email, $fecha)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT * FROM solicitudes INNER JOIN evaluacion ON solicitudes.solicitud_id = evaluacion.solicitud_id WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_respuesta = 1 AND solicitud_fecha = :solicitud_fecha";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':solicitud_fecha' => $fecha));
+
+        return $query->fetchAll();
+    }
     public static function getAllOldSolicitudesWhereSolicitante($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

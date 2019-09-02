@@ -404,6 +404,9 @@ class DashboardController extends Controller
     public function process(){
         $this->View->renderJSON(SolicitudesModel::getAllSolicitudes(Session::get('user_email')));
     }
+    public function processdate($fecha){
+        $this->View->renderJSON(SolicitudesModel::getAllSolicitudesFecha(Session::get('user_email'), $fecha));
+    }
 
     public function finish(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudes(Session::get('user_email')));

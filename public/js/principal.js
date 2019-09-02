@@ -176,6 +176,17 @@ function loadInProcess(){
     $.get('dashboard/process').done(function(data){
         $('#tabla\\.resultado').empty();
         if (Object.keys(data).length > 0) {
+            loadInProcessData(data);
+        }
+        else{
+            $("#mensaje\\.resultado").removeClass("d-none");
+            $("#mensaje\\.resultado").html("No tienes interconsultas en espera");
+        }
+    });
+}
+
+
+function loadInProcessData(data){
             $("#mensaje\\.resultado").addClass("d-none");
             var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Telefono</th><th>Ciudad</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
             $.each(data, function(i, value) {
@@ -1138,13 +1149,8 @@ function loadInProcess(){
                     }
                 });
             });
-        }
-        else{
-            $("#mensaje\\.resultado").removeClass("d-none");
-            $("#mensaje\\.resultado").html("No tienes interconsultas en espera");
-        }
-    });
 }
+
 function loadInFinish(){
     $.get('dashboard/finish').done(function(data){
         buildFinishTable(data);

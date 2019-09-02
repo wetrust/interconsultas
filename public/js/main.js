@@ -52,25 +52,48 @@ $(document).ready(function(){
             loadNews();
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().addClass("d-none");
+            $("#formulario\\.filtro\\.dos").addClass("d-none");
         }else if (valor == 3){
             //solicitud de interconsulta agendada
             loadAgendadas();
             $("#filtro\\.activar").addClass("d-none");
             $("#filtro\\.contenedor").addClass("d-none");
+            $("#formulario\\.filtro\\.dos").addClass("d-none");
         }else if (valor == 4){
             loadInProcess();
             $("#filtro\\.activar").addClass("d-none");
-            $("#filtro\\.contenedor").addClass("d-none")
+            $("#filtro\\.contenedor").addClass("d-none");
+            $("#formulario\\.filtro\\.dos").removeClass("d-none");
         }else if (valor == 5){
             loadInFinish();
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().removeClass("d-none");
+            $("#formulario\\.filtro\\.dos").addClass("d-none");
         }else if (valor == 6){
             loadInRespuesta();
             $("#filtro\\.activar").removeClass("d-none");
             $("#filtro\\.tipo").parent().removeClass("d-none");
+            $("#formulario\\.filtro\\.dos").addClass("d-none");
         }
     });
+
+    $("#filtro\\.espera\\.borrar").on("click", function(){
+        loadInProcess();
+    });
+
+    $("#filtro\\.espera\\.accion").on("click", function(){
+        let fecha = $("#fecha\\.espera").val();
+        $.get(_api  + 'processdate/'+fecha).done(function(data){
+            $('#tabla\\.resultado').empty();
+            if (Object.keys(data).length > 0) {
+                loadInProcessData(data);
+            }
+            else{
+                $("#mensaje\\.resultado").removeClass("d-none");
+                $("#mensaje\\.resultado").html("No tienes interconsultas en espera");
+            }
+        });
+    })
 
     $("#parto-tab").on("click", function(){
         loadInPartos();
@@ -139,6 +162,12 @@ $(document).ready(function(){
         $("#filtro\\.fecha\\.hasta").val("");
         $("#filtro\\.tipo").val(8);
     });
+
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = now.getFullYear()+"-"+(month)+"-"+(day);
+    $("fecha\\.espera").val(today);
 });
 
 function loadReferentes(){
