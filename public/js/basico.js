@@ -196,23 +196,25 @@ function createCarcasaInterconsultaModal(id){
 
 function createInterconsultaModal(id, contenedor){
     $.get('dashboard/agendar/' + id).done(function(data){
-        $('#'+contenedor).empty().append('<input type="hidden" id="ax"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bx"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cx"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dx"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kx"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="lx"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="ex"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fx"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gx"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="llx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mx"></p></div>');
+        $('#'+contenedor).empty().append('<input type="hidden" id="ax"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bx"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cx"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dx"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="ex"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="fx"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="gx"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="hx"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="ix"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="kx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="lx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional contrarreferente:</small></label> <p id="llx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mx"></p></div>');
         $("#ax").val(data.solicitud_id);
         $("#bx").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
         $("#cx").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
         $("#dx").html('<strong class="text-primary">'+data.solicitud_telefono+'</strong>');
+        $("#ex").html('<strong class="text-primary">'+data.solicitud_ciudad+'</strong>');
+        $("#fx").html('<strong class="text-primary">'+data.solicitud_lugar+'</strong>');
         let fecha = data.solicitud_fecha.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        $("#ex").html('<strong class="text-primary">'+fecha+'</strong>');
+        $("#gx").html('<strong class="text-primary">'+fecha+'</strong>');
         fecha = data.solicitud_fum.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        $("#fx").html('<strong class="text-primary">'+fecha+'</strong>');
-        $("#gx").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
-        $("#jx").html('<strong>'+data.solicitud_diagnostico+'</strong>');
-        $("#kx").html('<strong>'+data.solicitud_ciudad+'</strong>');
-        $("#lx").html('<strong>'+data.solicitud_lugar+'</strong>');
-        $("#llx").html('<strong>'+data.solicitud_nombre_referente+'</strong>');
-        $("#mx").html('<strong>'+data.solicitud_profesionalemail+'</strong>');
+        $("#hx").html('<strong class="text-primary">'+fecha+'</strong>');
+        $("#ix").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
+        $("#jx").html('<strong class="text-primary">'+data.solicitud_diagnostico+'</strong>');
+        $("#kx").html('<strong class="text-primary">'+data.solicitud_nombre_referente+'</strong>');
+        $("#lx").html('<strong class="text-primary">'+data.solicitud_profesionalemail+'</strong>');
+        $("#llx").html('<strong class="text-primary">'+data.solicitud_nombreprofesional+'</strong>');
+        $("#mx").html('<strong class="text-primary">'+data.solicitud_email+'</strong>');
     });
 }
 
@@ -237,10 +239,8 @@ function buildAgendadasTable(data){
         $.each(data, function(i, value) {
             let fecha = value.solicitud_fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-
             let fecha2 = value.evaluacion_fecha.split('-');
             fecha2 = fecha2[2] + "-" + fecha2[1] + "-" + fecha2[0];
-
             tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td><td>'+ fecha2 +'</td>';
             tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
         });
