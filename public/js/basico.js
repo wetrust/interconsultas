@@ -196,7 +196,7 @@ function createCarcasaInterconsultaModal(id){
 
 function createInterconsultaModal(id, contenedor){
     $.get('dashboard/agendar/' + id).done(function(data){
-        $('#'+contenedor).empty().append('<input type="hidden" id="ax"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bx"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cx"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dx"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kx"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="lx"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="hx"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="ex"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fx"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gx"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="ix"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="llx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mx"></p></div>');
+        $('#'+contenedor).empty().append('<input type="hidden" id="ax"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bx"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cx"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dx"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kx"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="lx"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="ex"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fx"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gx"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="llx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mx"></p></div>');
         $("#ax").val(data.solicitud_id);
         $("#bx").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
         $("#cx").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
@@ -208,21 +208,6 @@ function createInterconsultaModal(id, contenedor){
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
         $("#fx").html('<strong class="text-primary">'+fecha+'</strong>');
         $("#gx").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
-        data.solicitud_eg = (data.solicitud_eg == 1) ? "Si" : "No";
-        $("#hx").html('<strong>'+data.solicitud_eg+'</strong>');
-        let eco = data.solicitud_alteraciones;
-        if (eco == 0){
-            eco = "No, es primigesta";
-        }else if (eco == 1){
-            eco = "Si hubo feto pequeño";
-        }else if (eco == 2){
-            eco = "Si hubo feto grande";
-        }else if (eco == 3){
-            eco = "No hay antecedentes";
-        }else if (eco == 4){
-            eco = "Desconoce información";
-        }
-        $("#ix").html('<strong>'+eco+'</strong>');
         $("#jx").html('<strong>'+data.solicitud_diagnostico+'</strong>');
         $("#kx").html('<strong>'+data.solicitud_ciudad+'</strong>');
         $("#lx").html('<strong>'+data.solicitud_lugar+'</strong>');
@@ -297,7 +282,7 @@ function createCarcasaAgendaModal(id){
 
 function createAgendaModal(id, contenedor){
     $.get('dashboard/veragendadas/' + id).done(function(data){
-        $('#'+contenedor).empty().append('<input type="hidden" id="ax"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bx"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cx"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dx"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kx"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="lx"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="hx"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="ex"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fx"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gx"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="ix"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="llx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mx"></p></div><div class="col-4 form-group"> <label><small>Fecha agenda:</small></label> <p id="nx"></p></div><div class="col-4 form-group"> <label><small>Comentario:</small></label> <p id="ox"></p></div>');
+        $('#'+contenedor).empty().append('<input type="hidden" id="ax"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bx"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cx"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dx"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kx"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="lx"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="ex"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fx"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gx"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jx"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="llx"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mx"></p></div><div class="col-4 form-group"> <label><small>Fecha agenda:</small></label> <p id="nx"></p></div><div class="col-4 form-group"> <label><small>Comentario:</small></label> <p id="ox"></p></div>');
         $("#ax").val(data.solicitud_id);
         $("#bx").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
         $("#cx").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
@@ -309,21 +294,6 @@ function createAgendaModal(id, contenedor){
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
         $("#fx").html('<strong class="text-primary">'+fecha+'</strong>');
         $("#gx").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
-        data.solicitud_eg = (data.solicitud_eg == 1) ? "Si" : "No";
-        $("#hx").html('<strong>'+data.solicitud_eg+'</strong>');
-        let eco = data.solicitud_alteraciones;
-        if (eco == 0){
-            eco = "No, es primigesta";
-        }else if (eco == 1){
-            eco = "Si hubo feto pequeño";
-        }else if (eco == 2){
-            eco = "Si hubo feto grande";
-        }else if (eco == 3){
-            eco = "No hay antecedentes";
-        }else if (eco == 4){
-            eco = "Desconoce información";
-        }
-        $("#ix").html('<strong>'+eco+'</strong>');
         $("#jx").html('<strong>'+data.solicitud_diagnostico+'</strong>');
         $("#kx").html('<strong>'+data.solicitud_ciudad+'</strong>');
         $("#lx").html('<strong>'+data.solicitud_lugar+'</strong>');
