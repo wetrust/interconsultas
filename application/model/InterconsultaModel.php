@@ -4,15 +4,13 @@ class InterconsultaModel
 {
     public static function solicitarInterconsulta($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_egestacional,$telefono,$sistolica,$diastolica,$media,$talla,$peso,$imc,$antecedentes, $edadMaterna, $paridad){
         //verificar si el profesional está habilitado para recibir interconsultas
-        $contrareferente = UserModel::getUserDataByUserNameOrEmail($solicitud_profesionalemail);
+        $contrareferente = UserModel::getUserDataByUserNameOrEmail($solicitud_email);
         $response = new stdClass();
 
         if (isset($contrareferente->user_email)){
-            if ($contrareferente->user_email == $solicitud_profesionalemail){
+            if ($contrareferente->user_email == $solicitud_email){
                 if (Session::userIsLoggedIn()) {
                     $solicitud_profesional = UserModel::getPublicProfileOfUser(Session::get('user_id'))->user_profesion;
-                    $solicitud_nombreprofesional = Session::get('user_name');
-                    $solicitud_email = Session::get('user_email');
                 }
                 $solicitud_id = SolicitudesModel::createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,0,$solicitud_egestacional,$telefono,$sistolica,$diastolica,$media,$talla,$peso,$imc,$antecedentes, $edadMaterna, $paridad);
                 //enviar un email al médico contrareferente
