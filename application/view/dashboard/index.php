@@ -133,7 +133,7 @@
                             <div class="btn-group" role="group">
                                 <button class="btn btn-primary" id="filtro.espera.accion">Aplicar</button>
                                 <button class="btn btn-danger" id="filtro.espera.borrar">Borrar</button>
-                            </div></div><div class="col-8"></div></div>
+                            </div></div><div class="col-8">&nbsp;</div></div>
                     </div>
                     <div class="alert alert-primary d-none" role="alert" id="mensaje.resultado">No tienes interconsultas en este ítem</div>
                     <table class="table table-bordered mt-2" id="tabla.resultado">
