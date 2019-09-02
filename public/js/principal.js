@@ -142,20 +142,20 @@ function createCarcasaNuevasModal(id){
 
 function createNuevasModal(id, contenedor){
     $.get('dashboard/agendar/' + id).done(function(data){
-        $('#'+contenedor).empty().append('<input type="hidden" id="a"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="b"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="c"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="d"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="k"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="l"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="h"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="e"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="f"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="g"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="i"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="j"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="ll"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="m"></p></div>');
-        $("#a").val(data.solicitud_id);
-        $("#b").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
-        $("#c").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
-        $("#d").html('<strong class="text-primary">'+data.solicitud_telefono+'</strong>');
+        $('#'+contenedor).empty().append('<input type="hidden" id="an"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bn"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cn"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dn"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kn"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="ln"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="hn"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="en"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fn"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gn"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="in"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jn"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="lln"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mn"></p></div>');
+        $("#an").val(data.solicitud_id);
+        $("#bn").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
+        $("#cn").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
+        $("#dn").html('<strong class="text-primary">'+data.solicitud_telefono+'</strong>');
         let fecha = data.solicitud_fecha.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        $("#e").html('<strong class="text-primary">'+fecha+'</strong>');
+        $("#en").html('<strong class="text-primary">'+fecha+'</strong>');
         fecha = data.solicitud_fum.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        $("#f").html('<strong class="text-primary">'+fecha+'</strong>');
-        $("#g").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
+        $("#fn").html('<strong class="text-primary">'+fecha+'</strong>');
+        $("#gn").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
         data.solicitud_eg = (data.solicitud_eg == 1) ? "Si" : "No";
-        $("#h").html('<strong>'+data.solicitud_eg+'</strong>');
+        $("#hn").html('<strong class="text-primary">'+data.solicitud_eg+'</strong>');
         let eco = data.solicitud_alteraciones;
         if (eco == 0){
             eco = "No, es primigesta";
@@ -168,12 +168,12 @@ function createNuevasModal(id, contenedor){
         }else if (eco == 4){
             eco = "Desconoce información";
         }
-        $("#i").html('<strong>'+eco+'</strong>');
-        $("#j").html('<strong>'+data.solicitud_diagnostico+'</strong>');
-        $("#k").html('<strong>'+data.solicitud_ciudad+'</strong>');
-        $("#l").html('<strong>'+data.solicitud_lugar+'</strong>');
-        $("#ll").html('<strong>'+data.solicitud_nombreprofesional+'</strong>');
-        $("#m").html('<strong>'+data.solicitud_email+'</strong>');
+        $("#in").html('<strong class="text-primary">'+eco+'</strong>');
+        $("#jn").html('<strong class="text-primary">'+data.solicitud_diagnostico+'</strong>');
+        $("#kn").html('<strong class="text-primary">'+data.solicitud_ciudad+'</strong>');
+        $("#ln").html('<strong class="text-primary">'+data.solicitud_lugar+'</strong>');
+        $("#lln").html('<strong class="text-primary">'+data.solicitud_nombreprofesional+'</strong>');
+        $("#mn").html('<strong class="text-primary">'+data.solicitud_email+'</strong>');
 
         var now = new Date();
         var day = ("0" + now.getDate()).slice(-2);
