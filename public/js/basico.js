@@ -294,13 +294,13 @@ function createAgendaModal(id, contenedor){
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
         $("#fx").html('<strong class="text-primary">'+fecha+'</strong>');
         $("#gx").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
-        $("#jx").html('<strong>'+data.solicitud_diagnostico+'</strong>');
-        $("#kx").html('<strong>'+data.solicitud_ciudad+'</strong>');
-        $("#lx").html('<strong>'+data.solicitud_lugar+'</strong>');
-        $("#llx").html('<strong>'+data.solicitud_nombre_referente+'</strong>');
-        $("#mx").html('<strong>'+data.solicitud_profesionalemail+'</strong>');
-        $("#nx").html('<strong>' + data.evaluacion_fecha + '</strong>');
-        $("#ox").html('<strong>' + data.evaluacion_comentarios + '</strong>');
+        $("#jx").html('<strong class="text-primary">'+data.solicitud_diagnostico+'</strong>');
+        $("#kx").html('<strong class="text-primary">'+data.solicitud_ciudad+'</strong>');
+        $("#lx").html('<strong class="text-primary">'+data.solicitud_lugar+'</strong>');
+        $("#llx").html('<strong class="text-primary">'+data.solicitud_nombre_referente+'</strong>');
+        $("#mx").html('<strong class="text-primary">'+data.solicitud_profesionalemail+'</strong>');
+        $("#nx").html('<strong class="text-primary">' + data.evaluacion_fecha + '</strong>');
+        $("#ox").html('<strong class="text-primary">' + data.evaluacion_comentarios + '</strong>');
     });
 }
 
