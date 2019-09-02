@@ -142,7 +142,7 @@ function createCarcasaNuevasModal(id){
 
 function createNuevasModal(id, contenedor){
     $.get('dashboard/agendar/' + id).done(function(data){
-        $('#'+contenedor).empty().append('<input type="hidden" id="an"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bn"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cn"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dn"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kn"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="ln"></p></div><div class="col-4 form-group"> <label><small>La Ege es conocida precozmente</small></label> <p id="hn"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="en"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fn"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gn"></p></div><div class="col-4 form-group"> <label><small>Alteraciones en gestaciones previas</small></label> <p id="in"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jn"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="lln"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mn"></p></div>');
+        $('#'+contenedor).empty().append('<input type="hidden" id="an"><div class="col-4"> <label><small>Nombre del paciente:</small></label> <p id="bn"></p></div><div class="col-4"> <label><small>RUT del paciente:</small></label> <p id="cn"></p></div><div class="col-4"> <label><small>Teléfono materno:</small></label> <p id="dn"></p></div><div class="col-4 form-group"> <label><small>Ciudad procedencia de la paciente</small></label> <p id="kn"></p></div><div class="col-4 form-group"> <label><small>Lugar de control prenatal</small></label> <p id="ln"></p></div><div class="col-4"> <label><small>Fecha de solicitud del exámen:</small></label> <p id="en"></p></div><div class="col-4"> <label><small>FUM operacional</small></label> <p id="fn"></p></div><div class="col-4"> <label><small>Edad Gestacional (Ege)</small></label> <p id="gn"></p></div><div class="col-4 form-group"> <label><small>Diagnóstico de referencia</small></label> <p id="jn"></p></div><div class="col-4 form-group"> <label><small>Nombre del profesional referente:</small></label> <p id="lln"></p></div><div class="col-4 form-group"> <label><small>Email (de trabajo):</small></label> <p id="mn"></p></div>');
         $("#an").val(data.solicitud_id);
         $("#bn").html('<strong class="text-primary">'+data.solicitud_nombre+'</strong>');
         $("#cn").html('<strong class="text-primary">'+data.solicitud_rut+'</strong>');
@@ -154,21 +154,6 @@ function createNuevasModal(id, contenedor){
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
         $("#fn").html('<strong class="text-primary">'+fecha+'</strong>');
         $("#gn").html('<strong class="text-primary">'+data.solicitud_egestacional+'</strong>');
-        data.solicitud_eg = (data.solicitud_eg == 1) ? "Si" : "No";
-        $("#hn").html('<strong class="text-primary">'+data.solicitud_eg+'</strong>');
-        let eco = data.solicitud_alteraciones;
-        if (eco == 0){
-            eco = "No, es primigesta";
-        }else if (eco == 1){
-            eco = "Si hubo feto pequeño";
-        }else if (eco == 2){
-            eco = "Si hubo feto grande";
-        }else if (eco == 3){
-            eco = "No hay antecedentes";
-        }else if (eco == 4){
-            eco = "Desconoce información";
-        }
-        $("#in").html('<strong class="text-primary">'+eco+'</strong>');
         $("#jn").html('<strong class="text-primary">'+data.solicitud_diagnostico+'</strong>');
         $("#kn").html('<strong class="text-primary">'+data.solicitud_ciudad+'</strong>');
         $("#ln").html('<strong class="text-primary">'+data.solicitud_lugar+'</strong>');
