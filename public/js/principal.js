@@ -210,7 +210,7 @@ function loadInProcessData(data){
                 $('#ver\\.interconsulta\\.contenedor').empty().append('<input type="hidden" id="solicitud_id" value=""/><div class="row"> <div class="col-3 form-group"> <label for="interconsulta.para">Fecha</label> <input type="text" disabled class="form-control" id="evaluacion_fecha"> </div><div class="col form-group"> <label for="interconsulta.comentario.respuesta">Comentario</label> <input disabled class="form-control" id="evaluacion_comentarios"/> </div></div>');
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Confirmar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary" id="enviar.respuesta.botton">Confirmar agendamiento</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
                 $("#solicitud_id").val(solicitud_id);
                 $.get('dashboard/edit/' + solicitud_id).done(function(data){
                     $("#evaluacion_fecha").val(data.evaluacion_fecha);
