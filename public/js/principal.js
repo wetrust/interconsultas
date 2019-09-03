@@ -1034,7 +1034,7 @@ function loadInProcessData(data){
                             respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
                             respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
                             respuesta_fcf: $('select[name="respuesta_fcf"]').val(),
-                            respuesta_cc: $('select[name="respuesta_cc"]').val(),
+                            respuesta_cc: $('select[name="respuesta_hueso_nasal"]').val(),
                             respuesta_ca: $('select[name="respuesta_ca"]').val(),
                             respuesta_lf: $('select[name="respuesta_lf"]').val(),
                             respuesta_dbp: $('select[name="respuesta_dbp"]').val(),
