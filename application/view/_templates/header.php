@@ -7,6 +7,7 @@
     <base href="<?php echo Config::get('URL'); ?>" target="_self">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/font-awesome.min.css">
     <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
