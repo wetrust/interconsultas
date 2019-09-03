@@ -1039,6 +1039,7 @@ function loadInProcessData(data){
                             respuesta_lf: $('select[name="respuesta_lf"]').val(),
                             respuesta_dbp: $('select[name="respuesta_dbp"]').val(),
                             respuesta_translucencia_nucal: $('input[name="respuesta_translucencia_nucal"]').val(),
+                            respuesta_hueso_nasal_valor: $('input[name="respuesta_hueso_nasal_valor"]').val(),
                             respuesta_uterina_derecha: $('input[name="respuesta_uterina_derecha"]').val(),
                             respuesta_uterina_derecha_percentil: $('input[name="respuesta_uterina_derecha_percentil"]').val(),
                             respuesta_uterina_izquierda: $('input[name="respuesta_uterina_izquierda"]').val(),
