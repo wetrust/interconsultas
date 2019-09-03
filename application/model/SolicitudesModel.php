@@ -397,7 +397,7 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT solicitud_email FROM administrador.solicitudes Where solicitud_profesionalemail = :solicitud_profesionalemail group by solicitud_email";
+        $sql = "SELECT solicitud_email, solicitud_nombre_referente FROM administrador.solicitudes Where solicitud_profesionalemail = :solicitud_profesionalemail group by solicitud_email";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
 
