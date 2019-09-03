@@ -346,7 +346,7 @@ function loadInProcessData(data){
                         });
 
                         $("input[name='respuesta_hueso_nasal_valor']").keypress(function( event ) {
-                            if (event.which == 13) {event.preventDefault(); $("input[name='respuesta_comentariosexamen']").focus();}
+                            if (event.which == 13) {event.preventDefault(); $("textarea[name='respuesta_comentariosexamen']").focus();}
                         });
 
                         $("select[name='respuesta_dbp']").on("change", function(){
