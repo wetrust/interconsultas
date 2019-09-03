@@ -105,7 +105,7 @@
                             <label>Fecha hasta</label>
                             <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha"></div>
                         <div class="col">
-                            <label>Tipo de exámen</label>
+                            <label>Datos prof. referente</label>
                             <select class="form-control" id="filtro.tipo">
                                 <option value="8">No Seleccionado</option>
                                 <option value="1">1.- Ecografía precoz de urgencia</option>
@@ -117,8 +117,8 @@
                         <div class="col">
                             <label>Filtro</label>
                             <div class="btn-group" role="group">
-                                <button id="filtro.accion" class="btn btn-primary">Aplicar</button>
-                                <button id="filtro.borrar" class="btn btn-danger">Borrar</button>
+                                <button id="filtro.accion" class="btn btn-primary"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+                                <button id="filtro.borrar" class="btn btn-danger"><i class="fa fa-eraser" aria-hidden="true"></i></button>
                             </div></div>
                     </div>
                 </div>
