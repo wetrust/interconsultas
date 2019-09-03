@@ -69,9 +69,9 @@ class SolicitudesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes INNER JOIN evaluacion ON solicitudes.solicitud_id = evaluacion.solicitud_id WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_respuesta = 1 AND solicitud_fecha = :solicitud_fecha";
+        $sql = "SELECT * FROM solicitudes INNER JOIN evaluacion ON solicitudes.solicitud_id = evaluacion.solicitud_id WHERE solicitud_profesionalemail = :solicitud_profesionalemail AND solicitud_respuesta = 1 AND evaluacion_fecha = :evaluacion_fecha";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':solicitud_fecha' => $fecha));
+        $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':evaluacion_fecha' => $fecha));
 
         return $query->fetchAll();
     }
