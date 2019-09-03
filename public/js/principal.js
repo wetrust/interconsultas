@@ -340,6 +340,15 @@ function loadInProcessData(data){
                                 $("#huesonasal").addClass("d-none");
                             }
                         }).trigger("change");
+
+                        $("input[name='respuesta_translucencia_nucal']").keypress(function( event ) {
+                            if (event.which == 13) {event.preventDefault(); $("input[name='respuesta_hueso_nasal_valor']").focus();}
+                        });
+
+                        $("input[name='respuesta_hueso_nasal_valor']").keypress(function( event ) {
+                            if (event.which == 13) {event.preventDefault(); $("input[name='respuesta_comentariosexamen']").focus();}
+                        });
+
                         $("select[name='respuesta_dbp']").on("change", function(){
                             if ($(this).val() == "medible"){
                                 $("#translucencia").removeClass("d-none");
@@ -364,7 +373,13 @@ function loadInProcessData(data){
                                     }
                                 }
                             }
+                        }).keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_uterina_izquierda']").focus();
+                            }
                         });
+
                         $("input[name='respuesta_uterina_izquierda']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ut = $(this).val();
@@ -381,7 +396,13 @@ function loadInProcessData(data){
                                     }
                                 }
                             }
+                        }).keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_translucencia_nucal']").focus();
+                            }
                         });
+
                         $("input[name='respuesta_uterinas']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
                             var ut = $(this).val();
@@ -394,7 +415,13 @@ function loadInProcessData(data){
                         });
                         $("input[name='respuesta_lcn']").on("change", function(){
                             eglcn();
+                        }).keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_uterina_derecha']").focus();
+                            }
                         });
+
                         $("select[name='respuesta_anatomia']").on("change", function(){
                             if ($(this).val() == "hallazgos ecográficos compatibles con:"){
                                 $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
