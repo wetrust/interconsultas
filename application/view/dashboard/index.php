@@ -130,7 +130,7 @@
                             </div></div><div class="col-7">&nbsp;</div></div>
                     </div>
                     <div class="alert alert-primary d-none" role="alert" id="mensaje.resultado">No tienes interconsultas en este ítem</div>
-                    <table class="table table-bordered mt-2" id="tabla.resultado">
+                    <table class="table table-bordered mt-2 table-sm" id="tabla.resultado">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Nombre</th>
