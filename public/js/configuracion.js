@@ -22,7 +22,7 @@ function loadDirectorio(){
                 var opcion = '<option value="'+value.email_value+'">' + value.email_profesion + ', '+value.email_nombre +  ', '+value.email_value+'</option>';
                 $("#interfaz\\.email").append(opcion);
                 opcion = '<option value="'+value.email_value+'">' +value.email_nombre + '</option>';
-                ('#filtro\\.tipo').append(opcion);
+                $('#filtro\\.tipo').append(opcion);
                 $("#tabla\\.directorio\\.email").append(fila);
             });
         }
