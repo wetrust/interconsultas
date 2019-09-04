@@ -21,7 +21,7 @@ function loadDirectorio(){
                 var fila = '<tr><td>' + value.email_profesion + '</td><td>' + value.email_nombre + '</td><td>'+ value.email_value +'</td><td><button class="btn btn-danger" data-id="' + value.email_id + '">Eliminar</button></td></tr>';
                 var opcion = '<option value="'+value.email_value+'">' + value.email_profesion + ', '+value.email_nombre +  ', '+value.email_value+'</option>';
                 $("#interfaz\\.email").append(opcion);
-                opcion = '<option value="'+value.email_value+'">' +value.email_nombre + '</option>';
+                opcion = '<option value="'+value.email_value+'">' +value.email_value + '</option>';
                 $('#filtro\\.tipo').append(opcion);
                 $("#tabla\\.directorio\\.email").append(fila);
             });
