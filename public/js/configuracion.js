@@ -13,12 +13,16 @@ $(document).ready(function(){
 function loadDirectorio(){
     $.get("dashboard/directorio").done(function(data){
         $('#tabla\\.directorio\\.email').empty();
+        $('#filtro\\.tipo').empty();
+        $('#filtro\\.tipo').append('<option value="">No seleccionado</option>');
         $("#interfaz\\.email").empty();
         if (Object.keys(data).length > 0) {
             $.each(data, function(i, value) {
                 var fila = '<tr><td>' + value.email_profesion + '</td><td>' + value.email_nombre + '</td><td>'+ value.email_value +'</td><td><button class="btn btn-danger" data-id="' + value.email_id + '">Eliminar</button></td></tr>';
                 var opcion = '<option value="'+value.email_value+'">' + value.email_profesion + ', '+value.email_nombre +  ', '+value.email_value+'</option>';
                 $("#interfaz\\.email").append(opcion);
+                opcion = '<option value="'+value.email_value+'">' +value.email_nombre + '</option>';
+                ('#filtro\\.tipo').append(opcion);
                 $("#tabla\\.directorio\\.email").append(fila);
             });
         }
