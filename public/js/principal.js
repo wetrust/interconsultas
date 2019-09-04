@@ -1196,7 +1196,7 @@ function buildFinishTable(data){
     $('#tabla\\.resultado').empty();
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
-        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Tipo de exámen</th><th>Realizado</th><th>Accion</th></tr></thead><tbody>';
+        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Tipo de exámen</th><th>Referente</th><th>Realizado</th><th>Accion</th></tr></thead><tbody>';
         $.each(data, function(i, value) {
             let tipo = "";
             if (value.tipo == "1"){
@@ -1212,7 +1212,7 @@ function buildFinishTable(data){
             }
             let fecha = value.fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>'+ fecha +'</td>';
+            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>' + value.solicitud_email +'</td><td>'+ fecha +'</td>';
             tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Graficas</button></td></tr>';
         });
         tabla += '</tbody>';
