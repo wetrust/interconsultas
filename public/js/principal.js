@@ -1196,7 +1196,7 @@ function buildFinishTable(data){
     $('#tabla\\.resultado').empty();
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
-        var tabla = '<thead class="thead-dark"><tr><td>Nombre paciente</td><td>Ciudad</td><td>Lugar de control</td><td>Tipo de exámen</td><td>Email referente</td><td>Realizado</td><td>Accion</td></tr></thead><tbody>';
+        var tabla = '<thead class="thead-dark"><tr><td><span class="text-primary">Nombre paciente</span></td><td><span class="text-primary">Ciudad</span></td><td><span class="text-primary">Lugar de control</span></td><td><span class="text-primary">Tipo de exámen</span></td><td><span class="text-primary">Email referente</span></td><td><span class="text-primary">Realizado</span></td><td><span class="text-primary">Accion</span></td></tr></thead><tbody>';
         $.each(data, function(i, value) {
             let tipo = "";
             if (value.tipo == "1"){
