@@ -142,8 +142,8 @@ class GraphModel
         $settings["graph_title"] = 'Cráneo';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '30';
-        $settings["axis_max_v"] = '480';
-        $settings["grid_division_v"] = '160';
+        $settings["axis_max_v"] = '400';
+        $settings["grid_division_v"] = '140';
         $settings["grid_division_h"] = '7';
 
         $values = DataModel::cc();
