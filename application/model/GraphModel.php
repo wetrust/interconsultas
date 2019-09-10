@@ -139,7 +139,7 @@ class GraphModel
     public static function cc($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Cráneo';
+        $settings["graph_title"] = 'Perímetro de Cráneo';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '400';
