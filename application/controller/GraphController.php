@@ -20,7 +20,7 @@ class GraphController extends Controller
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'respuesta' => $respuesta,
             'grafico_uno' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
-            'grafico_dos' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
+            'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
             'grafico_tres' => GraphModel::uterinas($respuesta->eg, $respuesta->uterinas),
             'grafico_cuatro' => GraphModel::umbilical($respuesta->eg, $respuesta->umbilical),
             'grafico_cinco' => GraphModel::cerebralMedia($respuesta->eg, $respuesta->cm),
