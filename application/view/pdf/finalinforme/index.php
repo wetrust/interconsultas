@@ -128,7 +128,7 @@
     $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->solicitud_resultado->anatomia_fetal). " ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Peso fetal estimado:</td><td>'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td>Percentil: '.$this->solicitud_resultado->pfe_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Peso fetal estimado (PFE):</td><td>'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td>Percentil: '.$this->solicitud_resultado->pfe_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>Perímetro de Abdomen:</td><td>'.htmlentities($this->solicitud_resultado->ca).' </td><td>Percentil: '.$this->solicitud_resultado->ca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -147,7 +147,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
 
-    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal: '.htmlentities($this->solicitud_resultado->hipotesis).' *</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal (PFE): '.htmlentities($this->solicitud_resultado->hipotesis).' *</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler: '.htmlentities($this->solicitud_resultado->doppler).' **</td></tr></tbody></table>';
