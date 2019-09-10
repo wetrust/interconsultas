@@ -205,9 +205,9 @@ class GraphModel
         $settings = self::settings();
         $settings["graph_title"] = 'Húmero';
         $settings["axis_min_h"] = '12';
-        $settings["axis_min_v"] = '5';
+        $settings["axis_min_v"] = '0';
         $settings["axis_max_v"] = '80';
-        $settings["grid_division_v"] = '25';
+        $settings["grid_division_v"] = '20';
         $settings["grid_division_h"] = '7';
         $values = DataModel::lh();
 
