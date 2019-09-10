@@ -129,7 +129,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>DBP (Hadlock):</td><td>'. $this->respuesta_dbp.' mm</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>DBP (Hadlock):</td><td>'. $this->respuesta_dbp.' mm.</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td></td><td>DOF (Jeanty):</td><td>'. $this->respuesta_dof.' mm.</td><td></td></tr></tbody></table>';
