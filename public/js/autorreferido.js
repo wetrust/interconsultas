@@ -986,6 +986,7 @@ function loadInProcessData(data){
                         args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
                         args.respuesta_uterina_izquierda_percentil = args.respuesta_uterina_izquierda_percentil.replace("Pct. ", "");
                         args.respuesta_ccca_pct = args.respuesta_ccca_pct.replace("Pct. ", "");
+                        args.respuesta_ca_pct = args.respuesta_ccca_pct.replace("Pct. ", "");
                         args.respuesta_umbilical_percentil = args.respuesta_umbilical_percentil.replace("Pct. ", "");
                         args.respuesta_cm_percentil = args.respuesta_cm_percentil.replace("Pct. ", "");
                     }
