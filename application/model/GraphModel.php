@@ -161,7 +161,7 @@ class GraphModel
     public static function ca($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Abdómen';
+        $settings["graph_title"] = 'Perímetro abdominal';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '400';
