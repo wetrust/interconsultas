@@ -182,7 +182,7 @@ class GraphModel
     public static function lf($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Femur';
+        $settings["graph_title"] = 'Largo de Fémur';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '0';
         $settings["axis_max_v"] = '100';
@@ -203,7 +203,7 @@ class GraphModel
     public static function lh($EG, $valor)
     {
         $settings = self::settings();
-        $settings["graph_title"] = 'Húmero';
+        $settings["graph_title"] = 'Largo de Húmero';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '0';
         $settings["axis_max_v"] = '80';
@@ -343,7 +343,7 @@ class GraphModel
             'axis_min_h'        => '15',
             'axis_min_v'        => '0.75',
             'graph_title'       => 'Cc / Ca',
-            'graph_title_font_size' => 7,
+            'graph_title_font_size' => 4,
             'graph_title_space' => 3,
             'show_grid_h'       => true,
             'show_grid_v'       => true,
