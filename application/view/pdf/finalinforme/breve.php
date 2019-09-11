@@ -87,7 +87,8 @@
     $this->pdf->Ln(2);
 
     $html = strip_tags($this->solicitud_resultado->comentariosexamen);
-    $html = str_replace("\n", "<br>", $html);
+    $html = strtoupper($_html);
+    $html = str_replace("\N", "<br>", $html);
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(2);
     
