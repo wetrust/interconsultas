@@ -1821,7 +1821,7 @@ function solicitudModal(data){
             diagnostico: document.getElementById(modalModificar.diagnostico).value
         };
 
-        $.post("dashboard/guardarsolicitud/" + document.getElementById(modalModificar.solicitud_id), data).done(function(){loadInProcess();});
+        $.post("dashboard/guardarsolicitud/" + document.getElementById(modalModificar.solicitud_id).value, data).done(function(){loadInProcess();});
         $('#'+modal).modal("hide");
     });s
 
