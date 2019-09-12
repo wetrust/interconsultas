@@ -57,11 +57,11 @@ function loadInProcess(){
 
 function loadInProcessData(data){
             $("#mensaje\\.resultado").addClass("d-none");
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Telefono</th><th>Ciudad</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>E. Gestacional</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
             $.each(data, function(i, value) {
                 let fecha = value.evaluacion_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>'+ value.solicitud_ciudad +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
+                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
                 tabla += '<td><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar solicitud</button><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button></td></tr>';
             });
             tabla += '</tbody>';
