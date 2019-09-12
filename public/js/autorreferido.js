@@ -1806,8 +1806,22 @@ function solicitudModal(data){
         $(this).remove();
     });
     $("#"+modal.button).on("click", function(){
-        let modal =  $(this).data("modal"); 
-        $.get("dashboard/delete/" + solicitud_id).done(function(){loadAgendadas();});
+        let modal =  $(this).data("modal");
+        
+        data = {
+            nombre: document.getElementById(modalModificar.nombre).value,
+            rut: document.getElementById(modalModificar.rut).value,
+            telefono: document.getElementById(modalModificar.telefono).value,
+            fum: document.getElementById(modalModificar.fum).value,
+            fecha: document.getElementById(modalModificar.fecha).value,
+            eg: document.getElementById(modalModificar.eg).value,
+            edadMaterna: document.getElementById(modalModificar.edadMaterna).value,
+            ciudad: document.getElementById(modalModificar.ciudad).value,
+            lugar: document.getElementById(modalModificar.lugar).value,
+            diagnostico: document.getElementById(modalModificar.diagnostico).value
+        };
+
+        $.post("dashboard/guardarsolicitud/" + modalModificar.solicitud_id, data).done(function(){loadInProcess();});
         $('#'+modal).modal("hide");
     });
 
