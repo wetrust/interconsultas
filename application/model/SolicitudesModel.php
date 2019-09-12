@@ -433,23 +433,28 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-    public static function updateSolicitud($solicitud_id,$solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_eg,$solicitud_eco,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional)
+    public static function updateSolicitud($solicitud_id)
     {
-        if (!$solicitud_id || !$solicitud_profesionalemail) {
-            return false;
-        }
+        $nombre = Request::post("nombre");
+        $telefono = Request::post("telefono");
+        $fum = Request::post("fum");
+        $fecha = Request::post("fecha");
+        $eg = Request::post("eg");
+        $edadMaterna = Request::post("edadMaterna");
+        $ciudad = Request::post("ciudad");
+        $lugar = Request::post("lugar");
+        $diagnostico = Request::post("diagnostico");
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE solicitudes SET solicitud_profesionalemail = :solicitud_profesionalemail, solicitud_nombre = :solicitud_nombre, solicitud_rut = :solicitud_rut, solicitud_fecha = :solicitud_fecha, solicitud_eg = :solicitud_eg, solicitud_eco = :solicitud_eco, solicitud_diagnostico = :solicitud_diagnostico, solicitud_lugar = :solicitud_lugar, solicitud_ciudad = :solicitud_ciudad, solicitud_profesional = :solicitud_profesional, solicitud_nombreprofesional = :solicitud_nombreprofesional, solicitud_email = :solicitud_email, solicitud_fum = :solicitud_fum, solicitud_respuesta = :solicitud_respuesta, solicitud_egestacional = :solicitud_egestacional WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "UPDATE solicitudes SET solicitud_nombre = :solicitud_nombre, solicitud_telefono = :solicitud_telefono, solicitud_fum = :solicitud_fum, solicitud_fecha = :solicitud_fecha, solicitud_egestacional = :solicitud_egestacional, solicitud_ematerna = :solicitud_ematerna, solicitud_ciudad = :solicitud_ciudad, solicitud_lugar = :solicitud_lugar, solicitud_diagnostico = :solicitud_diagnostico WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_id' => $solicitud_id,':solicitud_profesionalemail' => $solicitud_profesionalemail,':solicitud_nombre' => $solicitud_nombre,':solicitud_rut' => $solicitud_rut,':solicitud_fecha' => $solicitud_fecha,':solicitud_eg' => $solicitud_eg,':solicitud_eco' => $solicitud_eco,':solicitud_diagnostico' => $solicitud_diagnostico,':solicitud_lugar' => $solicitud_lugar,':solicitud_ciudad' => $solicitud_ciudad,':solicitud_profesional' => $solicitud_profesional,':solicitud_nombreprofesional' => $solicitud_nombreprofesional,':solicitud_email' => $solicitud_email,':solicitud_fum' => $solicitud_fum,':solicitud_respuesta' => $solicitud_respuesta,':solicitud_egestacional' => $solicitud_egestacional));
+        $query->execute(array(':solicitud_id' => $solicitud_id,' :solicitud_nombre' => $nombre, ':solicitud_telefono' => $telefono, ':solicitud_fum' => $fum, ':solicitud_fecha' => $fecha, ':solicitud_egestacional' => $eg, ':solicitud_ematerna' => $edadMaterna, ':solicitud_ciudad' => $ciudad, ':solicitud_lugar' => $lugar, ':solicitud_diagnostico' => $diagnostico));
 
         if ($query->rowCount() == 1) {
             return true;
         }
 
-        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
         return false;
     }
 

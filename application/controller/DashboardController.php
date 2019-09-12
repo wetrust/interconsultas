@@ -564,4 +564,8 @@ class DashboardController extends Controller
     public function lugares_configuracion_delete($id){
         $this->View->renderJSON(LugarModel::deleteLugar($id)); 
     }
+
+    public function guardarsolicitud($solicitud_id){
+        $this->View->renderJSON(SolicitudesModel::updateSolicitud($solicitud_id));
+    }
 }
