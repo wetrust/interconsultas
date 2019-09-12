@@ -44,6 +44,7 @@ $(document).ready(function(){
             loadSolicitud();
             $("#filtro\\.activar").addClass("d-none");
             $("#filtro\\.contenedor").addClass("d-none");
+            $("#formulario\\.filtro\\.dos").addClass("d-none");
         }else if (valor == 1){
             loadSolicitadas();
             $("#filtro\\.activar").addClass("d-none");
