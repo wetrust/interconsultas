@@ -62,7 +62,7 @@ function loadInProcessData(data){
                 let fecha = value.evaluacion_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>'+ value.solicitud_ciudad +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
-                tabla += '<td><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar</button><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen</button></td></tr>';
+                tabla += '<td><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar solicitud</button><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen</button></td></tr>';
             });
             tabla += '</tbody>';
             $('#tabla\\.resultado').append(tabla);
@@ -1791,7 +1791,7 @@ function makeModal(button){
         titulo:titulo,
         contenido:contenido,
         button:_button,
-        modal:'<div class="modal fade" tabindex="-1" role="dialog" id="'+id+'"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="'+titulo+'">Modal title</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="'+contenido+'"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>'+ button_string+'</div></div></div></div>'
+        modal:'<div class="modal fade" tabindex="-1" role="dialog" id="'+id+'"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="'+titulo+'">Modal title</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="'+contenido+'"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>'+ button_string+'</div></div></div></div>'
     }
     
     return resultado;
@@ -1814,7 +1814,7 @@ function solicitudModal(data){
     let id_sol = uuidv4();let _a= uuidv4(); let _b= uuidv4(); let _c= uuidv4(); let _d= uuidv4(); let _e= uuidv4(); let _f= uuidv4(); let _g= uuidv4(); let _h= uuidv4(); let _i= uuidv4(); let _j= uuidv4();
     let formulario = '<div class="row"><input type="text" class="form-control" id="'+id_sol+'"><div class="col form-group"><label>Nombre del paciente</label><input type="text" class="form-control" id="'+a+'"> </div><div class="col form-group"><label>RUT del paciente</label><div class="rut-container"><input type="text" class="form-control is-invalid" id="'+b+'" pattern="[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}" maxlength="12" required="required"><span class="invalid-feedback">Rut incorrecto</span></div></div><div class="col form-group"><label>Teléfono materno</label><input type="number" class="form-control" id="'+c+'"> </div></div><div class="row"><div class="col-4 form-group btn-animado rounded mb-0 pb-3"><label>Debe ingresar FUM referida o corregida</label><input type="date" class="form-control g-verde text-white" id="'+d+'"></div><div class="col form-group mb-0 pb-3"><label>Fecha de solicitud del exámen</label><input type="date" class="form-control g-verde text-white" id="'+e+'"></div><div class="col-4 form-group mb-0 pb-3"><label>Edad Gestacional (Ege)</label><input type="text" class="form-control g-verde text-white" id="'+f+'" disabled="" value="0 semanas"></div></div><div class="row"><div class="col-4 form-group"><label>Edad materna (años)</label><select class="form-control" id="'+g+'"></select></div><div class="col form-group"><label>Ciudad procedencia de la paciente</label><select class="form-control" id="'+h+'"></select></div><div class="col form-group"><label>Lugar de control prenatal</label><select class="form-control" id="'+i+'"></select></div></div><div class="row"><div class="col-4 form-group"><label><strong>Diagnóstico de referencia a exámen ecográfico:</strong></label></div><div class="col-8 form-group"><input type="text" class="form-control" id="'+j+'"></div></div>';
 
-    $("#"+modal.contenido).append(formulario);
+    document.getElementById(modal.contenido).innerHTML(formulario);
 
     let años = document.getElementById(_g);
     let opt = document.createElement('option');
