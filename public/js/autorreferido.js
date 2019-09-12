@@ -1811,12 +1811,12 @@ function solicitudModal(data){
         $('#'+modal).modal("hide");
     });
 
-    let id_sol = uuidv4();let a= uuidv4(); let b= uuidv4(); let c= uuidv4(); let d= uuidv4(); let e= uuidv4(); let f= uuidv4(); let g= uuidv4(); let h= uuidv4(); let i= uuidv4(); let j= uuidv4();
+    let id_sol = uuidv4();let _a= uuidv4(); let _b= uuidv4(); let _c= uuidv4(); let _d= uuidv4(); let _e= uuidv4(); let _f= uuidv4(); let _g= uuidv4(); let _h= uuidv4(); let _i= uuidv4(); let _j= uuidv4();
     let formulario = '<div class="row"><input type="text" class="form-control" id="'+id_sol+'"><div class="col form-group"><label>Nombre del paciente</label><input type="text" class="form-control" id="'+a+'"> </div><div class="col form-group"><label>RUT del paciente</label><div class="rut-container"><input type="text" class="form-control is-invalid" id="'+b+'" pattern="[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}" maxlength="12" required="required"><span class="invalid-feedback">Rut incorrecto</span></div></div><div class="col form-group"><label>Teléfono materno</label><input type="number" class="form-control" id="'+c+'"> </div></div><div class="row"><div class="col-4 form-group btn-animado rounded mb-0 pb-3"><label>Debe ingresar FUM referida o corregida</label><input type="date" class="form-control g-verde text-white" id="'+d+'"></div><div class="col form-group mb-0 pb-3"><label>Fecha de solicitud del exámen</label><input type="date" class="form-control g-verde text-white" id="'+e+'"></div><div class="col-4 form-group mb-0 pb-3"><label>Edad Gestacional (Ege)</label><input type="text" class="form-control g-verde text-white" id="'+f+'" disabled="" value="0 semanas"></div></div><div class="row"><div class="col-4 form-group"><label>Edad materna (años)</label><select class="form-control" id="'+g+'"></select></div><div class="col form-group"><label>Ciudad procedencia de la paciente</label><select class="form-control" id="'+h+'"></select></div><div class="col form-group"><label>Lugar de control prenatal</label><select class="form-control" id="'+i+'"></select></div></div><div class="row"><div class="col-4 form-group"><label><strong>Diagnóstico de referencia a exámen ecográfico:</strong></label></div><div class="col-8 form-group"><input type="text" class="form-control" id="'+j+'"></div></div>';
 
     $(modal.contenido).append(formulario);
 
-    let años = document.getElementById(g);
+    let años = document.getElementById(_g);
     let opt = document.createElement('option');
     opt.appendChild(document.createTextNode("< 10 años"));
     opt.value = "< 10"; 
@@ -1832,19 +1832,19 @@ function solicitudModal(data){
     opt.value = "> 60"; 
     años.appendChild(opt);
 
-    $("#"+h).html($("#h").clone());
-    $("#"+i).html($("#i").clone());
+    $("#"+_h).html($("#h").clone());
+    $("#"+_i).html($("#i").clone());
 
-    modalModificar = {solicitud_id: id_sol,nombre: a,rut: b,telefono: c,fum: d,fecha: e,eg: f,edadMaterna: g,ciudad: h,lugar: i,diagnostico: j};
+    modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j};
 
-    $("#"+a).val(data.solicitud_nombre);
-    $("#"+b).val(data.solicitud_rut);
-    $("#"+c).val(data.solicitud_telefono);
-    $("#"+d).val(data.solicitud_fum);
-    $("#"+e).val(data.solicitud_fecha);
-    $("#"+f).val(data.solicitud_egestacional);
-    $("#"+g).val(data.solicitud_ematerna);
-    $("#"+h).val(data.solicitud_ciudad);
-    $("#"+i).val(data.solicitud_lugar);
-    $("#"+j).val(data.solicitud_diagnostico);
+    $("#"+_a).val(data.solicitud_nombre);
+    $("#"+_b).val(data.solicitud_rut);
+    $("#"+_c).val(data.solicitud_telefono);
+    $("#"+_d).val(data.solicitud_fum);
+    $("#"+_e).val(data.solicitud_fecha);
+    $("#"+_f).val(data.solicitud_egestacional);
+    $("#"+_g).val(data.solicitud_ematerna);
+    $("#"+_h).val(data.solicitud_ciudad);
+    $("#"+_i).val(data.solicitud_lugar);
+    $("#"+_j).val(data.solicitud_diagnostico);
 }
