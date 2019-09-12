@@ -1847,4 +1847,28 @@ function solicitudModal(data){
     $("#"+_h).val(data.solicitud_ciudad);
     $("#"+_i).val(data.solicitud_lugar);
     $("#"+_j).val(data.solicitud_diagnostico);
+
+    $("#"+_d+", #"+_e).on("change", function(){
+		var FExamen, FUM, EdadGestacional;
+		var undia = 1000 * 60 * 60 * 24;
+		var unasemana = undia * 7;
+
+		FUM = document.getElementById(modalModificar.fum).value;
+		FExamen = document.getElementById(modalModificar.fecha).value;
+
+		FUM = new Date (FUM);
+		FExamen = new Date (FExamen);
+
+		EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
+
+		if (FExamen.getTime() < FUM.getTime()) {
+            document.getElementById(modalModificar.eg).value = "0 semanas";
+		}
+		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
+            document.getElementById(modalModificar.eg).value = "42 semanas";
+		}
+		else {
+            document.getElementById(modalModificar.eg).value = Math.floor(EdadGestacional) + "." + Math.round((EdadGestacional - Math.floor(EdadGestacional))*7) + " semanas";
+		}
+    });
 }
