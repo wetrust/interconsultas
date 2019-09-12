@@ -1832,8 +1832,8 @@ function solicitudModal(data){
     opt.value = "> 60"; 
     años.appendChild(opt);
 
-    document.getElementById('_h').innerHTML = document.getElementById('h').innerHTML;
-    document.getElementById('_i').innerHTML = document.getElementById('i').innerHTML;
+    document.getElementById(_h).innerHTML = document.getElementById('h').innerHTML;
+    document.getElementById(_i).innerHTML = document.getElementById('i').innerHTML;
 
     modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j};
 
