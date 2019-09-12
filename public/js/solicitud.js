@@ -169,15 +169,13 @@ $(document).ready(function(){
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
 		
-		if (nombre.length < 3 || rut.length < 4 || telefono.length < 6 || fum.length < 4 || fecha.length < 4 || eg.length < 1 || diagnostico.length  < 3 || nombreReferente.length < 3 || correoReferente.length < 2){
+		if (nombre.length < 3 || rut.length < 4 || fum.length < 4 || fecha.length < 4 || eg.length < 1 || diagnostico.length  < 3 || nombreReferente.length < 3 || correoReferente.length < 2){
 			var mensaje = "";
 
             if (nombre.length < 3){
                 mensaje = textos.paciente_name_error;
             }else if (rut.length < 4){
 				mensaje = textos.paciente_rut_error;
-			}else if (telefono.length < 6){
-				mensaje = textos.telefono_error;
 			}else if (fum.length < 4){
                 mensaje = textos.fur_error;
 			}else if (fecha.length < 4){
