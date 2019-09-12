@@ -1851,6 +1851,7 @@ function solicitudModal(data){
 
     modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j};
 
+    $("#"+id_sol).val(data.solicitud_id);
     $("#"+_a).val(data.solicitud_nombre);
     $("#"+_b).val(data.solicitud_rut);
     $("#"+_c).val(data.solicitud_telefono);
