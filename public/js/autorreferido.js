@@ -57,7 +57,7 @@ function loadInProcess(){
 
 function loadInProcessData(data){
             $("#mensaje\\.resultado").addClass("d-none");
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>E. Gestacional</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
+            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Edad gestacional</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
             $.each(data, function(i, value) {
                 let fecha = value.evaluacion_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
