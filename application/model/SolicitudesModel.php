@@ -449,7 +449,7 @@ class SolicitudesModel
 
         $sql = "UPDATE solicitudes SET solicitud_nombre = :solicitud_nombre, solicitud_telefono = :solicitud_telefono, solicitud_fum = :solicitud_fum, solicitud_fecha = :solicitud_fecha, solicitud_egestacional = :solicitud_egestacional, solicitud_ematerna = :solicitud_ematerna, solicitud_ciudad = :solicitud_ciudad, solicitud_lugar = :solicitud_lugar, solicitud_diagnostico = :solicitud_diagnostico WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_id' => $solicitud_id,' :solicitud_nombre' => $nombre, ':solicitud_telefono' => $telefono, ':solicitud_fum' => $fum, ':solicitud_fecha' => $fecha, ':solicitud_egestacional' => $eg, ':solicitud_ematerna' => $edadMaterna, ':solicitud_ciudad' => $ciudad, ':solicitud_lugar' => $lugar, ':solicitud_diagnostico' => $diagnostico));
+        $query->execute(array(':solicitud_id' => $solicitud_id, ':solicitud_nombre' => $nombre, ':solicitud_telefono' => $telefono, ':solicitud_fum' => $fum, ':solicitud_fecha' => $fecha, ':solicitud_egestacional' => $eg, ':solicitud_ematerna' => $edadMaterna, ':solicitud_ciudad' => $ciudad, ':solicitud_lugar' => $lugar, ':solicitud_diagnostico' => $diagnostico));
 
         if ($query->rowCount() == 1) {
             return true;
