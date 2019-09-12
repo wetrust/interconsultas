@@ -1801,7 +1801,7 @@ function makeModal(button){
 function solicitudModal(data){
     let modal = makeModal("Guardar");
 
-    document.getElementsByTagName("body").appendChild(modal.modal);
+    var body = document.getElementsByTagName("body")[0].appendChild(modal.modal);
     $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
         $(this).remove();
     });
