@@ -1,3 +1,5 @@
+var modalModificar ={};
+
 $(document).ready(function(){
     $("#interfaz\\.enviar").on("click", function(){
         let selecciono = false;
@@ -60,7 +62,7 @@ function loadInProcessData(data){
                 let fecha = value.evaluacion_fecha.split('-');
                 fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
                 tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>'+ value.solicitud_ciudad +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
-                tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen</button></td></tr>';
+                tabla += '<td><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar</button><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen</button></td></tr>';
             });
             tabla += '</tbody>';
             $('#tabla\\.resultado').append(tabla);
@@ -1005,6 +1007,14 @@ function loadInProcessData(data){
                     }
                 });
             });
+
+            $('#tabla\\.resultado tr > td > button.modificar').on("click", function(){
+                let solicitud_id =  $(this).data("id");
+
+                $.get('dashboard/agendar/' + solicitud_id).done(function(data){
+                    solicitudModal(data);
+                });
+            });
 }
 
 function buildFinishTable(data){
@@ -1763,4 +1773,78 @@ function uuidv4() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     )
+}
+
+function makeModal(button){
+    let id = uuidv4();
+    let titulo = uuidv4();
+    let contenido = uuidv4();
+    let _button = uuidv4();
+    let button_string = "";
+
+    if (typeof button !== typeof undefined){
+        button_string = '<button type="button" class="btn btn-primary" id="'+_button+'" data-modal="'+id+'">'+button+'</button>';
+    }
+
+    let resultado ={
+        id:id,
+        titulo:titulo,
+        contenido:contenido,
+        button:_button,
+        modal:'<div class="modal fade" tabindex="-1" role="dialog" id="'+id+'"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="'+titulo+'">Modal title</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="'+contenido+'"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>'+ button_string+'</div></div></div></div>'
+    }
+    
+    return resultado;
+}
+
+
+function solicitudModal(data){
+    let modal = makeModal("Guardar");
+
+    $('body').append(modal.modal);
+    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+        $(this).remove();
+    });
+    $("#"+modal.button).on("click", function(){
+        let modal =  $(this).data("modal"); 
+        $.get("dashboard/delete/" + solicitud_id).done(function(){loadAgendadas();});
+        $('#'+modal).modal("hide");
+    });
+
+    let id_sol = uuidv4();let a= uuidv4(); let b= uuidv4(); let c= uuidv4(); let d= uuidv4(); let e= uuidv4(); let f= uuidv4(); let g= uuidv4(); let h= uuidv4(); let i= uuidv4(); let j= uuidv4();
+    let formulario = '<div class="row"><input type="text" class="form-control" id="'+id_sol+'"><div class="col form-group"><label>Nombre del paciente</label><input type="text" class="form-control" id="'+a+'"> </div><div class="col form-group"><label>RUT del paciente</label><div class="rut-container"><input type="text" class="form-control is-invalid" id="'+b+'" pattern="[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}" maxlength="12" required="required"><span class="invalid-feedback">Rut incorrecto</span></div></div><div class="col form-group"><label>Teléfono materno</label><input type="number" class="form-control" id="'+c+'"> </div></div><div class="row"><div class="col-4 form-group btn-animado rounded mb-0 pb-3"><label>Debe ingresar FUM referida o corregida</label><input type="date" class="form-control g-verde text-white" id="'+d+'"></div><div class="col form-group mb-0 pb-3"><label>Fecha de solicitud del exámen</label><input type="date" class="form-control g-verde text-white" id="'+e+'"></div><div class="col-4 form-group mb-0 pb-3"><label>Edad Gestacional (Ege)</label><input type="text" class="form-control g-verde text-white" id="'+f+'" disabled="" value="0 semanas"></div></div><div class="row"><div class="col-4 form-group"><label>Edad materna (años)</label><select class="form-control" id="'+g+'"></select></div><div class="col form-group"><label>Ciudad procedencia de la paciente</label><select class="form-control" id="'+h+'"></select></div><div class="col form-group"><label>Lugar de control prenatal</label><select class="form-control" id="'+i+'"></select></div></div><div class="row"><div class="col-4 form-group"><label><strong>Diagnóstico de referencia a exámen ecográfico:</strong></label></div><div class="col-8 form-group"><input type="text" class="form-control" id="'+j+'"></div></div>';
+
+    $(modal.contenido).append(formulario);
+
+    let años = document.getElementById(g);
+    let opt = document.createElement('option');
+    opt.appendChild(document.createTextNode("< 10 años"));
+    opt.value = "< 10"; 
+    años.appendChild(opt);
+    for (var i = 10; i < 61; i++) {
+        let opt = document.createElement('option');
+        opt.appendChild(document.createTextNode(i));
+        opt.value = i; 
+        años.appendChild(opt); 
+    }
+    opt = document.createElement('option');
+    opt.appendChild( document.createTextNode("> 60 años") );
+    opt.value = "> 60"; 
+    años.appendChild(opt);
+
+    $("#"+h).html($("#h").clone());
+    $("#"+i).html($("#i").clone());
+
+    modalModificar = {solicitud_id: id_sol,nombre: a,rut: b,telefono: c,fum: d,fecha: e,eg: f,edadMaterna: g,ciudad: h,lugar: i,diagnostico: j};
+
+    $("#"+a).val(data.solicitud_nombre);
+    $("#"+b).val(data.solicitud_rut);
+    $("#"+c).val(data.solicitud_telefono);
+    $("#"+d).val(data.solicitud_fum);
+    $("#"+e).val(data.solicitud_fecha);
+    $("#"+f).val(data.solicitud_egestacional);
+    $("#"+g).val(data.solicitud_ematerna);
+    $("#"+h).val(data.solicitud_ciudad);
+    $("#"+i).val(data.solicitud_lugar);
+    $("#"+j).val(data.solicitud_diagnostico);
 }
