@@ -564,7 +564,7 @@ function loadInProcessData(data){
                                $("input[name='respuesta_cc']").focus();
                             }
                         });
-                        
+
                         $("input[name='respuesta_cc']").on("change", function(){
                             psohdlk();
                             calCCCA();
@@ -1068,6 +1068,7 @@ function loadInProcessData(data){
                             respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
                             respuesta_ccca_pct: $('input[name="respuesta_ccca_pct"]').val(),
                             respuesta_sexo_fetal: $('select[name="respuesta_sexo_fetal"]').val(),
+                            respuesta_dof: $('select[name="respuesta_dof"]').val(),
                         }
                         args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
                         args.respuesta_uterina_izquierda_percentil = args.respuesta_uterina_izquierda_percentil.replace("Pct. ", "");
