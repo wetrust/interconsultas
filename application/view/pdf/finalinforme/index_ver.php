@@ -128,7 +128,7 @@
     $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->solicitud_resultado->anatomia_fetal)." ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica:</em></strong></td><td style="background-color:#eceeef;">Peso fetal estimado (PFE):</td><td style="background-color:#eceeef;">'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td style="background-color:#eceeef;">Percentil: '.htmlentities($this->solicitud_resultado->pfe_percentil).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica:</em></strong></td><td style="background-color:#f7fafb;">Peso fetal estimado (PFE):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td style="background-color:#f7fafb;">Percentil: '.htmlentities($this->solicitud_resultado->pfe_percentil).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>Perímetro abdominal:</td><td>'.htmlentities($this->solicitud_resultado->ca).' mm.</td><td>Percentil: '.$this->solicitud_resultado->ca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -137,13 +137,13 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Uterina izquierda:</td><td>'.htmlentities($this->solicitud_resultado->uterina_izquierda).'</td><td>Percentil: '.$this->solicitud_resultado->uterina_izquierda_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">IP Promedio uterinas:</td><td style="background-color:#eceeef;">'.htmlentities($this->solicitud_resultado->uterinas).'</td><td style="background-color:#eceeef;">Percentil: '.$this->solicitud_resultado->uterinas_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td style="background-color:#f7fafb;">IP Promedio uterinas:</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->uterinas).'</td><td style="background-color:#f7fafb;">Percentil: '.$this->solicitud_resultado->uterinas_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Arteria umbilical (UMB):</td><td>'.htmlentities($this->solicitud_resultado->umbilical).'</td><td>Percentil: '.$this->solicitud_resultado->umbilical_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Cerebral media (ACM):</td><td>'.htmlentities($this->solicitud_resultado->cm).'</td><td>Percentil: '.$this->solicitud_resultado->cm_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">Índice Cm / Au (ICP):</td><td style="background-color:#eceeef;">'.htmlentities($this->solicitud_resultado->cmau).'</td><td style="background-color:#eceeef;">Percentil: '.$this->solicitud_resultado->cmau_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td style="background-color:#f7fafb;">Índice Cm / Au (ICP):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->cmau).'</td><td style="background-color:#f7fafb;">Percentil: '.$this->solicitud_resultado->cmau_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
 
