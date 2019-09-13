@@ -210,6 +210,7 @@ class DashboardController extends Controller
                 'respuesta_dof' => $respuesta_dof,
                 'respuesta_ic' => $respuesta_ic,
                 'respuesta_bvm' => $respuesta_bvm,
+                'respuesta_fcf' => $respuesta_fcf,
                 'respuesta_lh' => $respuesta_lh,
                 'respuesta_lh_pct' => $respuesta_lh_pct,
                 'respuesta_cerebelo' => $respuesta_cerebelo,

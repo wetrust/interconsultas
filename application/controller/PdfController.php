@@ -91,6 +91,7 @@ class PdfController extends Controller
             'respuesta_ccca_pct' => $respuesta->ccca_pct,
             'respuesta_fecha' => $respuesta->fecha,
             'respuesta_eg' => $respuesta->eg,
+            'respuesta_fcf' => $respuesta->respuesta_fcf,
             'ecografista' => $respuesta->ecografista,
             'comentariosexamen' => $respuesta->comentariosexamen,
             'respuesta_presentacion' => $respuesta->presentacion_segundo,
