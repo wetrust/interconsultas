@@ -708,7 +708,20 @@ function loadInProcessData(data){
                         });
                     }
 
-                    let bvmSelect = document.getElementsByName("respuesta_bvm")[0];
+                    $('#interconsulta\\.respuesta\\.fecha').trigger("change");
+                    if ($(this).val() == 3){
+                        $("#enviar\\.respuesta\\.botton").addClass("d-none");
+                        $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
+                        $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Día del ciclo mestrual');
+                    }else {
+                        $("#enviar\\.respuesta\\.botton").removeClass("d-none");
+                        $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
+                        $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
+                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
+                    }
+                });
+                let bvmSelect = document.getElementsByName("respuesta_bvm")[0];
                     let opt = document.createElement('option');
                     opt.appendChild(document.createTextNode("< 10"));
                     opt.value = "< 10"; 
@@ -742,20 +755,6 @@ function loadInProcessData(data){
                         opt.appendChild( document.createTextNode("> 170") );
                         opt.value = "> 170"; 
                         fcfSelect.appendChild(opt);
-
-                    $('#interconsulta\\.respuesta\\.fecha').trigger("change");
-                    if ($(this).val() == 3){
-                        $("#enviar\\.respuesta\\.botton").addClass("d-none");
-                        $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
-                        $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Día del ciclo mestrual');
-                    }else {
-                        $("#enviar\\.respuesta\\.botton").removeClass("d-none");
-                        $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
-                        $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
-                    }
-                });
                 $("select[name='respuesta_anatomia']").on("change", function(){
                     if ($(this).val() == "hallazgos ecográficos compatibles con:"){
                         $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
