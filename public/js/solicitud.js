@@ -181,7 +181,7 @@ $(document).ready(function(){
 			}else if (fecha.length < 4){
                 mensaje = textos.form_error;
             }else if (eg == "0 semanas"){
-                mensaje = textos.eg_error;
+                mensaje = "La edad gestacional debe ser mayor a 1 día";
 			}else if (diagnostico.length  < 3){
                 mensaje = textos.diagnostico_referencia_error;
             }else if (nombreReferente.length < 3){
