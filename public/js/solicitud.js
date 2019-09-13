@@ -277,6 +277,7 @@ $(document).ready(function(){
 					$("#c").val("");
 					resetFecha("#d");
 					resetFecha("#e");
+					$("#d").trigger("change");
 					$("#g").val(25);
 					$("#j").val("");
 					$("#k").val("");
