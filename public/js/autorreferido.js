@@ -86,7 +86,7 @@ function loadInProcessData(data){
                     FUM = new Date(FUM);
                     FExamen = new Date(FExamen);
                     if ($('#interconsulta\\.respuesta\\.crecimiento').val() == 3){
-                        EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / undia).toFixed(0);
+                        EdadGestacional = Math.trunc((FExamen.getTime() - FUM.getTime()) / undia);
                         $('#interconsulta\\.respuesta\\.eg').val(EdadGestacional);
                         $("input[name='respuesta_eg']").val(EdadGestacional);
                     }else{
@@ -186,7 +186,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg = parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("input[name='respuesta_uterina_derecha_percentil_view']").val(pctUtAdvanced(eg,ut));
                                 $("input[name='respuesta_uterina_derecha_percentil']").val(pctUtAdvanced(eg,ut));
                                 if (ut > 0){
@@ -196,8 +196,7 @@ function loadInProcessData(data){
                                     }
                                 }
                             }
-                        });
-                        $('input[name="respuesta_uterina_derecha"]').keypress(function( event ) {
+                        }).keypress(function( event ) {
                             if (event.which == 13) {event.preventDefault();$("input[name='respuesta_uterina_izquierda']").focus();}
                         });
                         $("input[name='respuesta_uterina_izquierda']").on("change", function(){
@@ -205,7 +204,8 @@ function loadInProcessData(data){
                             var ut = $(this).val();
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
-                            if (eg.length > 0){eg = parseFloat(eg).toFixed();
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
                                 $("input[name='respuesta_uterina_izquierda_percentil_view']").val(pctUtAdvanced(eg,ut));
                                 $("input[name='respuesta_uterina_izquierda_percentil']").val(pctUtAdvanced(eg,ut));
                                 if (ut > 0){
@@ -215,8 +215,7 @@ function loadInProcessData(data){
                                     }
                                 }
                             }
-                        });
-                        $('input[name="respuesta_uterina_izquierda"]').keypress(function( event ) {
+                        }).keypress(function( event ) {
                             if ( event.which == 13 ) {event.preventDefault();$("input[name='respuesta_translucencia_nucal']").focus();}
                         });
                         $("input[name='respuesta_uterinas']").on("change", function(){
@@ -224,10 +223,14 @@ function loadInProcessData(data){
                             var ut = $(this).val();
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
-                            if (eg.length > 0){eg =  parseFloat(eg).toFixed();$("input[name='respuesta_uterinas_promedio']").val(pctUtAdvanced(eg,ut));}
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("input[name='respuesta_uterinas_promedio']").val(pctUtAdvanced(eg,ut));
+                            }
                         });
-                        $('input[name="respuesta_lcn"]').on("change", function(){ eglcn(); });
-                        $('input[name="respuesta_lcn"]').keypress(function( event ) {
+                        $('input[name="respuesta_lcn"]').on("change", function(){ 
+                            eglcn();
+                        }).keypress(function( event ) {
                             if ( event.which == 13 ) {event.preventDefault(); $("input[name='respuesta_uterina_derecha']").focus();}
                         });
                         $("select[name='respuesta_anatomia']").on("change", function(){
@@ -375,7 +378,7 @@ function loadInProcessData(data){
                             eg = eg.replace("semanas", "");
             
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
                             }
                         });
@@ -385,7 +388,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_ccca_pct").html("Pct. " + pctcccaAdvanced(eg,ccca));
                             }
                         });
@@ -395,7 +398,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_cc_pct").html("Pct. " + pctccAdvanced(eg,cc));
                             }
                         });
@@ -405,7 +408,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
                             }
                         });
@@ -415,8 +418,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-            
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
                             }
                         });
@@ -426,7 +428,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg = parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_lh_pct").html("Pct. " + pctlhAdvanced(eg,lh));
                             }
                         });
@@ -436,14 +438,14 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg = parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_cerebelo_pct").html("Pct. " + pctcerebeloAdvanced(eg,cerebelo));
                             }
                         });
                     }
                     else if ($(this).val() == 1){
                         $("#doppleruterinas").remove();
-                        $("#contenedor\\.examenes").append('<div id="primertrimestre"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">útero</label> <select class="form-control" name="respuesta_utero_primertrimestre"> <option value="central anterior" selected>central anterior</option> <option value="central posterior">central posterior</option> <option value="lateralizado a la Izquierda">lateralizado a la Izquierda</option> <option value="lateralizado a la Derecha">lateralizado a la Derecha</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Saco gestacional</label> <select class="form-control" name="respuesta_saco_gestacional"> <option value="normal" selected>normal</option> <option value="no se observa">no se observa</option> <option value="multiple">multiple</option> <option value="con pseudosaco">con pseudosaco</option> <option value="con dpmto. parcial">con dpmto. parcial</option> </select> </div><div class="col-3 form-group"> <label>Promedio saco gestacional</label> <input type="text" class="form-control" name="respuesta_saco"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Embrión</label> <select class="form-control" name="respuesta_embrion"> <option value="no se observa aun">no se observa aun</option> <option value="act. no evidenciabl">act. no evidenciable</option> <option value="act. card. inicial">act. card. inicial</option> <option value="con act. cardiaca (+)" selected>con act. cardiaca (+)</option> <option value="act. card. y corp. (+)">act. card. y corp. (+)</option> <option value="act. card. y corp. (-)">act. card. y corp. (-)</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Largo Embrionatio Máximo (LEM)</label> <input type="text" class="form-control" name="respuesta_lcn"> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">Eg. x LEM</label> <input type="text" class="form-control" name="respuesta_lcn_eg" disabled> </div></div><div class="row"> <div class="col form-group"> <label>&nbsp;</label> <input type="text" class="form-control bg-white" value="Fechas determinadas según biometría embrionaria (LEM)" disabled> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">FUR Operacional</label> <input type="text" class="form-control bg-secondary text-white" name="respuesta_furop" disabled> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">FPP actualizada</label> <input type="text" class="form-control bg-secondary text-white" name="respuesta_fppactualizada" disabled> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label> <select class="form-control" name="respuesta_anexo_izquierdo_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label> <select class="form-control" name="respuesta_anexo_derecho_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div></div><div class="row"> <div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista">Douglas</label> <select class="form-control" name="respuesta_douglas_primertrimestre"> <option value="libre" selected>libre</option> <option value="ocupado">ocupado</option> </select> </div></div></div>');
+                        $("#contenedor\\.examenes").append('<div id="primertrimestre"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">útero</label> <select class="form-control" name="respuesta_utero_primertrimestre"> <option value="central anterior" selected>central anterior</option> <option value="central posterior">central posterior</option> <option value="lateralizado a la Izquierda">lateralizado a la Izquierda</option> <option value="lateralizado a la Derecha">lateralizado a la Derecha</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Saco gestacional</label> <select class="form-control" name="respuesta_saco_gestacional"> <option value="normal" selected>normal</option> <option value="no se observa">no se observa</option> <option value="multiple">multiple</option> <option value="con pseudosaco">con pseudosaco</option> <option value="con dpmto. parcial">con dpmto. parcial</option> </select> </div><div class="col-3 form-group"> <label>Promedio saco gestacional</label> <input type="text" class="form-control" name="respuesta_saco"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Embrión</label> <select class="form-control" name="respuesta_embrion"> <option value="no se observa aun">no se observa aun</option> <option value="act. no evidenciabl">act. no evidenciable</option> <option value="act. card. inicial">act. card. inicial</option> <option value="con act. cardiaca (+)" selected>con act. cardiaca (+)</option> <option value="act. card. y corp. (+)">act. card. y corp. (+)</option> <option value="act. card. y corp. (-)">act. card. y corp. (-)</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Largo Embrionatio Máximo (LEM)</label> <input type="text" class="form-control" name="respuesta_lcn"> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">Eg. x LEM</label> <input type="text" class="form-control" name="respuesta_lcn_eg" disabled> </div></div><div class="row"> <div class="col form-group"> <label>&nbsp;</label> <input type="text" class="form-control bg-white" value="Fechas determinadas según biometría embrionaria (LEM)" disabled> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">FUR Operacional</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_furop" disabled> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">FPP actualizada</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_fppactualizada" disabled> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label> <select class="form-control" name="respuesta_anexo_izquierdo_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label> <select class="form-control" name="respuesta_anexo_derecho_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div></div><div class="row"> <div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista">Douglas</label> <select class="form-control" name="respuesta_douglas_primertrimestre"> <option value="libre" selected>libre</option> <option value="ocupado">ocupado</option> </select> </div></div></div>');
                         $("input[name='respuesta_lcn']").on("change", function(){eglcn();});
                         $("#segundotrimestre").remove();
                         $("#multiproposito").remove();
@@ -461,7 +463,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg = parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_uterina_derecha_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
                                 if (ut > 0){
                                     if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
@@ -519,7 +521,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg = parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_uterina_izquierda_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
         
                                 if (ut > 0){
@@ -544,7 +546,7 @@ function loadInProcessData(data){
                             eg = eg.replace("semanas", "");
 
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut));
                             }
                         });
@@ -554,7 +556,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
             
                             }
@@ -626,7 +628,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
                             }
                         }).keypress(function( event ) {
@@ -647,7 +649,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
                             }
                         });
@@ -665,7 +667,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
                             }
                             if (acm > 0){
@@ -681,7 +683,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_umbilical_percentil").html("Pct. " + pctauAdvanced(eg,aumb));
                             }
                             if ($("input[name='respuesta_cm']").val() > 0){
@@ -702,7 +704,7 @@ function loadInProcessData(data){
                             eg = String(eg);
                             eg = eg.replace("semanas", "");
                             if (eg.length > 0){
-                                eg =  parseFloat(eg).toFixed();
+                                eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_cmau_percentil").html(pctcmauAdvanced(eg,cmau));
                             }
                         });
@@ -769,7 +771,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg = parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("#respuesta_uterina_derecha_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
                         if (ut > 0){
                             if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
@@ -791,7 +793,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg = parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("#respuesta_uterina_izquierda_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
                         if (ut > 0){
                             if ($("input[name='respuesta_uterina_derecha']").val() > 0){
@@ -813,7 +815,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg = parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut));
                     }
                 })
@@ -823,7 +825,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg =  parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
                     }
                 });
@@ -833,7 +835,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg =  parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
                     }
                     if (acm > 0){
@@ -910,7 +912,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg =  parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
                     }
                 }).keypress(function( event ) {
@@ -931,7 +933,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg =  parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
                     }
                 });
@@ -941,7 +943,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg =  parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("#respuesta_umbilical_percentil").html("Pct. " + pctauAdvanced(eg,aumb));
                     }
                     if ($("input[name='respuesta_cm']").val() > 0){
@@ -962,7 +964,7 @@ function loadInProcessData(data){
                     eg = String(eg);
                     eg = eg.replace("semanas", "");
                     if (eg.length > 0){
-                        eg =  parseFloat(eg).toFixed();
+                        eg = Math.trunc(parseFloat(eg));
                         $("#respuesta_cmau_percentil").html(pctcmauAdvanced(eg,cmau));
                     }
                 });
@@ -1337,7 +1339,7 @@ function pctcmauAdvanced(eg, cmau){
             pctPFE = '< 1';
         }
         else{
-            pctPFE = pctFinal.toFixed();
+            pctPFE = Math.trunc(pctFinal);
         }
         return pctPFE;
     }
@@ -1376,7 +1378,7 @@ function pctpfeAdvanced(eg,pfe) {
             pctPFE = '< 1';
         }
         else{
-            pctPFE = pctFinal.toFixed();
+            pctPFE = Math.trunc(pctFinal);
         }
         return pctPFE;
     }
@@ -1428,7 +1430,7 @@ function pctUtAdvanced(eg,ut) {
                 pctUT = '< 1';
             }
             else{
-                pctUT = resultado.toFixed();
+                pctUT = Math.trunc(resultado);
             }
             return pctUT;
         }
@@ -1476,7 +1478,7 @@ function pctacmAdvanced(eg,acm) {
             pctACM = '< 1';
         }
         else{
-            pctACM = resultado.toFixed();
+            pctACM = Math.trunc(resultado);
         }
         return pctACM;
     }
@@ -1550,7 +1552,7 @@ function psohdlk() {
     CA = parseInt($("input[name='respuesta_ca']").val());
     var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
     if (isNaN(psoP) != true) {
-        $("input[name='respuesta_pfe']").val(psoP.toFixed(0)).trigger("change");
+        $("input[name='respuesta_pfe']").val(Math.trunc(psoP)).trigger("change");
     }
     else{
         $("input[name='respuesta_pfe']").val(0).trigger("change");
@@ -1621,21 +1623,25 @@ function eglcn() {
                 i = 63;
             }
         }
-        var FechaA = new Date($("#interconsulta\\.respuesta\\.fecha").val());
+        _fecha = new Date ();
+        _fecha.setTime(Date.parse(document.getElementById("interconsulta.respuesta.fecha").value));
+
         var eglcN = eglcn.toString().split('.');
         if (eglcN.length == 1){
             eglcN = parseInt(eglcN[0]) * 7;
         }else if (eglcN.length == 2){
             eglcN = (parseInt(eglcN[0]) * 7) + parseInt(eglcN[1]);
         }
-        FechaA.setDate(FechaA.getDate() - eglcN);
-        $("input[name='respuesta_furop']").val(FechaA.getDate() + "-" +(FechaA.getMonth() +1) + "-" + FechaA.getFullYear());
-        FechaA.setDate(FechaA.getDate() + 240);
-        $("input[name='respuesta_fppactualizada']").val(FechaA.getDate() + "-" +(FechaA.getMonth() +1) + "-" + FechaA.getFullYear());
+        _fecha.setDate(_fecha.getUTCDate() - eglcN);
+        $("input[name='respuesta_furop']").val(setInputDate(_fecha));
+        _fecha.setDate(_fecha.getUTCDate() + 240);
+        $("input[name='respuesta_fppactualizada']").val(setInputDate(_fecha));
         $("input[name='respuesta_lcn_eg']").val(eglcn);
     } 
     else {
         $("input[name='respuesta_lcn_eg']").val(0);
+        $("input[name='respuesta_furop']").val(setInputDate());
+        $("input[name='respuesta_fppactualizada']").val(setInputDate());
     }
 };
 function pctcccaAdvanced(eg, ccca) {
@@ -1779,37 +1785,12 @@ function pctlfAdvanced(eg, lf) {
     var pct3 = [];
     var pct97 = [];
 
-    pct3[12] = 7;  pct3[13] = 9;  pct3[14] = 12
-    pct3[15] = 15; pct3[16] = 17; pct3[17] = 21
-    pct3[18] = 23; pct3[19] = 26; pct3[20] = 28
-    pct3[21] = 30; pct3[22] = 33; pct3[23] = 35
-    pct3[24] = 38; pct3[25] = 40; pct3[26] = 42
-    pct3[27] = 44; pct3[28] = 46; pct3[29] = 48
-    pct3[30] = 50; pct3[31] = 52; pct3[32] = 53
-    pct3[33] = 55; pct3[34] = 57; pct3[35] = 59
-    pct3[36] = 60; pct3[37] = 62; pct3[38] = 64
-    pct3[39] = 65; pct3[40] = 66; pct3[41] = 68
-    pct3[42] = 69
-        
-    pct97[12] = 12; pct97[13] = 14; pct97[14] = 17
-    pct97[15] = 20; pct97[16] = 23; pct97[17] = 27
-    pct97[18] = 31; pct97[19] = 34; pct97[20] = 38
-    pct97[21] = 40; pct97[22] = 43; pct97[23] = 47
-    pct97[24] = 50; pct97[25] = 52; pct97[26] = 56
-    pct97[27] = 58; pct97[28] = 62; pct97[29] = 64
-    pct97[30] = 66; pct97[31] = 68; pct97[32] = 71
-    pct97[33] = 73; pct97[34] = 75; pct97[35] = 78
-    pct97[36] = 80; pct97[37] = 82; pct97[38] = 84
-    pct97[39] = 86; pct97[40] = 88; pct97[41] = 90
-    pct97[42] = 92
+    pct3[12] = 7;  pct3[13] = 9;  pct3[14] = 12; pct3[15] = 15; pct3[16] = 17; pct3[17] = 21; pct3[18] = 23; pct3[19] = 26; pct3[20] = 28; pct3[21] = 30; pct3[22] = 33; pct3[23] = 35; pct3[24] = 38; pct3[25] = 40; pct3[26] = 42; pct3[27] = 44; pct3[28] = 46; pct3[29] = 48; pct3[30] = 50; pct3[31] = 52; pct3[32] = 53; pct3[33] = 55; pct3[34] = 57; pct3[35] = 59; pct3[36] = 60; pct3[37] = 62; pct3[38] = 64; pct3[39] = 65; pct3[40] = 66; pct3[41] = 68; pct3[42] = 69;
+    pct97[12] = 12; pct97[13] = 14; pct97[14] = 17; pct97[15] = 20; pct97[16] = 23; pct97[17] = 27; pct97[18] = 31; pct97[19] = 34; pct97[20] = 38; pct97[21] = 40; pct97[22] = 43; pct97[23] = 47; pct97[24] = 50; pct97[25] = 52; pct97[26] = 56; pct97[27] = 58; pct97[28] = 62; pct97[29] = 64; pct97[30] = 66; pct97[31] = 68; pct97[32] = 71; pct97[33] = 73; pct97[34] = 75; pct97[35] = 78; pct97[36] = 80; pct97[37] = 82; pct97[38] = 84; pct97[39] = 86; pct97[40] = 88; pct97[41] = 90; pct97[42] = 92;
 
-    if (eg < 12) {
+    if (eg < 12 || eg > 40) {
         return 0;
-    } 
-    else if (eg > 40)
-    {
-        return 0;
-    } 
+    }
     else {
         eg = parseInt(eg);
         var uno = pct97[eg] - pct3[eg];
@@ -1827,13 +1808,9 @@ function pctlfAdvanced(eg, lf) {
     }
 }
 function ICAdvanced(dbp, dof) {
-    if (dbp > 0) {
-        if (dof > 0) {
-          let valor = ((dbp / dof) * 100);
-          return valor.toFixed(0) + "%";
-        } else {
-            return 0;
-        }
+    if (dbp > 0 && dof > 0) {
+        let valor = ((dbp / dof) * 100);
+        return Math.trunc(valor) + "%";
     } else {
         return 0;
     }
@@ -1880,33 +1857,17 @@ function pctlhAdvanced(eg, lh) {
     }
 }
 function pctcerebeloAdvanced(eg,cerebelo) {
-    var pct2ds = [], pctmedia = [], pct2dsmas = [];
-    pct2ds[0] = 12;pct2ds[1] = 14;pct2ds[2] = 15;pct2ds[3] = 16;pct2ds[4] = 17;pct2ds[5] = 18;
-    pct2ds[6] = 19;pct2ds[7] = 20;pct2ds[8] = 21;pct2ds[9] = 22;pct2ds[10] = 24;
-    pct2ds[11] = 26;pct2ds[12] = 27;pct2ds[13] = 29;pct2ds[14] = 30;pct2ds[15] = 31;
-    pct2ds[16] = 33;pct2ds[17] = 36;pct2ds[18] = 37;pct2ds[19] = 38;pct2ds[20] = 40;
-    pct2ds[21] = 40;pct2ds[22] = 40;pct2ds[23] = 41;pct2ds[24] = 42;pct2ds[25] = 44;
-    pctmedia[0] = 15;pctmedia[1] = 16;pctmedia[2] = 17;pctmedia[3] = 18;pctmedia[4] = 20;
-    pctmedia[5] = 20;pctmedia[6] = 22;pctmedia[7] = 23;pctmedia[8] = 24;pctmedia[9] = 26;
-    pctmedia[10] = 28;pctmedia[11] = 30;pctmedia[12] = 31;pctmedia[13] = 33;pctmedia[14] = 34;
-    pctmedia[15] = 37;pctmedia[16] = 39;pctmedia[17] = 41;pctmedia[18] = 43;pctmedia[19] = 46;
-    pctmedia[20] = 47;pctmedia[21] = 49;pctmedia[22] = 51;pctmedia[23] = 51;pctmedia[24] = 52;
-    pctmedia[25] = 52
-    pct2dsmas[0] = 18;pct2dsmas[1] = 18;pct2dsmas[2] = 19;pct2dsmas[3] = 20;pct2dsmas[4] = 22;
-    pct2dsmas[5] = 23;pct2dsmas[6] = 25;pct2dsmas[7] = 26;pct2dsmas[8] = 27;pct2dsmas[9] = 30;
-    pct2dsmas[10] = 32;pct2dsmas[11] = 34;pct2dsmas[12] = 34;pct2dsmas[13] = 37;pct2dsmas[14] = 38;
-    pct2dsmas[15] = 41;pct2dsmas[16] = 43;pct2dsmas[17] = 46;pct2dsmas[18] = 48;pct2dsmas[19] = 53;
-    pct2dsmas[20] = 56;pct2dsmas[21] = 58;pct2dsmas[22] = 60;pct2dsmas[23] = 62;pct2dsmas[24] = 62;
-    pct2dsmas[25] = 62;
+    'use strict';
+    let a = [], b = [];
+    a[0] = 12;a[1] = 14;a[2] = 15;a[3] = 16;a[4] = 17;a[5] = 18; a[6] = 19;a[7] = 20;a[8] = 21;a[9] = 22;a[10] = 24; a[11] = 26;a[12] = 27;a[13] = 29;a[14] = 30;a[15] = 31; a[16] = 33;a[17] = 36;a[18] = 37;a[19] = 38;a[20] = 40; a[21] = 40;a[22] = 40;a[23] = 41;a[24] = 42;a[25] = 44;
+    b[0] = 18;b[1] = 18;b[2] = 19;b[3] = 20;b[4] = 22; b[5] = 23;b[6] = 25;b[7] = 26;b[8] = 27;b[9] = 30; b[10] = 32;b[11] = 34;b[12] = 34;b[13] = 37;b[14] = 38; b[15] = 41;b[16] = 43;b[17] = 46;b[18] = 48;b[19] = 53; b[20] = 56;b[21] = 58;b[22] = 60;b[23] = 62;b[24] = 62; b[25] = 62;
 
-    if (eg < 15) { return 0; } 
-    else if (eg > 40)
-    { return 0; } 
+    if (eg < 15 || eg > 40 ) { return 0; } 
     else {
         eg = parseInt(eg) - 15;
-        var uno = pct2dsmas[eg] - pct2ds[eg];
-        var dos = cerebelo - pct2ds[eg];
-        var resultado = parseInt(95 / (uno) * (dos) + 5);
+        let uno = b[eg] - a[eg];
+        let dos = cerebelo - a[eg];
+        let resultado = parseInt(95 / (uno) * (dos) + 5);
         if (resultado > 99) {return '> 99';}
         else if (resultado < 1) {return '< 1';}
         else {return resultado;}
@@ -1979,7 +1940,35 @@ function solicitudModal(data){
 
     document.getElementById(modal.contenido).innerHTML = formulario;
 
-    let años = document.getElementById(_g);
+    loadOptionEdadMaterta(_g);
+
+    document.getElementById(_h).innerHTML = document.getElementById('h').innerHTML;
+    document.getElementById(_i).innerHTML = document.getElementById('i').innerHTML;
+
+    modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j};
+
+    document.getElementById(id_sol).value = data.solicitud_id;
+    document.getElementById(_a).value = data.solicitud_nombre;
+    document.getElementById(_b).value = data.solicitud_rut;
+    document.getElementById(_c).value = data.solicitud_telefono;
+    document.getElementById(_d).value = data.solicitud_fum;
+    document.getElementById(_e).value = data.solicitud_fecha;
+    document.getElementById(_f).value = data.solicitud_egestacional;
+    document.getElementById(_g).value = data.solicitud_ematerna;
+    document.getElementById(_h).value = data.solicitud_ciudad;
+    document.getElementById(_i).value = data.solicitud_lugar;
+    document.getElementById(_j).value = data.solicitud_diagnostico;
+
+    $("#"+_d+", #"+_e).on("change", function(){
+        let EG = calcularEdadGestacional(modalModificar.fum, modalModificar.fecha);
+        document.getElementById(modalModificar.eg).value = EG.text;
+    });
+}
+
+
+///primitivas a estandarizar
+function loadOptionEdadMaterta(input){
+    let años = document.getElementById(input);
     let opt = document.createElement('option');
     opt.appendChild(document.createTextNode("< 10 años"));
     opt.value = "< 10"; 
@@ -1994,45 +1983,47 @@ function solicitudModal(data){
     opt.appendChild( document.createTextNode("> 60 años") );
     opt.value = "> 60"; 
     años.appendChild(opt);
+}
 
-    document.getElementById(_h).innerHTML = document.getElementById('h').innerHTML;
-    document.getElementById(_i).innerHTML = document.getElementById('i').innerHTML;
+function calcularEdadGestacional(FUM, fExamen){
+    _FUM = new Date();
+    _FUM.setTime(Date.parse(document.getElementById(FUM).value)).getTime();
+    _fExamen = new Date();
+    _fExamen.setTime(Date.parse(document.getElementById(fExamen).value)).getTime();
 
-    modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j};
+    let diff = _fExamen - _FUM;
 
-    $("#"+id_sol).val(data.solicitud_id);
-    $("#"+_a).val(data.solicitud_nombre);
-    $("#"+_b).val(data.solicitud_rut);
-    $("#"+_c).val(data.solicitud_telefono);
-    $("#"+_d).val(data.solicitud_fum);
-    $("#"+_e).val(data.solicitud_fecha);
-    $("#"+_f).val(data.solicitud_egestacional);
-    $("#"+_g).val(data.solicitud_ematerna);
-    $("#"+_h).val(data.solicitud_ciudad);
-    $("#"+_i).val(data.solicitud_lugar);
-    $("#"+_j).val(data.solicitud_diagnostico);
+    if (diff > 0){
+        let dias = diff/(1000*60*60*24);
+        let semanas = Math.trunc(dias / 7);
 
-    $("#"+_d+", #"+_e).on("change", function(){
-		var FExamen, FUM, EdadGestacional;
-		var undia = 1000 * 60 * 60 * 24;
-		var unasemana = undia * 7;
+        if (semanas > 42){
+            return {semanas:42,dias:0,text:"42 semanas"};
+        }else{
+            dias = Math.trunc(dias - (semanas * 7));
+            return {semanas:semanas,dias:dias,text:semanas + "." + dias + " semanas"};
+        }
+    }else{
+        return {semanas:0,dias:0,text:"0 semanas"};
+    }
+}
 
-		FUM = document.getElementById(modalModificar.fum).value;
-		FExamen = document.getElementById(modalModificar.fecha).value;
-
-		FUM = new Date (FUM);
-		FExamen = new Date (FExamen);
-
-		EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
-
-		if (FExamen.getTime() < FUM.getTime()) {
-            document.getElementById(modalModificar.eg).value = "0 semanas";
-		}
-		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-            document.getElementById(modalModificar.eg).value = "42 semanas";
-		}
-		else {
-            document.getElementById(modalModificar.eg).value = Math.floor(EdadGestacional) + "." + Math.round((EdadGestacional - Math.floor(EdadGestacional))*7) + " semanas";
-		}
-    });
+function setInputDate(today) {
+    if (typeof today === typeof undefined){
+        today = new Date();
+    }
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+  
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+  
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+  
+    today = yyyy + '-' + mm + '-' + dd;
+    return today;
 }
