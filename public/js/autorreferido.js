@@ -189,7 +189,7 @@ function loadInProcessData(data){
                 args.respuesta_pfe_pct = $('input[name="respuesta_pfe_pct"]').val(),
                 args.respuesta_liquido = $('select[name="respuesta_liquido"] option:selected').val(),
                 args.respuesta_presentacion = $('select[name="respuesta_presentacion"]').val(),
-                args.respuesta_dorso = $('select[name="respuesta_dorso"] option =selected').val(),
+                args.respuesta_dorso = $('select[name="respuesta_dorso"] option:selected').val(),
                 args.respuesta_placenta = $('select[name="respuesta_placenta"]').val(),
                 args.respuesta_placenta_insercion = $('select[name="respuesta_placenta_insercion"]').val(),
                 args.respuesta_uterina_derecha = $('input[name="respuesta_uterina_derecha"]').val(),
