@@ -125,13 +125,13 @@
     $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->solicitud_resultado->anatomia_fetal). " ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>DBP (Hadlock):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->dbp).' mm.</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>DBP (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->dbp).' mm.</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>CC (Hadlock):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->cc).' mm.</td><td>Percentil: '.$this->solicitud_resultado->cc_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>CC (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->cc).' mm.</td><td>Percentil: '.$this->solicitud_resultado->cc_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>CA (Hadlock):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->ca).' mm.</td><td>Percentil: '.$this->solicitud_resultado->ca_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>CA (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->ca).' mm.</td><td>Percentil: '.$this->solicitud_resultado->ca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>LF (Hadlock):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->lf).' mm.</td><td>Percentil: '.$this->solicitud_resultado->lf_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>LF (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->lf).' mm.</td><td>Percentil: '.$this->solicitud_resultado->lf_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td style="background-color:#f7fafb;">Peso fetal estimado (PFE):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td style="background-color:#f7fafb;">Percentil: '.$this->solicitud_resultado->pfe_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
