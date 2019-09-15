@@ -52,13 +52,13 @@
         $html = '<table><tbody><tr><td>Nombre del paciente</td><td>: '.htmlentities($this->solicitud->solicitud_nombre).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Edad</td><td>: '.htmlentities($this->solicitud->solicitud_ematerna).' años</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Edad materna</td><td>: '.htmlentities($this->solicitud->solicitud_ematerna).' años</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td>RUT (DNI)</td><td>: '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Fecha solicitud de la ecografía</td><td>: '.$solicitud_fecha.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Fecha solicitud de ecografía</td><td>: '.$solicitud_fecha.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td>FUR referida o corregida</td><td>: '.$solicitud_fum.'</td></tr></tbody></table>';
@@ -122,10 +122,10 @@
     $html = '<table><tbody><tr><td>Líquido amniótico</td><td>Líquido: '.htmlentities($this->solicitud_resultado->liquido).'</td><td>BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->solicitud_resultado->anatomia_fetal)." ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->solicitud_resultado->anatomia_fetal)." ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>DBP (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->dbp).' mm.</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica *</em></strong></td><td>DBP (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->dbp).' mm.</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>CC (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->cc).' mm.</td><td>Percentil: '.$this->solicitud_resultado->cc_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -136,9 +136,8 @@
     $html = '<table><tbody><tr><td></td><td style="background-color:#f7fafb;">Peso fetal estimado (PFE):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td style="background-color:#f7fafb;">Percentil: '.$this->solicitud_resultado->pfe_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong><em>Flujometría Doppler</em></strong></td><td style="background-color:#f7fafb;">IP Promedio derecha:</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->uterinas).'</td><td style="background-color:#f7fafb;">Percentil: '. $this->solicitud_resultado->uterinas_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Flujometría Doppler **</em></strong></td><td style="background-color:#f7fafb;">IP Promedio uterinas:</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->uterinas).'</td><td style="background-color:#f7fafb;">Percentil: '. $this->solicitud_resultado->uterinas_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td>IP Arteria umbilical (UMB):</td><td>'.htmlentities($this->solicitud_resultado->umbilical).'</td><td>Percentil: '.$this->solicitud_resultado->umbilical_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Cerebral media (ACM):</td><td>'.htmlentities($this->solicitud_resultado->cm).'</td><td>Percentil: '.$this->solicitud_resultado->cm_percentil.'</td></tr></tbody></table>';
@@ -147,7 +146,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
 
-    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica<br>( Reporte preeliminar )</em></strong></td><td style="width:450px">Crecimiento fetal (PFE): '.htmlentities($this->solicitud_resultado->hipotesis).' *</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal (PFE): '.htmlentities($this->solicitud_resultado->hipotesis).' *</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler materno: '.htmlentities($this->solicitud_resultado->doppler).' **</td></tr></tbody></table>';
@@ -161,7 +160,7 @@
     $_html = strtoupper($_html);
     $_html = str_replace("\n", "<br>", $_html);
 
-    $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:<br>( Valoración clínica )</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong><br><small>( Valoración clínica )</small></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(8);
 
@@ -171,7 +170,7 @@
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(1);
-    $html = '<p><small>* Evaluación de crecimiento fetal (Gráfica), según referencia propuesta por Hadlock y col. Radiology 181: 129 - 133; 1991 (Normalidad Pct 10 a 90)<br>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., Puerto B., Gratacos E., UOG 2008; 32: 128-32<br>*** Referencia para Doppler fetal; arteria umbilical, C Media y CCP; Baschat et al Ultrasound Obstet. Gynecol 2003; 21 124 - 127</small><br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico.<br>Profesional quien finalmente evaluará clínicamente la información contenida en este exámen.</p>';
+    $html = '<p><small>* Evaluación de crecimiento fetal (Gráfica), según referencia propuesta por Hadlock y col. Radiology 181: 129 - 133; 1991 (Normalidad Pct 10 a 90)<br>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., Puerto B., Gratacos E., UOG 2008; 32: 128-32<br>** Referencia para Doppler fetal; arteria umbilical, C Media y CCP; Baschat et al Ultrasound Obstet. Gynecol 2003; 21 124 - 127</small><br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico.<br>Profesional quien finalmente evaluará clínicamente la información contenida en este exámen.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     
     //para enviar por email
