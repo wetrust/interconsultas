@@ -139,7 +139,7 @@ function loadInProcessData(data){
             else if (tipoExm == 2){
                 args.respuesta_placenta = $('select[name="respuesta_placenta"]').val(),
                 args.respuesta_placenta_insercion = $('select[name="respuesta_placenta_insercion"]').val(),
-                args.respuesta_liquido_amniotico = $('select[name="respuesta_liquido_amniotico"] option =selected').val(),
+                args.respuesta_liquido_amniotico = $('select[name="respuesta_liquido_amniotico"] option:selected').val(),
                 args.respuesta_dbp = $('input[name="respuesta_dbp"]').val(),
                 args.respuesta_cc = $('input[name="respuesta_cc"]').val(),
                 args.respuesta_cc_pct = $('#respuesta_cc_pct').html(),
@@ -187,7 +187,7 @@ function loadInProcessData(data){
             else{
                 args.respuesta_pfe = $('input[name="respuesta_pfe"]').val(),
                 args.respuesta_pfe_pct = $('input[name="respuesta_pfe_pct"]').val(),
-                args.respuesta_liquido = $('select[name="respuesta_liquido"] option =selected').val(),
+                args.respuesta_liquido = $('select[name="respuesta_liquido"] option:selected').val(),
                 args.respuesta_presentacion = $('select[name="respuesta_presentacion"]').val(),
                 args.respuesta_dorso = $('select[name="respuesta_dorso"] option =selected').val(),
                 args.respuesta_placenta = $('select[name="respuesta_placenta"]').val(),
