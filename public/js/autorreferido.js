@@ -1247,14 +1247,14 @@ function multiproposito(){
         }
     });
 
-    $("input[name='respuesta_bvm']").on("change", function(){
+    $("select[name='respuesta_bvm']").on("change", function(){
         let bvm = $(this).val();
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         eg = String(eg);
         eg = eg.replace("semanas", "");
         if (eg.length > 0){
             eg = Math.trunc(parseFloat(eg));
-            $("input[name='respuesta_liquido']").val(bvmDoppler(eg, bvm));
+            $("select[name='respuesta_liquido']").val(bvmDoppler(eg, bvm));
         }
     });
     $("input[name='respuesta_uterina_izquierda']").on("change", function(){
@@ -1302,7 +1302,7 @@ function multiproposito(){
 
         }
     });
-    $("select[name='respuesta_dbp']").on("change", function(){
+    $("input[name='respuesta_dbp']").on("change", function(){
         let dbp = $(this).val();
         let dbp_ready = false;
         let dof = $("input[name='respuesta_dof']").val();
