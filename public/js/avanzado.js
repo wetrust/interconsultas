@@ -26,11 +26,7 @@ $(document).ready(function(){
     $("#filtro\\.activar").on("click", function(){
         var toggle = $("#filtro\\.contenedor").hasClass("d-none");
 
-        if (toggle){
-            $("#filtro\\.contenedor").removeClass("d-none");
-        }else{
-            $("#filtro\\.contenedor").addClass("d-none");
-        }
+        if (toggle){ $("#filtro\\.contenedor").removeClass("d-none");}else{ $("#filtro\\.contenedor").addClass("d-none");}
     });
 
     $("#filtro\\.accion").on("click", function(){
@@ -67,12 +63,10 @@ $(document).ready(function(){
 
     $("#tabla\\.correos\\.geniales tr > td").on("click", function(){
         var correo = $(this).data("email");
-
         $.get(_api + 'interconsultasEmail/' + correo).done(function(data){
             $('#expandir\\.informacion\\.contenedor').empty();
             
             if (Object.keys(data).length > 0) {
-                
                 var tabla = '<table class="table table-bordered mt-2"><thead class="thead-dark"><tr><th>#</th><th>Nombre de paciente</th><th>Ciudad</th><th>Fecha</th><th>Tipo de exámen</th><th>Accion</th><th>Eliminar</th></tr></thead><tbody>';
 
                 $.each(data, function(i, value) {
