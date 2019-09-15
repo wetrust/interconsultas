@@ -260,7 +260,7 @@ function loadInProcessData(data){
             document.getElementById("interconsulta_profesional").value = data.solicitud_profesional;
             document.getElementById("solicitud_nombreprofesional").value = data.solicitud_nombreprofesional;
             document.getElementById("solicitud_email").value = data.solicitud_email;
-            document.getElementById("interconsulta.respuesta.fecha").value = setInputDate(today);
+            document.getElementById("interconsulta.respuesta.fecha").value = setInputDate();
             var nombreprofesionalPegar = data.solicitud_nombre_referente;
             $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
             $("#interconsulta\\.respuesta\\.fecha").trigger("change");
