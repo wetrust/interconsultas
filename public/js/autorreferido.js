@@ -102,7 +102,7 @@ function loadInProcessData(data){
             $("#interconsulta\\.respuesta\\.fecha").trigger("change");
             $("input[name='respuesta_paridad']").val(data.solicitud_paridad);
             $("input[name='respuesta_antecedentes']").val(data.solicitud_antecedentes);
-            $('#interconsulta\\.respuesta\\.crecimiento').data("em",data.solicitud_ematerna).data("pm",data.solicitud_media).data("imc",data.solicitud_imc);
+            $('#interconsulta\\.respuesta\\.crecimiento').data("em",data.solicitud_ematerna).data("pm",data.solicitud_media).data("imc",data.solicitud_imc).trigger("change");
         });
     
         $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
@@ -134,7 +134,7 @@ function loadInProcessData(data){
                         $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
                         $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
             }
-        }).trigger("change");
+        });
     
         $("#ver\\.interconsulta").modal("show");
         $("#ver\\.interconsulta\\.footer").empty().prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar" data-dismiss="modal">Cerrar</button>');
