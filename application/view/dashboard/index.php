@@ -313,8 +313,8 @@
     </div>
 </div>
 <div class="modal fade" id="ver.interconsulta" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lgx h-100" role="document">
-        <div class="modal-content h-100">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="ver.interconsulta.titulo">Interconsulta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
