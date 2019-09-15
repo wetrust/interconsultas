@@ -104,7 +104,7 @@ function loadInProcessData(data){
                 respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
                 respuesta_eg: $('input[name="respuesta_eg"]').val(),
                 respuesta_comentariosexamen: $('#editable').val(),
-                respuesta_ecografista: $('input[name="respuesta_ecografista"]').val()
+                respuesta_ecografista: $("#respuesta_ecografista").val()
             }
 
             if (tipoExm == 4){
