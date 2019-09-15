@@ -37,11 +37,11 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h4 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA Y FLUJOMETRÍA DOPPLER</h4>';
+    $html = '<h4 style="border-bottom:2px double #000;text-align: center;">PROTOCOLO PARA REFERENCIA Y CONTRARREFERENCIA DE EXÁMENES ECOGRÁFICOS Y FLUJOMETRÍA DOPPLER</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
-    $html = '<h3 style="color:#0275d8;">Datos de referencia para evaluación ecográfica.</h3>';
+    $html = '<h3 style="color:#0275d8;"><em>Datos de referencia para evaluación ecográfica.</em></h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
 
@@ -55,10 +55,13 @@
         $html = '<table><tbody><tr><td>RUT (DNI)</td><td>: '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
+        $html = '<table><tbody><tr><td>Fecha solicitud de la ecografía</td><td>: '.$solicitud_fecha.'</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+        $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td>FUR referida o corregida</td><td>: '.$solicitud_fum.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Fecha solicitud de la ecografía</td><td>: '.$solicitud_fecha.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Edad gestacional</td><td>: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td>Diagnóstico de referencia</td><td>: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
@@ -106,17 +109,17 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h3 style="color:#0275d8;">Resumen examen ecográfico y flujometría Doppler materno / fetal.</h3>';
+    $html = '<h3 style="color:#0275d8;"><em>Resumen examen ecográfico y flujometría Doppler materno / fetal.</em></h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    
+
     $html = '<table><tbody><tr><td>Edad Gestacional: '. htmlentities($this->solicitud_resultado->eg) .'</td><td>Feto en presentación: '.htmlentities($this->solicitud_resultado->presentacion).'</td><td>Dorso Fetal: '.htmlentities($this->solicitud_resultado->dorso).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Frecuencia cardiaca fetal: '.htmlentities($this->solicitud_resultado->respuesta_fcf).'</td><td>Sexo: '.htmlentities($this->solicitud_resultado->sexo_fetal).'</td><td>Placenta: '.htmlentities($this->solicitud_resultado->placenta).', '.$this->solicitud_resultado->placenta_insercion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Líquido amniótico</td><td>liquido: '.htmlentities($this->solicitud_resultado->liquido).'</td><td>BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).' mm.</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Líquido amniótico</td><td>Líquido: '.htmlentities($this->solicitud_resultado->liquido).'</td><td>BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->solicitud_resultado->anatomia_fetal). " ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
