@@ -134,7 +134,7 @@ function loadInProcessData(data){
                         $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
                         $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
             }
-        });
+        }).trigger("change");
     
         $("#ver\\.interconsulta").modal("show");
         $("#ver\\.interconsulta\\.footer").empty().prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar" data-dismiss="modal">Cerrar</button>');
