@@ -1503,8 +1503,10 @@ function loadOptionEdadMaterta(input){
 function calcularEdadGestacional(FUM, fExamen){
     _FUM = new Date();
     _FUM.setTime(Date.parse(document.getElementById(FUM).value)).getTime();
+    _FUM = _FUM.getTime();
     _fExamen = new Date();
     _fExamen.setTime(Date.parse(document.getElementById(fExamen).value)).getTime();
+    _fExamen = _fExamen.getTime();
 
     let diff = _fExamen - _FUM;
     if (diff > 0){
