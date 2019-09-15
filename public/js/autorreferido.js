@@ -257,7 +257,6 @@ function loadInProcessData(data){
             document.getElementById("solicitud_diagnostico").value = data.solicitud_diagnostico;
             document.getElementById("solicitud_ciudad").value = data.solicitud_ciudad;
             document.getElementById("solicitud_lugar").value = data.solicitud_lugar;
-            document.getElementById("interconsulta_profesional").value = data.solicitud_profesional;
             document.getElementById("solicitud_email").value = data.solicitud_email;
             document.getElementById("interconsulta.respuesta.fecha").value = setInputDate();
             var nombreprofesionalPegar = data.solicitud_nombre_referente;
