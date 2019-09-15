@@ -154,7 +154,7 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler fetal: '.htmlentities($this->solicitud_resultado->doppler_fetal).' **</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(4);
+    $this->pdf->Ln(8);
 
     $_html = strip_tags($this->solicitud_resultado->comentariosexamen);
     $_html = strtoupper($_html);
