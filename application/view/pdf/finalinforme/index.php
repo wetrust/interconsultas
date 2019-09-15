@@ -126,7 +126,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>CC (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->cc).' mm.</td><td>Percentil: '.$this->solicitud_resultado->cc_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>CA (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->ca).' mm.</td><td>Percentil: '.$this->solicitud_resultado->ca_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td style="background-color:#f7fafb;">CA (Hadlock):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->ca).' mm.</td><td style="background-color:#f7fafb;">Percentil: '.$this->solicitud_resultado->ca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>LF (Hadlock):</td><td>'.htmlentities($this->solicitud_resultado->lf).' mm.</td><td>Percentil: '.$this->solicitud_resultado->lf_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
