@@ -1302,7 +1302,7 @@ function multiproposito(){
 
         }
     });
-    $("input[name='respuesta_dbp']").on("change", function(){
+    $("select[name='respuesta_dbp']").on("change", function(){
         let dbp = $(this).val();
         let dbp_ready = false;
         let dof = $("input[name='respuesta_dof']").val();
