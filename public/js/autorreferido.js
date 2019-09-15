@@ -259,7 +259,7 @@ function loadInProcessData(data){
             document.getElementById("solicitud_lugar").value = data.solicitud_lugar;
             document.getElementById("interconsulta.respuesta.fecha").value = setInputDate();
             var nombreprofesionalPegar = data.solicitud_nombre_referente;
-            $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
+            document.getElementById("respuesta_ecografista").value = nombreprofesionalPegar;
             $("#interconsulta\\.respuesta\\.fecha").trigger("change");
             $("input[name='respuesta_paridad']").val(data.solicitud_paridad);
             $("input[name='respuesta_antecedentes']").val(data.solicitud_antecedentes);
