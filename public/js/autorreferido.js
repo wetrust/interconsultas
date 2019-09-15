@@ -56,960 +56,122 @@ function loadInProcess(){
 }
 
 function loadInProcessData(data){
-            $("#mensaje\\.resultado").addClass("d-none");
-            var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Edad gestacional</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
-            $.each(data, function(i, value) {
-                let fecha = value.evaluacion_fecha.split('-');
-                fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-                tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
-                tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar solicitud</button></td></tr>';
-            });
-            tabla += '</tbody>';
-            $('#tabla\\.resultado').append(tabla);
-            $('#tabla\\.resultado tr > td > button.examen').on("click", function(){
-                let solicitud_id =  $(this).data("id");
-                $("#ver\\.interconsulta > div").removeClass("h-100");
-                $("#ver\\.interconsulta > div > div").removeClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("Datos de la interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty().append('<div class="card-header g-verde" id="headingOne"> <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Datos de la interconsulta ( Abrir / Cerrar )</button></div><div id="collapseOne" class="collapse border " aria-labelledby="headingOne" data-parent="#ver\\.interconsulta\\.contenedor"> <div class="card-body"> <input type="hidden" id="solicitud_id" value=""/> <div class="row"> <div class="col form-group"> <label>Nombre del paciente:</label> <input type="text" class="form-control" disabled id="solicitud_nombre"> </div><div class="col form-group"> <label>Fecha de solicitud:</label> <input type="text" class="form-control" disabled id="solicitud_fecha"> </div><div class="col form-group"> <label>FUR Referida o corregida</label> <input type="date" class="form-control" disabled id="solicitud_fum"> </div><div class="col form-group"> <label>Edad Gestacional</label> <input type="text" class="form-control" disabled id="solicitud_egestacional"> </div></div><div class="row"> <div class="col form-group"> <label>RUT del paciente:</label> <input type="text" class="form-control" disabled id="solicitud_rut"> </div><div class="col form-group"> <label>Paridad</label> <input type="text" class="form-control" name="respuesta_paridad" disabled> </div><div class="col form-group"> <label>Ciudad procedencia de la paciente</label> <input type="text" class="form-control" disabled id="solicitud_ciudad"> </div><div class="col form-group"> <label>Lugar de control prenatal</label> <input type="text" class="form-control" disabled id="solicitud_lugar"> </div></div><div class="row"> <div class="col my-2 form-group"> <label>Diagnóstico de referencia a exámen ecográfico</label> <input type="text" class="form-control" disabled id="solicitud_diagnostico"> </div><div class="col my-2 form-group"> <label>Otros antecedentes clínicos relevantes</label> <input type="text" class="form-control" name="respuesta_antecedentes" disabled> </div></div></div></div>');
-                $("#ver\\.interconsulta\\.contenedor").append('<h4 class="py-3 text-center bg-secondary mb-0 text-white">Responder solicitud de interconsulta ecográfica</h4>');
-                $("#ver\\.interconsulta\\.contenedor").append('<div class="row bg-secondary mb-0"> <div class="col form-group mb-0 pb-2 btn-animado"> <label class="text-white"><strong>SELECCIONE TIPO EXÁMEN</strong></label> <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento"> <option value="3">1.- Ecografía Ginecológica</option> <option value="1">2.- Ecografía precoz de urgencia</option> <option value="4">3.- Ecografía 11 / 14 semanas</option> <option value="2">4.- Ecografía 2° / 3° trimestre</option> <option value="0" selected>5.- Doppler + Eco. crecimiento</option> </select> </div><div class="col form-group mb-0"> <label class="text-white">FUR Referida o corregida</label> <input type="date" class="form-control g-verde text-white" id="interconsulta.respuesta.fur.copia" disabled> </div><div class="col form-group mb-0"> <label for="interconsulta.respuesta.fecha" class="text-white">Señalar fecha de examen</label> <input type="date" class="form-control g-verde text-white" id="interconsulta.respuesta.fecha"> </div><div class="col form-group mb-0" id="interconsulta.respuesta.edadgestacional"> <label for="interconsulta.respuesta.eg" class="text-white">Edad gestacional actual</label> <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="solicitud_fum"> <input type="text" class="form-control g-verde text-white" id="interconsulta.respuesta.eg" disabled=""> <input type="hidden" class="form-control" name="respuesta_eg"> </div></div>');
-                $("#ver\\.interconsulta\\.contenedor").append('<div id="contenedor.examenes"><div id="multiproposito"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col-4 form-group"> <label>Sexo fetal</label> <select class="form-control" name="respuesta_sexo_fetal"> <option value="femenino" selected>femenino</option> <option value="masculino">masculino</option> <option value="aún no identificado">aún no identificado</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.liquido">Líquido amniótico, cualitativo</label> <select class="form-control" name="respuesta_liquido"> <option value="Normal">Normal</option> <option value="Pha leve">PHA leve</option> <option value="Pha severo">PHA severo</option> <option value="Oha leve">OHA leve</option> <option value="Oha severo">OHA severo</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label>Líquido amniótico, semicuantitativo; BVM (mm)</label> <select type="text" class="form-control" name="respuesta_bvm"></select> </div><div class="col form-group"> <label>Fecuencia cardiaca fetal (FCF)</label> <select name="respuesta_fcf" class="form-control"></select> </div><div class="col-4 form-group"> <label>Evaluación de anatomía fetal</label> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-12 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col-6"> <div class="row"> <div class="col-12"><strong>A.- Biometría fetales:</strong></div><div class="col-6 form-group"> <label>DBP (mm)</label> <input type="text" class="form-control" name="respuesta_dbp"> </div><div class="col-6 form-group"> <label>DOF (mm)</label> <input type="text" class="form-control" name="respuesta_dof"> </div><div class="col-12 form-group"> <label>CC (mm)</label> <input type="text" class="form-control" name="respuesta_cc"> </div><div class="col-12 form-group"> <label>CA (mm)</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_ca"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ca_pct"></div></div></div></div><div class="col-12 form-group"> <label>LF (mm)</label> <input type="text" class="form-control" name="respuesta_lf"> </div><div class="col-6 form-group"> <label>Peso fetal estimado (PFE) en gramos</label> <input type="number" class="form-control" name="respuesta_pfe" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control bg-secondary text-white" name="respuesta_pfe_pct" disabled> </div></div><div class="col-6 form-group"> <label>Relación cráneo/abdomen ( Índice Cc/Ca )</label> <input type="text" class="form-control" name="respuesta_ccca" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control" name="respuesta_ccca_pct" disabled> </div></div></div></div><div class="col-6"> <div class="row"> <div class="col-12"><strong>B.- Flujometría Doppler materno / fetal</strong></div><div class="col-12 form-group"> <label>IP. Uterina derecha</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_derecha"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_derecha_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Uterina izquierda</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_izquierda_percentil"></div></div></div></div><div class="col-6 form-group"> <label>IP. Uterinas promedio</label> <input type="text" class="form-control" name="respuesta_uterinas" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_uterinas_percentil"></div></div></div><div class="col-12 form-group"> <label>IP. Arteria umbilical</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_umbilical"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_umbilical_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Cerebral media</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_cm"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cm_percentil"> </div></div></div></div><div class="col-6 form-group"> <label>IP Cm/Au (Índice cerebro placentario ICP)</label> <input type="text" class="form-control" name="respuesta_cmau" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_cmau_percentil"></div></div></div></div></div></div><div class="row"> <div class="col-12"> <p class="mb-0"><strong>C.- Análisis preliminar de datos ecográficos (Biometría y flujometría)</strong></p></div><div class="col-4 form-group bg-secondary pb-2 mb-2 text-white"> <label>Crecimiento fetal ( PFE )</label> <select class="form-control" name="respuesta_hipotesis"> <option value="Disminuido < p3">Disminuido < p3</option> <option value="Disminuido < p10">Disminuido < p10</option> <option value="Normal p10 - p 25">Normal p10 - p 25</option> <option value="Normal p26 - p 75" selected>Normal p26 - p 75</option> <option value="Normal p76 - p90">Normal p76 - p90</option> <option value="Grande >p90">Grande >p90</option> <option value="Grande >p97">Grande >p97</option> </select> </div><div class="col form-group bg-secondary pb-2 mb-2 text-white"> <label>Doppler materno ( IP Uterinas )</label> <select class="form-control" name="respuesta_doppler_materno"> <option value="no evaluado">No evaluado</option> <option value="Normal (< p95)" selected>Normal (&lt; p95)</option> <option value="Alterado (> p95)">Alterado (&gt; p95)</option> </select> </div><div class="col-5 form-group bg-secondary pb-2 mb-2 text-white"> <label>Doppler fetal ( IP UMB, ACM e ICP )</label> <select class="form-control" name="respuesta_doppler_fetal"> <option value="No evaluado">No evaluado</option> <option value="Normal (UMB, ACM, ICP)" selected>Normal (UMB, ACM e ICP)</option> <option value="Alterado, ICP < pct 5">Alterado, ICP &lt; pct 5</option> <option value="Alterado ICP < pct 5 y UMB > pct 95">Alterado ICP &lt; pct 5 y UMB &gt; pct 95</option> <option value="Alterado ccp < pct 5 acm < pct 5">Alterado ICP &lt; pct 5 ACM &lt; pct 5</option> <option value="Alt. ICP < pct 5 y ACM < pct 5 + UMB > p95">Alt. ICP &lt; pct 5 y ACM &lt; pct 5 + UMB &gt; p95</option> </select> </div></div></div></div>');
-                $("#ver\\.interconsulta\\.contenedor").append('<div id="final" class="mt-3"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.comentariosexamen" class="text-primary"><strong>D.- Comentarios y observaciones</strong> (Interpretación clínica del profesional ecografista)</label> <textarea type="text" rows="2" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea> </div><div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista"><strong>Ecografista</strong></label> <input type="text" class="form-control" name="respuesta_ecografista"> </div></div></div>');
+    $("#mensaje\\.resultado").addClass("d-none");
+    var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Edad gestacional</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
+    
+    $.each(data, function(i, value) {
+        let fecha = value.evaluacion_fecha.split('-');
+        fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+        tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
+        tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar solicitud</button></td></tr>';
+    });
+    tabla += '</tbody>';
+    $('#tabla\\.resultado').append(tabla);
+    $('#tabla\\.resultado tr > td > button.examen').on("click", function(){
+        let solicitud_id =  $(this).data("id");
+        $("#ver\\.interconsulta\\.titulo").html("Datos de la interconsulta");
+        $('#ver\\.interconsulta\\.contenedor').empty().append('<div class="card-header g-verde" id="headingOne"> <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Datos de la interconsulta ( Abrir / Cerrar )</button></div><div id="collapseOne" class="collapse border " aria-labelledby="headingOne" data-parent="#ver\\.interconsulta\\.contenedor"> <div class="card-body"> <input type="hidden" id="solicitud_id" value=""/> <div class="row"> <div class="col form-group"> <label>Nombre del paciente:</label> <input type="text" class="form-control" disabled id="solicitud_nombre"> </div><div class="col form-group"> <label>Fecha de solicitud:</label> <input type="text" class="form-control" disabled id="solicitud_fecha"> </div><div class="col form-group"> <label>FUR Referida o corregida</label> <input type="date" class="form-control" disabled id="solicitud_fum"> </div><div class="col form-group"> <label>Edad Gestacional</label> <input type="text" class="form-control" disabled id="solicitud_egestacional"> </div></div><div class="row"> <div class="col form-group"> <label>RUT del paciente:</label> <input type="text" class="form-control" disabled id="solicitud_rut"> </div><div class="col form-group"> <label>Paridad</label> <input type="text" class="form-control" name="respuesta_paridad" disabled> </div><div class="col form-group"> <label>Ciudad procedencia de la paciente</label> <input type="text" class="form-control" disabled id="solicitud_ciudad"> </div><div class="col form-group"> <label>Lugar de control prenatal</label> <input type="text" class="form-control" disabled id="solicitud_lugar"> </div></div><div class="row"> <div class="col my-2 form-group"> <label>Diagnóstico de referencia a exámen ecográfico</label> <input type="text" class="form-control" disabled id="solicitud_diagnostico"> </div><div class="col my-2 form-group"> <label>Otros antecedentes clínicos relevantes</label> <input type="text" class="form-control" name="respuesta_antecedentes" disabled> </div></div></div></div>');
+        $("#ver\\.interconsulta\\.contenedor").append('<h4 class="py-3 text-center bg-secondary mb-0 text-white">Responder solicitud de interconsulta ecográfica</h4>');
+        $("#ver\\.interconsulta\\.contenedor").append('<div class="row bg-secondary mb-0"> <div class="col form-group mb-0 pb-2 btn-animado"> <label class="text-white"><strong>SELECCIONE TIPO EXÁMEN</strong></label> <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento"> <option value="3">1.- Ecografía Ginecológica</option> <option value="1">2.- Ecografía precoz de urgencia</option> <option value="4">3.- Ecografía 11 / 14 semanas</option> <option value="2">4.- Ecografía 2° / 3° trimestre</option> <option value="0" selected>5.- Doppler + Eco. crecimiento</option> </select> </div><div class="col form-group mb-0"> <label class="text-white">FUR Referida o corregida</label> <input type="date" class="form-control g-verde text-white" id="interconsulta.respuesta.fur.copia" disabled> </div><div class="col form-group mb-0"> <label for="interconsulta.respuesta.fecha" class="text-white">Señalar fecha de examen</label> <input type="date" class="form-control g-verde text-white" id="interconsulta.respuesta.fecha"> </div><div class="col form-group mb-0" id="interconsulta.respuesta.edadgestacional"> <label for="interconsulta.respuesta.eg" class="text-white">Edad gestacional actual</label> <input type="hidden" class="form-control" id="interconsulta.fum.copia" value="solicitud_fum"> <input type="text" class="form-control g-verde text-white" id="interconsulta.respuesta.eg" disabled=""> <input type="hidden" class="form-control" name="respuesta_eg"> </div></div><div id="contenedor.examenes"></div>');
+        $("#ver\\.interconsulta\\.contenedor").append('<div id="final" class="mt-3"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.comentariosexamen" class="text-primary"><strong>D.- Comentarios y observaciones</strong> (Interpretación clínica del profesional ecografista)</label> <textarea type="text" rows="2" class="form-control" name="respuesta_comentariosexamen" id="editable"></textarea> </div><div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista"><strong>Ecografista</strong></label> <input type="text" class="form-control" name="respuesta_ecografista"> </div></div></div>');
 
-                $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
-                    var FExamen,FUM,EdadGestacional;
-                    var undia = 1000 * 60 * 60 * 24;
-                    var unasemana = undia * 7;
-                    FUM = $('#interconsulta\\.fum\\.copia').val();
-                    FExamen = $('#interconsulta\\.respuesta\\.fecha').val();
-                    FUM = new Date(FUM);
-                    FExamen = new Date(FExamen);
-                    if ($('#interconsulta\\.respuesta\\.crecimiento').val() == 3){
-                        EdadGestacional = Math.trunc((FExamen.getTime() - FUM.getTime()) / undia);
-                        $('#interconsulta\\.respuesta\\.eg').val(EdadGestacional);
-                        $("input[name='respuesta_eg']").val(EdadGestacional);
-                    }else{
-                        EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
-                        if (FExamen.getTime() < FUM.getTime()) {
-                            $('#interconsulta\\.respuesta\\.eg').val('0 semanas');
-                            $("input[name='respuesta_eg']").val('0 semanas');
-                        } 
-                        else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-                            $('#interconsulta\\.respuesta\\.eg').val('42 semanas');
-                            $("input[name='respuesta_eg']").val('42 semanas');
-                        } 
-                        else {
-                            $('#interconsulta\\.respuesta\\.eg').val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
-                            $("input[name='respuesta_eg']").val(Math.floor(EdadGestacional) + '.' + Math.round((EdadGestacional - Math.floor(EdadGestacional)) * 7) + ' semanas');
-                        }
-                    }
-                });
-                $.get('dashboard/agendar/' + solicitud_id).done(function(data){
-                    $("#solicitud_id").val(data.solicitud_id);
-                    $("#solicitud_nombre").val(data.solicitud_nombre);
-                    $("#solicitud_rut").val(data.solicitud_rut);
-                    $("#solicitud_fecha").val(data.solicitud_fecha);
-                    let eco = data.solicitud_eco;
-                    if (eco == "1"){ eco = "Si"; }
-                    else{ eco = "No";}
-                    $("#solicitud_fum").val(data.solicitud_fum);
-                    $("#interconsulta\\.respuesta\\.fur\\.copia").val(data.solicitud_fum);
-                    $('#interconsulta\\.fum\\.copia').val(data.solicitud_fum);
-                    $("#solicitud_egestacional").val(data.solicitud_egestacional);
-                    $("#solicitud_diagnostico").val(data.solicitud_diagnostico);
-                    $("#solicitud_ciudad").val(data.solicitud_ciudad);
-                    $("#solicitud_lugar").val(data.solicitud_lugar);
-                    $("#interconsulta_profesional").val(data.solicitud_profesional);
-                    $("#solicitud_nombreprofesional").val(data.solicitud_nombreprofesional);
-                    $("#solicitud_email").val(data.solicitud_email);
-                    var nombreprofesionalPegar = data.solicitud_nombre_referente;
-                    $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
-                    var now = new Date();
-                    var day = ("0" + now.getDate()).slice(-2);
-                    var month = ("0" + (now.getMonth() + 1)).slice(-2);
-                    var today = now.getFullYear()+"-"+(month)+"-"+(day);
-                    $("#interconsulta\\.respuesta\\.fecha").val(today).trigger("change");
-                    $("input[name='respuesta_paridad']").val(data.solicitud_paridad);
-                    $("input[name='respuesta_antecedentes']").val(data.solicitud_antecedentes);
-                    $('#interconsulta\\.respuesta\\.crecimiento').data("em",data.solicitud_ematerna).data("pm",data.solicitud_media).data("imc",data.solicitud_imc);
-                });
-                $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
-                    if ($(this).val() == 4){
-                        $("#ginecologica").remove();
-                        $("#multiproposito").remove();
-                        $("#segundotrimestre").remove();
-                        $("#primertrimestre").remove();
-                        $("#contenedor\\.examenes").append('<div id="doppleruterinas"> <div class="row"> <div class="col form-group"> <label>Edad Materna</label> <div class="input-group"> <input type="text" class="form-control bg-secondary text-white" name="respuesta_em" disabled> <div class="input-group-append"> <div class="input-group-text">años</div></div></div></div><div class="col form-group"> <label>Presión arterial media ((PAS- (PAD/3))+ PAD)</label> <div class="input-group"> <input type="text" class="form-control g-verde text-white" name="respuesta_pm" disabled> <div class="input-group-append"> <div class="input-group-text">mmHg</div></div></div></div><div class="col form-group"> <label>IMC Materno</label> <div class="input-group"> <input type="text" class="form-control g-verde text-white" name="respuesta_imc" disabled> <div class="input-group-append"> <div class="input-group-text">kg/m2</div></div></div></div></div><h5 class="text-primary">Exámenes ultrasonográficos</h5> <div class="row py-3"> <div class="col-3 form-group"> <label><strong>Evaluación de anatomía fetal</strong></label> </div><div class="col-3 form-group"> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-6 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col form-group"> <label>Embrión</label> <select class="form-control" name="respuesta_embrion"> <option value="no se observa aun">no se observa aun</option> <option value="act. no evidenciabl">act. no evidenciable</option> <option value="act. card. inicial">act. card. inicial</option> <option value="con act. cardiaca (+)" selected>con act. cardiaca (+)</option> <option value="act. card. y corp. (+)">act. card. y corp. (+)</option> <option value="act. card. y corp. (-)">act. card. y corp. (-)</option> </select> </div><div class="col form-group"> <label>LCN (mm)</label> <input type="text" class="form-control bg-secondary text-white" name="respuesta_lcn"> </div><div class="col form-group"> <label>Eg. x LCN</label> <input type="text" class="form-control bg-white" name="respuesta_lcn_eg" disabled> </div><div class="col form-group"> <label>FCF</label> <select name="respuesta_fcf" class="form-control"> <option value="(+) inicial">(+) inicial</option> <option value=" <90">&lt; 90</option> <option value="90">90</option> <option value="91">91</option> <option value="92">92</option> <option value="93">93</option> <option value="94">94</option> <option value="95">95</option> <option value="96">96</option> <option value="97">97</option> <option value="98">98</option> <option value="99">99</option> <option value="100">100</option> <option value="101">101</option> <option value="102">102</option> <option value="103">103</option> <option value="104">104</option> <option value="105">105</option> <option value="106">106</option> <option value="107">107</option> <option value="108">108</option> <option value="109">109</option> <option value="110">110</option> <option value="111">111</option> <option value="112">112</option> <option value="113">113</option> <option value="114">114</option> <option value="115">115</option> <option value="116">116</option> <option value="117">117</option> <option value="118">118</option> <option value="119">119</option> <option value="120">120</option> <option value="121">121</option> <option value="122">122</option> <option value="123">123</option> <option value="124">124</option> <option value="125">125</option> <option value="126">126</option> <option value="127">127</option> <option value="128">128</option> <option value="129">129</option> <option value="130">130</option> <option value="131">131</option> <option value="132">132</option> <option value="133">133</option> <option value="134">134</option> <option value="135">135</option> <option value="136">136</option> <option value="137">137</option> <option value="138">138</option> <option value="139">139</option> <option value="140" selected="">140</option> <option value="141">141</option> <option value="142">142</option> <option value="143">143</option> <option value="144">144</option> <option value="145">145</option> <option value="146">146</option> <option value="147">147</option> <option value="148">148</option> <option value="149">149</option> <option value="150">150</option> <option value="151">151</option> <option value="152">152</option> <option value="153">153</option> <option value="154">154</option> <option value="155">155</option> <option value="156">156</option> <option value="157">157</option> <option value="158">158</option> <option value="159">159</option> <option value="160">160</option> <option value="161">161</option> <option value="162">162</option> <option value="163">163</option> <option value="164">164</option> <option value="165">165</option> <option value="166">166</option> <option value="167">167</option> <option value="168">168</option> <option value="169">169</option> <option value="170">170</option> <option value=" > 170">&gt; 170</option> </select> </div></div><div class="row"> <div class="col-12"><strong>Flujometría Doppler</strong></div><div class="col form-group"> <label>IP. Uterina Derecha</label> <input type="text" class="form-control" name="respuesta_uterina_derecha"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control bg-white" name="respuesta_uterina_derecha_percentil" disabled> </div></div><div class="col form-group"> <label>IP. Uterina Izquierda</label> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control bg-white" name="respuesta_uterina_izquierda_percentil" disabled> </div></div><div class="col form-group"> <label>IP. Uterinas promedio</label> <input type="text" class="form-control g-verde text-white" name="respuesta_uterinas" disabled> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control g-verde text-white" name="respuesta_uterinas_promedio" disabled> </div></div></div><div class="row"> <div class="col-12"><strong>Tamizaje cromosomopatía</strong></div><div class="col-4 form-group"> <label>Translucidez Nucal</label> <select class="form-control" name="respuesta_dbp"> <option value="no procede">No procede</option> <option value="no medible">No medible</option> <option value="medible" selected>Medible</option> </select> </div><div class="col-2 form-group"> <div id="translucencia"> <label>mm de translucidez nucal</label> <input class="form-control bg-secondary text-white" name="respuesta_translucencia_nucal"> </div></div><div class="col-4 form-group"> <label>Hueso Nasal</label> <select class="form-control" name="respuesta_hueso_nasal"> <option value="no procede">No procede</option> <option value="no visible">No visible</option> <option value="visible" selected>Visible</option> </select> </div><div class="col-2 form-group"> <div id="huesonasal"> <label>mm</label> <input class="form-control" name="respuesta_hueso_nasal_valor"> </div></div></div><div class="row"> <div class="col form-group"> <label>Ductus venoso</label> <select class="form-control" name="respuesta_ca"> <option value="no evaluado" selected="">No evaluado</option> <option value="normal">Normal</option> <option value="onda a ausente">Onda A ausente</option> <option value="onda a negativa">Onda A negativa</option> </select> </div><div class="col form-group"> <label>Reflujo tricuspídeo</label> <select class="form-control" name="respuesta_lf"> <option value="no evaluado" selected="">No evaluado</option> <option value="normal">Normal</option> <option value="alteracion leve">Alteracion leve</option> <option value="onda anormal">Onda anormal</option> </select> </div></div></div>');
-                        $("select[name='respuesta_hueso_nasal']").on("change", function(){
-                            if ($(this).val() == "visible"){
-                                $("#huesonasal").removeClass("d-none");
-                            }
-                            else{
-                                $("#huesonasal").addClass("d-none");
-                            }
-                        }).trigger("change");
-                        
-                        $("select[name='respuesta_dbp']").on("change", function(){
-                            if ($(this).val() == "medible"){
-                                $("#translucencia").removeClass("d-none");
-                            }
-                            else{
-                                $("#translucencia").addClass("d-none");}
-                        });
+        $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
+            let EG = calcularEdadGestacional("interconsulta.fum.copia", "interconsulta.respuesta.fecha");
+            $('#interconsulta\\.respuesta\\.eg').val(EG.text);
+            $("input[name='respuesta_eg']").val(EG.text);
+        });
+    
+        $.get('dashboard/agendar/' + solicitud_id).done(function(data){
+            document.getElementById("solicitud_id").value = data.solicitud_id;
+            document.getElementById("solicitud_nombre").value = data.solicitud_nombre;
+            document.getElementById("solicitud_rut").value = data.solicitud_rut;
+            document.getElementById("solicitud_fecha").value = data.solicitud_fecha;
+            document.getElementById("solicitud_fum").value = data.solicitud_fum;
+            document.getElementById("interconsulta.respuesta.fur.copia").value = data.solicitud_fum;
+            document.getElementById("interconsulta.fum.copia").value = data.solicitud_fum;
+            document.getElementById("solicitud_egestacional").value = data.solicitud_egestacional;
+            document.getElementById("solicitud_diagnostico").value = data.solicitud_diagnostico;
+            document.getElementById("solicitud_ciudad").value = data.solicitud_ciudad;
+            document.getElementById("solicitud_lugar").value = data.solicitud_lugar;
+            document.getElementById("interconsulta_profesional").value = data.solicitud_profesional;
+            document.getElementById("solicitud_nombreprofesional").value = data.solicitud_nombreprofesional;
+            document.getElementById("solicitud_email").value = data.solicitud_email;
+            document.getElementById("interconsulta.respuesta.fecha").value = setInputDate(today);
+            var nombreprofesionalPegar = data.solicitud_nombre_referente;
+            $('input[name="respuesta_ecografista"]').val(nombreprofesionalPegar);
+            $("#interconsulta\\.respuesta\\.fecha").trigger("change");
+            $("input[name='respuesta_paridad']").val(data.solicitud_paridad);
+            $("input[name='respuesta_antecedentes']").val(data.solicitud_antecedentes);
+            $('#interconsulta\\.respuesta\\.crecimiento').data("em",data.solicitud_ematerna).data("pm",data.solicitud_media).data("imc",data.solicitud_imc);
+        });
+    
+        $('#interconsulta\\.respuesta\\.crecimiento').on("change", function(){
+            if ($(this).val() == 4){
+                doppleruterinas();
+            }
+            else if ($(this).val() == 3){
+                ginecologica();
+            }
+            else if ($(this).val() == 2){
+                segundoTrimestre();
+            }
+            else if ($(this).val() == 1){
+                primerTrimerstre();
+            }
+            else{
+                multiproposito();
+            }
 
-                        $("input[name='respuesta_translucencia_nucal']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_hueso_nasal_valor']").focus();
-                            }else if(event.which == 8|| event.which ==9|| event.which ==46|| event.which ==110 || event.which ==190 || (event.which >= 35 && event.which <= 40) ||
-                                (event.which  >= 48 && event.which  <= 57) || (event.which  >= 96 && event.which  <= 105)){
-                            }else{
-                                event.preventDefault();
-                            }
-                        });
-
-                        $("input[name='respuesta_hueso_nasal_valor']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("textarea[name='respuesta_comentariosexamen']").focus();
-                            }else if(event.which == 8|| event.which ==9|| event.which ==46|| event.which ==110 || event.which ==190 || (event.which >= 35 && event.which <= 40) ||
-                                (event.which  >= 48 && event.which  <= 57) || (event.which  >= 96 && event.which  <= 105)){
-                            }else{
-                                event.preventDefault();
-                            }
-                        });
-
-                        $("input[name='respuesta_uterina_derecha']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ut = $(this).val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("input[name='respuesta_uterina_derecha_percentil_view']").val(pctUtAdvanced(eg,ut));
-                                $("input[name='respuesta_uterina_derecha_percentil']").val(pctUtAdvanced(eg,ut));
-                                if (ut > 0){
-                                    if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
-                                        var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
-                                        $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
-                                    }
-                                }
-                            }
-                        }).keypress(function( event ) {
-                            if (event.which == 13) {event.preventDefault();$("input[name='respuesta_uterina_izquierda']").focus();}
-                        });
-                        $("input[name='respuesta_uterina_izquierda']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ut = $(this).val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("input[name='respuesta_uterina_izquierda_percentil_view']").val(pctUtAdvanced(eg,ut));
-                                $("input[name='respuesta_uterina_izquierda_percentil']").val(pctUtAdvanced(eg,ut));
-                                if (ut > 0){
-                                    if ($("input[name='respuesta_uterina_derecha']").val() > 0){
-                                        var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_derecha']").val())) / 2;
-                                        $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
-                                    }
-                                }
-                            }
-                        }).keypress(function( event ) {
-                            if ( event.which == 13 ) {event.preventDefault();$("input[name='respuesta_translucencia_nucal']").focus();}
-                        });
-                        $("input[name='respuesta_uterinas']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ut = $(this).val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("input[name='respuesta_uterinas_promedio']").val(pctUtAdvanced(eg,ut));
-                            }
-                        });
-                        $('input[name="respuesta_lcn"]').on("change", function(){ 
-                            eglcn();
-                        }).keypress(function( event ) {
-                            if ( event.which == 13 ) {event.preventDefault(); $("input[name='respuesta_uterina_derecha']").focus();}
-                        });
-                        $("select[name='respuesta_anatomia']").on("change", function(){
-                            if ($(this).val() == "hallazgos ecográficos compatibles con:"){$("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");}else{$("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");}
-                        });
-                        $("input[name='respuesta_em']").val($('#interconsulta\\.respuesta\\.crecimiento').data("em"));
-                        $("input[name='respuesta_pm']").val($('#interconsulta\\.respuesta\\.crecimiento').data("pm"));
-                        $("input[name='respuesta_imc']").val($('#interconsulta\\.respuesta\\.crecimiento').data("imc"));
-                    }
-                    else if ($(this).val() == 3){
-                        $("#doppleruterinas").remove();
-                        $("#multiproposito").remove();
-                        $("#contenedor\\.examenes").append('<div id="ginecologica"><div class="row m-0 p-2"><div class="col-12"><h6 class="text-primary">Datos a completar por el examinador</h6></div><div class="col-8 border rounded p-3"><div class="row"><div class="col-6 form-group"><label>Útero</label><input type="text" class="form-control" name="respuesta_utero_ginecologica"></div><div class="col-6 form-group"><label>Endometrio</label><input type="text" class="form-control" name="respuesta_endometrio"></div><div class="col-6 form-group"><label>Anexo Izquierdo</label><input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"></div><div class="col-6 form-group"><label>Anexo Derecho</label><input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"></div><div class="col-6 form-group"><label>Ovario Izquierdo</label><input type="text" class="form-control" name="respuesta_ovario_izquierdo"></div><div class="col-6 form-group"><label>Ovario Derecho</label><input type="text" class="form-control" name="respuesta_ovario_derecho"></div><div class="col-6 form-group"><label>Douglas</label><input type="text" class="form-control" name="respuesta_douglas_ginecologica"></div></div></div><div class="col-4"><div class="border rounded px-3 pt-3 mb-5"><img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios" class="img-fluid d-block mx-auto w-75"></div><div class="border rounded px-3 pt-3 mb-5"><p>Documentación de informe cuando ecográficamente no se observan signos de embarazo.</p></div><div class="border rounded text-center"><div role="group" aria-label="Basic example" class="btn-group text-center"><button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar</button></div></div></div></div></div>');
-                        $("#segundotrimestre").remove();
-                        $("#primertrimestre").remove();
-
-                        $("#enviar\\.respuesta\\.botton\\.espejo").on("click", function(){$("#enviar\\.respuesta\\.botton").trigger("click");});
-
-                        $("#ver\\.interconsulta\\.eliminar\\.espejo").on("click", function(){$("#ver\\.interconsulta\\.eliminar").trigger("click");});
-
-                        $("#ver\\.interconsulta\\.cerrar\\.espejo").on("click", function(){$("#ver\\.interconsulta").modal("hide");});
-                    }
-                    else if ($(this).val() == 2){
-                        $("#doppleruterinas").remove();
-                        $("#contenedor\\.examenes").append('<div id="segundotrimestre"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso_segundo"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col-4 form-group"> <label>Sexo fetal</label> <select class="form-control" name="respuesta_sexo_fetal"> <option value="femenino" selected="">femenino</option> <option value="masculino">masculino</option> <option value="aún no identificado">aún no identificado</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.liquido">Líquido amniótico, cualitativo</label> <select class="form-control" name="respuesta_liquido_amniotico"> <option value="Normal">Normal</option> <option value="Pha leve">PHA leve</option> <option value="Pha severo">PHA severo</option> <option value="Oha leve">OHA leve</option> <option value="Oha severo">OHA severo</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label>Líquido amniótico, semicuantitativo; BVM (mm)</label> <select name="respuesta_bvm" class="form-control"></select> </div><div class="col form-group"> <label>Frecuencia cardiaca fetal (FCF)</label> <select name="respuesta_fcf" class="form-control"></select> </div><div class="col-4 form-group"> <label>Evaluación de anatomía fetal</label> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-12 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col-12"> <p><strong>Biometrías</strong></p></div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">DBP (mm)</label> <input type="text" class="form-control" name="respuesta_dbp"> </div><div class="col form-group"> <label>DOF (mm)</label> <input type="text" class="form-control" name="respuesta_dof"> </div><div class="col form-group"> <label>IC (DBP/DOF) [70%-86%]</label> <input type="text" class="form-control" name="respuesta_ic" disabled> </div></div><div class="row"> <div class="col form-group"> <label>CC (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_cc"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cc_pct"></div></div></div></div><div class="col form-group"> <label>CA (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_ca"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ca_pct"></div></div></div></div><div class="col form-group"> <label>LF (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_lf"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_lf_pct"></div></div></div></div></div><div class="row"> <div class="col-4 py-3 form-group"> <label>Opcionales para estimación tardia de la edad gestacional</label> </div><div class="col-4 form-group"> <label>LH (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_lh"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_lh_pct"></div></div></div></div><div class="col-4 form-group"> <label>Cerebelo (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_cerebelo"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cerebelo_pct"></div></div></div></div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Peso fetal estimado</label> <input type="text" class="form-control" name="respuesta_pfe" disabled> </div><div class="col form-group"> <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control bg-secondary text-white" name="respuesta_pfe_pct" disabled> </div></div><div class="col form-group"> <label>Índice Cc / Ca</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_ccca" disabled> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ccca_pct"></div></div></div></div></div><div class="row"> <div class="col form-group"> <label><strong>Hipótesis diagnóstica</strong></label> <input type="text" class="form-control" name="respuesta_hipotesis"> </div></div></div>');
-                        $("#multiproposito").remove();
-                        $("#ginecologica").remove();
-                        $("#primertrimestre").remove();
-                        $("input[name='respuesta_dbp']").on("change", function(){
-                            let dbp = $(this).val();
-                            let dbp_ready = false;
-                            let dof = $("input[name='respuesta_dof']").val();
-                            let dof_ready = false;
-                            if (dbp.length > 0){
-                                dbp_ready = isNaN(dbp) == false ? true : false;
-                            }
-                            if (dof.length > 0){
-                                dof_ready = isNaN(dof) == false ? true : false;
-                            }
-                            if (dbp_ready == true && dof_ready == true){
-                                $("input[name='respuesta_ic']").val(ICAdvanced(dbp, dof));
-                                $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
-                            }
-                            else{
-                                $("input[name='respuesta_ic']").val(0);
-                                $("input[name='respuesta_cc']").val(0).trigger("change");
-                            }
-                        });
-                        $("input[name='respuesta_dbp']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_dof']").focus();
-                            }
-                        });
-
-                        let bvmSelect = document.getElementsByName("respuesta_bvm")[0];
-                        let opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("< 10"));
-                        opt.value = "< 10"; 
-                        bvmSelect.appendChild(opt);
-                        for (var i = 10; i < 161; i++) {
-                            let opt = document.createElement('option');
-                            opt.appendChild(document.createTextNode(i));
-                            opt.value = i; 
-                            bvmSelect.appendChild(opt); 
-                        }
-                        opt = document.createElement('option');
-                        opt.appendChild( document.createTextNode("> 160") );
-                        opt.value = "> 160"; 
-                        bvmSelect.appendChild(opt);
-                        let fcfSelect = document.getElementsByName("respuesta_fcf")[0];
-                        opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("(+) inicial"));
-                        opt.value = "(+) inicial"; 
-                        fcfSelect.appendChild(opt);
-                        opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("< 90"));
-                        opt.value = "< 90"; 
-                        fcfSelect.appendChild(opt);
-                        for (var i = 90; i < 161; i++) {
-                            let opt = document.createElement('option');
-                            opt.appendChild(document.createTextNode(i));
-                            opt.value = i; 
-                            fcfSelect.appendChild(opt); 
-                        }
-                        opt = document.createElement('option');
-                        opt.appendChild( document.createTextNode("> 170") );
-                        opt.value = "> 170"; 
-                        fcfSelect.appendChild(opt);
-
-
-                        $("input[name='respuesta_dof']").on("change", function(){
-                            let dbp = $("input[name='respuesta_dbp']").val();
-                            let dbp_ready = false;
-                            let dof = $(this).val();
-                            let dof_ready = false;
-                            if (dbp.length > 0){
-                                dbp_ready = isNaN(dbp) == false ? true : false;
-                            }
-                            if (dof.length > 0){
-                                dof_ready = isNaN(dof) == false ? true : false;
-                            }
-                            if (dbp_ready == true && dof_ready == true){
-                                $("input[name='respuesta_ic']").val(ICAdvanced(dbp, dof));
-                                $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
-                            }
-                            else{
-                                $("input[name='respuesta_ic']").val(0);
-                                $("input[name='respuesta_cc']").val(0).trigger("change");
-                            }
-                        });
-                        $("input[name='respuesta_dof']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_ca']").focus();
-                            }
-                        });
-                        $("input[name='respuesta_cc']").on("change", function(){
-                            psohdlk();
-                            calCCCA();
-                        });
-                        $("input[name='respuesta_ca']").on("change", function(){
-                            psohdlk();
-                            calCCCA();
-                        });
-                        $("input[name='respuesta_ca']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_lf']").focus();
-                            }
-                        });
-                        $("select[name='respuesta_anatomia']").on("change", function(){
-                            if ($(this).val() == "hallazgos ecográficos compatibles con:"){
-                                $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
-                            }
-                            else{
-                                $("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");
-                            }
-                        });
-                        $("input[name='respuesta_pfe']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var pfe = $("input[name='respuesta_pfe']").val();
-            
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-            
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
-                            }
-                        });
-                        $("input[name='respuesta_ccca']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ccca = $("input[name='respuesta_ccca']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_ccca_pct").html("Pct. " + pctcccaAdvanced(eg,ccca));
-                            }
-                        });
-                        $("input[name='respuesta_cc']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var cc = $("input[name='respuesta_cc']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_cc_pct").html("Pct. " + pctccAdvanced(eg,cc));
-                            }
-                        });
-                        $("input[name='respuesta_ca']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ca = $("input[name='respuesta_ca']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
-                            }
-                        });
-                        $("input[name='respuesta_lf']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var lf = $("input[name='respuesta_lf']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
-                            }
-                        });
-                        $("input[name='respuesta_lh']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var lh = $("input[name='respuesta_lh']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_lh_pct").html("Pct. " + pctlhAdvanced(eg,lh));
-                            }
-                        });
-                        $("input[name='respuesta_cerebelo']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var cerebelo = $("input[name='respuesta_cerebelo']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_cerebelo_pct").html("Pct. " + pctcerebeloAdvanced(eg,cerebelo));
-                            }
-                        });
-                    }
-                    else if ($(this).val() == 1){
-                        $("#doppleruterinas").remove();
-                        $("#contenedor\\.examenes").append('<div id="primertrimestre"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">útero</label> <select class="form-control" name="respuesta_utero_primertrimestre"> <option value="central anterior" selected>central anterior</option> <option value="central posterior">central posterior</option> <option value="lateralizado a la Izquierda">lateralizado a la Izquierda</option> <option value="lateralizado a la Derecha">lateralizado a la Derecha</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Saco gestacional</label> <select class="form-control" name="respuesta_saco_gestacional"> <option value="normal" selected>normal</option> <option value="no se observa">no se observa</option> <option value="multiple">multiple</option> <option value="con pseudosaco">con pseudosaco</option> <option value="con dpmto. parcial">con dpmto. parcial</option> </select> </div><div class="col-3 form-group"> <label>Promedio saco gestacional</label> <input type="text" class="form-control" name="respuesta_saco"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Embrión</label> <select class="form-control" name="respuesta_embrion"> <option value="no se observa aun">no se observa aun</option> <option value="act. no evidenciabl">act. no evidenciable</option> <option value="act. card. inicial">act. card. inicial</option> <option value="con act. cardiaca (+)" selected>con act. cardiaca (+)</option> <option value="act. card. y corp. (+)">act. card. y corp. (+)</option> <option value="act. card. y corp. (-)">act. card. y corp. (-)</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Largo Embrionatio Máximo (LEM)</label> <input type="text" class="form-control" name="respuesta_lcn"> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">Eg. x LEM</label> <input type="text" class="form-control" name="respuesta_lcn_eg" disabled> </div></div><div class="row"> <div class="col form-group"> <label>&nbsp;</label> <input type="text" class="form-control bg-white" value="Fechas determinadas según biometría embrionaria (LEM)" disabled> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">FUR Operacional</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_furop" disabled> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">FPP actualizada</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_fppactualizada" disabled> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label> <select class="form-control" name="respuesta_anexo_izquierdo_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label> <select class="form-control" name="respuesta_anexo_derecho_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div></div><div class="row"> <div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista">Douglas</label> <select class="form-control" name="respuesta_douglas_primertrimestre"> <option value="libre" selected>libre</option> <option value="ocupado">ocupado</option> </select> </div></div></div>');
-                        $("input[name='respuesta_lcn']").on("change", function(){eglcn();});
-                        $("#segundotrimestre").remove();
-                        $("#multiproposito").remove();
-                        $("#ginecologica").remove();
-                    }
-                    else{
-                        $("#doppleruterinas").remove();
-                        $("#contenedor\\.examenes").append('<div id="multiproposito"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col-4 form-group"> <label>Sexo fetal</label> <select class="form-control" name="respuesta_sexo_fetal"> <option value="femenino" selected>femenino</option> <option value="masculino">masculino</option> <option value="aún no identificado">aún no identificado</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.liquido">Líquido amniótico, cualitativo</label> <select class="form-control" name="respuesta_liquido"> <option value="Normal">Normal</option> <option value="Pha leve">PHA leve</option> <option value="Pha severo">PHA severo</option> <option value="Oha leve">OHA leve</option> <option value="Oha severo">OHA severo</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label>Líquido amniótico, semicuantitativo; BVM (mm)</label> <select type="text" class="form-control" name="respuesta_bvm"></select> </div><div class="col form-group"> <label>Fecuencia cardiaca fetal (FCF)</label> <select name="respuesta_fcf" class="form-control"></select> </div><div class="col-4 form-group"> <label>Evaluación de anatomía fetal</label> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-12 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col-6"> <div class="row"> <div class="col-12"><strong>A.- Biometría fetales:</strong></div><div class="col-6 form-group"> <label>DBP (mm)</label> <input type="text" class="form-control" name="respuesta_dbp"> </div><div class="col-6 form-group"> <label>DOF (mm)</label> <input type="text" class="form-control" name="respuesta_dof"> </div><div class="col-12 form-group"> <label>CC (mm)</label> <input type="text" class="form-control" name="respuesta_cc"> </div><div class="col-12 form-group"> <label>CA (mm)</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_ca"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ca_pct"></div></div></div></div><div class="col-12 form-group"> <label>LF (mm)</label> <input type="text" class="form-control" name="respuesta_lf"> </div><div class="col-6 form-group"> <label>Peso fetal estimado (PFE) en gramos</label> <input type="number" class="form-control" name="respuesta_pfe" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control bg-secondary text-white" name="respuesta_pfe_pct" disabled> </div></div><div class="col-6 form-group"> <label>Relación cráneo/abdomen ( Índice Cc/Ca )</label> <input type="text" class="form-control" name="respuesta_ccca" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control" name="respuesta_ccca_pct" disabled> </div></div></div></div><div class="col-6"> <div class="row"> <div class="col-12"><strong>B.- Flujometría Doppler materno / fetal</strong></div><div class="col-12 form-group"> <label>IP. Uterina derecha</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_derecha"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_derecha_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Uterina izquierda</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_izquierda_percentil"></div></div></div></div><div class="col-6 form-group"> <label>IP. Uterinas promedio</label> <input type="text" class="form-control" name="respuesta_uterinas" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_uterinas_percentil"></div></div></div><div class="col-12 form-group"> <label>IP. Arteria umbilical</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_umbilical"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_umbilical_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Cerebral media</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_cm"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cm_percentil"> </div></div></div></div><div class="col-6 form-group"> <label>IP Cm/Au (Índice cerebro placentario ICP)</label> <input type="text" class="form-control" name="respuesta_cmau" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_cmau_percentil"></div></div></div></div></div></div><div class="row"> <div class="col-12"> <p class="mb-0"><strong>C.- Análisis preliminar de datos ecográficos (Biometría y flujometría)</strong></p></div><div class="col-4 form-group bg-secondary pb-2 mb-2 text-white"> <label>Crecimiento fetal ( PFE )</label> <select class="form-control" name="respuesta_hipotesis"> <option value="Disminuido < p3">Disminuido < p3</option> <option value="Disminuido < p10">Disminuido < p10</option> <option value="Normal p10 - p 25">Normal p10 - p 25</option> <option value="Normal p26 - p 75" selected>Normal p26 - p 75</option> <option value="Normal p76 - p90">Normal p76 - p90</option> <option value="Grande >p90">Grande >p90</option> <option value="Grande >p97">Grande >p97</option> </select> </div><div class="col form-group bg-secondary pb-2 mb-2 text-white"> <label>Doppler materno ( IP Uterinas )</label> <select class="form-control" name="respuesta_doppler_materno"> <option value="no evaluado">No evaluado</option> <option value="Normal (< p95)" selected>Normal (&lt; p95)</option> <option value="Alterado (> p95)">Alterado (&gt; p95)</option> </select> </div><div class="col-5 form-group bg-secondary pb-2 mb-2 text-white"> <label>Doppler fetal ( IP UMB, ACM e ICP )</label> <select class="form-control" name="respuesta_doppler_fetal"> <option value="No evaluado">No evaluado</option> <option value="Normal (UMB, ACM, ICP)" selected>Normal (UMB, ACM e ICP)</option> <option value="Alterado, ICP < pct 5">Alterado, ICP &lt; pct 5</option> <option value="Alterado ICP < pct 5 y UMB > pct 95">Alterado ICP &lt; pct 5 y UMB &gt; pct 95</option> <option value="Alterado ccp < pct 5 acm < pct 5">Alterado ICP &lt; pct 5 ACM &lt; pct 5</option> <option value="Alt. ICP < pct 5 y ACM < pct 5 + UMB > p95">Alt. ICP &lt; pct 5 y ACM &lt; pct 5 + UMB &gt; p95</option> </select> </div></div></div>');
-                        $("#ginecologica").remove();
-                        $("#segundotrimestre").remove();
-                        $("#primertrimestre").remove();
-                        $("input[name='respuesta_uterina_derecha']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ut = $(this).val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_uterina_derecha_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
-                                if (ut > 0){
-                                    if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
-                                        var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
-                                        $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
-                                    }
-                                }
-                            }
-                        });
-                        $("input[name='respuesta_uterina_derecha']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_uterina_izquierda']").focus();
-                            }
-                        });
-                        let bvmSelect = document.getElementsByName("respuesta_bvm")[0];
-                        let opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("< 10"));
-                        opt.value = "< 10"; 
-                        bvmSelect.appendChild(opt);
-                        for (var i = 10; i < 161; i++) {
-                            let opt = document.createElement('option');
-                            opt.appendChild(document.createTextNode(i));
-                            opt.value = i; 
-                            bvmSelect.appendChild(opt); 
-                        }
-                        opt = document.createElement('option');
-                        opt.appendChild( document.createTextNode("> 160") );
-                        opt.value = "> 160"; 
-                        bvmSelect.appendChild(opt);
-
-                        let fcfSelect = document.getElementsByName("respuesta_fcf")[0];
-                        opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("(+) inicial"));
-                        opt.value = "(+) inicial"; 
-                        fcfSelect.appendChild(opt);
-                        opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("< 90"));
-                        opt.value = "< 90"; 
-                        fcfSelect.appendChild(opt);
-                        for (var i = 90; i < 161; i++) {
-                            let opt = document.createElement('option');
-                            opt.appendChild(document.createTextNode(i));
-                            opt.value = i; 
-                            fcfSelect.appendChild(opt); 
-                        }
-                        opt = document.createElement('option');
-                        opt.appendChild( document.createTextNode("> 170") );
-                        opt.value = "> 170"; 
-                        fcfSelect.appendChild(opt);
-
-                        $("input[name='respuesta_uterina_izquierda']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ut = $(this).val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_uterina_izquierda_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
-        
-                                if (ut > 0){
-                                    if ($("input[name='respuesta_uterina_derecha']").val() > 0){
-                                        var promedio = (parseFloat($("input[name='respuesta_uterina_derecha']").val()) + parseFloat(ut)) / 2;
-                                        $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
-                                    }
-                                }
-                            }
-                        });
-                        $("input[name='respuesta_uterina_izquierda']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_umbilical']").focus();
-                            }
-                        });
-                        $("input[name='respuesta_uterinas']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ut = $("input[name='respuesta_uterinas']").val();
-
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut));
-                            }
-                        });
-                        $("input[name='respuesta_pfe']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var pfe = $("input[name='respuesta_pfe']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
-            
-                            }
-                        });
-                        $("input[name='respuesta_dbp']").on("change", function(){
-                            let dbp = $(this).val();
-                            let dbp_ready = false;
-                            let dof = $("input[name='respuesta_dof']").val();
-                            let dof_ready = false;
-                            if (dbp.length > 0){
-                                dbp_ready = isNaN(dbp) == false ? true : false;
-                            }
-                            if (dof.length > 0){
-                                dof_ready = isNaN(dof) == false ? true : false;
-                            }
-                            if (dbp_ready == true && dof_ready == true){
-                                $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
-                            }
-                            else{
-                                $("input[name='respuesta_cc']").val(0).trigger("change");
-                            }
-                        }).keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_cc']").focus();
-                            }
-                        });
-        
-                        $("input[name='respuesta_dof']").on("change", function(){
-                            let dbp = $("input[name='respuesta_dbp']").val();
-                            let dbp_ready = false;
-                            let dof = $(this).val();
-                            let dof_ready = false;
-                            if (dbp.length > 0){
-                                dbp_ready = isNaN(dbp) == false ? true : false;
-                            }
-                            if (dof.length > 0){
-                                dof_ready = isNaN(dof) == false ? true : false;
-                            }
-                            if (dbp_ready == true && dof_ready == true){
-                                $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
-                            }
-                            else{
-                                $("input[name='respuesta_cc']").val(0).trigger("change");
-                            }
-                        }).keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_cc']").focus();
-                            }
-                        });
-
-                        $("input[name='respuesta_cc']").on("change", function(){
-                            psohdlk();
-                            calCCCA();
-                        });
-                        $("input[name='respuesta_cc']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_ca']").focus();
-                            }
-                        });
-                        $("input[name='respuesta_ca']").on("change", function(){
-                            psohdlk();
-                            calCCCA();
-
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ca = $("input[name='respuesta_ca']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
-                            }
-                        }).keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_lf']").focus();
-                            }
-                        });
-                        $("input[name='respuesta_lf']").keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_uterina_derecha']").focus();
-                            }
-                        });
-                        $("input[name='respuesta_ccca']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var ccca = $("input[name='respuesta_ccca']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
-                            }
-                        });
-                        $("select[name='respuesta_anatomia']").on("change", function(){
-                            if ($(this).val() == "hallazgos ecográficos compatibles con:"){
-                                $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
-                            }
-                            else{
-                                $("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");
-                            }
-                        });
-                        $("input[name='respuesta_cm']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var acm = $("input[name='respuesta_cm']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
-                            }
-                            if (acm > 0){
-                                if ($("input[name='respuesta_umbilical']").val() > 0){
-                                    var ccp = (acm / $("input[name='respuesta_umbilical']").val());
-                                    $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");
-                                }
-                            }
-                        });
-                        $("input[name='respuesta_umbilical']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var aumb = $("input[name='respuesta_umbilical']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_umbilical_percentil").html("Pct. " + pctauAdvanced(eg,aumb));
-                            }
-                            if ($("input[name='respuesta_cm']").val() > 0){
-                                if ($("input[name='respuesta_umbilical']").val() > 0){
-                                    var ccp = ($("input[name='respuesta_cm']").val() / $("input[name='respuesta_umbilical']").val());
-                                    $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");                      
-                                }
-                            }
-                        }).keypress(function( event ) {
-                            if ( event.which == 13 ) {
-                               event.preventDefault();
-                               $("input[name='respuesta_cm']").focus();
-                            }
-                        });
-                        $("input[name='respuesta_cmau']").on("change", function(){
-                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                            var cmau = $("input[name='respuesta_cmau']").val();
-                            eg = String(eg);
-                            eg = eg.replace("semanas", "");
-                            if (eg.length > 0){
-                                eg = Math.trunc(parseFloat(eg));
-                                $("#respuesta_cmau_percentil").html(pctcmauAdvanced(eg,cmau));
-                            }
-                        });
-                    }
-
-                    $('#interconsulta\\.respuesta\\.fecha').trigger("change");
-                    if ($(this).val() == 3){
+            $('#interconsulta\\.respuesta\\.fecha').trigger("change");
+            if ($(this).val() == 3){
                         $("#enviar\\.respuesta\\.botton").addClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
                         $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
                         $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Día del ciclo mestrual');
-                    }else {
+            }else {
                         $("#enviar\\.respuesta\\.botton").removeClass("d-none");
                         $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
                         $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
                         $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
-                    }
-                });
-                let bvmSelect = document.getElementsByName("respuesta_bvm")[0];
-                    let opt = document.createElement('option');
-                    opt.appendChild(document.createTextNode("< 10"));
-                    opt.value = "< 10"; 
-                    bvmSelect.appendChild(opt);
-                    for (var i = 10; i < 161; i++) {
-                        let opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode(i));
-                        opt.value = i; 
-                        bvmSelect.appendChild(opt); 
-                    }
-                    opt = document.createElement('option');
-                    opt.appendChild( document.createTextNode("> 160") );
-                    opt.value = "> 160"; 
-                    bvmSelect.appendChild(opt);
-                    let fcfSelect = document.getElementsByName("respuesta_fcf")[0];
-                        opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("(+) inicial"));
-                        opt.value = "(+) inicial"; 
-                        fcfSelect.appendChild(opt);
-                        opt = document.createElement('option');
-                        opt.appendChild(document.createTextNode("< 90"));
-                        opt.value = "< 90"; 
-                        fcfSelect.appendChild(opt);
-                        for (var i = 90; i < 161; i++) {
-                            let opt = document.createElement('option');
-                            opt.appendChild(document.createTextNode(i));
-                            opt.value = i; 
-                            fcfSelect.appendChild(opt); 
-                        }
-                        opt = document.createElement('option');
-                        opt.appendChild( document.createTextNode("> 170") );
-                        opt.value = "> 170"; 
-                        fcfSelect.appendChild(opt);
-                $("select[name='respuesta_anatomia']").on("change", function(){
-                    if ($(this).val() == "hallazgos ecográficos compatibles con:"){
-                        $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
-                    }
-                    else{
-                        $("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");
-                    }
-                });
-                $("input[name='respuesta_uterina_derecha']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var ut = $(this).val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("#respuesta_uterina_derecha_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
-                        if (ut > 0){
-                            if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
-                                var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
-                                $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
-                            }
-                        }
-                    }
-                });
-                $("input[name='respuesta_uterina_derecha']").keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_uterina_izquierda']").focus();
-                    }
-                });
-                $("input[name='respuesta_uterina_izquierda']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var ut = $(this).val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("#respuesta_uterina_izquierda_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
-                        if (ut > 0){
-                            if ($("input[name='respuesta_uterina_derecha']").val() > 0){
-                                var promedio = (parseFloat($("input[name='respuesta_uterina_derecha']").val()) + parseFloat(ut)) / 2;
-                                $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
-                            }
-                        }
-                    }
-                });
-                $("input[name='respuesta_uterina_izquierda']").keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_umbilical']").focus();
-                    }
-                });
-                $("input[name='respuesta_uterinas']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var ut = $("input[name='respuesta_uterinas']").val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut));
-                    }
-                })
-                $("input[name='respuesta_pfe']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var pfe = $("input[name='respuesta_pfe']").val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
-                    }
-                });
-                $("input[name='respuesta_cm']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var acm = $("input[name='respuesta_cm']").val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
-                    }
-                    if (acm > 0){
-                        if ($("input[name='respuesta_umbilical']").val() > 0){
-                            var ccp = (acm / $("input[name='respuesta_umbilical']").val());
-                            $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");
-                        }
-                    }
-                });
-                $("input[name='respuesta_dbp']").on("change", function(){
-                    let dbp = $(this).val();
-                    let dbp_ready = false;
-                    let dof = $("input[name='respuesta_dof']").val();
-                    let dof_ready = false;
-                    if (dbp.length > 0){
-                        dbp_ready = isNaN(dbp) == false ? true : false;
-                    }
-                    if (dof.length > 0){
-                        dof_ready = isNaN(dof) == false ? true : false;
-                    }
-                    if (dbp_ready == true && dof_ready == true){
-                        $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
-                    }
-                    else{
-                        $("input[name='respuesta_cc']").val(0).trigger("change");
-                    }
-                }).keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_cc']").focus();
-                    }
-                });
+            }
+        });
+    
+        $("#ver\\.interconsulta").modal("show");
+        $("#ver\\.interconsulta\\.footer").empty().prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar" data-dismiss="modal">Cerrar</button>');
+        $("#ver\\.interconsulta\\.eliminar").on("click", function(){
+            let solicitud_id =  $(this).data("id");
+            $.get("dashboard/delete/" + solicitud_id).done(function(){
+                loadInProcess();
+            });
+            $("#ver\\.interconsulta").modal("hide");
+        });
+        $("#enviar\\.respuesta\\.botton").on("click", function(){
+            var tipoExm = $('#interconsulta\\.respuesta\\.crecimiento').val();
+            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><img src="https://crecimientofetal.cl/img/emoji.png" class="d-block mx-auto imng-fluid"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+            $('#mensaje\\.dialogo').modal("show");
+            $('#mensaje\\.dialogo').on('hidden.bs.modal', function (e) {
+                $('#mensaje\\.dialogo').modal("hide");
+                $(this).remove();
+            });
 
-                $("input[name='respuesta_dof']").on("change", function(){
-                    let dbp = $("input[name='respuesta_dbp']").val();
-                    let dbp_ready = false;
-                    let dof = $(this).val();
-                    let dof_ready = false;
-                    if (dbp.length > 0){
-                        dbp_ready = isNaN(dbp) == false ? true : false;
-                    }
-                    if (dof.length > 0){
-                        dof_ready = isNaN(dof) == false ? true : false;
-                    }
-                    if (dbp_ready == true && dof_ready == true){
-                        $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
-                    }
-                    else{
-                        $("input[name='respuesta_cc']").val(0).trigger("change");
-                    }
-                }).keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_cc']").focus();
-                    }
-                });
+            var args = {
+                solicitud_id: $("#solicitud_id").val(),
+                solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
+                respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
+                respuesta_eg: $('input[name="respuesta_eg"]').val(),
+                respuesta_comentariosexamen: $('#editable').val()
+            }
 
-                $("input[name='respuesta_cc']").on("change", function(){
-                    psohdlk();
-                    calCCCA();
-                });
-                $("input[name='respuesta_cc']").keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_ca']").focus();
-                    }
-                });
-                $("input[name='respuesta_ca']").on("change", function(){
-                    psohdlk();
-                    calCCCA();
-
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var ca = $("input[name='respuesta_ca']").val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
-                    }
-                }).keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_lf']").focus();
-                    }
-                });
-                $("input[name='respuesta_lf']").keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_uterina_derecha']").focus();
-                    }
-                });
-                $("input[name='respuesta_ccca']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var ccca = $("input[name='respuesta_ccca']").val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
-                    }
-                });
-                $("input[name='respuesta_umbilical']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var aumb = $("input[name='respuesta_umbilical']").val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("#respuesta_umbilical_percentil").html("Pct. " + pctauAdvanced(eg,aumb));
-                    }
-                    if ($("input[name='respuesta_cm']").val() > 0){
-                        if ($("input[name='respuesta_umbilical']").val() > 0){
-                            var ccp = ($("input[name='respuesta_cm']").val() / $("input[name='respuesta_umbilical']").val());
-                            $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");
-                        }
-                    }
-                }).keypress(function( event ) {
-                    if ( event.which == 13 ) {
-                       event.preventDefault();
-                       $("input[name='respuesta_cm']").focus();
-                    }
-                });
-                $("input[name='respuesta_cmau']").on("change", function(){
-                    var eg = $("#interconsulta\\.respuesta\\.eg").val();
-                    var cmau = $("input[name='respuesta_cmau']").val();
-                    eg = String(eg);
-                    eg = eg.replace("semanas", "");
-                    if (eg.length > 0){
-                        eg = Math.trunc(parseFloat(eg));
-                        $("#respuesta_cmau_percentil").html(pctcmauAdvanced(eg,cmau));
-                    }
-                });
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar" data-dismiss="modal">Cerrar</button>');
-                $("#ver\\.interconsulta\\.eliminar").on("click", function(){
-                    let solicitud_id =  $(this).data("id");
-                    $.get("dashboard/delete/" + solicitud_id).done(function(){
-                        loadInProcess();
-                    });
-                    $("#ver\\.interconsulta").modal("hide");
-                });
-                $("#enviar\\.respuesta\\.botton").on("click", function(){
-                    var tipoExm = $('#interconsulta\\.respuesta\\.crecimiento').val();
-                    var respuestaFecha = $("#interconsulta\\.respuesta\\.fecha").val();
-                    if (respuestaFecha.length < 3){
-                        $('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">No está completo el formulario</h5></div><div class="modal-body"><p>Primero debe señalar cual es la fecha del exámen, de lo contrario es imposible calcular medidas</p></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
-                        $('#cautivo\\.dialogo').modal("show");
-                        $('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
-                            $(this).remove();
-                        });
-                        return;
-                    }
-                    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><img src="https://crecimientofetal.cl/img/emoji.png" class="d-block mx-auto imng-fluid"><h3 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
-                    $('#mensaje\\.dialogo').modal("show");
-                    $('#mensaje\\.dialogo').on('hidden.bs.modal', function (e) {
-                        $('#mensaje\\.dialogo').modal("hide");
-                        $(this).remove();
-                    });
-                    var args = "";
-                    if (tipoExm == 4){
-                        args = {
-                            solicitud_id: $("#solicitud_id").val(),
-                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
-                            respuesta_fecha: respuestaFecha,
-                            respuesta_eg: $('input[name="respuesta_eg"]').val(),
-                            respuesta_anatomia: $('select[name="respuesta_anatomia"]').val(),
-                            respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
-                            respuesta_embrion: $('select[name="respuesta_embrion"]').val(),
-                            respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
-                            respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
-                            respuesta_fcf: $('select[name="respuesta_fcf"]').val(),
-                            respuesta_cc: $('select[name="respuesta_hueso_nasal"]').val(),
-                            respuesta_ca: $('select[name="respuesta_ca"]').val(),
+            if (tipoExm == 4){
+                args = {
+                    respuesta_anatomia: $('select[name="respuesta_anatomia"]').val(),
+                    respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
+                    respuesta_embrion: $('select[name="respuesta_embrion"]').val(),
+                    respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
+                    respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
+                    respuesta_fcf: $('select[name="respuesta_fcf"]').val(),
+                    respuesta_cc: $('select[name="respuesta_hueso_nasal"]').val(),
+                    respuesta_ca: $('select[name="respuesta_ca"]').val(),
                             respuesta_lf: $('select[name="respuesta_lf"]').val(),
                             respuesta_dbp: $('select[name="respuesta_dbp"]').val(),
                             respuesta_translucencia_nucal: $('input[name="respuesta_translucencia_nucal"]').val(),
@@ -1020,32 +182,23 @@ function loadInProcessData(data){
                             respuesta_uterina_izquierda_percentil: $('input[name="respuesta_uterina_izquierda_percentil"]').val(),
                             respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
                             respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_promedio"]').val(),
-                            respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val()
                         }
                     }
                     else if (tipoExm == 3){
                         args = {
-                            solicitud_id: $("#solicitud_id").val(),
-                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
-                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
                             respuesta_utero_ginecologica: $('input[name="respuesta_utero_ginecologica"]').val(),
                             respuesta_anexo_izquierdo_ginecologica: $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
                             respuesta_anexo_derecho_ginecologica: $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
                             respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
                             respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
                             respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
-                            respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                             respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
                         }
                     }
                     else if (tipoExm == 2){
                         args = {
-                            solicitud_id: $("#solicitud_id").val(),
-                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
-                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
-                            respuesta_eg: $('input[name="respuesta_eg"]').val(),
                             respuesta_placenta: $('select[name="respuesta_placenta"]').val(),
                             respuesta_placenta_insercion: $('select[name="respuesta_placenta_insercion"]').val(),
                             respuesta_liquido_amniotico: $('select[name="respuesta_liquido_amniotico"] option:selected').val(),
@@ -1065,7 +218,6 @@ function loadInProcessData(data){
                             respuesta_pfe_pct: $('input[name="respuesta_pfe_pct"]').val(),
                             respuesta_ccca_pct: $('#respuesta_ccca_pct').html(),
                             respuesta_hipotesis: $('input[name="respuesta_hipotesis"]').val(),
-                            respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                             respuesta_dof: $('input[name="respuesta_dof"]').val(),
                             respuesta_ic: $('input[name="respuesta_ic"]').val(),
@@ -1086,10 +238,6 @@ function loadInProcessData(data){
                     }
                     else if (tipoExm == 1){
                         args = {
-                            solicitud_id: $("#solicitud_id").val(),
-                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
-                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
-                            respuesta_eg: $('input[name="respuesta_eg"]').val(),
                             respuesta_utero_primertrimestre: $('select[name="respuesta_utero_primertrimestre"]').val(),
                             respuesta_saco_gestacional: $('select[name="respuesta_saco_gestacional"]').val(),
                             respuesta_saco : $('input[name="respuesta_saco"]').val(),
@@ -1099,16 +247,11 @@ function loadInProcessData(data){
                             respuesta_anexo_izquierdo_primertrimestre: $('select[name="respuesta_anexo_izquierdo_primertrimestre"]').val(),
                             respuesta_anexo_derecho_primertrimestre: $('select[name="respuesta_anexo_derecho_primertrimestre"]').val(),
                             respuesta_douglas_primertrimestre: $('select[name="respuesta_douglas_primertrimestre"]').val(),
-                            respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
                         }
                     }
                     else{
                         args = {
-                            solicitud_id: $("#solicitud_id").val(),
-                            solicitud_crecimiento: $("#interconsulta\\.respuesta\\.crecimiento option:selected").val(),
-                            respuesta_fecha: $("#interconsulta\\.respuesta\\.fecha").val(),
-                            respuesta_eg: $('input[name="respuesta_eg"]').val(),
                             respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
                             respuesta_pfe_pct: $('input[name="respuesta_pfe_pct"]').val(),
                             respuesta_liquido: $('select[name="respuesta_liquido"] option:selected').val(),
@@ -1133,7 +276,6 @@ function loadInProcessData(data){
                             respuesta_doppler_fetal:  $('select[name="respuesta_doppler_fetal"]').val(),
                             respuesta_anatomia:  $('select[name="respuesta_anatomia"]').val(),
                             respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
-                            respuesta_comentariosexamen: $('#editable').val(),
                             respuesta_ca: $('input[name="respuesta_ca"]').val(),
                             respuesta_ca_pct: $('#respuesta_ca_pct').html(),
                             respuesta_ecografista: $('input[name="respuesta_ecografista"]').val(),
@@ -1151,22 +293,18 @@ function loadInProcessData(data){
                         args.respuesta_umbilical_percentil = args.respuesta_umbilical_percentil.replace("Pct. ", "");
                         args.respuesta_cm_percentil = args.respuesta_cm_percentil.replace("Pct. ", "");
                     }
+                    $("#ver\\.interconsulta").modal("hide");
                     $.post('dashboard/save', args).done(function(data){
-                        $("#ver\\.interconsulta").modal("hide");
                         $("#interconsultas\\.estado\\.finalizadas").button('toggle').trigger("click");
-                        $('#mensaje\\.dialogo').modal("hide");
-                        $('#mensaje\\.dialogo').remove();
+                        $('#mensaje\\.dialogo').modal("hide").remove();
                     });
                 });
-            });
+    });
 
-            $('#tabla\\.resultado tr > td > button.modificar').on("click", function(){
-                let solicitud_id =  $(this).data("id");
-
-                $.get('dashboard/agendar/' + solicitud_id).done(function(data){
-                    solicitudModal(data);
-                });
-            });
+    $('#tabla\\.resultado tr > td > button.modificar').on("click", function(){
+        let solicitud_id =  $(this).data("id");
+        $.get('dashboard/agendar/' + solicitud_id).done(function(data){solicitudModal(data);});
+    });
 }
 
 function buildFinishTable(data){
@@ -1440,101 +578,44 @@ function pctUtAdvanced(eg,ut) {
     }
 }
 function pctacmAdvanced(eg,acm) {
-    var pct5 = [], pct95 = [];
-    pct5[0] = 1.24;pct5[1] = 1.29;	pct5[2] = 1.34;pct5[3] = 1.37;
-    pct5[4] = 1.4;pct5[5] = 1.43;	pct5[6] = 1.44;pct5[7] = 1.45;
-    pct5[8] = 1.45;pct5[9] = 1.44;	pct5[10] = 1.43;pct5[11] = 1.41;
-    pct5[12] = 1.38;pct5[13] = 1.34;	pct5[14] = 1.3;pct5[15] = 1.25;
-    pct5[16] = 1.19;pct5[17] = 1.13;	pct5[18] = 1.05;pct5[19] = 0.98;
-    pct5[20] = 0.89;
-    pct95[0] = 1.98;	pct95[1] = 2.12;	pct95[2] = 2.25;	pct95[3] = 2.36;
-    pct95[4] = 2.45;	pct95[5] = 2.53;	pct95[6] = 2.59;	pct95[7] = 2.63;
-    pct95[8] = 2.66;	pct95[9] = 2.67;	pct95[10] = 2.67;	pct95[11] = 2.65;
-    pct95[12] = 2.62;	pct95[13] = 2.56;	pct95[14] = 2.5;	pct95[15] = 2.41;
-    pct95[16] = 2.31;	pct95[17] = 2.2;	pct95[18] = 2.07;	pct95[19] = 1.92;
-    pct95[20] = 1.76;
-    acm = acm.toString();
-    acm = acm.replace(",", ".");
-    acm = parseFloat(acm);
-    if (eg < 20) {  
-        return 0;
-    }
-    else if (eg > 40)
-    {
-        return 0;
-    }
+    var a = [], b = [];
+    a[0] = 1.24; a[1] = 1.29; a[2] = 1.34; a[3] = 1.37; a[4] = 1.4; a[5] = 1.43; a[6] = 1.44; a[7] = 1.45; a[8] = 1.45; a[9] = 1.44; a[10] = 1.43; a[11] = 1.41; a[12] = 1.38; a[13] = 1.34;	a[14] = 1.3; a[15] = 1.25; a[16] = 1.19; a[17] = 1.13;	a[18] = 1.05; a[19] = 0.98; a[20] = 0.89;
+    b[0] = 1.98; b[1] = 2.12; b[2] = 2.25; b[3] = 2.36; b[4] = 2.45; b[5] = 2.53; b[6] = 2.59; b[7] = 2.63; b[8] = 2.66; b[9] = 2.67; b[10] = 2.67;	b[11] = 2.65; b[12] = 2.62; b[13] = 2.56;	b[14] = 2.5; b[15] = 2.41; b[16] = 2.31; b[17] = 2.2; b[18] = 2.07; b[19] = 1.92; b[20] = 1.76;
+    
+    if (eg < 20 || eg > 40){return 0;}
     else {
-        eg = eg - 20;
         eg = parseInt(eg);
-        var uno = pct95[eg] - pct5[eg];
-        var dos = acm - pct5[eg];
+        eg = eg - 20;
+        var uno = b[eg] - a[eg];
+        var dos = acm - a[eg];
         var resultado = parseInt(90 / (uno) * (dos) + 5);
-        var pctACM = '';
-        //truncador de Pct, sobre 100 o bajo 1
         if (resultado > 99){
-            pctACM = '> 99';
+            return '> 99';
         }
         else if (resultado < 1){
-            pctACM = '< 1';
+            return '< 1';
         }
         else{
-            pctACM = Math.trunc(resultado);
+            return Math.trunc(resultado);
         }
-        return pctACM;
     }
 }
 function pctauAdvanced(eg, aumb) {
-    var pct5 = [], pct95 = [];
-    pct5[0] = 0.97;	pct5[1] = 0.95;
-    pct5[2] = 0.94;	pct5[3] = 0.92;
-    pct5[4] = 0.9;	pct5[5] = 0.89;
-    pct5[6] = 0.87;	pct5[7] = 0.85;
-    pct5[8] = 0.82;	pct5[9] = 0.8;
-    pct5[10] = 0.78; pct5[11] = 0.75;
-    pct5[12] = 0.73; pct5[13] = 0.7;
-    pct5[14] = 0.67; pct5[15] = 0.65;
-    pct5[16] = 0.62; pct5[17] = 0.58;
-    pct5[18] = 0.55; pct5[19] = 0.52;
-    pct5[20] = 0.49;
-    pct95[0] = 1.6;	pct95[1] = 1.56;
-    pct95[2] = 1.53; pct95[3] = 1.5;
-    pct95[4] = 1.46; pct95[5] = 1.43;
-    pct95[6] = 1.4;	pct95[7] = 1.37;
-    pct95[8] = 1.35; pct95[9] = 1.32;
-    pct95[10] = 1.29; pct95[11] = 1.27;
-    pct95[12] = 1.25; pct95[13] = 1.22;
-    pct95[14] = 1.2; pct95[15] = 1.18;
-    pct95[16] = 1.16; pct95[17] = 1.14;
-    pct95[18] = 1.13; pct95[19] = 1.11;
-    pct95[20] = 1.09;
-    aumb = aumb.toString();
-    aumb = aumb.replace(",", ".");
-    aumb = parseFloat(aumb);
-    if (eg < 20) {
-        return 0;
-    }
-    else if (eg > 40)
-    {
-        return 0;
-    }
+    var a = [], b = [];
+    a[0] = 0.97; a[1] = 0.95; a[2] = 0.94; a[3] = 0.92; a[4] = 0.9;	a[5] = 0.89; a[6] = 0.87; a[7] = 0.85; a[8] = 0.82; a[9] = 0.8; a[10] = 0.78; a[11] = 0.75; a[12] = 0.73; a[13] = 0.7; a[14] = 0.67; a[15] = 0.65; a[16] = 0.62; a[17] = 0.58; a[18] = 0.55; a[19] = 0.52;a[20] = 0.49;
+    b[0] = 1.6;	b[1] = 1.56; b[2] = 1.53; b[3] = 1.5; b[4] = 1.46; b[5] = 1.43; b[6] = 1.4;	b[7] = 1.37; b[8] = 1.35; b[9] = 1.32; b[10] = 1.29; b[11] = 1.27; b[12] = 1.25; b[13] = 1.22; b[14] = 1.2; b[15] = 1.18; b[16] = 1.16; b[17] = 1.14; b[18] = 1.13; b[19] = 1.11; b[20] = 1.09;
+
+    if (eg < 20 || eg > 40){return 0;}
     else {
         eg = parseInt(eg);
         eg = eg - 20;
-        var uno=pct95[eg] - pct5[eg];
-        var dos=aumb - pct5[eg];
+        var uno = b[eg] - a[eg];
+        var dos = aumb - a[eg];
         var resultado = parseInt(90 / (uno) * (dos) + 5);
-        var pctAUMB = '';
         //truncador de Pct, sobre 100 o bajo 1
-        if (resultado > 99){
-            pctAUMB = '> 99';
-        }
-        else if (resultado < 1){
-            pctAUMB = '< 1';
-        }
-        else{
-            pctAUMB = resultado;
-        }
-        return pctAUMB;
+        if (resultado > 99){ return '> 99'; }
+        else if (resultado < 1){ return '< 1'; }
+        else{ return resultado; }
     }
 }
 function psohdlk() {
@@ -1645,166 +726,76 @@ function eglcn() {
     }
 };
 function pctcccaAdvanced(eg, ccca) {
-    var pct3 = [];
-    var pct97 = [];
-    pct3[0] = 1.1; pct3[1] = 1.09; pct3[2] = 1.08; pct3[3] = 1.07;
-    pct3[4] = 1.06; pct3[5] = 1.06; pct3[6] = 1.05; pct3[7] = 1.04;
-    pct3[8] = 1.03; pct3[9] = 1.02; pct3[10] = 1.01; pct3[11] = 1;
-    pct3[12] = 1; pct3[13] = 0.99; pct3[14] = 0.98; pct3[15] = 0.97;
-    pct3[16] = 0.96; pct3[17] = 0.95; pct3[18] = 0.95; pct3[19] = 0.94;
-    pct3[20] = 0.93; pct3[21] = 0.92; pct3[22] = 0.91; pct3[23] = 0.9;
-    pct3[24] = 0.89; pct3[25] = 0.89;
-    pct97[0] = 1.29; pct97[1] = 1.28; pct97[2] = 1.27; pct97[3] = 1.26;
-    pct97[4] = 1.25; pct97[5] = 1.24; pct97[6] = 1.24; pct97[7] = 1.23;
-    pct97[8] = 1.22; pct97[9] = 1.21; pct97[10] = 1.2; pct97[11] = 1.19;
-    pct97[12] = 1.18; pct97[13] = 1.18; pct97[14] = 1.17; pct97[15] = 1.17;
-    pct97[16] = 1.16; pct97[17] = 1.15; pct97[18] = 1.14; pct97[19] = 1.13;
-    pct97[20] = 1.12; pct97[21] = 1.11; pct97[22] = 1.1; pct97[23] = 1.09;
-    pct97[24] = 1.08; pct97[25] = 1.08;
-    if (eg < 15) {
+    'use strict';
+    let a = [], b = [];
+    a[0] = 1.1; a[1] = 1.09; a[2] = 1.08; a[3] = 1.07; a[4] = 1.06; a[5] = 1.06; a[6] = 1.05; a[7] = 1.04; a[8] = 1.03; a[9] = 1.02; a[10] = 1.01; a[11] = 1; a[12] = 1; a[13] = 0.99; a[14] = 0.98; a[15] = 0.97; a[16] = 0.96; a[17] = 0.95; a[18] = 0.95; a[19] = 0.94; a[20] = 0.93; a[21] = 0.92; a[22] = 0.91; a[23] = 0.9; a[24] = 0.89; a[25] = 0.89;
+    b[0] = 1.29; b[1] = 1.28; b[2] = 1.27; b[3] = 1.26; b[4] = 1.25; b[5] = 1.24; b[6] = 1.24; b[7] = 1.23; b[8] = 1.22; b[9] = 1.21; b[10] = 1.2; b[11] = 1.19; b[12] = 1.18; b[13] = 1.18; b[14] = 1.17; b[15] = 1.17; b[16] = 1.16; b[17] = 1.15; b[18] = 1.14; b[19] = 1.13; b[20] = 1.12; b[21] = 1.11; b[22] = 1.1; b[23] = 1.09; b[24] = 1.08; b[25] = 1.08;
+
+    if (eg < 15 || eg > 40){
         return 0;
-    } 
-    else if (eg > 40)
-    {
-        return 0;
-    } 
+    }
     else {
-        eg = eg - 15;
         eg = parseInt(eg);
-        var uno = pct97[eg] - pct3[eg];
-        var dos = ccca - pct3[eg];
+        eg = eg - 15;
+        var uno = b[eg] - a[eg];
+        var dos = ccca - a[eg];
         var resultado = parseInt(95 / (uno) * (dos) + 3);
-        if (resultado > 99) {
-            return '> 99';
-        }
-        else if (resultado < 1) {
-            return '< 1';
-        } 
-        else {
-            return resultado;
-        }
+        if (resultado > 99) {return '> 99';}
+        else if (resultado < 1) {return '< 1';} 
+        else {return resultado;}
     }
 }
 function pctcaAdvanced(eg, ca) {
-    var pct3 = [];
-    var pct97 = [];
-    pct3[12] = 42;  pct3[13] = 52;  pct3[14] = 64
-    pct3[15] = 75;  pct3[16] = 86;  pct3[17] = 97
-    pct3[18] = 109; pct3[19] = 119; pct3[20] = 131
-    pct3[21] = 141; pct3[22] = 151; pct3[23] = 161
-    pct3[24] = 171; pct3[25] = 181; pct3[26] = 191
-    pct3[27] = 200; pct3[28] = 209; pct3[29] = 218
-    pct3[30] = 227; pct3[31] = 236; pct3[32] = 245
-    pct3[33] = 253; pct3[34] = 261; pct3[35] = 269
-    pct3[36] = 277; pct3[37] = 285; pct3[38] = 292
-    pct3[39] = 299; pct3[40] = 307; pct3[41] = 313
-    pct3[42] = 320
-    pct97[12] = 71;  pct97[13] = 79;  pct97[14] = 92
-    pct97[15] = 102; pct97[16] = 113; pct97[17] = 127
-    pct97[18] = 141; pct97[19] = 155; pct97[20] = 170
-    pct97[21] = 183; pct97[22] = 192; pct97[23] = 209
-    pct97[24] = 223; pct97[25] = 235; pct97[26] = 248
-    pct97[27] = 260; pct97[28] = 271; pct97[29] = 284
-    pct97[30] = 295; pct97[31] = 306; pct97[32] = 318
-    pct97[33] = 329; pct97[34] = 339; pct97[35] = 349
-    pct97[36] = 359; pct97[37] = 370; pct97[38] = 380
-    pct97[39] = 389; pct97[40] = 399; pct97[41] = 409
-    pct97[42] = 418
-    if (eg < 12) {
-        return 0;
-    } 
-    else if (eg > 40)
-    {
-        return 0;
-    } 
+    'use strict';
+    let a = [], b = [];
+    a[12] = 42; a[13] = 52; a[14] = 64; a[15] = 75;  a[16] = 86;  a[17] = 97; a[18] = 109; a[19] = 119; a[20] = 131; a[21] = 141; a[22] = 151; a[23] = 161; a[24] = 171; a[25] = 181; a[26] = 191; a[27] = 200; a[28] = 209; a[29] = 218; a[30] = 227; a[31] = 236; a[32] = 245; a[33] = 253; a[34] = 261; a[35] = 269; a[36] = 277; a[37] = 285; a[38] = 292; a[39] = 299; a[40] = 307; a[41] = 313; a[42] = 320;
+    b[12] = 71; b[13] = 79; b[14] = 92; b[15] = 102; b[16] = 113; b[17] = 127; b[18] = 141; b[19] = 155; b[20] = 170; b[21] = 183; b[22] = 192; b[23] = 209; b[24] = 223; b[25] = 235; b[26] = 248; b[27] = 260; b[28] = 271; b[29] = 284; b[30] = 295; b[31] = 306; b[32] = 318; b[33] = 329; b[34] = 339; b[35] = 349; b[36] = 359; b[37] = 370; b[38] = 380; b[39] = 389; b[40] = 399; b[41] = 409; b[42] = 418;
+
+    if (eg < 12 || eg > 40){return 0;} 
     else {
         eg = parseInt(eg);
-        var uno = pct97[eg] - pct3[eg];
-        var dos = ca - pct3[eg];
+        var uno = b[eg] - a[eg];
+        var dos = ca - a[eg];
         var resultado = parseInt(95 / (uno) * (dos) + 3);
-        if (resultado > 99) {
-            return '> 99';
-        } 
-        else if (resultado < 1) {
-            return '< 1';
-        } 
-        else {
-            return resultado;
-        }
+        if (resultado > 99) {return '> 99';}
+        else if (resultado < 1) {return '< 1';}
+        else {return resultado;}
     }
 }
 function pctccAdvanced(eg, cc) {
-    var pct3 = [];
-    var pct97 = [];
-    pct3[12] = 64;  pct3[13] = 74;  pct3[14] = 88
-    pct3[15] = 100; pct3[16] = 113; pct3[17] = 126
-    pct3[18] = 137; pct3[19] = 149; pct3[20] = 161
-    pct3[21] = 172; pct3[22] = 183; pct3[23] = 194
-    pct3[24] = 204; pct3[25] = 214; pct3[26] = 224
-    pct3[27] = 233; pct3[28] = 242; pct3[29] = 250
-    pct3[30] = 258; pct3[31] = 267; pct3[32] = 274
-    pct3[33] = 280; pct3[34] = 287; pct3[35] = 293
-    pct3[36] = 299; pct3[37] = 303; pct3[38] = 308
-    pct3[39] = 311; pct3[40] = 315; pct3[41] = 318
-    pct3[42] = 322
-    pct97[12] = 81;  pct97[13] = 94;  pct97[14] = 106
-    pct97[15] = 120; pct97[16] = 135; pct97[17] = 150
-    pct97[18] = 165; pct97[19] = 179; pct97[20] = 193
-    pct97[21] = 206; pct97[22] = 219; pct97[23] = 232
-    pct97[24] = 243; pct97[25] = 256; pct97[26] = 268
-    pct97[27] = 279; pct97[28] = 290; pct97[29] = 300
-    pct97[30] = 310; pct97[31] = 319; pct97[32] = 328
-    pct97[33] = 336; pct97[34] = 343; pct97[35] = 351
-    pct97[36] = 358; pct97[37] = 363; pct97[38] = 368
-    pct97[39] = 373; pct97[40] = 377; pct97[41] = 382
-    pct97[42] = 387
-    if (eg < 12) {
-        return 0;
-    } 
-    else if (eg > 40)
-    {
-        return 0;
-    } 
-    else {
-        eg = parseInt(eg);
-        var uno = pct97[eg] - pct3[eg];
-        var dos = cc - pct3[eg];
-        var resultado = parseInt(95 / (uno) * (dos) + 3);
-        if (resultado > 99) {
-            return '> 99';
-        } 
-        else if (resultado < 1) {
-            return '< 1';
-        } 
-        else {
-            return resultado;
-        }
-    }
-}
-function pctlfAdvanced(eg, lf) {
-    var pct3 = [];
-    var pct97 = [];
-
-    pct3[12] = 7;  pct3[13] = 9;  pct3[14] = 12; pct3[15] = 15; pct3[16] = 17; pct3[17] = 21; pct3[18] = 23; pct3[19] = 26; pct3[20] = 28; pct3[21] = 30; pct3[22] = 33; pct3[23] = 35; pct3[24] = 38; pct3[25] = 40; pct3[26] = 42; pct3[27] = 44; pct3[28] = 46; pct3[29] = 48; pct3[30] = 50; pct3[31] = 52; pct3[32] = 53; pct3[33] = 55; pct3[34] = 57; pct3[35] = 59; pct3[36] = 60; pct3[37] = 62; pct3[38] = 64; pct3[39] = 65; pct3[40] = 66; pct3[41] = 68; pct3[42] = 69;
-    pct97[12] = 12; pct97[13] = 14; pct97[14] = 17; pct97[15] = 20; pct97[16] = 23; pct97[17] = 27; pct97[18] = 31; pct97[19] = 34; pct97[20] = 38; pct97[21] = 40; pct97[22] = 43; pct97[23] = 47; pct97[24] = 50; pct97[25] = 52; pct97[26] = 56; pct97[27] = 58; pct97[28] = 62; pct97[29] = 64; pct97[30] = 66; pct97[31] = 68; pct97[32] = 71; pct97[33] = 73; pct97[34] = 75; pct97[35] = 78; pct97[36] = 80; pct97[37] = 82; pct97[38] = 84; pct97[39] = 86; pct97[40] = 88; pct97[41] = 90; pct97[42] = 92;
+    'use strict';
+    let a = [], b = [];
+    a[12] = 64; a[13] = 74; a[14] = 88; a[15] = 100; a[16] = 113; a[17] = 126; a[18] = 137; a[19] = 149; a[20] = 161; a[21] = 172; a[22] = 183; a[23] = 194; a[24] = 204; a[25] = 214; a[26] = 224; a[27] = 233; a[28] = 242; a[29] = 250; a[30] = 258; a[31] = 267; a[32] = 274; a[33] = 280; a[34] = 287; a[35] = 293; a[36] = 299; a[37] = 303; a[38] = 308; a[39] = 311; a[40] = 315; a[41] = 318; a[42] = 322;
+    b[12] = 81; b[13] = 94; b[14] = 106; b[15] = 120; b[16] = 135; b[17] = 150; b[18] = 165; b[19] = 179; b[20] = 193; b[21] = 206; b[22] = 219; b[23] = 232; b[24] = 243; b[25] = 256; b[26] = 268; b[27] = 279; b[28] = 290; b[29] = 300; b[30] = 310; b[31] = 319; b[32] = 328; b[33] = 336; b[34] = 343; b[35] = 351; b[36] = 358; b[37] = 363; b[38] = 368; b[39] = 373; b[40] = 377; b[41] = 382; b[42] = 387;
 
     if (eg < 12 || eg > 40) {
         return 0;
     }
     else {
         eg = parseInt(eg);
-        var uno = pct97[eg] - pct3[eg];
-        var dos = lf - pct3[eg];
+        var uno = b[eg] - a[eg];
+        var dos = cc - a[eg];
         var resultado = parseInt(95 / (uno) * (dos) + 3);
-        if (resultado > 99) {
-            return '> 99';
-        }
-        else if (resultado < 1) {
-            return '< 1';
-        }
-        else {
-            return resultado;
-        }
+        if (resultado > 99) {return '> 99';} 
+        else if (resultado < 1) {return '< 1';} 
+        else {return resultado;}
+    }
+}
+function pctlfAdvanced(eg, lf) {
+    'use strict';
+    let a = [], b = [];
+    a[12] = 7;  a[13] = 9;  a[14] = 12; a[15] = 15; a[16] = 17; a[17] = 21; a[18] = 23; a[19] = 26; a[20] = 28; a[21] = 30; a[22] = 33; a[23] = 35; a[24] = 38; a[25] = 40; a[26] = 42; a[27] = 44; a[28] = 46; a[29] = 48; a[30] = 50; a[31] = 52; a[32] = 53; a[33] = 55; a[34] = 57; a[35] = 59; a[36] = 60; a[37] = 62; a[38] = 64; a[39] = 65; a[40] = 66; a[41] = 68; a[42] = 69;
+    b[12] = 12; b[13] = 14; b[14] = 17; b[15] = 20; b[16] = 23; b[17] = 27; b[18] = 31; b[19] = 34; b[20] = 38; b[21] = 40; b[22] = 43; b[23] = 47; b[24] = 50; b[25] = 52; b[26] = 56; b[27] = 58; b[28] = 62; b[29] = 64; b[30] = 66; b[31] = 68; b[32] = 71; b[33] = 73; b[34] = 75; b[35] = 78; b[36] = 80; b[37] = 82; b[38] = 84; b[39] = 86; b[40] = 88; b[41] = 90; b[42] = 92;
+
+    if (eg < 12 || eg > 40) {return 0;}
+    else {
+        eg = parseInt(eg);
+        var uno = b[eg] - a[eg];
+        var dos = lf - a[eg];
+        var resultado = parseInt(95 / (uno) * (dos) + 3);
+        if (resultado > 99) {return '> 99';}
+        else if (resultado < 1) {return '< 1';}
+        else {return resultado;}
     }
 }
 function ICAdvanced(dbp, dof) {
@@ -1816,44 +807,22 @@ function ICAdvanced(dbp, dof) {
     }
 }
 function pctlhAdvanced(eg, lh) {
-    var pct05 = [];
-    var pct95 = [];
-    pct05[12] = 4.8;   pct95[12] = 12.3;    pct05[13] = 7.6;   pct95[13] = 15.1;
-    pct05[14] = 10.3;  pct95[14] = 17.9;    pct05[15] = 13.1;  pct95[15] = 20.7;
-    pct05[16] = 15.8;  pct95[16] = 23.5;    pct05[17] = 18.5;  pct95[17] = 26.3;
-    pct05[18] = 21.2;  pct95[18] = 29.1;    pct05[19] = 23.8;  pct95[19] = 31.6;
-    pct05[20] = 26.3;  pct95[20] = 34.2;    pct05[21] = 28.8;  pct95[21] = 36.7;
-    pct05[22] = 31.2;  pct95[22] = 39.2;    pct05[23] = 33.5;  pct95[23] = 41.6;
-    pct05[24] = 35.7;  pct95[24] = 43.9;    pct05[25] = 37.9;  pct95[25] = 46.1;
-    pct05[26] = 39.9;  pct95[26] = 48.1;    pct05[27] = 41.9;  pct95[27] = 50.1;
-    pct05[28] = 43.7;  pct95[28] = 52.1;    pct05[29] = 45.5;  pct95[29] = 53.9;
-    pct05[30] = 47.2;  pct95[30] = 55.6;    pct05[31] = 48.9;  pct95[31] = 57.3;
-    pct05[32] = 50.4;  pct95[32] = 58.9;    pct05[33] = 52.1;  pct95[33] = 60.5;
-    pct05[34] = 53.4;  pct95[34] = 62.1;    pct05[35] = 54.8;  pct95[35] = 63.5;
-    pct05[36] = 56.2;  pct95[36] = 64.9;    pct05[37] = 57.6;  pct95[37] = 66.4;
-    pct05[38] = 59.8;  pct95[38] = 67.8;    pct05[39] = 60.4;  pct95[39] = 69.3;
-    pct05[40] = 61.9;  pct95[40] = 70.8;
-    if (eg < 12) {
+    'use strict';
+    let a = [], b = [];
+    a[12] = 4.8; a[13] = 7.6; a[14] = 10.3; a[15] = 13.1; a[16] = 15.8;  a[17] = 18.5; a[18] = 21.2; a[19] = 23.8; a[20] = 26.3;  a[21] = 28.8; a[22] = 31.2; a[23] = 33.5; a[24] = 35.7;  a[25] = 37.9; a[26] = 39.9; a[27] = 41.9; a[28] = 43.7;  a[29] = 45.5; a[30] = 47.2; a[31] = 48.9; a[32] = 50.4;  a[33] = 52.1; a[34] = 53.4; a[35] = 54.8; a[36] = 56.2;  a[37] = 57.6; a[38] = 59.8; a[39] = 60.4; a[40] = 61.9;
+    b[12] = 12.3; b[13] = 15.1; b[14] = 17.9; b[15] = 20.7; b[16] = 23.5; b[17] = 26.3; b[18] = 29.1; b[19] = 31.6; b[20] = 34.2; b[21] = 36.7; b[22] = 39.2; b[23] = 41.6; b[24] = 43.9; b[25] = 46.1; b[26] = 48.1; b[27] = 50.1; b[28] = 52.1; b[29] = 53.9; b[30] = 55.6; b[31] = 57.3; b[32] = 58.9; b[33] = 60.5; b[34] = 62.1; b[35] = 63.5; b[36] = 64.9; b[37] = 66.4; b[38] = 67.8; b[39] = 69.3; b[40] = 70.8;
+    
+    if (eg < 12 || eg > 40) {
         return 0;
-    } 
-    else if (eg > 40)
-    {
-        return 0;
-    } 
+    }
     else {
         eg = parseInt(eg);
-        var uno = pct95[eg] - pct05[eg];
-        var dos = lh - pct05[eg];
+        var uno = b[eg] - a[eg];
+        var dos = lh - a[eg];
         var resultado = parseInt(95 / (uno) * (dos) + 5);
-        if (resultado > 99) {
-            return '> 99';
-        }
-        else if (resultado < 1) {
-            return '< 1';
-        }
-        else {
-            return resultado;
-        }
+        if (resultado > 99) {return '> 99';}
+        else if (resultado < 1) {return '< 1';}
+        else {return resultado;}
     }
 }
 function pctcerebeloAdvanced(eg,cerebelo) {
@@ -1877,15 +846,12 @@ function valCC(dof,dbp){
     var delta = parseFloat(1.60);
     return Math.round((parseInt(dof) + parseInt(dbp)) * delta);
 }
-
 function callModal(informe, solicitud){$("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");}
-
 function uuidv4() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     )
 }
-
 function makeModal(button){
     let id = uuidv4();
     let titulo = uuidv4();
@@ -1907,7 +873,6 @@ function makeModal(button){
     
     return resultado;
 }
-
 function solicitudModal(data){
     let modal = makeModal("Guardar");
 
@@ -1966,6 +931,543 @@ function solicitudModal(data){
 }
 
 
+//funciones de vista
+function doppleruterinas(){
+    let html = '<div id="doppleruterinas"> <div class="row"> <div class="col form-group"> <label>Edad Materna</label> <div class="input-group"> <input type="text" class="form-control bg-secondary text-white" name="respuesta_em" disabled> <div class="input-group-append"> <div class="input-group-text">años</div></div></div></div><div class="col form-group"> <label>Presión arterial media ((PAS- (PAD/3))+ PAD)</label> <div class="input-group"> <input type="text" class="form-control g-verde text-white" name="respuesta_pm" disabled> <div class="input-group-append"> <div class="input-group-text">mmHg</div></div></div></div><div class="col form-group"> <label>IMC Materno</label> <div class="input-group"> <input type="text" class="form-control g-verde text-white" name="respuesta_imc" disabled> <div class="input-group-append"> <div class="input-group-text">kg/m2</div></div></div></div></div><h5 class="text-primary">Exámenes ultrasonográficos</h5> <div class="row py-3"> <div class="col-3 form-group"> <label><strong>Evaluación de anatomía fetal</strong></label> </div><div class="col-3 form-group"> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-6 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col form-group"> <label>Embrión</label> <select class="form-control" name="respuesta_embrion"> <option value="no se observa aun">no se observa aun</option> <option value="act. no evidenciabl">act. no evidenciable</option> <option value="act. card. inicial">act. card. inicial</option> <option value="con act. cardiaca (+)" selected>con act. cardiaca (+)</option> <option value="act. card. y corp. (+)">act. card. y corp. (+)</option> <option value="act. card. y corp. (-)">act. card. y corp. (-)</option> </select> </div><div class="col form-group"> <label>LCN (mm)</label> <input type="text" class="form-control bg-secondary text-white" name="respuesta_lcn"> </div><div class="col form-group"> <label>Eg. x LCN</label> <input type="text" class="form-control bg-white" name="respuesta_lcn_eg" disabled> </div><div class="col form-group"> <label>FCF</label> <select name="respuesta_fcf" class="form-control"> <option value="(+) inicial">(+) inicial</option> <option value=" <90">&lt; 90</option> <option value="90">90</option> <option value="91">91</option> <option value="92">92</option> <option value="93">93</option> <option value="94">94</option> <option value="95">95</option> <option value="96">96</option> <option value="97">97</option> <option value="98">98</option> <option value="99">99</option> <option value="100">100</option> <option value="101">101</option> <option value="102">102</option> <option value="103">103</option> <option value="104">104</option> <option value="105">105</option> <option value="106">106</option> <option value="107">107</option> <option value="108">108</option> <option value="109">109</option> <option value="110">110</option> <option value="111">111</option> <option value="112">112</option> <option value="113">113</option> <option value="114">114</option> <option value="115">115</option> <option value="116">116</option> <option value="117">117</option> <option value="118">118</option> <option value="119">119</option> <option value="120">120</option> <option value="121">121</option> <option value="122">122</option> <option value="123">123</option> <option value="124">124</option> <option value="125">125</option> <option value="126">126</option> <option value="127">127</option> <option value="128">128</option> <option value="129">129</option> <option value="130">130</option> <option value="131">131</option> <option value="132">132</option> <option value="133">133</option> <option value="134">134</option> <option value="135">135</option> <option value="136">136</option> <option value="137">137</option> <option value="138">138</option> <option value="139">139</option> <option value="140" selected="">140</option> <option value="141">141</option> <option value="142">142</option> <option value="143">143</option> <option value="144">144</option> <option value="145">145</option> <option value="146">146</option> <option value="147">147</option> <option value="148">148</option> <option value="149">149</option> <option value="150">150</option> <option value="151">151</option> <option value="152">152</option> <option value="153">153</option> <option value="154">154</option> <option value="155">155</option> <option value="156">156</option> <option value="157">157</option> <option value="158">158</option> <option value="159">159</option> <option value="160">160</option> <option value="161">161</option> <option value="162">162</option> <option value="163">163</option> <option value="164">164</option> <option value="165">165</option> <option value="166">166</option> <option value="167">167</option> <option value="168">168</option> <option value="169">169</option> <option value="170">170</option> <option value=" > 170">&gt; 170</option> </select> </div></div><div class="row"> <div class="col-12"><strong>Flujometría Doppler</strong></div><div class="col form-group"> <label>IP. Uterina Derecha</label> <input type="text" class="form-control" name="respuesta_uterina_derecha"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control bg-white" name="respuesta_uterina_derecha_percentil" disabled> </div></div><div class="col form-group"> <label>IP. Uterina Izquierda</label> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control bg-white" name="respuesta_uterina_izquierda_percentil" disabled> </div></div><div class="col form-group"> <label>IP. Uterinas promedio</label> <input type="text" class="form-control g-verde text-white" name="respuesta_uterinas" disabled> </div><div class="col form-group"> <label>&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control g-verde text-white" name="respuesta_uterinas_promedio" disabled> </div></div></div><div class="row"> <div class="col-12"><strong>Tamizaje cromosomopatía</strong></div><div class="col-4 form-group"> <label>Translucidez Nucal</label> <select class="form-control" name="respuesta_dbp"> <option value="no procede">No procede</option> <option value="no medible">No medible</option> <option value="medible" selected>Medible</option> </select> </div><div class="col-2 form-group"> <div id="translucencia"> <label>mm de translucidez nucal</label> <input class="form-control bg-secondary text-white" name="respuesta_translucencia_nucal"> </div></div><div class="col-4 form-group"> <label>Hueso Nasal</label> <select class="form-control" name="respuesta_hueso_nasal"> <option value="no procede">No procede</option> <option value="no visible">No visible</option> <option value="visible" selected>Visible</option> </select> </div><div class="col-2 form-group"> <div id="huesonasal"> <label>mm</label> <input class="form-control" name="respuesta_hueso_nasal_valor"> </div></div></div><div class="row"> <div class="col form-group"> <label>Ductus venoso</label> <select class="form-control" name="respuesta_ca"> <option value="no evaluado" selected="">No evaluado</option> <option value="normal">Normal</option> <option value="onda a ausente">Onda A ausente</option> <option value="onda a negativa">Onda A negativa</option> </select> </div><div class="col form-group"> <label>Reflujo tricuspídeo</label> <select class="form-control" name="respuesta_lf"> <option value="no evaluado" selected="">No evaluado</option> <option value="normal">Normal</option> <option value="alteracion leve">Alteracion leve</option> <option value="onda anormal">Onda anormal</option> </select> </div></div></div>';
+    document.getElementById("contenedor.examenes").innerHTML(html);
+
+    $("select[name='respuesta_hueso_nasal']").on("change", function(){
+        if ($(this).val() == "visible"){
+            $("#huesonasal").removeClass("d-none");
+        }
+        else{
+            $("#huesonasal").addClass("d-none");
+        }
+    }).trigger("change");
+    
+    $("select[name='respuesta_dbp']").on("change", function(){
+        if ($(this).val() == "medible"){
+            $("#translucencia").removeClass("d-none");
+        }
+        else{
+            $("#translucencia").addClass("d-none");}
+    });
+
+    $("input[name='respuesta_translucencia_nucal']").keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_hueso_nasal_valor']").focus();
+        }else if(event.which == 8|| event.which ==9|| event.which ==46|| event.which ==110 || event.which ==190 || (event.which >= 35 && event.which <= 40) ||
+            (event.which  >= 48 && event.which  <= 57) || (event.which  >= 96 && event.which  <= 105)){
+        }else{
+            event.preventDefault();
+        }
+    });
+
+    $("input[name='respuesta_hueso_nasal_valor']").keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("textarea[name='respuesta_comentariosexamen']").focus();
+        }else if(event.which == 8|| event.which ==9|| event.which ==46|| event.which ==110 || event.which ==190 || (event.which >= 35 && event.which <= 40) ||
+            (event.which  >= 48 && event.which  <= 57) || (event.which  >= 96 && event.which  <= 105)){
+        }else{
+            event.preventDefault();
+        }
+    });
+
+    $("input[name='respuesta_uterina_derecha']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ut = $(this).val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("input[name='respuesta_uterina_derecha_percentil_view']").val(pctUtAdvanced(eg,ut));
+            $("input[name='respuesta_uterina_derecha_percentil']").val(pctUtAdvanced(eg,ut));
+            if (ut > 0){
+                if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
+                    var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
+                    $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }
+            }
+        }
+    }).keypress(function( event ) {
+        if (event.which == 13) {
+            event.preventDefault();
+            $("input[name='respuesta_uterina_izquierda']").focus();
+        }
+    });
+    $("input[name='respuesta_uterina_izquierda']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ut = $(this).val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("input[name='respuesta_uterina_izquierda_percentil_view']").val(pctUtAdvanced(eg,ut));
+            $("input[name='respuesta_uterina_izquierda_percentil']").val(pctUtAdvanced(eg,ut));
+            if (ut > 0){
+                if ($("input[name='respuesta_uterina_derecha']").val() > 0){
+                    var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_derecha']").val())) / 2;
+                    $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }
+            }
+        }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {event.preventDefault();$("input[name='respuesta_translucencia_nucal']").focus();}
+    });
+    $("input[name='respuesta_uterinas']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ut = $(this).val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("input[name='respuesta_uterinas_promedio']").val(pctUtAdvanced(eg,ut));
+        }
+    });
+    $('input[name="respuesta_lcn"]').on("change", function(){ 
+        eglcn();
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {event.preventDefault(); $("input[name='respuesta_uterina_derecha']").focus();}
+    });
+    $("select[name='respuesta_anatomia']").on("change", function(){
+        if ($(this).val() == "hallazgos ecográficos compatibles con:"){$("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");}else{$("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");}
+    });
+    $("input[name='respuesta_em']").val($('#interconsulta\\.respuesta\\.crecimiento').data("em"));
+    $("input[name='respuesta_pm']").val($('#interconsulta\\.respuesta\\.crecimiento').data("pm"));
+    $("input[name='respuesta_imc']").val($('#interconsulta\\.respuesta\\.crecimiento').data("imc"));
+}
+function ginecologica(){
+    let html = '<div id="ginecologica"><div class="row m-0 p-2"><div class="col-12"><h6 class="text-primary">Datos a completar por el examinador</h6></div><div class="col-8 border rounded p-3"><div class="row"><div class="col-6 form-group"><label>Útero</label><input type="text" class="form-control" name="respuesta_utero_ginecologica"></div><div class="col-6 form-group"><label>Endometrio</label><input type="text" class="form-control" name="respuesta_endometrio"></div><div class="col-6 form-group"><label>Anexo Izquierdo</label><input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"></div><div class="col-6 form-group"><label>Anexo Derecho</label><input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"></div><div class="col-6 form-group"><label>Ovario Izquierdo</label><input type="text" class="form-control" name="respuesta_ovario_izquierdo"></div><div class="col-6 form-group"><label>Ovario Derecho</label><input type="text" class="form-control" name="respuesta_ovario_derecho"></div><div class="col-6 form-group"><label>Douglas</label><input type="text" class="form-control" name="respuesta_douglas_ginecologica"></div></div></div><div class="col-4"><div class="border rounded px-3 pt-3 mb-5"><img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios" class="img-fluid d-block mx-auto w-75"></div><div class="border rounded px-3 pt-3 mb-5"><p>Documentación de informe cuando ecográficamente no se observan signos de embarazo.</p></div><div class="border rounded text-center"><div role="group" aria-label="Basic example" class="btn-group text-center"><button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar</button></div></div></div></div></div>';
+    document.getElementById("contenedor.examenes").innerHTML(html);
+
+    $("#enviar\\.respuesta\\.botton\\.espejo").on("click", function(){$("#enviar\\.respuesta\\.botton").trigger("click");});
+    $("#ver\\.interconsulta\\.eliminar\\.espejo").on("click", function(){$("#ver\\.interconsulta\\.eliminar").trigger("click");});
+    $("#ver\\.interconsulta\\.cerrar\\.espejo").on("click", function(){$("#ver\\.interconsulta").modal("hide");});
+}
+function segundoTrimestre(){
+    let html = '<div id="segundotrimestre"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso_segundo"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col-4 form-group"> <label>Sexo fetal</label> <select class="form-control" name="respuesta_sexo_fetal"> <option value="femenino" selected="">femenino</option> <option value="masculino">masculino</option> <option value="aún no identificado">aún no identificado</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.liquido">Líquido amniótico, cualitativo</label> <select class="form-control" name="respuesta_liquido_amniotico"> <option value="Normal">Normal</option> <option value="Pha leve">PHA leve</option> <option value="Pha severo">PHA severo</option> <option value="Oha leve">OHA leve</option> <option value="Oha severo">OHA severo</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label>Líquido amniótico, semicuantitativo; BVM (mm)</label> <select name="respuesta_bvm" class="form-control"></select> </div><div class="col form-group"> <label>Frecuencia cardiaca fetal (FCF)</label> <select name="respuesta_fcf" class="form-control"></select> </div><div class="col-4 form-group"> <label>Evaluación de anatomía fetal</label> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-12 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col-12"> <p><strong>Biometrías</strong></p></div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">DBP (mm)</label> <input type="text" class="form-control" name="respuesta_dbp"> </div><div class="col form-group"> <label>DOF (mm)</label> <input type="text" class="form-control" name="respuesta_dof"> </div><div class="col form-group"> <label>IC (DBP/DOF) [70%-86%]</label> <input type="text" class="form-control" name="respuesta_ic" disabled> </div></div><div class="row"> <div class="col form-group"> <label>CC (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_cc"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cc_pct"></div></div></div></div><div class="col form-group"> <label>CA (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_ca"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ca_pct"></div></div></div></div><div class="col form-group"> <label>LF (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_lf"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_lf_pct"></div></div></div></div></div><div class="row"> <div class="col-4 py-3 form-group"> <label>Opcionales para estimación tardia de la edad gestacional</label> </div><div class="col-4 form-group"> <label>LH (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_lh"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_lh_pct"></div></div></div></div><div class="col-4 form-group"> <label>Cerebelo (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_cerebelo"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cerebelo_pct"></div></div></div></div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Peso fetal estimado</label> <input type="text" class="form-control" name="respuesta_pfe" disabled> </div><div class="col form-group"> <label for="interconsulta.respuesta.uterinas.percentil">&nbsp;</label> <div class="input-group mb-2"> <div class="input-group-prepend"> <div class="input-group-text">Pct</div></div><input type="text" class="form-control bg-secondary text-white" name="respuesta_pfe_pct" disabled> </div></div><div class="col form-group"> <label>Índice Cc / Ca</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_ccca" disabled> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ccca_pct"></div></div></div></div></div><div class="row"> <div class="col form-group"> <label><strong>Hipótesis diagnóstica</strong></label> <input type="text" class="form-control" name="respuesta_hipotesis"> </div></div></div>';
+    document.getElementById("contenedor.examenes").innerHTML(html);
+
+                        $("input[name='respuesta_dbp']").on("change", function(){
+                            let dbp = $(this).val();
+                            let dbp_ready = false;
+                            let dof = $("input[name='respuesta_dof']").val();
+                            let dof_ready = false;
+                            if (dbp.length > 0){
+                                dbp_ready = isNaN(dbp) == false ? true : false;
+                            }
+                            if (dof.length > 0){
+                                dof_ready = isNaN(dof) == false ? true : false;
+                            }
+                            if (dbp_ready == true && dof_ready == true){
+                                $("input[name='respuesta_ic']").val(ICAdvanced(dbp, dof));
+                                $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
+                            }
+                            else{
+                                $("input[name='respuesta_ic']").val(0);
+                                $("input[name='respuesta_cc']").val(0).trigger("change");
+                            }
+                        });
+                        $("input[name='respuesta_dbp']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_dof']").focus();
+                            }
+                        });
+
+                        cargarBVM("respuesta_bvm");
+                        cargarFCF("respuesta_fcf");
+
+                        $("input[name='respuesta_dof']").on("change", function(){
+                            let dbp = $("input[name='respuesta_dbp']").val();
+                            let dbp_ready = false;
+                            let dof = $(this).val();
+                            let dof_ready = false;
+                            if (dbp.length > 0){
+                                dbp_ready = isNaN(dbp) == false ? true : false;
+                            }
+                            if (dof.length > 0){
+                                dof_ready = isNaN(dof) == false ? true : false;
+                            }
+                            if (dbp_ready == true && dof_ready == true){
+                                $("input[name='respuesta_ic']").val(ICAdvanced(dbp, dof));
+                                $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
+                            }
+                            else{
+                                $("input[name='respuesta_ic']").val(0);
+                                $("input[name='respuesta_cc']").val(0).trigger("change");
+                            }
+                        });
+                        $("input[name='respuesta_dof']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_ca']").focus();
+                            }
+                        });
+                        $("input[name='respuesta_cc']").on("change", function(){
+                            psohdlk();
+                            calCCCA();
+                        });
+                        $("input[name='respuesta_ca']").on("change", function(){
+                            psohdlk();
+                            calCCCA();
+                        });
+                        $("input[name='respuesta_ca']").keypress(function( event ) {
+                            if ( event.which == 13 ) {
+                               event.preventDefault();
+                               $("input[name='respuesta_lf']").focus();
+                            }
+                        });
+                        $("select[name='respuesta_anatomia']").on("change", function(){
+                            if ($(this).val() == "hallazgos ecográficos compatibles con:"){
+                                $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
+                            }
+                            else{
+                                $("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");
+                            }
+                        });
+                        $("input[name='respuesta_pfe']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var pfe = $("input[name='respuesta_pfe']").val();
+            
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+            
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
+                            }
+                        });
+                        $("input[name='respuesta_ccca']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var ccca = $("input[name='respuesta_ccca']").val();
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("#respuesta_ccca_pct").html("Pct. " + pctcccaAdvanced(eg,ccca));
+                            }
+                        });
+                        $("input[name='respuesta_cc']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var cc = $("input[name='respuesta_cc']").val();
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("#respuesta_cc_pct").html("Pct. " + pctccAdvanced(eg,cc));
+                            }
+                        });
+                        $("input[name='respuesta_ca']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var ca = $("input[name='respuesta_ca']").val();
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
+                            }
+                        });
+                        $("input[name='respuesta_lf']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var lf = $("input[name='respuesta_lf']").val();
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
+                            }
+                        });
+                        $("input[name='respuesta_lh']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var lh = $("input[name='respuesta_lh']").val();
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("#respuesta_lh_pct").html("Pct. " + pctlhAdvanced(eg,lh));
+                            }
+                        });
+                        $("input[name='respuesta_cerebelo']").on("change", function(){
+                            var eg = $("#interconsulta\\.respuesta\\.eg").val();
+                            var cerebelo = $("input[name='respuesta_cerebelo']").val();
+                            eg = String(eg);
+                            eg = eg.replace("semanas", "");
+                            if (eg.length > 0){
+                                eg = Math.trunc(parseFloat(eg));
+                                $("#respuesta_cerebelo_pct").html("Pct. " + pctcerebeloAdvanced(eg,cerebelo));
+                            }
+                        });
+}
+function primerTrimerstre(){
+    let html = '<div id="primertrimestre"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">útero</label> <select class="form-control" name="respuesta_utero_primertrimestre"> <option value="central anterior" selected>central anterior</option> <option value="central posterior">central posterior</option> <option value="lateralizado a la Izquierda">lateralizado a la Izquierda</option> <option value="lateralizado a la Derecha">lateralizado a la Derecha</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Saco gestacional</label> <select class="form-control" name="respuesta_saco_gestacional"> <option value="normal" selected>normal</option> <option value="no se observa">no se observa</option> <option value="multiple">multiple</option> <option value="con pseudosaco">con pseudosaco</option> <option value="con dpmto. parcial">con dpmto. parcial</option> </select> </div><div class="col-3 form-group"> <label>Promedio saco gestacional</label> <input type="text" class="form-control" name="respuesta_saco"> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Embrión</label> <select class="form-control" name="respuesta_embrion"> <option value="no se observa aun">no se observa aun</option> <option value="act. no evidenciabl">act. no evidenciable</option> <option value="act. card. inicial">act. card. inicial</option> <option value="con act. cardiaca (+)" selected>con act. cardiaca (+)</option> <option value="act. card. y corp. (+)">act. card. y corp. (+)</option> <option value="act. card. y corp. (-)">act. card. y corp. (-)</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Largo Embrionatio Máximo (LEM)</label> <input type="text" class="form-control" name="respuesta_lcn"> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">Eg. x LEM</label> <input type="text" class="form-control" name="respuesta_lcn_eg" disabled> </div></div><div class="row"> <div class="col form-group"> <label>&nbsp;</label> <input type="text" class="form-control bg-white" value="Fechas determinadas según biometría embrionaria (LEM)" disabled> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">FUR Operacional</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_furop" disabled> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">FPP actualizada</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_fppactualizada" disabled> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label> <select class="form-control" name="respuesta_anexo_izquierdo_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label> <select class="form-control" name="respuesta_anexo_derecho_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div></div><div class="row"> <div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista">Douglas</label> <select class="form-control" name="respuesta_douglas_primertrimestre"> <option value="libre" selected>libre</option> <option value="ocupado">ocupado</option> </select> </div></div></div>';
+    document.getElementById("contenedor.examenes").innerHTML(html);
+    $("input[name='respuesta_lcn']").on("change", function(){eglcn();});
+}
+function multiproposito(){
+    let html = '<div id="multiproposito"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col-4 form-group"> <label>Sexo fetal</label> <select class="form-control" name="respuesta_sexo_fetal"> <option value="femenino" selected>femenino</option> <option value="masculino">masculino</option> <option value="aún no identificado">aún no identificado</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.liquido">Líquido amniótico, cualitativo</label> <select class="form-control" name="respuesta_liquido"> <option value="Normal">Normal</option> <option value="Pha leve">PHA leve</option> <option value="Pha severo">PHA severo</option> <option value="Oha leve">OHA leve</option> <option value="Oha severo">OHA severo</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label>Líquido amniótico, semicuantitativo; BVM (mm)</label> <select type="text" class="form-control" name="respuesta_bvm"></select> </div><div class="col form-group"> <label>Fecuencia cardiaca fetal (FCF)</label> <select name="respuesta_fcf" class="form-control"></select> </div><div class="col-4 form-group"> <label>Evaluación de anatomía fetal</label> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-12 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col-6"> <div class="row"> <div class="col-12"><strong>A.- Biometría fetales:</strong></div><div class="col-6 form-group"> <label>DBP (mm)</label> <input type="text" class="form-control" name="respuesta_dbp"> </div><div class="col-6 form-group"> <label>DOF (mm)</label> <input type="text" class="form-control" name="respuesta_dof"> </div><div class="col-12 form-group"> <label>CC (mm)</label> <input type="text" class="form-control" name="respuesta_cc"> </div><div class="col-12 form-group"> <label>CA (mm)</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_ca"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ca_pct"></div></div></div></div><div class="col-12 form-group"> <label>LF (mm)</label> <input type="text" class="form-control" name="respuesta_lf"> </div><div class="col-6 form-group"> <label>Peso fetal estimado (PFE) en gramos</label> <input type="number" class="form-control" name="respuesta_pfe" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control bg-secondary text-white" name="respuesta_pfe_pct" disabled> </div></div><div class="col-6 form-group"> <label>Relación cráneo/abdomen ( Índice Cc/Ca )</label> <input type="text" class="form-control" name="respuesta_ccca" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control" name="respuesta_ccca_pct" disabled> </div></div></div></div><div class="col-6"> <div class="row"> <div class="col-12"><strong>B.- Flujometría Doppler materno / fetal</strong></div><div class="col-12 form-group"> <label>IP. Uterina derecha</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_derecha"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_derecha_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Uterina izquierda</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_izquierda_percentil"></div></div></div></div><div class="col-6 form-group"> <label>IP. Uterinas promedio</label> <input type="text" class="form-control" name="respuesta_uterinas" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_uterinas_percentil"></div></div></div><div class="col-12 form-group"> <label>IP. Arteria umbilical</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_umbilical"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_umbilical_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Cerebral media</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_cm"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cm_percentil"> </div></div></div></div><div class="col-6 form-group"> <label>IP Cm/Au (Índice cerebro placentario ICP)</label> <input type="text" class="form-control" name="respuesta_cmau" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_cmau_percentil"></div></div></div></div></div></div><div class="row"> <div class="col-12"> <p class="mb-0"><strong>C.- Análisis preliminar de datos ecográficos (Biometría y flujometría)</strong></p></div><div class="col-4 form-group bg-secondary pb-2 mb-2 text-white"> <label>Crecimiento fetal ( PFE )</label> <select class="form-control" name="respuesta_hipotesis"> <option value="Disminuido < p3">Disminuido < p3</option> <option value="Disminuido < p10">Disminuido < p10</option> <option value="Normal p10 - p 25">Normal p10 - p 25</option> <option value="Normal p26 - p 75" selected>Normal p26 - p 75</option> <option value="Normal p76 - p90">Normal p76 - p90</option> <option value="Grande >p90">Grande >p90</option> <option value="Grande >p97">Grande >p97</option> </select> </div><div class="col form-group bg-secondary pb-2 mb-2 text-white"> <label>Doppler materno ( IP Uterinas )</label> <select class="form-control" name="respuesta_doppler_materno"> <option value="no evaluado">No evaluado</option> <option value="Normal (< p95)" selected>Normal (&lt; p95)</option> <option value="Alterado (> p95)">Alterado (&gt; p95)</option> </select> </div><div class="col-5 form-group bg-secondary pb-2 mb-2 text-white"> <label>Doppler fetal ( IP UMB, ACM e ICP )</label> <select class="form-control" name="respuesta_doppler_fetal"> <option value="No evaluado">No evaluado</option> <option value="Normal (UMB, ACM, ICP)" selected>Normal (UMB, ACM e ICP)</option> <option value="Alterado, ICP < pct 5">Alterado, ICP &lt; pct 5</option> <option value="Alterado ICP < pct 5 y UMB > pct 95">Alterado ICP &lt; pct 5 y UMB &gt; pct 95</option> <option value="Alterado ccp < pct 5 acm < pct 5">Alterado ICP &lt; pct 5 ACM &lt; pct 5</option> <option value="Alt. ICP < pct 5 y ACM < pct 5 + UMB > p95">Alt. ICP &lt; pct 5 y ACM &lt; pct 5 + UMB &gt; p95</option> </select> </div></div></div>';
+    document.getElementById("contenedor.examenes").innerHTML(html);
+    
+    cargarBVM("respuesta_bvm");
+    cargarFCF("respuesta_fcf");
+
+    $("input[name='respuesta_uterina_derecha']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ut = $(this).val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("#respuesta_uterina_derecha_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
+            if (ut > 0){
+                if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
+                    var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
+                    $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }
+            }
+        }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_uterina_izquierda']").focus();
+        }
+    });
+
+    $("input[name='respuesta_uterina_izquierda']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ut = $(this).val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("#respuesta_uterina_izquierda_percentil").html("Pct. " + pctUtAdvanced(eg,ut));
+
+            if (ut > 0){
+                if ($("input[name='respuesta_uterina_derecha']").val() > 0){
+                    var promedio = (parseFloat($("input[name='respuesta_uterina_derecha']").val()) + parseFloat(ut)) / 2;
+                    $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }
+            }
+        }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_umbilical']").focus();
+        }
+    });
+    $("input[name='respuesta_uterinas']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ut = $("input[name='respuesta_uterinas']").val();
+
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut));
+        }
+    });
+    $("input[name='respuesta_pfe']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var pfe = $("input[name='respuesta_pfe']").val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
+
+        }
+    });
+    $("input[name='respuesta_dbp']").on("change", function(){
+        let dbp = $(this).val();
+        let dbp_ready = false;
+        let dof = $("input[name='respuesta_dof']").val();
+        let dof_ready = false;
+        if (dbp.length > 0){
+            dbp_ready = isNaN(dbp) == false ? true : false;
+        }
+        if (dof.length > 0){
+            dof_ready = isNaN(dof) == false ? true : false;
+        }
+        if (dbp_ready == true && dof_ready == true){
+            $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
+        }
+        else{
+            $("input[name='respuesta_cc']").val(0).trigger("change");
+        }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_cc']").focus();
+        }
+    });
+
+    $("input[name='respuesta_dof']").on("change", function(){
+        let dbp = $("input[name='respuesta_dbp']").val();
+        let dbp_ready = false;
+        let dof = $(this).val();
+        let dof_ready = false;
+        if (dbp.length > 0){
+            dbp_ready = isNaN(dbp) == false ? true : false;
+        }
+        if (dof.length > 0){
+            dof_ready = isNaN(dof) == false ? true : false;
+        }
+        if (dbp_ready == true && dof_ready == true){
+            $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
+        }
+        else{
+            $("input[name='respuesta_cc']").val(0).trigger("change");
+        }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_cc']").focus();
+        }
+    });
+
+    $("input[name='respuesta_cc']").on("change", function(){
+        psohdlk();
+        calCCCA();
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_ca']").focus();
+        }
+    });
+    $("input[name='respuesta_ca']").on("change", function(){
+        psohdlk();
+        calCCCA();
+
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ca = $("input[name='respuesta_ca']").val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("#respuesta_ca_pct").html("Pct. " + pctcaAdvanced(eg,ca));
+        }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_lf']").focus();
+        }
+    });
+    $("input[name='respuesta_lf']").keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_uterina_derecha']").focus();
+        }
+    });
+    $("input[name='respuesta_ccca']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var ccca = $("input[name='respuesta_ccca']").val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
+        }
+    });
+    $("select[name='respuesta_anatomia']").on("change", function(){
+        if ($(this).val() == "hallazgos ecográficos compatibles con:"){
+            $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
+        }
+        else{
+            $("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");
+        }
+    });
+    $("input[name='respuesta_cm']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var acm = $("input[name='respuesta_cm']").val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("#respuesta_cm_percentil").html("Pct. " + pctacmAdvanced(eg,acm));
+        }
+        if (acm > 0){
+            if ($("input[name='respuesta_umbilical']").val() > 0){
+                var ccp = (acm / $("input[name='respuesta_umbilical']").val());
+                $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");
+            }
+        }
+    });
+    $("input[name='respuesta_umbilical']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var aumb = $("input[name='respuesta_umbilical']").val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("#respuesta_umbilical_percentil").html("Pct. " + pctauAdvanced(eg,aumb));
+        }
+        if ($("input[name='respuesta_cm']").val() > 0){
+            if ($("input[name='respuesta_umbilical']").val() > 0){
+                var ccp = ($("input[name='respuesta_cm']").val() / $("input[name='respuesta_umbilical']").val());
+                $("input[name='respuesta_cmau']").val(ccp.toFixed(2)).trigger("change");                      
+            }
+        }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_cm']").focus();
+        }
+    });
+    $("input[name='respuesta_cmau']").on("change", function(){
+        var eg = $("#interconsulta\\.respuesta\\.eg").val();
+        var cmau = $("input[name='respuesta_cmau']").val();
+        eg = String(eg);
+        eg = eg.replace("semanas", "");
+        if (eg.length > 0){
+            eg = Math.trunc(parseFloat(eg));
+            $("#respuesta_cmau_percentil").html(pctcmauAdvanced(eg,cmau));
+        }
+    });
+}
+
+function cargarBVM(input){
+    let bvmSelect = document.getElementsByName(input)[0];
+    let opt = document.createElement('option');
+    opt.appendChild(document.createTextNode("< 10"));
+    opt.value = "< 10"; 
+    bvmSelect.appendChild(opt);
+    for (var i = 10; i < 161; i++) {
+        let opt = document.createElement('option');
+        opt.appendChild(document.createTextNode(i));
+        opt.value = i; 
+        bvmSelect.appendChild(opt); 
+    }
+    opt = document.createElement('option');
+    opt.appendChild( document.createTextNode("> 160") );
+    opt.value = "> 160"; 
+    bvmSelect.appendChild(opt);
+}
+
+function cargarFCF(input){
+    let fcfSelect = document.getElementsByName(input)[0];
+    opt = document.createElement('option');
+    opt.appendChild(document.createTextNode("(+) inicial"));
+    opt.value = "(+) inicial"; 
+    fcfSelect.appendChild(opt);
+    opt = document.createElement('option');
+    opt.appendChild(document.createTextNode("< 90"));
+    opt.value = "< 90"; 
+    fcfSelect.appendChild(opt);
+    for (var i = 90; i < 161; i++) {
+        let opt = document.createElement('option');
+        opt.appendChild(document.createTextNode(i));
+        opt.value = i; 
+        fcfSelect.appendChild(opt); 
+    }
+    opt = document.createElement('option');
+    opt.appendChild( document.createTextNode("> 170") );
+    opt.value = "> 170"; 
+    fcfSelect.appendChild(opt);
+}
+
 ///primitivas a estandarizar
 function loadOptionEdadMaterta(input){
     let años = document.getElementById(input);
@@ -1992,7 +1494,6 @@ function calcularEdadGestacional(FUM, fExamen){
     _fExamen.setTime(Date.parse(document.getElementById(fExamen).value)).getTime();
 
     let diff = _fExamen - _FUM;
-
     if (diff > 0){
         let dias = diff/(1000*60*60*24);
         let semanas = Math.trunc(dias / 7);
