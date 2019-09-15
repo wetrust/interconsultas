@@ -41,7 +41,7 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h4 style="border-bottom:2px double #000;text-align: center;">PROTOCOLO PARA REFERENCIA Y CONTRARREFERENCIA DE EXÁMENES ECOGRÁFICOS Y FLUJOMETRÍA DOPPLER</h4>';
+    $html = '<h4 style="border-bottom:1px solid #000;text-align: center;">PROTOCOLO PARA REFERENCIA Y CONTRARREFERENCIA DE EXÁMENES ECOGRÁFICOS Y FLUJOMETRÍA DOPPLER</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
@@ -121,7 +121,7 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Líquido amniótico</td><td>Líquido: '.htmlentities($this->solicitud_resultado->liquido).'</td><td>BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
+    $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->solicitud_resultado->anatomia_fetal)." ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
