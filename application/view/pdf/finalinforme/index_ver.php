@@ -45,7 +45,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
-    $html = '<h3 style="color:#0275d8;"><em>Datos de referencia para evaluación ecográfica.</em></h3>';
+    $html = '<p style="color:#0275d8;"><em>Datos de referencia para evaluación ecográfica.</em></p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     if (Session::get("user_account_type") == 4) {
@@ -109,7 +109,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h3 style="color:#0275d8;"><em>Resumen examen ecográfico y flujometría Doppler materno / fetal.</em></h3>';
+    $html = '<p style="color:#0275d8;"><em>Resumen examen ecográfico y flujometría Doppler materno / fetal.</em></p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
