@@ -108,69 +108,64 @@ function loadInProcessData(data){
             }
 
             if (tipoExm == 4){
-                args = {
-                    respuesta_anatomia: $('select[name="respuesta_anatomia"]').val(),
-                    respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
-                    respuesta_embrion: $('select[name="respuesta_embrion"]').val(),
-                    respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
-                    respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
-                    respuesta_fcf: $('select[name="respuesta_fcf"]').val(),
-                    respuesta_cc: $('select[name="respuesta_hueso_nasal"]').val(),
-                    respuesta_ca: $('select[name="respuesta_ca"]').val(),
-                    respuesta_lf: $('select[name="respuesta_lf"]').val(),
-                    respuesta_dbp: $('select[name="respuesta_dbp"]').val(),
-                    respuesta_translucencia_nucal: $('input[name="respuesta_translucencia_nucal"]').val(),
-                    respuesta_hueso_nasal_valor: $('input[name="respuesta_hueso_nasal_valor"]').val(),
-                    respuesta_uterina_derecha: $('input[name="respuesta_uterina_derecha"]').val(),
-                    respuesta_uterina_derecha_percentil: $('input[name="respuesta_uterina_derecha_percentil"]').val(),
-                    respuesta_uterina_izquierda: $('input[name="respuesta_uterina_izquierda"]').val(),
-                    respuesta_uterina_izquierda_percentil: $('input[name="respuesta_uterina_izquierda_percentil"]').val(),
-                    respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
-                    respuesta_uterinas_percentil: $('input[name="respuesta_uterinas_promedio"]').val()
-                }
+                args.respuesta_anatomia = $('select[name="respuesta_anatomia"]').val(),
+                args.respuesta_anatomia_extra = $('input[name="respuesta_anatomia_extra"]').val(),
+                args.respuesta_embrion = $('select[name="respuesta_embrion"]').val(),
+                args.respuesta_lcn = $('input[name="respuesta_lcn"]').val(),
+                args.respuesta_lcn_eg = $('input[name="respuesta_lcn_eg"]').val(),
+                args.respuesta_fcf = $('select[name="respuesta_fcf"]').val(),
+                args.respuesta_cc = $('select[name="respuesta_hueso_nasal"]').val(),
+                args.respuesta_ca = $('select[name="respuesta_ca"]').val(),
+                args.respuesta_lf = $('select[name="respuesta_lf"]').val(),
+                args.respuesta_dbp = $('select[name="respuesta_dbp"]').val(),
+                args.respuesta_translucencia_nucal = $('input[name="respuesta_translucencia_nucal"]').val(),
+                args.respuesta_hueso_nasal_valor = $('input[name="respuesta_hueso_nasal_valor"]').val(),
+                args.respuesta_uterina_derecha = $('input[name="respuesta_uterina_derecha"]').val(),
+                args.respuesta_uterina_derecha_percentil = $('input[name="respuesta_uterina_derecha_percentil"]').val(),
+                args.respuesta_uterina_izquierda = $('input[name="respuesta_uterina_izquierda"]').val(),
+                args.respuesta_uterina_izquierda_percentil = $('input[name="respuesta_uterina_izquierda_percentil"]').val(),
+                args.respuesta_uterinas = $('input[name="respuesta_uterinas"]').val(),
+                args.respuesta_uterinas_percentil = $('input[name="respuesta_uterinas_promedio"]').val()
             }
             else if (tipoExm == 3){
-                args = {
-                    respuesta_utero_ginecologica: $('input[name="respuesta_utero_ginecologica"]').val(),
-                    respuesta_anexo_izquierdo_ginecologica: $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
-                    respuesta_anexo_derecho_ginecologica: $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
-                    respuesta_ovario_izquierdo: $('input[name="respuesta_ovario_izquierdo"]').val(),
-                    respuesta_ovario_derecho: $('input[name="respuesta_ovario_derecho"]').val(),
-                    respuesta_douglas_ginecologica: $('input[name="respuesta_douglas_ginecologica"]').val(),
-                    respuesta_endometrio: $('input[name="respuesta_endometrio"]').val()
-                }
+                args.respuesta_utero_ginecologica = $('input[name="respuesta_utero_ginecologica"]').val(),
+                args.respuesta_anexo_izquierdo_ginecologica = $('input[name="respuesta_anexo_izquierdo_ginecologica"]').val(),
+                args.respuesta_anexo_derecho_ginecologica = $('input[name="respuesta_anexo_derecho_ginecologica"]').val(),
+                args.respuesta_ovario_izquierdo = $('input[name="respuesta_ovario_izquierdo"]').val(),
+                args.respuesta_ovario_derecho = $('input[name="respuesta_ovario_derecho"]').val(),
+                args.respuesta_douglas_ginecologica = $('input[name="respuesta_douglas_ginecologica"]').val(),
+                args.respuesta_endometrio = $('input[name="respuesta_endometrio"]').val()
             }
             else if (tipoExm == 2){
-                args = {
-                    respuesta_placenta: $('select[name="respuesta_placenta"]').val(),
-                    respuesta_placenta_insercion: $('select[name="respuesta_placenta_insercion"]').val(),
-                    respuesta_liquido_amniotico: $('select[name="respuesta_liquido_amniotico"] option:selected').val(),
-                    respuesta_dbp: $('input[name="respuesta_dbp"]').val(),
-                    respuesta_cc: $('input[name="respuesta_cc"]').val(),
-                    respuesta_cc_pct: $('#respuesta_cc_pct').html(),
-                    respuesta_ca: $('input[name="respuesta_ca"]').val(),
-                    respuesta_ca_pct: $('#respuesta_ca_pct').html(),
-                    respuesta_lf: $('input[name="respuesta_lf"]').val(),
-                    respuesta_lf_pct: $('#respuesta_lf_pct').html(),
-                    respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
-                    respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
-                    respuesta_presentacion: $('select[name="respuesta_presentacion"]').val(),
-                    respuesta_dorso_segundo: $('select[name="respuesta_dorso_segundo"]').val(),
-                    respuesta_anatomia: $('select[name="respuesta_anatomia"]').val(),
-                    respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
-                    respuesta_pfe_pct: $('input[name="respuesta_pfe_pct"]').val(),
-                    respuesta_ccca_pct: $('#respuesta_ccca_pct').html(),
-                    respuesta_hipotesis: $('input[name="respuesta_hipotesis"]').val(),
-                    respuesta_dof: $('input[name="respuesta_dof"]').val(),
-                    respuesta_ic: $('input[name="respuesta_ic"]').val(),
-                    respuesta_bvm: $('select[name="respuesta_bvm"]').val(),
-                    respuesta_lh: $('input[name="respuesta_lh"]').val(),
-                    respuesta_lh_pct: $('#respuesta_lh_pct').html(),
-                    respuesta_cerebelo: $('input[name="respuesta_cerebelo"]').val(),
-                    respuesta_cerebelo_pct: $('#respuesta_cerebelo_pct').html(),
-                    respuesta_sexo_fetal: $('select[name="respuesta_sexo_fetal"]').val(),
-                    respuesta_fcf: $('select[name="respuesta_fcf"]').val()
-                }
+                args.respuesta_placenta = $('select[name="respuesta_placenta"]').val(),
+                args.respuesta_placenta_insercion = $('select[name="respuesta_placenta_insercion"]').val(),
+                args.respuesta_liquido_amniotico = $('select[name="respuesta_liquido_amniotico"] option =selected').val(),
+                args.respuesta_dbp = $('input[name="respuesta_dbp"]').val(),
+                args.respuesta_cc = $('input[name="respuesta_cc"]').val(),
+                args.respuesta_cc_pct = $('#respuesta_cc_pct').html(),
+                args.respuesta_ca = $('input[name="respuesta_ca"]').val(),
+                args.respuesta_ca_pct = $('#respuesta_ca_pct').html(),
+                args.respuesta_lf = $('input[name="respuesta_lf"]').val(),
+                args.respuesta_lf_pct = $('#respuesta_lf_pct').html(),
+                args.respuesta_pfe = $('input[name="respuesta_pfe"]').val(),
+                args.respuesta_ccca = $('input[name="respuesta_ccca"]').val(),
+                args.respuesta_presentacion = $('select[name="respuesta_presentacion"]').val(),
+                args.respuesta_dorso_segundo = $('select[name="respuesta_dorso_segundo"]').val(),
+                args.respuesta_anatomia = $('select[name="respuesta_anatomia"]').val(),
+                args.respuesta_anatomia_extra = $('input[name="respuesta_anatomia_extra"]').val(),
+                args.respuesta_pfe_pct = $('input[name="respuesta_pfe_pct"]').val(),
+                args.respuesta_ccca_pct = $('#respuesta_ccca_pct').html(),
+                args.respuesta_hipotesis = $('input[name="respuesta_hipotesis"]').val(),
+                args.respuesta_dof = $('input[name="respuesta_dof"]').val(),
+                args.respuesta_ic = $('input[name="respuesta_ic"]').val(),
+                args.respuesta_bvm = $('select[name="respuesta_bvm"]').val(),
+                args.respuesta_lh = $('input[name="respuesta_lh"]').val(),
+                args.respuesta_lh_pct = $('#respuesta_lh_pct').html(),
+                args.respuesta_cerebelo = $('input[name="respuesta_cerebelo"]').val(),
+                args.respuesta_cerebelo_pct = $('#respuesta_cerebelo_pct').html(),
+                args.respuesta_sexo_fetal = $('select[name="respuesta_sexo_fetal"]').val(),
+                args.respuesta_fcf = $('select[name="respuesta_fcf"]').val()
+
                 args.respuesta_lf_pct = args.respuesta_lf_pct.replace("Pct. ", "");
                 args.respuesta_cc_pct = args.respuesta_cc_pct.replace("Pct. ", "");
                 args.respuesta_ca_pct = args.respuesta_ca_pct.replace("Pct. ", "");
@@ -179,58 +174,55 @@ function loadInProcessData(data){
                 args.respuesta_cerebelo_pct = args.respuesta_cerebelo_pct.replace("Pct. ", "");
             }
             else if (tipoExm == 1){
-                args = {
-                    respuesta_utero_primertrimestre: $('select[name="respuesta_utero_primertrimestre"]').val(),
-                    respuesta_saco_gestacional: $('select[name="respuesta_saco_gestacional"]').val(),
-                    respuesta_saco : $('input[name="respuesta_saco"]').val(),
-                    respuesta_embrion: $('select[name="respuesta_embrion"]').val(),
-                    respuesta_lcn: $('input[name="respuesta_lcn"]').val(),
-                    respuesta_lcn_eg: $('input[name="respuesta_lcn_eg"]').val(),
-                    respuesta_anexo_izquierdo_primertrimestre: $('select[name="respuesta_anexo_izquierdo_primertrimestre"]').val(),
-                    respuesta_anexo_derecho_primertrimestre: $('select[name="respuesta_anexo_derecho_primertrimestre"]').val(),
-                    respuesta_douglas_primertrimestre: $('select[name="respuesta_douglas_primertrimestre"]').val()
-                }
+                args.respuesta_utero_primertrimestre = $('select[name="respuesta_utero_primertrimestre"]').val(),
+                args.respuesta_saco_gestacional = $('select[name="respuesta_saco_gestacional"]').val(),
+                args.respuesta_saco  = $('input[name="respuesta_saco"]').val(),
+                args.respuesta_embrion = $('select[name="respuesta_embrion"]').val(),
+                args.respuesta_lcn = $('input[name="respuesta_lcn"]').val(),
+                args.respuesta_lcn_eg = $('input[name="respuesta_lcn_eg"]').val(),
+                args.respuesta_anexo_izquierdo_primertrimestre = $('select[name="respuesta_anexo_izquierdo_primertrimestre"]').val(),
+                args.respuesta_anexo_derecho_primertrimestre = $('select[name="respuesta_anexo_derecho_primertrimestre"]').val(),
+                args.respuesta_douglas_primertrimestre = $('select[name="respuesta_douglas_primertrimestre"]').val()
             }
             else{
-                args = {
-                    respuesta_pfe: $('input[name="respuesta_pfe"]').val(),
-                    respuesta_pfe_pct: $('input[name="respuesta_pfe_pct"]').val(),
-                    respuesta_liquido: $('select[name="respuesta_liquido"] option:selected').val(),
-                    respuesta_presentacion: $('select[name="respuesta_presentacion"]').val(),
-                    respuesta_dorso: $('select[name="respuesta_dorso"] option:selected').val(),
-                    respuesta_placenta: $('select[name="respuesta_placenta"]').val(),
-                    respuesta_placenta_insercion: $('select[name="respuesta_placenta_insercion"]').val(),
-                    respuesta_uterina_derecha: $('input[name="respuesta_uterina_derecha"]').val(),
-                    respuesta_uterina_derecha_percentil: $('#respuesta_uterina_derecha_percentil').html(),
-                    respuesta_uterina_izquierda: $('input[name="respuesta_uterina_izquierda"]').val(),
-                    respuesta_uterina_izquierda_percentil: $('#respuesta_uterina_izquierda_percentil').html(),
-                    respuesta_uterinas: $('input[name="respuesta_uterinas"]').val(),
-                    respuesta_uterinas_percentil: $('#respuesta_uterinas_percentil').html(),
-                    respuesta_umbilical: $('input[name="respuesta_umbilical"]').val(),
-                    respuesta_umbilical_percentil: $('#respuesta_umbilical_percentil').html(),
-                    respuesta_cm: $('input[name="respuesta_cm"]').val(),
-                    respuesta_cm_percentil: $('#respuesta_cm_percentil').html(),
-                    respuesta_cmau: $('input[name="respuesta_cmau"]').val(),
-                    respuesta_cmau_percentil: $('#respuesta_cmau_percentil').html(),
-                    respuesta_hipotesis: $('select[name="respuesta_hipotesis"]').val(),
-                    respuesta_doppler_materno: $('select[name="respuesta_doppler_materno"]').val(),
-                    respuesta_doppler_fetal:  $('select[name="respuesta_doppler_fetal"]').val(),
-                    respuesta_anatomia:  $('select[name="respuesta_anatomia"]').val(),
-                    respuesta_anatomia_extra: $('input[name="respuesta_anatomia_extra"]').val(),
-                    respuesta_dbp: $('input[name="respuesta_dbp"]').val(),
-                    respuesta_cc: $('input[name="respuesta_cc"]').val(),
-                    respuesta_cc_pct: $('#respuesta_cc_pct').html(),
-                    respuesta_ca: $('input[name="respuesta_ca"]').val(),
-                    respuesta_ca_pct: $('#respuesta_ca_pct').html(),
-                    respuesta_lf: $('input[name="respuesta_lf"]').val(),
-                    respuesta_lf_pct: $('#respuesta_lf_pct').html(),
-                    respuesta_bvm: $('select[name="respuesta_bvm"]').val(),
-                    respuesta_ccca: $('input[name="respuesta_ccca"]').val(),
-                    respuesta_ccca_pct: $('input[name="respuesta_ccca_pct"]').val(),
-                    respuesta_sexo_fetal: $('select[name="respuesta_sexo_fetal"]').val(),
-                    respuesta_dof: $('select[name="respuesta_dof"]').val(),
-                    respuesta_fcf: $('select[name="respuesta_fcf"]').val()
-                }
+                args.respuesta_pfe = $('input[name="respuesta_pfe"]').val(),
+                args.respuesta_pfe_pct = $('input[name="respuesta_pfe_pct"]').val(),
+                args.respuesta_liquido = $('select[name="respuesta_liquido"] option =selected').val(),
+                args.respuesta_presentacion = $('select[name="respuesta_presentacion"]').val(),
+                args.respuesta_dorso = $('select[name="respuesta_dorso"] option =selected').val(),
+                args.respuesta_placenta = $('select[name="respuesta_placenta"]').val(),
+                args.respuesta_placenta_insercion = $('select[name="respuesta_placenta_insercion"]').val(),
+                args.respuesta_uterina_derecha = $('input[name="respuesta_uterina_derecha"]').val(),
+                args.respuesta_uterina_derecha_percentil = $('#respuesta_uterina_derecha_percentil').html(),
+                args.respuesta_uterina_izquierda = $('input[name="respuesta_uterina_izquierda"]').val(),
+                args.respuesta_uterina_izquierda_percentil = $('#respuesta_uterina_izquierda_percentil').html(),
+                args.respuesta_uterinas = $('input[name="respuesta_uterinas"]').val(),
+                args.respuesta_uterinas_percentil = $('#respuesta_uterinas_percentil').html(),
+                args.respuesta_umbilical = $('input[name="respuesta_umbilical"]').val(),
+                args.respuesta_umbilical_percentil = $('#respuesta_umbilical_percentil').html(),
+                args.respuesta_cm = $('input[name="respuesta_cm"]').val(),
+                args.respuesta_cm_percentil = $('#respuesta_cm_percentil').html(),
+                args.respuesta_cmau = $('input[name="respuesta_cmau"]').val(),
+                args.respuesta_cmau_percentil = $('#respuesta_cmau_percentil').html(),
+                args.respuesta_hipotesis = $('select[name="respuesta_hipotesis"]').val(),
+                args.respuesta_doppler_materno = $('select[name="respuesta_doppler_materno"]').val(),
+                args.respuesta_doppler_fetal =  $('select[name="respuesta_doppler_fetal"]').val(),
+                args.respuesta_anatomia =  $('select[name="respuesta_anatomia"]').val(),
+                args.respuesta_anatomia_extra = $('input[name="respuesta_anatomia_extra"]').val(),
+                args.respuesta_dbp = $('input[name="respuesta_dbp"]').val(),
+                args.respuesta_cc = $('input[name="respuesta_cc"]').val(),
+                args.respuesta_cc_pct = $('#respuesta_cc_pct').html(),
+                args.respuesta_ca = $('input[name="respuesta_ca"]').val(),
+                args.respuesta_ca_pct = $('#respuesta_ca_pct').html(),
+                args.respuesta_lf = $('input[name="respuesta_lf"]').val(),
+                args.respuesta_lf_pct = $('#respuesta_lf_pct').html(),
+                args.respuesta_bvm = $('select[name="respuesta_bvm"]').val(),
+                args.respuesta_ccca = $('input[name="respuesta_ccca"]').val(),
+                args.respuesta_ccca_pct = $('input[name="respuesta_ccca_pct"]').val(),
+                args.respuesta_sexo_fetal = $('select[name="respuesta_sexo_fetal"]').val(),
+                args.respuesta_dof = $('select[name="respuesta_dof"]').val(),
+                args.respuesta_fcf = $('select[name="respuesta_fcf"]').val()
+ 
                 args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
                 args.respuesta_uterina_izquierda_percentil = args.respuesta_uterina_izquierda_percentil.replace("Pct. ", "");
                 args.respuesta_ccca_pct = args.respuesta_ccca_pct.replace("Pct. ", "");
@@ -928,7 +920,6 @@ function solicitudModal(data){
         document.getElementById(modalModificar.eg).value = EG.text;
     });
 }
-
 
 //funciones de vista
 function doppleruterinas(){
