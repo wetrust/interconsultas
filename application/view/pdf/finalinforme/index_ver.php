@@ -45,7 +45,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
-    $html = '<h3 style="border-bottom:1px solid #000;color:#0275d8;">A- Formulario de referencia para evaluación ecográfica del crecimiento fetal</h3>';
+    $html = '<h3 style="color:#0275d8;">Datos de referencia para evaluación ecográfica.</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     if (Session::get("user_account_type") == 4) {
@@ -109,7 +109,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h3 style="border-bottom:1px solid #000;color:#0275d8;">B- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h3>';
+    $html = '<h3 style="color:#0275d8;">Resumen examen ecográfico y flujometría Doppler materno / fetal.</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
