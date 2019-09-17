@@ -110,7 +110,7 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Día del ciclo</td><td>: '.htmlentities($this->respuesta_eg).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
+    $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td style="background-color:#f7fafb;"><strong>Útero:</strong></td><td style="background-color:#f7fafb;">'. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
