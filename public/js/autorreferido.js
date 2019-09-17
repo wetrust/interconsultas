@@ -1483,6 +1483,7 @@ function cargarBVM(input){
     opt.appendChild( document.createTextNode("> 160") );
     opt.value = "> 160"; 
     bvmSelect.appendChild(opt);
+    bvmSelect.value = 45
 }
 
 function cargarFCF(input){
@@ -1505,6 +1506,7 @@ function cargarFCF(input){
     opt.appendChild( document.createTextNode("> 170") );
     opt.value = "> 170"; 
     fcfSelect.appendChild(opt);
+    fcfSelect.value = 140;
 }
 
 ///primitivas a estandarizar
