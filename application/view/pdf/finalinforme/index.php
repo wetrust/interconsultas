@@ -133,7 +133,7 @@
     $html = '<table><tbody><tr><td></td><td style="background-color:#f7fafb;">Peso fetal estimado (PFE):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->pfe).' gr.</td><td style="background-color:#f7fafb;">Percentil: '.$this->solicitud_resultado->pfe_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong><em>Flujometría Doppler ***</em></strong></td><td style="background-color:#f7fafb;">IP Promedio uterinas:</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->uterinas).'</td><td style="background-color:#f7fafb;">Percentil: '. $this->solicitud_resultado->uterinas_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Flujometría Doppler ***</em></strong></td><td style="background-color:#f7fafb;">IP Uterinas promedio :</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->uterinas).'</td><td style="background-color:#f7fafb;">Percentil: '. $this->solicitud_resultado->uterinas_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Arteria umbilical (UMB):</td><td>'.htmlentities($this->solicitud_resultado->umbilical).'</td><td>Percentil: '.$this->solicitud_resultado->umbilical_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -143,13 +143,13 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
 
-    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal (PFE): '.htmlentities($this->solicitud_resultado->hipotesis).' *</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal (PFE): '.htmlentities($this->solicitud_resultado->hipotesis).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler: '.htmlentities($this->solicitud_resultado->doppler).' ***</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler: '.htmlentities($this->solicitud_resultado->doppler).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler fetal: '.htmlentities($this->solicitud_resultado->doppler_fetal).' ***</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler fetal: '.htmlentities($this->solicitud_resultado->doppler_fetal).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(8);
 
