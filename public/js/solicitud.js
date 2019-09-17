@@ -111,6 +111,17 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#w").on("change", function(){
+		let value = $(this).val();
+		if (value == ""){
+			$("#j").val("");
+			$("#j").removeClass("d-none");
+		}else{
+			$("#j").val("");
+			$("#j").addClass("d-none");
+		}
+	});
+
 	$("#n").on("keyup", function(e){
 		if ( e.which == 13 ) {
 			e.preventDefault();
