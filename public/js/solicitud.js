@@ -161,7 +161,16 @@ $(document).ready(function(){
 		var edadMaterna = String($('#g').val()); //es obligatoria
 		var ciudad = String($("#h option:selected").val()); //es obligatoria
 		var lugar = String($("#i option:selected").val()); //es obligatoria
-		var diagnostico = String($("#j").val()); //es obligatoria
+
+		// determinar que dice el diagnóstico
+		var diagnostico = "";
+
+		let value = $("#w").val();
+		if (value == ""){
+			diagnostico = String($("#j").val()); //es obligatoria
+		}else{
+			diagnostico = value; //es obligatoria
+		}
 
 		var sistolica = $("#k").val();
 		var diastolica = String($("#l").val());
