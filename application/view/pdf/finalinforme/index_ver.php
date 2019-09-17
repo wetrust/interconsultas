@@ -41,7 +41,7 @@
     $fecha = explode("-", $this->solicitud_resultado->fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h4 style="border-bottom:1px solid #000;text-align: center;">PROTOCOLO PARA REFERENCIA Y CONTRARREFERENCIA DE EXÁMENES ECOGRÁFICOS Y FLUJOMETRÍA DOPPLER</h4>';
+    $html = '<h4 style="border-bottom:1px solid #000;text-align: center;">PROTOCOLO REFERENCIA-CONTRARREFERENCIA PARA EVALUACIÓN ULTRASONOGRÁFICA DEL CRECIMIENTO INTRAUTERINO</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
