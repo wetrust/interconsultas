@@ -231,8 +231,8 @@
                             <a class="text-dark nav-item nav-link active" id="nav-membrete-tab" data-toggle="tab" href="#nav-membrete" role="tab" aria-controls="nav-membrete" aria-selected="true">Membrete</a>
                             <a class="text-dark nav-item nav-link" id="nav-ciudades-tab" data-toggle="tab" href="#nav-ciudades" role="tab" aria-controls="nav-ciudades" aria-selected="false">Ciudades</a>
                             <a class="text-dark nav-item nav-link" id="nav-lugares-tab" data-toggle="tab" href="#nav-lugares" role="tab" aria-controls="nav-lugares" aria-selected="false">Lugares</a>
-                            <a class="text-dark nav-item nav-link" id="nav-lista-tab" data-toggle="tab" href="#nav-lista" role="tab" aria-controls="nav-lista" aria-selected="false">Agenda registro destinatarios</a>
                             <a class="text-dark nav-item nav-link" id="nav-diagnostico-tab" data-toggle="tab" href="#nav-diagnostico" role="tab" aria-controls="nav-diagnostico" aria-selected="false">Diagnóstico de referencia</a>
+                            <a class="text-dark nav-item nav-link" id="nav-lista-tab" data-toggle="tab" href="#nav-lista" role="tab" aria-controls="nav-lista" aria-selected="false">Agenda registro destinatarios</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
