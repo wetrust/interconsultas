@@ -33,7 +33,7 @@ class DiagnosticoModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO lugar (diagnostico_name, user_id) VALUES (:diagnostico_name, :user_id)";
+        $sql = "INSERT INTO diagnostico (diagnostico_name, user_id) VALUES (:diagnostico_name, :user_id)";
         $query = $database->prepare($sql);
         $query->execute(array(':diagnostico_name' => $diagnostico_name, ':user_id' => Session::get('user_id')));
 
