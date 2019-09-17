@@ -165,7 +165,6 @@ $(document).ready(function(){
 		var nombreContrarreferente = String($("#t option:selected").text());
 		var correoContrarreferente = String($("#u").val());
 
-
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
 		
