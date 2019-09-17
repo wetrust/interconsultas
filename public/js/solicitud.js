@@ -198,7 +198,7 @@ $(document).ready(function(){
             if (nombreContrarreferente.length < 3){
                 mensaje = textos.nombreContrarreferente;
             }else if (correoContrarreferente.length < 4){
-				mensaje = textos.correoContrarreferente;
+				mensaje = mensaje = "Seleccione profesional contrarreferente";
 			}
 
             $('body').append(baseModal + '<h5 class="modal-title">' + textos.form_error+ '</h5></div><div class="modal-body"><p>'+ mensaje +'</p>'+ footerModal);
