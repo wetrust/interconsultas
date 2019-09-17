@@ -128,7 +128,8 @@ class PdfController extends Controller
             'respuesta_douglas_ginecologica' => $respuesta->douglas_ginecologica,
             'respuesta_fecha' => $respuesta->fecha,
             'ecografista' => $respuesta->ecografista,
-            'comentariosexamen' => $respuesta->comentariosexamen
+            'comentariosexamen' => $respuesta->comentariosexamen,
+            'respuesta_eg' => $respuesta->eg
         ));
     }
 

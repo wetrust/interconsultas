@@ -257,7 +257,8 @@ class DashboardController extends Controller
                 'respuesta_douglas_ginecologica' => $respuesta_douglas_ginecologica,
                 'respuesta_fecha' => $respuesta_fecha,
                 'ecografista' => $respuesta_ecografista,
-                'comentariosexamen' => $respuesta_comentariosexamen
+                'comentariosexamen' => $respuesta_comentariosexamen,
+                'respuesta_eg' => $respuesta_eg
             ));
 
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud de examen ecografico',$respuesta_crecimiento);
