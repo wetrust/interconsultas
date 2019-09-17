@@ -6,6 +6,7 @@ $(document).ready(function(){
     loadDirectorio();
     loadCiudadesConfiguracion();
     loadLugaresConfiguracion();
+    loadDiagnosticoConfiguracion();
 
     $("#directorio\\.nuevo").on("click", function(){createCarcasaDirectorio();});
     $("#diagnostico\\.nuevo").on("click", function(){createCarcasaDiagnostico();});
