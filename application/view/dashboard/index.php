@@ -232,6 +232,7 @@
                             <a class="text-dark nav-item nav-link" id="nav-ciudades-tab" data-toggle="tab" href="#nav-ciudades" role="tab" aria-controls="nav-ciudades" aria-selected="false">Ciudades</a>
                             <a class="text-dark nav-item nav-link" id="nav-lugares-tab" data-toggle="tab" href="#nav-lugares" role="tab" aria-controls="nav-lugares" aria-selected="false">Lugares</a>
                             <a class="text-dark nav-item nav-link" id="nav-lista-tab" data-toggle="tab" href="#nav-lista" role="tab" aria-controls="nav-lista" aria-selected="false">Agenda registro destinatarios</a>
+                            <a class="text-dark nav-item nav-link" id="nav-diagnostico-tab" data-toggle="tab" href="#nav-diagnostico" role="tab" aria-controls="nav-diagnostico" aria-selected="false">Diagnóstico de referencia</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -304,6 +305,31 @@
                                         <tbody id="tabla.directorio.email"></tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-diagnostico" role="tabpanel" aria-labelledby="nav-diagnostico-tab">
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="btn-group my-2" role="group">
+                                    <button class="btn btn-outline-primary" id="diagnostico.nuevo">Nuevo</button>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <h3 class="text-right my-2">Diagnóstico de referencia</h3>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>id</td>
+                                            <td>Diagóstico</td>
+                                            <td>Opciones</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabla.diagnostico.configuracion">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

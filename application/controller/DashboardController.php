@@ -570,4 +570,14 @@ class DashboardController extends Controller
     public function guardarsolicitud($solicitud_id){
         $this->View->renderJSON(SolicitudesModel::updateSolicitud($solicitud_id));
     }
+
+    public function diagnostico_configuracion(){
+        $this->View->renderJSON(DiagnosticoModel::getAllDiagnosticos());
+    }
+    public function diagnostico_configuracion_delete($id){
+        $this->View->renderJSON(DiagnosticoModel::deleteDiagnostico($id)); 
+    }
+    public function diagnosticoSave(){
+        $this->View->renderJSON(DiagnosticoModel::createDiagnostico(Request::post('diagnostico_name')));
+    }
 }
