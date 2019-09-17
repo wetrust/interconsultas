@@ -34,6 +34,8 @@
     
     $fecha = explode("-", $this->respuesta_fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
+    $solicitud_fecha = explode("-", $this->solicitud_fecha);
+    $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
 
     $html = '<h4 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA GINECOLÓGICA</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
@@ -105,7 +107,7 @@
     $html = '<table><tbody><tr><td><strong>Fecha de exámen:</strong></td><td>'. $fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Día del ciclo</td><td>: '.htmlentities($this->respuesta_eg).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong>Día del ciclo</strong></td><td>: '.htmlentities($this->respuesta_eg).' dias</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td style="background-color:#f7fafb;"><strong>Útero:</strong></td><td style="background-color:#f7fafb;">'. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
