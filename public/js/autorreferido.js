@@ -76,8 +76,16 @@ function loadInProcessData(data){
 
         $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
             let EG = calcularEdadGestacional("interconsulta.fum.copia", "interconsulta.respuesta.fecha");
-            $('#interconsulta\\.respuesta\\.eg').val(EG.text);
-            $("input[name='respuesta_eg']").val(EG.text);
+            let examen = $("#interconsulta\\.respuesta\\.crecimiento").val();
+
+            if (examen == 3){
+                $('#interconsulta\\.respuesta\\.eg').val((EG.semanas *7)+ EG.dias);
+                $("input[name='respuesta_eg']").val((EG.semanas *7)+ EG.dias);
+            }else{
+                $('#interconsulta\\.respuesta\\.eg').val(EG.text);
+                $("input[name='respuesta_eg']").val(EG.text);
+            }
+            
         });
 
         $("#ver\\.interconsulta\\.footer").empty().prepend('<button class="btn btn-primary text-white" id="enviar.respuesta.botton">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar" data-dismiss="modal">Cerrar</button>');
@@ -1056,6 +1064,8 @@ function doppleruterinas(){
 function ginecologica(){
     let html = '<div id="ginecologica"><div class="row m-0 p-2"><div class="col-12"><h6 class="text-primary">Datos a completar por el examinador</h6></div><div class="col-8 border rounded p-3"><div class="row"><div class="col-6 form-group"><label>Útero</label><input type="text" class="form-control" name="respuesta_utero_ginecologica"></div><div class="col-6 form-group"><label>Endometrio</label><input type="text" class="form-control" name="respuesta_endometrio"></div><div class="col-6 form-group"><label>Anexo Izquierdo</label><input type="text" class="form-control" name="respuesta_anexo_izquierdo_ginecologica"></div><div class="col-6 form-group"><label>Anexo Derecho</label><input type="text" class="form-control" name="respuesta_anexo_derecho_ginecologica"></div><div class="col-6 form-group"><label>Ovario Izquierdo</label><input type="text" class="form-control" name="respuesta_ovario_izquierdo"></div><div class="col-6 form-group"><label>Ovario Derecho</label><input type="text" class="form-control" name="respuesta_ovario_derecho"></div><div class="col-6 form-group"><label>Douglas</label><input type="text" class="form-control" name="respuesta_douglas_ginecologica"></div></div></div><div class="col-4"><div class="border rounded px-3 pt-3 mb-5"><img src="imagenes/uteroyovarios.jpg" alt="Utero y ovarios" class="img-fluid d-block mx-auto w-75"></div><div class="border rounded px-3 pt-3 mb-5"><p>Documentación de informe cuando ecográficamente no se observan signos de embarazo.</p></div><div class="border rounded text-center"><div role="group" aria-label="Basic example" class="btn-group text-center"><button class="btn btn-primary text-white" id="enviar.respuesta.botton.espejo">Enviar respuesta</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar.espejo">Eliminar solicitud</button><button type="button" class="btn btn-secondary" id="ver.interconsulta.cerrar.espejo">Cerrar</button></div></div></div></div></div>';
     document.getElementById("contenedor.examenes").innerHTML = html;
+
+    $('#interconsulta\\.respuesta\\.fecha').trigger('change');
 
     $("#enviar\\.respuesta\\.botton\\.espejo").on("click", function(){$("#enviar\\.respuesta\\.botton").trigger("click");});
     $("#ver\\.interconsulta\\.eliminar\\.espejo").on("click", function(){$("#ver\\.interconsulta\\.eliminar").trigger("click");});
