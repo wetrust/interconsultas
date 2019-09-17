@@ -212,3 +212,16 @@ function cargarCiudad(){
         }
     });
 }
+
+function loadDiagnostico(){
+    $.get(_api + 'diagnostico_configuracion').done(function(data){
+        $('#w').empty().append('<option value="">No Seleccionado</option>');
+        if (Object.keys(data).length > 0) {
+            let response = '<option value=""></option>';
+            $.each(data, function(i, value) {
+                response = '<option value="' + value.diagnostico_name +'">' + value.diagnostico_name +'</option>';
+                $('#w').append(response);
+            });
+        }
+    });
+}
