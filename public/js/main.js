@@ -36,6 +36,7 @@ $(document).ready(function(){
 
     cargarCiudad();
     cargarLugar();
+    loadDiagnostico();
     
     $('.btn-group-toggle .btn.interconsulta').on("click", function(){
         let valor = parseInt($(this).find('input').val());
