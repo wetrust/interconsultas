@@ -201,7 +201,7 @@ function createCarcasaLugar(){
     });
 }
 
-function createCarcasaLugar(){
+function createCarcasaDiagnostico(){
     var modal_id, div_id;
 
     modal_id = uuidv4();
