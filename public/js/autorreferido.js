@@ -925,6 +925,7 @@ function solicitudModal(data){
     $("#"+modal.button).on("click", function(){
         let modal =  $(this).data("modal");
         
+        let diagnostico = (document.getElementById(modalModificar.diagnostico).value == "") ? document.getElementById(modalModificar.diagnostico_select).value : document.getElementById(modalModificar.diagnostico).value;
         data = {
             nombre: document.getElementById(modalModificar.nombre).value,
             rut: document.getElementById(modalModificar.rut).value,
@@ -935,12 +936,12 @@ function solicitudModal(data){
             edadMaterna: document.getElementById(modalModificar.edadMaterna).value,
             ciudad: document.getElementById(modalModificar.ciudad).value,
             lugar: document.getElementById(modalModificar.lugar).value,
-            diagnostico: document.getElementById(modalModificar.diagnostico).value
+            diagnostico: diagnostico
         };
 
         $.post("dashboard/guardarsolicitud/" + document.getElementById(modalModificar.solicitud_id).value, data).done(function(){loadInProcess();});
         $('#'+modal).modal("hide");
-    });s
+    });
 
     let id_sol = uuidv4();let _a= uuidv4(); let _b= uuidv4(); let _c= uuidv4(); let _d= uuidv4(); let _e= uuidv4(); let _f= uuidv4(); let _g= uuidv4(); let _h= uuidv4(); let _i= uuidv4(); let _j= uuidv4(); let _w= uuidv4();
     let formulario = '<div class="row"> <input type="hidden" class="form-control" id="'+id_sol+'"> <div class="col form-group"> <label>Nombre del paciente</label> <input type="text" class="form-control" id="'+_a+'"> </div><div class="col form-group"> <label>RUT del paciente</label> <div> <input type="text" class="form-control" id="'+_b+'" disabled> </div></div><div class="col form-group"> <label>Teléfono materno</label> <input type="number" class="form-control" id="'+_c+'"> </div></div><div class="row"> <div class="col-4 form-group btn-animado rounded mb-0 pb-3"> <label><strong>INGRESE FUM REFERIDA</strong></label> <input type="date" class="form-control g-verde text-white" id="'+_d+'"> </div><div class="col form-group mb-0 pb-3"> <label>Fecha solicitud del exámen</label> <input type="date" class="form-control g-verde text-white" id="'+_e+'"> </div><div class="col-4 form-group mb-0 pb-3"> <label>Edad Gestacional (Ege)</label> <input type="text" class="form-control g-verde text-white" id="'+_f+'" disabled="" value="0 semanas"> </div></div><div class="row"> <div class="col-4 form-group"> <label>Edad materna (años)</label> <select class="form-control" id="'+_g+'"></select> </div><div class="col form-group"> <label>Ciudad de procedencia</label> <select class="form-control" id="'+_h+'"></select> </div><div class="col form-group"> <label>Lugar de control habitual</label> <select class="form-control" id="'+_i+'"></select> </div></div><div class="row"> <div class="col-6 form-group"> <label><strong>Diagnóstico de referencia a exámen ecográfico:</strong></label> <select type="text" class="form-control" id="'+_w+'"></select> </div><div class="col-6 form-group"> <label>otros</label> <input type="text" class="form-control" id="'+_j+'"> </div></div>';
@@ -953,7 +954,7 @@ function solicitudModal(data){
     document.getElementById(_i).innerHTML = document.getElementById('i').innerHTML;
     document.getElementById(_w).innerHTML = document.getElementById('w').innerHTML;
 
-    modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j};
+    modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j,diagnostico_select: _w};
 
     document.getElementById(id_sol).value = data.solicitud_id;
     document.getElementById(_a).value = data.solicitud_nombre;
@@ -976,8 +977,8 @@ function solicitudModal(data){
         document.getElementById(_j).classList.add("d-none");
     }else{
         document.getElementById(_w).value = "";
-        document.getElementById(_j).value = data.solicitud_diagnostico;
         document.getElementById(_j).classList.remove("d-none");
+        document.getElementById(_j).value = data.solicitud_diagnostico;
     }
 
     $("#"+_d+", #"+_e).on("change", function(){
