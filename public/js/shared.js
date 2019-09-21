@@ -402,6 +402,31 @@ function pctacmAdvanced(eg,acm) {
     }
 }
 
+function bvmDoppler(eg, bvm) {
+    'use strict';
+    let  a = [],  b = [];
+    a[0] = 23; a[1] = 25; a[2] = 27; a[3] = 28; a[4] = 29; a[5] = 29; a[6] = 30; a[7] = 30; a[8] = 30; a[9] = 30; a[10] = 30; a[11] = 30; a[12] = 30; a[13] = 29; a[14] = 29; a[15] = 29; a[16] = 29; a[17] = 29; a[18] = 28; a[19] = 28; a[20] = 27; a[21] = 26; a[22] = 24; a[23] = 23; a[24] = 21;
+    b[0] = 59; b[1] = 62; b[2] = 64; b[3] = 66; b[4] = 67; b[5] = 68; b[6] = 68; b[7] = 68; b[8] = 68; b[9] = 68; b[10] = 68; b[11] = 69; b[12] = 69; b[13] = 69; b[14] = 69; b[15] = 70; b[16] = 71; b[17] = 72; b[18] = 72; b[19] = 72; b[20] = 71; b[21] = 70; b[22] = 68; b[23] = 66; b[24] = 62;
+
+    if (eg < 16 || eg > 40)
+    {
+        return "disminuido";
+    }
+    else {
+        eg = parseInt(eg);
+        eg = eg - 16;
+        if (bvm <=  a[eg]){
+            return "disminuido";
+        }
+        else if ( bvm <=  b[eg]){
+            return "normal";
+        }
+        else{
+            return "aumentado";
+        }
+    }
+}
+
 function loadInProcessData(data){
     $("#mensaje\\.resultado").addClass("d-none");
     var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Edad gestacional</th><th>Motivo de exámen</th><th>Agendada</th><th>Confirmada</th><th>Accion</th></tr></thead><tbody>';
