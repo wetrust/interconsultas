@@ -112,7 +112,7 @@
     $txt = "";
     if ($eg < 36){
         $txt = "Días del ciclo mestrual";
-    }else if (eg < 86){
+    }else if ($eg < 86){
         $txt = "Días de atraso mestrual";
     }else{
         $txt = "Días de amenorrea";
