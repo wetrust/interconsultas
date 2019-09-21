@@ -75,13 +75,23 @@ function loadInProcessData(data){
 
         $('#interconsulta\\.respuesta\\.fecha').on('change', function () {
             let EG = calcularEdadGestacional("interconsulta.fum.copia", "interconsulta.respuesta.fecha");
-            let examen = $("#interconsulta\\.respuesta\\.crecimiento").val();
+            let examen = document.getElementById("interconsulta.respuesta.crecimiento").value;
 
             if (examen == 3){
-                $('#interconsulta\\.respuesta\\.eg').val((EG.semanas *7)+ EG.dias);
+                document.getElementById("interconsulta.respuesta.eg").value = (EG.semanas *7)+ EG.dias;
                 $("input[name='respuesta_eg']").val((EG.semanas *7)+ EG.dias);
+                var eg = (EG.semanas *7)+ EG.dias;
+                var txt = "";
+                if (eg < 36){
+                    txt = "Días del ciclo mestrual";
+                }else if (eg < 86){
+                    txt = "Días de atraso mestrual";
+                }else{
+                    txt = "Días de amenorrea";
+                }
+                $("#interconsulta\\.respuesta\\.eg").parent().children("label").html(txt);
             }else{
-                $('#interconsulta\\.respuesta\\.eg').val(EG.text);
+                document.getElementById("interconsulta.respuesta.eg").value = EG.text;
                 $("input[name='respuesta_eg']").val(EG.text);
             }
             
