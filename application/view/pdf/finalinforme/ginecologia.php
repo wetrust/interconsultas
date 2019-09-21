@@ -138,7 +138,7 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td><strong>Ovario Derecho:</strong></td><td>'. $this->respuesta_ovario_derecho.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td><strong>Douglas:</strong></td><td>'. $this->respuesta_douglas_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
