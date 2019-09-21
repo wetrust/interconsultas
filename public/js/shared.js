@@ -413,7 +413,7 @@ function loadInProcessData(data){
         if (value.solicitud_confirmada == 'Si' && a == 3){
             tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button></td></tr>';
         }
-        if (value.solicitud_confirmada == 'Si' && a == 4){
+        else if (value.solicitud_confirmada == 'Si' && a == 4){
             tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar solicitud</button></td></tr>';
         }
         else{
