@@ -108,9 +108,20 @@
     $html = '<table><tbody><tr><td><strong>Fecha de exámen:</strong></td><td>'. $fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td><strong>Día del ciclo:</strong></td><td>'.htmlentities($this->respuesta_eg).' dias</td></tr></tbody></table>';
+
+    $eg = $this->respuesta_eg;
+    $txt = "";
+    if ($eg < 36){
+        $txt = "Días del ciclo mestrual";
+    }else if (eg < 86){
+        $txt = "Días de atraso mestrual";
+    }else{
+        $txt = "Días de amenorrea";
+    }
+
+    $html = '<table><tbody><tr><td><strong>'.$txt.':</strong></td><td>'.htmlentities($this->respuesta_eg).' dias</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td style="background-color:#f7fafb;"><strong>Útero:</strong></td><td style="background-color:#f7fafb;">'. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
