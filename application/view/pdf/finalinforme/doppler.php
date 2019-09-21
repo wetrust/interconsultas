@@ -185,7 +185,7 @@
         $catorceSemanas =  date('d-m-Y', strtotime($this->solicitud->solicitud_fecha. ' + '.$catorceSemanas.' days'));
         //$solicitud_fecha_examen =  $this->solicitud->solicitud_fecha. ' + '.$edadGestacional.' days';
 
-        $html = '<br>* Exámen ecográfico para 22 - 26 semanas correspondería entre las fechas  '.$onceSemanas.'   al   '.$catorceSemanas;
+        $html = '<p style="color:#0275d8;">* Exámen ecográfico para 22 - 26 semanas correspondería entre las fechas  '.$onceSemanas.'   al   '.$catorceSemanas . '</p>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(4);
     }
