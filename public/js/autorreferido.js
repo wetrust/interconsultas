@@ -923,8 +923,8 @@ function solicitudModal(data){
         $('#'+modal).modal("hide");
     });s
 
-    let id_sol = uuidv4();let _a= uuidv4(); let _b= uuidv4(); let _c= uuidv4(); let _d= uuidv4(); let _e= uuidv4(); let _f= uuidv4(); let _g= uuidv4(); let _h= uuidv4(); let _i= uuidv4(); let _j= uuidv4();
-    let formulario = '<div class="row"> <input type="hidden" class="form-control" id="'+id_sol+'"> <div class="col form-group"> <label>Nombre del paciente</label> <input type="text" class="form-control" id="'+_a+'"> </div><div class="col form-group"> <label>RUT del paciente</label> <div> <input type="text" class="form-control" id="'+_b+'" disabled> </div></div><div class="col form-group"> <label>Teléfono materno</label> <input type="number" class="form-control" id="'+_c+'"> </div></div><div class="row"> <div class="col-4 form-group btn-animado rounded mb-0 pb-3"> <label><strong>INGRESE FUM REFERIDA</strong></label> <input type="date" class="form-control g-verde text-white" id="'+_d+'"> </div><div class="col form-group mb-0 pb-3"> <label>Fecha solicitud del exámen</label> <input type="date" class="form-control g-verde text-white" id="'+_e+'"> </div><div class="col-4 form-group mb-0 pb-3"> <label>Edad Gestacional (Ege)</label> <input type="text" class="form-control g-verde text-white" id="'+_f+'" disabled="" value="0 semanas"> </div></div><div class="row"> <div class="col-4 form-group"> <label>Edad materna (años)</label> <select class="form-control" id="'+_g+'"></select> </div><div class="col form-group"> <label>Ciudad de procedencia</label> <select class="form-control" id="'+_h+'"></select> </div><div class="col form-group"> <label>Lugar de control habitual</label> <select class="form-control" id="'+_i+'"></select> </div></div><div class="row"> <div class="col-4 form-group"> <label><strong>Diagnóstico de referencia a exámen ecográfico:</strong></label> </div><div class="col-8 form-group"> <input type="text" class="form-control" id="'+_j+'"> </div></div>';
+    let id_sol = uuidv4();let _a= uuidv4(); let _b= uuidv4(); let _c= uuidv4(); let _d= uuidv4(); let _e= uuidv4(); let _f= uuidv4(); let _g= uuidv4(); let _h= uuidv4(); let _i= uuidv4(); let _j= uuidv4(); let _w= uuidv4();
+    let formulario = '<div class="row"> <input type="hidden" class="form-control" id="'+id_sol+'"> <div class="col form-group"> <label>Nombre del paciente</label> <input type="text" class="form-control" id="'+_a+'"> </div><div class="col form-group"> <label>RUT del paciente</label> <div> <input type="text" class="form-control" id="'+_b+'" disabled> </div></div><div class="col form-group"> <label>Teléfono materno</label> <input type="number" class="form-control" id="'+_c+'"> </div></div><div class="row"> <div class="col-4 form-group btn-animado rounded mb-0 pb-3"> <label><strong>INGRESE FUM REFERIDA</strong></label> <input type="date" class="form-control g-verde text-white" id="'+_d+'"> </div><div class="col form-group mb-0 pb-3"> <label>Fecha solicitud del exámen</label> <input type="date" class="form-control g-verde text-white" id="'+_e+'"> </div><div class="col-4 form-group mb-0 pb-3"> <label>Edad Gestacional (Ege)</label> <input type="text" class="form-control g-verde text-white" id="'+_f+'" disabled="" value="0 semanas"> </div></div><div class="row"> <div class="col-4 form-group"> <label>Edad materna (años)</label> <select class="form-control" id="'+_g+'"></select> </div><div class="col form-group"> <label>Ciudad de procedencia</label> <select class="form-control" id="'+_h+'"></select> </div><div class="col form-group"> <label>Lugar de control habitual</label> <select class="form-control" id="'+_i+'"></select> </div></div><div class="row"> <div class="col-6 form-group"> <label><strong>Diagnóstico de referencia a exámen ecográfico:</strong></label> <select type="text" class="form-control" id="'+_w+'"></select> </div><div class="col-6 form-group"> <label>otros</label> <input type="text" class="form-control" id="'+_j+'"> </div></div>';
 
     document.getElementById(modal.contenido).innerHTML = formulario;
 
@@ -932,6 +932,7 @@ function solicitudModal(data){
 
     document.getElementById(_h).innerHTML = document.getElementById('h').innerHTML;
     document.getElementById(_i).innerHTML = document.getElementById('i').innerHTML;
+    document.getElementById(_w).innerHTML = document.getElementById('w').innerHTML;
 
     modalModificar = {solicitud_id: id_sol,nombre: _a,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j};
 
@@ -945,12 +946,37 @@ function solicitudModal(data){
     document.getElementById(_g).value = data.solicitud_ematerna;
     document.getElementById(_h).value = data.solicitud_ciudad;
     document.getElementById(_i).value = data.solicitud_lugar;
-    document.getElementById(_j).value = data.solicitud_diagnostico;
+
+    //determinar si es un dato del select o otro
+    var select = document.getElementById(_w);
+    var keyword = data.solicitud_diagnostico;
+    var optionCollection = Array.from(select.options).filter(x => x.text.toLowerCase().startsWith(keyword.toLowerCase()))
+    if (optionCollection.length > 0){
+        document.getElementById(_w).value = data.solicitud_diagnostico;
+        document.getElementById(_j).value = "";
+        document.getElementById(_j).classList.add("d-none");
+    }else{
+        document.getElementById(_w).value = "";
+        document.getElementById(_j).value = data.solicitud_diagnostico;
+        document.getElementById(_j).classList.remove("d-none");
+    }
 
     $("#"+_d+", #"+_e).on("change", function(){
         let EG = calcularEdadGestacional(modalModificar.fum, modalModificar.fecha);
         document.getElementById(modalModificar.eg).value = EG.text;
     });
+
+    $("#"+_w).on("change", function(){
+		let value = $(this).val();
+		if (value == ""){
+			$("#"+_j).val("");
+			$("#"+_j).removeClass("d-none");
+		}else{
+			$("#"+_j).val("");
+			$("#"+_j).addClass("d-none");
+		}
+    });
+    
 }
 
 //funciones de vista
