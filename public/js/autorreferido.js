@@ -62,7 +62,15 @@ function loadInProcessData(data){
         let fecha = value.evaluacion_fecha.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
         tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
-        tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar solicitud</button></td></tr>';
+        if (value.solicitud_confirmada == 'Si' && a == 3){
+            tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button></td></tr>';
+        }
+        if (value.solicitud_confirmada == 'Si' && a == 4){
+            tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button><button class="btn modificar btn-secondary" data-id='+ value.solicitud_id + '>Modificar solicitud</button></td></tr>';
+        }
+        else{
+            tabla += '<td><button class="btn confirmar btn-secondary" data-id='+ value.solicitud_id + '>Confirmar fecha de eco</button><button class="btn reagendar btn-secondary" data-id='+ value.solicitud_id + '>Reagendar paciente</button></td></tr>';
+        }
     });
     tabla += '</tbody>';
     $('#tabla\\.resultado').append(tabla);
