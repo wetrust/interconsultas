@@ -146,9 +146,9 @@
     $html = '<table><tbody><tr><td></td><td>Cerebelo (Hill):</td><td>'. $this->respuesta_cerebelo.' mm.</td><td>Percentil: '. $this->respuesta_cerebelo_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">Peso fetal estimado **:</td><td style="background-color:#eceeef;">'. $this->respuesta_pfe.' gr.</td><td style="background-color:#eceeef;">Percentil: '. $this->respuesta_pfe_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">Peso fetal estimado **</td><td style="background-color:#eceeef;">'. $this->respuesta_pfe.' gr.</td><td style="background-color:#eceeef;">Percentil: '. $this->respuesta_pfe_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>Índice Cc / Ca:</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Índice Cc / Ca **</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
@@ -164,7 +164,7 @@
     $this->pdf->Ln(4);
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
-    $html = '<p>* Referencia para biometrías según gráfica de Hadlock y col. 1984<br><br>** Gráfica de referencia para PFE y Cc/Ca, Hadlock F P y col. 1991; Radiology 181 : 129 - 133 (Normalidad Pct 10 a 90)<br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico.<br>Profesional quien finalmente evaluará clínicamente la información contenida en este exámen.</p>';
+    $html = '<p>* Referencia para biometrías según gráfica de Hadlock y col. 1984<br>** Gráfica de referencia para PFE y Cc/Ca, Hadlock F P y col. 1991; Radiology 181 : 129 - 133 (Normalidad Pct 10 a 90)<br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico.<br>Profesional quien finalmente evaluará clínicamente la información contenida en este exámen.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     $tmp = Config::get('PATH_AVATARS');
