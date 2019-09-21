@@ -285,15 +285,24 @@ function loadInProcessData(data){
 
             $('#interconsulta\\.respuesta\\.fecha').trigger("change");
             if ($(this).val() == 3){
-                        $("#enviar\\.respuesta\\.botton").addClass("d-none");
-                        $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
-                        $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Día del ciclo mestrual');
+                $("#enviar\\.respuesta\\.botton").addClass("d-none");
+                $("#ver\\.interconsulta\\.eliminar").addClass("d-none");
+                $("#ver\\.interconsulta\\.cerrar").addClass("d-none");
+                var eg = document.getElementById("interconsulta.respuesta.eg").value;
+                var txt = "";
+                if (eg < 36){
+                    txt = "Días del ciclo mestrual";
+                }else if (eg < 86){
+                    txt = "Días de atraso mestrual";
+                }else{
+                    txt = "Días de amenorrea";
+                }
+                $("#interconsulta\\.respuesta\\.eg").parent().children("label").html(txt);
             }else {
-                        $("#enviar\\.respuesta\\.botton").removeClass("d-none");
-                        $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
-                        $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
-                        $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
+                $("#enviar\\.respuesta\\.botton").removeClass("d-none");
+                $("#ver\\.interconsulta\\.eliminar").removeClass("d-none");
+                $("#ver\\.interconsulta\\.cerrar").removeClass("d-none");
+                $("#interconsulta\\.respuesta\\.eg").parent().children("label").html('Edad gestacional actual');
             }
         });
     
