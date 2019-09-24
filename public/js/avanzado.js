@@ -426,8 +426,6 @@ function loadInProcess(){
 
             $('#tabla\\.resultado tr > td > button').on("click", function(){
                 let solicitud_id =  $(this).data("id");
-                $("#ver\\.interconsulta > div").removeClass("h-100");
-                $("#ver\\.interconsulta > div > div").removeClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("Datos de la interconsulta");
                 $('#ver\\.interconsulta\\.contenedor').empty();
                 $("#ver\\.interconsulta\\.contenedor").append('<h5 class="my-3 text-primary text-center">Contrarreferencia inicial desde unidad de ultrasonografía gineco-obstétrica</h5><div class="row g-verde mb-0"> <div class="col-6 form-group m-2"> <label class="text-white"><strong>Tipo de exámen solicitado</strong></label> </div><div class="col form-group m-2"> <select class="form-control" name="solicitud_crecimiento" id="interconsulta.respuesta.crecimiento"> <option value="1">1.- Ecografía precoz de urgencia</option><option value="4">2.- Ecografía 11/14 semanas</option> <option value="2">3.- Ecografía 2° / 3° trimestre</option><option value="0" selected>4.- Doppler + Eco. crecimiento</option> <option value="3">5.- Ecografía Ginecológica</option> </select> </div></div><div class="row"> <div class="col-6 form-group bg-secondary mb-2"> <label for="interconsulta.respuesta.fecha"><strong class="text-white">Debe llenar fecha de examen</strong></label> <input type="date" class="form-control" id="interconsulta.respuesta.fecha"> </div><div class="col form-group" id="interconsulta.respuesta.edadgestacional"> <label for="interconsulta.respuesta.eg">Edad gestacional actual</label> <input type="hidden" class="form-control" id="solicitud_id"><input type="hidden" class="form-control" id="interconsulta.fum.copia" value="solicitud_fum"> <input type="text" class="form-control" id="interconsulta.respuesta.eg" disabled=""> <input type="hidden" class="form-control" name="respuesta_eg"> </div></div>');
@@ -1012,6 +1010,7 @@ function loadInProcess(){
                         }
                     }
                 });
+                
                 $("input[name='respuesta_bvm']").keypress(function( event ) {
                     if ( event.which == 13 ) {
                        event.preventDefault();
