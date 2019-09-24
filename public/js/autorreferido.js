@@ -37,6 +37,7 @@ function loadInFinish(){
         buildFinishTable(data);
     });
 }
+
 function loadInProcess(){
     $("#tabla\\.resultado").removeClass("d-none");
     $("#mensaje\\.resultado").removeClass("d-none");
@@ -191,7 +192,9 @@ function buildFinishTable(data){
         $("#mensaje\\.resultado").html("No tienes interconsultas finalizadas o no estas autorizado para guardar interconsultas finalizadas");
     }
 }
+
 function callModal(informe, solicitud){$("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");}
+
 function makeModal(button){
     let id = uuidv4();
     let titulo = uuidv4();
@@ -213,6 +216,7 @@ function makeModal(button){
     
     return resultado;
 }
+
 function solicitudModal(data){
     let modal = makeModal("Guardar");
 
