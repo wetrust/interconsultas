@@ -52,7 +52,7 @@ class SolicitudModel
         ':solicitud_lugar' => $solicitud_lugar));
 
         if ($query->rowCount() == 1) {
-            return return $database->lastInsertId();
+            return $database->lastInsertId();
         }
 
         Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
