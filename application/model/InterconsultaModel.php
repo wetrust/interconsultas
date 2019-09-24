@@ -32,8 +32,7 @@ class InterconsultaModel
         $solicitud_email = Session::get('user_email');
         $solicitud_respuesta = 0;
         $solicitud_id = SolicitudesModel::createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_respuesta,$solicitud_egestacional, $telefono, $sistolica, $diastolica, $media, $talla, $peso, $imc, $antecedentes, $edadMaterna, $paridad);
-        EvaluacionModel::createEvaluacion($solicitud_id, $solicitud_fecha, "");
-        SolicitudesModel::updateStateSolicitud($solicitud_id, 1);
+        SolicitudesModel::confirmarSolicitud($solicitud_id)
         $response->result = true;
         return $response;
     }
