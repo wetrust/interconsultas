@@ -41,7 +41,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
-    $html = '<h4 style="color:#0275d8;"><em>Datos de referencia para evaluación ecográfica.</em></h4>';
+    $html = '<h4><em>Datos de referencia para evaluación ecográfica.</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
 
@@ -106,7 +106,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h4 style="color:#0275d8;"><em>Resumen examen ecográfico y flujometría Doppler materno / fetal.</em></h4>';
+    $html = '<h4><em>Resumen examen ecográfico y flujometría Doppler materno / fetal.</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
 
