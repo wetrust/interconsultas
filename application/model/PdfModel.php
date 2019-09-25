@@ -14,7 +14,7 @@ class PdfModel extends TCPDF {
 
         if ($have == true){
             $membrete = MembreteModel::getMembrete();
-            $membrete = '<p style="color:#0275d8;">'. $membrete->membrete_text . '</p>';
+            $membrete = '<p>'. $membrete->membrete_text . '</p>';
 
             $this->writeHTMLCell('', '', '', 15, $membrete, 0, 1, 0, true, 'L', true);
             $this->Ln(5);
