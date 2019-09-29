@@ -623,7 +623,7 @@ function loadInProcessData(data){
                 args.respuesta_utero_primertrimestre = $('select[name="respuesta_utero_primertrimestre"]').val(),
                 args.respuesta_saco_gestacional = $('select[name="respuesta_saco_gestacional"]').val(),
                 args.respuesta_saco  = $('input[name="respuesta_saco"]').val(),
-                args.respuesta_saco  = $('input[name="respuesta_saco_eg"]').val(),
+                args.respuesta_saco_eg  = $('input[name="respuesta_saco_eg"]').val(),
                 args.respuesta_embrion = $('select[name="respuesta_embrion"]').val(),
                 args.respuesta_lcn = $('input[name="respuesta_lcn"]').val(),
                 args.respuesta_lcn_eg = $('input[name="respuesta_lcn_eg"]').val(),
