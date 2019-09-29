@@ -68,6 +68,7 @@ class DashboardController extends Controller
         $respuesta_douglas_primertrimestre = Request::post('respuesta_douglas_primertrimestre');
         $respuesta_lcn_eg = Request::post('respuesta_lcn_eg');
         $respuesta_saco_valor = intval(Request::post('respuesta_saco'));
+        $respuesta_saco_eg = Request::post('respuesta_saco_eg');
 
         //para ecografía de segundo trimestre
         $respuesta_placenta = Request::post('respuesta_placenta');
@@ -110,7 +111,7 @@ class DashboardController extends Controller
         $respuesta_hueso_nasal_valor = Request::post('respuesta_hueso_nasal_valor');
 
         if ($respuesta_crecimiento == 0){
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_pct, $respuesta_liquido, $respuesta_presentacion, $respuesta_dorso, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista, $respuesta_doppler_materno, $respuesta_anatomia, $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", $respuesta_ccca, "", "", "", "", $respuesta_ccca_pct, "", "", "", "", "", "", "","","", $respuesta_doppler_fetal,$respuesta_cc_pct,$respuesta_ca_pct,$respuesta_lf_pct,$respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, "", $respuesta_dof, "", $respuesta_bvm, "", "", "", "",$respuesta_sexo_fetal, 0, "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, $respuesta_pfe, $respuesta_pfe_pct, $respuesta_liquido, $respuesta_presentacion, $respuesta_dorso, $respuesta_uterinas, $respuesta_uterinas_percentil, $respuesta_umbilical, $respuesta_umbilical_percentil, $respuesta_cm, $respuesta_cm_percentil, $respuesta_cmau, $respuesta_cmau_percentil, $respuesta_hipotesis, $respuesta_comentariosexamen, $respuesta_ecografista, $respuesta_doppler_materno, $respuesta_anatomia, $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", $respuesta_ccca, "", "", "", "", $respuesta_ccca_pct, "", "", "", "", "", "", "","","", $respuesta_doppler_fetal,$respuesta_cc_pct,$respuesta_ca_pct,$respuesta_lf_pct,$respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, "", $respuesta_dof, "", $respuesta_bvm, "", "", "", "",$respuesta_sexo_fetal, 0, "", "");
 
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
@@ -145,7 +146,7 @@ class DashboardController extends Controller
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco crecimiento',$respuesta_crecimiento);
         }
         else if ($respuesta_crecimiento == 1){
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_lcn_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","","",$respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "","", $respuesta_saco_valor, "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_lcn_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","","",$respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "","", $respuesta_saco_valor, "", $respuesta_saco_eg);
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
             $data = SolicitudesModel::getSolicitud($solicitud_id);
@@ -158,6 +159,7 @@ class DashboardController extends Controller
                 'respuesta_utero' => $respuesta_utero_primertrimestre,
                 'respuesta_saco_gestacional' => $respuesta_saco_gestacional,
                 'respuesta_saco_valor' => $respuesta_saco_valor,
+                'respuesta_saco_eg' => $respuesta_saco_eg,
                 'respuesta_embrion' => $respuesta_embrion,
                 'respuesta_lcn' => $respuesta_lcn,
                 'respuesta_anexo_izquierdo_primertrimestre' => $respuesta_anexo_izquierdo_primertrimestre,
@@ -173,7 +175,7 @@ class DashboardController extends Controller
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco primer trimestre',$respuesta_crecimiento);
         }
         else if ($respuesta_crecimiento == 2){
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "","", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_presentacion, $respuesta_dorso_segundo, $respuesta_anatomia, $respuesta_pfe_pct, $respuesta_ccca_pct, $respuesta_hipotesis, "", "", "", "", "", "", "",$respuesta_crecimiento_ccca, "",$respuesta_cc_pct,$respuesta_ca_pct,$respuesta_lf_pct,$respuesta_anatomia_extra, "", "", "", "", $respuesta_fcf, "", $respuesta_dof, $respuesta_ic, $respuesta_bvm, $respuesta_lh, $respuesta_lh_pct, $respuesta_cerebelo, $respuesta_cerebelo_pct,$respuesta_sexo_fetal, 0, "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "","", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", $respuesta_placenta,$respuesta_placenta_insercion, $respuesta_liquido_amniotico, $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, $respuesta_pfe, $respuesta_ccca, $respuesta_presentacion, $respuesta_dorso_segundo, $respuesta_anatomia, $respuesta_pfe_pct, $respuesta_ccca_pct, $respuesta_hipotesis, "", "", "", "", "", "", "",$respuesta_crecimiento_ccca, "",$respuesta_cc_pct,$respuesta_ca_pct,$respuesta_lf_pct,$respuesta_anatomia_extra, "", "", "", "", $respuesta_fcf, "", $respuesta_dof, $respuesta_ic, $respuesta_bvm, $respuesta_lh, $respuesta_lh_pct, $respuesta_cerebelo, $respuesta_cerebelo_pct,$respuesta_sexo_fetal, 0, "", "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
             $data = SolicitudesModel::getSolicitud($solicitud_id);
@@ -238,7 +240,7 @@ class DashboardController extends Controller
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco primer trimestre',$respuesta_crecimiento);
         }
         else if ($respuesta_crecimiento == 3){
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica,"","","","","", $respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "","", 0, "");
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", $respuesta_utero_ginecologica, $respuesta_endometrio, $respuesta_anexo_izquierdo_ginecologica, $respuesta_anexo_derecho_ginecologica, $respuesta_ovario_izquierdo, $respuesta_ovario_derecho, $respuesta_douglas_ginecologica,"","","","","", $respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "","", 0, "", "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
             $data = SolicitudesModel::getSolicitud($solicitud_id);
@@ -265,7 +267,7 @@ class DashboardController extends Controller
 
         }
         else if($respuesta_crecimiento == 4){
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, $respuesta_translucencia_nucal, "", "", "", "", "", "", "","",0, $respuesta_hueso_nasal_valor);
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, $respuesta_translucencia_nucal, "", "", "", "", "", "", "","",0, $respuesta_hueso_nasal_valor, "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
         
             $data = SolicitudesModel::getSolicitud($solicitud_id);
