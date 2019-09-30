@@ -1043,7 +1043,7 @@ function primerTrimerstre(){
 function multiproposito(){
     let html = '<div id="multiproposito"> <div class="row"> <div class="col form-group"> <label>Feto en presentación</label> <select class="form-control" name="respuesta_presentacion"> <option value="cefálica">Cefálica</option> <option value="podálica">Podálica</option> <option value="transversa">Transversa</option> <option value="indiferente">Indiferente</option> </select> </div><div class="col form-group"> <label>Dorso fetal</label> <select class="form-control" name="respuesta_dorso"> <option value="anterior">Anterior</option> <option value="lat. izquierdo">Lateralizado izquierdo</option> <option value="posterior">Posterior</option> <option value="lat. derecho">Lateralizado derecho</option> </select> </div><div class="col-4 form-group"> <label>Sexo fetal</label> <select class="form-control" name="respuesta_sexo_fetal"> <option value="femenino" selected>femenino</option> <option value="masculino">masculino</option> <option value="aún no identificado" selected>aún no identificado</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta ubicación</label> <select class="form-control" name="respuesta_placenta"> <option value="normal" selected>normal</option> <option value="prev. lateral">prev. lateral</option> <option value="prev. marginal">prev. marginal</option> <option value="prev. parcial">prev. parcial</option> <option value="prev. total">prev. total</option> </select> </div><div class="col-4 form-group"> <label for="interconsulta.respuesta.ecografista">Placenta inserción</label> <select class="form-control" name="respuesta_placenta_insercion"> <option value="anterior" selected>anterior</option> <option value="posterior">posterior</option> <option value="fúndica">fúndica</option> <option value="lat. derecha">lat. derecha</option> <option value="lat. izquierda">lat. izquierda </option> <option value="segmentaria">segmentaria</option> </select> </div></div><div class="row"> <div class="col-4 form-group"> <label>Líquido amniótico, semicuantitativo; BVM (mm)</label> <select type="text" class="form-control" name="respuesta_bvm"></select> </div><div class="col form-group"> <label>Fecuencia cardiaca fetal (FCF)</label> <select name="respuesta_fcf" class="form-control"></select> </div><div class="col-4 form-group"> <label>Evaluación de anatomía fetal</label> <select class="form-control" name="respuesta_anatomia"> <option value="de aspecto general normal">de aspecto general normal</option> <option value="hallazgos ecográficos compatibles con:">hallazgos ecográficos compatibles con:</option> </select> </div><div class="col-12 form-group d-none" id="interconsulta.respuesta.anatomia"> <input type="text" class="form-control" name="respuesta_anatomia_extra"> </div></div><div class="row"> <div class="col-6"> <div class="row"> <div class="col-12"><strong>A.- Biometría fetales:</strong></div><div class="col-6 form-group"> <label>DBP (mm)</label> <input type="text" class="form-control" name="respuesta_dbp"> </div><div class="col-6 form-group"> <label>DOF (mm)</label> <input type="text" class="form-control" name="respuesta_dof"> </div><div class="col-12 form-group"> <label>CC (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_cc"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cc_pct"></div></div></div></div><div class="col-12 form-group"> <label>CA (mm)</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_ca"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_ca_pct"></div></div></div></div><div class="col-12 form-group"> <label>LF (mm)</label> <div class="input-group mb-2"> <input type="text" class="form-control" name="respuesta_lf"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_lf_pct"></div></div></div></div><div class="col-6 form-group"> <label>Peso fetal estimado (grs)</label> <input type="number" class="form-control" name="respuesta_pfe" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control bg-secondary text-white" name="respuesta_pfe_pct" disabled> </div></div><div class="col-6 form-group"> <label>Relación cráneo/abdomen</label> <input type="text" class="form-control" name="respuesta_ccca" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><input type="text" class="form-control" name="respuesta_ccca_pct" disabled> </div></div></div></div><div class="col-6"> <div class="row"> <div class="col-12"><strong>B.- Flujometría Doppler materno / fetal</strong></div><div class="col-12 form-group"> <label>IP. Uterina derecha</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_derecha"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_derecha_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Uterina izquierda</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_uterina_izquierda"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_uterina_izquierda_percentil"></div></div></div></div><div class="col-6 form-group"> <label>IP. Uterinas promedio</label> <input type="text" class="form-control" name="respuesta_uterinas" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_uterinas_percentil"></div></div></div><div class="col-12 form-group"> <label>IP. Arteria umbilical (Au)</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_umbilical"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_umbilical_percentil"></div></div></div></div><div class="col-12 form-group"> <label>IP. Cerebral media (Cm)</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_cm"> <div class="input-group-prepend"> <div class="input-group-text" id="respuesta_cm_percentil"> </div></div></div></div><div class="col-6 form-group"> <label>IP de ICP (Cm/Au)</label> <input type="text" class="form-control" name="respuesta_cmau" disabled> </div><div class="col-6 form-group"> <label>&nbsp;</label> <div class="input-group"> <div class="input-group-prepend"> <div class="input-group-text">Percentil</div></div><div class="form-control bg-secondary text-white" id="respuesta_cmau_percentil"></div></div></div></div></div></div><div class="row bg-secondary"> <div class="col-12"> <p class="mb-0 text-white">C.- Análisis preliminar (automático) de datos ecográficos útiles para informe final de el profesional ecografista (comentarios y observaciones)</p></div><div class="col form-group pb-2 mb-2 text-white"> <label><small>Crecimiento fetal ( Peso fetal )</small></label> <select class="form-control" name="respuesta_hipotesis" disabled> <option value="Disminuido < p3">Disminuido < p3</option> <option value="Disminuido < p10">Disminuido < p10</option> <option value="Normal p10 - p 25">Normal p10 - p 25</option> <option value="Normal p26 - p 75" selected>Normal p26 - p 75</option> <option value="Normal p76 - p90">Normal p76 - p90</option> <option value="Grande >p90">Grande >p90</option> <option value="Grande >p97">Grande >p97</option> </select> </div><div class="col form-group pb-2 mb-2 text-white"> <label for="interconsulta.respuesta.liquido"><small>Líquido amniótico, cualitativo</small></label> <select class="form-control" name="respuesta_liquido" disabled> <option value="normal">Normal</option> <option value="disminuido">Disminuido</option> <option value="aumentado">Aumentado</option> </select> </div><div class="col form-group pb-2 mb-2 text-white"> <label><small>Doppler materno ( IP Uterinas )</small></label> <select class="form-control" name="respuesta_doppler_materno" disabled> <option value="no evaluado">No evaluado</option> <option value="Normal (< p95)" selected>Normal (&lt; p95)</option> <option value="Alterado (> p95)">Alterado (&gt; p95)</option> </select> </div><div class="col form-group pb-2 mb-2 text-white"> <label><small>Doppler fetal ( IP UMB, ACM e ICP )</small></label> <select class="form-control" name="respuesta_doppler_fetal"> <option value="No evaluado">No evaluado</option> <option value="Normal (UMB, ACM, ICP)" selected>Normal (UMB, ACM e ICP)</option> <option value="Alterado, ICP < pct 5">Alterado, ICP &lt; pct 5</option> <option value="Alterado ICP < pct 5 y UMB > pct 95">Alterado ICP &lt; pct 5 y UMB &gt; pct 95</option> <option value="Alterado ccp < pct 5 acm < pct 5">Alterado ICP &lt; pct 5 ACM &lt; pct 5</option> <option value="Alt. ICP < pct 5 y ACM < pct 5 + UMB > p95">Alt. ICP &lt; pct 5 y ACM &lt; pct 5 + UMB &gt; p95</option> </select> </div></div></div>';
     document.getElementById("contenedor.examenes").innerHTML = html;
-    
+
     cargarBVM("respuesta_bvm");
     cargarFCF("respuesta_fcf");
 
@@ -1069,6 +1069,26 @@ function multiproposito(){
         }
     });
 
+    $("input[name='respuesta_pfe_pct']").on("change", function(){
+        let valor = this.value;
+
+        if(valor == "< 1"){
+            $("select[name='respuesta_hipotesis']").val("Disminuido < p3");
+        }else if(valor == "> 99"){
+            $("select[name='respuesta_hipotesis']").val("Grande >p97");
+        }else if(valor < 11){
+            $("select[name='respuesta_hipotesis']").val("Disminuido < p10");
+        }else if(valor < 26){
+            $("select[name='respuesta_hipotesis']").val("Normal p10 - p 25");
+        }else if(valor < 76){
+            $("select[name='respuesta_hipotesis']").val("Normal p26 - p 75");
+        }else if(valor < 91){
+            $("select[name='respuesta_hipotesis']").val("Normal p76 - p90");
+        }else if(valor < 99){
+            $("select[name='respuesta_hipotesis']").val("Grande >p90");
+        }
+    });
+
     $("select[name='respuesta_bvm']").on("change", function(){
         let bvm = $(this).val();
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
@@ -1079,6 +1099,7 @@ function multiproposito(){
             $("select[name='respuesta_liquido']").val(bvmDoppler(eg, bvm));
         }
     });
+
     $("input[name='respuesta_uterina_izquierda']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var ut = $(this).val();
@@ -1101,6 +1122,7 @@ function multiproposito(){
            $("input[name='respuesta_umbilical']").focus();
         }
     });
+
     $("input[name='respuesta_uterinas']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var ut = $("input[name='respuesta_uterinas']").val();
@@ -1113,6 +1135,7 @@ function multiproposito(){
             $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut));
         }
     });
+
     $("input[name='respuesta_pfe']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var pfe = $("input[name='respuesta_pfe']").val();
@@ -1124,6 +1147,7 @@ function multiproposito(){
 
         }
     });
+
     $("input[name='respuesta_dbp']").on("change", function(){
         let dbp = $(this).val();
         let dbp_ready = false;
@@ -1189,6 +1213,7 @@ function multiproposito(){
            $("input[name='respuesta_ca']").focus();
         }
     });
+
     $("input[name='respuesta_ca']").on("change", function(){
         psohdlk();
         calCCCA();
@@ -1207,6 +1232,7 @@ function multiproposito(){
            $("input[name='respuesta_lf']").focus();
         }
     });
+
     $("input[name='respuesta_lf']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var lf = $("input[name='respuesta_lf']").val();
@@ -1222,6 +1248,7 @@ function multiproposito(){
            $("input[name='respuesta_uterina_derecha']").focus();
         }
     });
+
     $("input[name='respuesta_ccca']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var ccca = $("input[name='respuesta_ccca']").val();
@@ -1232,6 +1259,7 @@ function multiproposito(){
             $("input[name='respuesta_ccca_pct']").val(pctcccaAdvanced(eg,ccca));
         }
     });
+
     $("select[name='respuesta_anatomia']").on("change", function(){
         if ($(this).val() == "hallazgos ecográficos compatibles con:"){
             $("#interconsulta\\.respuesta\\.anatomia").removeClass("d-none");
@@ -1240,6 +1268,7 @@ function multiproposito(){
             $("#interconsulta\\.respuesta\\.anatomia").addClass("d-none");
         }
     });
+
     $("input[name='respuesta_cm']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var acm = $("input[name='respuesta_cm']").val();
@@ -1256,6 +1285,7 @@ function multiproposito(){
             }
         }
     });
+
     $("input[name='respuesta_umbilical']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var aumb = $("input[name='respuesta_umbilical']").val();
@@ -1277,6 +1307,7 @@ function multiproposito(){
            $("input[name='respuesta_cm']").focus();
         }
     });
+
     $("input[name='respuesta_cmau']").on("change", function(){
         var eg = $("#interconsulta\\.respuesta\\.eg").val();
         var cmau = $("input[name='respuesta_cmau']").val();
