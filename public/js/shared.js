@@ -415,14 +415,14 @@ function bvmDoppler(eg, bvm) {
     else {
         eg = parseInt(eg);
         eg = eg - 16;
-        if (bvm <=  a[eg]){
+        if (bvm == ""){
+            return "no evaluado";
+        }
+        else if (bvm <=  a[eg]){
             return "disminuido";
         }
         else if ( bvm <=  b[eg]){
             return "normal";
-        }
-        else if (bvm == ""){
-            return "no evaluado";
         }else{
             return "aumentado";
         }
