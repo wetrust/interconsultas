@@ -144,16 +144,6 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td style="background-color:#f7fafb;">Índice Cm / Au (ICP):</td><td style="background-color:#f7fafb;">'.htmlentities($this->solicitud_resultado->cmau).'</td><td style="background-color:#f7fafb;">Percentil: '.$this->solicitud_resultado->cmau_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(2);
-
-    $html = '<table><tbody><tr><td style="width:162px"><strong><em>Hipótesis diagnóstica</em></strong></td><td style="width:450px">Crecimiento fetal (PFE): '.htmlentities($this->solicitud_resultado->hipotesis).'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler materno: '.htmlentities($this->solicitud_resultado->doppler).'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td style="width:162px"></td><td style="width:450px">Flujometría Doppler fetal: '.htmlentities($this->solicitud_resultado->doppler_fetal).'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(8);
 
     $_html = strip_tags($this->solicitud_resultado->comentariosexamen);
