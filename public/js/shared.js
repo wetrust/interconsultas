@@ -968,7 +968,7 @@ function segundoTrimestre(){
             
                             if (eg.length > 0){
                                 eg = Math.trunc(parseFloat(eg));
-                                $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
+                                $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe)).trigger("change");
                             }
                         });
                         $("input[name='respuesta_ccca']").on("change", function(){
@@ -1143,7 +1143,7 @@ function multiproposito(){
         eg = eg.replace("semanas", "");
         if (eg.length > 0){
             eg = Math.trunc(parseFloat(eg));
-            $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe));
+            $("input[name='respuesta_pfe_pct']").val(pctpfeAdvanced(eg,pfe)).trigger("change");
 
         }
     });
