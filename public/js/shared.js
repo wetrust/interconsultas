@@ -1132,7 +1132,19 @@ function multiproposito(){
 
         if (eg.length > 0){
             eg = Math.trunc(parseFloat(eg));
-            $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut));
+            $("#respuesta_uterinas_percentil").html(pctUtAdvanced(eg,ut)).trigger("change");
+        }
+    });
+
+    $("input[name='respuesta_uterinas_percentil']").on("change", function(){
+        let valor = this.value;
+
+        if(valor < 95){
+            $("select[name='respuesta_doppler_materno']").val("Normal (< p95)");
+        }else if(valor > 95){
+            $("select[name='respuesta_doppler_materno']").val("Alterado (> p95)");
+        }else if (valor == ""){
+            $("select[name='respuesta_doppler_materno']").val("no evaluado");
         }
     });
 
