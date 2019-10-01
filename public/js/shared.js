@@ -410,7 +410,7 @@ function bvmDoppler(eg, bvm) {
 
     if (eg < 16 || eg > 40)
     {
-        return "disminuido";
+        return "no evaluado";
     }
     else {
         eg = parseInt(eg);
