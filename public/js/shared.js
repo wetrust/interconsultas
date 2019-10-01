@@ -372,7 +372,7 @@ function pctUtAdvanced(eg,ut) {
             }
         }
         else{
-            return 0;
+            return "";
         }
     }
 }
