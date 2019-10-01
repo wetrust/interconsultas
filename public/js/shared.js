@@ -1157,11 +1157,14 @@ function multiproposito(){
 
         if (valor == ""){
             $("select[name='respuesta_doppler_materno']").val("no evaluado");
+        }else if(valor == "> 99"){
+            $("select[name='respuesta_doppler_materno']").val("Alterado (> p95)");    
         }else if(valor < 95){
             $("select[name='respuesta_doppler_materno']").val("Normal (< p95)");
         }else if(valor > 95){
             $("select[name='respuesta_doppler_materno']").val("Alterado (> p95)");
         }
+        
     });
 
     $("input[name='respuesta_pfe']").on("change", function(){
