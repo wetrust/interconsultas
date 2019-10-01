@@ -1137,8 +1137,8 @@ function multiproposito(){
         }
     });
 
-    $("input[name='respuesta_uterinas_percentil']").on("change", function(){
-        let valor = this.value;
+    $("#respuesta_uterinas_percentil").on("change", function(){
+        let valor = this.innerHTML;
 
         if(valor < 95){
             $("select[name='respuesta_doppler_materno']").val("Normal (< p95)");
