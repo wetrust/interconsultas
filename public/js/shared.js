@@ -1068,7 +1068,11 @@ function multiproposito(){
                 if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
                     var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
                     $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }else{
+                    $("input[name='respuesta_uterinas']").val("").trigger("change");
                 }
+            }else{
+                $("input[name='respuesta_uterinas']").val("").trigger("change");
             }
         }
     }).keypress(function( event ) {
@@ -1122,7 +1126,11 @@ function multiproposito(){
                 if ($("input[name='respuesta_uterina_derecha']").val() > 0){
                     var promedio = (parseFloat($("input[name='respuesta_uterina_derecha']").val()) + parseFloat(ut)) / 2;
                     $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }else{
+                    $("input[name='respuesta_uterinas']").val("").trigger("change");
                 }
+            }else{
+                $("input[name='respuesta_uterinas']").val("").trigger("change");
             }
         }
     }).keypress(function( event ) {
