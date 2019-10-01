@@ -352,7 +352,7 @@ function pctUtAdvanced(eg,ut) {
     ut = ut.toString(); 
     ut = ut.replace(",", ".");
     ut = parseFloat(ut);
-    if (eg < 10 || eg > 40){ return 0; }
+    if (eg < 10 || eg > 40){ return ""; }
     else {
         eg = eg - 10;
         var uno = 0, dos = 0;
