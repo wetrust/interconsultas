@@ -822,7 +822,11 @@ function doppleruterinas(){
                 if ($("input[name='respuesta_uterina_izquierda']").val() > 0){
                     var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_izquierda']").val())) / 2;
                     $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }else{
+                    $("input[name='respuesta_uterinas']").val("");
                 }
+            }else{
+                $("input[name='respuesta_uterinas']").val("");
             }
         }
     }).keypress(function( event ) {
@@ -844,7 +848,11 @@ function doppleruterinas(){
                 if ($("input[name='respuesta_uterina_derecha']").val() > 0){
                     var promedio = (parseFloat(ut) + parseFloat($("input[name='respuesta_uterina_derecha']").val())) / 2;
                     $("input[name='respuesta_uterinas']").val(promedio.toFixed(2)).trigger("change");
+                }else{
+                    $("input[name='respuesta_uterinas']").val("");
                 }
+            }else{
+                $("input[name='respuesta_uterinas']").val("");
             }
         }
     }).keypress(function( event ) {
