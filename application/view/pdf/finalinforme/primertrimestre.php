@@ -216,7 +216,7 @@
         $edadGestacional = $edadGestacional * 7; 
     }
     
-    if ($edadGestacional < 84 && $this->respuesta_embrion !== "no se observa aun"){
+    if ($this->respuesta_lcn != ""){
         //determinar cuantos días faltan para las 12 semanas
         $onceSemanas = 77 - $edadGestacional;
         $catorceSemanas = 97 - $edadGestacional;
