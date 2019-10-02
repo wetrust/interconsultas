@@ -45,7 +45,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
 
-    $html = '<h4 style="border-bottom:1px solid #000;">A- Formulario referencia para evaluación ecográfica edad gestacional 11 - 14</h4>';
+    $html = '<h4>A- Formulario referencia para evaluación ecográfica edad gestacional 11 - 14</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     if (Session::get("user_account_type") == 4) {
@@ -112,7 +112,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h4 style="border-bottom:1px solid #000;">B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
+    $html = '<h4>B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
