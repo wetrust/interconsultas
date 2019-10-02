@@ -188,7 +188,7 @@
     $_html = strtoupper($_html);
     $_html = str_replace("\n", "<br>", $_html);
 
-    if ($this->respuesta_saco_eg){
+    if ($this->respuesta_saco_eg && $this->respuesta_lcn == ""){
         $_html = "Calculo inicial de edad según saco gestacional: ". $this->respuesta_saco_eg ." semanas<br>Agendar próxima ecografía para determinar edad gestacional por LCN<br>" . $_html;
     }
 
