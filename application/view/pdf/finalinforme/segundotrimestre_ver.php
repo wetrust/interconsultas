@@ -42,7 +42,7 @@
     $html = '<h4 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA DE CRECIMIENTO</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
-    $html = '<h3 style="border-bottom:1px solid #000;">A- Formulario de referencia para evaluación ecográfica del crecimiento fetal</h3>';
+    $html = '<h3>A- Formulario de referencia para evaluación ecográfica del crecimiento fetal</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     if (Session::get("user_account_type") == 4) {
@@ -109,7 +109,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h3 style="border-bottom:1px solid #000;">B- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h3>';
+    $html = '<h3>B- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
