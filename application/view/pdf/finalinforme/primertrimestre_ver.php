@@ -121,7 +121,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_saco_valor > 0){
-        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>Promedio ssaco gestional:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>Promedio de saco:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
@@ -187,7 +187,7 @@
     }
     $html = '<table><tbody><tr><td></td><td>Douglas:</td><td>'. $this->respuesta_douglas_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(1);
+    $this->pdf->Ln(4);
 
     if ($this->respuesta_lcn != ""){
         $html = '<table><tbody><tr><td></td><td><strong>Ege según LCN:</strong></td><td>'. $this->respuesta_lcn_eg.' semanas*</td><td></td><td></td></tr></tbody></table>';
@@ -223,7 +223,7 @@
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td></td><td><strong>FPP según LCN:</strong></td><td>'. $fpplcn.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-        $this->pdf->Ln(1);
+        $this->pdf->Ln(4);
     }
 
     $_html = strip_tags($this->comentariosexamen);
