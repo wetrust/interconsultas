@@ -116,7 +116,7 @@
     $html = '<table><tbody><tr><td>Frecuencia cardiaca fetal: '.htmlentities($this->solicitud_resultado->respuesta_fcf).'</td><td>Sexo: '.htmlentities($this->solicitud_resultado->sexo_fetal).'</td><td>Placenta: '.htmlentities($this->solicitud_resultado->placenta).', '.$this->solicitud_resultado->placenta_insercion.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td style="background-color:#f7fafb;">Líquido amniótico *</td><td style="background-color:#f7fafb;">Líquido: '.htmlentities($this->solicitud_resultado->liquido).'</td><td style="background-color:#f7fafb;">BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).' mm.</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="background-color:#f7fafb;">Líquido amniótico *</td><td style="background-color:#f7fafb;">Cualitativo: '.htmlentities($this->solicitud_resultado->liquido).'</td><td style="background-color:#f7fafb;">BVM: '.htmlentities($this->solicitud_resultado->respuesta_bvm).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->solicitud_resultado->anatomia_fetal). " ".htmlentities($this->solicitud_resultado->anatomia_extra).'</td></tr></tbody></table>';
