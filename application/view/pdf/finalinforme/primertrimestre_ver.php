@@ -114,14 +114,14 @@
     $html = '<h4>B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td></td><td>Fecha de exámen:</td><td>'. $fecha.'</td><td>Edad gestacional por FUR: '. $this->respuesta_eg.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Fecha de exámen:</td><td>'. $fecha.'</td><td>Edad gestacional por FUR:</td><td>'. $this->respuesta_eg.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td></td><td>Utero:</td><td>'. $this->respuesta_utero.'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Utero:</td><td>'. $this->respuesta_utero.'</td><td></td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_saco_valor > 0){
-        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>Saco gestional promedio: '. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>Saco gestional promedio:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
@@ -134,12 +134,12 @@
         $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td>Freciencia cardiaca fetal: '. $this->respuesta_fcf.'</td></tr></tbody></table>';
     }
     else{
-        $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td></td><td></td></tr></tbody></table>';
     }
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_lcn != ""){
-        $html = '<table><tbody><tr><td></td><td>Longitud céfalo - nalga (LCN) :</td><td>'.$this->respuesta_lcn.'</td><td><strong>Edad gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Longitud céfalo - nalga (LCN) :</td><td>'.$this->respuesta_lcn.'</td><td><strong>Edad gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
 
@@ -171,21 +171,21 @@
         $fpplcn = explode("-", $fpplcn);
         $fpplcn = $fpplcn[2] . "-". $fpplcn[1]. "-". $fpplcn[0];
 
-        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td><strong>FUR según LCN:</strong> '. $furlcn.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td><strong>FUR según LCN:</strong></td><td>'. $furlcn.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td><strong>FPP según LCN:</strong> '. $fpplcn.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td><strong>FPP según LCN:</strong></td><td>'. $fpplcn.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }else{
-        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
-    $html = '<table><tbody><tr><td></td><td>Douglas:</td><td>'. $this->respuesta_douglas_primertrimestre.'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Douglas:</td><td>'. $this->respuesta_douglas_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
