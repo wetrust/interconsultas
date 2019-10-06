@@ -139,7 +139,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_lcn != ""){
-        $html = '<table><tbody><tr><td></td><td>Longitud céfalo - nalga (LCN) : '.$this->respuesta_lcn.'</td><td><strong>Edad gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Longitud céfalo - nalga (LCN) :</td><td>'.$this->respuesta_lcn.'</td><td><strong>Edad gestacional según LCN:</strong> '. $this->respuesta_lcn_eg.' semanas*</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
 
