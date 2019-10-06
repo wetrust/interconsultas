@@ -187,7 +187,7 @@
     }
     $html = '<table><tbody><tr><td></td><td>Douglas:</td><td>'. $this->respuesta_douglas_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(4);
+    $this->pdf->Ln(1);
 
     if ($this->respuesta_lcn != ""){
         $html = '<table><tbody><tr><td></td><td><strong>Ege según LCN:</strong></td><td>'. $this->respuesta_lcn_eg.' semanas*</td><td></td><td></td></tr></tbody></table>';
