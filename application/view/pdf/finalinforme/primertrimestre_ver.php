@@ -218,10 +218,10 @@
         $furlcn = $furlcn[2] . "-". $furlcn[1]. "-". $furlcn[0];
         $fpplcn = explode("-", $fpplcn);
         $fpplcn = $fpplcn[2] . "-". $fpplcn[1]. "-". $fpplcn[0];
-        $html = '<table><tbody><tr><td></td><td><strong>FUR según LCN:</strong></td><td>'. $furlcn.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td><strong>FUR recalculada:</strong></td><td>'. $furlcn.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td></td><td><strong>FPP según LCN:</strong></td><td>'. $fpplcn.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td><strong>FPP recalculada</strong></td><td>'. $fpplcn.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(4);
     }
