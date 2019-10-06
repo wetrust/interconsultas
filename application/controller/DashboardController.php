@@ -146,7 +146,7 @@ class DashboardController extends Controller
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco crecimiento',$respuesta_crecimiento);
         }
         else if ($respuesta_crecimiento == 1){
-            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_lcn_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","","",$respuesta_anatomia_extra, "", "", "", "", "", "", "", "", "", "", "", "", "","", $respuesta_saco_valor, "", $respuesta_saco_eg);
+            RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", "", $respuesta_crecimiento, $respuesta_utero_primertrimestre, $respuesta_saco_gestacional, $respuesta_embrion, $respuesta_lcn, $respuesta_anexo_izquierdo_primertrimestre, $respuesta_anexo_derecho_primertrimestre, $respuesta_douglas_primertrimestre, $respuesta_lcn_eg, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","","","","","",$respuesta_anatomia_extra, "", $respuesta_fcf, "", "", "", "", "", "", "", "", "", "", "","", $respuesta_saco_valor, "", $respuesta_saco_eg);
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
 
             $data = SolicitudesModel::getSolicitud($solicitud_id);
@@ -162,6 +162,7 @@ class DashboardController extends Controller
                 'respuesta_saco_eg' => $respuesta_saco_eg,
                 'respuesta_embrion' => $respuesta_embrion,
                 'respuesta_lcn' => $respuesta_lcn,
+                'respuesta_fcf' => $respuesta_fcf,
                 'respuesta_anexo_izquierdo_primertrimestre' => $respuesta_anexo_izquierdo_primertrimestre,
                 'respuesta_anexo_derecho_primertrimestre' => $respuesta_anexo_derecho_primertrimestre,
                 'respuesta_douglas_primertrimestre' => $respuesta_douglas_primertrimestre,

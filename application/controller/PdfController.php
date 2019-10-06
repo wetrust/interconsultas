@@ -42,7 +42,6 @@ class PdfController extends Controller
     }
 
     public function informe_primertrimestre($solicitud_id){
-
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         header("Access-Control-Allow-Origin: *");
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre_ver', 
@@ -56,6 +55,7 @@ class PdfController extends Controller
             'respuesta_saco_valor' => $respuesta->saco_gestacional_valor,
             'respuesta_saco_eg' => $respuesta->respuesta_saco_eg,
             'respuesta_lcn' => $respuesta->lcn,
+            'respuesta_fcf' => $respuesta->respuesta_fcf,
             'respuesta_anexo_izquierdo_primertrimestre' => $respuesta->anexo_izquierdo_primertrimestre,
             'respuesta_anexo_derecho_primertrimestre' => $respuesta->anexo_derecho_primertrimestre,
             'respuesta_douglas_primertrimestre' => $respuesta->douglas_primertrimestre,
