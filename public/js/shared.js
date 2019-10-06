@@ -1052,8 +1052,8 @@ function primerTrimerstre(){
     $("select[name='respuesta_embrion']").on("change", function(){
         if (this.value == "no se observa aun"){
             document.getElementsByName("respuesta_lcn")[0].parentElement.classList.add("d-none");
-            document.getElementsByName("respuesta_lcn")[0].value=0;
-            $("input[name='respuesta_lcn']").trigger("change");
+            document.getElementsByName("respuesta_lcn")[0].value="";
+            document.getElementsByName("respuesta_lcn_eg")[0].value = "";
             document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.add("d-none");
             document.getElementsByName("respuesta_fcf")[0].parentElement.classList.add("d-none");
             document.getElementsByName("respuesta_fcf")[0].value=0;
@@ -1061,9 +1061,13 @@ function primerTrimerstre(){
         else{
             document.getElementsByName("respuesta_lcn")[0].parentElement.classList.remove("d-none");
             document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.remove("d-none");
+            document.getElementsByName("respuesta_lcn_eg")[0].value = "Ingrese LCN";
             if (this.value == "act. no evidenciable" || this.value == "act. card. y corp. (-)"){
                 document.getElementsByName("respuesta_fcf")[0].parentElement.classList.add("d-none");
                 document.getElementsByName("respuesta_fcf")[0].value=0;
+            }
+            else if (this.value == "act. card. inicial"){
+                document.getElementsByName("respuesta_fcf")[0].value= "(+) inicial";
             }
             else{
                 document.getElementsByName("respuesta_fcf")[0].parentElement.classList.remove("d-none");
@@ -1398,12 +1402,12 @@ function cargarBVM(input){
 function cargarFCF(input){
     let fcfSelect = document.getElementsByName(input)[0];
     opt = document.createElement('option');
+    opt.appendChild(document.createTextNode("Sin actividad cardiaca"));
+    opt.value = 0; 
+    opt = document.createElement('option');
     opt.appendChild(document.createTextNode("(+) inicial"));
     opt.value = "(+) inicial"; 
     fcfSelect.appendChild(opt);
-    opt = document.createElement('option');
-    opt.appendChild(document.createTextNode("Sin actividad cardiaca"));
-    opt.value = 0; 
     fcfSelect.appendChild(opt);
     opt = document.createElement('option');
     opt.appendChild(document.createTextNode("< 90"));
