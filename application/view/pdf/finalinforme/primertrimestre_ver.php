@@ -185,7 +185,7 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
-    $html = '<table><tbody><tr><td></td><td>Douglas: '. $this->respuesta_douglas_primertrimestre.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Douglas:</td><td>'. $this->respuesta_douglas_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
