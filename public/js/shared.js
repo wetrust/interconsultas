@@ -628,7 +628,8 @@ function loadInProcessData(data){
                 args.respuesta_lcn_eg = $('input[name="respuesta_lcn_eg"]').val(),
                 args.respuesta_anexo_izquierdo_primertrimestre = $('select[name="respuesta_anexo_izquierdo_primertrimestre"]').val(),
                 args.respuesta_anexo_derecho_primertrimestre = $('select[name="respuesta_anexo_derecho_primertrimestre"]').val(),
-                args.respuesta_douglas_primertrimestre = $('select[name="respuesta_douglas_primertrimestre"]').val()
+                args.respuesta_douglas_primertrimestre = $('select[name="respuesta_douglas_primertrimestre"]').val(),
+                args.respuesta_fcf = $('select[name="respuesta_fcf"]').val()
             }
             else{
                 args.respuesta_pfe = $('input[name="respuesta_pfe"]').val(),
