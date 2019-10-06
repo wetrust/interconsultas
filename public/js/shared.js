@@ -1404,11 +1404,11 @@ function cargarFCF(input){
     let fcfSelect = document.getElementsByName(input)[0];
     opt = document.createElement('option');
     opt.appendChild(document.createTextNode("Sin actividad cardiaca"));
-    opt.value = 0; 
+    opt.value = 0;
+    fcfSelect.appendChild(opt);
     opt = document.createElement('option');
     opt.appendChild(document.createTextNode("(+) inicial"));
     opt.value = "(+) inicial"; 
-    fcfSelect.appendChild(opt);
     fcfSelect.appendChild(opt);
     opt = document.createElement('option');
     opt.appendChild(document.createTextNode("< 90"));
