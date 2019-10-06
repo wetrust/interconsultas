@@ -121,7 +121,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_saco_valor > 0){
-        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>Promedio Saco gestional:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>Promedio ssaco gestional:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
