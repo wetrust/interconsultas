@@ -171,17 +171,17 @@
         $fpplcn = explode("-", $fpplcn);
         $fpplcn = $fpplcn[2] . "-". $fpplcn[1]. "-". $fpplcn[0];
 
-        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td><strong>FUR según LCN:</strong> '. $furlcn.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td><strong>FUR según LCN:</strong> '. $furlcn.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td></td><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_primertrimestre.'</td><td><strong>FPP según LCN:</strong> '. $fpplcn.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td><strong>FPP según LCN:</strong> '. $fpplcn.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }else{
-        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo: '. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td></td><td>Anexo Derecho: '. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
