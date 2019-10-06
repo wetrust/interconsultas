@@ -130,12 +130,13 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);  
     }
-    if (strlen($this->respuesta_fcf) > 0){
+
+    //if (strlen($this->respuesta_fcf) > 0){
         $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td>Freciencia cardiaca fetal: '. $this->respuesta_fcf.'</td></tr></tbody></table>';
-    }
-    else{
-        $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td></td><td></td></tr></tbody></table>';
-    }
+    //}
+    //else{
+    //    $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td></td><td></td></tr></tbody></table>';
+    //}
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_lcn != ""){
