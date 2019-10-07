@@ -43,7 +43,7 @@
     $html = '<table><tbody><tr><td>Fecha de solicitud: 12-04-2019</td><td>FUM Operacional: 28-09-2018</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Diagnóstico de referencia:  Evaluación del crecimiento</td><td>Edad Gestacional solicitud: 28.0 semanas</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Motivo de exámen:  Evaluación del crecimiento</td><td>Edad Gestacional solicitud: 28.0 semanas</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Ciudad procedencia: Loncoche</td><td>Lugar de control: Consultorio La Paz</td></tr></tbody></table>';

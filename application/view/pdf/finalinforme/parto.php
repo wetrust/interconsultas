@@ -53,7 +53,7 @@
     $html = '<table><tbody><tr><td>Talla: '.htmlentities($this->parto->solicitud_egestacional).'</td><td>FUR Referida: '.$solicitud_fum.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Cráneo: '.htmlentities($this->parto->solicitud_egestacional).'</td><td>Diagnóstico de referencia: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Cráneo: '.htmlentities($this->parto->solicitud_egestacional).'</td><td>Motivo de exámen: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>IPN: '.htmlentities($this->parto->solicitud_ciudad).'</td><td>Lugar de control: '.htmlentities($this->solicitud->solicitud_lugar).'</td></tr></tbody></table>';

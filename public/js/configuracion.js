@@ -210,7 +210,7 @@ function createCarcasaDiagnostico(){
     btn_responder_id = uuidv4();
 
     var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-modal="'+modal_id+'" class="btn btn-primary">Guardar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
-    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Nuevo diagnóstico</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Nombre del diagnóstico de referencia</label> <input type="text" class="form-control" id="modal.diagnostico.nombre"> </div></div>'+ footerModal);
+    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Nuevo diagnóstico</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Nombre del Motivo de exámen</label> <input type="text" class="form-control" id="modal.diagnostico.nombre"> </div></div>'+ footerModal);
 
     $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
         $(this).remove();

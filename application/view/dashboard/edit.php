@@ -62,7 +62,7 @@
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_egestacional); ?>">
                     </div>
                     <div class="col form-group">
-                        <label>Diagnóstico de referencia</label>
+                        <label>Motivo de exámen</label>
                         <input type="text" class="form-control" disabled value="<?php echo htmlentities($this->solicitud->solicitud_diagnostico); ?>">
                     </div>
                 </div>

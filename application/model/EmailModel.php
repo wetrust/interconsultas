@@ -19,7 +19,7 @@ class EmailModel
         "\nLugar de control: " . $datos->solicitud_lugar .
         "\nFUM: ". $solicitud_fum .
         "\nEdad Gestacional:" . $datos->solicitud_egestacional .
-        "\nDiagnóstico de referencia: " . $datos->solicitud_diagnostico .
+        "\nMotivo de exámen: " . $datos->solicitud_diagnostico .
         "\nProfesional referente: " . $datos->solicitud_profesional .
         "\nNombre profesional: " . $datos->solicitud_nombreprofesional .
         "\nEmail: " . $datos->solicitud_email . "\n\n";
@@ -51,7 +51,7 @@ class EmailModel
         "\nLugar de control: " . $datos->solicitud_lugar .
         "\nFUM: ". $solicitud_fum .
         "\nEdad Gestacional:" . $datos->solicitud_egestacional .
-        "\nDiagnóstico de referencia: " . $datos->solicitud_diagnostico .
+        "\nMotivo de exámen: " . $datos->solicitud_diagnostico .
         "\nProfesional referente: " . $datos->solicitud_profesional .
         "\nNombre profesional: " . $datos->solicitud_nombreprofesional .
         "\nCorreo electrónico: " . $datos->solicitud_email;
