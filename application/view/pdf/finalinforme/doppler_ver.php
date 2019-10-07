@@ -119,6 +119,8 @@
     
     $html = '<table><tbody><tr><td>Edad Gestacional: '. htmlentities($this->respuesta_eg) .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha .'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td>Embrión: '. htmlentities($this->respuesta_embrion) .'</td><td>Frecuencia cardiaca fetal: '. htmlentities($this->respuesta_fcf) .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
