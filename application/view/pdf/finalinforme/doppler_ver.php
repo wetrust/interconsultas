@@ -71,7 +71,7 @@
         $html = '<table><tbody><tr><td>Presión arterial media ((PAS- (PAD/3))+ PAD)</td><td>: '.htmlentities($this->solicitud->solicitud_media).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>IMC Materno (kg/m2)</td><td>: '.htmlentities($this->solicitud->solicitud_imc).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td>Diagnóstico de referencia</td><td>: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
