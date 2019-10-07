@@ -121,7 +121,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td>Edad Gestacional: '. htmlentities($this->respuesta_eg) .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td><strong><em>Descripción</em></strong></td><td>Embrión: '. htmlentities($this->respuesta_embrion) .'</td><td>Frecuencia cardiaca fetal: '. htmlentities($this->respuesta_fcf) .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Descripción</em></strong></td><td>Embrión: '. htmlentities($this->respuesta_embrion) .'</td><td></td><td>Frecuencia cardiaca fetal: '. htmlentities($this->respuesta_fcf) .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td></td><td>Anatomía fetal: '.htmlentities($this->respuesta_anatomia). " ".htmlentities($this->respuesta_anatomia_extra).'</td></tr></tbody></table>';
