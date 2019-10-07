@@ -895,31 +895,31 @@ function ginecologica(){
         }
     });
     $("input[name='respuesta_endometrio']").keypress(function( event ) {
-        if ( event.which == 13 ) {
+        if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_anexo_izquierdo_ginecologica']").focus();
         }
     });
     $("input[name='respuesta_anexo_izquierdo_ginecologica']").keypress(function( event ) {
-        if ( event.which == 13 ) {
+        if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_anexo_derecho_ginecologica']").focus();
         }
     });
     $("input[name='respuesta_anexo_derecho_ginecologica']").keypress(function( event ) {
-        if ( event.which == 13 ) {
+        if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_ovario_izquierdo']").focus();
         }
     });
     $("input[name='respuesta_ovario_izquierdo']").keypress(function( event ) {
-        if ( event.which == 13 ) {
+        if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_ovario_derecho']").focus();
         }
     });
     $("input[name='respuesta_ovario_derecho']").keypress(function( event ) {
-        if ( event.which == 13 ) {
+        if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_douglas_ginecologica']").focus();
         }

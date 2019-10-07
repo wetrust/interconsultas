@@ -236,7 +236,7 @@
 
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(8);
+    $this->pdf->Ln(12);
 
     $html = '<table><tbody><tr><td style="width:450px"></td><td>Ecografista: '.htmlentities($this->ecografista).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -272,7 +272,7 @@
 
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
-    $html = '<p><small><br>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992. <br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico. Profesional quien finalmente evaluará clínicamente la información contenida en este exámen. <br><br>Nota: Examen ecográfico durante la gestación inicial <strong>normal</strong> (menor a 11 semanas), se realiza con el propósito de: confirmación de embarazo, localización intrauterina del saco gestacional, confirmación de vitalidad embrio/fetal,  determinar si es embarazo único o múltiple, y fundamentalmente valoración de edad gestacional ecográfica.</small></p>';
+    $html = '<p><small><br>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992. <br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico. Profesional quien finalmente evaluará clínicamente la información contenida en este exámen.</small> <br><br>Nota: Examen ecográfico durante la gestación inicial <strong>normal</strong> (menor a 11 semanas), se realiza con el propósito de: confirmación de embarazo, localización intrauterina del saco gestacional, confirmación de vitalidad embrio/fetal,  determinar si es embarazo único o múltiple, y fundamentalmente determinación de la edad gestacional ecográfica, con la cual se obtiene fur operacional y fecha probable de parto.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
 
     //$tmp = Config::get('PATH_AVATARS');
