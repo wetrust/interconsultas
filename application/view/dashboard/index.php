@@ -92,6 +92,9 @@
             <div class="card my-2 shadow d-none" id="filtro.contenedor">
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-2 d-none">
+                            <label>Fecha hasta</label>
+                            <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha"></div>
                         <div class="col-2">
                             <label>Ciudad</label>
                             <select class="form-control" id="filtro.ciudad"></select></div>
@@ -99,11 +102,8 @@
                             <label>Lugar de control</label>
                             <select class="form-control" id="filtro.lugar"></select></div>
                         <div class="col-2">
-                            <label>Fecha desde</label>
+                            <label>Fecha exámen</label>
                             <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha"></div>
-                        <div class="col-2">
-                            <label>Fecha hasta</label>
-                            <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha"></div>
                         <div class="col-3">
                             <label>Datos prof. referente</label>
                             <select class="form-control" id="filtro.tipo">
