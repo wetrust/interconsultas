@@ -60,7 +60,7 @@ function buildFinishTable(data){
     $('#tabla\\.resultado').empty();
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
-        var tabla = '<thead class="thead-dark"><tr><td><span class="text-primary">Nombre paciente</span></td><td class="text-primary">R.U.T.</td><td><span class="text-primary">Tipo de exámen</span></td><td><span class="text-primary">Email referente</span></td><td><span class="text-primary">Realizado</span></td><td><span class="text-primary">Accion</span></td></tr></thead><tbody>';
+        var tabla = '<thead class="thead-dark"><tr><td><span class="text-primary">Tipo de exámen</span></td><td><span class="text-primary">Realizado</span></td><td><span class="text-primary">Nombre paciente</span></td><td class="text-primary">R.U.T.</td><td><span class="text-primary">Email referente</span></td><td><span class="text-primary">Accion</span></td></tr></thead><tbody>';
         $.each(data, function(i, value) {
             let tipo = "";
             if (value.tipo == "1"){
@@ -76,7 +76,7 @@ function buildFinishTable(data){
             }
             let fecha = value.fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>' + tipo +'</td><td>' + value.solicitud_email +'</td><td>'+ fecha +'</td>';
+            tabla += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>' + value.solicitud_email +'</td>';
             if (value.tipo == "0" || value.tipo == "2"){
                 tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Graficas</button></td></tr>';
             }

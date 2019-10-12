@@ -106,14 +106,14 @@
                             <label>Fecha exámen</label>
                             <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha"></div>
                         <div class="col-2">
-                            <label>RUT</label>
-                            <input type="text" id="filtro.rut" class="form-control" ></div>
-                        <div class="col-2">
                             <label>Ciudad</label>
                             <select class="form-control" id="filtro.ciudad"></select></div>
                         <div class="col-2">
                             <label>Lugar de control</label>
                             <select class="form-control" id="filtro.lugar"></select></div>
+                        <div class="col-2">
+                            <label>RUT</label>
+                            <input type="text" id="filtro.rut" class="form-control" ></div>
                         <div class="col-1">
                             <label>Filtro</label>
                             <div class="btn-group" role="group">
