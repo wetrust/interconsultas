@@ -173,7 +173,7 @@ class SolicitudesModel
             $execute[':solicitud_rut'] = $rut;
         }
         if (strlen($tipo) > 0){
-            $sql .= " AND solicitudes.solicitud_email = :tipo";
+            $sql .= " AND respuestas.tipo = :tipo";
             $execute[':tipo'] = $tipo; 
         }
 
