@@ -175,7 +175,7 @@ $(document).ready(function(){
         $("#filtro\\.lugar").val("");
         $("#filtro\\.fecha").val("");
         $("#filtro\\.fecha\\.hasta").val("");
-        $("#filtro\\.tipo").val(8);
+        $("#filtro\\.tipo").val("");
     });
 
     var now = new Date();
@@ -188,14 +188,11 @@ $(document).ready(function(){
 function loadReferentes(){
     $.get(_api + 'profesionales_email').done(function(data){
         $('#interfaz\\.email').empty();
-        $('#filtro\\.tipo').empty();
-        $('#filtro\\.tipo').append('<option value="">No seleccionado</option>');
         if (Object.keys(data).length > 0) {
             let response = '<option value=""></option>';
             $.each(data, function(i, value) {
                 response = '<option value="' + data[i].solicitud_email +'">' + data[i].solicitud_email +'</option>';
                 $('#interfaz\\.email').append(response);
-                $('#filtro\\.tipo').append(response);
             });
         }
     });

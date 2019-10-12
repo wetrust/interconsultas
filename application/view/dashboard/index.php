@@ -93,8 +93,14 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
-                            <label>Datos prof. referente</label>
+                            <label>Tipo de exámen</label>
                             <select class="form-control" id="filtro.tipo">
+                                <option value="" selected>No seleccionado</option>
+                                <option value="0">1.- Doppler + Eco. crecimiento</option>
+                                <option value="2">2.- Ecografía 2° / 3° trimestre</option>
+                                <option value="4">3.- Ecografía 11 / 14 semanas</option>
+                                <option value="1">4.- Ecografía precoz de urgencia</option>
+                                <option value="3">5.- Ecografía Ginecológica</option>
                             </select></div>
                         <div class="col-2">
                             <label>RUT</label>
