@@ -121,7 +121,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_saco_valor > 0){
-        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>Promedio de saco:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>promedio de saco:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
@@ -131,7 +131,7 @@
         $this->pdf->Ln(1);  
     }
     if ($this->respuesta_fcf > 0){
-        $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td>Frecuencia cardiaca fetal:</td><td>'. $this->respuesta_fcf.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td>frecuencia cardiaca fetal:</td><td>'. $this->respuesta_fcf.'</td></tr></tbody></table>';
     }
     else{
         $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td></td><td></td></tr></tbody></table>';
