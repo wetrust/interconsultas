@@ -140,10 +140,10 @@ $(document).ready(function(){
         let ciudad = $("#filtro\\.ciudad option:selected").val();
         let lugar = $("#filtro\\.lugar option:selected").val();
         let desde = $("#filtro\\.fecha").val();
-        let hasta = $("#filtro\\.fecha\\.hasta").val();
         let tipo = $("#filtro\\.tipo option:selected").val();
+        let rut = $("#filtro\\.rut").val();
 
-        let args = {ciudad: ciudad, lugar: lugar, desde: desde, hasta: hasta, tipo: tipo}
+        let args = {ciudad: ciudad, lugar: lugar, desde: desde, rut: rut, tipo: tipo}
         
         $('#tabla\\.resuelta').empty();
 

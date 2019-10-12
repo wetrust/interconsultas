@@ -84,8 +84,7 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
-    public static function getAllOldSolicitudes($solicitud_email)
-    {
+    public static function getAllOldSolicitudes($solicitud_email){
         $database = DatabaseFactory::getFactory()->getConnection();
 
         if (Session::get('user_account_type') == 2){
@@ -144,107 +143,43 @@ class SolicitudesModel
 
         return $query->fetch();
     }
-    public static function getAllOldSolicitudesFilter($solicitud_email,$ciudad,$lugar,$desde,$tipo)
+    public static function getAllOldSolicitudesFilter($solicitud_email,$ciudad,$lugar,$desde,$rut,$tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
         $ciudad = strval($ciudad);
         $lugar = strval($lugar);
         $desde = strval($desde);
+        $rut = strval($rut);
         $tipo = strval($tipo);
-        $sql = "";
+        $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail ";
         $query = "";
+        $execute = array(':solicitud_profesionalemail' => $solicitud_email);
 
-        if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($tipo) == 0){
-            //no filtra
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
+        if (strlen($ciudad) == 0){
+            $sql .= " AND solicitudes.solicitud_ciudad = :ciudad";
+            $execute[':ciudad'] = $ciudad;
         }
-        else if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($tipo) > 0){
-            //filtra por tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_email = :tipo";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':tipo' => $tipo));
+        if (strlen($lugar) == 0){
+            $sql .= " AND solicitudes.solicitud_lugar = :lugar";
+            $execute[':lugar'] = $lugar;
         }
-        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($tipo) == 0){
-            //filtra por ciudad
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad));
+        if (strlen($desde) == 0){
+            $sql .= " AND respuestas.fecha = :fechauno";
+            $execute[':fechauno'] = $desde;
         }
-        else if (strlen($ciudad) == 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($tipo) == 0){
-            //filtra por lugar
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar));
+        if (strlen($rut) == 0){
+            $sql .= " AND solicitudes.solicitud_rut = :solicitud_rut";
+            $execute[':solicitud_rut'] = $rut;  => 
         }
-        else if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($tipo) == 0){
-            //filtra por fecha
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND respuestas.fecha = :fechauno";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':fechauno' => $desde));
+        if (strlen($tipo) == 0){
+            $sql .= " AND solicitudes.solicitud_email = :tipo";
+            $execute[':tipo'] = $tipo; 
         }
-        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($tipo) == 0){
-            //filtra por fciudad y lugar
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad));
-        }
-        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) == 0 && strlen($tipo) > 0){
-            //filtra por ciudad y tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_email = :tipo";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad, ':tipo' => $tipo));
-        }
-        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($tipo) == 0){
-            //filtra por ciudad y fecha
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND respuestas.fecha = :fechauno";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad,':fechauno' => $desde));
-        }
-        else if (strlen($ciudad) == 0 && strlen($lugar) > 0 && strlen($desde) > 0 && strlen($tipo) == 0){
-            //filtra por lugar y fecha
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND respuestas.fecha = :fechauno";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':fechauno' => $desde));
-        }
-        else if (strlen($ciudad) == 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($tipo) > 0){
-            //filtra por lugar y tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_email = :tipo";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':tipo' => $tipo));
-        }
-        else if (strlen($ciudad) == 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($tipo) > 0){
-            //filtra por fecha y tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_email = :tipo AND respuestas.fecha = :fechauno";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':fechauno' => $desde, ':tipo' => $tipo));
-        }
-        else if (strlen($ciudad) > 0 && strlen($lugar) == 0 && strlen($desde) > 0 && strlen($tipo) > 0){
-            //filtra por ciudad, fecha y tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_email = :tipo AND respuestas.fecha = :fechauno";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':ciudad' => $ciudad,':fechauno' => $desde, ':tipo' => $tipo));
-        }
-        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) == 0 && strlen($tipo) > 0){
-            //filtra por ciudad, lugar, fecha y tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_email = :tipo";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad, ':tipo' => $tipo));
-        }
-        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) > 0 && strlen($tipo) == 0){
-            //filtra por ciudad, lugar, fecha y tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND respuestas.fecha = :fechauno";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad,':fechauno' => $desde));
-        }
-        else if (strlen($ciudad) > 0 && strlen($lugar) > 0 && strlen($desde) > 0 && strlen($tipo) > 0){
-            //filtra por ciudad, lugar, fecha y tipo
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_lugar = :lugar AND solicitudes.solicitud_ciudad = :ciudad AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_email = :tipo AND respuestas.fecha = :fechauno";
-            $query = $database->prepare($sql);
-            $query->execute(array(':solicitud_profesionalemail' => $solicitud_email, ':lugar' => $lugar, ':ciudad' => $ciudad,':fechauno' => $desde, ':tipo' => $tipo));
-        }
+
+        $sql .= " AND solicitudes.solicitud_respuesta = 2";
+        $query = $database->prepare($sql);
+        $query->execute($execute);
 
         return $query->fetchAll();
     }
