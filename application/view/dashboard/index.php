@@ -121,8 +121,8 @@
                                 <button id="filtro.borrar" class="btn btn-danger"><i class="fa fa-eraser" aria-hidden="true"></i></button>
                             </div></div>
                     </div>
-                    <button id="" class="btn btn-secondary">Graficas Doppler + eco crecimiento</button>
-                    <button id="" class="btn btn-secondary">Graficas Ecografía 2° / 3° trimestre</button>
+                    <button id="grafica.doppler" class="btn btn-secondary mt-3 d-none">Graficas Doppler + eco crecimiento</button>
+                    <button id="grafica.segundo" class="btn btn-secondary mt-3 d-none">Graficas Ecografía 2° / 3° trimestre</button>
                 </div>
             </div>
             <div class="card my-2 shadow">
