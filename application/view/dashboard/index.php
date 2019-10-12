@@ -92,9 +92,9 @@
             <div class="card my-2 shadow d-none" id="filtro.contenedor">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-2 d-none">
-                            <label>Fecha hasta</label>
-                            <input type="date" id="filtro.fecha.hasta" class="form-control" placeholder="Fecha"></div>
+                        <div class="col-2">
+                            <label>RUT</label>
+                            <input type="text" id="filtro.rut" class="form-control" ></div>
                         <div class="col-2">
                             <label>Ciudad</label>
                             <select class="form-control" id="filtro.ciudad"></select></div>
