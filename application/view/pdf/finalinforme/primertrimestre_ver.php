@@ -48,25 +48,25 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     if (Session::get("user_account_type") == 4) {
-        $html = '<table><tbody><tr><td>Nombre del paciente</td><td>: '.htmlentities($this->solicitud->solicitud_nombre).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Nombre del paciente</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Edad</td><td>: '.htmlentities($this->solicitud->solicitud_ematerna).' años</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Edad</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_ematerna).' años</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>RUT (DNI)</td><td>: '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>RUT (DNI)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_rut).'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Fecha solicitud de la ecografía</td><td>: '.$solicitud_fecha.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Fecha solicitud de la ecografía</td><td colspan="2">: '.$solicitud_fecha.'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>FUR referida o corregida</td><td>: '.$solicitud_fum.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>FUR referida o corregida</td><td colspan="2">: '.$solicitud_fum.'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Edad gestacional</td><td>: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Edad gestacional</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_egestacional).'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Motivo de exámen</td><td>: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Motivo de exámen</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(4);
     }
