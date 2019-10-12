@@ -42,7 +42,7 @@
     
     $html = '<h3>EVALUACIÓN ECOGRÁFICA OBSTÉTRICA PRECOZ (EDADES GESTACIONALES &lt; 11 SEMANAS)</h3>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
-    $this->pdf->Ln(2);
+    $this->pdf->Ln(4);
 
     $html = '<h4>A- Formulario referencia para evaluación ecográfica de primer trimestre</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
