@@ -104,7 +104,7 @@
     $html = '<h4>B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    $html = '<table><tbody><tr><td><strong>Fecha de exámen:</strong></td><td>'. $fecha.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px"><strong>Fecha de exámen:</strong></td><td>'. $fecha.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
 
@@ -118,28 +118,28 @@
         $txt = "Días de amenorrea";
     }
 
-    $html = '<table><tbody><tr><td><strong>'.$txt.':</strong></td><td>'.htmlentities($this->respuesta_eg).' dias</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px"><strong>'.$txt.':</strong></td><td style="width:450px">'.htmlentities($this->respuesta_eg).' dias</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td style="background-color:#f7fafb;"><strong>Útero:</strong></td><td style="background-color:#f7fafb;">'. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px;background-color:#f7fafb;"><strong>Útero:</strong></td><td style="background-color:#f7fafb;width:450px;">'. $this->respuesta_utero_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td><strong>Endometrio:</strong></td><td>'. $this->respuesta_endometrio.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px"><strong>Endometrio:</strong></td><td style="width:450px">'. $this->respuesta_endometrio.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td style="background-color:#f7fafb;"><strong>Anexo Izquierdo:</strong></td><td style="background-color:#f7fafb;">'. $this->respuesta_anexo_izquierdo_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px;background-color:#f7fafb;"><strong>Anexo Izquierdo:</strong></td><td style="background-color:#f7fafb;width:450px;">'. $this->respuesta_anexo_izquierdo_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td><strong>Ovario Izquierdo:</strong></td><td>'. $this->respuesta_ovario_izquierdo.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px"><strong>Ovario Izquierdo:</strong></td><td style="width:450px">'. $this->respuesta_ovario_izquierdo.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td style="background-color:#f7fafb;"><strong>Anexo Derecho:</strong></td><td style="background-color:#f7fafb;">'. $this->respuesta_anexo_derecho_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px;background-color:#f7fafb;"><strong>Anexo Derecho:</strong></td><td style="background-color:#f7fafb;width:450px;">'. $this->respuesta_anexo_derecho_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td><strong>Ovario Derecho:</strong></td><td>'. $this->respuesta_ovario_derecho.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px"><strong>Ovario Derecho:</strong></td><td style="width:450px">'. $this->respuesta_ovario_derecho.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong>Douglas:</strong></td><td>'. $this->respuesta_douglas_ginecologica.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td style="width:170px"><strong>Douglas:</strong></td><td style="width:450px">'. $this->respuesta_douglas_ginecologica.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
