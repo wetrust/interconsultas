@@ -92,6 +92,10 @@
             <div class="card my-2 shadow d-none" id="filtro.contenedor">
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-3">
+                            <label>Datos prof. referente</label>
+                            <select class="form-control" id="filtro.tipo">
+                            </select></div>
                         <div class="col-2">
                             <label>RUT</label>
                             <input type="text" id="filtro.rut" class="form-control" ></div>
@@ -104,10 +108,6 @@
                         <div class="col-2">
                             <label>Fecha exámen</label>
                             <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha"></div>
-                        <div class="col-3">
-                            <label>Datos prof. referente</label>
-                            <select class="form-control" id="filtro.tipo">
-                            </select></div>
                         <div class="col-1">
                             <label>Filtro</label>
                             <div class="btn-group" role="group">
