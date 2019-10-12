@@ -156,23 +156,23 @@ class SolicitudesModel
         $query = "";
         $execute = array(':solicitud_profesionalemail' => $solicitud_email);
 
-        if (strlen($ciudad) == 0){
+        if (strlen($ciudad) > 0){
             $sql .= " AND solicitudes.solicitud_ciudad = :ciudad";
             $execute[':ciudad'] = $ciudad;
         }
-        if (strlen($lugar) == 0){
+        if (strlen($lugar) > 0){
             $sql .= " AND solicitudes.solicitud_lugar = :lugar";
             $execute[':lugar'] = $lugar;
         }
-        if (strlen($desde) == 0){
+        if (strlen($desde) > 0){
             $sql .= " AND respuestas.fecha = :fechauno";
             $execute[':fechauno'] = $desde;
         }
-        if (strlen($rut) == 0){
+        if (strlen($rut) > 0){
             $sql .= " AND solicitudes.solicitud_rut = :solicitud_rut";
             $execute[':solicitud_rut'] = $rut;
         }
-        if (strlen($tipo) == 0){
+        if (strlen($tipo) > 0){
             $sql .= " AND solicitudes.solicitud_email = :tipo";
             $execute[':tipo'] = $tipo; 
         }
