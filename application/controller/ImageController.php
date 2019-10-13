@@ -10,6 +10,6 @@ class ImageController extends Controller
 
     public function index($solicitud_rut, $fecha)
     {
-        $this->View->renderWithoutHeaderAndFooter(DicomModel::getAllImages($solicitud_rut, $fecha));
+        $this->View->renderJSON(DicomModel::getAllImages($solicitud_rut, $fecha));
     }
 }
