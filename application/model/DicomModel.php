@@ -24,7 +24,7 @@ class DicomModel
                 // No connection, reached limit connections etc. so no point to keep it running
                 exit;
             }
-            $sql = "SELECT DICOMPatients.PatientID, DICOMPatients.PatientNam, DICOMStudies.StudyDate, DICOMStudies.StudyTime, DICOMStudies.StudyModal, DICOMStudies.StudyInsta, DICOMSeries.SeriesInst, DICOMImages.ObjectFile FROM DICOMPatients INNER JOIN DICOMStudies ON DICOMPatients.PatientID = DICOMStudies.PatientID INNER JOIN DICOMSeries ON DICOMStudies.StudyInsta = DICOMSeries.StudyInsta INNER JOIN DICOMImages ON DICOMSeries.SeriesInst = DICOMImages.SeriesInst WHERE DICOMPatients.PatientID = :PatientID AND DICOMStudies.StudyDate = :StudyDate";
+            $sql = "SELECT DICOMPatients.PatientID, DICOMPatients.PatientNam, DICOMStudies.StudyDate, DICOMStudies.StudyTime, DICOMStudies.StudyModal, DICOMStudies.StudyInsta, DICOMSeries.SeriesInst, DICOMImages.NumberOfFr, DICOMImages.ObjectFile FROM DICOMPatients INNER JOIN DICOMStudies ON DICOMPatients.PatientID = DICOMStudies.PatientID INNER JOIN DICOMSeries ON DICOMStudies.StudyInsta = DICOMSeries.StudyInsta INNER JOIN DICOMImages ON DICOMSeries.SeriesInst = DICOMImages.SeriesInst WHERE DICOMPatients.PatientID = :PatientID AND DICOMStudies.StudyDate = :StudyDate";
             $query = $database->prepare($sql);
             $query->execute(array(':PatientID' => $solicitud_rut,':StudyDate' => $fecha));
 
