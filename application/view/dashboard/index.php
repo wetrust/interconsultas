@@ -111,7 +111,7 @@
                         <div class="col-2">
                             <label>Lugar de control</label>
                             <select class="form-control" id="filtro.lugar"></select></div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <label>RUT</label>
                             <input type="text" id="filtro.rut" class="form-control" ></div>
                     </div>
