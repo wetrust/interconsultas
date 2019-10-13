@@ -214,7 +214,7 @@ $(document).ready(function(){
         let tipo =  $("#filtro\\.tipo").val();
             let url = '';
             if (tipo == "2"){
-                url = 'graph/informe_segundotrimestre/'+solicitud_rut;
+                url = 'graph/informe_segundotrimestre_rut/'+solicitud_rut;
                 $("#ver\\.interconsulta > div").addClass("h-100");
                 $("#ver\\.interconsulta > div > div").addClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
