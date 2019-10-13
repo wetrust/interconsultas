@@ -207,7 +207,7 @@ function buildFinishTable(data){
                     var estructura = '<div class="row">';
                     
                     for (i in data.JPGFiles) {
-                        estructura += '<div class="col-12 col-lg-3 col-md-4 col-sm-6"><img alt="Imágen ecográfica" src="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" class="img-fluid" /></div>';
+                        estructura += '<div class="col-12 col-lg-3 col-md-4 col-sm-6"><img alt="Imágen ecográfica" src="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" class="img-fluid border border-primary rounded shadow mb-2" /></div>';
                     }
 
                     estructura += '</div>';
