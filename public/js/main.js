@@ -188,7 +188,7 @@ $(document).ready(function(){
         $("#filtro\\.ciudad").val("");
         $("#filtro\\.lugar").val("");
         $("#filtro\\.fecha").val("");
-        $("#filtro\\.fecha\\.hasta").val("");
+        $("#filtro\\.rut").val("");
         $("#filtro\\.tipo").val("");
     });
 

@@ -114,12 +114,15 @@
                         <div class="col-2">
                             <label>RUT</label>
                             <input type="text" id="filtro.rut" class="form-control" ></div>
-                        <div class="col-1">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
                             <label>Filtro</label>
                             <div class="btn-group" role="group">
-                                <button id="filtro.accion" class="btn btn-primary"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
-                                <button id="filtro.borrar" class="btn btn-danger"><i class="fa fa-eraser" aria-hidden="true"></i></button>
-                            </div></div>
+                                <button id="filtro.accion" class="btn btn-primary"><i class="fa fa-check-circle" aria-hidden="true"></i> Filtrar</button>
+                                <button id="filtro.borrar" class="btn btn-danger"><i class="fa fa-eraser" aria-hidden="true"></i> Borrar filtros</button>
+                            </div>
+                        </div>
                     </div>
                     <button id="grafica.doppler" class="btn btn-secondary mt-3 d-none">Graficas Doppler + eco crecimiento</button>
                     <button id="grafica.segundo" class="btn btn-secondary mt-3 d-none">Graficas Ecografía 2° / 3° trimestre</button>
