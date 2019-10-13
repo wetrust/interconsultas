@@ -78,7 +78,7 @@ function buildFinishTable(data){
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
             fechas = fecha[0] + "" + fecha[1] + "" + fecha[2];
             tabla += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>' + value.solicitud_email +'</td>';
-            tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_rut + ' data-fecha='+ value.fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
+            tabla += '<td><button class="btn btn-secondary foto mr-1" data-id='+ value.solicitud_rut + ' data-fecha='+ fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
             if (value.tipo == "0" || value.tipo == "2"){
                 tabla += '<button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Graficas</button></td></tr>';
             }
@@ -183,6 +183,23 @@ function buildFinishTable(data){
                 $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
                 $('#ver\\.interconsulta\\.contenedor').empty();
                 $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'"  id="contenedorpdf"></iframe>')
+                $("#ver\\.interconsulta").modal("show");
+                $("#ver\\.interconsulta\\.footer").empty();
+                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+            }
+        });
+
+        $('#tabla\\.resultado tr > td > button.foto').on("click", function(){
+            let solicitud_rut =  $(this).data("id");
+            let fecha =  $(this).data("tipo");
+            let url = '';
+            if (tipo == "0"){
+                url = 'graph/informe_dopplercrecimiento/';
+                $("#ver\\.interconsulta > div").addClass("h-100");
+                $("#ver\\.interconsulta > div > div").addClass("h-100");
+                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
+                $('#ver\\.interconsulta\\.contenedor').empty();
+                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'" id="contenedorpdf"></iframe>')
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
                 $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
