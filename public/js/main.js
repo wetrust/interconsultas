@@ -163,7 +163,9 @@ $(document).ready(function(){
         if (tipo != "" && rut.length > 0){
             if (tipo == "0"){
                 $("#grafica\\.doppler").removeClass("d-none");
-            }else if (tipo == "1"){
+                $("#grafica\\.segundo").addClass("d-none");
+            }else if (tipo == "2"){
+                $("#grafica\\.doppler").addClass("d-none");
                 $("#grafica\\.segundo").removeClass("d-none");
             }
         }
