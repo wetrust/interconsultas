@@ -3,7 +3,7 @@
 class GraphModel
 {
 
-    public static function pesoFetal($EG, $PESO)
+    public static function pesoFetal($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'Peso Fetal Estimado';
@@ -14,9 +14,8 @@ class GraphModel
         $settings["grid_division_h"] = '6';
         $values = DataModel::pesoFetal();
 
-        if (is_numeric($PESO)){
-            $punto = array($EG => $PESO);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -25,7 +24,7 @@ class GraphModel
         return $graph->fetch('MultiLineGraph');
     }
 
-    public static function ccca($EG, $valor)
+    public static function ccca($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'Índice Cráneo / Abdomen';
@@ -37,9 +36,8 @@ class GraphModel
 
         $values = DataModel::ccca();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -48,7 +46,7 @@ class GraphModel
         return $graph->fetch('MultiLineGraph');
     }
 
-    public static function uterinas($EG, $valor)
+    public static function uterinas($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'IP Promedio de Uterina';
@@ -59,9 +57,8 @@ class GraphModel
         $settings["grid_division_h"] = '7.5';
         $values = DataModel::uterinas();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -70,7 +67,7 @@ class GraphModel
         return $graph->fetch('MultiLineGraph');
     }
 
-    public static function umbilical($EG, $valor)
+    public static function umbilical($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'IP Arteria Umbilical';
@@ -81,9 +78,8 @@ class GraphModel
         $settings["grid_division_h"] = '5';
         $values = DataModel::umbilical();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -92,7 +88,7 @@ class GraphModel
         return $graph->fetch('MultiLineGraph');
     }
 
-    public static function cerebralMedia($EG, $valor)
+    public static function cerebralMedia($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'IP Arteria Cerebral Media';
@@ -103,9 +99,8 @@ class GraphModel
         $settings["grid_division_h"] = '5';
         $values = DataModel::cerebralMedia();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -114,7 +109,7 @@ class GraphModel
         return $graph->fetch('MultiLineGraph');
     }
 
-    public static function cuocienteCerebroPlacentario($EG, $valor)
+    public static function cuocienteCerebroPlacentario($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'Índice Cerebro / Placentario';
@@ -125,9 +120,8 @@ class GraphModel
         $settings["grid_division_h"] = '5';
         $values = DataModel::cuocienteCerebroPlacentario();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -136,7 +130,7 @@ class GraphModel
         return $graph->fetch('MultiLineGraph');
     }
 
-    public static function cc($EG, $valor)
+    public static function cc($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'Perímetro de Cráneo';
@@ -148,9 +142,8 @@ class GraphModel
 
         $values = DataModel::cc();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -158,7 +151,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-    public static function ca($EG, $valor)
+    public static function ca($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'Perímetro abdominal';
@@ -169,9 +162,8 @@ class GraphModel
         $settings["grid_division_h"] = '7';
         $values = DataModel::ca();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -179,7 +171,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-    public static function lf($EG, $valor)
+    public static function lf($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'Largo de Fémur';
@@ -190,9 +182,8 @@ class GraphModel
         $settings["grid_division_h"] = '7';
         $values = DataModel::lf();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
@@ -200,7 +191,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-    public static function lh($EG, $valor)
+    public static function lh($data)
     {
         $settings = self::settings();
         $settings["graph_title"] = 'Largo de Húmero';
@@ -211,9 +202,8 @@ class GraphModel
         $settings["grid_division_h"] = '7';
         $values = DataModel::lh();
 
-        if (is_numeric($valor)){
-            $punto = array($EG => $valor);
-            array_push($values,$punto);
+        if (count($data)>0){
+            array_push($values,$data);
         }
 
         $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);

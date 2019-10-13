@@ -154,12 +154,12 @@ class EmailModel
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => $data,
                 'respuesta' => $respuesta,
-                'grafico_uno' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
-                'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
-                'grafico_tres' => GraphModel::uterinas($respuesta->eg, $respuesta->uterinas),
-                'grafico_cuatro' => GraphModel::umbilical($respuesta->eg, $respuesta->umbilical),
-                'grafico_cinco' => GraphModel::cerebralMedia($respuesta->eg, $respuesta->cm),
-                'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($respuesta->eg, $respuesta->cmau),
+                'grafico_uno' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe)),
+                'grafico_dos' => GraphModel::ca(array($respuesta->eg => $respuesta->ca)),
+                'grafico_tres' => GraphModel::uterinas(array($respuesta->eg => $respuesta->uterinas)),
+                'grafico_cuatro' => GraphModel::umbilical(array($respuesta->eg => $respuesta->umbilical)),
+                'grafico_cinco' => GraphModel::cerebralMedia(array($respuesta->eg => $respuesta->cm)),
+                'grafico_seis' => GraphModel::cuocienteCerebroPlacentario(array($respuesta->eg =>$respuesta->cmau)),
             ));
 
             $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco crecimiento',$informe, $email);
@@ -234,12 +234,12 @@ class EmailModel
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => $data,
                 'respuesta' => $respuesta,
-                'grafico_uno' => GraphModel::cc($respuesta->eg, $respuesta->cc),
-                'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
-                'grafico_tres' => GraphModel::lf($respuesta->eg, $respuesta->lf),
-                'grafico_cuatro' => GraphModel::lh($respuesta->eg, $respuesta->respuesta_lh),
-                'grafico_cinco' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe_segundo),
-                'grafico_seis' => GraphModel::ccca($respuesta->eg, $respuesta->ccca),
+                'grafico_uno' => GraphModel::cc(array($respuesta->eg => $respuesta->cc)),
+                'grafico_dos' => GraphModel::ca(array($respuesta->eg => $respuesta->ca)),
+                'grafico_tres' => GraphModel::lf(array($respuesta->eg => $respuesta->lf)),
+                'grafico_cuatro' => GraphModel::lh(array($respuesta->eg => $respuesta->respuesta_lh)),
+                'grafico_cinco' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe_segundo)),
+                'grafico_seis' => GraphModel::ccca(array($respuesta->eg => $respuesta->ccca)),
             ));
 
             $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco segundo trimestre',$informe, $email);
@@ -347,12 +347,12 @@ class EmailModel
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => $data,
                 'respuesta' => $respuesta,
-                'grafico_uno' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe),
-                'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
-                'grafico_tres' => GraphModel::uterinas($respuesta->eg, $respuesta->uterinas),
-                'grafico_cuatro' => GraphModel::umbilical($respuesta->eg, $respuesta->umbilical),
-                'grafico_cinco' => GraphModel::cerebralMedia($respuesta->eg, $respuesta->cm),
-                'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($respuesta->eg, $respuesta->cmau),
+                'grafico_uno' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe)),
+                'grafico_dos' => GraphModel::ca(array($respuesta->eg => $respuesta->ca)),
+                'grafico_tres' => GraphModel::uterinas(array($respuesta->eg => $respuesta->uterinas)),
+                'grafico_cuatro' => GraphModel::umbilical(array($respuesta->eg => $respuesta->umbilical)),
+                'grafico_cinco' => GraphModel::cerebralMedia(array($respuesta->eg => $respuesta->cm)),
+                'grafico_seis' => GraphModel::cuocienteCerebroPlacentario(array($respuesta->eg =>$respuesta->cmau)),
             ));
 
             $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco crecimiento',$informe, $email);
@@ -429,12 +429,12 @@ class EmailModel
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
                 'solicitud' => $data,
                 'respuesta' => $respuesta,
-                'grafico_uno' => GraphModel::cc($respuesta->eg, $respuesta->cc),
-                'grafico_dos' => GraphModel::ca($respuesta->eg, $respuesta->ca),
-                'grafico_tres' => GraphModel::lf($respuesta->eg, $respuesta->lf),
-                'grafico_cuatro' => GraphModel::lh($respuesta->eg, $respuesta->respuesta_lh),
-                'grafico_cinco' => GraphModel::pesoFetal($respuesta->eg, $respuesta->pfe_segundo),
-                'grafico_seis' => GraphModel::ccca($respuesta->eg, $respuesta->ccca)
+                'grafico_uno' => GraphModel::cc(array($respuesta->eg => $respuesta->cc)),
+                'grafico_dos' => GraphModel::ca(array($respuesta->eg => $respuesta->ca)),
+                'grafico_tres' => GraphModel::lf(array($respuesta->eg => $respuesta->lf)),
+                'grafico_cuatro' => GraphModel::lh(array($respuesta->eg => $respuesta->respuesta_lh)),
+                'grafico_cinco' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe_segundo)),
+                'grafico_seis' => GraphModel::ccca(array($respuesta->eg => $respuesta->ccca))
             ));
 
             $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco segundo trimestre',$informe, $email);
