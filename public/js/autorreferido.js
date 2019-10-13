@@ -191,19 +191,19 @@ function buildFinishTable(data){
 
         $('#tabla\\.resultado tr > td > button.foto').on("click", function(){
             let solicitud_rut =  $(this).data("id");
-            let fecha =  $(this).data("tipo");
-            let url = '';
-            if (tipo == "0"){
-                url = 'graph/informe_dopplercrecimiento/';
-                $("#ver\\.interconsulta > div").addClass("h-100");
-                $("#ver\\.interconsulta > div > div").addClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty();
-                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'" id="contenedorpdf"></iframe>')
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-            }
+            let fecha =  $(this).data("fecha");
+            var el_btn = this;
+
+            $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
+                if (data.exist == true){
+
+                }
+                else{
+                    alert("No hay fotos para este exámen");
+                    $(el_btn).remove();
+                }
+            });
+
         });
     }
     else{
