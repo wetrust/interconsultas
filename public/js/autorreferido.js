@@ -76,12 +76,14 @@ function buildFinishTable(data){
             }
             let fecha = value.fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+            fechas = fecha[0] + "" + fecha[1] + "" + fecha[2];
             tabla += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>' + value.solicitud_email +'</td>';
+            tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_rut + ' data-fecha='+ value.fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
             if (value.tipo == "0" || value.tipo == "2"){
-                tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Graficas</button></td></tr>';
+                tabla += '<button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Graficas</button></td></tr>';
             }
             else{
-                tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button></td></tr>';
+                tabla += '<button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button></td></tr>';
             }
         });
         tabla += '</tbody>';
