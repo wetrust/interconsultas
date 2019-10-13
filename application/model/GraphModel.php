@@ -2,9 +2,7 @@
 
 class GraphModel
 {
-
-    public static function pesoFetal($data)
-    {
+    public static function pesoFetal($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Peso Fetal Estimado';
         $settings["axis_min_h"] = '16';
@@ -14,7 +12,7 @@ class GraphModel
         $settings["grid_division_h"] = '6';
         $values = DataModel::pesoFetal();
 
-        if (count($data)>0){
+        if (count($data) > 0){
             array_push($values,$data);
         }
 
@@ -23,9 +21,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function ccca($data)
-    {
+    public static function ccca($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Índice Cráneo / Abdomen';
         $settings["axis_min_h"] = '15';
@@ -45,9 +41,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function uterinas($data)
-    {
+    public static function uterinas($data){
         $settings = self::settings();
         $settings["graph_title"] = 'IP Promedio de Uterina';
         $settings["axis_min_h"] = '10';
@@ -66,9 +60,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function umbilical($data)
-    {
+    public static function umbilical($data){
         $settings = self::settings();
         $settings["graph_title"] = 'IP Arteria Umbilical';
         $settings["axis_min_h"] = '20';
@@ -87,9 +79,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function cerebralMedia($data)
-    {
+    public static function cerebralMedia($data){
         $settings = self::settings();
         $settings["graph_title"] = 'IP Arteria Cerebral Media';
         $settings["axis_min_h"] = '20';
@@ -108,9 +98,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function cuocienteCerebroPlacentario($data)
-    {
+    public static function cuocienteCerebroPlacentario($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Índice Cerebro / Placentario';
         $settings["axis_min_h"] = '20';
@@ -129,9 +117,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function cc($data)
-    {
+    public static function cc($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Perímetro de Cráneo';
         $settings["axis_min_h"] = '12';
@@ -151,8 +137,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-    public static function ca($data)
-    {
+    public static function ca($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Perímetro abdominal';
         $settings["axis_min_h"] = '12';
@@ -171,8 +156,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-    public static function lf($data)
-    {
+    public static function lf($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Largo de Fémur';
         $settings["axis_min_h"] = '12';
@@ -191,8 +175,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-    public static function lh($data)
-    {
+    public static function lh($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Largo de Húmero';
         $settings["axis_min_h"] = '12';
@@ -211,9 +194,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function pesoNacionalRN($EG, $valor)
-    {
+    public static function pesoNacionalRN($EG, $valor){
         $settings = self::settings();
         $settings["graph_title"] = 'Peso Fetal (grs.)';
         $settings["axis_min_h"] = '24';
@@ -234,9 +215,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function tallaNacionalRN($EG, $valor)
-    {
+    public static function tallaNacionalRN($EG, $valor){
         $settings = self::settings();
         $settings["graph_title"] = 'Talla fetal (mm.)';
         $settings["axis_min_h"] = '26';
@@ -257,9 +236,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function craneoNacionalRN($EG, $valor)
-    {
+    public static function craneoNacionalRN($EG, $valor){
         $settings = self::settings();
         $settings["graph_title"] = 'Craneo fetal (mm)';
         $settings["axis_min_h"] = '24';
@@ -280,9 +257,7 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    public static function ipnNacionalRN($EG, $valor)
-    {
+    public static function ipnNacionalRN($EG, $valor){
         $settings = self::settings();
         $settings["graph_title"] = 'IPN [((peso*talla)^3) * 100]';
         $settings["axis_min_h"] = '24';
@@ -304,10 +279,6 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
-    
-
-
     public static function settings(){
         $settings = array(
             'auto_fit'          => true,
@@ -346,7 +317,6 @@ class GraphModel
 
         return $settings;
     }
-
     public static function colours(){
         $colours = array('blue', 'blue', 'red');
         return $colours;
