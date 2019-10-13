@@ -192,6 +192,40 @@ $(document).ready(function(){
         $("#filtro\\.tipo").val("");
     });
 
+    $("#grafica\\.doppler").on("click", function(){
+        let solicitud_rut =  $("#filtro\\.rut").val();
+        let tipo =  $("#filtro\\.tipo").val();
+        let url = '';
+        if (tipo == "0"){
+            url = 'graph/informe_dopplercrecimiento_rut/'+solicitud_rut;
+            $("#ver\\.interconsulta > div").addClass("h-100");
+            $("#ver\\.interconsulta > div > div").addClass("h-100");
+            $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
+            $('#ver\\.interconsulta\\.contenedor').empty();
+            $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+'" id="contenedorpdf"></iframe>')
+            $("#ver\\.interconsulta").modal("show");
+            $("#ver\\.interconsulta\\.footer").empty();
+            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+        }
+    });
+
+    $("#grafica\\.segundo").on("click", function(){
+        let solicitud_rut =  $("#filtro\\.rut").val();
+        let tipo =  $("#filtro\\.tipo").val();
+            let url = '';
+            if (tipo == "2"){
+                url = 'graph/informe_segundotrimestre/'+solicitud_rut;
+                $("#ver\\.interconsulta > div").addClass("h-100");
+                $("#ver\\.interconsulta > div > div").addClass("h-100");
+                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
+                $('#ver\\.interconsulta\\.contenedor').empty();
+                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+'"  id="contenedorpdf"></iframe>')
+                $("#ver\\.interconsulta").modal("show");
+                $("#ver\\.interconsulta\\.footer").empty();
+                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+            }
+    })
+
     var now = new Date();
     var day = ("0" + now.getDate()).slice(-2);
     var month = ("0" + (now.getMonth() + 1)).slice(-2);
