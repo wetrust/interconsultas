@@ -32,7 +32,7 @@ class DicomModel
                 $imagenes = $query->fetchAll();
                 $result->exist = true;
 
-                $archivos = scandir(Config::get('DICOM_DIRECTORY') . $rut . "/");
+                $archivos = scandir(Config::get('DICOM_DIRECTORY') . $solicitud_rut . "/");
 
                 if ($archivos == false){
                     $result->empty = true;
@@ -54,7 +54,7 @@ class DicomModel
                         }
 
                         if(file_exists($strArchivoJPG)){
-                            $strArchivoJPG = str_replace($rut . "/", '', $strArchivoJPG);
+                            $strArchivoJPG = str_replace($solicitud_rut. "/", '', $strArchivoJPG);
                             array_push($JPGData, substr($imagen->ObjectFile, 0, strlen($imagen->ObjectFile) -3) . "jpg");
                             array_push($archivosJPG,$JPGData);
                         }
@@ -62,7 +62,7 @@ class DicomModel
                             $strCommand =  "/usr/bin/dcmj2pnm +fo +oj " . Config::get('DICOM_DIRECTORY') . $imagen->ObjectFile .  " " . $strArchivoJPG;
                             $out = exec($strCommand);
                             if(file_exists($strArchivoJPG)){
-                                $strArchivoJPG = str_replace($rut . "/", '', $strArchivoJPG);
+                                $strArchivoJPG = str_replace($solicitud_rut. "/", '', $strArchivoJPG);
                                 array_push($JPGData, substr($imagen->ObjectFile, 0, strlen($imagen->ObjectFile) -3) . "jpg");
                                 array_push($archivosJPG,$JPGData);
                             }   
