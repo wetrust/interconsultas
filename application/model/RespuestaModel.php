@@ -32,7 +32,7 @@ class RespuestaModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes INNER JOIN respuestas ON solicitudes.solicitud_id = respuestas.solicitud_id WHERE solicitudes.solicitud_rut = :solicitud_rut AND respuestas.tipo = :tipo LIMIT 1";
+        $sql = "SELECT * FROM solicitudes INNER JOIN respuestas ON solicitudes.solicitud_id = respuestas.solicitud_id WHERE solicitudes.solicitud_rut = :solicitud_rut AND respuestas.tipo = :tipo ";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_rut' => $solicitud_rut, ':tipo' => $tipo));
 
