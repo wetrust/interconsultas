@@ -50,22 +50,22 @@ class GraphController extends Controller
             $respuesta->eg = $respuesta->eg[0];
 
             if ($respuesta->pfe > 0){
-                array_push($respuesta->eg => $respuesta->pfe,$grafico_uno);
+                array_push(array($respuesta->eg => $respuesta->pfe),$grafico_uno);
             }
             if ($respuesta->ca > 0){
-                array_push($respuesta->eg => $respuesta->ca,$grafico_dos);
+                array_push(array($respuesta->eg => $respuesta->ca),$grafico_dos);
             }
             if ($respuesta->uterinas > 0){
-                array_push($respuesta->eg => $respuesta->uterinas,$grafico_tres);
+                array_push(array($respuesta->eg => $respuesta->uterinas),$grafico_tres);
             }
             if ($respuesta->umbilical > 0){
-                array_push($respuesta->eg => $respuesta->umbilical,$grafico_cuatro);
+                array_push(array($respuesta->eg => $respuesta->umbilical),$grafico_cuatro);
             }
             if ($respuesta->cm > 0){
-                array_push($respuesta->eg => $respuesta->cm,$grafico_cinco);
+                array_push(array($respuesta->eg => $respuesta->cm),$grafico_cinco);
             }
             if ($respuesta->cmau > 0){
-                array_push($respuesta->eg => $respuesta->cmau,$grafico_seis);
+                array_push(array($respuesta->eg => $respuesta->cmau),$grafico_seis);
             }
         }
 
