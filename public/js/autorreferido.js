@@ -199,7 +199,25 @@ function buildFinishTable(data){
 
             $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
                 if (data.exist == true){
+                    let modal = makeModal();
 
+                    document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+                    data.JPGFiles
+                    var estructura = '<div class="row">';
+                    
+                    for (i in data.JPGFiles) {
+                        estructura += '<div class="col-12 col-lg-3 col-md-4 col-sm-6"><img alt="Imágen ecográfica" src="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" class="img-fluid" /></div>';
+                    }
+
+                    estructura += '</div>';
+
+                    document.getElementById(modal.contenido).innerHTML = estructura;
+                    document.getElementById(modal.titulo).innerHTML = "Imágenes ecográficas";
+                    
+                    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                        $(this).remove();
+                    });
                 }
                 else{
                     alert("No hay fotos para este exámen");
