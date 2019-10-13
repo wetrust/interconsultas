@@ -69,20 +69,6 @@ class GraphController extends Controller
             }
         }
 
-        //var_dump($grafico_uno);
-        //echo "<br>";
-        //var_dump($grafico_dos);
-        //echo "<br>";
-        //var_dump($grafico_tres);
-        //echo "<br>";
-        //var_dump($grafico_cuatro);
-        //echo "<br>";
-        //var_dump($grafico_cinco);
-        //echo "<br>";
-        //var_dump($grafico_seis);
-        //echo "<br>";
-
-
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),

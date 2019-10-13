@@ -159,6 +159,18 @@ $(document).ready(function(){
                 buildRespuestaTable(data);
             });
         }
+
+        if (Number.isInteger(tipo) && rut.length > 0){
+            if (tipo == "0"){
+                $("grafica.doppler").removeClass("d-none");
+            }else if (tipo == "1"){
+                $("grafica.segundo").removeClass("d-none");
+            }
+        }
+        else{
+            $("grafica.doppler").addClass("d-none");
+            $("grafica.segundo").addClass("d-none");
+        }
     });
 
     $("#filtro\\.borrar").on("click", function(){
