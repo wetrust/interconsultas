@@ -75,8 +75,8 @@ function buildFinishTable(data){
                 tipo = 'Ecografía 11-14 semanas';
             }
             let fecha = value.fecha.split('-');
-            fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
             fechas = fecha[0] + "" + fecha[1] + "" + fecha[2];
+            fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
             tabla += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>' + value.solicitud_email +'</td>';
             tabla += '<td><button class="btn btn-secondary foto mr-1" data-id='+ value.solicitud_rut + ' data-fecha='+ fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
             if (value.tipo == "0" || value.tipo == "2"){
