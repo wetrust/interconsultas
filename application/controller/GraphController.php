@@ -50,22 +50,28 @@ class GraphController extends Controller
             $respuesta->eg = $respuesta->eg[0];
 
             if ($respuesta->pfe > 0){
-                array_push(array($respuesta->eg => $respuesta->pfe),$grafico_uno);
+                $a = array($respuesta->eg => $respuesta->pfe);
+                array_push($a,$grafico_uno);
             }
             if ($respuesta->ca > 0){
-                array_push(array($respuesta->eg => $respuesta->ca),$grafico_dos);
+                $a = array($respuesta->eg => $respuesta->ca);
+                array_push($a,$grafico_dos);
             }
             if ($respuesta->uterinas > 0){
-                array_push(array($respuesta->eg => $respuesta->uterinas),$grafico_tres);
+                $a = array($respuesta->eg => $respuesta->uterinas);
+                array_push($a,$grafico_tres);
             }
             if ($respuesta->umbilical > 0){
-                array_push(array($respuesta->eg => $respuesta->umbilical),$grafico_cuatro);
+                $a = array($respuesta->eg => $respuesta->umbilical);
+                array_push($a,$grafico_cuatro);
             }
             if ($respuesta->cm > 0){
-                array_push(array($respuesta->eg => $respuesta->cm),$grafico_cinco);
+                $a = array($respuesta->eg => $respuesta->cm);
+                array_push($a,$grafico_cinco);
             }
             if ($respuesta->cmau > 0){
-                array_push(array($respuesta->eg => $respuesta->cmau),$grafico_seis);
+                $a = array($respuesta->eg => $respuesta->cmau);
+                array_push($a,$grafico_seis);
             }
         }
 
