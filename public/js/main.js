@@ -160,7 +160,7 @@ $(document).ready(function(){
             });
         }
 
-        if (Number.isInteger(tipo) && rut.length > 0){
+        if (Number.isInteger(tipo) == true && rut.length > 0){
             if (tipo == "0"){
                 $("grafica.doppler").removeClass("d-none");
             }else if (tipo == "1"){
