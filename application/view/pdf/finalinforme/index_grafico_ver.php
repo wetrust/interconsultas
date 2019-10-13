@@ -20,7 +20,8 @@
 
     $this->pdf->SetFont('Helvetica', '', 9);
     
-    if ($this->respuesta){
+    
+    if (property_exists($this,"respuesta")){
         $solicitud_fecha = explode("-", $this->respuesta->fecha);
         $solicitud_fecha = $solicitud_fecha[2] . "-". $solicitud_fecha[1]. "-". $solicitud_fecha[0];
     }
@@ -29,7 +30,7 @@
     $html = '<h4 style="border-bottom:1px solid #000;">C- RESUMEN GRÁFICAS DE BIOMETRÍAS ECOGRÁFICAS Y FLUJOMETRÍA DOPPLER MATERNO FETAL</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    if ($this->respuesta){
+    if (property_exists($this,"respuesta")){
         $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $html = '<table><tbody><tr><td>Fecha de ecografía: '.$solicitud_fecha.'</td><td>EG: '.$this->respuesta->eg.' semanas</td></tr></tbody></table>';
