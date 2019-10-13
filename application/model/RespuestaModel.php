@@ -28,6 +28,17 @@ class RespuestaModel
         return false;
     }
 
+    public static function getRespuestas($solicitud_rut, $tipo)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT * FROM solicitudes INNER JOIN respuestas ON solicitudes.solicitud_id = respuestas.solicitud_id WHERE solicitudes.solicitud_rut = :solicitud_rut AND respuestas.tipo = :tipo LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_rut' => $solicitud_rut, ':tipo' => $tipo));
+
+        return $query->fetchAll();
+    }
+
     public static function getRespuesta($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

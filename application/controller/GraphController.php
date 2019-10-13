@@ -33,6 +33,57 @@ class GraphController extends Controller
         ));
     }
 
+    public function informe_dopplercrecimiento_rut($solicitud_rut){
+        $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 0);
+        
+        $grafico_uno = array();
+        $grafico_dos = array();
+        $grafico_tres = array();
+        $grafico_cuatro = array();
+        $grafico_cinco = array();
+        $grafico_seis = array();
+
+        foreach ($respuestas as $respuesta) {
+
+            $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+            $respuesta->eg = explode (".", $respuesta->eg);
+            $respuesta->eg = $respuesta->eg[0];
+
+            if ($respuesta->pfe > 0){
+                array_push($respuesta->eg => $respuesta->pfe,$grafico_uno);
+            }
+            if ($respuesta->ca > 0){
+                array_push($respuesta->eg => $respuesta->ca,$grafico_dos);
+            }
+            if ($respuesta->uterinas > 0){
+                array_push($respuesta->eg => $respuesta->uterinas,$grafico_tres);
+            }
+            if ($respuesta->umbilical > 0){
+                array_push($respuesta->eg => $respuesta->umbilical,$grafico_cuatro);
+            }
+            if ($respuesta->cm > 0){
+                array_push($respuesta->eg => $respuesta->cm,$grafico_cinco);
+            }
+            if ($respuesta->cmau > 0){
+                array_push($respuesta->eg => $respuesta->cmau,$grafico_seis);
+            }
+        }
+
+
+        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+            'respuesta' => $respuesta,
+            'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
+            'grafico_dos' => GraphModel::ca($grafico_dos),
+            'grafico_tres' => GraphModel::uterinas($grafico_tres),
+            'grafico_cuatro' => GraphModel::umbilical($grafico_cuatro),
+            'grafico_cinco' => GraphModel::cerebralMedia($grafico_cinco),
+            'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($grafico_seis),
+        ));
+    }
+
     public function informe_segundotrimestre($solicitud_id){
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
