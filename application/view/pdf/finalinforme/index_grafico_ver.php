@@ -32,13 +32,24 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
 
-    $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=42, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=42, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_cinco, $x=10, $y=169, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    $this->pdf->ImageSVG('@' . $this->grafico_seis, $x=105, $y=169, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    
+    if ($this->grafico_uno){
+        $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=42, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    }
+    if ($this->grafico_dos){
+        $this->pdf->ImageSVG('@' . $this->grafico_dos, $x=105, $y=42, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    }
+    if ($this->grafico_tres){
+        $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    }
+    if ($this->grafico_cuatro){
+        $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    }
+    if ($this->grafico_cinco){
+        $this->pdf->ImageSVG('@' . $this->grafico_cinco, $x=10, $y=169, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    }
+    if ($this->grafico_seis){
+        $this->pdf->ImageSVG('@' . $this->grafico_seis, $x=105, $y=169, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
+    }    
     //para enviar por email
     //$tmp = Config::get('PATH_AVATARS');
     //$this->pdf->Output("$tmp/informe.pdf", "F");
