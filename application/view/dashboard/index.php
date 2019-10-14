@@ -102,7 +102,7 @@
                                 <option value="1">4.- Ecografía precoz de urgencia</option>
                                 <option value="3">5.- Ecografía Ginecológica</option>
                             </select></div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <label>Fecha exámen</label>
                             <input type="date" id="filtro.fecha" class="form-control" placeholder="Fecha"></div>
                         <div class="col-2">
@@ -111,7 +111,7 @@
                         <div class="col-2">
                             <label>Lugar de control</label>
                             <select class="form-control" id="filtro.lugar"></select></div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <label>RUT</label>
                             <input type="text" id="filtro.rut" class="form-control" ></div>
                     </div>
