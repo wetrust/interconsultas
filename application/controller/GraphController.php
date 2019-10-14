@@ -136,7 +136,7 @@ class GraphController extends Controller
         $body = "Sistema interconsulta adjunda gráficas de exámen ecográfico" ;
 
         $mail = new Mail;
-        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 0);
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 3);
         if ($mail_sent) { 
             $response->result = true; 
         }

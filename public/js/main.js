@@ -234,7 +234,10 @@ $(document).ready(function(){
                 $("#"+modal.button).on("click", function(){
                     $.get('graph/informe_dopplercrecimiento_rut_send/'+ $("#filtro\\.rut").val()+'/'+ $("#interfaz\\.email\\.graficas").val()).done(function(data){
                         if (data.response = true){
-                            alert("bien");
+                            alert("Enviado");
+                        }
+                        else{
+                            alert("Hubo un error al enviar");
                         }
                     });
                 });
