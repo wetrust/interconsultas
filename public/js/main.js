@@ -197,15 +197,38 @@ $(document).ready(function(){
         let tipo =  $("#filtro\\.tipo").val();
         let url = '';
         if (tipo == "0"){
+
+            let modal = makeModal("Enviar gráficas");
+            
             url = 'graph/informe_dopplercrecimiento_rut/'+solicitud_rut;
-            $("#ver\\.interconsulta > div").addClass("h-100");
-            $("#ver\\.interconsulta > div > div").addClass("h-100");
-            $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
-            $('#ver\\.interconsulta\\.contenedor').empty();
-            $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+'" id="contenedorpdf"></iframe>')
-            $("#ver\\.interconsulta").modal("show");
-            $("#ver\\.interconsulta\\.footer").empty();
-            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+
+            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+            document.getElementById(modal.contenido).innerHTML = '<iframe class="embed-responsive-item w-100 h-100" src="'+url+'" id="contenedorpdf"></iframe>';
+            document.getElementById(modal.titulo).innerHTML = "Informe PDF";
+                    
+            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                $(this).remove();
+            });
+
+            $("#"+modal.button).on("click", function(){
+
+                let modal = makeModal("Enviar");
+    
+                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+                document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.graficas"></select></div>';
+                document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
+                        
+                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                    $(this).remove();
+                });
+    
+                //$("#"+modal.button).on("click", function(){
+                //});
+
+                //Sistema interconsulta adjunda gráficas de exámen ecográfico
+            });
         }
     });
 
