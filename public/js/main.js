@@ -219,6 +219,10 @@ $(document).ready(function(){
 
                 document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.graficas"></select></div>';
                 document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
+
+                var options = $("#interfaz\\.email > option").clone();
+                $("#interfaz\\.email\\.graficas").empty();
+                $("#interfaz\\.email\\.graficas").append(options);
                         
                 $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                     $(this).remove();
