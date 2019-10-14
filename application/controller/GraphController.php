@@ -80,6 +80,70 @@ class GraphController extends Controller
         ));
     }
 
+    public function informe_dopplercrecimiento_rut_send($solicitud_rut,$email){
+        $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 0);
+        
+        $grafico_uno = array();
+        $grafico_dos = array();
+        $grafico_tres = array();
+        $grafico_cuatro = array();
+        $grafico_cinco = array();
+        $grafico_seis = array();
+
+        foreach ($respuestas as $respuesta) {
+            $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+            $respuesta->eg = explode (".", $respuesta->eg);
+            $respuesta->eg = $respuesta->eg[0];
+
+            if ($respuesta->pfe > 0){
+                $grafico_uno[$respuesta->eg] = $respuesta->pfe;
+            }
+            if ($respuesta->ca > 0){
+                $grafico_dos[$respuesta->eg] = $respuesta->ca;
+            }
+            if ($respuesta->uterinas > 0){
+                $grafico_tres[$respuesta->eg] = $respuesta->uterinas;
+            }
+            if ($respuesta->umbilical > 0){
+                $grafico_cuatro[$respuesta->eg] = $respuesta->umbilical;
+            }
+            if ($respuesta->cm > 0){
+                $grafico_cinco[$respuesta->eg] = $respuesta->cm;
+            }
+            if ($respuesta->cmau > 0){
+                $grafico_seis[$respuesta->eg] = $respuesta->cmau;
+            }
+        }
+
+        $response = new stdClass();
+        $internalView = new View;
+
+        $response->result = false;
+
+        $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
+            'grafico_dos' => GraphModel::ca($grafico_dos),
+            'grafico_tres' => GraphModel::uterinas($grafico_tres),
+            'grafico_cuatro' => GraphModel::umbilical($grafico_cuatro),
+            'grafico_cinco' => GraphModel::cerebralMedia($grafico_cinco),
+            'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($grafico_seis),
+            'enviar' => true
+        ));
+
+        $titulo_email = "Sistema interconsulta";
+        $body = "Sistema interconsulta adjunda gráficas de exámen ecográfico" ;
+
+        $mail = new Mail;
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 0);
+        if ($mail_sent) { 
+            $response->result = true; 
+        }
+        return $response; 
+
+    }
+
     public function informe_segundotrimestre($solicitud_id){
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);

@@ -55,14 +55,19 @@
     }
     if ($this->grafico_seis){
         $this->pdf->ImageSVG('@' . $this->grafico_seis, $x=105, $y=169, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
-    }    
-    //para enviar por email
-    //$tmp = Config::get('PATH_AVATARS');
-    //$this->pdf->Output("$tmp/informe.pdf", "F");
-    /////////
+    }
 
-    //para visualizar en el navegador
-    $this->pdf->Output('Informe.pdf', 'I');
-    //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
-    //echo $base64;
-    //////////
+    if (property_exists($this,"enviar")){
+        //para enviar por email
+        $tmp = Config::get('PATH_AVATARS');
+        $this->pdf->Output("$tmp/informe.pdf", "F");
+        /////////
+    }else{
+        //para visualizar en el navegador
+        $this->pdf->Output('Informe.pdf', 'I');
+        //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
+        //echo $base64;
+        //////////
+    }
+
+

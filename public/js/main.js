@@ -204,9 +204,12 @@ $(document).ready(function(){
 
             document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
 
-            document.getElementById(modal.contenido).innerHTML = '<iframe class="embed-responsive-item w-100 h-100" src="'+url+'" id="contenedorpdf"></iframe>';
+            document.getElementById(modal.contenido).innerHTML = '<iframe class="embed-responsive-item w-100 h-100" src="'+url+'" ></iframe>';
             document.getElementById(modal.titulo).innerHTML = "Informe PDF";
-                    
+            
+            $('#'+modal.id).children().addClass("h-75");
+            $('#'+modal.id).children().children().addClass("h-100");
+
             $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                 $(this).remove();
             });
@@ -228,8 +231,13 @@ $(document).ready(function(){
                     $(this).remove();
                 });
     
-                //$("#"+modal.button).on("click", function(){
-                //});
+                $("#"+modal.button).on("click", function(){
+                    $.get('graph/informe_dopplercrecimiento_rut_send/'+ $("#filtro\\.rut").val()+'/'+ $("#interfaz\\.email\\.graficas").val()).done(function(data){
+                        if (data.response = true){
+                            alert("bien");
+                        }
+                    });
+                });
 
                 //Sistema interconsulta adjunda gráficas de exámen ecográfico
             });
