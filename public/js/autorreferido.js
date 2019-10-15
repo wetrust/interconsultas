@@ -221,7 +221,7 @@ function buildFinishTable(data){
                         $(this).remove();
                     });
 
-                    $('#'+modal.id+ " .modal-footer").append("<p>Hola</p>");
+                    $('#'+modal.id+ " .modal-footer").append('<button class="btn btn-primary">Informe de imágenes seleccionadas</button>');
 
                     $("#"+modal.button).on("click", function(){
                         let modal = makeModal("Enviar");
