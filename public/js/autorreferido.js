@@ -236,8 +236,8 @@ function buildFinishTable(data){
                         document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
         
                         var options = $("#interfaz\\.email > option").clone();
-                        $("#interfaz\\.fotos\\.graficas").empty();
-                        $("#interfaz\\.fotos\\.graficas").append(options);
+                        $("#interfaz\\.email\\.fotos").empty();
+                        $("#interfaz\\.email\\.fotos").append(options);
                                 
                         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                             $(this).remove();
