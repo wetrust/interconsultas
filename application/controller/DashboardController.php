@@ -584,4 +584,59 @@ class DashboardController extends Controller
     public function diagnosticoSave(){
         $this->View->renderJSON(DiagnosticoModel::createDiagnostico(Request::post('diagnostico_name')));
     }
+
+    public function send_fotos(){
+        $mail = new PHPMailer;
+        
+        $mail->CharSet = 'UTF-8';
+
+        if (Config::get('EMAIL_USE_SMTP')) {
+
+            $mail->IsSMTP();
+            $mail->SMTPDebug = 0;
+            $mail->SMTPAuth = Config::get('EMAIL_SMTP_AUTH');
+            if (Config::get('EMAIL_SMTP_ENCRYPTION')) {
+                $mail->SMTPSecure = Config::get('EMAIL_SMTP_ENCRYPTION');
+            }
+
+            $mail->Host = Config::get('EMAIL_SMTP_HOST');
+            $mail->Username = Config::get('EMAIL_SMTP_USERNAME');
+            $mail->Password = Config::get('EMAIL_SMTP_PASSWORD');
+            $mail->Port = Config::get('EMAIL_SMTP_PORT');
+
+        } else {
+
+            $mail->IsMail();
+        }
+
+        $mail->From = Config::get('EMAIL_VERIFICATION_FROM_EMAIL');
+        $mail->FromName = Config::get('EMAIL_VERIFICATION_FROM_NAME');
+        $mail->AddAddress(Request::post('email'));
+        $mail->Subject = "Sistema interconsulta - Envío de imágenes";
+        $mail->Body = "Sistema interconsulta adjunda gráficas de exámen ecográfico";
+        
+        $attach = Config::get('DICOM_DIRECTORY');
+        $fotos = Request::post('email');
+        $fotos = explode(",", $fotos);
+
+        foreach($fotos as $foto){
+            $mail->AddAttachment("$attach/$foto", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'image/jpeg');
+        }
+        
+        $wasSendingSuccessful = $mail->Send();
+
+        $response = new stdClass();
+
+        $response->result = false;
+
+        if ($wasSendingSuccessful) {
+            $response->result =  true;
+
+        } else {
+            $response->mensaje = $mail->ErrorInfo;
+        }
+        
+        $this->View->renderJSON($response);
+        
+    }
 }

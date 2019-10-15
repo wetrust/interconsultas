@@ -199,7 +199,7 @@ function buildFinishTable(data){
 
             $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
                 if (data.exist == true){
-                    let modal = makeModal();
+                    let modal = makeModal("Enviar seleccionadas");
 
                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
 
@@ -217,6 +217,48 @@ function buildFinishTable(data){
                     
                     $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                         $(this).remove();
+                    });
+
+                    $("#"+modal.button).on("click", function(){
+                        let modal = makeModal("Enviar");
+    
+                        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                        sList = "";
+
+                        $('input[name="foto"]').each(function () {
+                            if (this.checked) {
+                                var sThisVal = (this.checked ? this.dataset.foto : "");
+                                sList += (sList=="" ? sThisVal : "," + sThisVal);
+                            }
+                        });
+        
+                        document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
+                        document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
+        
+                        var options = $("#interfaz\\.email > option").clone();
+                        $("#interfaz\\.fotos\\.graficas").empty();
+                        $("#interfaz\\.fotos\\.graficas").append(options);
+                                
+                        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                            $(this).remove();
+                        });
+            
+                        document.getElementById(modal.button).dataset.fotos = sList;
+                        $("#"+modal.button).on("click", function(){
+                            var send = {
+                                fotos: this.dataset.fotos,
+                                email: $("#interfaz\\.email\\.fotos").val()
+                            }
+
+                            $.post('dashboard/send_fotos', send).done(function(data){
+                                if (data.response = true){
+                                    alert("Enviado");
+                                }
+                                else{
+                                    alert("Hubo un error al enviar");
+                                }
+                            });
+                        });
                     });
 
                     //$('input[name="foto"]').change(function() {

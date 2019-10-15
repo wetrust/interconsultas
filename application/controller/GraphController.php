@@ -133,7 +133,7 @@ class GraphController extends Controller
         ));
 
         $titulo_email = "Sistema interconsulta";
-        $body = "Sistema interconsulta adjunda gráficas de exámen ecográfico" ;
+        $body = "Sistema interconsulta adjunta gráficas de exámen ecográfico" ;
 
         $mail = new Mail;
         $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 3);
@@ -271,7 +271,7 @@ class GraphController extends Controller
         ));
 
         $titulo_email = "Sistema interconsulta";
-        $body = "Sistema interconsulta adjunda gráficas de exámen ecográfico" ;
+        $body = "Sistema interconsulta adjunta gráficas de exámen ecográfico" ;
 
         $mail = new Mail;
         $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 3);
