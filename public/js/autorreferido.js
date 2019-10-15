@@ -221,6 +221,8 @@ function buildFinishTable(data){
                         $(this).remove();
                     });
 
+                    $('#'+modal.id+ " > modal-footer").append("<p>Hola</p>");
+
                     $("#"+modal.button).on("click", function(){
                         let modal = makeModal("Enviar");
     
