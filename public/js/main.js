@@ -250,18 +250,57 @@ $(document).ready(function(){
     $("#grafica\\.segundo").on("click", function(){
         let solicitud_rut =  $("#filtro\\.rut").val();
         let tipo =  $("#filtro\\.tipo").val();
-            let url = '';
-            if (tipo == "2"){
-                url = 'graph/informe_segundotrimestre_rut/'+solicitud_rut;
-                $("#ver\\.interconsulta > div").addClass("h-100");
-                $("#ver\\.interconsulta > div > div").addClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty();
-                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+'"  id="contenedorpdf"></iframe>')
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-            }
+        let url = '';
+        if (tipo == "2"){
+
+            let modal = makeModal("Enviar gráficas");
+            
+            url = 'graph/informe_segundotrimestre_rut/'+solicitud_rut;
+
+            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+            document.getElementById(modal.contenido).innerHTML = '<iframe class="embed-responsive-item w-100 h-100" src="'+url+'" ></iframe>';
+            document.getElementById(modal.titulo).innerHTML = "Informe PDF";
+            
+            $('#'+modal.id).children().addClass("h-75");
+            $('#'+modal.id).children().children().addClass("h-100");
+
+            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                $(this).remove();
+            });
+
+            $("#"+modal.button).on("click", function(){
+
+                let modal = makeModal("Enviar");
+    
+                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+                document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.graficas"></select></div>';
+                document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
+
+                var options = $("#interfaz\\.email > option").clone();
+                $("#interfaz\\.email\\.graficas").empty();
+                $("#interfaz\\.email\\.graficas").append(options);
+                        
+                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                    $(this).remove();
+                });
+    
+                $("#"+modal.button).on("click", function(){
+                    $.get('graph/informe_segundotrimestre_rut_send/'+ $("#filtro\\.rut").val()+'/'+ $("#interfaz\\.email\\.graficas").val()).done(function(data){
+                        if (data.response = true){
+                            alert("Enviado");
+                        }
+                        else{
+                            alert("Hubo un error al enviar");
+                        }
+                    });
+                });
+
+                //Sistema interconsulta adjunda gráficas de exámen ecográfico
+            });
+
+        }
     })
 
     var now = new Date();

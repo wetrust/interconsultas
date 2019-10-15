@@ -218,6 +218,69 @@ class GraphController extends Controller
         ));
     }
 
+    public function informe_segundotrimestre_rut_send($solicitud_rut, $email){
+        $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 2);
+        
+        $grafico_uno = array();
+        $grafico_dos = array();
+        $grafico_tres = array();
+        $grafico_cuatro = array();
+        $grafico_cinco = array();
+        $grafico_seis = array();
+
+        foreach ($respuestas as $respuesta) {
+            $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+            $respuesta->eg = explode (".", $respuesta->eg);
+            $respuesta->eg = $respuesta->eg[0];
+
+            if ($respuesta->cc > 0){
+                $grafico_uno[$respuesta->eg] = $respuesta->cc;
+            }
+            if ($respuesta->ca > 0){
+                $grafico_dos[$respuesta->eg] = $respuesta->ca;
+            }
+            if ($respuesta->lf > 0){
+                $grafico_tres[$respuesta->eg] = $respuesta->lf;
+            }
+            if ($respuesta->respuesta_lh > 0){
+                $grafico_cuatro[$respuesta->eg] = $respuesta->respuesta_lh;
+            }
+            if ($respuesta->pfe_segundo > 0){
+                $grafico_cinco[$respuesta->eg] = $respuesta->pfe_segundo;
+            }
+            if ($respuesta->ccca > 0){
+                $grafico_seis[$respuesta->eg] = $respuesta->ccca;
+            }
+        }
+
+        $response = new stdClass();
+        $internalView = new View;
+
+        $response->result = false;
+
+        $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'grafico_uno' => GraphModel::cc($grafico_uno),
+            'grafico_dos' => GraphModel::ca($grafico_dos),
+            'grafico_tres' => GraphModel::lf($grafico_tres),
+            'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
+            'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
+            'grafico_seis' => GraphModel::ccca($grafico_seis),
+            'enviar' => true
+        ));
+
+        $titulo_email = "Sistema interconsulta";
+        $body = "Sistema interconsulta adjunda gráficas de exámen ecográfico" ;
+
+        $mail = new Mail;
+        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 3);
+        if ($mail_sent) { 
+            $response->result = true; 
+        }
+        return $response; 
+    }
+
     public function informe_parto($solicitud_id){
         $respuesta = PartosModel::getPartos($solicitud_id);
         $paciente = SolicitudesModel::getOldSolicitudes($solicitud_id);
