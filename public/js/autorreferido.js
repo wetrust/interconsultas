@@ -77,7 +77,7 @@ function buildFinishTable(data){
             let fecha = value.fecha.split('-');
             fechas = fecha[0] + "" + fecha[1] + "" + fecha[2];
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            tabla += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>' + value.solicitud_email +'</td>';
+            tabla += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td class="nombre">' + value.solicitud_nombre + '</td><td>' + value.solicitud_rut + '</td><td>' + value.solicitud_email +'</td>';
             value.solicitud_rut = value.solicitud_rut.replace(/\./g, "")
 
             tabla += '<td><button class="btn btn-secondary foto mr-1" data-id='+ value.solicitud_rut + ' data-fecha='+ fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
@@ -196,6 +196,8 @@ function buildFinishTable(data){
 
             let fecha =  $(this).data("fecha");
             var el_btn = this;
+
+            alert($(this).parent().parent().children(".nombre").text());
 
             $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
                 if (data.exist == true){
