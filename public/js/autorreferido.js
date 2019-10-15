@@ -197,7 +197,7 @@ function buildFinishTable(data){
             let fecha =  $(this).data("fecha");
             var el_btn = this;
 
-            alert($(this).parent().parent().children(".nombre").text());
+            var nombre = $(this).parent().parent().children(".nombre").text();
 
             $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
                 if (data.exist == true){
@@ -215,7 +215,7 @@ function buildFinishTable(data){
                     estructura += '</div>';
 
                     document.getElementById(modal.contenido).innerHTML = estructura;
-                    document.getElementById(modal.titulo).innerHTML = "Imágenes ecográficas";
+                    document.getElementById(modal.titulo).innerHTML = "Imágenes ecográficas de " + nombre;
                     
                     $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                         $(this).remove();
