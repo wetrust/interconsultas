@@ -88,10 +88,10 @@ class SolicitudesModel
         $database = DatabaseFactory::getFactory()->getConnection();
 
         if (Session::get('user_account_type') == 2){
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo, respuestas.respuesta_eg FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
         }
         else{
-            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo, respuestas.respuesta_eg FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
         }
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_profesionalemail' => $solicitud_email));
