@@ -296,8 +296,6 @@ $(document).ready(function(){
                         }
                     });
                 });
-
-                //Sistema interconsulta adjunda gráficas de exámen ecográfico
             });
 
         }
