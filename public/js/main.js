@@ -198,7 +198,7 @@ $(document).ready(function(){
         let url = '';
         if (tipo == "0"){
 
-            let modal = makeModal("Enviar gráficas");
+            let modal = makeModal("Enviar gráfica de tendencia");
             
             url = 'graph/informe_dopplercrecimiento_rut/'+solicitud_rut;
 
@@ -253,7 +253,7 @@ $(document).ready(function(){
         let url = '';
         if (tipo == "2"){
 
-            let modal = makeModal("Enviar gráficas");
+            let modal = makeModal("Enviar gráfica de tendencia");
             
             url = 'graph/informe_segundotrimestre_rut/'+solicitud_rut;
 
