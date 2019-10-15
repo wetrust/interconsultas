@@ -152,7 +152,7 @@ class SolicitudesModel
         $desde = strval($desde);
         $rut = strval($rut);
         $tipo = strval($tipo);
-        $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, solicitudes.solicitud_email FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail ";
+        $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, respuestas.tipo, respuestas.eg FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail ";
         $query = "";
         $execute = array(':solicitud_profesionalemail' => $solicitud_email);
 
