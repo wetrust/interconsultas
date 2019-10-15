@@ -207,7 +207,7 @@ function buildFinishTable(data){
                     var estructura = '<div class="row">';
                     
                     for (i in data.JPGFiles) {
-                        estructura += '<div class="col-12 col-lg-3 col-md-4 col-sm-6"><a href="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" target="_blank"><img alt="Imágen ecográfica" src="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" class="img-fluid border border-primary rounded shadow mb-2" /></a></div>';
+                        estructura += '<div class="col-12 col-lg-3 col-md-4 col-sm-6"><a href="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" target="_blank"><img alt="Imágen ecográfica" src="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" class="img-fluid border border-primary rounded shadow mb-2" /></a><div class="form-group form-check"><input type="checkbox" class="form-check-input" name="foto" data-foto="'+ data.JPGFiles[i][1] +'"><label class="form-check-label">Seleccionar</label></div></div>';
                     }
 
                     estructura += '</div>';
@@ -218,6 +218,18 @@ function buildFinishTable(data){
                     $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                         $(this).remove();
                     });
+
+                    //$('input[type=checkbox]').change(function() {
+                    //    var sList = "";
+                    //    $('input[type=checkbox]').each(function () {
+                    //        if (this.checked) {
+                    //        var sThisVal = (this.checked ? $(this).parent().children("span").attr("class") : "");
+                    //        sList += (sList=="" ? sThisVal : "," + sThisVal);
+                    //        }
+                    //    });
+                    //    console.log (sList);
+                    //    });
+
                 }
                 else{
                     alert("No hay fotos para este exámen");
