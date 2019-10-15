@@ -619,8 +619,11 @@ class DashboardController extends Controller
         $fotos = Request::post('fotos');
         $fotos = explode(",", $fotos);
 
+        $contador_fotos = 0;
+
         foreach($fotos as $foto){
-            $mail->AddAttachment("$attach/$foto", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'image/jpeg');
+            $mail->AddAttachment("$attach/$foto", $name = 'Ecografía ' + $contador_fotos + '.jpg',  $encoding = 'base64', $type = 'image/jpeg');
+            $contador_fotos++;
         }
         
         $wasSendingSuccessful = $mail->Send();
