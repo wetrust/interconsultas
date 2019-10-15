@@ -123,8 +123,8 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <button id="grafica.doppler" class="btn btn-secondary d-none">Graficas Doppler + eco crecimiento</button>
-                            <button id="grafica.segundo" class="btn btn-secondary d-none">Graficas Ecografía 2° / 3° trimestre</button>
+                            <button id="grafica.doppler" class="btn btn-secondary d-none">Tendencias graficas Doppler + eco crecimiento</button>
+                            <button id="grafica.segundo" class="btn btn-secondary d-none">Tendencias graficas Ecografía 2° / 3° trimestre</button>
                         </div>
                     </div>
                 </div>
