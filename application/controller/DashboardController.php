@@ -622,7 +622,8 @@ class DashboardController extends Controller
         $contador_fotos = 0;
 
         foreach($fotos as $foto){
-            $mail->AddAttachment("$attach/$foto", $name = 'Ecografía ' + $contador_fotos + '.jpg',  $encoding = 'base64', $type = 'image/jpeg');
+            $nombre_foto = 'Ecografía ' . $contador_fotos . '.jpg';
+            $mail->AddAttachment("$attach/$foto", $name = $nombre_foto,  $encoding = 'base64', $type = 'image/jpeg');
             $contador_fotos++;
         }
         
