@@ -616,7 +616,7 @@ class DashboardController extends Controller
         $mail->Body = "Sistema interconsulta adjunda gráficas de exámen ecográfico";
         
         $attach = Config::get('DICOM_DIRECTORY');
-        $fotos = Request::post('email');
+        $fotos = Request::post('fotos');
         $fotos = explode(",", $fotos);
 
         foreach($fotos as $foto){
@@ -635,7 +635,7 @@ class DashboardController extends Controller
         } else {
             $response->mensaje = $mail->ErrorInfo;
         }
-        
+
         $this->View->renderJSON($response);
         
     }
