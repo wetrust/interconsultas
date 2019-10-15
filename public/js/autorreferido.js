@@ -219,7 +219,7 @@ function buildFinishTable(data){
                         $(this).remove();
                     });
 
-                    //$('input[type=checkbox]').change(function() {
+                    //$('input[name="foto"]').change(function() {
                     //    var sList = "";
                     //    $('input[type=checkbox]').each(function () {
                     //        if (this.checked) {
