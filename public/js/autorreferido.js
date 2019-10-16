@@ -264,6 +264,8 @@ function buildFinishTable(data){
                                 document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
                                 document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
 
+                                document.getElementById(modal.button).dataset.fotos = sList;
+
                                 $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                                     $(this).remove();
                                 });
@@ -305,19 +307,41 @@ function buildFinishTable(data){
             
                         document.getElementById(modal.button).dataset.fotos = sList;
                         $("#"+modal.button).on("click", function(){
-                            var send = {
-                                fotos: this.dataset.fotos,
-                                email: $("#interfaz\\.email\\.fotos").val()
-                            }
-
-                            $.post('dashboard/send_fotos', send).done(function(data){
-                                if (data.response = true){
-                                    alert("Enviado");
-                                }
-                                else{
-                                    alert("Hubo un error al enviar");
-                                }
+                            var sList = document.getElementById(modal.button).dataset.fotos;
+                            let modal = makeModal("Enviar");
+    
+                            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+            
+                            document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.graficas"></select></div>';
+                            document.getElementById(modal.titulo).innerHTML = "Enviar informe de fotos por e-mail";
+            
+                            var options = $("#interfaz\\.email > option").clone();
+                            $("#interfaz\\.email\\.graficas").empty();
+                            $("#interfaz\\.email\\.graficas").append(options);
+                                    
+                            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                $(this).remove();
                             });
+                
+                            document.getElementById(modal.button).dataset.fotos = sList;
+
+                            $("#"+modal.button).on("click", function(){
+                                var send = {
+                                    fotos: this.dataset.fotos,
+                                    email: $("#interfaz\\.email\\.fotos").val()
+                                }
+    
+                                $.post('dashboard/informe_fotos', send).done(function(data){
+                                    if (data.response = true){
+                                        alert("Enviado");
+                                    }
+                                    else{
+                                        alert("Hubo un error al enviar");
+                                    }
+                                });
+                            });
+
+
                         });
                     });
                 }

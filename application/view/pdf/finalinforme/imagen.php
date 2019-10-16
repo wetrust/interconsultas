@@ -6,13 +6,6 @@
     $this->pdf->SetSubject('TCPDF Tutorial');
     $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-    // set default header data
-    //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 009', PDF_HEADER_STRING);
-
-    // set header and footer fonts
-    //$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    //$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
     // set default monospaced font
     $this->pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
@@ -43,17 +36,17 @@
     if (count($this->user_images) == 1){
         $this->pdf->Image($this->user_images[0], '', '', 180, 140, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
     }
-    else if (count($this->user_images) == 2){
+    else if (count($user_images) == 2){
         $this->pdf->Image($this->user_images[0], '60', '', 100, 88, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[1], '60', 170, 100, 88, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
     }
-    else if (count($this->user_images) == 4){
-        $this->pdf->Image($this->user_images[0], PDF_MARGIN_LEFT+10, '', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
-        $this->pdf->Image($this->user_images[1], '140', '', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
-        $this->pdf->Image($this->user_images[2], PDF_MARGIN_LEFT+10, '120', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
-        $this->pdf->Image($this->user_images[3], '140', '', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+    else if (count($user_images) == 4){
+        $this->pdf->Image($this->user_images[0], '', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+        $this->pdf->Image($this->user_images[1], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+        $this->pdf->Image($this->user_images[2], PDF_MARGIN_LEFT, '125', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+        $this->pdf->Image($this->user_images[3], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
     }
-    else if (count($this->user_images) == 6){
+    else if (count($user_images) == 6){
         $this->pdf->Image($this->user_images[0], '', '', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[1], '110', '', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[2], PDF_MARGIN_LEFT, '115', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
@@ -62,6 +55,7 @@
         $this->pdf->Image($this->user_images[5], '110', '', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
     }
 
-    $base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
-
-    return $base64;
+    //para enviar por email
+    $tmp = Config::get('PATH_AVATARS');
+    $this->pdf->Output("$tmp/informe.pdf", "F");
+    /////////

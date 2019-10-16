@@ -721,4 +721,43 @@ class DashboardController extends Controller
 
         $this->View->renderJSON($response);
     }
+
+    public function informe_fotos(){
+        $fotos = Request::post('fotos');
+        $email = Request::post('email');
+        $fotos = explode(",", $fotos);
+        $attach = Config::get('DICOM_DIRECTORY');
+        $contador_fotos = 0;
+        $user_images = array();
+
+        $response = new stdClass();
+
+        $response->result = false;
+
+        foreach($fotos as $foto){
+            $user_images[$contador_fotos] = "$attach/$foto";
+            $contador_fotos++;
+        }
+
+        if ($contador_fotos > 0){
+            $internalView = new View;
+
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/imagen', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'user_images' => $user_images
+            ));
+
+            $titulo_email = "Sistema interconsulta";
+            $body = "Sistema interconsulta adjunta gráficas de exámen ecográfico" ;
+
+            $mail = new Mail;
+            $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 3);
+            if ($mail_sent) { 
+                $response->result = true; 
+            }
+        }
+
+        return $response;
+    }
 }
