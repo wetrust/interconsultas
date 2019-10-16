@@ -252,7 +252,7 @@ function buildFinishTable(data){
                         }
 
                         var send = {
-                            fotos: this.dataset.fotos
+                            fotos: sList
                         }
 
                         $.post('dashboard/informe_fotos', send).done(function(data){
