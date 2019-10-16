@@ -701,10 +701,10 @@ class DashboardController extends Controller
                 $pdf->Image($user_images[1], '60', 170, 100, 88, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
             }
             else if (count($user_images) == 4){
-                $pdf->Image($user_images[0], PDF_MARGIN_LEFT+10, '', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
-                $pdf->Image($user_images[1], '140', '', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
-                $pdf->Image($user_images[2], PDF_MARGIN_LEFT+10, '120', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
-                $pdf->Image($user_images[3], '140', '', 106, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+                $pdf->Image($user_images[0], '', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+                $pdf->Image($user_images[1], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+                $pdf->Image($user_images[2], PDF_MARGIN_LEFT, '120', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+                $pdf->Image($user_images[3], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
             }
             else if (count($user_images) == 6){
                 $pdf->Image($user_images[0], '', '', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
