@@ -272,7 +272,7 @@ function buildFinishTable(data){
                                 
                                 $("#"+modal.button).on("click", function(){
                                     "use strict";
-                                    var sList = document.getElementById(modal.button).dataset.fotos;
+                                    var sList = this.dataset.fotos;
                                     let modal = makeModal("Enviar");
             
                                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
