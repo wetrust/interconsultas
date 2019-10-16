@@ -722,7 +722,7 @@ class DashboardController extends Controller
         $this->View->renderJSON($response);
     }
 
-    public function informe_fotos(){
+    public function informe_envio(){
         $fotos = Request::post('fotos');
         $email = Request::post('email');
         $fotos = explode(",", $fotos);

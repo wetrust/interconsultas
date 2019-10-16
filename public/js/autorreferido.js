@@ -331,7 +331,7 @@ function buildFinishTable(data){
                                     email: $("#interfaz\\.email\\.fotos").val()
                                 }
     
-                                $.post('dashboard/informe_fotos', send).done(function(data){
+                                $.post('dashboard/informe_envio', send).done(function(data){
                                     if (data.response = true){
                                         alert("Enviado");
                                     }
