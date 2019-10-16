@@ -277,12 +277,12 @@ function buildFinishTable(data){
             
                                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                     
-                                    document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.graficas"></select></div>';
+                                    document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
                                     document.getElementById(modal.titulo).innerHTML = "Enviar informe de fotos por e-mail";
                     
                                     var options = $("#interfaz\\.email > option").clone();
-                                    $("#interfaz\\.email\\.graficas").empty();
-                                    $("#interfaz\\.email\\.graficas").append(options);
+                                    $("#interfaz\\.email\\.fotos").empty();
+                                    $("#interfaz\\.email\\.fotos").append(options);
                                             
                                     $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                                         $(this).remove();
