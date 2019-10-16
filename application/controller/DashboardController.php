@@ -643,4 +643,32 @@ class DashboardController extends Controller
         $this->View->renderJSON($response);
         
     }
+
+    public function informe_fotos(){
+        $fotos = Request::post('fotos');
+        $fotos = explode(",", $fotos);
+        $attach = Config::get('DICOM_DIRECTORY');
+        $contador_fotos = 0;
+        $user_images = array();
+
+        $response = new stdClass();
+
+        $response->result = false;
+
+        foreach($fotos as $foto){
+            $user_images[$contador_fotos] = $attach/$foto;
+            $contador_fotos++;
+        }
+
+        if ($contador_fotos > 0){
+            $response->result = true;
+            $response->pdf = $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/imagen', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'user_images' => $user_images
+            ));
+        }
+
+        $this->View->renderJSON($response);
+
 }

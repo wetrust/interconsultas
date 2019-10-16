@@ -250,6 +250,29 @@ function buildFinishTable(data){
                             alert("Máximo 8 imágenes.");
                             return;
                         }
+
+                        var send = {
+                            fotos: this.dataset.fotos
+                        }
+
+                        $.post('dashboard/informe_fotos', send).done(function(data){
+                            if (data.response = true){
+                                let modal = makeModal("Enviar informe");
+
+                                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+                                document.getElementById(modal.contenido).innerHTML = '<iframe src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
+                                document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
+
+                                $("#"+modal.button).on("click", function(){
+
+                                });
+
+                            }
+                            else{
+                                alert("Hubo un error al generar informe");
+                            }
+                        });
                     });
 
                     $("#"+modal.button).on("click", function(){
