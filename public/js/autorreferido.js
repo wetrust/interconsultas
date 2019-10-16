@@ -271,7 +271,7 @@ function buildFinishTable(data){
                                 document.getElementById(modal.button).dataset.fotos = sList;
                                 
                                 $("#"+modal.button).on("click", function(){
-
+                                    "use strict";
                                     var sList = document.getElementById(modal.button).dataset.fotos;
                                     let modal = makeModal("Enviar");
             
