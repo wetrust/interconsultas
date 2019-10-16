@@ -221,7 +221,36 @@ function buildFinishTable(data){
                         $(this).remove();
                     });
 
-                    $('#'+modal.id+ " .modal-footer").append('<button class="btn btn-primary">Informe de imágenes seleccionadas</button>');
+                    var btn_informe = uuidv4();
+                    $('#'+modal.id+ " .modal-footer").append('<button class="btn btn-primary" id="'+btn_informe+'">Informe de imágenes seleccionadas</button>');
+
+                    $("#"+btn_informe).on("click", function(){
+                        var contador = 0;
+                        var sList = "";
+
+                        $('input[name="foto"]').each(function () {
+                            if (this.checked) {
+                                var sThisVal = (this.checked ? this.dataset.foto : "");
+                                sList += (sList=="" ? sThisVal : "," + sThisVal);
+                                contador++;
+                            }
+                        });
+
+                        if (contador == 0){
+                            alert("Debes seleccionar al menos una imágen");
+                            return;
+                        }
+
+                        if (contador == 3 || contador == 5 || contador == 7){
+                            alert("Prefiere seleccionar imágenes en números par, actualmente has seleccionado " + contador + " imágenes.");
+                            return;
+                        }
+
+                        if (contador >8){
+                            alert("Máximo 8 imágenes.");
+                            return;
+                        }
+                    });
 
                     $("#"+modal.button).on("click", function(){
                         let modal = makeModal("Enviar");
