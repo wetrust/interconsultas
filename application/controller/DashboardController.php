@@ -656,7 +656,7 @@ class DashboardController extends Controller
         $response->result = false;
 
         foreach($fotos as $foto){
-            $user_images[$contador_fotos] = $attach/$foto;
+            $user_images[$contador_fotos] = "$attach/$foto";
             $contador_fotos++;
         }
 
