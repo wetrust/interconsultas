@@ -703,7 +703,7 @@ class DashboardController extends Controller
             else if (count($user_images) == 4){
                 $pdf->Image($user_images[0], '', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
                 $pdf->Image($user_images[1], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
-                $pdf->Image($user_images[2], PDF_MARGIN_LEFT, '120', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
+                $pdf->Image($user_images[2], PDF_MARGIN_LEFT, '125', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
                 $pdf->Image($user_images[3], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
             }
             else if (count($user_images) == 6){
