@@ -264,6 +264,10 @@ function buildFinishTable(data){
                                 document.getElementById(modal.contenido).innerHTML = '<iframe src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
                                 document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
 
+                                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                    $(this).remove();
+                                });
+                                
                                 $("#"+modal.button).on("click", function(){
 
                                 });
@@ -316,18 +320,6 @@ function buildFinishTable(data){
                             });
                         });
                     });
-
-                    //$('input[name="foto"]').change(function() {
-                    //    var sList = "";
-                    //    $('input[type=checkbox]').each(function () {
-                    //        if (this.checked) {
-                    //        var sThisVal = (this.checked ? $(this).parent().children("span").attr("class") : "");
-                    //        sList += (sList=="" ? sThisVal : "," + sThisVal);
-                    //        }
-                    //    });
-                    //    console.log (sList);
-                    //    });
-
                 }
                 else{
                     alert("No hay fotos para este exámen");
