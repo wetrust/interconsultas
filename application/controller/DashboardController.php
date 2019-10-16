@@ -670,5 +670,5 @@ class DashboardController extends Controller
         }
 
         $this->View->renderJSON($response);
-
+    }
 }
