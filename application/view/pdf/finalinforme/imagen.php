@@ -36,17 +36,17 @@
     if (count($this->user_images) == 1){
         $this->pdf->Image($this->user_images[0], '', '', 180, 140, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
     }
-    else if (count($user_images) == 2){
+    else if (count($this->user_images) == 2){
         $this->pdf->Image($this->user_images[0], '60', '', 100, 88, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[1], '60', 170, 100, 88, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
     }
-    else if (count($user_images) == 4){
+    else if (count($this->user_images) == 4){
         $this->pdf->Image($this->user_images[0], '', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[1], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[2], PDF_MARGIN_LEFT, '125', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[3], '110', '', 88, 74, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
     }
-    else if (count($user_images) == 6){
+    else if (count($this->user_images) == 6){
         $this->pdf->Image($this->user_images[0], '', '', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[1], '110', '', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
         $this->pdf->Image($this->user_images[2], PDF_MARGIN_LEFT, '115', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
