@@ -261,7 +261,7 @@ function buildFinishTable(data){
 
                                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
 
-                                document.getElementById(modal.contenido).innerHTML = '<iframe style="min-width:400px;" src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
+                                document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
                                 document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
 
                                 $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
