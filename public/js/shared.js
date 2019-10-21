@@ -1267,7 +1267,7 @@ function multiproposito(){
     }).keypress(function( event ) {
         if ( event.which == 13 ) {
            event.preventDefault();
-           $("input[name='respuesta_cc']").focus();
+           $("input[name='respuesta_dof']").focus();
         }
     });
 
