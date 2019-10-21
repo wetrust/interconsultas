@@ -372,6 +372,10 @@ function buildFinishTable(data){
                                 else{
                                     document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
                                 }
+
+                                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                    $(this).remove();
+                                });
                             });
                         });
                     });
