@@ -335,7 +335,7 @@ function buildFinishTable(data){
                         }
         
                         document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
-                        document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
+                        document.getElementById(modal.titulo).innerHTML = "Enviar imágenes por e-mail";
         
                         var options = $("#interfaz\\.email > option").clone();
                         $("#interfaz\\.email\\.fotos").empty();
@@ -346,22 +346,31 @@ function buildFinishTable(data){
                         });
             
                         document.getElementById(modal.button).dataset.fotos = sList;
+                        document.getElementById(modal.button).dataset.modal = modal.id;
                         $("#"+modal.button).on("click", function(){
-                            let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Enviando imágenes...</span>';
+                            let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando imágenes...</span>';
                             this.disabled = true;
                             this.innerHTML = animacion;
 
                             var send = {
                                 fotos: this.dataset.fotos,
-                                email: $("#interfaz\\.email\\.fotos").val()
+                                email: $("#interfaz\\.email\\.fotos").val(),
+                                modal: this.dataset.modal
                             }
 
+
                             $.post('dashboard/send_fotos', send).done(function(data){
+                                $("#"+send.modal).modal("hide");
+
+                                let modal = makeModal();
+                                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                                document.getElementById(modal.titulo).innerHTML = "Información";
+
                                 if (data.response = true){
-                                    alert("Enviado");
+                                    document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
                                 }
                                 else{
-                                    alert("Hubo un error al enviar");
+                                    document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
                                 }
                             });
                         });
