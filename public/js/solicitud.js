@@ -40,13 +40,16 @@ $(document).ready(function(){
 		EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
 
 		if (FExamen.getTime() < FUM.getTime()) {
-			$('#f').val("0 semanas");
+			$('#f').val("0");
+			$('#x').val("0");
 		}
 		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-			$('#f').val("42 semanas");
+			$('#f').val("42");
+			$('#x').val("0");
 		}
 		else {
-			$('#f').val(Math.floor(EdadGestacional) + "." + Math.round((EdadGestacional - Math.floor(EdadGestacional))*7) + " semanas");
+			$('#f').val(Math.floor(EdadGestacional));
+			$('#x').val(Math.round((EdadGestacional - Math.floor(EdadGestacional))*7))
 		}
     });
 
@@ -156,7 +159,7 @@ $(document).ready(function(){
 		var telefono = String($("#c").val()); //es obligatoria
 		var fum = String($("#d").val()); //es obligatoria
 		var fecha = String($("#e").val());
-		var eg = String($('#f').val()); //es obligatoria
+		var eg = String($('#f').val() + "." + $('#x').val() + " semanas"); //es obligatoria
 		var edadMaterna = String($('#g').val()); //es obligatoria
 		var ciudad = String($("#h option:selected").val()); //es obligatoria
 		var lugar = String($("#i option:selected").val()); //es obligatoria
