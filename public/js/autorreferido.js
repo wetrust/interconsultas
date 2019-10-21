@@ -201,7 +201,7 @@ function buildFinishTable(data){
 
             $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
                 if (data.exist == true){
-                    let modal = makeModal("Enviar seleccionadas");
+                    let modal = makeModal("Enviar imágenes seleccionadas");
 
                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
 
@@ -222,7 +222,7 @@ function buildFinishTable(data){
                     });
 
                     var btn_informe = uuidv4();
-                    $('#'+modal.id+ " .modal-footer").append('<button class="btn btn-primary" id="'+btn_informe+'">Informe de imágenes seleccionadas</button>');
+                    $('#'+modal.id+ " .modal-footer").append('<button class="btn btn-primary" id="'+btn_informe+'">Ver informe de imágenes seleccionadas</button>');
 
                     $("#"+btn_informe).on("click", function(){
                         var contador = 0;
