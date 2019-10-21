@@ -316,7 +316,8 @@ function buildFinishTable(data){
 
                     $("#"+modal.button).on("click", function(){
                         let modal = makeModal("Enviar");
-    
+                        var contador = 0;
+
                         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                         sList = "";
 
@@ -324,8 +325,14 @@ function buildFinishTable(data){
                             if (this.checked) {
                                 var sThisVal = (this.checked ? this.dataset.foto : "");
                                 sList += (sList=="" ? sThisVal : "," + sThisVal);
+                                contador++;
                             }
                         });
+
+                        if (contador == 0){
+                            alert("Debes seleccionar al menos una imágen");
+                            return;
+                        }
         
                         document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
                         document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
@@ -340,6 +347,10 @@ function buildFinishTable(data){
             
                         document.getElementById(modal.button).dataset.fotos = sList;
                         $("#"+modal.button).on("click", function(){
+                            let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Enviando imágenes...</span>';
+                            this.disabled = true;
+                            this.innerHTML = animacion;
+
                             var send = {
                                 fotos: this.dataset.fotos,
                                 email: $("#interfaz\\.email\\.fotos").val()
