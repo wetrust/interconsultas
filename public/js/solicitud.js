@@ -51,6 +51,19 @@ $(document).ready(function(){
 			$('#f').val(Math.floor(EdadGestacional));
 			$('#x').val(Math.round((EdadGestacional - Math.floor(EdadGestacional))*7))
 		}
+	});
+	
+	$("#f, #x").on("change", function(){
+        let semanas = parseInt(document.getElementById("f").value);
+        let dias = parseInt(document.getElementById("x").value);
+
+        semanas = 7 * semanas;
+
+        let fee = new Date(document.getElementById("e").value);
+        fee.setDate(fee.getUTCDate() - (semanas + dias));
+
+        document.getElementById("d").value = getDate(fee);
+        $("#d").trigger("change");
     });
 
 	$("#k").on("keyup", function(e){
