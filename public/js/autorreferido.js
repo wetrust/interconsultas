@@ -193,18 +193,14 @@ function buildFinishTable(data){
 
         $('#tabla\\.resultado tr > td > button.foto').on("click", function(){
             let solicitud_rut =  $(this).data("id");
-
             let fecha =  $(this).data("fecha");
             var el_btn = this;
-
             var nombre = $(this).parent().parent().children(".nombre").text();
 
             $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
                 if (data.exist == true){
                     let modal = makeModal("Enviar imágenes seleccionadas");
-
                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-
                     data.JPGFiles
                     var estructura = '<div class="row">';
                     
@@ -314,10 +310,11 @@ function buildFinishTable(data){
                         });
                     });
 
+                    
+                    document.getElementById(modal.button).dataset.modal = modal.id;
                     $("#"+modal.button).on("click", function(){
                         let modal = makeModal("Enviar");
                         var contador = 0;
-
                         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                         sList = "";
 
@@ -329,10 +326,7 @@ function buildFinishTable(data){
                             }
                         });
 
-                        if (contador == 0){
-                            alert("Debes seleccionar al menos una imágen");
-                            return;
-                        }
+                        if (contador == 0){alert("Debes seleccionar al menos una imágen"); return;}
         
                         document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione E-mail destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
                         document.getElementById(modal.titulo).innerHTML = "Enviar imágenes por E-mail";
@@ -344,6 +338,8 @@ function buildFinishTable(data){
                         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                             $(this).remove();
                         });
+
+                        $('#'+ this.dataset.modal).modal("hide");
             
                         document.getElementById(modal.button).dataset.fotos = sList;
                         document.getElementById(modal.button).dataset.modal = modal.id;
