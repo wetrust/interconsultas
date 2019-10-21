@@ -334,8 +334,8 @@ function buildFinishTable(data){
                             return;
                         }
         
-                        document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
-                        document.getElementById(modal.titulo).innerHTML = "Enviar imágenes por e-mail";
+                        document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione E-mail destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
+                        document.getElementById(modal.titulo).innerHTML = "Enviar imágenes por E-mail";
         
                         var options = $("#interfaz\\.email > option").clone();
                         $("#interfaz\\.email\\.fotos").empty();
