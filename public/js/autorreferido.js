@@ -126,6 +126,8 @@ function buildFinishTable(data){
                 let rol = uuidv4();
                 let email = uuidv4();
 
+                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
                 document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label for="'+rol+'">Rol destinatario</label><select class="form-control" id="'+rol+'"><option value="Paciente">Paciente</option><option value="Referente">Referente</option><option value="Matrona">Matrona</option><option value="Medico">Médico</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option></select></div><div class="form-group"><label for="'+email+'">E-mail</label><select class="form-control" id="'+email+'"></select></div>';
                 document.getElementById(modal.titulo).innerHTML = "Enviar informe por E-mail";                
 
