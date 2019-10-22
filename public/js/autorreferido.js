@@ -112,7 +112,7 @@ function buildFinishTable(data){
             $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'" id="contenedorpdf"></iframe>');
             $("#ver\\.interconsulta").modal("show");
             $("#ver\\.interconsulta\\.footer").empty();
-            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" id="ver.interconsulta.enviar" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Enviar exámen</button><button type="button" class="btn btn-primary" id="ver.interconsulta.cambiar.referente" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Cambiar referente</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar exámen</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+            $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" id="ver.interconsulta.enviar" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Enviar informe</button><button type="button" class="btn btn-primary" id="ver.interconsulta.cambiar.referente" data-informe="'+tipo+'" data-id="'+solicitud_id+'">Cambiar referente</button><button type="button" class="btn btn-danger" id="ver.interconsulta.eliminar" data-id="'+solicitud_id+'">Eliminar exámen</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             $("#ver\\.interconsulta\\.eliminar").on("click", function(){
                 let solicitud_id =  $(this).data("id");
                 $.get("dashboard/delete/" + solicitud_id).done(function(data){
@@ -121,7 +121,61 @@ function buildFinishTable(data){
                 });
             });
             $("#ver\\.interconsulta\\.enviar").on("click", function(){
-                callModal($(this).data("informe"), $(this).data("id"));
+                let modal = makeModal("Enviar");
+
+                let rol = uuidv4();
+                let email = uuidv4();
+
+                document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label for="'+rol+'">Rol destinatario</label><select class="form-control" id="'+rol+'"><option value="Paciente">Paciente</option><option value="Referente">Referente</option><option value="Matrona">Matrona</option><option value="Medico">Médico</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option></select></div><div class="form-group"><label for="'+email+'">E-mail</label><select class="form-control" id="'+email+'"></select></div>';
+                document.getElementById(modal.titulo).innerHTML = "Enviar informe por E-mail";                
+
+                document.getElementById(rol).dataset.email = email;
+                $('#'+rol).on("change", function(){
+                    var eMail = this.dataset.email;
+                    $('#'+eMail).empty();
+
+                    $.get('api/emails/'+this.value).done(function(data){
+                        $.each(data, function(i, value) {
+                            let option = '<option value="'+value.email_value+'">'+value.email_nombre + ' '+value.email_value+'</option>';
+                            $('#'+eMail).append(option);
+                        });
+                    });
+                });
+
+                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                    $(this).remove();
+                });
+
+                document.getElementById(modal.button).dataset.informe = this.dataset.informe;
+                document.getElementById(modal.button).dataset.id = this.dataset.id;
+                document.getElementById(modal.button).dataset.email = email;
+                document.getElementById(modal.button).dataset.modal = modal.id;
+
+                $("#"+modal.button).on("click", function(){
+                    let informe = this.dataset.informe;
+                    let id = this.dataset.id;
+                    let email = this.dataset.email;
+
+                    let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
+                    this.disabled = true;
+                    this.innerHTML = animacion;
+                    let modal = this.dataset.modal;
+
+                    let args = {email: email,informe: informe,solicitud: id, modal: modal}
+
+                    $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
+                        if (Object.keys(data).length > 0) {
+                            if (data.result){
+                                alert("Enviado exitosamente");
+                            }
+                            else{
+                                alert("Hubo un error al enviar el correo");
+                            }
+                            $('#'+ args.modal).modal("hide");
+                        }
+                    });
+
+                });
             });
 
             $("#ver\\.interconsulta\\.cambiar\\.referente").on("click", function(){
