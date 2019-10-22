@@ -42,4 +42,8 @@ class ApiController extends Controller
     public function cerebelo($eg, $cerebelo){
         $this->View->renderJSON(CurvasModel::cerebelo($eg, $cerebelo));
     }
+
+    public function emails($tipo){
+        $this->View->renderJSON(DirectorioModel::getDirectorioTipo($tipo));
+    }
 }

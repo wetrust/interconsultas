@@ -24,6 +24,17 @@ class DirectorioModel
         return $query->fetch();
     }
 
+    public static function getDirectorioTipo($email_profesion)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, email_id, email_nombre, email_value, email_profesion FROM email WHERE user_id = :user_id AND email_profesion = :email_profesion";
+        $query = $database->prepare($sql);
+        $query->execute(array(':user_id' => Session::get('user_id'), ':email_profesion' => $email_profesion));
+
+        return $query->fetchAll();
+    }
+
     public static function getDirectorioEmail($email_value)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

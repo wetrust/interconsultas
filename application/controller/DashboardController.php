@@ -546,35 +546,27 @@ class DashboardController extends Controller
     public function mymembrete(){
         $this->View->renderJSON(MembreteModel::getMembrete());
     }
-
     public function lugarSave(){
         $this->View->renderJSON(LugarModel::createLugar(Request::post('lugar_name')));   
     }
-
     public function ciudadSave(){
         $this->View->renderJSON(CiudadModel::createCiudad(Request::post('ciudad_name')));   
     }
-
     public function ciudades_configuracion(){
         $this->View->renderJSON(CiudadModel::getAllCiudades());
     }
-
     public function ciudades_configuracion_delete($id){
         $this->View->renderJSON(CiudadModel::deleteCiudad($id)); 
     }
-
     public function lugares_configuracion(){
         $this->View->renderJSON(LugarModel::getAllLugares());
     }
-
     public function lugares_configuracion_delete($id){
         $this->View->renderJSON(LugarModel::deleteLugar($id)); 
     }
-
     public function guardarsolicitud($solicitud_id){
         $this->View->renderJSON(SolicitudesModel::updateSolicitud($solicitud_id));
     }
-
     public function diagnostico_configuracion(){
         $this->View->renderJSON(DiagnosticoModel::getAllDiagnosticos());
     }
@@ -584,7 +576,6 @@ class DashboardController extends Controller
     public function diagnosticoSave(){
         $this->View->renderJSON(DiagnosticoModel::createDiagnostico(Request::post('diagnostico_name')));
     }
-
     public function send_fotos(){
         $mail = new PHPMailer;
         
@@ -643,7 +634,6 @@ class DashboardController extends Controller
         $this->View->renderJSON($response);
         
     }
-
     public function informe_fotos(){
         $fotos = Request::post('fotos');
         $fotos = explode(",", $fotos);
@@ -721,7 +711,6 @@ class DashboardController extends Controller
 
         $this->View->renderJSON($response);
     }
-
     public function informe_envio(){
         $fotos = Request::post('fotos');
         $email = Request::post('email');
