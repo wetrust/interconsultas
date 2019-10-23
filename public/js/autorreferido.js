@@ -156,7 +156,7 @@ function buildFinishTable(data){
                 $("#"+modal.button).on("click", function(){
                     let informe = this.dataset.informe;
                     let id = this.dataset.id;
-                    let email = this.dataset.email;
+                    let email = $("#"+this.dataset.email).val();
 
                     let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
                     this.disabled = true;
