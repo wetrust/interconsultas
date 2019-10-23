@@ -403,14 +403,26 @@ function buildFinishTable(data){
                         });
 
                         if (contador == 0){alert("Debes seleccionar al menos una imágen"); return;}
-        
-                        document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione E-mail destinatario</label><select class="form-control" id="interfaz.email.fotos"></select></div>';
+                        
+                        let rol = uuidv4();
+                        let email = uuidv4();
+
+                        document.getElementById(modal.contenido).innerHTML = '<div class="row"><div class="form-group col-4"><label for="'+rol+'">Rol destinatario</label><select class="form-control" id="'+rol+'"><option value="Paciente">Paciente</option><option value="Referente">Referente</option><option value="Matrona">Matrona</option><option value="Medico">Médico</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option></select></div><div class="form-group col"><label for="'+email+'">E-mail destinatario</label><select class="form-control" id="'+email+'"></select></div></div>';
                         document.getElementById(modal.titulo).innerHTML = "Enviar imágenes por E-mail";
         
-                        var options = $("#interfaz\\.email > option").clone();
-                        $("#interfaz\\.email\\.fotos").empty();
-                        $("#interfaz\\.email\\.fotos").append(options);
-                                
+                        document.getElementById(rol).dataset.email = email;
+                        $('#'+rol).on("change", function(){
+                            var eMail = this.dataset.email;
+                            $('#'+eMail).empty();
+
+                            $.get('api/emails/'+this.value).done(function(data){
+                                $.each(data, function(i, value) {
+                                    let option = '<option value="'+value.email_value+'">'+value.email_nombre + ' '+value.email_value+'</option>';
+                                    $('#'+eMail).append(option);
+                                });
+                            });
+                        });
+
                         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                             $(this).remove();
                         });
@@ -419,6 +431,8 @@ function buildFinishTable(data){
             
                         document.getElementById(modal.button).dataset.fotos = sList;
                         document.getElementById(modal.button).dataset.modal = modal.id;
+                        document.getElementById(modal.button).dataset.email = email;
+
                         $("#"+modal.button).on("click", function(){
                             let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando imágenes...</span>';
                             this.disabled = true;
@@ -426,7 +440,7 @@ function buildFinishTable(data){
 
                             var send = {
                                 fotos: this.dataset.fotos,
-                                email: $("#interfaz\\.email\\.fotos").val(),
+                                email: $("#"+this.dataset.email).val(),
                                 modal: this.dataset.modal
                             }
 
