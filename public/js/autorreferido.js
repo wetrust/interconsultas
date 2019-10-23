@@ -167,12 +167,21 @@ function buildFinishTable(data){
 
                     $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
                         if (Object.keys(data).length > 0) {
-                            if (data.result){
-                                alert("Enviado exitosamente");
-                            }
-                            else{
-                                alert("Hubo un error al enviar el correo");
-                            }
+                            let modal = makeModal();
+                                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                                document.getElementById(modal.titulo).innerHTML = "Información";
+
+                                if (data.result = true){
+                                    document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
+                                }
+                                else{
+                                    document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
+                                }
+
+                                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                    $(this).remove();
+                                });
+
                             $('#'+ args.modal).modal("hide");
                         }
                     });
@@ -368,12 +377,21 @@ function buildFinishTable(data){
                                         }
             
                                         $.post('dashboard/informe_envio', send).done(function(data){
+                                            let modal = makeModal();
+                                            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                                            document.getElementById(modal.titulo).innerHTML = "Información";
+
                                             if (data.response = true){
-                                                alert("Enviado");
+                                                document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
                                             }
                                             else{
-                                                alert("Hubo un error al enviar");
+                                                document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
                                             }
+
+                                            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                                $(this).remove();
+                                            });
+                                            
                                             $('#'+ send.modal).modal("hide");
                                         });
                                     });
