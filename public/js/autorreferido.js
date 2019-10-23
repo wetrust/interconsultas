@@ -336,7 +336,7 @@ function buildFinishTable(data){
                                     $("#interfaz\\.email\\.fotos").empty();
                                     $("#interfaz\\.email\\.fotos").append(options);
                                             
-                                    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                    $('#'+modal.id).modal("show").on('hidden.bs.modalargs', function (e) {
                                         $(this).remove();
                                     });
                         
@@ -361,7 +361,7 @@ function buildFinishTable(data){
                                             else{
                                                 alert("Hubo un error al enviar");
                                             }
-                                            $('#'+ args.modal).modal("hide");
+                                            $('#'+ send.modal).modal("hide");
                                         });
                                     });
                                 });
