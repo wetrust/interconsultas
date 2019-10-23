@@ -341,11 +341,17 @@ function buildFinishTable(data){
                                     });
                         
                                     document.getElementById(modal.button).dataset.fotos = sList;
-        
+                                    document.getElementById(modal.button).dataset.modal = modal.id;
                                     $("#"+modal.button).on("click", function(){
+                                        let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando imágenes...</span>';
+                                        this.disabled = true;
+                                        this.innerHTML = animacion;
+                                        let modal = this.dataset.modal;
+
                                         var send = {
                                             fotos: this.dataset.fotos,
-                                            email: $("#interfaz\\.email\\.fotos").val()
+                                            email: $("#interfaz\\.email\\.fotos").val(),
+                                            modal: modal
                                         }
             
                                         $.post('dashboard/informe_envio', send).done(function(data){
@@ -355,6 +361,7 @@ function buildFinishTable(data){
                                             else{
                                                 alert("Hubo un error al enviar");
                                             }
+                                            $('#'+ args.modal).modal("hide");
                                         });
                                     });
                                 });
