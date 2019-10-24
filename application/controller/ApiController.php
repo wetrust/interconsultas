@@ -11,6 +11,7 @@ class ApiController extends Controller
             Request::post('nombreContrarreferente'),
             Request::post('correoContrarreferente'),
             Request::post('nombre'),
+            Request::post('apellido'),
             Request::post('rut'),
             Request::post('fecha'),
             Request::post('diagnostico'),

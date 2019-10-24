@@ -168,6 +168,7 @@ $(document).ready(function(){
 		var listo = false;
 		//revisar si el usuario lleno todas las cajas
 		var nombre = String($("#a").val()); //es obligatoria
+		var apellido = String($("#y").val()); //es obligatoria
 		var rut = String($("#b").val()); //es obligatoria
 		var telefono = String($("#c").val()); //es obligatoria
 		var fum = String($("#d").val()); //es obligatoria
@@ -203,11 +204,13 @@ $(document).ready(function(){
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
 		
-		if (nombre.length < 3 || rut.length < 4 || fum.length < 4 || fecha.length < 4 || eg == "0 semanas" || diagnostico.length  < 3 || nombreReferente.length < 3 || correoReferente.length < 2){
+		if (nombre.length < 3 || apellido.length < 3 || rut.length < 4 || fum.length < 4 || fecha.length < 4 || eg == "0 semanas" || diagnostico.length  < 3 || nombreReferente.length < 3 || correoReferente.length < 2){
 			var mensaje = "";
 
             if (nombre.length < 3){
                 mensaje = textos.paciente_name_error;
+            }else if (apellido.length < 3){
+                mensaje = textos.paciente_apellido_error;
             }else if (rut.length < 4){
 				mensaje = textos.paciente_rut_error;
 			}else if (fum.length < 4){
@@ -251,6 +254,7 @@ $(document).ready(function(){
 			if (a < 3){
 				data = {
 					nombre: nombre,
+					apellido: apellido,
 					rut: rut,
 					telefono: telefono,
 					fum: fum,
@@ -276,6 +280,7 @@ $(document).ready(function(){
 			}else{
 				data = {
 					nombre: nombre,
+					apellido: apellido,
 					rut: rut,
 					telefono: telefono,
 					fum: fum,

@@ -2,7 +2,7 @@
 
 class InterconsultaModel
 {
-    public static function solicitarInterconsulta($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_egestacional,$telefono,$sistolica,$diastolica,$media,$talla,$peso,$imc,$antecedentes, $edadMaterna, $paridad){
+    public static function solicitarInterconsulta($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_apellido,$solicitud_rut,$solicitud_fecha,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,$solicitud_egestacional,$telefono,$sistolica,$diastolica,$media,$talla,$peso,$imc,$antecedentes, $edadMaterna, $paridad){
         //verificar si el profesional está habilitado para recibir interconsultas
         $contrareferente = UserModel::getUserDataByUserNameOrEmail($solicitud_email);
         $response = new stdClass();
@@ -12,7 +12,7 @@ class InterconsultaModel
                 if (Session::userIsLoggedIn()) {
                     $solicitud_profesional = UserModel::getPublicProfileOfUser(Session::get('user_id'))->user_profesion;
                 }
-                $solicitud_id = SolicitudesModel::createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_rut,$solicitud_fecha,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,0,$solicitud_egestacional,$telefono,$sistolica,$diastolica,$media,$talla,$peso,$imc,$antecedentes, $edadMaterna, $paridad);
+                $solicitud_id = SolicitudesModel::createSolicitud($solicitud_nombre_referente, $solicitud_profesionalemail,$solicitud_nombre,$solicitud_apellido, $solicitud_rut,$solicitud_fecha,$solicitud_diagnostico,$solicitud_lugar,$solicitud_ciudad,$solicitud_profesional,$solicitud_nombreprofesional,$solicitud_email,$solicitud_fum,0,$solicitud_egestacional,$telefono,$sistolica,$diastolica,$media,$talla,$peso,$imc,$antecedentes, $edadMaterna, $paridad);
                 //enviar un email al médico contrareferente
                 EmailModel::sendContrareferenteEmail($solicitud_id);
                 EmailModel::sendSolicitanteEmail($solicitud_id);
