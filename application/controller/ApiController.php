@@ -48,7 +48,7 @@ class ApiController extends Controller
     }
 
     public function pacientes(){
-        $this->View->renderJSON(PacientesModel:getAllPacientes());
+        $this->View->renderJSON(PacientesModel::getAllPacientes());
     }
 
     public function newPacientes(){
