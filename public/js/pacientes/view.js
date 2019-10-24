@@ -18,7 +18,11 @@ export class view {
 
         the(config.pacienteInterfaceTable).innerHTML = table;
 
-        document.getElementsByClassName("eliminar").onclick = this.eliminarPaciente;
+        let eliminarBtns = document.getElementsByClassName("eliminar");
+
+        for (var i=0; i < eliminarBtns.length; i++) {
+            eliminarBtns[i].onclick = this.eliminarPaciente;
+        }
     }
 
     static newPaciente(){
