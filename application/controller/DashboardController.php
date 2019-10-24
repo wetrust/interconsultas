@@ -749,8 +749,4 @@ class DashboardController extends Controller
         
         $this->View->renderJSON($response);
     }
-
-    public function pacientes(){
-        $this->View->render('dashboard/pacientes');
-    }
 }
