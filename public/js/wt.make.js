@@ -14,4 +14,10 @@ class wt{
     static _(id) {
         return document.getElementById(id);
     }
- }
+
+    static async get(url) {
+        const response = await fetch(url);
+        return await response.json();
+    }
+}
+module.exports = wt
