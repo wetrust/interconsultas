@@ -1,5 +1,5 @@
-class wt{
-    static makeSpinnerGrow(){
+export class make{
+    static spinnerGrow(){
         let id = this.uuidv4();
         let struct = '<div class="text-center" id='+id+'><div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Cargando...</span></div><p>Cargando..</p></div>';
         return {id:id,html:struct};
@@ -10,14 +10,15 @@ class wt{
           (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
         )
     }
+}
 
-    static _(id) {
-        return document.getElementById(id);
-    }
-
+export class data{
     static async get(url) {
         const response = await fetch(url);
         return await response.json();
     }
 }
-module.exports = wt
+
+export function the(id) {
+    return document.getElementById(id);
+}
