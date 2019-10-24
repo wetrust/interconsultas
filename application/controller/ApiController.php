@@ -58,7 +58,7 @@ class ApiController extends Controller
         $data->fum = Request::post('fum');
 
         $response = new stdClass();
-        $response->return = PacientesModel:createPaciente($data);
+        $response->return = PacientesModel::createPaciente($data);
         $this->View->renderJSON($response);
     }
 }
