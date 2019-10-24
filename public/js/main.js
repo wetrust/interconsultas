@@ -54,7 +54,9 @@ $(document).ready(function(){
     $('.btn-group-toggle .btn.interconsulta').on("click", function(){
         let valor = parseInt($(this).find('input').val());
 
-        if (valor == 0){
+        if (valor == -1){
+            location.replace("pacientes");
+        }else if (valor == 0){
             loadSolicitud();
             $("#filtro\\.activar").addClass("d-none");
             $("#filtro\\.contenedor").addClass("d-none");
