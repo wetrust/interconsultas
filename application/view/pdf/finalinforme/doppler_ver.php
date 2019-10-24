@@ -50,7 +50,7 @@
     $this->pdf->Ln(2);
 
     if (Session::get("user_account_type") == 4) {
-        $html = '<table><tbody><tr><td colspan="2">Nombre del paciente</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_nombre).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td colspan="2">Nombre del paciente</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td colspan="2">Edad</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_ematerna).' años</td></tr></tbody></table>';
@@ -79,7 +79,7 @@
         $this->pdf->Ln(4);
     }
     else{
-        $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td>Fecha de solicitud: '.$solicitud_fecha.'</td><td>FUR Referida: '.$solicitud_fum.'</td></tr></tbody></table>';
