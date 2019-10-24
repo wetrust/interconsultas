@@ -5,7 +5,7 @@ import {make, the} from '../wetrust.js';
 export class view {
     static pacienteInterface(container, data){
         the(container).innerHTML = config.pacienteInterface;
-        the(config.pacienteInterfaceNewButton).click = this.newPaciente();
+        the(config.pacienteInterfaceNewButton).onclick = this.newPaciente();
 
         let table = config.pacienteInterfaceTableHead;
 
