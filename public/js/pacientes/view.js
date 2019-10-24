@@ -35,9 +35,15 @@ export class view {
             let paciente = {
                 nombre: the("nombre").value,
                 rut: the("rut").value,
-                fum: the("fum").value
+                fum: the("fum").value,
+                modal: this.dataset.id
             }
-            cloud.newPaciente(paciente)
+            cloud.newPaciente(paciente).then(function(data){
+                if (data.return == true){
+                    $("#"+data.modal).modal("hide");
+                    location.reload();
+                }
+            });
         })
 
     }
