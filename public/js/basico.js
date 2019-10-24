@@ -156,7 +156,7 @@ function buildSolicitadasTable(data){
         $.each(data, function(i, value) {
             let fecha = value.solicitud_fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
+            tabla += '<tr><td>' + value.solicitud_nombre + ' ' + value.solicitud_apellido +'</td><td>' + value.solicitud_telefono + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+ fecha +'</td>';
             tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + '>Ver</button></td></tr>';
         });
 
