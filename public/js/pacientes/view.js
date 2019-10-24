@@ -21,7 +21,7 @@ export class view {
 
     static newPaciente(){
         let modal = make.modal("Crear");
-        the("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.newPacientesTitulo;
         the(modal.contenido).innerHTML = config.newPacientesHTML;
 
