@@ -49,7 +49,7 @@ class ApiController extends Controller
 
     public function pacientes(){
         $paciente = new stdClass();
-        $resultado = {};
+        $resultado = [];
         
         $paciente->nombre = "juan";
         $paciente->rut = "17726628-0";
