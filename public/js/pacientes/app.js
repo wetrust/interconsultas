@@ -4,8 +4,6 @@ import {view} from './view.js';
 
 let spinnerGrow = make.spinnerGrow();
 the("pacientes").innerHTML = spinnerGrow.html;
-cloud.getPacientes().then(function(res){
-    console.log(res)
+cloud.getPacientes().then(function(data){
+    view.pacienteInterface("pacientes",data);
 });
-
-the("paciente.nuevo").click = view.newPaciente();
