@@ -11,7 +11,7 @@ export class view {
 
         table += '<tbody></tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+humanDate(new date(element.fum))+'</td></tr>';
+            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+humanDate(new Date(element.fum))+'</td></tr>';
         });
 
         table += '</tbody>';
