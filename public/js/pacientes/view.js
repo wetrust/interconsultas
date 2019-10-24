@@ -44,7 +44,17 @@ export class view {
                     location.reload();
                 }
             });
-        })
+        });
+    }
 
+    static eliminarPaciente(){
+        let paciente = {
+            id: this.dataset.id
+        }
+        cloud.deletePaciente(paciente).then(function(data){
+            if (data.return == true){
+                location.reload();
+            }
+        });
     }
 }

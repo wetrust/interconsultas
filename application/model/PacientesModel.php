@@ -60,17 +60,14 @@ class PacientesModel
         return false;
     }
 
-    public static function deleteNote($note_id)
+    public static function deletePaciente($data)
     {
-        if (!$note_id) {
-            return false;
-        }
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "DELETE FROM notes WHERE note_id = :note_id AND user_id = :user_id LIMIT 1";
+        $sql = "DELETE FROM pacientes WHERE id = :id AND user_id = :user_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':note_id' => $note_id, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':id' => $data->id, ':user_id' => Session::get('user_id')));
 
         if ($query->rowCount() == 1) {
             return true;

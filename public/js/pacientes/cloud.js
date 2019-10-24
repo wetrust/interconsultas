@@ -21,6 +21,17 @@ export class cloud {
 
         } catch(e){}
     }
+
+    static async deletePaciente(paciente){
+        try {
+            const to = new FormData();
+            to.append('id', paciente.id);
+
+            const from = await data.post(config.delete, to);
+            return from;
+
+        } catch(e){}
+    }
 }
 
 export var paciente = {
