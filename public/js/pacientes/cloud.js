@@ -1,5 +1,5 @@
-import {data} from '../wetrust';
-import {config} from './config';
+import {data} from '../wetrust.js';
+import {config} from './config.js';
 
 export class cloud {
     static async getPacientes(){

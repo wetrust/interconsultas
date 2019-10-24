@@ -1,5 +1,5 @@
-import {make, the} from '../wetrust';
-import {cloud} from './cloud';
+import {make, the} from '../wetrust.js';
+import {cloud} from './cloud.js';
 
 let spinnerGrow = make.spinnerGrow();
 the("pacientes").innerHTML = spinnerGrow.html;
