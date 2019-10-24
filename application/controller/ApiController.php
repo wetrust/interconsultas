@@ -48,16 +48,17 @@ class ApiController extends Controller
     }
 
     public function pacientes(){
-        $paciente = new stdClass();
-        $resultado = [];
-        
-        $paciente->nombre = "juan";
-        $paciente->rut = "17726628-0";
-        $paciente->fum = "2019-01-21";
+        $this->View->renderJSON(PacientesModel:getAllPacientes());
+    }
 
-        $resultado[0] = $paciente;
-        $resultado[1] = $paciente;
+    public function newPacientes(){
+        $data = new stdClass();
+        $data->nombre = Request::post('nombre');
+        $data->rut = Request::post('rut');
+        $data->fum = Request::post('fum');
 
-        $this->View->renderJSON($resultado);
+        $response = new stdClass();
+        $response->return = PacientesModel:createPaciente($data);
+        $this->View->renderJSON($response);
     }
 }
