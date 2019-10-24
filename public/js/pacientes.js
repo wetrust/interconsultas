@@ -1,0 +1,1 @@
+bootstrap._("pacientes").innerHTML = bootstrap.makeSpinnerGrow();
