@@ -14,6 +14,7 @@ export class cloud {
             to.append('nombre', paciente.nombre);
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
+            to.append('modal', paciente.modal);
 
             const from = await data.post(config.new, to);
             return from;
