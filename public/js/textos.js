@@ -2,6 +2,7 @@ var textos = {
     form_error: "No est&aacute; completo el formulario",
     form_send: "Enviando Interconsulta",
     paciente_name_error: "¿C&oacute;mo se llama la paciente?",
+    paciente_apellido_error: "¿Cu&aacute;l es el apellido de la paciente?",
     paciente_rut_error: "¿Cual es el RUT de la paciente?",
     solicitud_fecha_error:"¿Cual es la Fecha de solicitud de la interconsulta?, ¿Hoy?",
     eco_previa_error: "¿Tiene una ecograf&iacute;a previa de crecimiento la paciente?",
