@@ -1,1 +1,1 @@
-bootstrap._("pacientes").innerHTML = bootstrap.makeSpinnerGrow();
+wt._("pacientes").innerHTML = wt.makeSpinnerGrow();

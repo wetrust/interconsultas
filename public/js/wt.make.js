@@ -1,4 +1,4 @@
-class boostrap{
+class wt{
     static makeSpinnerGrow(){
         let id = this.uuidv4();
         let struct = '<div class="text-center" id='+id+'><div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Cargando...</span></div><p>Cargando..</p></div>';
