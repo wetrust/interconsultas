@@ -64,7 +64,7 @@ class ApiController extends Controller
         $this->View->renderJSON($response);
     }
 
-    public function deletePacientes(){
+    public function deletePaciente(){
         $data = new stdClass();
         $data->id = Request::post('id');
 
