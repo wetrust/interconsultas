@@ -46,4 +46,18 @@ class ApiController extends Controller
     public function emails($tipo){
         $this->View->renderJSON(DirectorioModel::getDirectorioTipo($tipo));
     }
+
+    public function pacientes(){
+        $paciente = new stdClass();
+        $resultado = {};
+        
+        $paciente->nombre = "juan";
+        $paciente->rut = "17726628-0";
+        $paciente->fum = "2019-01-21";
+
+        $resultado[0] = $paciente;
+        $resultado[1] = $paciente;
+
+        $this->View->renderJSON($resultado);
+    }
 }
