@@ -55,7 +55,7 @@ $(document).ready(function(){
         let valor = parseInt($(this).find('input').val());
 
         if (valor == -1){
-            location.replace("pacientes");
+            location.assign("pacientes");
         }else if (valor == 0){
             loadSolicitud();
             $("#filtro\\.activar").addClass("d-none");
