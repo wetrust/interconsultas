@@ -428,7 +428,7 @@ function loadInProcessData(data){
     $.each(data, function(i, value) {
         let fecha = value.evaluacion_fecha.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        tabla += '<tr><td>' + value.solicitud_nombre + "" + value.solicitud_apellido +  '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
+        tabla += '<tr><td>' + value.solicitud_nombre + " " + value.solicitud_apellido +  '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
         if (value.solicitud_confirmada == 'Si' && a == 3){
             tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button></td></tr>';
         }
@@ -683,7 +683,7 @@ function loadInProcessData(data){
     
         $.get('dashboard/agendar/' + solicitud_id).done(function(data){
             document.getElementById("solicitud_id").value = data.solicitud_id;
-            document.getElementById("solicitud_nombre").value = data.solicitud_nombre;
+            document.getElementById("solicitud_nombre").value = data.solicitud_nombre + " " + data.solicitud_apellido;
             document.getElementById("solicitud_rut").value = data.solicitud_rut;
             document.getElementById("solicitud_fecha").value = data.solicitud_fecha;
             document.getElementById("solicitud_fum").value = data.solicitud_fum;
