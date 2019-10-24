@@ -63,6 +63,9 @@
                 <div class="card-body d-flex flex-row">
                     <div class="w-100 d-flex flex-row">
                         <div class="btn-group-toggle" data-toggle="buttons">
+                            <label id="interconsultas.estado.pacientes" class="btn interconsulta btn-secondary">
+                                <input type="radio" value="-1" name="interconsultas" checked autocomplete="off">Pacientes
+                            </label>
                             <label id="interconsultas.estado.solicitar" class="btn interconsulta btn-secondary active">
                                 <input type="radio" value="0" name="interconsultas" checked autocomplete="off">Solicitud de exámen ecográfico
                             </label>
