@@ -428,7 +428,7 @@ function loadInProcessData(data){
     $.each(data, function(i, value) {
         let fecha = value.evaluacion_fecha.split('-');
         fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-        tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
+        tabla += '<tr><td>' + value.solicitud_nombre + "" + value.solicitud_apellido +  '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_egestacional +'</td><td>' + value.solicitud_diagnostico +'</td><td>'+fecha+'</td><td>'+ value.solicitud_confirmada+'</td>';
         if (value.solicitud_confirmada == 'Si' && a == 3){
             tabla += '<td><button class="btn examen btn-secondary" data-id='+ value.solicitud_id + '>Ir a examen Eco</button></td></tr>';
         }
