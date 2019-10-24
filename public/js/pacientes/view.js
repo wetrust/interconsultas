@@ -1,6 +1,6 @@
 import {cloud} from './cloud.js';
 import {config} from './config.js';
-import {make, the} from '../wetrust.js';
+import {make, the, humanDate} from '../wetrust.js';
 
 export class view {
     static pacienteInterface(container, data){
@@ -11,7 +11,7 @@ export class view {
 
         table += '<tbody></tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.fum+'</td></tr>';
+            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+humanDate(element.fum)+'</td></tr>';
         });
 
         table += '</tbody>';
