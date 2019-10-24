@@ -1,9 +1,8 @@
 <div class="container">
-    <h5>Pacientes</h5>
-    <div class="text-center">
-    <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only">Cargando...</span>
-    </div>
-    <p>Cargando..</p>
-    </div>
+    <h2>Pacientes</h2>
+    <div class="card shadow"><div class="card-body" id="pacientes"></div></div>
 </div>
+<script src="js/bootstrap.make.js"></script>
+<script>
+    document.getElementByID("pacientes").innerHTML = bootstrap.makeSpinnerGrow();
+</script>
