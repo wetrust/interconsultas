@@ -4,5 +4,5 @@
 </div>
 <script src="js/bootstrap.make.js"></script>
 <script>
-    document.getElementByID("pacientes").innerHTML = bootstrap.makeSpinnerGrow();
+    bootstrap._("pacientes").innerHTML = bootstrap.makeSpinnerGrow();
 </script>
