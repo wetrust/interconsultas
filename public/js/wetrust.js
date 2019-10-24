@@ -5,6 +5,28 @@ export class make{
         return {id:id,html:struct};
     }
 
+    static modal(button){
+        let id = this.uuidv4();
+        let titulo = this.uuidv4();
+        let contenido = this.uuidv4();
+        let _button = this.uuidv4();
+        let button_string = "";
+        
+        if (typeof button !== typeof undefined){
+            button_string = '<button type="button" class="btn btn-primary" id="'+_button+'" data-modal="'+id+'">'+button+'</button>';
+        }
+        
+        let resultado ={
+            id:id,
+            titulo:titulo,
+            contenido:contenido,
+            button:_button,
+            modal:'<div class="modal fade" tabindex="-1" role="dialog" id="'+id+'"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="'+titulo+'">Modal title</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="'+contenido+'"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>'+ button_string+'</div></div></div></div>'
+        }
+            
+        return resultado;
+    }
+
     static uuidv4() {
         return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
           (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -15,6 +37,10 @@ export class make{
 export class data{
     static async get(url) {
         const response = await fetch(url);
+        return await response.json();
+    }
+    static async post(url, data){
+        const response = await fetch(url, {method: 'POST',body: data});
         return await response.json();
     }
 }
