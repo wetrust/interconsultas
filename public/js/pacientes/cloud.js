@@ -12,6 +12,7 @@ export class cloud {
         try {
             const to = new FormData();
             to.append('nombre', paciente.nombre);
+            to.append('apellido', paciente.apellido);
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
             to.append('modal', paciente.modal);

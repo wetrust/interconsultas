@@ -6,7 +6,7 @@ class PacientesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT id, nombre, rut, fum FROM pacientes WHERE user_id = :user_id";
+        $sql = "SELECT id, nombre, apellido, rut, fum FROM pacientes WHERE user_id = :user_id";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id')));
 
@@ -28,9 +28,9 @@ class PacientesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO pacientes (rut, nombre, fum, user_id) VALUES (:rut, :nombre, :fum, :user_id)";
+        $sql = "INSERT INTO pacientes (rut, nombre, apellido, fum, user_id) VALUES (:rut, :nombre, :apellido, :fum, :user_id)";
         $query = $database->prepare($sql);
-        $query->execute(array(':rut' => $data->rut, ':nombre' => $data->nombre, ':fum' => $data->fum, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':user_id' => Session::get('user_id')));
 
         if ($query->rowCount() == 1) {
             return true;

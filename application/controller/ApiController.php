@@ -54,6 +54,7 @@ class ApiController extends Controller
     public function newPacientes(){
         $data = new stdClass();
         $data->nombre = Request::post('nombre');
+        $data->apellido = Request::post('apellido');
         $data->rut = Request::post('rut');
         $data->fum = Request::post('fum');
         $data->modal = Request::post('modal');

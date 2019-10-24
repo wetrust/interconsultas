@@ -9,9 +9,9 @@ export class view {
 
         let table = config.pacienteInterfaceTableHead;
 
-        table += '<tbody></tbody>';
+        table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+humanDate(new Date(element.fum))+'</td><td><button class="btn btn-danger eliminar" data-id="'+element.id+'">Eliminar</button></td></tr>';
+            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td><button class="btn btn-danger eliminar" data-id="'+element.id+'">Eliminar</button></td></tr>';
         });
 
         table += '</tbody>';
@@ -38,6 +38,7 @@ export class view {
         $("#"+modal.button).on("click", function(){
             let paciente = {
                 nombre: the("nombre").value,
+                apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
                 modal: this.dataset.modal
