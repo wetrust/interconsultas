@@ -13,13 +13,12 @@ class PacientesModel
         return $query->fetchAll();
     }
 
-    public static function getNote($note_id)
-    {
+    public static function getPaciente($rut){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT user_id, note_id, note_text FROM notes WHERE user_id = :user_id AND note_id = :note_id LIMIT 1";
+        $sql = "SELECT id, nombre, apellido rut, fum FROM pacientes WHERE user_id = :user_id AND rut = :rut LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':user_id' => Session::get('user_id'), ':note_id' => $note_id));
+        $query->execute(array(':user_id' => Session::get('user_id'), ':rut' => $rut));
 
         return $query->fetch();
     }

@@ -25,6 +25,31 @@ $(document).ready(function(){
         },
         placeholder: false
 	});
+
+	$('#b').on("onfocusout", function(){
+		rut = this.value;
+
+		$.get("api/getPaciente/"+rut).done(function(){
+			if (data.nombre !=""){
+				$('#a').value(data.nombre)
+				$('#y').value(data.apellido)
+				$('#d').value(data.fum).trigger("change");
+			}
+		})
+    }).on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			rut = this.value;
+
+			$.get("api/getPaciente/"+rut).done(function(data){
+				if (data.nombre !=""){
+					$('#a').value(data.nombre)
+					$('#y').value(data.apellido)
+					$('#d').value(data.fum).trigger("change");
+				}
+			})
+		}
+	});
 	
     $("#d, #e").on("change", function(){
 		var FExamen, FUM, EdadGestacional;
