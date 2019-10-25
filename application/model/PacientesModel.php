@@ -16,7 +16,7 @@ class PacientesModel
     public static function getPaciente($rut){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT id, nombre, apellido rut, fum FROM pacientes WHERE user_id = :user_id AND rut = :rut LIMIT 1";
+        $sql = "SELECT id, nombre, apellido, rut, fum FROM pacientes WHERE user_id = :user_id AND rut = :rut LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id'), ':rut' => $rut));
 
