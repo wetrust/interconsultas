@@ -11,7 +11,7 @@ export class view {
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td><button class="btn btn-danger eliminar" data-id="'+element.id+'">Eliminar</button></td></tr>';
+            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td><button class="btn btn-danger modificar" data-id="'+element.id+'">modificar</button><button class="btn btn-danger eliminar" data-id="'+element.id+'">Eliminar</button></td></tr>';
         });
 
         table += '</tbody>';
