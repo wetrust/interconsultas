@@ -43,9 +43,9 @@ $(document).ready(function(){
 
 			$.get("api/getPaciente/"+rut).done(function(data){
 				if (data.nombre !=""){
-					$('#a').value(data.nombre)
-					$('#y').value(data.apellido)
-					$('#d').value(data.fum).trigger("change");
+					$('#a').val(data.nombre)
+					$('#y').val(data.apellido)
+					$('#d').val(data.fum).trigger("change");
 				}
 			})
 		}
