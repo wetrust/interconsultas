@@ -26,7 +26,7 @@ $(document).ready(function(){
         placeholder: false
 	});
 
-	$('#b').on("onfocusout", function(){
+	$('#b').on("focusout", function(){
 		rut = this.value;
 		this.blur();
 		$.get("api/getPaciente/"+rut).done(function(){
