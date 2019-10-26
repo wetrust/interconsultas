@@ -154,6 +154,6 @@ export class view {
                 document.getElementById("semanas").value = 0;
                 document.getElementById("dias").value = 0;
             }
-        });
+        }).trigger("click");
     }
 }
