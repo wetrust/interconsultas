@@ -265,7 +265,6 @@ class DashboardController extends Controller
             ));
 
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud de examen ecografico',$respuesta_crecimiento);
-
         }
         else if($respuesta_crecimiento == 4){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, $respuesta_translucencia_nucal, "", "", "", "", "", "", "","",0, $respuesta_hueso_nasal_valor, "");
@@ -301,7 +300,6 @@ class DashboardController extends Controller
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen
             ));
-
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud de ecografia 11-14',$respuesta_crecimiento);
         }
     }

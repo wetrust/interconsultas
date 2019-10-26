@@ -30,6 +30,10 @@ class ApiController extends Controller
         $this->View->renderJSON(PacientesModel::getPacienteID($paciente));
     }
 
+    public function getPaciente($rut){
+        $this->View->renderJSON(PacientesModel::getPaciente($rut));
+    }
+
     public function newPacientes(){
         $data = new stdClass();
         $data->nombre = Request::post('nombre');
@@ -44,8 +48,19 @@ class ApiController extends Controller
         $this->View->renderJSON($response);
     }
 
-    public function getPaciente($rut){
-        $this->View->renderJSON(PacientesModel::getPaciente($rut));
+    public function updatePaciente(){
+        $data = new stdClass();
+        $data->id = Request::post('id');
+        $data->nombre = Request::post('nombre');
+        $data->apellido = Request::post('apellido');
+        $data->rut = Request::post('rut');
+        $data->fum = Request::post('fum');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = PacientesModel::updatePaciente($data);
+        $response->modal = $data->modal;
+        $this->View->renderJSON($response);
     }
 
     public function deletePaciente(){

@@ -49,21 +49,16 @@ class PacientesModel
         return false;
     }
 
-    public static function updateNote($note_id, $note_text)
+    public static function updatePaciente($data)
     {
-        if (!$note_id || !$note_text) {
-            return false;
-        }
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE notes SET note_text = :note_text WHERE note_id = :note_id AND user_id = :user_id LIMIT 1";
+        $sql = "UPDATE pacientes SET rut = :rut, nombre = :nombre, apellido = :apellido, fum = :fum WHERE id = :id AND user_id = :user_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':note_id' => $note_id, ':note_text' => $note_text, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':id' => $data->id, ':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':user_id' => Session::get('user_id')));
 
-        if ($query->rowCount() == 1) {
-            return true;
-        }
+        if ($query->rowCount() == 1) { return true; }
 
         Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
         return false;

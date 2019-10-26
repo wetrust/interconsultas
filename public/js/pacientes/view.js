@@ -93,13 +93,14 @@ export class view {
 
         $("#"+modal.button).on("click", function(){
             let paciente = {
+                id: the("id").value,
                 nombre: the("nombre").value,
                 apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
                 modal: this.dataset.modal
             }
-            cloud.newPaciente(paciente).then(function(data){
+            cloud.updatePaciente(paciente).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
                     location.reload();

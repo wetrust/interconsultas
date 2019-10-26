@@ -29,6 +29,22 @@ export class cloud {
         } catch(e){}
     }
 
+    static async updatePaciente(paciente){
+        try {
+            const to = new FormData();
+            to.append('id', paciente.id);
+            to.append('nombre', paciente.nombre);
+            to.append('apellido', paciente.apellido);
+            to.append('rut', paciente.rut);
+            to.append('fum', paciente.fum);
+            to.append('modal', paciente.modal);
+
+            const from = await data.post(config.update, to);
+            return from;
+
+        } catch(e){}
+    }
+
     static async deletePaciente(paciente){
         try {
             const to = new FormData();
