@@ -181,7 +181,7 @@ export class view {
                 let ciudad = the("ciudad");
                 let opt = document.createElement('option');
                 opt.appendChild( document.createTextNode(element.ciudad_name) );
-                opt.value = element.ciudad_id; 
+                opt.value = element.ciudad_name; 
                 ciudad.appendChild(opt); 
             });
         });
@@ -193,7 +193,7 @@ export class view {
                 let lugar = the("lugar");
                 let opt = document.createElement('option');
                 opt.appendChild( document.createTextNode(element.lugar_name) );
-                opt.value = element.lugar_id; 
+                opt.value = element.lugar_name; 
                 lugar.appendChild(opt); 
             });
         });
