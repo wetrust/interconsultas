@@ -176,6 +176,7 @@ export class view {
                 opt.value = element.comuna_id; 
                 comunas.appendChild(opt); 
             });
+            the("comuna").value = 0;
         });
     }
 }
