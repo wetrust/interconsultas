@@ -2,7 +2,7 @@ export const config = {
     pacientes: 'api/pacientes',
     paciente: 'api/paciente/',
     new: 'api/newPacientes',
-    ew: 'api/updatePaciente',
+    update: 'api/updatePaciente',
     delete: 'api/deletePaciente',
     newPacientesTitulo: 'Crear nuevo paciente',
     newPacientesHTML: '<div class="form-group"><label for="rut">R.U.T.</label><input type="text" class="form-control" id="rut"></div><div class="form-group"><label for="nombre">Nombre</label><input type="text" class="form-control" id="nombre"></div><div class="form-group"><label for="apellido">Apellido</label><input type="text" class="form-control" id="apellido"></div><div class="form-group"><label for="fum">FUM</label><input type="date" class="form-control" id="fum"></div>',
