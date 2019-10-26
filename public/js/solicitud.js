@@ -31,9 +31,10 @@ $(document).ready(function(){
 		this.blur();
 		$.get("api/getPaciente/"+rut).done(function(){
 			if (data.nombre !=""){
-				$('#a').value(data.nombre)
-				$('#y').value(data.apellido)
-				$('#d').value(data.fum).trigger("change");
+				$('#a').val(data.nombre);
+				$('#y').val(data.apellido);
+				$('#c').val(data.telefono);
+				$('#d').val(data.fum).trigger("change");
 			}
 		})
     }).on("keyup", function(e){
@@ -44,8 +45,9 @@ $(document).ready(function(){
 
 			$.get("api/getPaciente/"+rut).done(function(data){
 				if (data.nombre !=""){
-					$('#a').val(data.nombre)
-					$('#y').val(data.apellido)
+					$('#a').val(data.nombre);
+					$('#y').val(data.apellido);
+					$('#c').val(data.telefono);
 					$('#d').val(data.fum).trigger("change");
 				}
 			})
