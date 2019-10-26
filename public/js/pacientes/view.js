@@ -47,7 +47,7 @@ export class view {
                 apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
-                comuna: the("comunas").value,
+                comuna: the("comuna").value,
                 modal: this.dataset.modal
             }
             cloud.newPaciente(paciente).then(function(data){
@@ -87,7 +87,7 @@ export class view {
                 apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
-                comuna: the("comunas").value,
+                comuna: the("comuna").value,
                 modal: this.dataset.modal
             }
             cloud.updatePaciente(paciente).then(function(data){
@@ -107,7 +107,7 @@ export class view {
             the("apellido").value = data.apellido;
             the("rut").value = data.rut;
             the("fum").value = data.fum;
-            the("comunas").value = data.comuna,
+            the("comuna").value = data.comuna,
 
             $("#fum").trigger("change");
         });
