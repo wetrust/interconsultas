@@ -108,6 +108,8 @@ export class view {
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
                     location.reload();
+                }else if (data.return == false){
+                    alert('No hay cambios que guardar');
                 }
             });
         });
