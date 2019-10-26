@@ -57,19 +57,7 @@ export class view {
             });
         });
 
-        $('#rut').rut({
-            fn_error : function(input){
-                $(input).removeClass("is-valid").addClass("is-invalid");
-                input.closest('.rut-container').find('span').remove();
-                input.closest('.rut-container').append('<span class="invalid-feedback">Rut incorrecto</span>');
-            },
-            fn_validado : function(input){
-                $(input).removeClass("is-invalid").addClass("is-valid");
-                input.closest('.rut-container').find('span').remove();
-                input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
-            },
-            placeholder: false
-        });
+        this.rutValidador();
     }
 
     static editPaciente(){
@@ -109,6 +97,22 @@ export class view {
             });
         });
 
+        this.rutValidador();
+
+    }
+
+    static eliminarPaciente(){
+        let paciente = {
+            id: this.dataset.id
+        }
+        cloud.deletePaciente(paciente).then(function(data){
+            if (data.return == true){
+                location.reload();
+            }
+        });
+    }
+
+    static rutValidador(){
         $('#rut').rut({
             fn_error : function(input){
                 $(input).removeClass("is-valid").addClass("is-invalid");
@@ -121,17 +125,6 @@ export class view {
                 input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
             },
             placeholder: false
-        });
-    }
-
-    static eliminarPaciente(){
-        let paciente = {
-            id: this.dataset.id
-        }
-        cloud.deletePaciente(paciente).then(function(data){
-            if (data.return == true){
-                location.reload();
-            }
         });
     }
 }
