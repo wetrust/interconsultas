@@ -13,5 +13,5 @@ export const config = {
     pacienteInterfaceTable: 'paciente.table',
     pacienteInterfaceTableHead: '<thead class="thead-dark"><tr><th scope="col">#</th><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
     ciudades: 'dashboard/ciudades_configuracion',
-    lugares: 'dashboard/lugares_configuracion"',
+    lugares: 'dashboard/lugares_configuracion',
 }
