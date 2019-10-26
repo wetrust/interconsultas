@@ -84,8 +84,8 @@ export class view {
 
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-        the(modal.titulo).innerHTML = config.newPacientesTitulo;
-        the(modal.contenido).innerHTML = config.newPacientesHTML;
+        the(modal.titulo).innerHTML = config.updatePacientesTitulo;
+        the(modal.contenido).innerHTML = config.updatePacientesHTML;
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
             $(this).remove();
