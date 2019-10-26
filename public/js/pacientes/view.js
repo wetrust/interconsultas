@@ -110,7 +110,7 @@ export class view {
             the("rut").value = data.rut;
             the("fum").value = data.fum;
             the("comuna").value = data.comuna;
-            the("telefono").value = telefono;
+            the("telefono").value = data.telefono;
 
             $("#fum").trigger("change");
         });
