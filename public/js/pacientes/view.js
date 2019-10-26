@@ -70,7 +70,6 @@ export class view {
     }
 
     static editPaciente(){
-        view.selectComunas();
 
         let id = this.dataset.id;
 
