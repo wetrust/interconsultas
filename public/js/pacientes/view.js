@@ -76,6 +76,7 @@ export class view {
         let id = this.dataset.id;
 
         cloud.getPaciente(id).then(function(data){
+            the("id").value = data.id;
             the("nombre").value = data.nombre;
             the("apellido").value = data.apellido;
             the("rut").value = data.rut;
