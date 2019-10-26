@@ -35,12 +35,14 @@ $(document).ready(function(){
 				$('#y').val(data.apellido);
 				$('#c').val(data.telefono);
 				$('#d').val(data.fum).trigger("change");
+				$('#h').val(data.ciudad);
+				$('#i').val(data.lugar);
 			}
 		})
     }).on("keyup", function(e){
 		if ( e.which == 13 ) {
 			e.preventDefault();
-			$("#b").rut();
+			this.blur();
 			rut = this.value;
 
 			$.get("api/getPaciente/"+rut).done(function(data){
@@ -49,6 +51,8 @@ $(document).ready(function(){
 					$('#y').val(data.apellido);
 					$('#c').val(data.telefono);
 					$('#d').val(data.fum).trigger("change");
+					$('#h').val(data.ciudad);
+					$('#i').val(data.lugar);
 				}
 			})
 		}
