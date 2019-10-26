@@ -99,8 +99,7 @@ export class view {
             var telefonoPattern = new RegExp("^\\d{9}$");
             paciente.telefono = (paciente.telefono == "") ? 0 : paciente.telefono;
 
-            alert(paciente.telefono.toString().match(telefonoPattern));
-            if(paciente.telefono.match(telefonoPattern) == false)
+            if(typeof paciente.telefono.toString().match(telefonoPattern) === typeof null)
             {
                 alert('El teléfono excede 9 dígitos');
                 return 0;
