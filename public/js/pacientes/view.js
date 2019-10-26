@@ -61,6 +61,7 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
+        $("#fum").trigger("click");
     }
 
     static editPaciente(){
@@ -104,7 +105,6 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
-
     }
 
     static eliminarPaciente(){
