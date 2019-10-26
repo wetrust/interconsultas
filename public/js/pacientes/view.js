@@ -132,7 +132,7 @@ export class view {
 
     static calcularEG(){
         $("#fum").on("change", function(){
-            let fum = dayHoy;
+            let fum = new Date();
             fum.setTime(Date.parse(this("fum").value));
             fum = fum.getTime();
             let fee = new Date();
