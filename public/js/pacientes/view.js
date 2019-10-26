@@ -94,6 +94,17 @@ export class view {
                 telefono: the("telefono").value,
                 modal: this.dataset.modal
             }
+
+            //validador de teléfono
+            var telefonoPattern = /\d{9}/;
+            paciente.telefono = (paciente.telefono == "") ? 0 : paciente.telefono;
+
+            if(paciente.telefono.match(telefonoPattern) == false)
+            {
+                alert('El teléfono excede 9 dígitos');
+                return;
+            }
+
             cloud.updatePaciente(paciente).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
