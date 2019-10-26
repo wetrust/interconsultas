@@ -96,13 +96,9 @@ export class view {
             }
 
             //validador de teléfono
-            var telefonoPattern = new RegExp("^\\d{9}$");
             paciente.telefono = (paciente.telefono == "") ? 0 : paciente.telefono;
 
-            paciente.telefono = paciente.telefono.toString();
-            var mach = paciente.telefono.match(telefonoPattern);
-
-            if(mach.isArray() == false)
+            if(paciente.telefono > 999999999)
             {
                 alert('El teléfono excede 9 dígitos');
                 return 0;
