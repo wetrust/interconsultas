@@ -40,6 +40,7 @@ class ApiController extends Controller
         $data->apellido = Request::post('apellido');
         $data->rut = Request::post('rut');
         $data->fum = Request::post('fum');
+        $data->comuna = Request::post('comuna');
         $data->modal = Request::post('modal');
 
         $response = new stdClass();
@@ -55,6 +56,7 @@ class ApiController extends Controller
         $data->apellido = Request::post('apellido');
         $data->rut = Request::post('rut');
         $data->fum = Request::post('fum');
+        $data->comuna = Request::post('comuna');
         $data->modal = Request::post('modal');
 
         $response = new stdClass();
@@ -70,5 +72,9 @@ class ApiController extends Controller
         $response = new stdClass();
         $response->return = PacientesModel::deletePaciente($data);
         $this->View->renderJSON($response);
+    }
+
+    public function getComunas(){
+        $this->View->renderJSON(ApiModel::getAllComunas());
     }
 }

@@ -6,7 +6,7 @@ class PacientesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT id, nombre, apellido, rut, fum FROM pacientes WHERE user_id = :user_id";
+        $sql = "SELECT id, nombre, apellido, rut, fum, comuna FROM pacientes WHERE user_id = :user_id";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id')));
 
@@ -16,7 +16,7 @@ class PacientesModel
     public static function getPaciente($rut){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT id, nombre, apellido, rut, fum FROM pacientes WHERE user_id = :user_id AND rut = :rut LIMIT 1";
+        $sql = "SELECT id, nombre, apellido, rut, fum, comuna FROM pacientes WHERE user_id = :user_id AND rut = :rut LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id'), ':rut' => $rut));
 
@@ -26,7 +26,7 @@ class PacientesModel
     public static function getPacienteID($id){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT id, nombre, apellido, rut, fum FROM pacientes WHERE user_id = :user_id AND id = :id LIMIT 1";
+        $sql = "SELECT id, nombre, apellido, rut, fum, comuna FROM pacientes WHERE user_id = :user_id AND id = :id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id'), ':id' => $id));
 
@@ -37,9 +37,9 @@ class PacientesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO pacientes (rut, nombre, apellido, fum, user_id) VALUES (:rut, :nombre, :apellido, :fum, :user_id)";
+        $sql = "INSERT INTO pacientes (rut, nombre, apellido, fum, comuna, user_id) VALUES (:rut, :nombre, :apellido, :fum, :comuna, :user_id)";
         $query = $database->prepare($sql);
-        $query->execute(array(':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':comuna' => $data->comuna,':user_id' => Session::get('user_id')));
 
         if ($query->rowCount() == 1) {
             return true;
@@ -54,9 +54,9 @@ class PacientesModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE pacientes SET rut = :rut, nombre = :nombre, apellido = :apellido, fum = :fum WHERE id = :id AND user_id = :user_id LIMIT 1";
+        $sql = "UPDATE pacientes SET rut = :rut, nombre = :nombre, apellido = :apellido, fum = :fum, comuna = :comuna WHERE id = :id AND user_id = :user_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':id' => $data->id, ':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':id' => $data->id, ':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':comuna' => $data->comuna, ':user_id' => Session::get('user_id')));
 
         if ($query->rowCount() == 1) { return true; }
 

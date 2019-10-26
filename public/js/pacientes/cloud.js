@@ -21,6 +21,7 @@ export class cloud {
             to.append('apellido', paciente.apellido);
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
+            to.append('comuna', paciente.comuna);
             to.append('modal', paciente.modal);
 
             const from = await data.post(config.new, to);
@@ -37,6 +38,7 @@ export class cloud {
             to.append('apellido', paciente.apellido);
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
+            to.append('comuna', paciente.comuna);
             to.append('modal', paciente.modal);
 
             const from = await data.post(config.update, to);
@@ -54,6 +56,13 @@ export class cloud {
             return from;
 
         } catch(e){}
+    }
+    
+    static async getAllComunas(){
+        try {
+            const from = await data.get(config.comunas);
+            return from;
+        } catch(e) {}
     }
 }
 

@@ -47,6 +47,7 @@ export class view {
                 apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
+                comuna: the("comunas").value,
                 modal: this.dataset.modal
             }
             cloud.newPaciente(paciente).then(function(data){
@@ -61,21 +62,14 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
+        view.selectComunas();
         $("#fum").trigger("change");
     }
 
     static editPaciente(){
+        view.selectComunas();
+
         let id = this.dataset.id;
-
-        cloud.getPaciente(id).then(function(data){
-            the("id").value = data.id;
-            the("nombre").value = data.nombre;
-            the("apellido").value = data.apellido;
-            the("rut").value = data.rut;
-            the("fum").value = data.fum;
-
-            $("#fum").trigger("change");
-        });
 
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
@@ -93,6 +87,7 @@ export class view {
                 apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
+                comuna: the("comunas").value,
                 modal: this.dataset.modal
             }
             cloud.updatePaciente(paciente).then(function(data){
@@ -105,6 +100,17 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
+
+        cloud.getPaciente(id).then(function(data){
+            the("id").value = data.id;
+            the("nombre").value = data.nombre;
+            the("apellido").value = data.apellido;
+            the("rut").value = data.rut;
+            the("fum").value = data.fum;
+            the("comunas").value = data.comuna,
+
+            $("#fum").trigger("change");
+        });
     }
 
     static eliminarPaciente(){
@@ -158,6 +164,18 @@ export class view {
                 document.getElementById("semanas").value = 0;
                 document.getElementById("dias").value = 0;
             }
-        }).trigger("change");
+        });
+    }
+
+    static selectComunas(){
+        cloud.getAllComunas(paciente).then(function(data){
+            data.forEach(function(element) {
+                let comunas = the("comunas");
+                let opt = document.createElement('option');
+                opt.appendChild( document.createTextNode(element.comuna_name) );
+                opt.value = element.comuna_id; 
+                comunas.appendChild(opt); 
+            });
+        });
     }
 }
