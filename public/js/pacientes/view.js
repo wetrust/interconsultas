@@ -57,7 +57,7 @@ export class view {
             });
         });
 
-        the("fum").value = new Date();
+        the("fum").value = new Date().toDateString();
 
         view.rutValidador();
         view.calcularEG();
