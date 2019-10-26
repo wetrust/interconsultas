@@ -440,4 +440,3 @@
     <script src="js/membrete.js"></script>
     <script src="js/configuracion.js"></script>
 <?php } ?>
-<script src="js/bootstrap.make.js"></script>
