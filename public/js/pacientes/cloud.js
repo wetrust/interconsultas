@@ -22,6 +22,7 @@ export class cloud {
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
             to.append('comuna', paciente.comuna);
+            to.append('telefono', paciente.telefono);
             to.append('modal', paciente.modal);
 
             const from = await data.post(config.new, to);
@@ -39,6 +40,7 @@ export class cloud {
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
             to.append('comuna', paciente.comuna);
+            to.append('telefono', paciente.telefono);
             to.append('modal', paciente.modal);
 
             const from = await data.post(config.update, to);

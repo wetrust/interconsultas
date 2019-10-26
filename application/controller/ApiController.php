@@ -41,6 +41,7 @@ class ApiController extends Controller
         $data->rut = Request::post('rut');
         $data->fum = Request::post('fum');
         $data->comuna = Request::post('comuna');
+        $data->telefono = Request::post('telefono');
         $data->modal = Request::post('modal');
 
         $response = new stdClass();
@@ -57,6 +58,7 @@ class ApiController extends Controller
         $data->rut = Request::post('rut');
         $data->fum = Request::post('fum');
         $data->comuna = Request::post('comuna');
+        $data->telefono = Request::post('telefono');
         $data->modal = Request::post('modal');
 
         $response = new stdClass();
