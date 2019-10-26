@@ -61,7 +61,7 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
-        $("#fum").trigger("click");
+        $("#fum").trigger("change");
     }
 
     static editPaciente(){
@@ -74,7 +74,7 @@ export class view {
             the("rut").value = data.rut;
             the("fum").value = data.fum;
 
-            $("#fum").trigger("click");
+            $("#fum").trigger("change");
         });
 
         let modal = make.modal("Guardar");
@@ -158,6 +158,6 @@ export class view {
                 document.getElementById("semanas").value = 0;
                 document.getElementById("dias").value = 0;
             }
-        }).trigger("click");
+        }).trigger("change");
     }
 }
