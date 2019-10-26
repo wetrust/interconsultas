@@ -29,7 +29,7 @@ $(document).ready(function(){
 	$('#b').on("focusout", function(){
 		rut = this.value;
 		this.blur();
-		$.get("api/getPaciente/"+rut).done(function(){
+		$.get("api/getPaciente/"+rut).done(function(data){
 			if (data.nombre !=""){
 				$('#a').val(data.nombre);
 				$('#y').val(data.apellido);
