@@ -3,7 +3,7 @@
         <h5 class="text-primary mb-0"><em>Pacientes</em></h5>
         <a href="<?php echo Config::get('URL'); ?>"><strong>Volver</strong></a>
     </div>
-    <div class="card shadow"><div class="card-body" id="pacientes"></div></div>
+    <div class="card shadow mt-3"><div class="card-body" id="pacientes"></div></div>
 </div>
 <script src="js/jquery.rut.chileno.min.js"></script>
 <script type="module" src="js/pacientes/app.js"></script>
