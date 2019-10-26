@@ -8,6 +8,12 @@ export class cloud {
             return from;
         } catch(e) {}
     }
+    static async getPaciente(paciente){
+        try {
+            const from = await data.get(config.paciente + paciente);
+            return from;
+        } catch(e) {}
+    }
     static async newPaciente(paciente){
         try {
             const to = new FormData();

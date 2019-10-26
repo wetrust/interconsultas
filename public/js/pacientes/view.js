@@ -18,6 +18,12 @@ export class view {
 
         the(config.pacienteInterfaceTable).innerHTML = table;
 
+        let modificarBtns = document.getElementsByClassName("modificar");
+
+        for (var i=0; i < modificarBtns.length; i++) {
+            modificarBtns[i].onclick = this.editPaciente;
+        }
+
         let eliminarBtns = document.getElementsByClassName("eliminar");
 
         for (var i=0; i < eliminarBtns.length; i++) {
@@ -27,6 +33,56 @@ export class view {
 
     static newPaciente(){
         let modal = make.modal("Crear");
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.newPacientesTitulo;
+        the(modal.contenido).innerHTML = config.newPacientesHTML;
+
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+            $(this).remove();
+        });
+
+        $("#"+modal.button).on("click", function(){
+            let paciente = {
+                nombre: the("nombre").value,
+                apellido: the("apellido").value,
+                rut: the("rut").value,
+                fum: the("fum").value,
+                modal: this.dataset.modal
+            }
+            cloud.newPaciente(paciente).then(function(data){
+                if (data.return == true){
+                    $("#"+data.modal).modal("hide");
+                    location.reload();
+                }
+            });
+        });
+
+        $('#rut').rut({
+            fn_error : function(input){
+                $(input).removeClass("is-valid").addClass("is-invalid");
+                input.closest('.rut-container').find('span').remove();
+                input.closest('.rut-container').append('<span class="invalid-feedback">Rut incorrecto</span>');
+            },
+            fn_validado : function(input){
+                $(input).removeClass("is-invalid").addClass("is-valid");
+                input.closest('.rut-container').find('span').remove();
+                input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
+            },
+            placeholder: false
+        });
+    }
+
+    static editPaciente(){
+        let id = this.dataset.id;
+
+        cloud.getPaciente(id).then(function(data){
+            the("nombre").value = data.nombre;
+            the("apellido").value = data.apellido;
+            the("rut").value = data.rut;
+            the("fum").value = data.fum;        
+        });
+
+        let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.newPacientesTitulo;
         the(modal.contenido).innerHTML = config.newPacientesHTML;

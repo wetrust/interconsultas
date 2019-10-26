@@ -23,6 +23,16 @@ class PacientesModel
         return $query->fetch();
     }
 
+    public static function getPacienteID($id){
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT id, nombre, apellido, rut, fum FROM pacientes WHERE user_id = :user_id AND id = :id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':user_id' => Session::get('user_id'), ':id' => $id));
+
+        return $query->fetch();
+    }
+
     public static function createPaciente($data)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

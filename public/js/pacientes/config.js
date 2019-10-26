@@ -1,5 +1,6 @@
 export const config = {
     pacientes: 'api/pacientes',
+    paciente: 'api/paciente/',
     new: 'api/newPacientes',
     delete: 'api/deletePaciente',
     newPacientesTitulo: 'Crear nuevo Paciente',
