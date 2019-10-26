@@ -57,7 +57,7 @@ export class view {
             });
         });
 
-        this.rutValidador();
+        this.rutValidador;
     }
 
     static editPaciente(){
@@ -97,7 +97,7 @@ export class view {
             });
         });
 
-        this.rutValidador();
+        this.rutValidador;
 
     }
 
