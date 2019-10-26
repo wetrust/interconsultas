@@ -58,6 +58,7 @@ export class view {
         });
 
         view.rutValidador();
+        view.calcularEG();
     }
 
     static editPaciente(){
@@ -98,6 +99,7 @@ export class view {
         });
 
         view.rutValidador();
+        view.calcularEG();
 
     }
 
@@ -125,6 +127,33 @@ export class view {
                 input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
             },
             placeholder: false
+        });
+    }
+
+    static calcularEG(){
+        $("#fum").on("change", function(){
+            let fum = dayHoy;
+            fum.setTime(Date.parse(this("fum").value));
+            fum = fum.getTime();
+            let fee = new Date();
+            fee = fee.getTime();
+    
+            //la fecha de mestruación si puede ser antes de la fecha de exámen
+            let diff = fee - fum;
+    
+            if (diff > 0){
+                let dias = Math.abs(diff/(1000*60*60*24));
+                let semanas = Math.trunc(dias / 7);
+                
+                dias = Math.trunc(dias - (semanas * 7));
+    
+                document.getElementById("semanas").value = semanas;
+                document.getElementById("dias").value = dias;
+            }
+            else{
+                document.getElementById("semanas").value = 0;
+                document.getElementById("dias").value = 0;
+            }
         });
     }
 }
