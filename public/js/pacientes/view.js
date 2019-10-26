@@ -96,7 +96,7 @@ export class view {
             }
 
             //validador de teléfono
-            var telefonoPattern = /^\d{9}$/;
+            var telefonoPattern = new RegExp("^\\d{9}$");
             paciente.telefono = (paciente.telefono == "") ? 0 : paciente.telefono;
 
             alert(paciente.telefono.toString().match(telefonoPattern));
