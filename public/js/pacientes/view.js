@@ -170,7 +170,7 @@ export class view {
     static selectComunas(){
         cloud.getAllComunas().then(function(data){
             data.forEach(function(element) {
-                let comunas = the("comunas");
+                let comunas = the("comuna");
                 let opt = document.createElement('option');
                 opt.appendChild( document.createTextNode(element.comuna_name) );
                 opt.value = element.comuna_id; 
