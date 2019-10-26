@@ -1,6 +1,6 @@
 import {cloud} from './cloud.js';
 import {config} from './config.js';
-import {make, the, humanDate} from '../wetrust.js';
+import {make, the, humanDate, inputDate} from '../wetrust.js';
 
 export class view {
     static pacienteInterface(container, data){
@@ -57,6 +57,8 @@ export class view {
             });
         });
 
+        the("fum").value = inputDate;
+
         view.rutValidador();
         view.calcularEG();
     }
@@ -69,7 +71,9 @@ export class view {
             the("nombre").value = data.nombre;
             the("apellido").value = data.apellido;
             the("rut").value = data.rut;
-            the("fum").value = data.fum;        
+            the("fum").value = data.fum;
+
+            $("#fum").trigger("click");
         });
 
         let modal = make.modal("Guardar");
