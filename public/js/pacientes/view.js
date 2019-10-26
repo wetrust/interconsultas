@@ -96,7 +96,7 @@ export class view {
             }
 
             //validador de teléfono
-            var telefonoPattern = '/\d{9}/';
+            var telefonoPattern = /^\d{9}$/;
             paciente.telefono = (paciente.telefono == "") ? 0 : paciente.telefono;
 
             if(paciente.telefono.match(telefonoPattern) == false)
