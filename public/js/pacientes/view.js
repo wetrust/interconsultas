@@ -98,12 +98,12 @@ export class view {
             //validador de teléfono
             var telefonoPattern = new RegExp("^\\d{9}$");
             paciente.telefono = (paciente.telefono == "") ? 0 : paciente.telefono;
-
-            if(!paciente.telefono.toString().match(telefonoPattern))
-            {
-                alert('El teléfono excede 9 dígitos');
-                return 0;
-            }
+            console.log(paciente.telefono.toString().match(telefonoPattern))
+            //if(!paciente.telefono.toString().match(telefonoPattern))
+            //{
+            //    alert('El teléfono excede 9 dígitos');
+            //    return 0;
+            //}
 
             cloud.updatePaciente(paciente).then(function(data){
                 if (data.return == true){
