@@ -21,7 +21,8 @@ export class cloud {
             to.append('apellido', paciente.apellido);
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
-            to.append('comuna', paciente.comuna);
+            to.append('ciudad', paciente.ciudad);
+            to.append('lugar', paciente.lugar);
             to.append('telefono', paciente.telefono);
             to.append('modal', paciente.modal);
 
@@ -39,7 +40,8 @@ export class cloud {
             to.append('apellido', paciente.apellido);
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
-            to.append('comuna', paciente.comuna);
+            to.append('ciudad', paciente.ciudad);
+            to.append('lugar', paciente.lugar);
             to.append('telefono', paciente.telefono);
             to.append('modal', paciente.modal);
 
@@ -59,10 +61,17 @@ export class cloud {
 
         } catch(e){}
     }
-    
-    static async getAllComunas(){
+
+    static async getCiudades(){
         try {
-            const from = await data.get(config.comunas);
+            const from = await data.get(config.ciudades);
+            return from;
+        } catch(e) {}
+    }
+
+    static async getLugares(){
+        try {
+            const from = await data.get(config.lugares);
             return from;
         } catch(e) {}
     }

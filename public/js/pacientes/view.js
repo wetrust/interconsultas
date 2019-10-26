@@ -47,7 +47,8 @@ export class view {
                 apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
-                comuna: the("comuna").value,
+                ciudad: the("ciudad").value,
+                lugar: the("lugar").value,
                 telefono: the("telefono").value,
                 modal: this.dataset.modal
             }
@@ -63,7 +64,8 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
-        view.selectComunas();
+        view.selectCiudades();
+        view.selectLugares();
         $("#fum").trigger("change");
     }
 
@@ -88,7 +90,8 @@ export class view {
                 apellido: the("apellido").value,
                 rut: the("rut").value,
                 fum: the("fum").value,
-                comuna: the("comuna").value,
+                ciudad: the("ciudad").value,
+                lugar: the("lugar").value,
                 telefono: the("telefono").value,
                 modal: this.dataset.modal
             }
@@ -102,6 +105,8 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
+        view.selectCiudades();
+        view.selectLugares();
 
         cloud.getPaciente(id).then(function(data){
             the("id").value = data.id;
@@ -109,7 +114,8 @@ export class view {
             the("apellido").value = data.apellido;
             the("rut").value = data.rut;
             the("fum").value = data.fum;
-            the("comuna").value = data.comuna;
+            the("ciudad").value = data.ciudad;
+            the("lugar").value = data.lugar;
             the("telefono").value = data.telefono;
 
             $("#fum").trigger("change");
@@ -170,16 +176,27 @@ export class view {
         });
     }
 
-    static selectComunas(){
-        cloud.getAllComunas().then(function(data){
+    static selectCiudades(){
+        cloud.getCiudades().then(function(data){
             data.forEach(function(element) {
-                let comunas = the("comuna");
+                let ciudad = the("ciudad");
                 let opt = document.createElement('option');
-                opt.appendChild( document.createTextNode(element.comuna_name) );
-                opt.value = element.comuna_id; 
-                comunas.appendChild(opt); 
+                opt.appendChild( document.createTextNode(element.ciudad_name) );
+                opt.value = element.ciudad_id; 
+                ciudad.appendChild(opt); 
             });
-            the("comuna").value = 0;
+        });
+    }
+
+    static selectLugares(){
+        cloud.getLugares().then(function(data){
+            data.forEach(function(element) {
+                let lugar = the("lugar");
+                let opt = document.createElement('option');
+                opt.appendChild( document.createTextNode(element.lugar_name) );
+                opt.value = element.lugar_id; 
+                lugar.appendChild(opt); 
+            });
         });
     }
 }

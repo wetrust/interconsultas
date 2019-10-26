@@ -40,7 +40,8 @@ class ApiController extends Controller
         $data->apellido = Request::post('apellido');
         $data->rut = Request::post('rut');
         $data->fum = Request::post('fum');
-        $data->comuna = Request::post('comuna');
+        $data->ciudad = Request::post('ciudad');
+        $data->lugar = Request::post('lugar');
         $data->telefono = Request::post('telefono');
         $data->modal = Request::post('modal');
 
@@ -57,7 +58,8 @@ class ApiController extends Controller
         $data->apellido = Request::post('apellido');
         $data->rut = Request::post('rut');
         $data->fum = Request::post('fum');
-        $data->comuna = Request::post('comuna');
+        $data->ciudad = Request::post('ciudad');
+        $data->lugar = Request::post('lugar');
         $data->telefono = Request::post('telefono');
         $data->modal = Request::post('modal');
 
