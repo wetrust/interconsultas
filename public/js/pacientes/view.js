@@ -168,7 +168,7 @@ export class view {
     }
 
     static selectComunas(){
-        cloud.getAllComunas(paciente).then(function(data){
+        cloud.getAllComunas().then(function(data){
             data.forEach(function(element) {
                 let comunas = the("comunas");
                 let opt = document.createElement('option');
