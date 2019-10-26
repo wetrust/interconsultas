@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 	$('#b').on("onfocusout", function(){
 		rut = this.value;
-
+		this.blur();
 		$.get("api/getPaciente/"+rut).done(function(){
 			if (data.nombre !=""){
 				$('#a').value(data.nombre)
@@ -39,6 +39,7 @@ $(document).ready(function(){
     }).on("keyup", function(e){
 		if ( e.which == 13 ) {
 			e.preventDefault();
+			$("#b").rut();
 			rut = this.value;
 
 			$.get("api/getPaciente/"+rut).done(function(data){
