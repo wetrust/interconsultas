@@ -102,7 +102,7 @@ export class view {
             if(paciente.telefono.match(telefonoPattern) == false)
             {
                 alert('El teléfono excede 9 dígitos');
-                return;
+                return 0;
             }
 
             cloud.updatePaciente(paciente).then(function(data){
