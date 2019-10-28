@@ -315,9 +315,7 @@ $(document).ready(function(){
                     this.innerHTML = animacion;
                     let modal = this.dataset.modal;
 
-                    let args = {email: email,informe: informe,solicitud: id, modal: modal}
-
-                    $.get(_api  + 'informe_segundotrimestre_rut_send'+ $("#filtro\\.rut").val()+'/'+ $("#interfaz\\.email\\.graficas").val()).done(function(data){
+                    $.get(_api  + 'informe_segundotrimestre_rut_send/'+ $("#filtro\\.rut").val()+'/'+ email).done(function(data){
                         if (Object.keys(data).length > 0) {
                             let modal = makeModal();
                                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
@@ -333,8 +331,6 @@ $(document).ready(function(){
                                 $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                                     $(this).remove();
                                 });
-
-                            $('#'+ args.modal).modal("hide");
                         }
                     });
 
