@@ -66,6 +66,8 @@ export class view {
         view.calcularEG();
         view.selectCiudades();
         view.selectLugares();
+        view.selectSemanas();
+        view.selectDias();
         $("#fum").trigger("change");
     }
 
@@ -118,6 +120,8 @@ export class view {
         view.calcularEG();
         view.selectCiudades();
         view.selectLugares();
+        view.selectSemanas();
+        view.selectDias();
 
         cloud.getPaciente(id).then(function(data){
             the("id").value = data.id;
@@ -209,5 +213,25 @@ export class view {
                 lugar.appendChild(opt); 
             });
         });
+    }
+
+    static selectSemanas(){
+        for (var i = 0; i < 43; i++) {
+            let semanas = the("semanas");
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(element.lugar_name) );
+            opt.value = element.lugar_name; 
+            semanas.appendChild(opt);
+        }
+    }
+
+    static selectDias(){
+        for (var i = 0; i < 6; i++) {
+            let dias = the("dias");
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(element.lugar_name) );
+            opt.value = element.lugar_name; 
+            dias.appendChild(opt);
+        }
     }
 }
