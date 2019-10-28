@@ -140,7 +140,7 @@ class GraphController extends Controller
         if ($mail_sent) { 
             $response->result = true; 
         }
-        return $response; 
+        $this->View->renderJSON($response);
 
     }
 
@@ -278,7 +278,7 @@ class GraphController extends Controller
         if ($mail_sent) { 
             $response->result = true; 
         }
-        return $response; 
+        $this->View->renderJSON($response);
     }
 
     public function informe_parto($solicitud_id){
