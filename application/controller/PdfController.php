@@ -111,7 +111,8 @@ class PdfController extends Controller
             'respuesta_lh_pct' => $respuesta->respuesta_lh_pct,
             'respuesta_cerebelo' => $respuesta->respuesta_cerebelo,
             'respuesta_cerebelo_pct' => $respuesta->respuesta_cerebelo_pct,
-            'respuesta_sexo_fetal' => $respuesta->sexo_fetal
+            'uterinas' => $respuesta->uterinas,
+            'uterinas_percentil' => $respuesta->uterinas_percentil
         ));
     }
 
