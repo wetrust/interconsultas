@@ -23,9 +23,7 @@ class ApiController extends Controller
     }
 
     public function pacientes(){
-        $response = new stdClass();
-        $response->return = PacientesModel::getAllPacientes();
-        $this->View->renderJSON($response);
+        $this->View->renderJSON(PacientesModel::getAllPacientes());
     }
 
     public function paciente($paciente){
@@ -33,7 +31,9 @@ class ApiController extends Controller
     }
 
     public function getPaciente($rut){
-        $this->View->renderJSON(PacientesModel::getPaciente($rut));
+        $response = new stdClass();
+        $response->return = PacientesModel::getPaciente($rut);
+        $this->View->renderJSON($response);
     }
 
     public function newPacientes(){
