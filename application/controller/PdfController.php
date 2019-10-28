@@ -74,7 +74,7 @@ class PdfController extends Controller
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         header("Access-Control-Allow-Origin: *");
-        //header("Content-Type: application/pdf");
+        header("Content-Type: application/pdf");
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -111,6 +111,7 @@ class PdfController extends Controller
             'respuesta_lh_pct' => $respuesta->respuesta_lh_pct,
             'respuesta_cerebelo' => $respuesta->respuesta_cerebelo,
             'respuesta_cerebelo_pct' => $respuesta->respuesta_cerebelo_pct,
+            'respuesta_sexo_fetal' => $respuesta->sexo_fetal,
             'uterinas' => $respuesta->uterinas,
             'uterinas_percentil' => $respuesta->uterinas_percentil
         ));
