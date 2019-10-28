@@ -298,8 +298,6 @@ $(document).ready(function(){
                     $(this).remove();
                 });
 
-                document.getElementById(modal.button).dataset.informe = this.dataset.informe;
-                document.getElementById(modal.button).dataset.id = this.dataset.id;
                 document.getElementById(modal.button).dataset.email = email;
                 document.getElementById(modal.button).dataset.modal = modal.id;
 
