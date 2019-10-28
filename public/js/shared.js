@@ -952,6 +952,11 @@ function segundoTrimestre(){
                 $("input[name='respuesta_uterina_promedio']").val("").trigger("change");
             }
         }
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_uterina_izquierda']").focus();
+        }
     });
 
     $("input[name='respuesta_uterina_izquierda']").on("change", function(){
