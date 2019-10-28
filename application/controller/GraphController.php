@@ -80,7 +80,11 @@ class GraphController extends Controller
         ));
     }
 
-    public function informe_dopplercrecimiento_rut_send($solicitud_rut,$email){
+    public function informe_dopplercrecimiento_rut_send(){
+        $solicitud_rut = Request::post('solicitud_rut');
+        $email = Request::post('email');
+        $modal = Request::post('modal');
+        
         $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 0);
         
         $grafico_uno = array();
@@ -140,6 +144,7 @@ class GraphController extends Controller
         if ($mail_sent) { 
             $response->result = true; 
         }
+        $response->modal = $modal;
         $this->View->renderJSON($response);
 
     }
