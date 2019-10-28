@@ -315,7 +315,7 @@ $(document).ready(function(){
                     this.innerHTML = animacion;
                     let modal = this.dataset.modal;
 
-                    $.get(_api  + 'informe_segundotrimestre_rut_send/'+ $("#filtro\\.rut").val()+'/'+ email).done(function(data){
+                    $.get('graph/informe_segundotrimestre_rut_send/'+ $("#filtro\\.rut").val()+'/'+ email).done(function(data){
                         if (Object.keys(data).length > 0) {
                             let modal = makeModal();
                                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
