@@ -607,11 +607,11 @@ function loadInProcessData(data){
                 args.respuesta_fcf = $('select[name="respuesta_fcf"]').val()
 
                 args.respuesta_uterina_derecha = $('input[name="respuesta_uterina_derecha"]').val(),
-                args.respuesta_uterina_derecha_percentil = $('#respuesta_uterina_derecha_percentil').val(),
+                args.respuesta_uterina_derecha_percentil = $('#respuesta_uterina_derecha_percentil').html(),
                 args.respuesta_uterina_izquierda = $('input[name="respuesta_uterina_izquierda"]').val(),
-                args.respuesta_uterina_izquierda_percentil = $('#respuesta_uterina_izquierda_percentil').val(),
+                args.respuesta_uterina_izquierda_percentil = $('#respuesta_uterina_izquierda_percentil').html(),
                 args.respuesta_uterinas = $('input[name="respuesta_uterina_promedio"]').val(),
-                args.respuesta_uterinas_percentil = $('#respuesta_uterina_promedio').val()
+                args.respuesta_uterinas_percentil = $('#respuesta_uterina_promedio').html()
 
                 args.respuesta_lf_pct = args.respuesta_lf_pct.replace("Pct. ", "");
                 args.respuesta_cc_pct = args.respuesta_cc_pct.replace("Pct. ", "");
