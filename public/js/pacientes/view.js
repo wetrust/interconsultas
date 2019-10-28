@@ -219,8 +219,8 @@ export class view {
         for (var i = 0; i < 43; i++) {
             let semanas = the("semanas");
             let opt = document.createElement('option');
-            opt.appendChild( document.createTextNode(element.lugar_name) );
-            opt.value = element.lugar_name; 
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
             semanas.appendChild(opt);
         }
     }
@@ -229,8 +229,8 @@ export class view {
         for (var i = 0; i < 6; i++) {
             let dias = the("dias");
             let opt = document.createElement('option');
-            opt.appendChild( document.createTextNode(element.lugar_name) );
-            opt.value = element.lugar_name; 
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
             dias.appendChild(opt);
         }
     }
