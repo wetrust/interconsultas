@@ -68,6 +68,7 @@ export class view {
         view.selectLugares();
         view.selectSemanas();
         view.selectDias();
+        view.calcularFUM();
         $("#fum").trigger("change");
     }
 
@@ -122,6 +123,7 @@ export class view {
         view.selectLugares();
         view.selectSemanas();
         view.selectDias();
+        view.calcularFUM();
 
         cloud.getPaciente(id).then(function(data){
             the("id").value = data.id;
@@ -226,12 +228,26 @@ export class view {
     }
 
     static selectDias(){
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 7; i++) {
             let dias = the("dias");
             let opt = document.createElement('option');
             opt.appendChild( document.createTextNode(i) );
             opt.value = i; 
             dias.appendChild(opt);
         }
+    }
+
+    static calcularFUM(){
+        $("#semanas, #dias").on("change", function(){
+            let semanas = parseInt(the("semanas").value);
+            let dias = parseInt(the("dias").value);
+    
+            semanas = 7 * semanas;
+    
+            let fum = new Date(the("fum").value);
+            fum.setDate(fum.getUTCDate() - (semanas + dias));
+    
+            the("fum").value = inputDate(fee);
+        });
     }
 }
