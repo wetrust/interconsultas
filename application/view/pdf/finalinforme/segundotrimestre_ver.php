@@ -149,9 +149,11 @@
     $html = '<table><tbody><tr><td></td><td>Índice Cc / Ca ****</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td></td><td>Doppler uterinas</td><td>'. $this->uterinas.'</td><td>Percentil: '. $this->uterinas_percentil.'</td></tr></tbody></table>';
+    if (property_exists($this,"uterinas")){
+    $html = '<table><tbody><tr><td></td><td>Doppler uterinas (promedio)</td><td>'. $this->uterinas.'</td><td>Percentil: '. $this->uterinas_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
+    }
     
     $_html = strip_tags($this->comentariosexamen);
     $_html = strtoupper($_html);
