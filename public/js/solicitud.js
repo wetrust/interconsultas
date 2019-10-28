@@ -46,13 +46,13 @@ $(document).ready(function(){
 			rut = this.value;
 
 			$.get("api/getPaciente/"+rut).done(function(data){
-				if (data.nombre !=""){
-					$('#a').val(data.nombre);
-					$('#y').val(data.apellido);
-					$('#c').val(data.telefono);
-					$('#d').val(data.fum).trigger("change");
-					$('#h').val(data.ciudad);
-					$('#i').val(data.lugar);
+				if (data.return == false){
+					$('#a').val(data.return.nombre);
+					$('#y').val(data.return.apellido);
+					$('#c').val(data.return.telefono);
+					$('#d').val(data.return.fum).trigger("change");
+					$('#h').val(data.return.ciudad);
+					$('#i').val(data.return.lugar);
 				}
 			})
 		}
