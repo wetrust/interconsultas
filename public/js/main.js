@@ -274,29 +274,70 @@ $(document).ready(function(){
             $("#"+modal.button).on("click", function(){
 
                 let modal = makeModal("Enviar");
-    
+
+                let rol = uuidv4();
+                let email = uuidv4();
+
                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
 
-                document.getElementById(modal.contenido).innerHTML = '<div class="form-group"><label>Seleccione destinatario</label><select class="form-control" id="interfaz.email.graficas"></select></div>';
-                document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por e-mail";
+                document.getElementById(modal.contenido).innerHTML = '<div class="row"><div class="form-group col-4"><label for="'+rol+'">Rol destinatario</label><select class="form-control" id="'+rol+'"><option value="Paciente">Paciente</option><option value="Referente">Referente</option><option value="Matrona">Matrona</option><option value="Medico">Médico</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option></select></div><div class="form-group col"><label for="'+email+'">E-mail destinatario</label><select class="form-control" id="'+email+'"></select></div></div>';
+                document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por E-mail";                
 
-                var options = $("#interfaz\\.email > option").clone();
-                $("#interfaz\\.email\\.graficas").empty();
-                $("#interfaz\\.email\\.graficas").append(options);
-                        
+                document.getElementById(rol).dataset.email = email;
+                $('#'+rol).on("change", function(){
+                    var eMail = this.dataset.email;
+                    $('#'+eMail).empty();
+
+                    $.get('api/emails/'+this.value).done(function(data){
+                        $.each(data, function(i, value) {
+                            let option = '<option value="'+value.email_value+'">'+value.email_nombre + ' '+value.email_value+'</option>';
+                            $('#'+eMail).append(option);
+                        });
+                    });
+                });
+
                 $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                     $(this).remove();
                 });
-    
+
+                document.getElementById(modal.button).dataset.informe = this.dataset.informe;
+                document.getElementById(modal.button).dataset.id = this.dataset.id;
+                document.getElementById(modal.button).dataset.email = email;
+                document.getElementById(modal.button).dataset.modal = modal.id;
+
                 $("#"+modal.button).on("click", function(){
-                    $.get('graph/informe_segundotrimestre_rut_send/'+ $("#filtro\\.rut").val()+'/'+ $("#interfaz\\.email\\.graficas").val()).done(function(data){
-                        if (data.response = true){
-                            alert("Enviado");
-                        }
-                        else{
-                            alert("Hubo un error al enviar");
+                    let informe = this.dataset.informe;
+                    let id = this.dataset.id;
+                    let email = $("#"+this.dataset.email).val();
+
+                    let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
+                    this.disabled = true;
+                    this.innerHTML = animacion;
+                    let modal = this.dataset.modal;
+
+                    let args = {email: email,informe: informe,solicitud: id, modal: modal}
+
+                    $.get(_api  + 'informe_segundotrimestre_rut_send'+ $("#filtro\\.rut").val()+'/'+ $("#interfaz\\.email\\.graficas").val()).done(function(data){
+                        if (Object.keys(data).length > 0) {
+                            let modal = makeModal();
+                                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                                document.getElementById(modal.titulo).innerHTML = "Información";
+
+                                if (data.response = true){
+                                    document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
+                                }
+                                else{
+                                    document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
+                                }
+
+                                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                    $(this).remove();
+                                });
+
+                            $('#'+ args.modal).modal("hide");
                         }
                     });
+
                 });
             });
 
