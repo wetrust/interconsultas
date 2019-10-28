@@ -30,7 +30,7 @@ $(document).ready(function(){
 		rut = this.value;
 		this.blur();
 		$.get("api/getPaciente/"+rut).done(function(data){
-			if (data.return == false){
+			if (data.return !== false){
 				$('#a').val(data.return.nombre);
 				$('#y').val(data.return.apellido);
 				$('#c').val(data.return.telefono);
@@ -46,7 +46,7 @@ $(document).ready(function(){
 			rut = this.value;
 
 			$.get("api/getPaciente/"+rut).done(function(data){
-				if (data.return == false){
+				if (data.return !== false){
 					$('#a').val(data.return.nombre);
 					$('#y').val(data.return.apellido);
 					$('#c').val(data.return.telefono);
