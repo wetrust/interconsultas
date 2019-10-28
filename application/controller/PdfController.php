@@ -74,7 +74,7 @@ class PdfController extends Controller
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         header("Access-Control-Allow-Origin: *");
-        header("Content-Type: application/pdf");
+        //header("Content-Type: application/pdf");
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
