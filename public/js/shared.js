@@ -606,12 +606,23 @@ function loadInProcessData(data){
                 args.respuesta_sexo_fetal = $('select[name="respuesta_sexo_fetal"]').val(),
                 args.respuesta_fcf = $('select[name="respuesta_fcf"]').val()
 
+                args.respuesta_uterina_derecha = $('input[name="respuesta_uterina_derecha"]').val(),
+                args.respuesta_uterina_derecha_percentil = $('#respuesta_uterina_derecha_percentil').val(),
+                args.respuesta_uterina_izquierda = $('input[name="respuesta_uterina_izquierda"]').val(),
+                args.respuesta_uterina_izquierda_percentil = $('#respuesta_uterina_izquierda_percentil').val(),
+                args.respuesta_uterinas = $('input[name="respuesta_uterina_promedio"]').val(),
+                args.respuesta_uterinas_percentil = $('#respuesta_uterina_promedio').val()
+
                 args.respuesta_lf_pct = args.respuesta_lf_pct.replace("Pct. ", "");
                 args.respuesta_cc_pct = args.respuesta_cc_pct.replace("Pct. ", "");
                 args.respuesta_ca_pct = args.respuesta_ca_pct.replace("Pct. ", "");
                 args.respuesta_ccca_pct = args.respuesta_ccca_pct.replace("Pct. ", "");
                 args.respuesta_lh_pct = args.respuesta_lh_pct.replace("Pct. ", "");
                 args.respuesta_cerebelo_pct = args.respuesta_cerebelo_pct.replace("Pct. ", "");
+
+                args.respuesta_uterina_derecha_percentil = args.respuesta_uterina_derecha_percentil.replace("Pct. ", "");
+                args.respuesta_uterina_izquierda_percentil = args.respuesta_uterina_izquierda_percentil.replace("Pct. ", "");
+                args.respuesta_uterinas_percentil = args.respuesta_uterinas_percentil.replace("Pct. ", "");
             }
             else if (tipoExm == 1){
                 args.respuesta_utero_primertrimestre = $('select[name="respuesta_utero_primertrimestre"]').val(),
