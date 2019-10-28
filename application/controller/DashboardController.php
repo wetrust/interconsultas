@@ -225,6 +225,12 @@ class DashboardController extends Controller
             $respuesta->eg = explode (".", $respuesta->eg);
             $respuesta->eg = $respuesta->eg[0];
 
+            $grafico_seis = GraphModel::ccca(array($respuesta->eg => $respuesta->ccca));
+
+            if (strlen($respuesta->uterinas_percentil) > 1){
+                $grafico_seis = GraphModel::uterinas(array($respuesta->eg => $respuesta->uterinas));
+            }
+
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -235,7 +241,7 @@ class DashboardController extends Controller
                 'grafico_tres' => GraphModel::lf(array($respuesta->eg => $respuesta->lf)),
                 'grafico_cuatro' => GraphModel::lh(array($respuesta->eg => $respuesta->respuesta_lh)),
                 'grafico_cinco' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe_segundo)),
-                'grafico_seis' => GraphModel::ccca(array($respuesta->eg => $respuesta->ccca)),
+                'grafico_seis' => $grafico_seis
             ));
 
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco primer trimestre',$respuesta_crecimiento);
@@ -269,7 +275,6 @@ class DashboardController extends Controller
         else if($respuesta_crecimiento == 4){
             RespuestaModel::createRespuesta($solicitud_id, $respuesta_fecha, $respuesta_eg, "", "", "", "", "", $respuesta_uterinas, $respuesta_uterinas_percentil, "", "", "", "", "", "", "", $respuesta_comentariosexamen, $respuesta_ecografista, "", $respuesta_anatomia, $respuesta_crecimiento, "", "", $respuesta_embrion, $respuesta_lcn, "", "", "", $respuesta_lcn_eg, "","", "", $respuesta_dbp, $respuesta_cc, $respuesta_ca, $respuesta_lf, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", $respuesta_anatomia_extra, $respuesta_uterina_derecha, $respuesta_uterina_derecha_percentil, $respuesta_uterina_izquierda, $respuesta_uterina_izquierda_percentil, $respuesta_fcf, $respuesta_translucencia_nucal, "", "", "", "", "", "", "","",0, $respuesta_hueso_nasal_valor, "");
             SolicitudesModel::updateStateSolicitud($solicitud_id, 2);
-        
             $data = SolicitudesModel::getSolicitud($solicitud_id);
 
             $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler', 
@@ -419,15 +424,19 @@ class DashboardController extends Controller
     public function sinpartos(){
         $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesSinParto(Session::get('user_email')));
     }
+
     public function partos(){
         $this->View->renderJSON(PartosModel::getAllPartos(Session::get('user_email')));
     }
+
     public function baseParto($user_id){
         $this->View->renderJSON(SolicitudesModel::getOldSolicitudes($user_id));
     }
+
     public function dataPartos($parto_id){
         $this->View->renderJSON(PartosModel::getPartos($parto_id));
     }
+
     public function savePartos(){
         $solicitud_id = Request::post('solicitud_id');
         $fecha_parto = Request::post('fecha_parto');
@@ -502,13 +511,16 @@ class DashboardController extends Controller
     public function solicitadas(){
         $this->View->renderJSON(SolicitudesModel::getAllMyNewSolicitudes(Session::get('user_email')));
     }
+
     public function agendadas(){
         $this->View->renderJSON(SolicitudesModel::getAllAgendadasSolicitudes(Session::get('user_email')));
     }
+
     public function confirmar(){
         $solicitud_id = Request::post('solicitud_id');
         $this->View->renderJSON(SolicitudesModel::confirmarSolicitud($solicitud_id));
     }
+
     public function reagendar(){
         $solicitud_id = Request::post('solicitud_id');
         $solicitud_fecha = Request::post('solicitud_fecha');
@@ -544,36 +556,47 @@ class DashboardController extends Controller
     public function mymembrete(){
         $this->View->renderJSON(MembreteModel::getMembrete());
     }
+
     public function lugarSave(){
         $this->View->renderJSON(LugarModel::createLugar(Request::post('lugar_name')));   
     }
+
     public function ciudadSave(){
         $this->View->renderJSON(CiudadModel::createCiudad(Request::post('ciudad_name')));   
     }
+
     public function ciudades_configuracion(){
         $this->View->renderJSON(CiudadModel::getAllCiudades());
     }
+
     public function ciudades_configuracion_delete($id){
         $this->View->renderJSON(CiudadModel::deleteCiudad($id)); 
     }
+
     public function lugares_configuracion(){
         $this->View->renderJSON(LugarModel::getAllLugares());
     }
+
     public function lugares_configuracion_delete($id){
         $this->View->renderJSON(LugarModel::deleteLugar($id)); 
     }
+
     public function guardarsolicitud($solicitud_id){
         $this->View->renderJSON(SolicitudesModel::updateSolicitud($solicitud_id));
     }
+
     public function diagnostico_configuracion(){
         $this->View->renderJSON(DiagnosticoModel::getAllDiagnosticos());
     }
+
     public function diagnostico_configuracion_delete($id){
         $this->View->renderJSON(DiagnosticoModel::deleteDiagnostico($id)); 
     }
+
     public function diagnosticoSave(){
         $this->View->renderJSON(DiagnosticoModel::createDiagnostico(Request::post('diagnostico_name')));
     }
+
     public function send_fotos(){
         $mail = new PHPMailer;
         
@@ -632,6 +655,7 @@ class DashboardController extends Controller
         $this->View->renderJSON($response);
         
     }
+
     public function informe_fotos(){
         $fotos = Request::post('fotos');
         $fotos = explode(",", $fotos);
@@ -709,6 +733,7 @@ class DashboardController extends Controller
 
         $this->View->renderJSON($response);
     }
+
     public function informe_envio(){
         $fotos = Request::post('fotos');
         $email = Request::post('email');
@@ -747,4 +772,5 @@ class DashboardController extends Controller
         
         $this->View->renderJSON($response);
     }
+
 }

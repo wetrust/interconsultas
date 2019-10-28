@@ -162,6 +162,13 @@ class GraphController extends Controller
         $grafico_cinco = ($respuesta->pfe_segundo > 0) ? array($respuesta->eg => $respuesta->pfe_segundo) : array();
         $grafico_seis = ($respuesta->ccca > 0) ? array($respuesta->eg => $respuesta->ccca) : array();
 
+        $grafico_seis = GraphModel::ccca($grafico_seis);
+
+        if (strlen($respuesta->uterinas_percentil) > 1){
+            $grafico_seis = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+            $grafico_seis = GraphModel::uterinas($grafico_seis);
+        }
+
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -172,7 +179,7 @@ class GraphController extends Controller
             'grafico_tres' => GraphModel::lf($grafico_tres),
             'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
             'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
-            'grafico_seis' => GraphModel::ccca($grafico_seis),
+            'grafico_seis' => $grafico_seis,
         ));
     }
 

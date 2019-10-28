@@ -228,6 +228,12 @@ class EmailModel
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
             $respuesta->eg = explode (".", $respuesta->eg);
             $respuesta->eg = $respuesta->eg[0];
+
+            $grafico_seis = GraphModel::ccca(array($respuesta->eg => $respuesta->ccca));
+
+            if (strlen($respuesta->uterinas_percentil) > 1){
+                $grafico_seis = GraphModel::uterinas(array($respuesta->eg => $respuesta->uterinas));
+            }
     
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico', 
             array(
@@ -239,7 +245,7 @@ class EmailModel
                 'grafico_tres' => GraphModel::lf(array($respuesta->eg => $respuesta->lf)),
                 'grafico_cuatro' => GraphModel::lh(array($respuesta->eg => $respuesta->respuesta_lh)),
                 'grafico_cinco' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe_segundo)),
-                'grafico_seis' => GraphModel::ccca(array($respuesta->eg => $respuesta->ccca)),
+                'grafico_seis' => $grafico_seis,
             ));
 
             $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco segundo trimestre',$informe, $email);
@@ -423,7 +429,13 @@ class EmailModel
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
             $respuesta->eg = explode (".", $respuesta->eg);
             $respuesta->eg = $respuesta->eg[0];
-    
+
+            $grafico_seis = GraphModel::ccca(array($respuesta->eg => $respuesta->ccca));
+
+            if (strlen($respuesta->uterinas_percentil) > 1){
+                $grafico_seis = GraphModel::uterinas(array($respuesta->eg => $respuesta->uterinas));
+            }
+
             $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -434,7 +446,7 @@ class EmailModel
                 'grafico_tres' => GraphModel::lf(array($respuesta->eg => $respuesta->lf)),
                 'grafico_cuatro' => GraphModel::lh(array($respuesta->eg => $respuesta->respuesta_lh)),
                 'grafico_cinco' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe_segundo)),
-                'grafico_seis' => GraphModel::ccca(array($respuesta->eg => $respuesta->ccca))
+                'grafico_seis' => $grafico_seis
             ));
 
             $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco segundo trimestre',$informe, $email);
