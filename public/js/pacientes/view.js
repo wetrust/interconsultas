@@ -247,7 +247,7 @@ export class view {
             let fum = new Date(the("fum").value);
             fum.setDate(fum.getUTCDate() - (semanas + dias));
     
-            the("fum").value = inputDate(fee);
+            the("fum").value = inputDate(fum);
         });
     }
 }
