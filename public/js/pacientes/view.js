@@ -52,6 +52,16 @@ export class view {
                 telefono: the("telefono").value,
                 modal: this.dataset.modal
             }
+            
+            //validador de teléfono
+            paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
+
+            if(paciente.telefono > 999999999)
+            {
+                alert('El teléfono excede 9 dígitos');
+                return 0;
+            }
+
             cloud.newPaciente(paciente).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
@@ -99,7 +109,7 @@ export class view {
             }
 
             //validador de teléfono
-            paciente.telefono = (paciente.telefono == "") ? 0 : paciente.telefono;
+            paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
 
             if(paciente.telefono > 999999999)
             {
