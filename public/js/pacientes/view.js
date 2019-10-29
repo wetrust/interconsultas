@@ -56,9 +56,9 @@ export class view {
             //validador de teléfono
             paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
 
-            if(paciente.telefono > 999999999)
+            if(paciente.telefono > 99999999999999)
             {
-                alert('El teléfono excede 9 dígitos');
+                alert('El teléfono excede 14 dígitos');
                 return 0;
             }
 
@@ -111,9 +111,9 @@ export class view {
             //validador de teléfono
             paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
 
-            if(paciente.telefono > 999999999)
+            if(paciente.telefono > 99999999999999)
             {
-                alert('El teléfono excede 9 dígitos');
+                alert('El teléfono excede 14 dígitos');
                 return 0;
             }
 
