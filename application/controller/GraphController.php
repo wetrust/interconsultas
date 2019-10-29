@@ -229,7 +229,7 @@ class GraphController extends Controller
             }
         }
 
-        if ($uterinas == true){
+        if ($uterinas == true && strlen($respuesta->uterinas_percentil) > 1){
             $grafico_seis = GraphModel::uterinas($grafico_uterinas);
         }else{
             $grafico_seis = GraphModel::ccca($grafico_ccca);
@@ -286,7 +286,7 @@ class GraphController extends Controller
                 $uterinas = true;
             }
 
-            if ($uterinas == true){
+            if ($uterinas == true && strlen($respuesta->uterinas_percentil) > 1){
                 $grafico_uterinas[$respuesta->eg] = $respuesta->uterinas;
             }else if ($respuesta->ccca > 0){
                 $grafico_ccca[$respuesta->eg] = $respuesta->ccca;
