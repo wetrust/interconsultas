@@ -193,6 +193,10 @@ class GraphController extends Controller
         $grafico_cinco = array();
         $grafico_seis = array();
 
+        $uterinas = false;
+        $grafico_uterinas = array();
+        $grafico_ccca = array();
+
         foreach ($respuestas as $respuesta) {
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
             $respuesta->eg = explode (".", $respuesta->eg);
@@ -213,9 +217,22 @@ class GraphController extends Controller
             if ($respuesta->pfe_segundo > 0){
                 $grafico_cinco[$respuesta->eg] = $respuesta->pfe_segundo;
             }
-            if ($respuesta->ccca > 0){
-                $grafico_seis[$respuesta->eg] = $respuesta->ccca;
+
+            if (strlen($respuesta->uterinas_percentil) > 1){
+                $uterinas = true;
             }
+
+            if ($uterinas == true){
+                $grafico_uterinas[$respuesta->eg] = $respuesta->uterinas;
+            }else if ($respuesta->ccca > 0){
+                $grafico_ccca[$respuesta->eg] = $respuesta->ccca;
+            }
+        }
+
+        if ($uterinas == true){
+            $grafico_seis = GraphModel::uterinas($grafico_uterinas);
+        }else{
+            $grafico_seis = GraphModel::ccca($grafico_ccca);
         }
 
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
@@ -226,7 +243,7 @@ class GraphController extends Controller
             'grafico_tres' => GraphModel::lf($grafico_tres),
             'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
             'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
-            'grafico_seis' => GraphModel::ccca($grafico_seis),
+            'grafico_seis' => $grafico_seis
         ));
     }
 
@@ -264,9 +281,22 @@ class GraphController extends Controller
             if ($respuesta->pfe_segundo > 0){
                 $grafico_cinco[$respuesta->eg] = $respuesta->pfe_segundo;
             }
-            if ($respuesta->ccca > 0){
-                $grafico_seis[$respuesta->eg] = $respuesta->ccca;
+
+            if (strlen($respuesta->uterinas_percentil) > 1){
+                $uterinas = true;
             }
+
+            if ($uterinas == true){
+                $grafico_uterinas[$respuesta->eg] = $respuesta->uterinas;
+            }else if ($respuesta->ccca > 0){
+                $grafico_ccca[$respuesta->eg] = $respuesta->ccca;
+            }
+        }
+
+        if ($uterinas == true){
+            $grafico_seis = GraphModel::uterinas($grafico_uterinas);
+        }else{
+            $grafico_seis = GraphModel::ccca($grafico_ccca);
         }
 
         $response = new stdClass();
@@ -282,7 +312,7 @@ class GraphController extends Controller
             'grafico_tres' => GraphModel::lf($grafico_tres),
             'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
             'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
-            'grafico_seis' => GraphModel::ccca($grafico_seis),
+            'grafico_seis' => $grafico_seis,
             'enviar' => true
         ));
 
