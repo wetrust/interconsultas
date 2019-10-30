@@ -18,7 +18,7 @@ class PacientesModel
 
         $sql = "SELECT id, nombre, apellido, rut, fum, ciudad, lugar, telefono FROM pacientes WHERE user_id = :user_id AND (rut like :rut OR apellido like :apellido) LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':user_id' => Session::get('user_id'), ':rut' => $paciente, ':apellido' => $paciente));
+        $query->execute(array(':user_id' => Session::get('user_id'), ':rut' => '%'.$paciente.'%', ':apellido' => '%'.$paciente.'%'));
 
         return $query->fetch();
     }
