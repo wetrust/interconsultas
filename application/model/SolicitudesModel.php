@@ -380,11 +380,20 @@ class SolicitudesModel
         $lugar = Request::post("lugar");
         $diagnostico = Request::post("diagnostico");
 
+        $sistolica = Request::post("sistolica");
+        $diastolica = Request::post("diastolica");
+        $media = Request::post("media");
+        $talla = Request::post("talla");
+        $peso = Request::post("peso");
+        $imc = Request::post("imc");
+        $paridad = Request::post("paridad");
+        $antecedentes = Request::post("antecedentes");
+
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE solicitudes SET solicitud_nombre = :solicitud_nombre, solicitud_apellido = :solicitud_apellido, solicitud_telefono = :solicitud_telefono, solicitud_fum = :solicitud_fum, solicitud_fecha = :solicitud_fecha, solicitud_egestacional = :solicitud_egestacional, solicitud_ematerna = :solicitud_ematerna, solicitud_ciudad = :solicitud_ciudad, solicitud_lugar = :solicitud_lugar, solicitud_diagnostico = :solicitud_diagnostico WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "UPDATE solicitudes SET solicitud_nombre = :solicitud_nombre, solicitud_apellido = :solicitud_apellido, solicitud_telefono = :solicitud_telefono, solicitud_fum = :solicitud_fum, solicitud_fecha = :solicitud_fecha, solicitud_egestacional = :solicitud_egestacional, solicitud_ematerna = :solicitud_ematerna, solicitud_ciudad = :solicitud_ciudad, solicitud_lugar = :solicitud_lugar, solicitud_diagnostico = :solicitud_diagnostico,solicitud_sistolica = :solicitud_sistolica,solicitud_diastolica = :solicitud_diastolica,solicitud_media = :solicitud_media,solicitud_talla = :solicitud_talla,solicitud_peso = :solicitud_peso,solicitud_imc = :solicitud_imc,solicitud_antecedentes = :solicitud_antecedentes,solicitud_paridad = :solicitud_paridad WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_id' => $solicitud_id, ':solicitud_nombre' => $nombre, ':solicitud_apellido' => $apellido, ':solicitud_telefono' => $telefono, ':solicitud_fum' => $fum, ':solicitud_fecha' => $fecha, ':solicitud_egestacional' => $eg, ':solicitud_ematerna' => $edadMaterna, ':solicitud_ciudad' => $ciudad, ':solicitud_lugar' => $lugar, ':solicitud_diagnostico' => $diagnostico));
+        $query->execute(array(':solicitud_id' => $solicitud_id, ':solicitud_nombre' => $nombre, ':solicitud_apellido' => $apellido, ':solicitud_telefono' => $telefono, ':solicitud_fum' => $fum, ':solicitud_fecha' => $fecha, ':solicitud_egestacional' => $eg, ':solicitud_ematerna' => $edadMaterna, ':solicitud_ciudad' => $ciudad, ':solicitud_lugar' => $lugar, ':solicitud_diagnostico' => $diagnostico, ':solicitud_sistolica' => $sistolica,':solicitud_diastolica' =>$diastolica,':solicitud_media' => $media,':solicitud_talla' => $talla,':solicitud_peso' => $peso,':solicitud_imc' => $imc,':solicitud_antecedentes' => $antecedentes,':solicitud_paridad' => $paridad));
 
         if ($query->rowCount() == 1) {
             return true;
