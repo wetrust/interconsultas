@@ -37,6 +37,8 @@ class ApiController extends Controller
         $url = trim(Request::get('url'), '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $url = explode('/', $url);
+        echo $url;
+        echo "<br>";
         
         //$paciente = html_entity_decode($paciente);
         //$paciente = Filter::XSSFilter($paciente);
