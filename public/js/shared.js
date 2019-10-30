@@ -1175,6 +1175,7 @@ function segundoTrimestre(){
                             if ( event.which == 13 ) {
                                event.preventDefault();
                                $("input[name='respuesta_uterina_derecha']").focus();
+                               $(this).trigger("change");
                             }
                         });
 }
