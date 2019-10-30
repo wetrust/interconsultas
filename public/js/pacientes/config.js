@@ -4,6 +4,7 @@ export const config = {
     new: 'api/newPacientes',
     update: 'api/updatePaciente',
     delete: 'api/deletePaciente',
+    find: 'api/buscarpaciente/',
     newPacientesTitulo: 'Crear nuevo paciente',
     newPacientesHTML: '<div class="row"> <div class="col form-group"> <label for="rut">R.U.T.</label> <input type="text" class="form-control" id="rut"> </div><div class="col form-group"> <label for="rut">Teléfono</label> <input type="number" class="form-control" id="telefono"> </div></div><div class="row"> <div class="col form-group"> <label for="nombre">Nombre</label> <input type="text" class="form-control" id="nombre"> </div><div class="col form-group"> <label for="apellido">Apellido</label> <input type="text" class="form-control" id="apellido"> </div></div><div class="row"> <div class="col form-group"> <label for="ciudad">Ciudad de procedencia</label> <select class="form-control" id="ciudad"></select> </div><div class="col form-group"> <label for="lugar">Lugar de control habitual</label> <select class="form-control" id="lugar"></select> </div></div><div class="row"> <div class="col form-group"> <label for="fum">FUM</label> <input type="date" class="form-control" id="fum"> </div><div class="col form-group"> <label for="fum">Semanas</label> <select class="form-control" id="semanas"></select> </div><div class="col form-group"> <label for="fum">Dias</label> <select class="form-control" id="dias"></select> </div></div>',
     updatePacientesTitulo: 'Actualizar paciente',

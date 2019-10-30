@@ -7,28 +7,8 @@ export class view {
         the(container).innerHTML = config.pacienteInterface;
         the(config.pacienteInterfaceNewButton).onclick = this.newPaciente;
 
-        let table = config.pacienteInterfaceTableHead;
-
-        table += '<tbody>';
-        data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td class="tabla-pacientes"><button class="btn btn-danger modificar" data-id="'+element.id+'">modificar</button><button class="btn btn-danger eliminar" data-id="'+element.id+'">Eliminar</button></td></tr>';
-        });
-
-        table += '</tbody>';
-
-        the(config.pacienteInterfaceTable).innerHTML = table;
-
-        let modificarBtns = document.getElementsByClassName("modificar");
-
-        for (var i=0; i < modificarBtns.length; i++) {
-            modificarBtns[i].onclick = this.editPaciente;
-        }
-
-        let eliminarBtns = document.getElementsByClassName("eliminar");
-
-        for (var i=0; i < eliminarBtns.length; i++) {
-            eliminarBtns[i].onclick = this.eliminarPaciente;
-        }
+        view.tablePacientes(data);
+        view.buscarPaciente();
     }
 
     static newPaciente(){
@@ -160,6 +140,31 @@ export class view {
         });
     }
 
+    static tablePacientes(data){
+        let table = config.pacienteInterfaceTableHead;
+
+        table += '<tbody>';
+        data.forEach(function(element) {
+            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td class="tabla-pacientes"><button class="btn btn-danger modificar" data-id="'+element.id+'">modificar</button><button class="btn btn-danger eliminar" data-id="'+element.id+'">Eliminar</button></td></tr>';
+        });
+
+        table += '</tbody>';
+
+        the(config.pacienteInterfaceTable).innerHTML = table;
+
+        let modificarBtns = document.getElementsByClassName("modificar");
+
+        for (var i=0; i < modificarBtns.length; i++) {
+            modificarBtns[i].onclick = this.editPaciente;
+        }
+
+        let eliminarBtns = document.getElementsByClassName("eliminar");
+
+        for (var i=0; i < eliminarBtns.length; i++) {
+            eliminarBtns[i].onclick = this.eliminarPaciente;
+        }
+    }
+
     static rutValidador(){
         $('#rut').rut({
             fn_error : function(input){
@@ -258,6 +263,18 @@ export class view {
             fum.setDate(fum.getUTCDate() - (semanas + dias));
     
             the("fum").value = inputDate(fum);
+        });
+    }
+
+    static buscarPaciente(){
+        $("#paciente\\.buscar").on("keypress", function(){
+            if ( event.which == 13 ) {
+                paciente = this.value;
+
+                cloud.findPaciente(paciente).then(function(data){
+                    view.tablePacientes(data);
+                });
+            }
         });
     }
 }
