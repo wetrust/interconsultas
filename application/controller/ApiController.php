@@ -30,7 +30,8 @@ class ApiController extends Controller
 
         $paciente = html_entity_decode($paciente);
         $paciente = Filter::XSSFilter($paciente);
-        $this->View->renderJSON(PacientesModel::findPacienteID($paciente));
+        $this->View->renderJSON($paciente);
+        //$this->View->renderJSON(PacientesModel::findPacienteID($paciente));
     }
 
 
