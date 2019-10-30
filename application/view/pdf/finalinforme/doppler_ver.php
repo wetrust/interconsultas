@@ -68,13 +68,13 @@
         $html = '<table><tbody><tr><td colspan="2">Edad gestacional</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
+        $html = '<table><tbody><tr><td colspan="2">Motivo de exámen</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+        $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td colspan="2">Presión arterial media ((PAS- (PAD/3))+ PAD)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_media).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td colspan="2">IMC Materno (Peso/Talla^2)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-        $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">Motivo de exámen</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(4);
     }
