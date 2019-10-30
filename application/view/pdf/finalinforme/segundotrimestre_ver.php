@@ -125,9 +125,11 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica **</em></strong></td><td>DBP (Hadlock):</td><td>'. $this->respuesta_dbp.' mm.</td><td>DOF (Jeanty):</td><td>'. $this->respuesta_dof.' mm.</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica **</em></strong></td><td>DBP (Hadlock):</td><td>'. $this->respuesta_dbp.' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
+    $html = '<table><tbody><tr><td></td><td>DOF (Jeanty):</td><td>'. $this->respuesta_dof.' mm</td><td></td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">Índice Cefálico (IC):</td><td style="background-color:#eceeef;">'. $this->respuesta_ic.'</td><td style="background-color:#eceeef;">(IC 70 a 86 %)</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td></td><td>CC (Hadlock):</td><td>'. $this->respuesta_cc.' mm.</td><td>Percentil: '. $this->respuesta_cc_pct.'</td></tr></tbody></table>';
