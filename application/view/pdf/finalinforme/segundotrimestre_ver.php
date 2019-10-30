@@ -149,9 +149,11 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
     if (property_exists($this,"uterinas")){
-    $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">Doppler uterinas (promedio)</td><td style="background-color:#eceeef;">'. $this->uterinas.'</td><td style="background-color:#eceeef;">Percentil: '. $this->uterinas_percentil.'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $this->pdf->Ln(4);
+        if ($this->uterinas != ""){
+            $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">Doppler uterinas (promedio)</td><td style="background-color:#eceeef;">'. $this->uterinas.'</td><td style="background-color:#eceeef;">Percentil: '. $this->uterinas_percentil.'</td></tr></tbody></table>';
+            $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+            $this->pdf->Ln(4);
+        }
     }
     
     $_html = strip_tags($this->comentariosexamen);
