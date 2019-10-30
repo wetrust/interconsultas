@@ -27,6 +27,9 @@ class ApiController extends Controller
     }
 
     public function buscarpaciente($paciente){
+
+        $paciente = html_entity_decode($paciente);
+        $paciente = Filter::XSSFilter($paciente);
         $this->View->renderJSON(PacientesModel::findPacienteID($paciente));
     }
 
