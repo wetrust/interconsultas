@@ -545,7 +545,16 @@ function solicitudModal(data){
             edadMaterna: document.getElementById(modalModificar.edadMaterna).value,
             ciudad: document.getElementById(modalModificar.ciudad).value,
             lugar: document.getElementById(modalModificar.lugar).value,
-            diagnostico: diagnostico
+            diagnostico: diagnostico,
+            sistolica: document.getElementById(modalModificar.sistolica).value,
+            diastolica: document.getElementById(modalModificar.diastolica).value,
+            media: document.getElementById(modalModificar.media).value,
+            talla: document.getElementById(modalModificar.talla).value,
+            peso: document.getElementById(modalModificar.peso).value,
+            imc: document.getElementById(modalModificar.imc).value,
+            paridad:document.getElementById(modalModificar.paridad).value,
+            antecedentes: document.getElementById(modalModificar.antecedentes).value
+            
         };
 
         $.post("dashboard/guardarsolicitud/" + document.getElementById(modalModificar.solicitud_id).value, data).done(function(){loadInProcess();});
