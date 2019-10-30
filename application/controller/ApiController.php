@@ -26,24 +26,15 @@ class ApiController extends Controller
         $this->View->renderJSON(PacientesModel::getAllPacientes());
     }
 
-    public function buscarpaciente($paciente){
-        
-        echo $paciente;
-        echo "<br>";
-        
-        $url = Request::get('url');
-        echo $url;
-        echo "<br>";
-        $url = trim(Request::get('url'), '/');
-        $url = filter_var($url, FILTER_SANITIZE_URL);
-        echo $url;
-        echo "<br>";
-        
-        //$paciente = html_entity_decode($paciente);
-        //$paciente = Filter::XSSFilter($paciente);
-        //$paciente = str_replace("_", " ",$paciente); 
+    public function buscarpaciente(){
+        $paciente = trim(Request::get('url'), '/');
+        $paciente = explode('/', $paciente);
+        $paciente = $paciente[count($paciente)-1];
+        $paciente = html_entity_decode($paciente);
+        $paciente = Filter::XSSFilter($paciente);
+        $paciente = str_replace("_", " ",$paciente); 
         //$this->View->renderJSON($paciente);
-        //$this->View->renderJSON(PacientesModel::findPacienteID($paciente));
+        $this->View->renderJSON(PacientesModel::findPacienteID($paciente));
     }
 
 
