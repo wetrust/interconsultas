@@ -42,7 +42,7 @@
     $html = '<h4 style="border-bottom:2px double #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA OBSTÉTRICA DE CRECIMIENTO</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(2);
-    $html = '<h3>A- Formulario de referencia para evaluación ecográfica del crecimiento fetal</h3>';
+    $html = '<h4><em>Formulario de referencia para evaluación ecográfica del crecimiento fetal</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     if (Session::get("user_account_type") == 4) {
@@ -62,10 +62,7 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         if (property_exists($this,"uterinas")){
             $this->pdf->Ln(1);
-            $html = '<table><tbody><tr><td colspan="2">Presión arterial media ((PAS- (PAD/3))+ PAD)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td></tr></tbody></table>';
-            $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-            $this->pdf->Ln(1);
-            $html = '<table><tbody><tr><td colspan="2">IMC Materno (Peso/Talla^2)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
+            $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
             $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
             $this->pdf->Ln(1);
             $html = '<table><tbody><tr><td colspan="2">Otros antecedentes clínicos relevantes</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
@@ -114,7 +111,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h3>B- Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</h3>';
+    $html = '<h4><em>Respuesta de profesional contrarreferente a solicitud de exámen ecográfico</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
