@@ -270,7 +270,12 @@ export class view {
         $("#paciente\\.buscar").on("keypress", function(){
             if ( event.which == 13 ) {
                 let paciente = this.value;
-                paciente = paciente.replace(/\s+/g, "_")
+                paciente = paciente.replace(/\s+/g, "_");
+
+                if (paciente.length == 0){
+                    location.reload();
+                    return 0;
+                }
 
                 cloud.findPaciente(paciente).then(function(data){
                     view.tablePacientes(data);
