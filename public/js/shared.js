@@ -1644,3 +1644,188 @@ function egSaco(saco) {
         return a[saco];
     }
 };
+
+function solicitudModal(data){
+    let modal = makeModal("Guardar");
+
+    document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+        $(this).remove();
+    });
+    $("#"+modal.button).on("click", function(){
+        let modal =  $(this).data("modal");
+        
+        let diagnostico = (document.getElementById(modalModificar.diagnostico).value == "") ? document.getElementById(modalModificar.diagnostico_select).value : document.getElementById(modalModificar.diagnostico).value;
+        data = {
+            nombre: document.getElementById(modalModificar.nombre).value,
+            apellido: document.getElementById(modalModificar.apellido).value,
+            rut: document.getElementById(modalModificar.rut).value,
+            telefono: document.getElementById(modalModificar.telefono).value,
+            fum: document.getElementById(modalModificar.fum).value,
+            fecha: document.getElementById(modalModificar.fecha).value,
+            eg: document.getElementById(modalModificar.eg).value,
+            edadMaterna: document.getElementById(modalModificar.edadMaterna).value,
+            ciudad: document.getElementById(modalModificar.ciudad).value,
+            lugar: document.getElementById(modalModificar.lugar).value,
+            diagnostico: diagnostico,
+            sistolica: document.getElementById(modalModificar.sistolica).value,
+            diastolica: document.getElementById(modalModificar.diastolica).value,
+            media: document.getElementById(modalModificar.media).value,
+            talla: document.getElementById(modalModificar.talla).value,
+            peso: document.getElementById(modalModificar.peso).value,
+            imc: document.getElementById(modalModificar.imc).value,
+            paridad:document.getElementById(modalModificar.paridad).value,
+            antecedentes: document.getElementById(modalModificar.antecedentes).value
+            
+        };
+
+        $.post("dashboard/guardarsolicitud/" + document.getElementById(modalModificar.solicitud_id).value, data).done(function(){loadInProcess();});
+        $('#'+modal).modal("hide");
+    });
+
+    let id_sol = uuidv4();let _a= uuidv4(); let _b= uuidv4(); let _c= uuidv4(); let _d= uuidv4(); let _e= uuidv4(); let _f= uuidv4(); let _g= uuidv4(); let _h= uuidv4(); let _i= uuidv4(); let _j= uuidv4(); let _k = uuidv4(); let _l= uuidv4(); let _ll= uuidv4(); let _m= uuidv4(); let _n= uuidv4(); let _o= uuidv4(); let _p= uuidv4(); let _q= uuidv4(); let _w= uuidv4(); let _y= uuidv4();
+    let formulario = '<div class="row"> <input type="hidden" class="form-control" id="'+id_sol+'"> <div class="col form-group"> <label>Nombre del paciente</label> <input type="text" class="form-control" id="'+_a+'"> </div><div class="col form-group"> <label>Apellido del paciente</label> <input type="text" class="form-control" id="'+_y+'"> </div><div class="col form-group"> <label>RUT del paciente</label> <div> <input type="text" class="form-control" id="'+_b+'" disabled> </div></div><div class="col form-group"> <label>Teléfono materno</label> <input type="number" class="form-control" id="'+_c+'"> </div></div><div class="row"> <div class="col-4 form-group rounded mb-0 pb-3"> <label><strong>INGRESE FUM REFERIDA</strong></label> <input type="date" class="form-control g-verde text-white" id="'+_d+'"> </div><div class="col form-group mb-0 pb-3"> <label>Fecha solicitud del exámen</label> <input type="date" class="form-control g-verde text-white" id="'+_e+'"> </div><div class="col-4 form-group mb-0 pb-3"> <label>Edad Gestacional (Ege)</label> <input type="text" class="form-control g-verde text-white" id="'+_f+'" disabled="" value="0 semanas"> </div></div><div class="row"> <div class="col-4 form-group"> <label>Edad materna (años)</label> <select class="form-control" id="'+_g+'"></select> </div><div class="col form-group"> <label>Ciudad de procedencia</label> <select class="form-control" id="'+_h+'"></select> </div><div class="col form-group"> <label>Lugar de control habitual</label> <select class="form-control" id="'+_i+'"></select> </div></div><div class="row"> <div class="col-6 form-group"> <label><strong>Motivo de exámen a exámen ecográfico:</strong></label> <select type="text" class="form-control" id="'+_w+'"></select> </div><div class="col-6 form-group"> <label>otros</label> <input type="text" class="form-control" id="'+_j+'"> </div></div><div class="accordion" id="accordionExample"> <div class="card border-bottom rounded"> <div class="card-header py-0 bg-secondary" id="headingOne"> <h2 class="mb-0"><button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><strong>Datos obligatorios para ecografías de tamizaje</strong></button></h2> </div><div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" style=""> <div class="card-body"> <div class="row"> <div class="col-4 form-group"> <label class="text-primary">Presion arterial sistólica</label> <div class="input-group"> <input type="number" class="form-control" id="'+_k+'"> <div class="input-group-append"> <div class="input-group-text">mmHg</div></div></div></div><div class="col form-group"> <label class="text-primary">Presion arterial diastólica</label> <div class="input-group"> <input type="number" class="form-control" id="'+_l+'"> <div class="input-group-append"> <div class="input-group-text">mmHg</div></div></div></div><div class="col-4 form-group"> <label class="text-primary">Presion arterial media</label> <div class="input-group"> <input type="number" class="form-control" id="'+_ll+'" disabled="" value="0"> <div class="input-group-append"> <div class="input-group-text">mmHg</div></div></div></div></div><div class="row"> <div class="col-4 form-group"> <label class="text-primary">Talla materna</label> <div class="input-group"> <input type="number" class="form-control" id="'+_m+'"> <div class="input-group-append"> <div class="input-group-text">cms</div></div></div></div><div class="col form-group"> <label class="text-primary">Peso materno</label> <div class="input-group"> <input type="number" class="form-control" id="'+_n+'"> <div class="input-group-append"> <div class="input-group-text">kg</div></div></div></div><div class="col-4 form-group"> <label class="text-primary">IMC materno</label> <div class="input-group"> <input type="text" class="form-control" id="'+_o+'" disabled="" value="0"> <div class="input-group-append"> <div class="input-group-text">(kg/m2)</div></div></div></div></div><div class="row"> <div class="col-4 form-group"> <label class="text-primary">Paridad</label> <select class="form-control" id="'+_p+'"> <option value="Primipara" selected="">Primipara</option> <option value="Multipara">Multipara</option> </select> </div><div class="col-8 form-group"> <label class="text-primary">Otros antecedentes clínicos relevantes:</label> <input type="text" class="form-control" id="'+_q+'"> </div></div></div></div></div></div>';
+
+    document.getElementById(modal.contenido).innerHTML = formulario;
+    document.getElementById(modal.titulo).innerHTML = "Modificar solicitud";
+
+    loadOptionEdadMaterta(_g);
+
+    document.getElementById(_h).innerHTML = document.getElementById('h').innerHTML;
+    document.getElementById(_i).innerHTML = document.getElementById('i').innerHTML;
+    document.getElementById(_w).innerHTML = document.getElementById('w').innerHTML;
+
+    modalModificar = {solicitud_id: id_sol,nombre: _a,apellido:_y,rut: _b,telefono: _c,fum: _d,fecha: _e,eg: _f,edadMaterna: _g,ciudad: _h,lugar: _i,diagnostico: _j,diagnostico_select: _w, sistolica: _k, diastolica: _l, media: _ll, talla: _m, peso: _n, imc: _o, antecedentes: _q, paridad: _p};
+
+    document.getElementById(id_sol).value = data.solicitud_id;
+    document.getElementById(_a).value = data.solicitud_nombre;
+    document.getElementById(_y).value = data.solicitud_apellido;
+    document.getElementById(_b).value = data.solicitud_rut;
+    document.getElementById(_c).value = data.solicitud_telefono;
+    document.getElementById(_d).value = data.solicitud_fum;
+    document.getElementById(_e).value = data.solicitud_fecha;
+    document.getElementById(_f).value = data.solicitud_egestacional;
+    document.getElementById(_g).value = data.solicitud_ematerna;
+    document.getElementById(_h).value = data.solicitud_ciudad;
+    document.getElementById(_i).value = data.solicitud_lugar;
+    
+    document.getElementById(_k).value = data.solicitud_sistolica;
+    document.getElementById(_l).value = data.solicitud_diastolica;
+    document.getElementById(_ll).value = data.solicitud_media;
+    document.getElementById(_m).value = data.solicitud_talla;
+    document.getElementById(_n).value = data.solicitud_peso;
+    document.getElementById(_o).value = data.solicitud_imc;
+    document.getElementById(_p).value = data.solicitud_paridad;
+    document.getElementById(_q).value = data.solicitud_antecedentes;
+
+    //determinar si es un dato del select o otro
+    var select = document.getElementById(_w);
+    var keyword = data.solicitud_diagnostico;
+    var optionCollection = Array.from(select.options).filter(x => x.text.toLowerCase().startsWith(keyword.toLowerCase()))
+    if (optionCollection.length > 0){
+        document.getElementById(_w).value = data.solicitud_diagnostico;
+        document.getElementById(_j).value = "";
+        document.getElementById(_j).classList.add("d-none");
+    }else{
+        document.getElementById(_w).value = "";
+        document.getElementById(_j).classList.remove("d-none");
+        document.getElementById(_j).value = data.solicitud_diagnostico;
+    }
+
+    $("#"+_d+", #"+_e).on("change", function(){
+        let EG = calcularEdadGestacional(modalModificar.fum, modalModificar.fecha);
+        document.getElementById(modalModificar.eg).value = EG.text;
+    });
+
+    $("#"+_w).on("change", function(){
+		let value = $(this).val();
+		if (value == ""){
+			$("#"+_j).val("");
+			$("#"+_j).removeClass("d-none");
+		}else{
+			$("#"+_j).val("");
+			$("#"+_j).addClass("d-none");
+		}
+    });
+
+    $("#"+_k).on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#"+modalModificar.diastolica).focus();
+		}
+
+		var A = $("#"+modalModificar.sistolica).val();
+		var B = $("#"+modalModificar.diastolica).val();
+
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
+
+		if (Number.isInteger(A) && Number.isInteger(B)){
+			A = parseInt(A) / 3;
+			B = parseInt(B) / 3;
+			$("#"+modalModificar.media).val(Math.trunc((B * 2) + (A)));
+		}else{
+			$("#"+modalModificar.media).val(0);
+		}
+    });
+    
+    $("#"+_l).on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#"+modalModificar.talla).focus();
+		}
+		var A = $("#"+modalModificar.sistolica).val();
+		var B = $("#"+modalModificar.diastolica).val();
+
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
+
+		if (Number.isInteger(A) && Number.isInteger(B)){
+			A = parseInt(A) / 3;
+			B = parseInt(B) / 3;
+			$("#"+modalModificar.media).val(Math.trunc((B * 2) + (A)));
+		}else{
+			$("#"+modalModificar.media).val(0);
+		}
+    });
+    
+
+    $("#"+_m).on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#"+modalModificar.peso).focus();
+		}
+		var A = $("#"+modalModificar.talla).val();
+		var B = $("#"+modalModificar.peso).val();
+
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
+
+		if (Number.isInteger(A) && Number.isInteger(B)){
+			var valor = ((B / (Math.pow(A, 2))) * 10000);
+			$("#"+modalModificar.imc).val(valor.toFixed(1));
+		}else{
+			$("#"+modalModificar.imc).val(0);
+		}
+    });
+    
+    $("#"+_n).on("keyup", function(e){
+		if ( e.which == 13 ) {
+			e.preventDefault();
+			$("#"+modalModificar.paridad).focus();
+		}
+		var A = $("#"+modalModificar.talla).val();
+		var B = $("#"+modalModificar.peso).val();
+
+		if (A != ""){ A = parseInt(A); }
+		if (B != ""){ B = parseInt(B); }
+
+		if (Number.isInteger(A) && Number.isInteger(B)){
+			var valor = ((B / (Math.pow(A, 2))) * 10000);
+			$("#"+modalModificar.imc).val(valor.toFixed(1));
+		}else{
+			$("#"+modalModificar.imc).val(0);
+		}
+	});
+    
+}
