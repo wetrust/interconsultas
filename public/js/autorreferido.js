@@ -500,25 +500,3 @@ function buildFinishTable(data){
 }
 
 function callModal(informe, solicitud){$("#exampleModal").data("informe", informe).data("solicitud", solicitud).modal("show");}
-
-function makeModal(button){
-    let id = uuidv4();
-    let titulo = uuidv4();
-    let contenido = uuidv4();
-    let _button = uuidv4();
-    let button_string = "";
-
-    if (typeof button !== typeof undefined){
-        button_string = '<button type="button" class="btn btn-primary" id="'+_button+'" data-modal="'+id+'">'+button+'</button>';
-    }
-
-    let resultado ={
-        id:id,
-        titulo:titulo,
-        contenido:contenido,
-        button:_button,
-        modal:'<div class="modal fade" tabindex="-1" role="dialog" id="'+id+'"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="'+titulo+'">Modal title</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="'+contenido+'"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>'+ button_string+'</div></div></div></div>'
-    }
-    
-    return resultado;
-}
