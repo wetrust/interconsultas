@@ -20,7 +20,7 @@ class PacientesModel
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id'), ':rut' => '%'.$paciente.'%', ':apellido' => '%'.$paciente.'%'));
 
-        return $query->fetch();
+        return $query->fetchAll();
     }
 
     public static function getPaciente($rut){
