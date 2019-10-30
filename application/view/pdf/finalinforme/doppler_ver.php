@@ -76,6 +76,9 @@
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td colspan="2">IMC Materno (Peso/Talla^2)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+        $this->pdf->Ln(1);
+        $html = '<table><tbody><tr><td colspan="2">Otros antecedentes clínicos relevantes</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(4);
     }
     else{
