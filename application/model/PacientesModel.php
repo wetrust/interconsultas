@@ -16,7 +16,7 @@ class PacientesModel
     public static function findPacienteID($paciente){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT id, nombre, apellido, rut, fum, ciudad, lugar, telefono FROM pacientes WHERE user_id = :user_id AND (rut like :rut OR apellido like :apellido) LIMIT 1";
+        $sql = "SELECT id, nombre, apellido, rut, fum, ciudad, lugar, telefono FROM pacientes WHERE user_id = :user_id AND (rut like :rut OR apellido like :apellido)";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id'), ':rut' => '%'.$paciente.'%', ':apellido' => '%'.$paciente.'%'));
 
