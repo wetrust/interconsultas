@@ -36,7 +36,6 @@ class ApiController extends Controller
         echo "<br>";
         $url = trim(Request::get('url'), '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
-        $url = explode('/', $url);
         echo $url;
         echo "<br>";
         
