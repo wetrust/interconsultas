@@ -27,11 +27,12 @@ class ApiController extends Controller
     }
 
     public function buscarpaciente($paciente){
-
+        
+        echo $paciente;
         //$paciente = html_entity_decode($paciente);
         //$paciente = Filter::XSSFilter($paciente);
         //$paciente = str_replace("_", " ",$paciente); 
-        $this->View->renderJSON($paciente);
+        //$this->View->renderJSON($paciente);
         //$this->View->renderJSON(PacientesModel::findPacienteID($paciente));
     }
 
