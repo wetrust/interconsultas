@@ -343,7 +343,7 @@ $(document).ready(function(){
 					$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">ERROR</h5></div><div class="modal-body"><p>Usted NO puede solicitar interconsulta para este profesional</p>'+ footerModal);
 				}else if (response.result == true){
 					$('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Información</h5></div><div class="modal-body"><p>Su Solicitud de interconsulta ha sido enviada correctamente</p>'+ footerModal);
-					$("#a").val(""); $("#b").val(""); $("#c").val(""); resetFecha("#d"); resetFecha("#e"); $("#d").trigger("change"); $("#g").val(25); $("#j").val(""); $("#k").val(""); $("#l").val(""); $("#ll").val(0); $("#m").val(""); $("#n").val(""); $("#o").val(0); $("#p").val(0); $("#q").val("");
+					$("#a").val(""); $("#b").val(""); $("#c").val(""); resetFecha("#d"); resetFecha("#e"); $("#d").trigger("change"); $("#g").val(25); $("#j").val(""); $("#k").val(""); $("#l").val(""); $("#ll").val(0); $("#m").val(""); $("#n").val(""); $("#o").val(0); $("#p").val(0); $("#q").val(""); $('#y').val("");
 				}
 
                 $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
