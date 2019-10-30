@@ -269,7 +269,7 @@ export class view {
     static buscarPaciente(){
         $("#paciente\\.buscar").on("keypress", function(){
             if ( event.which == 13 ) {
-                paciente = this.value;
+                let paciente = this.value;
 
                 cloud.findPaciente(paciente).then(function(data){
                     view.tablePacientes(data);
