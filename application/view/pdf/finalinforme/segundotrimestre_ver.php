@@ -135,32 +135,32 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
 
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica **</em></strong></td><td>DBP (Hadlock):</td><td>'. $this->respuesta_dbp.' mm.</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em><small>Biometría ecográfica **</small></em></strong></td><td><small>DBP (Hadlock):</small></td><td><small>'. $this->respuesta_dbp.' mm.</small></td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td></td><td>DOF (Jeanty):</td><td>'. $this->respuesta_dof.' mm</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>DOF (Jeanty):</small></td><td><small>'. $this->respuesta_dof.' mm</small></td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>Índice Cefálico (IC):</td><td>'. $this->respuesta_ic.'</td><td>(IC 70 a 86 %)</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>Índice Cefálico (IC):</small></td><td><small>'. $this->respuesta_ic.'</small></td><td><small>(IC 70 a 86 %)</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>CC (Hadlock):</td><td>'. $this->respuesta_cc.' mm.</td><td>Percentil: '. $this->respuesta_cc_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>CC (Hadlock):</small></td><td><small>'. $this->respuesta_cc.' mm.</small></td><td><small>Percentil: '. $this->respuesta_cc_pct.'</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>CA (Hadlock):</td><td>'. $this->respuesta_ca. ' mm.</td><td>Percentil: '. $this->respuesta_ca_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>CA (Hadlock):</small></td><td><small>'. $this->respuesta_ca. ' mm.</small></td><td><small>Percentil: '. $this->respuesta_ca_pct.'</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>LF (Hadlock):</td><td>'. $this->respuesta_lf.' mm.</td><td>Percentil: '. $this->respuesta_lf_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>LF (Hadlock):</small></td><td><small>'. $this->respuesta_lf.' mm.</small></td><td><small>Percentil: '. $this->respuesta_lf_pct.'</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>LH (Jeanty):</td><td>'. $this->respuesta_lh.' mm.</td><td>Percentil: '. $this->respuesta_lh_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>LH (Jeanty):</small></td><td><small>'. $this->respuesta_lh.' mm.</small></td><td><small>Percentil: '. $this->respuesta_lh_pct.'</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>Cerebelo (Hill) ***:</td><td>'. $this->respuesta_cerebelo.' mm.</td><td>Percentil: '. $this->respuesta_cerebelo_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>Cerebelo (Hill) ***:</small></td><td><small>'. $this->respuesta_cerebelo.' mm.</small></td><td><small>Percentil: '. $this->respuesta_cerebelo_pct.'</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td></td><td>Peso fetal estimado ****</td><td>'. $this->respuesta_pfe.' gr.</td><td>Percentil: '. $this->respuesta_pfe_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>Peso fetal estimado ****</small></td><td><small>'. $this->respuesta_pfe.' gr.</small></td><td><small>Percentil: '. $this->respuesta_pfe_pct.'</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
-    $html = '<table><tbody><tr><td></td><td>Índice Cc / Ca ****</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td><small>Índice Cc / Ca ****</small></td><td><small>'. $this->respuesta_ccca.'</small></td><td><small>Percentil: '. $this->respuesta_ccca_pct.'</small></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
     if (property_exists($this,"uterinas")){
         if ($this->uterinas != ""){
-            $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;">Doppler uterinas (promedio)</td><td style="background-color:#eceeef;">'. $this->uterinas.'</td><td style="background-color:#eceeef;">Percentil: '. $this->uterinas_percentil.'</td></tr></tbody></table>';
+            $html = '<table><tbody><tr><td></td><td style="background-color:#eceeef;"><small>Doppler uterinas (promedio)</small></td><td style="background-color:#eceeef;"><small>'. $this->uterinas.'</small></td><td style="background-color:#eceeef;"><small>Percentil: '. $this->uterinas_percentil.'</small></td></tr></tbody></table>';
             $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
             $this->pdf->Ln(4);
         }
