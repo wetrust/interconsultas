@@ -213,7 +213,11 @@ function buildFinishTable(data){
             let fecha = value.fecha.split('-');
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
             tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td><td>' + tipo +'</td><td>' + value.solicitud_email +'</td><td>'+ fecha +'</td>';
-            tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Graficas</button></td></tr>';
+            tabla += '<td><button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button>';
+            if (value.tipo == "0" || value.tipo == "2"){
+                tabla += '<button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Graficas</button>';
+            }
+            tabla += '</td></tr>';
         });
         tabla += '</tbody>';
         $('#tabla\\.resultado').append(tabla);
