@@ -1204,6 +1204,11 @@ function primerTrimerstre(){
             if (this.value == "act. no evidenciable" || this.value == "act. card. y corp. (-)"){
                 document.getElementsByName("respuesta_fcf")[0].parentElement.classList.add("d-none");
                 document.getElementsByName("respuesta_fcf")[0].value=0;
+                if (this.value == "act. card. y corp. (-)"){
+                    //esta muerto
+                    document.getElementsByName("respuesta_lcn_eg")[0].value = "";
+                    document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.add("d-none");
+                }
             }
             else if (this.value == "act. card. inicial"){
                 document.getElementsByName("respuesta_fcf")[0].value= "(+) inicial";
