@@ -91,7 +91,7 @@ $(document).ready(function(){
         semanas = 7 * semanas;
 
 		let fee = new Date(document.getElementById("e").value);
-		dias = (semanas + dias+1)*(1000*60*60*24);
+		dias = (semanas + dias-1)*(1000*60*60*24);
         fee.setTime(fee.getTime() - dias);
 
         document.getElementById("d").value = getDate(fee);
