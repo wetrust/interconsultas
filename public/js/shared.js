@@ -704,7 +704,7 @@ function loadInProcessData(data){
             document.getElementById("solicitud_diagnostico").value = data.solicitud_diagnostico;
             document.getElementById("solicitud_ciudad").value = data.solicitud_ciudad;
             document.getElementById("solicitud_lugar").value = data.solicitud_lugar;
-            document.getElementById("interconsulta.respuesta.fecha").value = setInputDate();
+            document.getElementById("interconsulta.respuesta.fecha").value = data.solicitud_fecha;
             var nombreprofesionalPegar = data.solicitud_nombre_referente;
             document.getElementById("respuesta_ecografista").value = nombreprofesionalPegar;
             $("#interconsulta\\.respuesta\\.fecha").trigger("change");
