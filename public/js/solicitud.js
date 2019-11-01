@@ -234,7 +234,7 @@ $(document).ready(function(){
 		var correoContrarreferente = String($("#u").val());
 
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
-        var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
+        var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button></div></div></div></div>';
 		
 		if (nombre.length < 3 || apellido.length < 3 || rut.length < 4 || fum.length < 4 || fecha.length < 4 || eg == "0 semanas" || diagnostico.length  < 3 || nombreReferente.length < 3 || correoReferente.length < 2){
 			var mensaje = "";
