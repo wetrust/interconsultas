@@ -260,7 +260,7 @@ export class view {
             semanas = 7 * semanas;
     
             let fum = new Date();
-            dias = (semanas + dias-1)*(1000*60*60*24);
+            dias = (semanas + dias)*(1000*60*60*24);
             fum.setTime(fum.getTime() - dias);
     
             the("fum").value = inputDate(fum);
