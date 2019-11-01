@@ -109,6 +109,8 @@ function createCarcasaNuevasModal(id){
     var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-id="'+id+'" data-modal="'+modal_id+'" class="btn btn-primary">Enviar respuesta</button><button type="button" class="btn btn-danger" id="'+btn_id+'" data-id="'+id+'" data-modal="'+modal_id+'">Cancelar solicitud</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button></div></div></div></div>';
     $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Interconsulta</h5></div><div class="modal-body"><div class="row" id="'+div_id+'"><div class="progress col-12 my-4"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><strong>CARGANDO</strong></div></div></div><div class="row g-verde"><div class="col-4 my-2 form-group"><label class="text-white">Fecha</label><input type="date" class="form-control" id="evaluacion_fecha"></div><div class="col my-2 form-group"><label class="text-white"><strong>Comentario</strong></label><input type="text" class="form-control" id="comentario"> </div></div>'+ footerModal);
 
+    $("#evaluacion_fecha").val(setInputDate());
+
     $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
         $(this).remove();
     });
