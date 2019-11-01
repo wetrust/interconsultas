@@ -57,10 +57,10 @@
         $html = '<table><tbody><tr><td colspan="2">RUT (DNI)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_rut).'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">Fecha solicitud de la ecografía</td><td colspan="2">: '.$solicitud_fecha.'</td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td colspan="2">FUR referida o corregida</td><td colspan="2">: '.$solicitud_fum.'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">FUR referida o corregida</td><td colspan="2">: '.$solicitud_fum.'</td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td colspan="2">Fecha solicitud de la ecografía</td><td colspan="2">: '.$solicitud_fecha.'</td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td colspan="2">Edad gestacional</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_egestacional).'</td><td></td></tr></tbody></table>';
