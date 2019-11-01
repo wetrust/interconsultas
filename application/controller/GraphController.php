@@ -328,6 +328,33 @@ class GraphController extends Controller
         $this->View->renderJSON($response);
     }
 
+    public function informe_once_catorce($solicitud_id){
+        $respuesta = RespuestaModel::getRespuesta($solicitud_id);
+        $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+        $respuesta->eg = explode (".", $respuesta->eg);
+        $respuesta->eg = $respuesta->eg[0];
+
+        $grafico_uno = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+        $grafico_dos = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+        $grafico_tres = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+        $grafico_cuatro = ($respuesta->cc > 0) ? array($respuesta->eg => $respuesta->cc) : array();
+        $grafico_cinco = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+        $grafico_seis = ($respuesta->lf > 0) ? array($respuesta->eg => $respuesta->lf) : array();
+
+        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/once_catorce_grafico_view', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+            'respuesta' => $respuesta,
+            'grafico_uno' => GraphModel::uterinas($grafico_uno),
+            'grafico_dos' => GraphModel::uterinas($grafico_dos),
+            'grafico_tres' => GraphModel::uterinas($grafico_tres),
+            'grafico_cuatro' => GraphModel::cc($grafico_cuatro),
+            'grafico_cinco' => GraphModel::ca($grafico_cinco),
+            'grafico_seis' => GraphModel::lf($grafico_seis),
+        ));
+    }
+
     public function informe_parto($solicitud_id){
         $respuesta = PartosModel::getPartos($solicitud_id);
         $paciente = SolicitudesModel::getOldSolicitudes($solicitud_id);

@@ -82,7 +82,7 @@ function buildFinishTable(data){
             value.solicitud_rut = value.solicitud_rut.replace(/\./g, "")
 
             tabla += '<td><button class="btn btn-secondary foto mr-1" data-id='+ value.solicitud_rut + ' data-fecha='+ fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
-            if (value.tipo == "0" || value.tipo == "2"){
+            if (value.tipo == "0" || value.tipo == "2" || value.tipo == "4"){
                 tabla += '<button class="btn btn-secondary informe mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Informe</button><button class="btn btn-secondary grafico" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Grafica</button></td></tr>';
             }
             else{
@@ -236,17 +236,13 @@ function buildFinishTable(data){
             let url = '';
             if (tipo == "0"){
                 url = 'graph/informe_dopplercrecimiento/';
-                $("#ver\\.interconsulta > div").addClass("h-100");
-                $("#ver\\.interconsulta > div > div").addClass("h-100");
-                $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
-                $('#ver\\.interconsulta\\.contenedor').empty();
-                $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+url+ solicitud_id+'" id="contenedorpdf"></iframe>')
-                $("#ver\\.interconsulta").modal("show");
-                $("#ver\\.interconsulta\\.footer").empty();
-                $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
             } else  if (tipo == "2"){
                 url = 'graph/informe_segundotrimestre/';
-                $("#ver\\.interconsulta > div").addClass("h-100");
+            } else  if (tipo == "4"){
+                url = 'graph/informe_once_catorce/';
+            }
+
+            $("#ver\\.interconsulta > div").addClass("h-100");
                 $("#ver\\.interconsulta > div > div").addClass("h-100");
                 $("#ver\\.interconsulta\\.titulo").html("PDF Interconsulta");
                 $('#ver\\.interconsulta\\.contenedor').empty();
@@ -254,7 +250,6 @@ function buildFinishTable(data){
                 $("#ver\\.interconsulta").modal("show");
                 $("#ver\\.interconsulta\\.footer").empty();
                 $("#ver\\.interconsulta\\.footer").prepend('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
-            }
         });
 
         $('#tabla\\.resultado tr > td > button.foto').on("click", function(){
