@@ -1216,6 +1216,7 @@ function primerTrimerstre(){
             }
             else{
                 document.getElementsByName("respuesta_fcf")[0].parentElement.classList.remove("d-none");
+                document.getElementsByName("respuesta_fcf")[0].value= "140";
             }
         }
     });
