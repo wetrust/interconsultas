@@ -90,8 +90,9 @@ $(document).ready(function(){
 
         semanas = 7 * semanas;
 
-        let fee = new Date(document.getElementById("e").value);
-        fee.setDate(fee.getUTCDate() - (semanas + dias));
+		let fee = new Date(document.getElementById("e").value);
+		dias = (semanas + dias)*(1000*60*60*24);
+        fee.setDate(fee.getTime() - dias);
 
         document.getElementById("d").value = getDate(fee);
         $("#d").trigger("change");
