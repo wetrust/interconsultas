@@ -151,16 +151,17 @@
         $translucencia =  $this->respuesta_translucencia_nucal . " mm";
     }
     
-    $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_dbp).'</td><td>'. $translucencia .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_translucidez_nucal).'</td><td>'. $translucencia .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     if (strlen($this->respuesta_hueso_nasal_valor) > 0){
         $this->respuesta_hueso_nasal_valor =  $this->respuesta_hueso_nasal_valor . " mm";
     }
-    $html = '<table><tbody><tr><td></td><td>Hueso Nasal: </td><td>'.htmlentities($this->respuesta_cc) .'</td><td>'. $this->respuesta_hueso_nasal_valor .'</td></tr></tbody></table>';
+
+    $html = '<table><tbody><tr><td></td><td>Hueso Nasal: </td><td>'.htmlentities($this->respuesta_hueso_nasal) .'</td><td>'. $this->respuesta_hueso_nasal_valor .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Ductus venoso: </td><td>'.htmlentities($this->respuesta_ca).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Ductus venoso: </td><td>'.htmlentities($this->respuesta_ductus_venoso).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>Reflujo tricuspídeo: </td><td>'.htmlentities($this->respuesta_lf).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Reflujo tricuspídeo: </td><td>'.htmlentities($this->respuesta_reflujo_tricuspideo).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     
     $this->pdf->Ln(4);
