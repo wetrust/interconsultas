@@ -532,7 +532,7 @@ function loadInProcessData(data){
         });
         $("#enviar\\.respuesta\\.botton").on("click", function(){
             var tipoExm = $('#interconsulta\\.respuesta\\.crecimiento').val();
-            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h4 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</h4><img src="https://crecimientofetal.cl/img/emoji.png" class="d-block mx-auto img-fluid h-50"><h4 class="mt-2 text-danger text-right text-uppercase">Favor espere</h4></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h4 class="text-danger text-center">ESTAMOS ENVIANDO SU RESPUESTA</h4><img src="https://crecimientofetal.cl/img/emoji.png" class="d-block mx-auto img-fluid h-50"><h4 class="mt-2 text-danger text-right text-uppercase">Favor espere</h4></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Espere</button></div></div></div></div>');
             $('#mensaje\\.dialogo').modal("show");
             $('#mensaje\\.dialogo').on('hidden.bs.modal', function (e) {
                 $('#mensaje\\.dialogo').modal("hide");
