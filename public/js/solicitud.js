@@ -92,7 +92,7 @@ $(document).ready(function(){
 
 		let fee = new Date(document.getElementById("e").value);
 		dias = (semanas + dias)*(1000*60*60*24);
-        fee.setDate(fee.getTime() - dias);
+        fee.setTime(fee.getTime() - dias);
 
         document.getElementById("d").value = getDate(fee);
         $("#d").trigger("change");
