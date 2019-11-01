@@ -189,7 +189,9 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(4);
 
-    if ($this->respuesta_lcn != ""){
+    $embrion = array("act. card. inicial", "con act. cardiaca (+)", "act. card. y corp. (+)");
+
+    if ($this->respuesta_lcn != "" && in_array($this->respuesta_embrion, $embrion) == true){
         $html = '<table><tbody><tr><td></td><td><strong>Ege según LCN:</strong></td><td>'. $this->respuesta_lcn_eg.' semanas*</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
