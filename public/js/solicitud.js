@@ -59,30 +59,29 @@ $(document).ready(function(){
 	});
 	
     $("#d, #e").on("change", function(){
-		var FExamen, FUM, EdadGestacional;
-		var undia = 1000 * 60 * 60 * 24;
-		var unasemana = undia * 7;
+		let fum = new Date(); 
+        fum.setTime(Date.parse(document.getElementById("d").value));
+        fum = fum.getTime();
+        let fee = new Date();
+        fee.setTime(Date.parse(document.getElementById("e").value));
+        fee = fee.getTime();
 
-		FUM = $("#d").val();
-		FExamen = $("#e").val();
+        //la fecha de exámen no puede ser anterior a la fecha de última regla
+        let diff = fee - fum;
 
-		FUM = new Date (FUM);
-		FExamen = new Date (FExamen);
+        if (diff > 0){
+            let dias = diff/(1000*60*60*24);
+            let semanas = Math.trunc(dias / 7);
 
-		EdadGestacional = ((FExamen.getTime() - FUM.getTime()) / unasemana).toFixed(1);
+            dias = Math.trunc(dias - (semanas * 7));
 
-		if (FExamen.getTime() < FUM.getTime()) {
-			$('#f').val("0");
-			$('#x').val("0");
-		}
-		else if (((FExamen.getTime() - FUM.getTime()) / unasemana) > 42) {
-			$('#f').val("42");
-			$('#x').val("0");
-		}
-		else {
-			$('#f').val(Math.floor(EdadGestacional));
-			$('#x').val(Math.round((EdadGestacional - Math.floor(EdadGestacional))*7))
-		}
+            document.getElementById("f").value = semanas;
+            document.getElementById("x").value = dias;
+        }
+        else{
+            document.getElementById("f").value = 0;
+            document.getElementById("x").value = 0;
+        }
 	});
 	
 	$("#f, #x").on("change", function(){
