@@ -235,7 +235,7 @@
     $_html = str_replace("\n", "<br>", $_html);
 
     if ($this->respuesta_saco_eg && $this->respuesta_lcn == ""){
-        $_html .= "<br>- <strong>Calculo inicial</strong> de edad gestacional según promedio de saco: ". $this->respuesta_saco_eg ." semanas<br>- Agendar próxima ecografía para determinar edad gestacional por LCN<br>";
+        $_html .= "<br>- <strong>Calculo inicial</strong> de edad gestacional según promedio de saco: ". $this->respuesta_saco_eg ." semanas<br>- Se sugiere agendar nuevo exámen para determinación de edad gestacional por largo embrionario<br>";
     }
 
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
