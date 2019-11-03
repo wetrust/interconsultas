@@ -1243,7 +1243,22 @@ function primerTrimerstre(){
     $("input[name='respuesta_lcn']").on("change", function(){eglcn();});
     $("input[name='respuesta_saco']").on("change", function(){
         $("input[name='respuesta_saco_eg']").val(egSaco(this.value));
+    }).keypress(function( event ) {
+        if ( event.which == 13 ) {
+           event.preventDefault();
+           $("input[name='respuesta_saco']").focus();
+        }
     });
+
+    $("select[name='respuesta_saco_vitelino']").on("change", function(){
+        if (this.value == "presente"){
+            document.getElementsByName("respuesta_saco_vitelino_mm")[0].parentElement.parentElement.classList.remove("d-none");
+        }
+        else{
+            document.getElementsByName("respuesta_saco_vitelino_mm")[0].parentElement.parentElement.classList.add("d-none");
+        }
+    });
+
     cargarFCF("respuesta_fcf");
 
     $("select[name='respuesta_embrion']").on("change", function(){
@@ -1254,7 +1269,7 @@ function primerTrimerstre(){
             document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.add("d-none");
             document.getElementsByName("respuesta_fcf")[0].parentElement.classList.add("d-none");
             document.getElementsByName("respuesta_fcf")[0].value=0;
-            document.getElementsByName("respuesta_comentariosexamen")[0].value = "Gestacion intrauterina única, exploración anexial de aspecto normal"
+            document.getElementsByName("respuesta_comentariosexamen")[0].value = "Gestación intrauterina única, exploración anexial de aspecto normal"
         }
         else{
             document.getElementsByName("respuesta_lcn")[0].parentElement.classList.remove("d-none");

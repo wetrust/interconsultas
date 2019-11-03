@@ -124,23 +124,23 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $this->pdf->Ln(1);
     if ($this->respuesta_saco_valor > 0){
-        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>promedio de saco:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td>promedio de saco:</td><td>'. $this->respuesta_saco_valor . ' mm.</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
     else{
-        $html = '<table><tbody><tr><td></td><td>Saco Gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco gestacional:</td><td>'. $this->respuesta_saco_gestacional.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);  
     }
 
     if ($this->respuesta_saco_vitelino_mm > 0){
-        $html = '<table><tbody><tr><td></td><td>Saco Vitelino:</td><td>'. $this->respuesta_saco_vitelino.'</td><td>medida de saco vitelino:</td><td>'. $this->respuesta_saco_vitelino_mm . ' mm.</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco vitelino:</td><td>'. $this->respuesta_saco_vitelino.'</td><td>medida de saco vitelino:</td><td>'. $this->respuesta_saco_vitelino_mm . ' mm.</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
     else{
-        $html = '<table><tbody><tr><td></td><td>Saco Vitelino:</td><td>'. $this->respuesta_saco_vitelino.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Saco vitelino:</td><td>'. $this->respuesta_saco_vitelino.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);  
     }
@@ -186,17 +186,17 @@
         $fpplcn = explode("-", $fpplcn);
         $fpplcn = $fpplcn[2] . "-". $fpplcn[1]. "-". $fpplcn[0];
 
-        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }else{
-        $html = '<table><tbody><tr><td></td><td>Anexo Izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo izquierdo:</td><td>'. $this->respuesta_anexo_izquierdo_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td></td><td>Anexo Derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td></td><td>Anexo derecho:</td><td>'. $this->respuesta_anexo_derecho_primertrimestre.'</td><td></td><td></td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);
     }
