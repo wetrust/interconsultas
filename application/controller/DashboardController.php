@@ -177,7 +177,9 @@ class DashboardController extends Controller
                 'respuesta_eg' => $respuesta_eg,
                 'ecografista' => $respuesta_ecografista,
                 'comentariosexamen' => $respuesta_comentariosexamen,
-                'respuesta_lcn_eg' => $respuesta_lcn_eg
+                'respuesta_lcn_eg' => $respuesta_lcn_eg,
+                'respuesta_saco_vitelino' => $respuesta_saco_vitelino,
+                'respuesta_saco_vitelino_mm' => $respuesta_saco_vitelino_mm
             ));
             
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud eco primer trimestre',$respuesta_crecimiento);

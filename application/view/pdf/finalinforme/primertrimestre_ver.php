@@ -133,6 +133,18 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
         $this->pdf->Ln(1);  
     }
+
+    if ($this->respuesta_saco_vitelino_mm > 0){
+        $html = '<table><tbody><tr><td></td><td>Saco Vitelino:</td><td>'. $this->respuesta_saco_vitelino.'</td><td>medida de saco vitelino:</td><td>'. $this->respuesta_saco_vitelino_mm . ' mm.</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);
+    }
+    else{
+        $html = '<table><tbody><tr><td></td><td>Saco Vitelino:</td><td>'. $this->respuesta_saco_vitelino.'</td><td></td><td></td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+        $this->pdf->Ln(1);  
+    }
+
     if ($this->respuesta_fcf > 0){
         $html = '<table><tbody><tr><td></td><td>Embrión:</td><td>'. $this->respuesta_embrion.'</td><td>frecuencia cardiaca fetal:</td><td>'. $this->respuesta_fcf.'</td></tr></tbody></table>';
     }
