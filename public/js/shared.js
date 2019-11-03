@@ -574,6 +574,11 @@ function loadInProcessData(data){
                 args.respuesta_uterina_izquierda_percentil = $('input[name="respuesta_uterina_izquierda_percentil"]').val(),
                 args.respuesta_uterinas = $('input[name="respuesta_uterinas"]').val(),
                 args.respuesta_uterinas_percentil = $('input[name="respuesta_uterinas_promedio"]').val()
+
+                args.respuesta_lf_pct = args.respuesta_lf_pct.replace("Pct. ", "");
+                args.respuesta_cc_pct = args.respuesta_cc_pct.replace("Pct. ", "");
+                args.respuesta_ca_pct = args.respuesta_ca_pct.replace("Pct. ", "");
+                
             }
             else if (tipoExm == 3){
                 args.respuesta_utero_ginecologica = $('input[name="respuesta_utero_ginecologica"]').val(),
