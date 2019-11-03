@@ -41,7 +41,7 @@
     $fecha = explode("-", $this->respuesta_fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
 
-    $html = '<h4>RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA DOPPLER 11 - 14 SEMANAS</h4>';
+    $html = '<h4 style="border-bottom:1px solid #000;text-align: center;">RESUMEN PROTOCOLO DE REFERENCIA Y CONTRARREFERENCIA PARA ECOGRAFÍA DOPPLER 11 - 14 SEMANAS</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(4);
 
@@ -50,22 +50,13 @@
     $this->pdf->Ln(2);
 
     if (Session::get("user_account_type") == 4) {
-        $html = '<table><tbody><tr><td colspan="2">Nombre del paciente</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td><td>Edad: '.htmlentities($this->solicitud->solicitud_ematerna).' años</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">Edad</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_ematerna).' años</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td><td>FUR referida o corregida: '.$solicitud_fum.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">RUT (DNI)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-        $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">Fecha solicitud de la ecografía</td><td colspan="2">: '.$solicitud_fecha.'</td></tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-        $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">FUR referida o corregida</td><td colspan="2">: '.$solicitud_fum.'</td></tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-        $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">Edad gestacional</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Fecha solicitud de la ecografía: '.$solicitud_fecha.'</td><td>Edad gestacional: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td colspan="2">Motivo de exámen</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
@@ -126,9 +117,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     
-    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha .'</td></tr></tbody></table>';
-    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td>Edad Gestacional: '. htmlentities($this->respuesta_eg) .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha .'</td><td>Edad Gestacional: '. htmlentities($this->respuesta_eg) .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td><strong><em>Descripción</em></strong></td><td>Embrión: '. htmlentities($this->respuesta_embrion) .'</td><td></td><td>Frecuencia cardiaca fetal: '. htmlentities($this->respuesta_fcf) .'</td></tr></tbody></table>';
@@ -140,6 +129,14 @@
     $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Largo embrionario (LCN): *</td><td>'.htmlentities($this->respuesta_lcn).' mm.</td><td>EG x LCN: '.htmlentities($this->respuesta_lcn_eg).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
+    $html = '<table><tbody><tr><td></td><td>DBP:</td><td>'.htmlentities($this->dbp).'</td><td></td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>CC:</td><td>'.htmlentities($this->cc).'</td><td></td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>CA:</td><td>'.htmlentities($this->ca).'</td><td></td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+    $html = '<table><tbody><tr><td></td><td>LF:</td><td>'.htmlentities($this->lf).'</td><td></td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Uterina Derecha:</td><td>'.htmlentities($this->uterina_derecha).'</td><td>Percentil: '.$this->uterina_derecha_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Uterina Izquierda:</td><td>'.htmlentities($this->uterina_izquierda).'</td><td>Percentil: '.$this->uterina_izquierda_percentil.'</td></tr></tbody></table>';

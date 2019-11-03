@@ -186,7 +186,11 @@ class PdfController extends Controller
             'uterinas' => $respuesta->uterinas,
             'uterinas_percentil' => $respuesta->uterinas_percentil,
             'ecografista' => $respuesta->ecografista,
-            'comentariosexamen' => $respuesta->comentariosexamen
+            'comentariosexamen' => $respuesta->comentariosexamen,
+            'dbp' => $respuesta->dbp,
+            'cc' => $respuesta->cc,
+            'ca' => $respuesta->ca,
+            'lf' => $respuesta->lf
         ));
     }
 }
