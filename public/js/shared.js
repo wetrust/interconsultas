@@ -1277,7 +1277,7 @@ function primerTrimerstre(){
             document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.add("d-none");
             document.getElementsByName("respuesta_fcf")[0].parentElement.classList.add("d-none");
             document.getElementsByName("respuesta_fcf")[0].value=0;
-            document.getElementsByName("respuesta_comentariosexamen")[0].value = "Gestación de " + $("input[name='solicitud_egestacional']").val()+" en referencia a ecografías previas.";
+            document.getElementsByName("respuesta_comentariosexamen")[0].value = "Gestación de " + $("#solicitud_egestacional").val()+" en referencia a ecografías previas.";
         }else{
             document.getElementsByName("respuesta_lcn")[0].parentElement.classList.remove("d-none");
             document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.remove("d-none");
