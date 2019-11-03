@@ -1274,7 +1274,7 @@ function primerTrimerstre(){
                 document.getElementsByName("respuesta_fcf")[0].value= "140";
             }
         }
-    });
+    }).trigger("change");
     document.getElementsByName("respuesta_fcf")[0].value=0;
 }
 function multiproposito(){
