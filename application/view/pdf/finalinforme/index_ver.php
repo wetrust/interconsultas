@@ -144,7 +144,6 @@
     $this->pdf->Ln(8);
 
     $_html = strip_tags($this->solicitud_resultado->comentariosexamen);
-    $_html = strtoupper($_html);
     $_html = str_replace("\n", "<br>", $_html);
 
     $html = '<table><tbody><tr><td style="width:170px"><strong><em>Comentarios y observaciones:</em></strong><br><small>( Valoración clínica del profesional ecografista )</small></td><td style="width:450px">' . $_html .'</td></tr></tbody></table>';
