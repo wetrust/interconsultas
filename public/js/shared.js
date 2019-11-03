@@ -639,7 +639,9 @@ function loadInProcessData(data){
                 args.respuesta_anexo_izquierdo_primertrimestre = $('select[name="respuesta_anexo_izquierdo_primertrimestre"]').val(),
                 args.respuesta_anexo_derecho_primertrimestre = $('select[name="respuesta_anexo_derecho_primertrimestre"]').val(),
                 args.respuesta_douglas_primertrimestre = $('select[name="respuesta_douglas_primertrimestre"]').val(),
-                args.respuesta_fcf = $('select[name="respuesta_fcf"]').val()
+                args.respuesta_fcf = $('select[name="respuesta_fcf"]').val(),
+                args.respuesta_saco_vitelino = $('select[name="respuesta_saco_vitelino"]').val(),
+                args.respuesta_saco_vitelino_mm = $('input[name="respuesta_saco_vitelino_mm"]').val()
             }
             else{
                 args.respuesta_pfe = $('input[name="respuesta_pfe"]').val(),
