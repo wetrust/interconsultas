@@ -1,5 +1,4 @@
 <?php
-
 //Pequeño sistema para generar informes de primer, segundo / tercer trimestre y doppler
 //depente de PdfModel(crea los pdf) y de procesadorModel(Evalua las reglas de negocio de los datos enviados)
 
