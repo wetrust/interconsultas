@@ -1242,11 +1242,11 @@ function primerTrimerstre(){
     document.getElementById("contenedor.examenes").innerHTML = html;
     $("input[name='respuesta_lcn']").on("change", function(){eglcn();});
     $("input[name='respuesta_saco']").on("change", function(){
-    $("input[name='respuesta_saco_eg']").val(egSaco(this.value));
+        $("input[name='respuesta_saco_eg']").val(egSaco(this.value));
     }).keypress(function( event ) {
         if ( event.which == 13 ) {
            event.preventDefault();
-           $("input[name='respuesta_saco_vitelino']").focus();
+           $("input[name='respuesta_saco_vitelino_mm']").focus();
         }
     });
 
