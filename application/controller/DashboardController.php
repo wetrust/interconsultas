@@ -312,7 +312,7 @@ class DashboardController extends Controller
                 'uterinas' => $respuesta_uterinas,
                 'uterinas_percentil' => $respuesta_uterinas_percentil,
                 'ecografista' => $respuesta_ecografista,
-                'comentariosexamen' => $respuesta_comentariosexamen
+                'comentariosexamen' => $respuesta_comentariosexamen,
                 'dbp' => $respuesta_dbp,
                 'cc' => $respuesta_cc,
                 'ca' => $respuesta_ca,
