@@ -1270,8 +1270,14 @@ function primerTrimerstre(){
             document.getElementsByName("respuesta_fcf")[0].parentElement.classList.add("d-none");
             document.getElementsByName("respuesta_fcf")[0].value=0;
             document.getElementsByName("respuesta_comentariosexamen")[0].value = "Gestación intrauterina única, exploración anexial de aspecto normal"
-        }
-        else{
+        }else if (this.value == "no se observa"){
+            document.getElementsByName("respuesta_lcn")[0].parentElement.classList.add("d-none");
+            document.getElementsByName("respuesta_lcn")[0].value="";
+            document.getElementsByName("respuesta_lcn_eg")[0].value = "";
+            document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.add("d-none");
+            document.getElementsByName("respuesta_fcf")[0].parentElement.classList.add("d-none");
+            document.getElementsByName("respuesta_fcf")[0].value=0;
+        }else{
             document.getElementsByName("respuesta_lcn")[0].parentElement.classList.remove("d-none");
             document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.remove("d-none");
             document.getElementsByName("respuesta_lcn_eg")[0].value = "Ingrese LCN";

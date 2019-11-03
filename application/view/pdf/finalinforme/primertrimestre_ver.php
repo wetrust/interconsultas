@@ -246,7 +246,7 @@
     $_html = strip_tags($this->comentariosexamen);
     $_html = str_replace("\n", "<br>", $_html);
 
-    if ($this->respuesta_saco_eg && $this->respuesta_lcn == ""){
+    if ($this->respuesta_saco_eg && $this->respuesta_lcn == "" && $this->respuesta_embrion == "no se observa aun"){
         $_html .= "<br>- <strong>Calculo inicial</strong> de edad gestacional según promedio de saco = ". $this->respuesta_saco_eg ." semanas<br>- Se sugiere agendar nuevo exámen para determinación de edad gestacional mediante largo embrionario (LCN)<br>";
     }
 
