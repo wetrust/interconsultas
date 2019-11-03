@@ -1262,7 +1262,7 @@ function primerTrimerstre(){
                     //esta muerto
                     document.getElementsByName("respuesta_lcn_eg")[0].value = "";
                     document.getElementsByName("respuesta_lcn_eg")[0].parentElement.classList.add("d-none");
-                    document.getElementsByName("respuesta_comentariosexamen")[0].value = "Evaluación ecográfica compatible con aborto retenido.";
+                    document.getElementsByName("respuesta_comentariosexamen")[0].value = "Evaluación ecográfica compatible con aborto retenido.\nSe sugiere reevaluar en .....";
                 }
             }
             else if (this.value == "act. card. inicial"){
