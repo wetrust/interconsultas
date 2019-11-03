@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $this->View->renderJSON(SolicitudesModel::getSolicitudJoin($solicitud_id));
     }
 
-    public function editSave(){ 
+    public function editSave(){
         $solicitud_id = Request::post('solicitud_id');
         $evaluacion_fecha = Request::post('evaluacion_fecha');
         $comentario = Request::post('comentario');
@@ -315,8 +315,11 @@ class DashboardController extends Controller
                 'comentariosexamen' => $respuesta_comentariosexamen,
                 'dbp' => $respuesta_dbp,
                 'cc' => $respuesta_cc,
+                'cc_pct' => $respuesta_cc_pct,
                 'ca' => $respuesta_ca,
-                'lf' => $respuesta_lf
+                'ca_pct' => $respuesta_ca_pct,
+                'lf' => $respuesta_lf,
+                'lf_pct' => $respuesta_lf_pct,
             ));
             EmailModel::sendRespuestaContrarreferente($data, 'Solicitud de ecografia 11-14',$respuesta_crecimiento);
         }

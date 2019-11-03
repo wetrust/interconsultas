@@ -127,11 +127,11 @@
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td>DBP:</td><td>'.htmlentities($this->dbp).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>CC:</td><td>'.htmlentities($this->cc).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>CC:</td><td>'.htmlentities($this->cc).'</td><td>Percentil: '.$this->cc_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>CA:</td><td>'.htmlentities($this->ca).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>CA:</td><td>'.htmlentities($this->ca).'</td><td>Percentil: '.$this->ca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>LF:</td><td>'.htmlentities($this->lf).'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>LF:</td><td>'.htmlentities($this->lf).'</td><td>Percentil: '.$this->lf_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>IP Uterina Derecha:</td><td>'.htmlentities($this->uterina_derecha).'</td><td>Percentil: '.$this->uterina_derecha_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);

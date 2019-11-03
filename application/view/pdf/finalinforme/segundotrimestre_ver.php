@@ -6,32 +6,20 @@
     $this->pdf->SetSubject('TCPDF Tutorial');
     $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-    // set default header data
-    //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 009', PDF_HEADER_STRING);
-
-    // set header and footer fonts
-    //$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-    //$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
     // set default monospaced font
     $this->pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
     // set margins
     $this->pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP+5, PDF_MARGIN_RIGHT);
     $this->pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $this->pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
     $this->pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-    // -------------------------------------------------------------------
-
     // add a page
     $this->pdf->AddPage('P', 'LETTER');
 
     // set JPEG quality
     $this->pdf->setJPEGQuality(90);
-
     $this->pdf->SetFont('Helvetica', '', 9);
-    
+
     $fecha = explode("-", $this->respuesta_fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
     $solicitud_fecha = explode("-", $this->solicitud->solicitud_fecha);
@@ -59,16 +47,16 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         if (property_exists($this,"uterinas")){
             if ($this->uterinas != ""){
-            $this->pdf->Ln(1);
-            $html = '<table><tbody><tr><td colspan="2">Otros antecedentes clínicos relevantes</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
-            $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-            $this->pdf->Ln(1);
-            $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
-            $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-        }}
+                $this->pdf->Ln(1);
+                $html = '<table><tbody><tr><td colspan="2">Otros antecedentes clínicos relevantes</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
+                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+                $this->pdf->Ln(1);
+                $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
+                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+            }
+        }
         $this->pdf->Ln(4);
-    }
-    else{
+    }else{
         $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
@@ -95,14 +83,13 @@
                 $html = '<table><tbody><tr><td></td><td>Email: '.htmlentities($this->solicitud->solicitud_email).'</td></tr></tbody></table>';
                 $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);  
             }
-        }
-        else{
+        }else{
             $html = '<table><tbody><tr><td style="background-color:#eceeef;">Referente a exámen: '.htmlentities($this->solicitud->solicitud_profesional).'</td><td>Nombre: '.htmlentities($this->solicitud->solicitud_nombreprofesional).'</td></tr></tbody></table>';
             $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
             $html = '<table><tbody><tr><td></td><td>Email: '.htmlentities($this->solicitud->solicitud_email).'</td></tr></tbody></table>';
             $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         }
-    
+
         $this->pdf->Ln(2);
         $html = '<table><tbody><tr><td style="background-color:#eceeef;">Ecografista de contrarreferencia</td><td>Nombre: '.htmlentities($this->solicitud->solicitud_nombre_referente).'</td></tr><tr><td></td><td>Email: '.htmlentities($this->solicitud->solicitud_profesionalemail).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
@@ -111,13 +98,14 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         if (property_exists($this,"uterinas")){
             if ($this->uterinas != ""){
-            $this->pdf->Ln(1);
-            $html = '<table><tbody><tr><td colspan="2">Otros antecedentes clínicos relevantes</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
-            $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-            $this->pdf->Ln(1);
-            $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
-            $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-        }}
+                $this->pdf->Ln(1);
+                $html = '<table><tbody><tr><td colspan="2">Otros antecedentes clínicos relevantes</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
+                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+                $this->pdf->Ln(1);
+                $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
+                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+            }
+        }
         $this->pdf->Ln(4);
     }
 
@@ -188,7 +176,6 @@
     $this->pdf->Output('Informe.pdf', 'I');
 
     //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
-
     //echo $base64;
 
     //Edad gestacional actual

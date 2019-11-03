@@ -2,15 +2,13 @@
 //Pequeño sistema para generar informes de primer, segundo / tercer trimestre y doppler
 //depente de PdfModel(crea los pdf) y de procesadorModel(Evalua las reglas de negocio de los datos enviados)
 
-class PdfController extends Controller
-{
-    public function __construct()
-    {
+class PdfController extends Controller{
+
+    public function __construct(){
         parent::__construct();
     }
 
-    public function informe_crecimiento()
-    {
+    public function informe_crecimiento(){
         header("Access-Control-Allow-Origin: https://administrador.crecimientofetal.cl");
         header("Content-Type: application/pdf");
         $this->View->renderWithoutHeaderAndFooter('pdf/segundotrimestre/respaldo', 
@@ -20,8 +18,7 @@ class PdfController extends Controller
         ));
     }
 
-    public function informe_primer_trimestre()
-    {
+    public function informe_primer_trimestre(){
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/pdf");
         $this->View->renderWithoutHeaderAndFooter('pdf/segundotrimestre/respaldo', 
@@ -31,8 +28,7 @@ class PdfController extends Controller
         ));
     }
 
-    public function informe_prueba($solicitud_id)
-    {
+    public function informe_prueba($solicitud_id){
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
@@ -188,8 +184,11 @@ class PdfController extends Controller
             'comentariosexamen' => $respuesta->comentariosexamen,
             'dbp' => $respuesta->dbp,
             'cc' => $respuesta->cc,
+            'cc_pct' => $respuesta->cc_pct,
             'ca' => $respuesta->ca,
-            'lf' => $respuesta->lf
+            'ca_pct' => $respuesta->ca_pct,
+            'lf' => $respuesta->lf,
+            'lf_pct' => $respuesta->lf_pct,
         ));
     }
 }
