@@ -113,10 +113,10 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
 
-    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha .'</td><td>Edad Gestacional: '. htmlentities($this->respuesta_eg) .'</td><td></td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha .'</td><td>Edad Gestacional: '. htmlentities($this->respuesta_eg) .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong><em>Descripción</em></strong></td><td>Embrión: '. htmlentities($this->respuesta_embrion) .'</td><td></td><td>Frecuencia cardiaca fetal: '. htmlentities($this->respuesta_fcf) .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Descripción</em></strong></td><td>Embrión: '. htmlentities($this->respuesta_embrion) .'</td><td></td><td>Frecuencia cardiaca fetal: '. htmlentities($this->respuesta_fcf) .'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="width:163px"></td><td>Anatomía fetal: '.htmlentities($this->respuesta_anatomia). ' '.htmlentities($this->respuesta_anatomia_extra).'</td></tr></tbody></table>';
