@@ -311,11 +311,11 @@ class GraphModel
         $values = DataModel::uterinas();
 
         $values[0] = array_filter($values[0], function($k) {
-            return intval($k) < 21;
+            return intval($k) < 16;
         }, ARRAY_FILTER_USE_KEY);
 
         $values[1] = array_filter($values[1], function($k) {
-            return intval($k) < 21;
+            return intval($k) < 16;
         }, ARRAY_FILTER_USE_KEY);
 
         if (count($data)>0){
@@ -340,11 +340,11 @@ class GraphModel
 
         //filtrar y dejar todos los valores menos a 20
         $values[0] = array_filter($values[0], function($k) {
-            return intval($k) < 21;
+            return intval($k) < 16;
         }, ARRAY_FILTER_USE_KEY);
 
         $values[1] = array_filter($values[1], function($k) {
-            return intval($k) < 21;
+            return intval($k) < 16;
         }, ARRAY_FILTER_USE_KEY);
 
         if (count($data)>0){
@@ -368,11 +368,11 @@ class GraphModel
 
         //filtrar y dejar todos los valores menos a 20
         $values[0] = array_filter($values[0], function($k) {
-            return intval($k) < 21;
+            return intval($k) < 16;
         }, ARRAY_FILTER_USE_KEY);
         
         $values[1] = array_filter($values[1], function($k) {
-            return intval($k) < 21;
+            return intval($k) < 16;
         }, ARRAY_FILTER_USE_KEY);
 
         if (count($data)>0){
