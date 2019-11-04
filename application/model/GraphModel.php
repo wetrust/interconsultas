@@ -284,7 +284,7 @@ class GraphModel
     public static function lcn_once($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Largo Embrionario en mm (45 a 84 mm)';
-        $settings["axis_min_h"] = '10';
+        $settings["axis_min_h"] = '11';
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '105';
         $settings["grid_division_v"] = '5';
@@ -303,7 +303,7 @@ class GraphModel
     public static function uterinas_once($data){
         $settings = self::settings();
         $settings["graph_title"] = 'IP Promedio de Uterina';
-        $settings["axis_min_h"] = '10';
+        $settings["axis_min_h"] = '11';
         $settings["axis_min_v"] = '0.1';
         $settings["axis_max_v"] = '3.6';
         $settings["grid_division_v"] = '1.2';
