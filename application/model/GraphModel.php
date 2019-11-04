@@ -283,7 +283,7 @@ class GraphModel
     //funciones para gráficas de 11-14
     public static function lcn_once($data){
         $settings = self::settings();
-        $settings["graph_title"] = 'Perímetro abdominal';
+        $settings["graph_title"] = 'Largo Embrionario en mm (45 a 84 mm)';
         $settings["axis_min_h"] = '10';
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '105';
