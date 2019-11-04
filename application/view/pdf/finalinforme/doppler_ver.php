@@ -59,10 +59,10 @@
         $html = '<table><tbody><tr><td>Fecha solicitud de la ecografía: '.$solicitud_fecha.'</td><td>Edad gestacional: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">Motivo de exámen</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td colspan="2">Motivo de exámen ecográfico</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td colspan="2">Presión arterial media ((PAS- (PAD/3))+ PAD)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_media).'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td colspan="2">Presión arterial media ((PAS- (PAD/3))+ PAD)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td colspan="2">IMC Materno (Peso/Talla^2)</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
@@ -197,7 +197,8 @@
 
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
-    $html = '<p><small>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992. <br>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., <br>Puerto B., Gratacos E., UOG 2008; 32: 128-32 <br><br>El software no dispone aún de algoritmos matemáticos que permitan ponderar grado de riesgo para cromosomopatía y preeclampsia.<br><br>Nota: Examenes ecográficos destinados a evaluar biometría fetal; edad gestacional, crecimiento fetal y/o flujometria Doppler de arterias uterinas. El rendimiento diagnóstico del examen ecográfico depende de múltiples factores tanto maternos como fetales, edad gestacional al momento del examen, posición fetal, interposición de partes fetales (manos, pies) o anexos (placenta, cordón umbilical), En las mejores series de detección de malformaciones fetales publicadas en la literatura nacional e internacional no alcanza el 100% y por lo tanto es importante correlacionar resultado obtenidos en función del contexto clínico de la paciente y antecedentes de gestaciones previas.</small></p>';
+    $html = '<p><small>*Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992. <br>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., <br>Puerto B., Gratacos E., UOG 2008; 32: 128-32 <br><br>Nota: Examenes ecográficos destinados a evaluar biometría fetal; edad gestacional, crecimiento fetal y/o flujometria Doppler de arterias uterinas. El rendimiento diagnóstico del examen ecográfico depende de múltiples factores tanto maternos como fetales, edad gestacional al momento del examen, posición fetal, interposición de partes fetales (manos, pies) o anexos (placenta, cordón umbilical), En las mejores series de detección de malformaciones fetales publicadas en la literatura nacional e internacional no alcanza el 100% y por lo tanto es importante correlacionar resultado obtenidos en función del contexto clínico de la paciente y antecedentes de gestaciones previas.</small></p>';
+    $html .= '<p>El software no dispone aún de algoritmos matemáticos que permitan ponderar grado de riesgo para cromosomopatía y preeclampsia.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     //para enviar por email
     //$tmp = Config::get('PATH_AVATARS');
