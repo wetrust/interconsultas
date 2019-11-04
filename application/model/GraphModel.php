@@ -286,7 +286,7 @@ class GraphModel
         $settings["graph_title"] = 'Perímetro abdominal';
         $settings["axis_min_h"] = '10';
         $settings["axis_min_v"] = '20';
-        $settings["axis_max_v"] = '85';
+        $settings["axis_max_v"] = '105';
         $settings["grid_division_v"] = '5';
         $settings["grid_division_h"] = '1';
         $values = DataModel::lcn();
