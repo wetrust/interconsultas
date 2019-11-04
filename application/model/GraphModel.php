@@ -310,6 +310,15 @@ class GraphModel
         $settings["grid_division_h"] = '1';
         $values = DataModel::uterinas();
 
+
+        $values[0] = array_filter($values[0], function($k) {
+            return intval($k) > 10;
+        }, ARRAY_FILTER_USE_KEY);
+
+        $values[1] = array_filter($values[1], function($k) {
+            return intval($k) > 10;
+        }, ARRAY_FILTER_USE_KEY);
+
         $values[0] = array_filter($values[0], function($k) {
             return intval($k) < 15;
         }, ARRAY_FILTER_USE_KEY);
