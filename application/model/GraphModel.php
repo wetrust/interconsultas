@@ -332,7 +332,7 @@ class GraphModel
         $settings["graph_title"] = 'Perímetro de Cráneo';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
-        $settings["axis_max_v"] = '130';
+        $settings["axis_max_v"] = '120';
         $settings["grid_division_v"] = '10';
         $settings["grid_division_h"] = '1';
 
@@ -361,7 +361,7 @@ class GraphModel
         $settings["graph_title"] = 'Perímetro abdominal';
         $settings["axis_min_h"] = '12';
         $settings["axis_min_v"] = '20';
-        $settings["axis_max_v"] = '130';
+        $settings["axis_max_v"] = '120';
         $settings["grid_division_v"] = '10';
         $settings["grid_division_h"] = '1';
         $values = DataModel::ca();
