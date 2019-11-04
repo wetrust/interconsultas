@@ -30,12 +30,8 @@
     $html = '<h4 style="border-bottom:1px solid #000;">C- RESUMEN GRÁFICAS DE BIOMETRÍAS ECOGRÁFICAS Y FLUJOMETRÍA DOPPLER MATERNO FETAL</h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
-    if (property_exists($this,"respuesta")){
-        $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-        $html = '<table><tbody><tr><td>Fecha de ecografía: '.$solicitud_fecha.'</td><td>EG: '.$this->respuesta->eg.' semanas</td></tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    }
+    $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud_nombre . " " . $this->solicitud_apellido).'</td><td>RUT (DNI): '.htmlentities($this->solicitud_rut).'</td></tr></tbody></table>';
+    $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
 
     if ($this->grafico_uno){

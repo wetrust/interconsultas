@@ -1,7 +1,6 @@
 <?php
 
-class DashboardController extends Controller
-{
+class DashboardController extends Controller{
     public function __construct(){
         parent::__construct();
         Auth::checkAuthentication();
@@ -788,5 +787,4 @@ class DashboardController extends Controller
         
         $this->View->renderJSON($response);
     }
-
 }

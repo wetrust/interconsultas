@@ -35,13 +35,8 @@ class GraphController extends Controller
 
     public function informe_dopplercrecimiento_rut($solicitud_rut){
         $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 0);
-        
-        $grafico_uno = array();
-        $grafico_dos = array();
-        $grafico_tres = array();
-        $grafico_cuatro = array();
-        $grafico_cinco = array();
-        $grafico_seis = array();
+
+        $grafico_uno = array(); $grafico_dos = array(); $grafico_tres = array(); $grafico_cuatro = array(); $grafico_cinco = array(); $grafico_seis = array();
 
         foreach ($respuestas as $respuesta) {
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
@@ -68,9 +63,14 @@ class GraphController extends Controller
             }
         }
 
+        $respuestas = $respuestas[count($respuestas)-1];
+
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud_nombre' => $respuestas->solicitud_nombre,
+            'solicitud_apellido' => $respuestas->solicitud_apellido,
+            'solicitud_rut' => $respuestas->solicitud_rut,
             'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
             'grafico_dos' => GraphModel::ca($grafico_dos),
             'grafico_tres' => GraphModel::uterinas($grafico_tres),
