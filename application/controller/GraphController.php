@@ -334,6 +334,9 @@ class GraphController extends Controller
         $respuesta->eg = explode (".", $respuesta->eg);
         $respuesta->eg = $respuesta->eg[0];
 
+
+        //grafico_uno lcn
+        //grafico_tres dbp
         $grafico_uno = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
         $grafico_dos = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
         $grafico_tres = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
@@ -346,7 +349,7 @@ class GraphController extends Controller
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'respuesta' => $respuesta,
-            'grafico_uno' => GraphModel::uterinas($grafico_uno),
+            'grafico_uno' => GraphModel::uterinas_once($grafico_uno),
             'grafico_dos' => GraphModel::uterinas($grafico_dos),
             'grafico_tres' => GraphModel::uterinas($grafico_tres),
             'grafico_cuatro' => GraphModel::cc($grafico_cuatro),

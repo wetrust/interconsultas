@@ -279,6 +279,37 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
+
+    //funciones para gráficas de 11-14
+
+    public static function uterinas_once($data){
+        $settings = self::settings();
+        $settings["graph_title"] = 'IP Promedio de Uterina';
+        $settings["axis_min_h"] = '10';
+        $settings["axis_min_v"] = '0.1';
+        $settings["axis_max_v"] = '3.6';
+        $settings["grid_division_v"] = '1.2';
+        $settings["grid_division_h"] = '7.5';
+        $values = DataModel::uterinas();
+
+        $values[0] = array_filter($values[0], function($k) {
+            return intval($k) < 21;
+        }, ARRAY_FILTER_USE_KEY);
+
+        $values[1] = array_filter($values[1], function($k) {
+            return intval($k) < 21;
+        }, ARRAY_FILTER_USE_KEY);
+
+        if (count($data)>0){
+            array_push($values,$data);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+
     public static function settings(){
         $settings = array(
             'auto_fit'          => true,
