@@ -352,9 +352,9 @@ class GraphController extends Controller
             'grafico_uno' => GraphModel::uterinas_once($grafico_uno),
             'grafico_dos' => GraphModel::uterinas($grafico_dos),
             'grafico_tres' => GraphModel::uterinas($grafico_tres),
-            'grafico_cuatro' => GraphModel::cc($grafico_cuatro),
-            'grafico_cinco' => GraphModel::ca($grafico_cinco),
-            'grafico_seis' => GraphModel::lf($grafico_seis),
+            'grafico_cuatro' => GraphModel::cc_once($grafico_cuatro),
+            'grafico_cinco' => GraphModel::ca_once($grafico_cinco),
+            'grafico_seis' => GraphModel::lf_once($grafico_seis),
         ));
     }
 
