@@ -113,7 +113,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
 
-    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha .'</td><td>Edad Gestacional: '. htmlentities($this->respuesta_eg) .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha .'</td><td>Edad gestacional: '. htmlentities($this->respuesta_eg) .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>Embrión: '. htmlentities($this->respuesta_embrion)  .'</td><td>Frecuencia cardiaca fetal: '. htmlentities($this->respuesta_fcf) .'</td></tr></tbody></table>';
@@ -133,24 +133,24 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>LF:</td><td>'.htmlentities($this->lf).'</td><td>Percentil: '.$this->lf_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>IP Uterina Derecha:</td><td>'.htmlentities($this->uterina_derecha).'</td><td>Percentil: '.$this->uterina_derecha_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP uterina derecha:</td><td>'.htmlentities($this->uterina_derecha).'</td><td>Percentil: '.$this->uterina_derecha_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>IP Uterina Izquierda:</td><td>'.htmlentities($this->uterina_izquierda).'</td><td>Percentil: '.$this->uterina_izquierda_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP uterina izquierda:</td><td>'.htmlentities($this->uterina_izquierda).'</td><td>Percentil: '.$this->uterina_izquierda_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $html = '<table><tbody><tr><td></td><td>IP Uterina Promedio: **</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.$this->uterinas_percentil.'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>IP uterina promedio: **</td><td>'.htmlentities($this->uterinas).'</td><td>Percentil: '.$this->uterinas_percentil.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $translucencia = "";
     if (strlen($this->respuesta_translucencia_nucal) > 0){
         $translucencia =  $this->respuesta_translucencia_nucal . " mm";
     }
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_translucidez_nucal).'</td><td>'. $translucencia .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Translucidez nucal: </td><td>'.htmlentities($this->respuesta_translucidez_nucal).'</td><td>'. $translucencia .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     if (strlen($this->respuesta_hueso_nasal_valor) > 0){
         $this->respuesta_hueso_nasal_valor =  $this->respuesta_hueso_nasal_valor . " mm";
     }
 
-    $html = '<table><tbody><tr><td></td><td>Hueso Nasal: </td><td>'.htmlentities($this->respuesta_hueso_nasal) .'</td><td>'. $this->respuesta_hueso_nasal_valor .'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td></td><td>Hueso nasal: </td><td>'.htmlentities($this->respuesta_hueso_nasal) .'</td><td>'. $this->respuesta_hueso_nasal_valor .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $html = '<table><tbody><tr><td></td><td>Ductus venoso: </td><td>'.htmlentities($this->respuesta_ductus_venoso).'</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
