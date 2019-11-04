@@ -634,7 +634,7 @@ function loadInProcessData(data){
 
                 args.respuesta_atrio_posterior = $('select[name="respuesta_atrio_posterior"]').val(),
                 args.respuesta_atrio_posterior_mm = $('input[name="respuesta_atrio_posterior_mm"]').val(),
-                args.respuesta_cerebelo_text = $('select[name="respuesta_cerebelo"]').val(),
+                args.respuesta_cerebelo_text = $('select[name="respuesta_cerebelo_text"]').val(),
                 args.respuesta_cisterna_m = $('select[name="respuesta_cisterna_m"]').val(),
                 args.respuesta_cisterna_m_mm = $('input[name="respuesta_cisterna_m_mm"]').val(),
 
