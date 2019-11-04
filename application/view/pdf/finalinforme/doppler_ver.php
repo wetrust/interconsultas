@@ -143,7 +143,7 @@
     if (strlen($this->respuesta_translucencia_nucal) > 0){
         $translucencia =  $this->respuesta_translucencia_nucal . " mm";
     }
-
+    $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td></td><td>Translucidez Nucal: </td><td>'.htmlentities($this->respuesta_translucidez_nucal).'</td><td>'. $translucencia .'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     if (strlen($this->respuesta_hueso_nasal_valor) > 0){
