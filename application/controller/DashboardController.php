@@ -118,7 +118,7 @@ class DashboardController extends Controller{
 
 
         //nuevos eco23
-        $respuesta_atrio_posterior = $Request::post('respuesta_atrio_posterior');
+        $respuesta_atrio_posterior = Request::post('respuesta_atrio_posterior');
         $respuesta_atrio_posterior_mm = Request::post('respuesta_atrio_posterior_mm');
         $respuesta_cerebelo_text = Request::post('respuesta_cerebelo_text');
         $respuesta_cisterna_m = Request::post('respuesta_cisterna_m');
