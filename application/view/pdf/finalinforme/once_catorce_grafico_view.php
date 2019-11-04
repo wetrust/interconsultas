@@ -40,8 +40,8 @@
     $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
 
-    $html = '<p><small>* Referencia Edad menstrual por LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., Puerto B., Gratacos E., UOG 2008; 32: 128-32<br>*** Referencia para biometrías según gráfica de Hadlock y col. 1984</small></p>';
-    $this->pdf->writeHTMLCell('', '', $x=10, $y=180, $html, 0, 1, 0, true, 'J', true);
+    $html = '<p><small>* Referencia para LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., Puerto B., Gratacos E., UOG 2008; 32: 128-32<br>*** Referencia para biometrías según gráfica de Hadlock y col. 1984</small></p>';
+    $this->pdf->writeHTMLCell('', '', $x=10, $y=185, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
 
     
