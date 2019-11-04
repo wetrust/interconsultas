@@ -33,6 +33,10 @@
         $html = '<table><tbody><tr><td>Fecha de ecografía: '.$solicitud_fecha.'</td><td>EG: '.$this->respuesta->eg.' semanas</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
+    }else{
+        $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud_nombre . " " . $this->solicitud_apellido).'</td><td>RUT (DNI): '.htmlentities($this->solicitud_rut).'</td></tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+        $this->pdf->Ln(1);
     }
 
     $this->pdf->ImageSVG('@' . $this->grafico_uno, $x=10, $y=42, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);

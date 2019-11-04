@@ -124,9 +124,14 @@ class GraphController extends Controller
 
         $response->result = false;
 
+        $respuestas = $respuestas[count($respuestas)-1];
+
         $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud_nombre' => $respuestas->solicitud_nombre,
+            'solicitud_apellido' => $respuestas->solicitud_apellido,
+            'solicitud_rut' => $respuestas->solicitud_rut,
             'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
             'grafico_dos' => GraphModel::ca($grafico_dos),
             'grafico_tres' => GraphModel::uterinas($grafico_tres),
@@ -169,9 +174,14 @@ class GraphController extends Controller
             $grafico_seis = GraphModel::uterinas($grafico_seis);
         }
 
+        $respuestas = $respuestas[count($respuestas)-1];
+
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud_nombre' => $respuestas->solicitud_nombre,
+            'solicitud_apellido' => $respuestas->solicitud_apellido,
+            'solicitud_rut' => $respuestas->solicitud_rut,
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'respuesta' => $respuesta,
             'grafico_uno' => GraphModel::cc($grafico_uno),
@@ -229,6 +239,8 @@ class GraphController extends Controller
             }
         }
 
+        $respuestas = $respuestas[count($respuestas)-1];
+
         if ($uterinas == true){
             $grafico_seis = GraphModel::uterinas($grafico_uterinas);
         }else{
@@ -238,6 +250,9 @@ class GraphController extends Controller
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud_nombre' => $respuestas->solicitud_nombre,
+            'solicitud_apellido' => $respuestas->solicitud_apellido,
+            'solicitud_rut' => $respuestas->solicitud_rut,
             'grafico_uno' => GraphModel::cc($grafico_uno),
             'grafico_dos' => GraphModel::ca($grafico_dos),
             'grafico_tres' => GraphModel::lf($grafico_tres),
@@ -299,6 +314,8 @@ class GraphController extends Controller
             $grafico_seis = GraphModel::ccca($grafico_ccca);
         }
 
+        $respuestas = $respuestas[count($respuestas)-1];
+
         $response = new stdClass();
         $internalView = new View;
 
@@ -307,6 +324,9 @@ class GraphController extends Controller
         $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud_nombre' => $respuestas->solicitud_nombre,
+            'solicitud_apellido' => $respuestas->solicitud_apellido,
+            'solicitud_rut' => $respuestas->solicitud_rut,
             'grafico_uno' => GraphModel::cc($grafico_uno),
             'grafico_dos' => GraphModel::ca($grafico_dos),
             'grafico_tres' => GraphModel::lf($grafico_tres),
