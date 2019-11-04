@@ -122,7 +122,7 @@
     $html = '<table><tbody><tr><td>Anatomía fetal: '.htmlentities($this->respuesta_anatomia). ' '.htmlentities($this->respuesta_anatomia_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(4);
-    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Largo embrionario (LCN): *</td><td>'.htmlentities($this->respuesta_lcn).' mm.</td><td>EG x LCN: '.htmlentities($this->respuesta_lcn_eg).' semanas</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td><strong><em>Biometría ecográfica</em></strong></td><td>Largo embrionario (LCN): *</td><td>'.htmlentities($this->respuesta_lcn).' mm.</td><td></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td></td><td>DBP:</td><td>'.htmlentities($this->dbp).'</td><td></td></tr></tbody></table>';
