@@ -307,7 +307,7 @@ class GraphModel
         $settings["axis_min_v"] = '0.1';
         $settings["axis_max_v"] = '3.6';
         $settings["grid_division_v"] = '1.2';
-        $settings["grid_division_h"] = '2';
+        $settings["grid_division_h"] = '1';
         $values = DataModel::uterinas();
 
         $values[0] = array_filter($values[0], function($k) {
@@ -334,7 +334,7 @@ class GraphModel
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '200';
         $settings["grid_division_v"] = '20';
-        $settings["grid_division_h"] = '2';
+        $settings["grid_division_h"] = '1';
 
         $values = DataModel::cc();
 
@@ -363,7 +363,7 @@ class GraphModel
         $settings["axis_min_v"] = '20';
         $settings["axis_max_v"] = '200';
         $settings["grid_division_v"] = '20';
-        $settings["grid_division_h"] = '2';
+        $settings["grid_division_h"] = '1';
         $values = DataModel::ca();
 
         //filtrar y dejar todos los valores menos a 20
