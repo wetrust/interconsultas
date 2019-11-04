@@ -40,7 +40,7 @@
     $this->pdf->ImageSVG('@' . $this->grafico_tres, $x=10, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
     $this->pdf->ImageSVG('@' . $this->grafico_cuatro, $x=105, $y=105, $w='', $h=90, $link='', $align='', $palign='', $border=0, $fitonpage=false);
 
-    $fecha = explode("-", $this->respuesta_fecha);
+    $fecha = explode("-", $this->respuesta->respuesta_fecha);
     $fecha = $fecha[2] . "-". $fecha[1]. "-". $fecha[0];
     
     $html = '<table style="border-top:1px solid #000;border-bottom:1px solid #000;"><tbody><tr><td><p>Fecha de exámen: '. $fecha .'</p></td></tr></tbody></table>';
