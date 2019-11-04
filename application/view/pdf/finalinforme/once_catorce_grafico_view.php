@@ -47,7 +47,7 @@
     $this->pdf->writeHTMLCell('', '', $x=10, $y=185, $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(1);
     $html = '<p><small>* Referencia para LCN Hadlock FP, Shan YP, Kanon JD y cols.: Radiology 182:501, 1992.<br>** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., Puerto B., Gratacos E., UOG 2008; 32: 128-32<br>*** Referencia para biometrías (perímetro de cráneo y perímetro abdominal) según gráfica de Hadlock y col. 1984</small></p>';
-    $this->pdf->writeHTMLCell('', '', $x=10, $y=187, $html, 0, 1, 0, true, 'J', true);
+    $this->pdf->writeHTMLCell('', '', $x=10, $y=190, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
 
     
