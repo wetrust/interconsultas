@@ -2,6 +2,14 @@
 
 class DataModel
 {
+
+    public static function lcn(){
+        $values = array(
+            array('10' => 26.2,'11' => 35.5,'12' => 46.8,'13' => 58.2,'14' => 69.8,'15' => 80.2),
+            array('10' => 33.2,'11' => 46.4,'12' => 60.8,'13' => 75.7,'14' => 89.1,'15' => 100.1)
+        );
+        return $values;
+    }
     public static function pesoFetal()
     {     
         $values = array(

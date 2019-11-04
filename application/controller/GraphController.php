@@ -337,24 +337,20 @@ class GraphController extends Controller
 
         //grafico_uno lcn
         //grafico_tres dbp
-        $grafico_uno = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+        $grafico_uno = ($respuesta->lcn > 0) ? array($respuesta->eg => $respuesta->lcn) : array();
         $grafico_dos = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
-        $grafico_tres = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
-        $grafico_cuatro = ($respuesta->cc > 0) ? array($respuesta->eg => $respuesta->cc) : array();
-        $grafico_cinco = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
-        $grafico_seis = ($respuesta->lf > 0) ? array($respuesta->eg => $respuesta->lf) : array();
+        $grafico_tres = ($respuesta->cc > 0) ? array($respuesta->eg => $respuesta->cc) : array();
+        $grafico_cuatro = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
 
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/once_catorce_grafico_view', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'respuesta' => $respuesta,
-            'grafico_uno' => GraphModel::uterinas_once($grafico_uno),
-            'grafico_dos' => GraphModel::uterinas($grafico_dos),
-            'grafico_tres' => GraphModel::uterinas($grafico_tres),
-            'grafico_cuatro' => GraphModel::cc_once($grafico_cuatro),
-            'grafico_cinco' => GraphModel::ca_once($grafico_cinco),
-            'grafico_seis' => GraphModel::lf_once($grafico_seis),
+            'grafico_uno' => GraphModel::lcn_once($grafico_uno),
+            'grafico_dos' => GraphModel::uterinas_once($grafico_dos),
+            'grafico_tres' => GraphModel::cc_once($grafico_tres),
+            'grafico_cuatro' => GraphModel::ca_once($grafico_cuatro)
         ));
     }
 

@@ -281,7 +281,25 @@ class GraphModel
     }
 
     //funciones para gráficas de 11-14
+    public static function lcn_once($data){
+        $settings = self::settings();
+        $settings["graph_title"] = 'Perímetro abdominal';
+        $settings["axis_min_h"] = '10';
+        $settings["axis_min_v"] = '45';
+        $settings["axis_max_v"] = '85';
+        $settings["grid_division_v"] = '5';
+        $settings["grid_division_h"] = '1';
+        $values = DataModel::lcn();
 
+        if (count($data)>0){
+            array_push($values,$data);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
     public static function uterinas_once($data){
         $settings = self::settings();
         $settings["graph_title"] = 'IP Promedio de Uterina';
@@ -309,7 +327,6 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
     public static function cc_once($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Perímetro de Cráneo';
@@ -339,7 +356,6 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
-
     public static function ca_once($data){
         $settings = self::settings();
         $settings["graph_title"] = 'Perímetro abdominal';
@@ -349,34 +365,6 @@ class GraphModel
         $settings["grid_division_v"] = '140';
         $settings["grid_division_h"] = '2';
         $values = DataModel::ca();
-
-        //filtrar y dejar todos los valores menos a 20
-        $values[0] = array_filter($values[0], function($k) {
-            return intval($k) < 21;
-        }, ARRAY_FILTER_USE_KEY);
-        
-        $values[1] = array_filter($values[1], function($k) {
-            return intval($k) < 21;
-        }, ARRAY_FILTER_USE_KEY);
-
-        if (count($data)>0){
-            array_push($values,$data);
-        }
-
-        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
-        $graph->colours(self::colours());
-        $graph->values($values);
-        return $graph->fetch('MultiLineGraph');
-    }
-    public static function lf_once($data){
-        $settings = self::settings();
-        $settings["graph_title"] = 'Largo de Fémur';
-        $settings["axis_min_h"] = '12';
-        $settings["axis_min_v"] = '0';
-        $settings["axis_max_v"] = '100';
-        $settings["grid_division_v"] = '20';
-        $settings["grid_division_h"] = '2';
-        $values = DataModel::lf();
 
         //filtrar y dejar todos los valores menos a 20
         $values[0] = array_filter($values[0], function($k) {
