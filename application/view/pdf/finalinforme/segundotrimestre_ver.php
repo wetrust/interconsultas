@@ -40,18 +40,17 @@
         $html = '<table><tbody><tr><td>FUR referida o corregida: '.$solicitud_fum.'</td><td>Fecha de solicitud: '.$solicitud_fecha.'</td><td>Edad Gestacional: '.htmlentities($this->solicitud->solicitud_egestacional).'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
-        $html = '<table><tbody><tr><td>Motivo de exámen</td><td>: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td></tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+        $html = '<table><tbody><tr><td>Motivo de exámen : '.htmlentities($this->solicitud->solicitud_diagnostico).'</td>';
         if (property_exists($this,"uterinas")){
             if ($this->uterinas != ""){
-                $this->pdf->Ln(1);
-                $html = '<table><tbody><tr><td colspan="2">Otros antecedentes clínicos relevantes</td><td colspan="2">: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
+                $html .= '<td>Otros antecedentes clínicos relevantes : '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
                 $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
                 $this->pdf->Ln(1);
-                $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td></tr></tbody></table>';
-                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+                $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td>';
             }
         }
+        $html .= '</tr></tbody></table>';
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(4);
     }else{
         $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
