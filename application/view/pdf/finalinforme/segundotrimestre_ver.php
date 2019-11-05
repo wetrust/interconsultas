@@ -82,15 +82,15 @@
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
         $html = '<table><tbody><tr><td>Motivo de exámen: '.htmlentities($this->solicitud->solicitud_diagnostico).'</td>';
-        if (property_exists($this,"uterinas")){
-            if ($this->uterinas != ""){
-                $html .= '<td>Otros antecedentes clínicos relevantes: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
-                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
-                $this->pdf->Ln(1);
-                $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td>';
-                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
-            }
-        }
+        //if (property_exists($this,"uterinas")){
+        //    if ($this->uterinas != ""){
+        //        $html .= '<td>Otros antecedentes clínicos relevantes: '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
+        //        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
+        //        $this->pdf->Ln(1);
+        //        $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td>';
+        //        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
+        //    }
+        //}
         $html .= '</tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
         $this->pdf->Ln(4);
