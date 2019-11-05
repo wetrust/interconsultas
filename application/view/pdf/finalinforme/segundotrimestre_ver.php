@@ -44,13 +44,13 @@
         if (property_exists($this,"uterinas")){
             if ($this->uterinas != ""){
                 $html .= '<td>Otros antecedentes clínicos relevantes : '.htmlentities($this->solicitud->solicitud_antecedentes).'</td></tr></tbody></table>';
-                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+                $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
                 $this->pdf->Ln(1);
                 $html = '<table><tbody><tr><td>Presión arterial media</td><td>: '.htmlentities($this->solicitud->solicitud_media).' mmHg</td><td>IMC Materno</td><td>: '.htmlentities($this->solicitud->solicitud_imc).' (kg/m^2)</td>';
             }
         }
         $html .= '</tr></tbody></table>';
-        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
+        $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'L', true);
         $this->pdf->Ln(4);
     }else{
         $html = '<table><tbody><tr><td>Nombre del paciente: '.htmlentities($this->solicitud->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td><td>RUT (DNI): '.htmlentities($this->solicitud->solicitud_rut).'</td></tr></tbody></table>';
