@@ -124,10 +124,10 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->respuesta_anatomia_segundo)." ".htmlentities($this->anatomia_fetal_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(4);
+    $this->pdf->Ln(1);
 
     if ($this->respuesta_anatomia_segundo == "de aspecto general normal"){
-        $html = '<table><tbody><tr><td>Atrio posterior: '. htmlentities($this->respuesta_atrio_posterior) .' '.$this->respuesta_atrio_posterior_mm.'</td><td>Cerebelo: '.htmlentities($this->respuesta_cerebelo_text).' '.$this->respuesta_cerebelo.'</td><td>Cist. magna: '.htmlentities($this->respuesta_cisterna_m).' '.$this->respuesta_cisterna_m_mm.'</td></tr></tbody></table>';
+        $html = '<table><tbody><tr><td>Atrio posterior: '. htmlentities($this->respuesta_atrio_posterior) .' '.$this->respuesta_atrio_posterior_mm.'</td><td>Cerebelo: '.htmlentities($this->respuesta_cerebelo_text).'</td><td>Cist. magna: '.htmlentities($this->respuesta_cisterna_m).' '.$this->respuesta_cisterna_m_mm.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
         $this->pdf->Ln(1);
     }
