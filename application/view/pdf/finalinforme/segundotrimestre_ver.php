@@ -117,7 +117,7 @@
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td style="background-color:#f7fafb;">Líquido amniótico *</td><td style="background-color:#f7fafb;">Cualitativo: '.htmlentities($this->respuesta_liquido_amniotico).'</td><td style="background-color:#f7fafb;">BVM: '.htmlentities($this->respuesta_bvm).' mm.</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
-    $this->pdf->Ln(1);
+    $this->pdf->Ln(4);
     $html = '<table><tbody><tr><td><strong>Anatomía fetal:</strong> '.htmlentities($this->respuesta_anatomia_segundo)." ".htmlentities($this->anatomia_fetal_extra).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
