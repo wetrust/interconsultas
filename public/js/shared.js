@@ -1015,6 +1015,7 @@ function segundoTrimestre(){
     $("#art\\.ut").on("click", function(){
         if (this.checked == true){
             document.getElementById("art.ut.div").classList.remove("d-none");
+            document.getElementsByName("respuesta_uterina_derecha")[0].focus();
         }else{
             document.getElementById("art.ut.div").classList.add("d-none");
         }
