@@ -174,14 +174,9 @@ class GraphController extends Controller
             $grafico_seis = GraphModel::uterinas($grafico_seis);
         }
 
-        $respuestas = $respuestas[count($respuestas)-1];
-
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
         array(
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-            'solicitud_nombre' => $respuestas->solicitud_nombre,
-            'solicitud_apellido' => $respuestas->solicitud_apellido,
-            'solicitud_rut' => $respuestas->solicitud_rut,
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'respuesta' => $respuesta,
             'grafico_uno' => GraphModel::cc($grafico_uno),
