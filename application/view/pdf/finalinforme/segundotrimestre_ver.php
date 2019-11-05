@@ -129,11 +129,11 @@
     if ($this->respuesta_anatomia_segundo == "de aspecto general normal"){
         $atrio = htmlentities($this->respuesta_atrio_posterior);
         if ($this->respuesta_atrio_posterior_mm > 0){
-            $atrio .=' '.$this->respuesta_atrio_posterior_mm . " mm";
+            $atrio .=', '.$this->respuesta_atrio_posterior_mm . " mm";
         }
         $cisterna = htmlentities($this->respuesta_cisterna_m);
         if ($this->respuesta_cisterna_m_mm > 0){
-            $cisterna .=' '.$this->respuesta_cisterna_m_mm . " mm";
+            $cisterna .=', '.$this->respuesta_cisterna_m_mm . " mm";
         }
         $html = '<table><tbody><tr><td>Atrio posterior: '. $atrio.'</td><td>Cerebelo: '.htmlentities($this->respuesta_cerebelo_text).'</td><td>Cist. magna: '.$cisterna.'</td></tr></tbody></table>';
         $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
