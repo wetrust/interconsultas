@@ -754,9 +754,12 @@ class DashboardController extends Controller{
                 $pdf->Image($user_images[4], PDF_MARGIN_LEFT, '186', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
                 $pdf->Image($user_images[5], '110', '', 88, 63, 'JPG', '', 'T', true, 150, '', false, false, 1, false, false, false);
             }
-         
-            $pdf->Output('Informe.pdf', 'I');
+        
+            $base64 = chunk_split(base64_encode($pdf->Output('Informe.pdf', 'S')));
+            $response->pdf = $base64; 
         }
+
+        $this->View->renderJSON($response);
     }
 
     public function informe_envio(){

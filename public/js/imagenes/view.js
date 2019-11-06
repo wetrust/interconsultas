@@ -57,12 +57,11 @@ export class view {
             var send = {fotos: sList}
         
             $.post('dashboard/informe_fotos', send).done(function(data){
+                if (data.response = true){
 
-
-                let blob1 = new Blob(data, { type: "application/pdf" });
-                url = window.URL.createObjectURL(blob1);
-
-                let modal = make.modal("Enviar informe");
+                    let blob1 = new Blob(data.pdf, { type: "application/pdf" });
+                    url = window.URL.createObjectURL(blob1);
+                    let modal = make.modal("Enviar informe");
                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                     document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="'+ url+'" class="embed-responsive-item w-100 h-100"></iframe>';
                     document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
@@ -70,6 +69,9 @@ export class view {
                     $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
                         $(this).remove();
                     });
+                }else{
+                    alert("Hubo un error al generar informe");
+                }
             });
     }
 }
