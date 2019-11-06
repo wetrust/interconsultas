@@ -1,4 +1,4 @@
-import {make, the, humanDate, inputDate} from '../wetrust.js';
+import {make, the, humanDate, inputDate, b64toBlob} from '../wetrust.js';
 import {config} from './config.js';
 
 export class view {
@@ -58,9 +58,9 @@ export class view {
         
             $.post('dashboard/informe_fotos', send).done(function(data){
                 if (data.response = true){
+                    const blob = b64toBlob(data.pdf, { type: "application/pdf" });
+                    const url = URL.createObjectURL(blob);
 
-                    let blob1 = new Blob(data.pdf, { type: "application/pdf" });
-                    url = window.URL.createObjectURL(blob1);
                     let modal = make.modal("Enviar informe");
                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                     document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="'+ url+'" class="embed-responsive-item w-100 h-100"></iframe>';
