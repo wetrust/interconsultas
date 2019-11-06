@@ -4,6 +4,6 @@ import {view} from './view.js';
 
 let spinnerGrow = make.spinnerGrow();
 the("imagenes").innerHTML = spinnerGrow.html;
-cloud.getPacientes().then(function(data){
+cloud.getPhotos(paciente_id,date).then(function(data){
     view.pacienteInterface("pacientes",data);
 });
