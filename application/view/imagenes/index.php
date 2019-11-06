@@ -6,7 +6,7 @@
     <div class="card shadow mt-3"><div class="card-body" id="imagenes"></div></div>
 </div>
 <script>
-    var paciente_id = "<?= $paciente; ?>";
-    var date = "<?= $fecha; ?>";
+    var paciente_id = "<?= $this->paciente; ?>";
+    var date = "<?= $this->fecha; ?>";
 </script>
 <script type="module" src="js/imagenes/app.js"></script>
