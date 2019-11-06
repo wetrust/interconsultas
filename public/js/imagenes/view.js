@@ -14,6 +14,7 @@ export class view {
         the(container).innerHTML = estructura;
 
         view.selectImagenes();
+        the("imagenes.impresion").onclick = this.verInforme;
     }
 
     static selectImagenes(){
@@ -27,5 +28,47 @@ export class view {
             }  
         });
 
+    }
+
+    static verInforme(){
+        var contador = 0;
+        var sList = "";
+        
+            $('input[name="foto"]').each(function () {
+                if (this.checked) {
+                    var sThisVal = (this.checked ? this.dataset.foto : "");
+                    sList += (sList=="" ? sThisVal : "," + sThisVal);
+                    contador++;
+                }
+            });
+        
+            if (contador == 0){
+                alert("Debes seleccionar al menos una imágen");
+                return;
+            }
+        
+            if (contador == 3 || contador == 5 || contador == 7){
+                alert("Prefiere seleccionar imágenes en números par, actualmente has seleccionado " + contador + " imágenes.");
+                return;
+            }
+        
+            if (contador >8){alert("Máximo 8 imágenes."); return;}
+        
+            var send = {fotos: sList}
+        
+            $.post('dashboard/informe_fotos', send).done(function(data){
+                if (data.response = true){
+                    let modal = makeModal("Enviar informe");
+                    document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                    document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
+                    document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
+        
+                    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                        $(this).remove();
+                    });
+                }else{
+                    alert("Hubo un error al generar informe");
+                }
+            });
     }
 }
