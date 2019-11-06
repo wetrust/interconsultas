@@ -1,4 +1,4 @@
-import {make, the, humanDate, inputDate,modal} from '../wetrust.js';
+import {make, the, humanDate, inputDate} from '../wetrust.js';
 import {config} from './config.js';
 
 export class view {
@@ -58,7 +58,7 @@ export class view {
         
             $.post('dashboard/informe_fotos', send).done(function(data){
                 if (data.response = true){
-                    let modal = modal("Enviar informe");
+                    let modal = make.modal("Enviar informe");
                     document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                     document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
                     document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
