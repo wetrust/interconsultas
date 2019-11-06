@@ -19,11 +19,11 @@ export class view {
     static selectImagenes(){
         $('input[name="foto"]').on("click", function() {  
             if ($('input[name="foto"]:checked').length > 0) {  
-                the(imagenes.impresion).classList.remove("d-none");
-                the(imagenes.email).classList.remove("d-none");
+                the("imagenes.impresion").classList.remove("d-none");
+                the("imagenes.email").classList.remove("d-none");
             } else {  
-                the(imagenes.impresion).classList.add("d-none");
-                the(imagenes.email).classList.add("d-none");
+                the("imagenes.impresion").classList.add("d-none");
+                the("imagenes.email").classList.add("d-none");
             }  
         });
 
