@@ -1,3 +1,4 @@
+"use strict";
 import {make, the, humanDate, inputDate, b64toBlob} from '../wetrust.js';
 import {config} from './config.js';
 import { cloud } from './cloud.js';
@@ -15,21 +16,20 @@ export class view {
         the(container).innerHTML = estructura;
 
         view.selectImagenes();
-        the("imagenes.impresion").onclick = this.verInforme;
-        the("imagenes.email").onclick = this.verEnviarModal;
+        the("imagenes.impresion").onclick = view.verInforme;
+        the("imagenes.email").onclick = view.verEnviarModal;
     }
 
     static selectImagenes(){
-        $('input[name="foto"]').on("click", function() {  
-            if ($('input[name="foto"]:checked').length > 0) {  
+        $('input[name="foto"]').on("click", function() {
+            if ($('input[name="foto"]:checked').length > 0) {
                 the("imagenes.impresion").classList.remove("d-none");
                 the("imagenes.email").classList.remove("d-none");
-            } else {  
+            } else {
                 the("imagenes.impresion").classList.add("d-none");
                 the("imagenes.email").classList.add("d-none");
-            }  
+            }
         });
-
     }
 
     static verInforme(){
@@ -65,9 +65,7 @@ export class view {
                 the(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="'+ url+'" class="embed-responsive-item w-100 h-100"></iframe>';
                 the(modal.titulo).innerHTML = "Informe de imágenes";
         
-                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-                    $(this).remove();
-                });
+                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
             }else{
                 alert("Hubo un error al generar informe");
             }
@@ -101,39 +99,40 @@ export class view {
         the(modal.button).dataset.informe = informe;
         the(modal.button).dataset.modal = modal.id;
 
-        $("#"+modal.button).on("click", function(){
-            let informe = this.dataset.informe;
-            let modal = this.dataset.modal;
-            let email = $("#"+this.dataset.email).val();
+        the(modal.button).onclick = view.enviarFotosInforme;
+    }
 
-            let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
-            this.disabled = true;
-            this.innerHTML = animacion;
-            let modal = this.dataset.modal;
+    static enviarFotosInforme(){
+        let informe = this.dataset.informe;
+        let modal = this.dataset.modal;
+        let email = $("#"+this.dataset.email).val();
 
-            let args = {email: email,informe: informe,paciente: paciente_id, modal: modal}
+        let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
+        this.disabled = true;
+        this.innerHTML = animacion;
+        let modal = this.dataset.modal;
 
-            $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
-                if (Object.keys(data).length > 0) {
-                    let modal = makeModal();
-                        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-                        document.getElementById(modal.titulo).innerHTML = "Información";
+        let args = {email: email,informe: informe,paciente: paciente_id, modal: modal}
 
-                        if (data.result = true){
-                            document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
-                        }
-                        else{
-                            document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
-                        }
+        $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
+            if (Object.keys(data).length > 0) {
+                let modal = makeModal();
+                    document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                    document.getElementById(modal.titulo).innerHTML = "Información";
 
-                        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-                            $(this).remove();
-                        });
+                    if (data.result = true){
+                        document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
+                    }
+                    else{
+                        document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
+                    }
 
-                    $('#'+ args.modal).modal("hide");
-                }
-            });
+                    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                        $(this).remove();
+                    });
 
+                $('#'+ args.modal).modal("hide");
+            }
         });
     }
 }
