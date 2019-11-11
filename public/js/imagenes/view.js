@@ -47,7 +47,8 @@ export class view {
                 return;
             }
         
-            if (contador == 3 || contador == 5 || contador == 7){
+            
+            if (contador % 2 != 0){
                 alert("Prefiere seleccionar imágenes en números par, actualmente has seleccionado " + contador + " imágenes.");
                 return;
             }
@@ -58,7 +59,7 @@ export class view {
         
             $.post('dashboard/informe_fotos', send).done(function(data){
                 if (data.response = true){
-                    const blob = b64toBlob(data.pdf, { type: "application/pdf" });
+                    const blob = b64toBlob(data.pdf, "application/pdf");
                     const url = URL.createObjectURL(blob);
 
                     let modal = make.modal("Enviar informe");
