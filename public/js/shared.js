@@ -1686,6 +1686,8 @@ function multiproposito(){
             $("#respuesta_cmau_percentil").html(pctcmauAdvanced(eg,cmau));
         }
     });
+
+    $('#editable').val('-Crecimiento fetal:\n-Doppler:\n-Líquido:\n-Control:');
 }
 
 function cargarBVM(input){
