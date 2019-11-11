@@ -570,7 +570,7 @@ class DashboardController extends Controller{
     }
 
     public function directorioSave(){
-        $this->View->renderJSON(DirectorioModel::createDirectorio(Request::post('nombre'), Request::post('email'), Request::post('profesion'))); 
+        $this->View->renderJSON(DirectorioModel::createDirectorio(Request::post('nombre'), Request::post('ciudad'), Request::post('email'), Request::post('profesion'))); 
     }
 
     public function directorioDelete($id){
@@ -756,7 +756,7 @@ class DashboardController extends Controller{
             }
         
             $base64 = chunk_split(base64_encode($pdf->Output('Informe.pdf', 'S')));
-            $response->pdf = $base64; 
+            $response->pdf = $base64;
         }
 
         $this->View->renderJSON($response);
