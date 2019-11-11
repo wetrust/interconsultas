@@ -1687,7 +1687,7 @@ function multiproposito(){
         }
     });
 
-    $('#editable').val('-Crecimiento fetal:\n-Doppler:\n-Líquido:\n-Control:');
+    $('#editable').val('-Crecimiento fetal:\n-Doppler:\n-Líquido amniótico:\n-Indicaciones:');
 }
 
 function cargarBVM(input){

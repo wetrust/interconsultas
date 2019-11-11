@@ -186,7 +186,6 @@ function buildFinishTable(data){
                             $('#'+ args.modal).modal("hide");
                         }
                     });
-
                 });
             });
 
