@@ -1,5 +1,6 @@
 import {make, the, humanDate, inputDate, b64toBlob} from '../wetrust.js';
 import {config} from './config.js';
+import { cloud } from './cloud.js';
 
 export class view {
     static imagenesInterface(container, data){
@@ -32,61 +33,107 @@ export class view {
     }
 
     static verInforme(){
-        var contador = 0;
-        var sList = "";
+        let contador = 0;
+        let sList = "";
         
-            $('input[name="foto"]').each(function () {
-                if (this.checked) {
-                    var sThisVal = (this.checked ? this.dataset.foto : "");
-                    sList += (sList=="" ? sThisVal : "," + sThisVal);
-                    contador++;
-                }
-            });
-        
-            if (contador == 0){
-                alert("Debes seleccionar al menos una imágen");
-                return;
+        $('input[name="foto"]').each(function () {
+            if (this.checked) {
+                var sThisVal = (this.checked ? this.dataset.foto : "");
+                sList += (sList=="" ? sThisVal : "," + sThisVal);
+                contador++;
             }
+        });
         
-            
-            if (contador % 2 != 0){
-                alert("Prefiere seleccionar imágenes en números par, actualmente has seleccionado " + contador + " imágenes.");
-                return;
-            }
-        
-            if (contador >8){alert("Máximo 8 imágenes."); return;}
-        
-            var send = {fotos: sList}
-        
-            $.post('dashboard/informe_fotos', send).done(function(data){
-                if (data.response = true){
-                    const blob = b64toBlob(data.pdf, "application/pdf");
-                    const url = URL.createObjectURL(blob);
+        if (contador == 0){
+            make.alert("<p>Debes seleccionar al menos una imágen</p>");
+            return;
+        }else if (contador % 2 != 0){
+            make.alert("<p>Prefiere seleccionar imágenes en números par, actualmente has seleccionado " + contador + " imágenes.</p>");
+            return;
+        }else if (contador >8){
+            make.alert("<p>Máximo 8 imágenes.</p>");
+            return;
+        }
 
-                    let modal = make.modal("Enviar informe");
-                    document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-                    document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="'+ url+'" class="embed-responsive-item w-100 h-100"></iframe>';
-                    document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
+        cloud.getPDF(sList).then(function(data){
+            if (data.response == true){
+                const blob = b64toBlob(data.pdf, "application/pdf");
+                const url = URL.createObjectURL(blob);
+
+                let modal = make.modal("Enviar informe");
+                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                the(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="'+ url+'" class="embed-responsive-item w-100 h-100"></iframe>';
+                the(modal.titulo).innerHTML = "Informe de imágenes";
         
-                    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-                        $(this).remove();
-                    });
-                }else{
-                    alert("Hubo un error al generar informe");
-                }
-            });
+                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                    $(this).remove();
+                });
+            }else{
+                alert("Hubo un error al generar informe");
+            }
+        });
     }
 
     static verEnviarModal(){
-        let modal = make.modal();
+        let modal = make.modal("Enviar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         
         let spinnerGrow = make.spinnerGrow();
         the(modal.contenido).innerHTML = spinnerGrow.html;
         the(modal.titulo).innerHTML = "Enviar por email";
 
+        let rol = make.uuidv4();
+        let email = make.uuidv4();
+        let informe = make.uuidv4();
+        let ciudad = make.uuidv4();
+
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
             $(this).remove();
+        });
+
+        the(rol).dataset.ciudad = ciudad;
+        the(ciudad).dataset.rol = rol;
+        the(ciudad).dataset.email = email;
+
+        the(modal.contenido).innerHTML = '<div class="row"> <div class="form-group col-4"> <label for="'+rol+'">Rol destinatario</label> <select class="form-control" id="'+rol+'"> <option value="Paciente">Paciente</option> <option value="Referente">Referente</option> <option value="Matrona">Matrona</option> <option value="Medico">Médico</option> <option value="Administrativo">Administrativo</option> <option value="Otros">Otros</option> </select> </div><div class="form-group col-4"> <label for="'+ciudad+'">Ciudad</label> <select class="form-control" id="'+ciudad+'"></select> </div><div class="form-group col"> <label for="'+email+'">E-mail destinatario</label> <select class="form-control" id="'+email+'"></select> </div></div><div class="form-group form-check"> <input type="checkbox" class="form-check-input" id="'+informe+'"> <label class="form-check-label" for="'+informe+'">¿Adjuntar informe y gráficas a las fotos?</label></div>';
+    
+        the(modal.button).dataset.email = email;
+        the(modal.button).dataset.informe = informe;
+        the(modal.button).dataset.modal = modal.id;
+
+        $("#"+modal.button).on("click", function(){
+            let informe = this.dataset.informe;
+            let modal = this.dataset.modal;
+            let email = $("#"+this.dataset.email).val();
+
+            let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
+            this.disabled = true;
+            this.innerHTML = animacion;
+            let modal = this.dataset.modal;
+
+            let args = {email: email,informe: informe,paciente: paciente_id, modal: modal}
+
+            $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
+                if (Object.keys(data).length > 0) {
+                    let modal = makeModal();
+                        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                        document.getElementById(modal.titulo).innerHTML = "Información";
+
+                        if (data.result = true){
+                            document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
+                        }
+                        else{
+                            document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
+                        }
+
+                        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                            $(this).remove();
+                        });
+
+                    $('#'+ args.modal).modal("hide");
+                }
+            });
+
         });
     }
 }

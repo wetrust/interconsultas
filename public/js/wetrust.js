@@ -32,6 +32,18 @@ export class make{
           (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
         )
     }
+
+    static alert(mensaje){
+        let modal = make.modal();
+
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.contenido).innerHTML = mensaje;
+        the(modal.titulo).innerHTML = "Mensaje";
+        
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+            $(this).remove();
+        });
+    }
 }
 
 export class data{
