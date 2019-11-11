@@ -18,7 +18,7 @@ function loadDirectorio(){
         $("#interfaz\\.email").empty();
         if (Object.keys(data).length > 0) {
             $.each(data, function(i, value) {
-                var fila = '<tr><td>' + value.email_nombre + '</td><td>'+ value.email_value +'</td><td>' + value.email_profesion + '</td><td><button class="btn btn-danger" data-id="' + value.email_id + '">Eliminar</button></td></tr>';
+                var fila = '<tr><td>' + value.email_nombre + '</td><td>'+ value.email_value +'</td><td>' + value.email_profesion + '<td>'+ value.ciudad_name +'</td></td><td><button class="btn btn-danger" data-id="' + value.email_id + '">Eliminar</button></td></tr>';
                 var opcion = '<option value="'+value.email_value+'">'+value.email_nombre +  ', '+value.email_value+', '+ value.email_profesion + '</option>';
                 $("#interfaz\\.email").append(opcion);
                 $("#tabla\\.directorio\\.email").append(fila);
@@ -135,7 +135,7 @@ function createCarcasaDirectorio(){
             $(this).remove();
         });
 
-        let dav = {profesion: $("#modal\\.directorio\\.profesion").val(), nombre: $("#modal\\.directorio\\.nombre").val(), email: $("#modal\\.directorio\\.email").val()}
+        let dav = {profesion: $("#modal\\.directorio\\.profesion").val(), nombre: $("#modal\\.directorio\\.nombre").val(), email: $("#modal\\.directorio\\.email").val(), ciudad: $("#modal\\.directorio\\.ciudad").val()}
         
         $.post('dashboard/directorioSave', dav).done(function(data){
             $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadDirectorio();
