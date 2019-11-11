@@ -56,7 +56,7 @@ export class view {
         }
 
         cloud.getPDF(sList).then(function(data){
-            if (data.response == true){
+            if (data.result == true){
                 const blob = b64toBlob(data.pdf, "application/pdf");
                 const url = URL.createObjectURL(blob);
 
