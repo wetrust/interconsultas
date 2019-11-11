@@ -116,6 +116,17 @@ function createCarcasaDirectorio(){
         $(this).remove();
     });
 
+    $.get("dashboard/ciudades_configuracion").done(function(data){
+        $('#modal\\.directorio\\.ciudad').empty();
+        if (Object.keys(data).length > 0) {
+            $.each(data, function(i, value) {
+                var opcion = '<option value="'+value.ciudad_id+'">'+value.ciudad_name + '</option>';
+                $("#modal\\.directorio\\.ciudad").append(opcion);
+            });
+        }
+
+    });
+
     $('#'+btn_responder_id).on("click", function(){
         var modal_id = $(this).data("modal");
         
