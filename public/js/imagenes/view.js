@@ -15,6 +15,7 @@ export class view {
 
         view.selectImagenes();
         the("imagenes.impresion").onclick = this.verInforme;
+        the("imagenes.email").onclick = this.verEnviarModal;
     }
 
     static selectImagenes(){
@@ -74,5 +75,16 @@ export class view {
                     alert("Hubo un error al generar informe");
                 }
             });
+    }
+
+    static verEnviarModal(){
+        let modal = make.modal();
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.contenido).innerHTML = '';
+        the(modal.titulo).innerHTML = "Informe de imágenes";
+
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+            $(this).remove();
+        });
     }
 }
