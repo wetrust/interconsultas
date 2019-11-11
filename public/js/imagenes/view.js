@@ -89,12 +89,10 @@ export class view {
             $(this).remove();
         });
 
+        the(modal.contenido).innerHTML = '<div class="row"> <div class="form-group col-4"> <label for="'+rol+'">Rol destinatario</label> <select class="form-control" id="'+rol+'"> <option value="Paciente">Paciente</option> <option value="Referente">Referente</option> <option value="Matrona">Matrona</option> <option value="Medico">Médico</option> <option value="Administrativo">Administrativo</option> <option value="Otros">Otros</option> </select> </div><div class="form-group col-4"> <label for="'+ciudad+'">Ciudad</label> <select class="form-control" id="'+ciudad+'"></select> </div><div class="form-group col"> <label for="'+email+'">E-mail destinatario</label> <select class="form-control" id="'+email+'"></select> </div></div><div class="form-group form-check"> <input type="checkbox" class="form-check-input" id="'+informe+'"> <label class="form-check-label" for="'+informe+'">¿Adjuntar informe y gráficas a las fotos?</label></div>';
         the(rol).dataset.ciudad = ciudad;
         the(ciudad).dataset.rol = rol;
         the(ciudad).dataset.email = email;
-
-        the(modal.contenido).innerHTML = '<div class="row"> <div class="form-group col-4"> <label for="'+rol+'">Rol destinatario</label> <select class="form-control" id="'+rol+'"> <option value="Paciente">Paciente</option> <option value="Referente">Referente</option> <option value="Matrona">Matrona</option> <option value="Medico">Médico</option> <option value="Administrativo">Administrativo</option> <option value="Otros">Otros</option> </select> </div><div class="form-group col-4"> <label for="'+ciudad+'">Ciudad</label> <select class="form-control" id="'+ciudad+'"></select> </div><div class="form-group col"> <label for="'+email+'">E-mail destinatario</label> <select class="form-control" id="'+email+'"></select> </div></div><div class="form-group form-check"> <input type="checkbox" class="form-check-input" id="'+informe+'"> <label class="form-check-label" for="'+informe+'">¿Adjuntar informe y gráficas a las fotos?</label></div>';
-    
         the(modal.button).dataset.email = email;
         the(modal.button).dataset.informe = informe;
         the(modal.button).dataset.modal = modal.id;
