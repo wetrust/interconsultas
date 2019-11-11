@@ -110,7 +110,6 @@ export class view {
         let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
         this.disabled = true;
         this.innerHTML = animacion;
-        let modal = this.dataset.modal;
 
         let args = {email: email,informe: informe,paciente: paciente_id, modal: modal}
 
