@@ -143,6 +143,7 @@ export class view {
 
         cloud.getCiudades(this.value, ciudad).then(function(data){
             loadSelect(data.ciudad, data.ciudades);
+            the(data.ciudad).onchange();
         });
     }
 
