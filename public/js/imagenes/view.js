@@ -134,10 +134,10 @@ export class view {
             if (Object.keys(data).length > 0) {
                 let alert = ""
                 if (data.result == true){
-                    alert = "<p>Enviado</p>";
+                    alert = '<p class="text-center">Enviado</p>';
                 }
                 else{
-                    alert = "<p>No se pudo enviar, intente nuevamente</p>";
+                    alert = '<p class="text-center">No se pudo enviar, intente nuevamente</p>';
                 }
 
                 make.alert(alert);
