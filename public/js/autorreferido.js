@@ -146,13 +146,17 @@ function buildFinishTable(data){
                     });
                 });
 
+                document.getElementById(ciudad).dataset.rol = rol;
+                document.getElementById(ciudad).dataset.email = email;
+
                 $('#'+ciudad).on("change", function(){
+                    var rol = $("#"+ this.dataset.rol).val();
                     var eMail = this.dataset.email;
                     $('#'+eMail).empty();
 
-                    $.get('api/emails/'+this.value).done(function(data){
+                    $.get('dashboard/getEmailProfesional/'+rol+"/"+this.value).done(function(data){
                         $.each(data, function(i, value) {
-                            let option = '<option value="'+value.email_value+'">'+value.email_nombre + ' '+value.email_value+'</option>';
+                            let option = '<option value="'+value.email_value+'">'+value.email_nombre + '</option>';
                             $('#'+eMail).append(option);
                         });
                     });
