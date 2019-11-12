@@ -160,13 +160,15 @@
     $html = '<p>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico.<br>Profesional quien finalmente evaluará clínicamente la información contenida en este exámen.</p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'J', true);
 
-    //$tmp = Config::get('PATH_AVATARS');
-    //$this->pdf->Output("$tmp/informe.pdf", "F");
-    $this->pdf->Output('Informe.pdf', 'I');
-
-    //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
-
-    //echo $base64;
-
-    //Edad gestacional actual
-    //htmlentities($this->solicitud_resultado->eg)
+    if (property_exists($this,"enviar")){
+        //para enviar por email
+        $tmp = Config::get('PATH_AVATARS');
+        $this->pdf->Output("$tmp/informe.pdf", "F");
+        /////////
+    }else{
+        //para visualizar en el navegador
+        $this->pdf->Output('Informe.pdf', 'I');
+        //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
+        //echo $base64;
+        //////////
+    }

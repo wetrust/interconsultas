@@ -133,7 +133,7 @@ export class view {
         cloud.sendEmail(args).then(function(data){
             if (Object.keys(data).length > 0) {
                 let alert = ""
-                if (data.result = true){
+                if (data.result == true){
                     alert = "<p>Enviado</p>";
                 }
                 else{

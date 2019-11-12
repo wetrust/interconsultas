@@ -159,13 +159,15 @@
     $html = '<p><small>* Referencia para Liq. Amniotico BVM, Magann EF. Sanderson M. Martin JN y col. Am J Obstet Gynecol 1982: 1581, 2000<br>** Evaluación de crecimiento fetal (Gráfica), según referencia propuesta por Hadlock y col. Radiology 181: 129 - 133; 1991 (Normalidad Pct 10 a 90)<br>*** Referencia para Doppler promedio de arterias uterinas: Gómes O., Figueras F., Fernandez S., Bennasar M, Martínez JM., Puerto B., Gratacos E., UOG 2008; 32: 128-32<br>*** Referencia para Doppler fetal; arteria umbilical, C Media y CCP; Baschat et al Ultrasound Obstet. Gynecol 2003; 21 124 - 127 <br><br>Informe generado desde software crecimientofetal.cl, el objetivo de este es favorecer análisis preeliminar de los datos, la interpretación de los resultados es responsabilidad fundamentalmente del profesional referente a exámen ecográfico. Profesional quien finalmente evaluará clínicamente la información contenida en este exámen. <br><br>Nota: Exámen ecográfico destinado a evaluar biometría fetal; crecimiento fetal y/o flujometria Doppler materno-fetal. Este exámen, en forma dirigida no evalua la anatomía fetal. El rendimiento diagnóstico del examen ecográfico depende de múltiples factores tanto maternos como fetales, edad gestacional al momento del examen, posición fetal, interposición de partes fetales (manos, pies) o anexos (placenta, cordón umbilical), En las mejores series de detección de malformaciones fetales publicadas en la literatura nacional e internacional no alcanza el 100% y por lo tanto es importante correlacionar resultado obtenidos en función del contexto clínico de la paciente y antecedentes de gestaciones previas.</small></p>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     
-    //para enviar por email
-    //$tmp = Config::get('PATH_AVATARS');
-    //$this->pdf->Output("$tmp/informe.pdf", "F");
-    /////////
-
-    //para visualizar en el navegador
-    $this->pdf->Output('Informe.pdf', 'I');
-    //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
-    //echo $base64;
-    //////////
+    if (property_exists($this,"enviar")){
+        //para enviar por email
+        $tmp = Config::get('PATH_AVATARS');
+        $this->pdf->Output("$tmp/informe.pdf", "F");
+        /////////
+    }else{
+        //para visualizar en el navegador
+        $this->pdf->Output('Informe.pdf', 'I');
+        //$base64 = chunk_split(base64_encode($this->pdf->Output('Informe.pdf', 'S')));
+        //echo $base64;
+        //////////
+    }

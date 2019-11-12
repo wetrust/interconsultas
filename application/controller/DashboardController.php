@@ -807,4 +807,333 @@ class DashboardController extends Controller{
     public function getEmailProfesional($rol, $ciudad){
         $this->View->renderJSON(DirectorioModel::getAllDirectorioEmail($rol, $ciudad));
     }
+
+    public function emailCompleto(){
+        $data = new stdClass();
+
+        $data->email = Request::post('email');
+        $data->informe = Request::post('informe');
+        $data->paciente = Request::post('paciente');
+        $data->date = Request::post('date');
+        $data->fotos = Request::post('fotos');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+
+        if (is_string($data->paciente) == true){
+            $data->paciente = explode("-", $data->paciente);
+            $data->paciente[0] = number_format(intval($data->paciente[0]), 0, ',', '.');
+
+            $ano = substr($data->date, 0,4); 
+            $mes = substr($data->date, 4,2); 
+            $dia = substr($data->date, -2); 
+
+            $data->date = $ano . "-".$mes."-".$dia;
+
+            $data->fotos = explode(",", $data->fotos);
+            $attach = Config::get('DICOM_DIRECTORY');
+            $contador_fotos = 0;
+
+            $solicitud_email = Session::get('user_email');
+
+            $respuesta = SolicitudesModel::getSolicitudForImágenes($data->paciente[0]."-".$data->paciente[1], $data->date, $solicitud_email);
+
+            $internalView = new View;
+
+            if ($data->informe == "1" || $data->informe == "3"){
+                if ($respuesta->tipo == 0){
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_ver', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
+                        'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($respuesta->solicitud_id),
+                        'solicitud_resultado' => RespuestaModel::getRespuesta($respuesta->solicitud_id),
+                        'enviar' => true
+                    ));
+                }
+                else if ($respuesta->tipo == 1){
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre_ver', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
+                        'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($respuesta->solicitud_id),
+                        'respuesta_utero' => $respuesta->utero_primertrimestre,
+                        'respuesta_saco_gestacional' => $respuesta->saco_gestacional,
+                        'respuesta_embrion' => $respuesta->embrion,
+                        'respuesta_saco_valor' => $respuesta->saco_gestacional_valor,
+                        'respuesta_saco_eg' => $respuesta->respuesta_saco_eg,
+                        'respuesta_lcn' => $respuesta->lcn,
+                        'respuesta_fcf' => $respuesta->respuesta_fcf,
+                        'respuesta_anexo_izquierdo_primertrimestre' => $respuesta->anexo_izquierdo_primertrimestre,
+                        'respuesta_anexo_derecho_primertrimestre' => $respuesta->anexo_derecho_primertrimestre,
+                        'respuesta_douglas_primertrimestre' => $respuesta->douglas_primertrimestre,
+                        'respuesta_fecha' => $respuesta->fecha,
+                        'respuesta_eg' => $respuesta->eg,
+                        'ecografista' => $respuesta->ecografista,
+                        'comentariosexamen' => $respuesta->comentariosexamen,
+                        'respuesta_lcn_eg' => $respuesta->lcn_eg,
+                        'respuesta_saco_vitelino' => $respuesta->respuesta_saco_vitelino,
+                        'respuesta_saco_vitelino_mm' => $respuesta->respuesta_saco_vitelino_mm,
+                        'enviar' => true
+                    ));
+                }
+                else if ($respuesta->tipo == 2){
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
+                        'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($respuesta->solicitud_id),
+                        'respuesta_placenta' => $respuesta->placenta,
+                        'respuesta_placenta_insercion' => $respuesta->placenta_insercion,
+                        'respuesta_liquido_amniotico' => $respuesta->liquido_amniotico,
+                        'respuesta_dbp' => $respuesta->dbp,
+                        'respuesta_cc' => $respuesta->cc,
+                        'respuesta_cc_pct' => $respuesta->cc_pct,
+                        'respuesta_ca' => $respuesta->ca,
+                        'respuesta_ca_pct' => $respuesta->ca_pct,
+                        'respuesta_lf' => $respuesta->lf,
+                        'respuesta_lf_pct' => $respuesta->lf_pct,
+                        'respuesta_pfe' => $respuesta->pfe_segundo,
+                        'respuesta_pfe_pct' => $respuesta->pfe_pct_segundo,
+                        'respuesta_ccca' => $respuesta->ccca,
+                        'respuesta_ccca_pct' => $respuesta->ccca_pct,
+                        'respuesta_fecha' => $respuesta->fecha,
+                        'respuesta_eg' => $respuesta->eg,
+                        'respuesta_fcf' => $respuesta->respuesta_fcf,
+                        'ecografista' => $respuesta->ecografista,
+                        'comentariosexamen' => $respuesta->comentariosexamen,
+                        'respuesta_presentacion' => $respuesta->presentacion_segundo,
+                        'respuesta_dorso_segundo' => $respuesta->dorso_segundo,
+                        'respuesta_anatomia_segundo' => $respuesta->anatomia_segundo,
+                        'anatomia_fetal_extra' => $respuesta->anatomia_extra,
+                        'respuesta_hipotesis' => $respuesta->hipotesis_segundo,
+                        'respuesta_dof' => $respuesta->respuesta_dof,
+                        'respuesta_ic' => $respuesta->respuesta_ic,
+                        'respuesta_bvm' => $respuesta->respuesta_bvm,
+                        'respuesta_lh' => $respuesta->respuesta_lh,
+                        'respuesta_lh_pct' => $respuesta->respuesta_lh_pct,
+                        'respuesta_cerebelo' => $respuesta->respuesta_cerebelo,
+                        'respuesta_cerebelo_pct' => $respuesta->respuesta_cerebelo_pct,
+                        'respuesta_sexo_fetal' => $respuesta->sexo_fetal,
+                        'uterinas' => $respuesta->uterinas,
+                        'uterinas_percentil' => $respuesta->uterinas_percentil,
+                        'respuesta_atrio_posterior' => $respuesta->respuesta_atrio_posterior,
+                        'respuesta_atrio_posterior_mm' => $respuesta->respuesta_atrio_posterior_mm,
+                        'respuesta_cerebelo_text' => $respuesta->respuesta_cerebelo_text,
+                        'respuesta_cisterna_m' => $respuesta->respuesta_cisterna_m,
+                        'respuesta_cisterna_m_mm' => $respuesta->respuesta_cisterna_m_mm,
+                        'enviar' => true
+                    ));
+                }
+                else if ($respuesta->tipo == 3){
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia_ver', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
+                        'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($respuesta->solicitud_id),
+                        'respuesta_utero_ginecologica' => $respuesta->utero_ginecologica,
+                        'respuesta_endometrio' => $respuesta->endometrio,
+                        'respuesta_anexo_izquierdo_ginecologica' => $respuesta->anexo_izquierdo_ginecologica,
+                        'respuesta_anexo_derecho_ginecologica' => $respuesta->anexo_derecho_ginecologica,
+                        'respuesta_ovario_izquierdo' => $respuesta->ovario_izquierdo,
+                        'respuesta_ovario_derecho' => $respuesta->ovario_derecho,
+                        'respuesta_douglas_ginecologica' => $respuesta->douglas_ginecologica,
+                        'respuesta_fecha' => $respuesta->fecha,
+                        'ecografista' => $respuesta->ecografista,
+                        'comentariosexamen' => $respuesta->comentariosexamen,
+                        'respuesta_eg' => $respuesta->eg,
+                        'enviar' => true
+                    ));
+                }
+                else if($respuesta->tipo == 4){
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler_ver', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
+                        'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($respuesta->solicitud_id),
+                        'respuesta_fecha' => $respuesta->fecha,
+                        'respuesta_eg' => $respuesta->eg,
+                        'respuesta_anatomia' => $respuesta->anatomia_fetal,
+                        'respuesta_anatomia_extra' => $respuesta->anatomia_extra,
+                        'respuesta_embrion' => $respuesta->embrion,
+                        'respuesta_lcn' => $respuesta->lcn,
+                        'respuesta_lcn_eg' => $respuesta->lcn_eg,
+                        'respuesta_fcf' => $respuesta->respuesta_fcf,
+                        'respuesta_translucidez_nucal' => $respuesta->respuesta_translucidez_nucal,
+                        'respuesta_translucencia_nucal' => $respuesta->translucencia_nucal,
+                        'respuesta_hueso_nasal_valor' => $respuesta->hueso_nasal,
+                        'respuesta_hueso_nasal' => $respuesta->respuesta_hueso_nasal,
+                        'respuesta_ductus_venoso' => $respuesta->respuesta_ductus_venoso,
+                        'respuesta_reflujo_tricuspideo' => $respuesta->respuesta_reflujo_tricuspideo,
+                        'uterina_derecha' => $respuesta->uterina_derecha,
+                        'uterina_derecha_percentil' => $respuesta->uterina_derecha_percentil,
+                        'uterina_izquierda' => $respuesta->uterina_izquierda,
+                        'uterina_izquierda_percentil' => $respuesta->uterina_izquierda_percentil,
+                        'uterinas' => $respuesta->uterinas,
+                        'uterinas_percentil' => $respuesta->uterinas_percentil,
+                        'ecografista' => $respuesta->ecografista,
+                        'comentariosexamen' => $respuesta->comentariosexamen,
+                        'dbp' => $respuesta->dbp,
+                        'cc' => $respuesta->cc,
+                        'cc_pct' => $respuesta->cc_pct,
+                        'ca' => $respuesta->ca,
+                        'ca_pct' => $respuesta->ca_pct,
+                        'lf' => $respuesta->lf,
+                        'lf_pct' => $respuesta->lf_pct,
+                        'enviar' => true
+                    ));
+                }
+            }
+
+            if ($data->informe == "2" || $data->informe == "3"){
+
+                if ($respuesta->tipo == 0){
+                    $respuesta = RespuestaModel::getRespuesta($respuesta->solicitud_id);
+                    $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+                    $respuesta->eg = explode (".", $respuesta->eg);
+                    $respuesta->eg = $respuesta->eg[0];
+            
+                    $grafico_uno = ($respuesta->pfe > 0) ? array($respuesta->eg => $respuesta->pfe) : array();
+                    $grafico_dos = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+                    $grafico_tres = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+                    $grafico_cuatro = ($respuesta->umbilical > 0) ? array($respuesta->eg => $respuesta->umbilical) : array();
+                    $grafico_cinco = ($respuesta->cm > 0) ? array($respuesta->eg => $respuesta->cm) : array();
+                    $grafico_seis = ($respuesta->cmau > 0) ? array($respuesta->eg => $respuesta->cmau) : array();
+            
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                        'respuesta' => $respuesta,
+                        'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
+                        'grafico_dos' => GraphModel::ca($grafico_dos),
+                        'grafico_tres' => GraphModel::uterinas($grafico_tres),
+                        'grafico_cuatro' => GraphModel::umbilical($grafico_cuatro),
+                        'grafico_cinco' => GraphModel::cerebralMedia($grafico_cinco),
+                        'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($grafico_seis),
+                        'enviar' => true
+                    ));
+
+
+
+                }elseif ($respuesta->tipo == 2){
+                    $respuesta = RespuestaModel::getRespuesta($respuesta->solicitud_id);
+                    $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+                    $respuesta->eg = explode (".", $respuesta->eg);
+                    $respuesta->eg = $respuesta->eg[0];
+            
+                    $grafico_uno = ($respuesta->cc > 0) ? array($respuesta->eg => $respuesta->cc) : array();
+                    $grafico_dos = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+                    $grafico_tres = ($respuesta->lf > 0) ? array($respuesta->eg => $respuesta->lf) : array();
+                    $grafico_cuatro = ($respuesta->respuesta_lh > 0) ? array($respuesta->eg => $respuesta->respuesta_lh) : array();
+                    $grafico_cinco = ($respuesta->pfe_segundo > 0) ? array($respuesta->eg => $respuesta->pfe_segundo) : array();
+                    $grafico_seis = ($respuesta->ccca > 0) ? array($respuesta->eg => $respuesta->ccca) : array();
+            
+                    $grafico_seis = GraphModel::ccca($grafico_seis);
+            
+                    if (strlen($respuesta->uterinas_percentil) > 1){
+                        $grafico_seis = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+                        $grafico_seis = GraphModel::uterinas($grafico_seis);
+                    } 
+            
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                        'respuesta' => $respuesta,
+                        'grafico_uno' => GraphModel::cc($grafico_uno),
+                        'grafico_dos' => GraphModel::ca($grafico_dos),
+                        'grafico_tres' => GraphModel::lf($grafico_tres),
+                        'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
+                        'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
+                        'grafico_seis' => $grafico_seis,
+                        'enviar' => true
+                    ));
+                }
+                else if($respuesta->tipo == 4){
+                    $respuesta = RespuestaModel::getRespuesta($respuesta->solicitud_id);
+                    $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+                    $respuesta->eg = explode (".", $respuesta->eg);
+                    $respuesta->eg = $respuesta->eg[0];
+
+
+                    //grafico_uno lcn
+                    //grafico_tres dbp
+                    $grafico_uno = ($respuesta->lcn > 0) ? array($respuesta->eg => $respuesta->lcn) : array();
+                    $grafico_dos = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+                    $grafico_tres = ($respuesta->cc > 0) ? array($respuesta->eg => $respuesta->cc) : array();
+                    $grafico_cuatro = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+
+                    $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/once_catorce_grafico_view', 
+                    array(
+                        'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                        'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                        'respuesta' => $respuesta,
+                        'grafico_uno' => GraphModel::lcn_once($grafico_uno),
+                        'grafico_dos' => GraphModel::uterinas_once($grafico_dos),
+                        'grafico_tres' => GraphModel::cc_once($grafico_tres),
+                        'grafico_cuatro' => GraphModel::ca_once($grafico_cuatro),
+                        'enviar' => true
+                    ));
+                }
+            }
+
+            $mail = new PHPMailer;
+            $mail->CharSet = 'UTF-8';
+
+            if (Config::get('EMAIL_USE_SMTP')) {
+
+                $mail->IsSMTP();
+                $mail->SMTPDebug = 0;
+                $mail->SMTPAuth = Config::get('EMAIL_SMTP_AUTH');
+                if (Config::get('EMAIL_SMTP_ENCRYPTION')) {
+                    $mail->SMTPSecure = Config::get('EMAIL_SMTP_ENCRYPTION');
+                }
+
+                $mail->Host = Config::get('EMAIL_SMTP_HOST');
+                $mail->Username = Config::get('EMAIL_SMTP_USERNAME');
+                $mail->Password = Config::get('EMAIL_SMTP_PASSWORD');
+                $mail->Port = Config::get('EMAIL_SMTP_PORT');
+
+            } else {
+
+                $mail->IsMail();
+            }
+
+            $mail->From = Config::get('EMAIL_VERIFICATION_FROM_EMAIL');
+            $mail->FromName = Config::get('EMAIL_VERIFICATION_FROM_NAME');
+            $mail->AddAddress($data->email);
+            $mail->Subject = "Envío de imágenes y/o Informes";
+            $mail->Body = "Se adjunta lo solicitado";
+        
+
+            foreach($data->fotos as $foto){
+                $nombre_foto = 'Ecografía ' . $contador_fotos . '.jpg';
+                $mail->AddAttachment("$attach/$foto", $name = $nombre_foto,  $encoding = 'base64', $type = 'image/jpeg');
+                $contador_fotos++;
+            }
+
+            $attach = Config::get('PATH_AVATARS');
+            if ($data->informe == "1" || $data->informe == "3"){
+                $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
+            }
+
+            if ($data->informe == "2" || $data->informe == "3"){
+                $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfico.pdf',  $encoding = 'base64', $type = 'application/pdf');
+            }
+        
+            $wasSendingSuccessful = $mail->Send();
+
+            if ($wasSendingSuccessful) {
+                $response->result= true;
+
+            } else {
+                $response->result = false;
+            }
+
+            $response->moda = $data->modal;
+        }
+
+        $this->view->renderJSON($response);
+    }
 }

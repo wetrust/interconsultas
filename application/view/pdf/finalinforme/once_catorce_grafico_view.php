@@ -50,11 +50,10 @@
     $this->pdf->writeHTMLCell('', '', $x=10, $y=190, $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
 
-    
     if (property_exists($this,"enviar")){
         //para enviar por email
         $tmp = Config::get('PATH_AVATARS');
-        $this->pdf->Output("$tmp/informe.pdf", "F");
+        $this->pdf->Output("$tmp/grafica.pdf", "F");
         /////////
     }else{
         //para visualizar en el navegador

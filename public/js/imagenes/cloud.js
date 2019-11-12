@@ -48,7 +48,7 @@ export class cloud {
             to.append('fotos', datos.fotos);
             to.append('modal', datos.modal);
 
-            const from = await data.post(config.pdfimagenes, to);
+            const from = await data.post(config.emailSend, to);
             return from;
 
         } catch(e){}
