@@ -5,7 +5,7 @@ class DirectorioModel
     public static function getAllDirectorios(){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT email.user_id, email.email_id, email.email_ciudad, email.email_nombre, ciudad.ciudad_name, email.email_value, email.email_profesion FROM email INNER JOIN ciudad ON email.email_ciudad = ciudad.ciudad_id WHERE email.user_id = :user_id ORDER BY email.email_nombre";
+        $sql = "SELECT email.user_id, email.email_id, email.email_ciudad, email.email_nombre, ciudad.ciudad_name, email.email_value, email.email_profesion FROM email INNER JOIN ciudad ON email.email_ciudad = ciudad.ciudad_id WHERE email.user_id = :user_id  ORDER BY email.email_nombre";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id')));
 
