@@ -464,7 +464,7 @@ class SolicitudesModel
     public static function getSolicitudForImágenes($solicitud_rut, $solicitud_fecha, $solicitud_email){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT * FROM solicitudes INNER JOIN respuestas on respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_rut = :solicitud_rut AND solicitud_fecha = :solicitud_fecha AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
+        $sql = "SELECT * FROM solicitudes INNER JOIN respuestas on respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_rut = :solicitud_rut AND respuestas.fecha = :solicitud_fecha AND solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2";
         
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_rut' => $solicitud_rut,':solicitud_fecha' => $solicitud_fecha, ':solicitud_profesionalemail' => $solicitud_email));
