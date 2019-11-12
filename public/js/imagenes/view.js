@@ -1,5 +1,5 @@
 "use strict";
-import {make, the, humanDate, inputDate, b64toBlob, clearSelect} from '../wetrust.js';
+import {make, the, humanDate, inputDate, b64toBlob, clearSelect, loadSelect} from '../wetrust.js';
 import {config} from './config.js';
 import { cloud } from './cloud.js';
 
@@ -141,13 +141,7 @@ export class view {
         clearSelect(ciudad);
 
         cloud.getCiudades(this.value, ciudad).then(function(data){
-            data.ciudades.forEach(function(element) {
-                let opcionCiudad = the(data.ciudad);
-                let opt = document.createElement('option');
-                opt.appendChild( document.createTextNode(element.ciudad_name) );
-                opt.value = element.email_ciudad; 
-                opcionCiudad.appendChild(opt);
-            });
+            loadSelect(data.ciudad, data.ciudades);
         });
     }
 }

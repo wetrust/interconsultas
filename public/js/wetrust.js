@@ -106,6 +106,16 @@ export function clearSelect(id){
     }
 }
 
+export function loadSelect(id, data){
+    data.forEach(function(element) {
+        let opcion = the(id);
+        let opt = document.createElement('option');
+        opt.appendChild( document.createTextNode(element[1]) );
+        opt.value = element[0]; 
+        opcion.appendChild(opt);
+    });
+}
+
 
 export const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
   const byteCharacters = atob(b64Data);
