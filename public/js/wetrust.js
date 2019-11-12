@@ -101,7 +101,7 @@ export function clearSelect(id){
     let select = the(id);
     let length = select.options.length;
 
-    for (i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         select.options[i] = null;
     }
 }
