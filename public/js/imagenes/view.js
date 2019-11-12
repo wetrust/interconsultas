@@ -148,7 +148,7 @@ export class view {
     }
 
     static loadEmails(){
-        let rol = this.dataset.rol;
+        let rol = the(this.dataset.rol).value;
         let email = this.dataset.email;
 
         clearSelect(email);
