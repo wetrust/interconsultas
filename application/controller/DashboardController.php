@@ -801,6 +801,6 @@ class DashboardController extends Controller{
     }
 
     public function getCiudadesProfesional($rol){
-        $this->View->renderJSON(DiagnosticoModel::getAllDirectorioCiudades($rol));
+        $this->View->renderJSON(DirectorioModel::getAllDirectorioCiudades($rol));
     }
 }
