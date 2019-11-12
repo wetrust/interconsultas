@@ -1134,6 +1134,6 @@ class DashboardController extends Controller{
             $response->moda = $data->modal;
         }
 
-        $this->view->renderJSON($response);
+        $this->View->renderJSON($response);
     }
 }
