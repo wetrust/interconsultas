@@ -143,6 +143,7 @@ function buildFinishTable(data){
                             let option = '<option value="'+value.email_ciudad+'">'+value.ciudad_name + '</option>';
                             $('#'+ciudad).append(option);
                         });
+                        $('#'+ciudad).trigger("change");
                     });
                 });
 
