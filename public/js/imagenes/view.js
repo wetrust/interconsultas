@@ -104,34 +104,45 @@ export class view {
     }
 
     static enviarFotosInforme(){
-        let informe = this.dataset.informe;
+        let informe = the(this.dataset.informe);
         let modal = this.dataset.modal;
-        let email = $("#"+this.dataset.email).val();
+        let email = the(this.dataset.email).value;
 
         let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
         this.disabled = true;
         this.innerHTML = animacion;
 
-        let args = {email: email,informe: informe,paciente: paciente_id, modal: modal}
+        let contador = 0;
+        let sList = "";
+        
+        $('input[name="foto"]').each(function () {
+            if (this.checked) {
+                var sThisVal = (this.checked ? this.dataset.foto : "");
+                sList += (sList=="" ? sThisVal : "," + sThisVal);
+                contador++;
+            }
+        });
 
-        $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
+        if (contador == 0){
+            make.alert("<p>Debes seleccionar al menos una imágen</p>");
+            return;
+        }
+
+        let args = {email: email,informe: informe,paciente: paciente_id, date,date, fotos:sList, modal: modal}
+
+        cloud.sendEmail(args).then(function(data){
             if (Object.keys(data).length > 0) {
-                let modal = makeModal();
-                    document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-                    document.getElementById(modal.titulo).innerHTML = "Información";
+                let alert = ""
+                if (data.result = true){
+                    alert = "<p>Enviado</p>";
+                }
+                else{
+                    alert = "<p>No se pudo enviar, intente nuevamente</p>";
+                }
 
-                    if (data.result = true){
-                        document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
-                    }
-                    else{
-                        document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
-                    }
+                make.alert(alert);
 
-                    $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-                        $(this).remove();
-                    });
-
-                $('#'+ args.modal).modal("hide");
+                $('#'+ data.modal).modal("hide");
             }
         });
     }

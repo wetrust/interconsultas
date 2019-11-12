@@ -38,4 +38,19 @@ export class cloud {
             return respuesta;
         } catch(e) {}
     }
+    static async sendEmail(datos){
+        try {
+            const to = new FormData();
+            to.append('email', datos.email);
+            to.append('informe', datos.informe);
+            to.append('paciente', datos.paciente);
+            to.append('date', datos.date);
+            to.append('fotos', datos.fotos);
+            to.append('modal', datos.modal);
+
+            const from = await data.post(config.pdfimagenes, to);
+            return from;
+
+        } catch(e){}
+    }
 }
