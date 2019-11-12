@@ -104,7 +104,7 @@ export class view {
     }
 
     static enviarFotosInforme(){
-        let informe = the(this.dataset.informe);
+        let informe = the(this.dataset.informe).value;
         let modal = this.dataset.modal;
         let email = the(this.dataset.email).value;
 
