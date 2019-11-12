@@ -803,4 +803,8 @@ class DashboardController extends Controller{
     public function getCiudadesProfesional($rol){
         $this->View->renderJSON(DirectorioModel::getAllDirectorioCiudades($rol));
     }
+
+    public function getEmailProfesional($rol, $ciudad){
+        $this->View->renderJSON(DirectorioModel::getAllDirectorioEmail($rol, $ciudad));
+    }
 }

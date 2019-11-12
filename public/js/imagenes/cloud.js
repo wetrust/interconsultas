@@ -28,4 +28,14 @@ export class cloud {
             return respuesta;
         } catch(e) {}
     }
+    static async getEmails(rol, ciudad, email){
+        try {
+            const from = await data.get(config.emailProfesional+rol+ciudad);
+            let respuesta = {
+                email: email,
+                emails: from
+            }
+            return respuesta;
+        } catch(e) {}
+    }
 }

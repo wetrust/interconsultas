@@ -100,6 +100,7 @@ export class view {
         the(modal.button).onclick = view.enviarFotosInforme;
 
         the(rol).onchange = view.loadCiudades;
+        the(ciudad).onchange = view.loadEmails;
     }
 
     static enviarFotosInforme(){
@@ -143,5 +144,16 @@ export class view {
         cloud.getCiudades(this.value, ciudad).then(function(data){
             loadSelect(data.ciudad, data.ciudades);
         });
+    }
+
+    static loadEmails(){
+        let rol = this.dataset.rol;
+        let email = this.dataset.email;
+
+        clearSelect(email);
+
+        cloud.getEmails(rol,"/"+this.value, email).then(function(data){
+            loadSelect(data.email, data.emails);
+        });  
     }
 }
