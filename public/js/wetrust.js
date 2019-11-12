@@ -39,6 +39,8 @@ export class make{
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.contenido).innerHTML = mensaje;
         the(modal.titulo).innerHTML = "Mensaje";
+
+        $("#"+modal.id + " button").html("Aceptar");
         
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }

@@ -1,5 +1,5 @@
 "use strict";
-import {make, the, humanDate, inputDate, b64toBlob, clearSelect, loadSelect} from '../wetrust.js';
+import {make, the, b64toBlob, clearSelect, loadSelect} from '../wetrust.js';
 import {config} from './config.js';
 import { cloud } from './cloud.js';
 
