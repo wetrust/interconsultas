@@ -110,8 +110,8 @@ export function loadSelect(id, data){
     data.forEach(function(element) {
         let opcion = the(id);
         let opt = document.createElement('option');
-        opt.appendChild( document.createTextNode(element[1]) );
-        opt.value = element[0]; 
+        opt.appendChild( document.createTextNode(element[Object.keys(element)[1]]) );
+        opt.value = element[Object.keys(element)[0]]; 
         opcion.appendChild(opt);
     });
 }
