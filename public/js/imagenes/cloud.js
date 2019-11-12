@@ -18,4 +18,14 @@ export class cloud {
 
         } catch(e){}
     }
+    static async getCiudades(rol, ciudad){
+        try {
+            const from = await data.get(config.ciudadesProfesional+rol);
+            let respuesta = {
+                ciudad: ciudad,
+                ciudades: from
+            }
+            return respuesta;
+        } catch(e) {}
+    }
 }

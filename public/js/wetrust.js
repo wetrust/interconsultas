@@ -40,9 +40,7 @@ export class make{
         the(modal.contenido).innerHTML = mensaje;
         the(modal.titulo).innerHTML = "Mensaje";
         
-        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-            $(this).remove();
-        });
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
 }
 
@@ -97,6 +95,15 @@ export function inputDate(date) {
     } 
   
     return yyyy + '-' +  mm+ '-' + dd;
+}
+
+export function clearSelect(id){
+    let select = the(id);
+    let length = select.options.length;
+
+    for (i = 0; i < length; i++) {
+        select.options[i] = null;
+    }
 }
 
 

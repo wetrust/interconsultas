@@ -1,5 +1,5 @@
 "use strict";
-import {make, the, humanDate, inputDate, b64toBlob} from '../wetrust.js';
+import {make, the, humanDate, inputDate, b64toBlob, clearSelect} from '../wetrust.js';
 import {config} from './config.js';
 import { cloud } from './cloud.js';
 
@@ -98,6 +98,8 @@ export class view {
         the(modal.button).dataset.modal = modal.id;
 
         the(modal.button).onclick = view.enviarFotosInforme;
+
+        the(rol).onchange = view.loadCiudades;
     }
 
     static enviarFotosInforme(){
@@ -130,6 +132,22 @@ export class view {
 
                 $('#'+ args.modal).modal("hide");
             }
+        });
+    }
+
+    static loadCiudades(){
+        let ciudad = this.dataset.ciudad;
+
+        clearSelect(ciudad);
+
+        cloud.getCiudades(this.value, ciudad).then(function(data){
+            data.ciudades.forEach(function(element) {
+                let opcionCiudad = the(data.ciudad);
+                let opt = document.createElement('option');
+                opt.appendChild( document.createTextNode(element.ciudad_name) );
+                opt.value = element.email_ciudad; 
+                opcionCiudad.appendChild(opt);
+            });
         });
     }
 }

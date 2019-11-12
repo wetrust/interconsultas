@@ -116,7 +116,6 @@ class DashboardController extends Controller{
         $respuesta_saco_vitelino = Request::post('respuesta_saco_vitelino');
         $respuesta_saco_vitelino_mm = Request::post('respuesta_saco_vitelino_mm');
 
-
         //nuevos eco23
         $respuesta_atrio_posterior = Request::post('respuesta_atrio_posterior');
         $respuesta_atrio_posterior_mm = Request::post('respuesta_atrio_posterior_mm');
@@ -799,5 +798,9 @@ class DashboardController extends Controller{
         }
         
         $this->View->renderJSON($response);
+    }
+
+    public function getCiudadesProfesional($rol){
+        $this->View->renderJSON(DiagnosticoModel::getAllDirectorioCiudades($rol));
     }
 }
