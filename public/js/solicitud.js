@@ -16,12 +16,12 @@ $(document).ready(function(){
         fn_error : function(input){
             $(input).removeClass("is-valid").addClass("is-invalid");
             input.closest('.rut-container').find('strong').remove();
-            input.closest('.rut-container').append('<strong class="invalid-feedback">N° Rut Incorrecto</strong>');
+            input.closest('.rut-container').append('<strong class="invalid-feedback">N° de Rut Incorrecto</strong>');
         },
         fn_validado : function(input){
             $(input).removeClass("is-invalid").addClass("is-valid");
             input.closest('.rut-container').find('strong').remove();
-            input.closest('.rut-container').append('<strong class="valid-feedback">N° Rut Correcto</strong>');
+            input.closest('.rut-container').append('<strong class="valid-feedback">N° de Rut Correcto</strong>');
         },
         placeholder: false
 	});
