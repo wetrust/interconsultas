@@ -127,10 +127,11 @@ function buildFinishTable(data){
                 let rol = uuidv4();
                 let email = uuidv4();
                 let ciudad = uuidv4();
+                let adjuntar = uuidv4(); 
 
                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
 
-                document.getElementById(modal.contenido).innerHTML = '<div class="row"> <div class="form-group col-6"> <label for="'+rol+'">Rol destinatario</label> <select class="form-control" id="'+rol+'"> <option value="Paciente">Paciente</option> <option value="Referente">Referente</option> <option value="Matrona">Matrona</option> <option value="Medico">Médico</option> <option value="Administrativo">Administrativo</option> <option value="Otros">Otros</option> </select> </div><div class="form-group col-6"> <label for="'+ciudad+'">Ciudad</label> <select class="form-control" id="'+ciudad+'"></select> </div><div class="form-group col"> <label for="'+email+'">Nombre del destinatario</label> <select class="form-control" id="'+email+'"></select> </div></div><p>Envía informe ecográfico y gráficas respectivas</p>';
+                document.getElementById(modal.contenido).innerHTML = '<div class="row"> <div class="form-group col-6"> <label for="'+rol+'">Rol destinatario</label> <select class="form-control" id="'+rol+'"> <option value="Paciente">Paciente</option> <option value="Referente">Referente</option> <option value="Matrona">Matrona</option> <option value="Medico">Médico</option> <option value="Administrativo">Administrativo</option> <option value="Otros">Otros</option> </select> </div><div class="form-group col-6"> <label for="'+ciudad+'">Ciudad</label> <select class="form-control" id="'+ciudad+'"></select> </div><div class="form-group col-6"> <label for="'+email+'">Nombre del destinatario</label> <select class="form-control" id="'+email+'"></select> </div><div class="form-group col-6"> <label for="'+adjuntar+'">¿Adjuntar Gráfica?</label> <select class="form-control" id="'+adjuntar+'"> <option value="0">No</option> <option value="1">Si</option> </select> </div></div><p>Envía informe ecográfico y gráficas respectivas</p>';
                 document.getElementById(modal.titulo).innerHTML = "Enviar informe por E-mail";                
 
                 document.getElementById(rol).dataset.ciudad = ciudad;
@@ -163,26 +164,27 @@ function buildFinishTable(data){
                     });
                 });
 
-                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-                    $(this).remove();
-                });
+                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {$(this).remove();});
 
                 document.getElementById(modal.button).dataset.informe = this.dataset.informe;
                 document.getElementById(modal.button).dataset.id = this.dataset.id;
                 document.getElementById(modal.button).dataset.email = email;
                 document.getElementById(modal.button).dataset.modal = modal.id;
+                document.getElementById(modal.button).dataset.adjuntar = adjuntar;
 
                 $("#"+modal.button).on("click", function(){
                     let informe = this.dataset.informe;
                     let id = this.dataset.id;
                     let email = $("#"+this.dataset.email).val();
 
+                    let adjuntar = $("#"+this.dataset.adjuntar).val();
+
                     let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
                     this.disabled = true;
                     this.innerHTML = animacion;
                     let modal = this.dataset.modal;
 
-                    let args = {email: email,informe: informe,solicitud: id, modal: modal}
+                    let args = {email: email,informe: informe,solicitud: id, modal: modal, adjuntar: adjuntar}
 
                     $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
                         if (Object.keys(data).length > 0) {
@@ -190,7 +192,7 @@ function buildFinishTable(data){
                                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                                 document.getElementById(modal.titulo).innerHTML = "Información";
 
-                                if (data.result = true){
+                                if (data.result == true){
                                     document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
                                 }
                                 else{
