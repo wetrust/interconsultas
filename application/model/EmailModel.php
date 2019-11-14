@@ -312,10 +312,13 @@ class EmailModel
         $email = Request::post('email');
         $profesionalEmail = DirectorioModel::getDirectorioEmail($email);
         $informe = intval(Request::post('informe'));
+        $adjuntar = intval(Request::post('adjuntar'));
         $response = new stdClass();
         $internalView = new View;
 
         $response->result = false;
+
+        $Subject = "";
 
         if (!$solicitud_id || !$email || strlen($email) == 0 || $informe < 0 || $informe > 4){
             return $response;
@@ -328,51 +331,60 @@ class EmailModel
 
         $tmp = Config::get('PATH_AVATARS');
         if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
-        if (file_exists("$tmp/informeGrafico.pdf")) unlink("$tmp/informeGrafico.pdf");
-        
+        if (file_exists("$tmp/informeGrafico.pdf")) unlink("$tmp/grafica.pdf");
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         $data = SolicitudesModel::getSolicitud($solicitud_id);
 
         if ($informe == 0){    
-            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index', 
-            array(
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_ver', array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => $data,
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
-                'solicitud_resultado' => $respuesta,
-                'profesional_email' => $profesionalEmail
+                'solicitud_resultado' => RespuestaModel::getRespuesta($solicitud_id),
+                'enviar' => true
             ));
 
+            $respuesta = RespuestaModel::getRespuesta($solicitud_id);
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
             $respuesta->eg = explode (".", $respuesta->eg);
             $respuesta->eg = $respuesta->eg[0];
     
-            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico', 
+            $grafico_uno = ($respuesta->pfe > 0) ? array($respuesta->eg => $respuesta->pfe) : array();
+            $grafico_dos = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+            $grafico_tres = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+            $grafico_cuatro = ($respuesta->umbilical > 0) ? array($respuesta->eg => $respuesta->umbilical) : array();
+            $grafico_cinco = ($respuesta->cm > 0) ? array($respuesta->eg => $respuesta->cm) : array();
+            $grafico_seis = ($respuesta->cmau > 0) ? array($respuesta->eg => $respuesta->cmau) : array();
+    
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => $data,
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'respuesta' => $respuesta,
-                'grafico_uno' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe)),
-                'grafico_dos' => GraphModel::ca(array($respuesta->eg => $respuesta->ca)),
-                'grafico_tres' => GraphModel::uterinas(array($respuesta->eg => $respuesta->uterinas)),
-                'grafico_cuatro' => GraphModel::umbilical(array($respuesta->eg => $respuesta->umbilical)),
-                'grafico_cinco' => GraphModel::cerebralMedia(array($respuesta->eg => $respuesta->cm)),
-                'grafico_seis' => GraphModel::cuocienteCerebroPlacentario(array($respuesta->eg =>$respuesta->cmau)),
+                'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
+                'grafico_dos' => GraphModel::ca($grafico_dos),
+                'grafico_tres' => GraphModel::uterinas($grafico_tres),
+                'grafico_cuatro' => GraphModel::umbilical($grafico_cuatro),
+                'grafico_cinco' => GraphModel::cerebralMedia($grafico_cinco),
+                'grafico_seis' => GraphModel::cuocienteCerebroPlacentario($grafico_seis),
+                'enviar' => true
             ));
 
-            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco crecimiento',$informe, $email);
+            $Subject = 'Solicitud eco crecimiento';
         }
         else if ($informe == 1){
-            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre', 
-            array(
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/primertrimestre_ver', array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => $data,
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_utero' => $respuesta->utero_primertrimestre,
                 'respuesta_saco_gestacional' => $respuesta->saco_gestacional,
                 'respuesta_embrion' => $respuesta->embrion,
+                'respuesta_saco_valor' => $respuesta->saco_gestacional_valor,
+                'respuesta_saco_eg' => $respuesta->respuesta_saco_eg,
                 'respuesta_lcn' => $respuesta->lcn,
+                'respuesta_fcf' => $respuesta->respuesta_fcf,
                 'respuesta_anexo_izquierdo_primertrimestre' => $respuesta->anexo_izquierdo_primertrimestre,
                 'respuesta_anexo_derecho_primertrimestre' => $respuesta->anexo_derecho_primertrimestre,
                 'respuesta_douglas_primertrimestre' => $respuesta->douglas_primertrimestre,
@@ -381,16 +393,17 @@ class EmailModel
                 'ecografista' => $respuesta->ecografista,
                 'comentariosexamen' => $respuesta->comentariosexamen,
                 'respuesta_lcn_eg' => $respuesta->lcn_eg,
-                'profesional_email' => $profesionalEmail
+                'respuesta_saco_vitelino' => $respuesta->respuesta_saco_vitelino,
+                'respuesta_saco_vitelino_mm' => $respuesta->respuesta_saco_vitelino_mm,
+                'enviar' => true
             ));
             
-            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco primer trimestre',$informe, $email);
+            $Subject = 'Solicitud eco primer trimestre';
         }
         else if ($informe == 2){
-            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre', 
-            array(
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => $data,
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_placenta' => $respuesta->placenta,
                 'respuesta_placenta_insercion' => $respuesta->placenta_insercion,
@@ -398,7 +411,7 @@ class EmailModel
                 'respuesta_dbp' => $respuesta->dbp,
                 'respuesta_cc' => $respuesta->cc,
                 'respuesta_cc_pct' => $respuesta->cc_pct,
-                'respuesta_ca' =>  $respuesta->ca,
+                'respuesta_ca' => $respuesta->ca,
                 'respuesta_ca_pct' => $respuesta->ca_pct,
                 'respuesta_lf' => $respuesta->lf,
                 'respuesta_lf_pct' => $respuesta->lf_pct,
@@ -408,6 +421,7 @@ class EmailModel
                 'respuesta_ccca_pct' => $respuesta->ccca_pct,
                 'respuesta_fecha' => $respuesta->fecha,
                 'respuesta_eg' => $respuesta->eg,
+                'respuesta_fcf' => $respuesta->respuesta_fcf,
                 'ecografista' => $respuesta->ecografista,
                 'comentariosexamen' => $respuesta->comentariosexamen,
                 'respuesta_presentacion' => $respuesta->presentacion_segundo,
@@ -423,39 +437,56 @@ class EmailModel
                 'respuesta_cerebelo' => $respuesta->respuesta_cerebelo,
                 'respuesta_cerebelo_pct' => $respuesta->respuesta_cerebelo_pct,
                 'respuesta_sexo_fetal' => $respuesta->sexo_fetal,
-                'profesional_email' => $profesionalEmail
+                'uterinas' => $respuesta->uterinas,
+                'uterinas_percentil' => $respuesta->uterinas_percentil,
+                'respuesta_atrio_posterior' => $respuesta->respuesta_atrio_posterior,
+                'respuesta_atrio_posterior_mm' => $respuesta->respuesta_atrio_posterior_mm,
+                'respuesta_cerebelo_text' => $respuesta->respuesta_cerebelo_text,
+                'respuesta_cisterna_m' => $respuesta->respuesta_cisterna_m,
+                'respuesta_cisterna_m_mm' => $respuesta->respuesta_cisterna_m_mm,
+                'enviar' => true
             ));
 
+            $respuesta = RespuestaModel::getRespuesta($solicitud_id);
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
             $respuesta->eg = explode (".", $respuesta->eg);
             $respuesta->eg = $respuesta->eg[0];
-
-            $grafico_seis = GraphModel::ccca(array($respuesta->eg => $respuesta->ccca));
-
+    
+            $grafico_uno = ($respuesta->cc > 0) ? array($respuesta->eg => $respuesta->cc) : array();
+            $grafico_dos = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+            $grafico_tres = ($respuesta->lf > 0) ? array($respuesta->eg => $respuesta->lf) : array();
+            $grafico_cuatro = ($respuesta->respuesta_lh > 0) ? array($respuesta->eg => $respuesta->respuesta_lh) : array();
+            $grafico_cinco = ($respuesta->pfe_segundo > 0) ? array($respuesta->eg => $respuesta->pfe_segundo) : array();
+            $grafico_seis = ($respuesta->ccca > 0) ? array($respuesta->eg => $respuesta->ccca) : array();
+    
+            $grafico_seis = GraphModel::ccca($grafico_seis);
+    
             if (strlen($respuesta->uterinas_percentil) > 1){
-                $grafico_seis = GraphModel::uterinas(array($respuesta->eg => $respuesta->uterinas));
-            }
-
-            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico', 
+                $grafico_seis = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+                $grafico_seis = GraphModel::uterinas($grafico_seis);
+            } 
+    
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => $data,
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'respuesta' => $respuesta,
-                'grafico_uno' => GraphModel::cc(array($respuesta->eg => $respuesta->cc)),
-                'grafico_dos' => GraphModel::ca(array($respuesta->eg => $respuesta->ca)),
-                'grafico_tres' => GraphModel::lf(array($respuesta->eg => $respuesta->lf)),
-                'grafico_cuatro' => GraphModel::lh(array($respuesta->eg => $respuesta->respuesta_lh)),
-                'grafico_cinco' => GraphModel::pesoFetal(array($respuesta->eg => $respuesta->pfe_segundo)),
-                'grafico_seis' => $grafico_seis
+                'grafico_uno' => GraphModel::cc($grafico_uno),
+                'grafico_dos' => GraphModel::ca($grafico_dos),
+                'grafico_tres' => GraphModel::lf($grafico_tres),
+                'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
+                'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
+                'grafico_seis' => $grafico_seis,
+                'enviar' => true
             ));
 
-            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud eco segundo trimestre',$informe, $email);
+            $Subject = 'Solicitud eco segundo trimestre';
         }
         else if ($informe == 3){
-            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia', 
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/ginecologia_ver', 
             array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => $data,
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_utero_ginecologica' => $respuesta->utero_ginecologica,
                 'respuesta_endometrio' => $respuesta->endometrio,
@@ -467,16 +498,16 @@ class EmailModel
                 'respuesta_fecha' => $respuesta->fecha,
                 'ecografista' => $respuesta->ecografista,
                 'comentariosexamen' => $respuesta->comentariosexamen,
-                'profesional_email' => $profesionalEmail
+                'respuesta_eg' => $respuesta->eg,
+                'enviar' => true
             ));
 
-            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud de examen ecografico',$informe, $email);
+            $Subject = 'Solicitud de examen ecografico';
         }
         else if($informe == 4){
-            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler', 
-            array(
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/doppler_ver', array(
                 'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                'solicitud' => $data,
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
                 'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($solicitud_id),
                 'respuesta_fecha' => $respuesta->fecha,
                 'respuesta_eg' => $respuesta->eg,
@@ -486,12 +517,12 @@ class EmailModel
                 'respuesta_lcn' => $respuesta->lcn,
                 'respuesta_lcn_eg' => $respuesta->lcn_eg,
                 'respuesta_fcf' => $respuesta->respuesta_fcf,
-                'respuesta_dbp' => $respuesta->dbp,
+                'respuesta_translucidez_nucal' => $respuesta->respuesta_translucidez_nucal,
                 'respuesta_translucencia_nucal' => $respuesta->translucencia_nucal,
                 'respuesta_hueso_nasal_valor' => $respuesta->hueso_nasal,
-                'respuesta_cc' => $respuesta->cc,
-                'respuesta_ca' => $respuesta->ca,
-                'respuesta_lf' => $respuesta->lf,
+                'respuesta_hueso_nasal' => $respuesta->respuesta_hueso_nasal,
+                'respuesta_ductus_venoso' => $respuesta->respuesta_ductus_venoso,
+                'respuesta_reflujo_tricuspideo' => $respuesta->respuesta_reflujo_tricuspideo,
                 'uterina_derecha' => $respuesta->uterina_derecha,
                 'uterina_derecha_percentil' => $respuesta->uterina_derecha_percentil,
                 'uterina_izquierda' => $respuesta->uterina_izquierda,
@@ -500,10 +531,80 @@ class EmailModel
                 'uterinas_percentil' => $respuesta->uterinas_percentil,
                 'ecografista' => $respuesta->ecografista,
                 'comentariosexamen' => $respuesta->comentariosexamen,
-                'profesional_email' => $profesionalEmail
+                'dbp' => $respuesta->dbp,
+                'cc' => $respuesta->cc,
+                'cc_pct' => $respuesta->cc_pct,
+                'ca' => $respuesta->ca,
+                'ca_pct' => $respuesta->ca_pct,
+                'lf' => $respuesta->lf,
+                'lf_pct' => $respuesta->lf_pct,
+                'enviar' => true
             ));
 
-            $response->result = self::sendRespuestaEmailManual($data, 'Solicitud de ecografia 11-14',$informe, $email);
+            $respuesta = RespuestaModel::getRespuesta($solicitud_id);
+            $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
+            $respuesta->eg = explode (".", $respuesta->eg);
+            $respuesta->eg = $respuesta->eg[0];
+
+            //grafico_uno lcn
+            //grafico_tres dbp
+            $grafico_uno = ($respuesta->lcn > 0) ? array($respuesta->eg => $respuesta->lcn) : array();
+            $grafico_dos = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
+            $grafico_tres = ($respuesta->cc > 0) ? array($respuesta->eg => $respuesta->cc) : array();
+            $grafico_cuatro = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+
+            $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/once_catorce_grafico_view', 
+            array(
+                'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+                'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                'respuesta' => $respuesta,
+                'grafico_uno' => GraphModel::lcn_once($grafico_uno),
+                'grafico_dos' => GraphModel::uterinas_once($grafico_dos),
+                'grafico_tres' => GraphModel::cc_once($grafico_tres),
+                'grafico_cuatro' => GraphModel::ca_once($grafico_cuatro),
+                'enviar' => true
+            ));
+
+            $Subject = 'Solicitud de ecografia 11-14';
+        }
+
+        $mail = new PHPMailer;
+        $mail->CharSet = 'UTF-8';
+
+        if (Config::get('EMAIL_USE_SMTP')) {
+            $mail->IsSMTP();
+            $mail->SMTPDebug = 0;
+            $mail->SMTPAuth = Config::get('EMAIL_SMTP_AUTH');
+            if (Config::get('EMAIL_SMTP_ENCRYPTION')) {
+                $mail->SMTPSecure = Config::get('EMAIL_SMTP_ENCRYPTION');
+            }
+            $mail->Host = Config::get('EMAIL_SMTP_HOST');
+            $mail->Username = Config::get('EMAIL_SMTP_USERNAME');
+            $mail->Password = Config::get('EMAIL_SMTP_PASSWORD');
+            $mail->Port = Config::get('EMAIL_SMTP_PORT');
+        } else {
+            $mail->IsMail();
+        }
+
+        $mail->From = Config::get('EMAIL_VERIFICATION_FROM_EMAIL');
+        $mail->FromName = Config::get('EMAIL_VERIFICATION_FROM_NAME');
+        $mail->AddAddress($email);
+        $mail->Subject = $Subject;
+        $mail->Body = "Se adjunta lo solicitado";
+
+        $attach = Config::get('PATH_AVATARS');
+        $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
+
+        if ($informe == "1"){
+            $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfico.pdf',  $encoding = 'base64', $type = 'application/pdf');
+        }
+
+        $wasSendingSuccessful = $mail->Send();
+
+        if ($wasSendingSuccessful) {
+            $response->result= true;
+        } else {
+            $response->result = false;
         }
 
         return $response;
