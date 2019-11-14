@@ -27,7 +27,6 @@ $(document).ready(function(){
 	});
 
 	$('#b').on("focusout", function(){
-		$('#b').trigger("blur");
 		$.get("api/getPaciente/"+this.value).done(function(data){
 			if (data.return !== false){
 				$('#a').val(data.return.nombre);
