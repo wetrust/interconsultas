@@ -60,7 +60,7 @@ export class view {
                 const blob = b64toBlob(data.pdf, "application/pdf");
                 const url = URL.createObjectURL(blob);
 
-                let modal = make.modal("Enviar informe");
+                let modal = make.modal();
                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
                 the(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="'+ url+'" class="embed-responsive-item w-100 h-100"></iframe>';
                 the(modal.titulo).innerHTML = "Informe de imágenes";
