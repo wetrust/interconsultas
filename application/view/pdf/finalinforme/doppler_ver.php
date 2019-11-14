@@ -45,7 +45,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(4);
 
-    $html = '<h4>A- Formulario referencia para evaluación ecográfica edad gestacional 11 - 14</h4>';
+    $html = '<h4><em>Formulario referencia para evaluación ecográfica edad gestacional 11 - 14</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
 
@@ -109,7 +109,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h4>B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
+    $html = '<h4><em>Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
 

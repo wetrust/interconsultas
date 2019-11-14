@@ -44,7 +44,7 @@
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'C', true);
     $this->pdf->Ln(4);
 
-    $html = '<h4>A- Formulario referencia para evaluación ecográfica de primer trimestre</h4>';
+    $html = '<h4><em>Formulario referencia para evaluación ecográfica de primer trimestre</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     if (Session::get("user_account_type") == 4) {
@@ -114,7 +114,7 @@
         $this->pdf->Ln(4);
     }
 
-    $html = '<h4>B- Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</h4>';
+    $html = '<h4><em>Respuesta final de profesional contrarreferente a solicitud de exámen ecográfico</em></h4>';
     $this->pdf->writeHTMLCell('', '', '10', '', $html, 0, 1, 0, true, 'L', true);
     $this->pdf->Ln(2);
     $html = '<table><tbody><tr><td>Fecha de exámen: '. $fecha.'</td></tr><tr><td>Edad gestacional (Ege): '. $this->respuesta_eg.'</td></tr></tbody></table>';
