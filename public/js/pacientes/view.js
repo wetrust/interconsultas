@@ -179,6 +179,14 @@ export class view {
             },
             placeholder: false
         });
+
+        $('#rut').on("blur", function(){
+            cloud.findPaciente(this.value).then(function(data){
+                if (data.length > 0){
+                    make.alert('<p class="text-center">Este RUT ya existe</p>');
+                }
+            });
+        });
     }
 
     static calcularEG(){
