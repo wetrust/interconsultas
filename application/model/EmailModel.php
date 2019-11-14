@@ -595,7 +595,7 @@ class EmailModel
         $attach = Config::get('PATH_AVATARS');
         $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
 
-        if ($informe == "1"){
+        if ($adjuntar == "1"){
             $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfico.pdf',  $encoding = 'base64', $type = 'application/pdf');
         }
 
