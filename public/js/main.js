@@ -289,7 +289,6 @@ $(document).ready(function(){
                     });
                 });
                 $('#'+rol).trigger("change");
-
             });
         }
     });
@@ -321,19 +320,38 @@ $(document).ready(function(){
                 let rol = uuidv4();
                 let email = uuidv4();
 
+                let ciudad = uuidv4();
+                let adjuntar = uuidv4();
+
                 document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-                document.getElementById(modal.contenido).innerHTML = '<div class="row"><div class="form-group col-4"><label for="'+rol+'">Rol destinatario</label><select class="form-control" id="'+rol+'"><option value="Paciente">Paciente</option><option value="Referente">Referente</option><option value="Matrona">Matrona</option><option value="Medico">Médico</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option></select></div><div class="form-group col"><label for="'+email+'">E-mail destinatario</label><select class="form-control" id="'+email+'"></select></div></div>';
+                document.getElementById(modal.contenido).innerHTML = '<div class="row"> <div class="form-group col-6"> <label for="'+rol+'">Rol destinatario</label> <select class="form-control" id="'+rol+'"> <option value="Paciente">Paciente</option> <option value="Referente">Referente</option> <option value="Matrona">Matrona</option> <option value="Medico">Médico</option> <option value="Administrativo">Administrativo</option> <option value="Otros">Otros</option> </select> </div><div class="form-group col-6"> <label for="'+ciudad+'">Ciudad</label> <select class="form-control" id="'+ciudad+'"></select> </div><div class="form-group col-6"> <label for="'+email+'">Nombre del destinatario</label> <select class="form-control" id="'+email+'"></select> </div><div class="form-group col-6"> <label for="'+adjuntar+'">¿Adjuntar último informe?</label> <select class="form-control" id="'+adjuntar+'"> <option value="0">No</option> <option value="1">Si</option> </select> </div></div>';
                 document.getElementById(modal.titulo).innerHTML = "Enviar gráficas por E-mail";                
 
-                document.getElementById(rol).dataset.email = email;
-
+                document.getElementById(rol).dataset.ciudad = ciudad;
                 $('#'+rol).on("change", function(){
+                    var ciudad = this.dataset.ciudad;
+                    $('#'+ciudad).empty();
+
+                    $.get('dashboard/getCiudadesProfesional/'+this.value).done(function(data){
+                        $.each(data, function(i, value) {
+                            let option = '<option value="'+value.email_ciudad+'">'+value.ciudad_name + '</option>';
+                            $('#'+ciudad).append(option);
+                        });
+                        $('#'+ciudad).trigger("change");
+                    });
+                });
+
+                document.getElementById(ciudad).dataset.rol = rol;
+                document.getElementById(ciudad).dataset.email = email;
+
+                $('#'+ciudad).on("change", function(){
+                    var rol = $("#"+ this.dataset.rol).val();
                     var eMail = this.dataset.email;
                     $('#'+eMail).empty();
 
-                    $.get('api/emails/'+this.value).done(function(data){
+                    $.get('dashboard/getEmailProfesional/'+rol+"/"+this.value).done(function(data){
                         $.each(data, function(i, value) {
-                            let option = '<option value="'+value.email_value+'">'+value.email_nombre + ' '+value.email_value+'</option>';
+                            let option = '<option value="'+value.email_value+'">'+value.email_nombre + '</option>';
                             $('#'+eMail).append(option);
                         });
                     });
@@ -345,38 +363,29 @@ $(document).ready(function(){
 
                 document.getElementById(modal.button).dataset.email = email;
                 document.getElementById(modal.button).dataset.modal = modal.id;
+                document.getElementById(modal.button).dataset.adjuntar = adjuntar;
 
                 $("#"+modal.button).on("click", function(){
                     let email = $("#"+this.dataset.email).val();
+                    let adjuntar = $("#"+this.dataset.adjuntar).val();
 
                     let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
                     this.disabled = true;
                     this.innerHTML = animacion;
                     let modal = this.dataset.modal;
 
-                    let to = {solicitud_rut: $("#filtro\\.rut").val() ,email:email,modal:modal};
+                    let to = {solicitud_rut: $("#filtro\\.rut").val() ,email:email,modal:modal, adjuntar:adjuntar};
 
                     $.post('graph/informe_segundotrimestre_rut_send/', to).done(function(data){
                         if (Object.keys(data).length > 0) {
-                            let modal = makeModal();
-                            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-                            document.getElementById(modal.titulo).innerHTML = "Información";
+                            let mensaje = (data.response = true) ? "<p>Enviado</p>" : "<p>No se pudo enviar, intente nuevamente</p>";
 
-                            if (data.response = true){
-                                document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
-                            }
-                            else{
-                                document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
-                            }
-
-                            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-                                $(this).remove();
-                            });
-
+                            make.alert(mensaje);
                             $('#'+ data.modal).modal("hide");
                         }
                     });
                 });
+                $('#'+rol).trigger("change");
             });
 
         }
