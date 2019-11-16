@@ -1,4 +1,4 @@
-import {make} from 'wetrust.js';
+import {make} from './wetrust.js';
 
 $(document).ready(function(){
     if (a == 1){
