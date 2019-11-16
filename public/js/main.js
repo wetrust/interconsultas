@@ -1,3 +1,5 @@
+import {make} from 'wetrust.js';
+
 $(document).ready(function(){
     if (a == 1){
         $("#interconsultas\\.estado\\.nuevas").addClass("d-none");
@@ -279,21 +281,9 @@ $(document).ready(function(){
 
                     $.post('graph/informe_dopplercrecimiento_rut_send/', to).done(function(data){
                         if (Object.keys(data).length > 0) {
-                            let modal = makeModal();
-                            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-                            document.getElementById(modal.titulo).innerHTML = "Información";
+                            let mensaje = (data.response = true) ? "<p>Enviado</p>" : "<p>No se pudo enviar, intente nuevamente</p>";
 
-                            if (data.response = true){
-                                document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
-                            }
-                            else{
-                                document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
-                            }
-
-                            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-                                $(this).remove();
-                            });
-
+                            make.alert(mensaje);
                             $('#'+ data.modal).modal("hide");
                         }
                     });

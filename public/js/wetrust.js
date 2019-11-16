@@ -41,6 +41,7 @@ export class make{
         the(modal.titulo).innerHTML = "Mensaje";
 
         $("#"+modal.id + " button").html("Aceptar");
+        the(modal.id).childNodes[0].classList.remove("modal-lg");
         
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
