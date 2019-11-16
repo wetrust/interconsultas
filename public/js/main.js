@@ -275,7 +275,7 @@ $(document).ready(function(){
                     this.innerHTML = animacion;
                     let modal = this.dataset.modal;
 
-                    let to = {solicitud_rut: $("#filtro\\.rut").val() ,email:email,modal:modal};
+                    let to = {solicitud_rut: $("#filtro\\.rut").val() ,email:email,modal:modal, adjuntar:adjuntar};
 
                     $.post('graph/informe_dopplercrecimiento_rut_send/', to).done(function(data){
                         if (Object.keys(data).length > 0) {
@@ -298,6 +298,8 @@ $(document).ready(function(){
                         }
                     });
                 });
+                $('#'+rol).trigger("change");
+
             });
         }
     });
