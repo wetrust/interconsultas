@@ -418,7 +418,7 @@
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
     var _URL = "<?= Config::get('URL') ?>";
 </script>
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 <script src="js/textos.js"></script>
 <?php if (Session::get("user_account_type") < 3) { ?>
     <script src="js/jquery.rut.chileno.min.js"></script>
