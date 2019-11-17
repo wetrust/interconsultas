@@ -171,7 +171,7 @@ class GraphController extends Controller
 
         $mail->From = Config::get('EMAIL_VERIFICATION_FROM_EMAIL');
         $mail->FromName = Config::get('EMAIL_VERIFICATION_FROM_NAME');
-        $mail->AddAddress($data->email);
+        $mail->AddAddress($email);
         $mail->Subject = $titulo_email;
         $mail->Body = $body;
     
