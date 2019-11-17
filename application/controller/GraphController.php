@@ -306,6 +306,7 @@ class GraphController extends Controller
         $solicitud_rut = Request::post('solicitud_rut');
         $email = Request::post('email');
         $modal = Request::post('modal');
+        $adjuntar = Request::post('adjuntar');
 
         $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 2);
         
@@ -376,15 +377,98 @@ class GraphController extends Controller
             'enviar' => true
         ));
 
+        $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($respuestas->solicitud_id),
+            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($respuestas->solicitud_id),
+            'respuesta_placenta' => $respuestas->placenta,
+            'respuesta_placenta_insercion' => $respuestas->placenta_insercion,
+            'respuesta_liquido_amniotico' => $respuestas->liquido_amniotico,
+            'respuesta_dbp' => $respuestas->dbp,
+            'respuesta_cc' => $respuestas->cc,
+            'respuesta_cc_pct' => $respuestas->cc_pct,
+            'respuesta_ca' => $respuestas->ca,
+            'respuesta_ca_pct' => $respuestas->ca_pct,
+            'respuesta_lf' => $respuestas->lf,
+            'respuesta_lf_pct' => $respuestas->lf_pct,
+            'respuesta_pfe' => $respuestas->pfe_segundo,
+            'respuesta_pfe_pct' => $respuestas->pfe_pct_segundo,
+            'respuesta_ccca' => $respuestas->ccca,
+            'respuesta_ccca_pct' => $respuestas->ccca_pct,
+            'respuesta_fecha' => $respuestas->fecha,
+            'respuesta_eg' => $respuestas->eg,
+            'respuesta_fcf' => $respuestas->respuesta_fcf,
+            'ecografista' => $respuestas->ecografista,
+            'comentariosexamen' => $respuestas->comentariosexamen,
+            'respuesta_presentacion' => $respuestas->presentacion_segundo,
+            'respuesta_dorso_segundo' => $respuestas->dorso_segundo,
+            'respuesta_anatomia_segundo' => $respuestas->anatomia_segundo,
+            'anatomia_fetal_extra' => $respuestas->anatomia_extra,
+            'respuesta_hipotesis' => $respuestas->hipotesis_segundo,
+            'respuesta_dof' => $respuestas->respuesta_dof,
+            'respuesta_ic' => $respuestas->respuesta_ic,
+            'respuesta_bvm' => $respuestas->respuesta_bvm,
+            'respuesta_lh' => $respuestas->respuesta_lh,
+            'respuesta_lh_pct' => $respuestas->respuesta_lh_pct,
+            'respuesta_cerebelo' => $respuestas->respuesta_cerebelo,
+            'respuesta_cerebelo_pct' => $respuestas->respuesta_cerebelo_pct,
+            'respuesta_sexo_fetal' => $respuestas->sexo_fetal,
+            'uterinas' => $respuestas->uterinas,
+            'uterinas_percentil' => $respuestas->uterinas_percentil,
+            'respuesta_atrio_posterior' => $respuestas->respuesta_atrio_posterior,
+            'respuesta_atrio_posterior_mm' => $respuestas->respuesta_atrio_posterior_mm,
+            'respuesta_cerebelo_text' => $respuestas->respuesta_cerebelo_text,
+            'respuesta_cisterna_m' => $respuestas->respuesta_cisterna_m,
+            'respuesta_cisterna_m_mm' => $respuestas->respuesta_cisterna_m_mm,
+            'enviar' => true
+        ));
+
         $titulo_email = "Sistema interconsulta";
         $body = "Sistema interconsulta adjunta gráficas de exámen ecográfico" ;
 
-        $mail = new Mail;
-        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 3);
-        if ($mail_sent) { 
-            $response->result = true; 
+
+
+        $mail = new PHPMailer;
+        $mail->CharSet = 'UTF-8';
+
+        $mail->IsSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->SMTPAuth = Config::get('EMAIL_SMTP_AUTH');
+        if (Config::get('EMAIL_SMTP_ENCRYPTION')) {
+            $mail->SMTPSecure = Config::get('EMAIL_SMTP_ENCRYPTION');
         }
+
+        $mail->Host = Config::get('EMAIL_SMTP_HOST');
+        $mail->Username = Config::get('EMAIL_SMTP_USERNAME');
+        $mail->Password = Config::get('EMAIL_SMTP_PASSWORD');
+        $mail->Port = Config::get('EMAIL_SMTP_PORT');
+
+        $mail->From = Config::get('EMAIL_VERIFICATION_FROM_EMAIL');
+        $mail->FromName = Config::get('EMAIL_VERIFICATION_FROM_NAME');
+        $mail->AddAddress($email);
+        $mail->Subject = $titulo_email;
+        $mail->Body = $body;
+    
+
+        $attach = Config::get('PATH_AVATARS');
+        $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfica.pdf',  $encoding = 'base64', $type = 'application/pdf');
+
+        if ($adjuntar == "1"){
+            $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
+        }
+    
+        $wasSendingSuccessful = $mail->Send();
+
+        if ($wasSendingSuccessful) {
+            $response->result= true;
+
+        } else {
+            $response->result = false;
+        }
+
         $response->modal = $modal;
+
         $this->View->renderJSON($response);
     }
 
