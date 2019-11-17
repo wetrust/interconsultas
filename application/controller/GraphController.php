@@ -84,7 +84,8 @@ class GraphController extends Controller
         $solicitud_rut = Request::post('solicitud_rut');
         $email = Request::post('email');
         $modal = Request::post('modal');
-        
+        $adjuntar = Request::post('adjuntar');
+
         $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 0);
         
         $grafico_uno = array();
@@ -179,7 +180,7 @@ class GraphController extends Controller
         $attach = Config::get('PATH_AVATARS');
         $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfica.pdf',  $encoding = 'base64', $type = 'application/pdf');
 
-        if ($data->informe == "1"){
+        if ($adjuntar == "1"){
             $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
         }
     
