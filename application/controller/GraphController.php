@@ -141,15 +141,59 @@ class GraphController extends Controller
             'enviar' => true
         ));
 
+        $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_ver', 
+        array(
+            'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
+            'solicitud' => SolicitudesModel::getSolicitud($respuestas->solicitud_id),
+            'solicitud_evaluacion' => EvaluacionModel::getEvaluacion($respuestas->solicitud_id),
+            'solicitud_resultado' => $respuestas,
+            'enviar' => true
+        ));
+
         $titulo_email = "Sistema interconsulta";
         $body = "Sistema interconsulta adjunta gráficas de exámen ecográfico" ;
 
-        $mail = new Mail;
-        $mail_sent = $mail->sendMailWithPHPMailerAndAttach($email, Config::get('EMAIL_VERIFICATION_FROM_EMAIL'), Config::get('EMAIL_VERIFICATION_FROM_NAME'), $titulo_email, $body, 3);
-        if ($mail_sent) { 
-            $response->result = true; 
+
+        $mail = new PHPMailer;
+        $mail->CharSet = 'UTF-8';
+
+        $mail->IsSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->SMTPAuth = Config::get('EMAIL_SMTP_AUTH');
+        if (Config::get('EMAIL_SMTP_ENCRYPTION')) {
+            $mail->SMTPSecure = Config::get('EMAIL_SMTP_ENCRYPTION');
         }
-        $response->modal = $modal;
+
+        $mail->Host = Config::get('EMAIL_SMTP_HOST');
+        $mail->Username = Config::get('EMAIL_SMTP_USERNAME');
+        $mail->Password = Config::get('EMAIL_SMTP_PASSWORD');
+        $mail->Port = Config::get('EMAIL_SMTP_PORT');
+
+        $mail->From = Config::get('EMAIL_VERIFICATION_FROM_EMAIL');
+        $mail->FromName = Config::get('EMAIL_VERIFICATION_FROM_NAME');
+        $mail->AddAddress($data->email);
+        $mail->Subject = $titulo_email;
+        $mail->Body = $body;
+    
+
+        $attach = Config::get('PATH_AVATARS');
+        $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfica.pdf',  $encoding = 'base64', $type = 'application/pdf');
+
+        if ($data->informe == "1"){
+            $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
+        }
+    
+        $wasSendingSuccessful = $mail->Send();
+
+        if ($wasSendingSuccessful) {
+            $response->result= true;
+
+        } else {
+            $response->result = false;
+        }
+
+        $response->modal = $data->modal;
+
         $this->View->renderJSON($response);
 
     }
