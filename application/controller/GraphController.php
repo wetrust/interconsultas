@@ -308,7 +308,7 @@ class GraphController extends Controller
         $modal = Request::post('modal');
         $adjuntar = Request::post('adjuntar');
         $uterinas = false;
-
+        
         $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 2);
         
         $grafico_uno = array();
@@ -317,6 +317,9 @@ class GraphController extends Controller
         $grafico_cuatro = array();
         $grafico_cinco = array();
         $grafico_seis = array();
+
+        $grafico_ccca  = array();
+        $grafico_uterinas  = array();
 
         foreach ($respuestas as $respuesta) {
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
