@@ -307,6 +307,7 @@ class GraphController extends Controller
         $email = Request::post('email');
         $modal = Request::post('modal');
         $adjuntar = Request::post('adjuntar');
+        $uterinas = false;
 
         $respuestas = RespuestaModel::getRespuestas($solicitud_rut, 2);
         
