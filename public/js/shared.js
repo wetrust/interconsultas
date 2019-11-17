@@ -977,39 +977,46 @@ function ginecologica(){
            event.preventDefault();
            $("input[name='respuesta_endometrio']").focus();
         }
-    });
+    }).val("UTERO CENTRAL ANTERIOR, ASPECTO GENERAL NORMAL; 45 X 40 X 50 MM");
+    
     $("input[name='respuesta_endometrio']").keypress(function( event ) {
         if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_anexo_izquierdo_ginecologica']").focus();
         }
-    });
+    }).val("HOMOGENEO DE ASPECTO NORMAL, GROSOR MÁXIMO 12 MM.");
+
     $("input[name='respuesta_anexo_izquierdo_ginecologica']").keypress(function( event ) {
         if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_anexo_derecho_ginecologica']").focus();
         }
-    });
+    }).val("ASPECTO GENERAL NORMAL");
+
     $("input[name='respuesta_anexo_derecho_ginecologica']").keypress(function( event ) {
         if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_ovario_izquierdo']").focus();
         }
-    });
+    }).val("ASPECTO GENERAL NORMAL");
+    
     $("input[name='respuesta_ovario_izquierdo']").keypress(function( event ) {
         if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_ovario_derecho']").focus();
         }
-    });
+    }).val("ASPECTO NORMAL 20 X 12 MM");
+
     $("input[name='respuesta_ovario_derecho']").keypress(function( event ) {
         if (event.which == 13) {
            event.preventDefault();
            $("input[name='respuesta_douglas_ginecologica']").focus();
         }
-    });
+    }).val("ASPECTO NORMAL 12 X 24 MM");
 
-    $('#editable').val('');
+    $("input[name='respuesta_douglas_ginecologica']").val("LIBRE");
+
+    $('#editable').val('-UTERO CENTRAL ANTERIOR DE ASPECTO GENERAL NORMAL\n-ENDOMETRIO HOMOGENEO DE ASPECTO NORMAL\n-ANEXIAL BILATERAL');
     
 }
 function segundoTrimestre(){
