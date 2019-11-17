@@ -178,11 +178,12 @@ class GraphController extends Controller
     
 
         $attach = Config::get('PATH_AVATARS');
-        $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfica.pdf',  $encoding = 'base64', $type = 'application/pdf');
 
         if ($adjuntar == "1"){
             $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
         }
+
+        $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfica.pdf',  $encoding = 'base64', $type = 'application/pdf');
     
         $wasSendingSuccessful = $mail->Send();
 
@@ -431,8 +432,6 @@ class GraphController extends Controller
         $titulo_email = "Sistema interconsulta";
         $body = "Sistema interconsulta adjunta gráficas de exámen ecográfico" ;
 
-
-
         $mail = new PHPMailer;
         $mail->CharSet = 'UTF-8';
 
@@ -456,11 +455,12 @@ class GraphController extends Controller
     
 
         $attach = Config::get('PATH_AVATARS');
-        $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfica.pdf',  $encoding = 'base64', $type = 'application/pdf');
-
+        
         if ($adjuntar == "1"){
             $mail->AddAttachment("$attach/informe.pdf", $name = 'Informe.pdf',  $encoding = 'base64', $type = 'application/pdf');
         }
+
+        $mail->AddAttachment("$attach/grafica.pdf", $name = 'Gráfica.pdf',  $encoding = 'base64', $type = 'application/pdf');
     
         $wasSendingSuccessful = $mail->Send();
 
