@@ -193,7 +193,7 @@ class GraphController extends Controller
             $response->result = false;
         }
 
-        $response->modal = $data->modal;
+        $response->modal = $modal;
 
         $this->View->renderJSON($response);
 
