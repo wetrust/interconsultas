@@ -448,7 +448,7 @@
 <?php } ?>
 <script src="js/shared.js"></script>
 <script>
-    $(document).ready(function(){
+    $( window ).on( "load", function() {
         if (_paciente !== ""){
             document.getElementById("b").value = _paciente;
             document.getElementById("b").blur();
