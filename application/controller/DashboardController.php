@@ -1003,7 +1003,7 @@ class DashboardController extends Controller{
                     $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/index_grafico_ver', 
                     array(
                         'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                        'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
                         'respuesta' => $respuesta,
                         'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
                         'grafico_dos' => GraphModel::ca($grafico_dos),
@@ -1039,7 +1039,7 @@ class DashboardController extends Controller{
                     $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
                     array(
                         'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                        'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
                         'respuesta' => $respuesta,
                         'grafico_uno' => GraphModel::cc($grafico_uno),
                         'grafico_dos' => GraphModel::ca($grafico_dos),
@@ -1067,7 +1067,7 @@ class DashboardController extends Controller{
                     $internalView->renderWithoutHeaderAndFooter('pdf/finalinforme/once_catorce_grafico_view', 
                     array(
                         'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
-                        'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
+                        'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
                         'respuesta' => $respuesta,
                         'grafico_uno' => GraphModel::lcn_once($grafico_uno),
                         'grafico_dos' => GraphModel::uterinas_once($grafico_dos),

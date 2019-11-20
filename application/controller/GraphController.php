@@ -154,7 +154,6 @@ class GraphController extends Controller
         $titulo_email = "Sistema interconsulta";
         $body = "Sistema interconsulta adjunta gráficas de exámen ecográfico" ;
 
-
         $mail = new PHPMailer;
         $mail->CharSet = 'UTF-8';
 
@@ -176,7 +175,6 @@ class GraphController extends Controller
         $mail->Subject = $titulo_email;
         $mail->Body = $body;
     
-
         $attach = Config::get('PATH_AVATARS');
 
         if ($adjuntar == "1"){
