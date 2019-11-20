@@ -6,8 +6,11 @@ class DashboardController extends Controller{
         Auth::checkAuthentication();
     }
 
-    public function index(){
-        $this->View->render('dashboard/index');
+    public function index($paciente = ""){
+        $this->View->render('dashboard/index', array(
+            'paciente' => $paciente
+        ));
+    
     }
 
     public function agendar($solicitud_id){

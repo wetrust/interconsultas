@@ -417,6 +417,7 @@
     var a = <?= Session::get('user_account_type'); ?>;
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
     var _URL = "<?= Config::get('URL') ?>";
+    var _paciente = "<?= $this->paciente ?>";
 </script>
 <script type="module" src="js/main.js"></script>
 <script src="js/textos.js"></script>

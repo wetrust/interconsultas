@@ -34,7 +34,6 @@ export class cloud {
 
             const from = await data.post(config.new, to);
             return from;
-
         } catch(e){}
     }
 

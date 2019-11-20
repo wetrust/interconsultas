@@ -45,7 +45,7 @@ export class view {
             cloud.newPaciente(paciente).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    location.reload();
+                    location.assign("dashboard/index/"+data.rut);
                 }
             });
         });
