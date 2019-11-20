@@ -418,6 +418,13 @@
     var _api = "<?php echo Config::get('URL'); ?>dashboard/";
     var _URL = "<?= Config::get('URL') ?>";
     var _paciente = "<?= $this->paciente ?>";
+
+    $(document).ready(function(){
+        if (_paciente !== ""){
+            document.getElementById("b").value = _paciente;
+            document.getElementById("b").blur();
+        }
+    })
 </script>
 <script type="module" src="js/main.js"></script>
 <script src="js/textos.js"></script>
