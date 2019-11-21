@@ -183,12 +183,9 @@ export class view {
         });
 
         $('#rut').on("blur", function(){
-            let modal = this.dataset.modal;
-
-            cloud.findPaciente(this.value, modal).then(function(data){
+            cloud.findPaciente(this.value).then(function(data){
                 if (data.length > 0){
-                    make.alert('<p class="text-center">Este RUT ya existe</p>');
-                    $("#"+data.modal).modal("hide");
+                    location.assign("dashboard/index/"+data.paciente);
                 }
             });
         });
