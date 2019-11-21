@@ -447,11 +447,3 @@
     <script src="js/configuracion.js"></script>
 <?php } ?>
 <script src="js/shared.js"></script>
-<script>
-    $( window ).on( "load", function() {
-        if (_paciente !== ""){
-            document.getElementById("b").value = _paciente;
-            $("#b").trigger("blur");
-        }
-    })
-</script>

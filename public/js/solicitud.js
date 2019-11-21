@@ -358,6 +358,11 @@ $(document).ready(function(){
 	
 	resetFecha("#d");
 	resetFecha("#e");
+
+	if (_paciente !== ""){
+		document.getElementById("b").value = _paciente;
+		$("#b").trigger("blur");
+	}
 });
 
 function loadSolicitud(){
