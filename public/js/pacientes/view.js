@@ -183,7 +183,7 @@ export class view {
         });
 
         $('#rut').on("blur", function(){
-            modal = this.dataset.modal;
+            let modal = this.dataset.modal;
 
             cloud.findPaciente(this.value, modal).then(function(data){
                 if (data.length > 0){
