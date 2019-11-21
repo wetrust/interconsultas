@@ -188,8 +188,8 @@ export class view {
             cloud.findPaciente(this.value, modal).then(function(data){
                 if (data.length > 0){
                     make.alert('<p class="text-center">Este RUT ya existe</p>');
+                    $("#"+data.modal).modal("hide");
                 }
-                $("#"+data.modal).modal("hide");
             });
         });
     }
