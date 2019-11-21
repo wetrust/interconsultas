@@ -451,7 +451,7 @@
     $( window ).on( "load", function() {
         if (_paciente !== ""){
             document.getElementById("b").value = _paciente;
-            document.getElementById("b").blur();
+            $("#b").trigger("blur");
         }
     })
 </script>
