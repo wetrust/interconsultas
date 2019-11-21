@@ -21,6 +21,8 @@ export class view {
             $(this).remove();
         });
 
+        the("rut").dataset.modal = modal.id;
+
         $("#"+modal.button).on("click", function(){
             let paciente = {
                 nombre: the("nombre").value,
@@ -181,10 +183,13 @@ export class view {
         });
 
         $('#rut').on("blur", function(){
-            cloud.findPaciente(this.value).then(function(data){
+            modal = this.dataset.modal;
+
+            cloud.findPaciente(this.value, modal).then(function(data){
                 if (data.length > 0){
                     make.alert('<p class="text-center">Este RUT ya existe</p>');
                 }
+                $("#"+data.modal).moda("hide");
             });
         });
     }

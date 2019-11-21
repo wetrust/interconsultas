@@ -14,9 +14,10 @@ export class cloud {
             return from;
         } catch(e) {}
     }
-    static async findPaciente(paciente){
+    static async findPaciente(paciente, modal){
         try {
             const from = await data.get(config.find + paciente);
+            from.modal = modal;
             return from;
         } catch(e) {}
     }   
