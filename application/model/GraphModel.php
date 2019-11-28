@@ -199,9 +199,9 @@ class GraphModel
         $settings = self::settings();
         $settings["graph_title"] = 'BVM de Líquido Amniótico';
         $settings["axis_min_h"] = '16';
-        $settings["axis_min_v"] = '5';
-        $settings["axis_max_v"] = '104';
-        $settings["grid_division_v"] = '11';
+        $settings["axis_min_v"] = '0';
+        $settings["axis_max_v"] = '100';
+        $settings["grid_division_v"] = '10';
         $settings["grid_division_h"] = '2';
         $values = DataModel::bvm();
 
