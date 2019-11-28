@@ -997,7 +997,7 @@ class DashboardController extends Controller{
                     $respuesta->eg = $respuesta->eg[0];
             
                     $grafico_uno = ($respuesta->pfe > 0) ? array($respuesta->eg => $respuesta->pfe) : array();
-                    $grafico_dos = ($respuesta->ca > 0) ? array($respuesta->eg => $respuesta->ca) : array();
+                    $grafico_dos = ($respuesta->respuesta_bvm > 0) ? array($respuesta->eg => $respuesta->respuesta_bvm) : array();
                     $grafico_tres = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
                     $grafico_cuatro = ($respuesta->umbilical > 0) ? array($respuesta->eg => $respuesta->umbilical) : array();
                     $grafico_cinco = ($respuesta->cm > 0) ? array($respuesta->eg => $respuesta->cm) : array();
@@ -1009,7 +1009,7 @@ class DashboardController extends Controller{
                         'solicitud' => SolicitudesModel::getSolicitud($respuesta->solicitud_id),
                         'respuesta' => $respuesta,
                         'grafico_uno' => GraphModel::pesoFetal($grafico_uno),
-                        'grafico_dos' => GraphModel::ca($grafico_dos),
+                        'grafico_dos' => GraphModel::bvm($grafico_dos),
                         'grafico_tres' => GraphModel::uterinas($grafico_tres),
                         'grafico_cuatro' => GraphModel::umbilical($grafico_cuatro),
                         'grafico_cinco' => GraphModel::cerebralMedia($grafico_cinco),

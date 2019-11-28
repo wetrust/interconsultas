@@ -194,6 +194,27 @@ class GraphModel
         $graph->values($values);
         return $graph->fetch('MultiLineGraph');
     }
+
+    public static function bvm($data){
+        $settings = self::settings();
+        $settings["graph_title"] = 'BVM de Líquido Amniótico';
+        $settings["axis_min_h"] = '16';
+        $settings["axis_min_v"] = '5';
+        $settings["axis_max_v"] = '104';
+        $settings["grid_division_v"] = '11';
+        $settings["grid_division_h"] = '2';
+        $values = DataModel::bvm();
+
+        if (count($data)>0){
+            array_push($values,$data);
+        }
+
+        $graph = new Goat1000\SVGGraph\SVGGraph(200, 160, $settings);
+        $graph->colours(self::colours());
+        $graph->values($values);
+        return $graph->fetch('MultiLineGraph');
+    }
+
     public static function pesoNacionalRN($EG, $valor){
         $settings = self::settings();
         $settings["graph_title"] = 'Peso Fetal (grs.)';
