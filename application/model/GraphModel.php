@@ -197,7 +197,7 @@ class GraphModel
 
     public static function bvm($data){
         $settings = self::settings();
-        $settings["graph_title"] = 'BVM de Líquido Amniótico';
+        $settings["graph_title"] = 'Profundidad del bolsillo mayor (Liq. Amniótico)';
         $settings["axis_min_h"] = '16';
         $settings["axis_min_v"] = '0';
         $settings["axis_max_v"] = '100';
