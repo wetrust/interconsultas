@@ -209,9 +209,9 @@ class GraphController extends Controller
         $grafico_tres = ($respuesta->lf > 0) ? array($respuesta->eg => $respuesta->lf) : array();
         $grafico_cuatro = ($respuesta->respuesta_lh > 0) ? array($respuesta->eg => $respuesta->respuesta_lh) : array();
         $grafico_cinco = ($respuesta->pfe_segundo > 0) ? array($respuesta->eg => $respuesta->pfe_segundo) : array();
-        $grafico_seis = ($respuesta->ccca > 0) ? array($respuesta->eg => $respuesta->ccca) : array();
+        $grafico_seis = ($respuesta->respuesta_bvm > 0) ? array($respuesta->eg => $respuesta->respuesta_bvm) : array();
 
-        $grafico_seis = GraphModel::ccca($grafico_seis);
+        $grafico_seis = GraphModel::bvm($grafico_seis);
 
         if (strlen($respuesta->uterinas_percentil) > 1){
             $grafico_seis = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
@@ -244,7 +244,7 @@ class GraphController extends Controller
 
         $uterinas = false;
         $grafico_uterinas = array();
-        $grafico_ccca = array();
+        $grafico_bvm = array();
 
         foreach ($respuestas as $respuesta) {
             $respuesta->eg = str_replace(" semanas", "", $respuesta->eg);
@@ -273,8 +273,8 @@ class GraphController extends Controller
 
             if ($uterinas == true && strlen($respuesta->uterinas_percentil) > 1){
                 $grafico_uterinas[$respuesta->eg] = $respuesta->uterinas;
-            }else if ($respuesta->ccca > 0){
-                $grafico_ccca[$respuesta->eg] = $respuesta->ccca;
+            }else if ($respuesta->respuesta_bvm > 0){
+                $grafico_bvm[$respuesta->eg] = $respuesta->respuesta_bvm;
             }
         }
 
@@ -283,7 +283,7 @@ class GraphController extends Controller
         if ($uterinas == true){
             $grafico_seis = GraphModel::uterinas($grafico_uterinas);
         }else{
-            $grafico_seis = GraphModel::ccca($grafico_ccca);
+            $grafico_seis = GraphModel::bvm($grafico_bvm);
         }
 
         $this->View->renderWithoutHeaderAndFooter('pdf/finalinforme/segundotrimestre_grafico_ver', 
@@ -317,7 +317,7 @@ class GraphController extends Controller
         $grafico_cinco = array();
         $grafico_seis = array();
 
-        $grafico_ccca  = array();
+        $grafico_bvm  = array();
         $grafico_uterinas  = array();
 
         foreach ($respuestas as $respuesta) {
@@ -347,15 +347,15 @@ class GraphController extends Controller
 
             if ($uterinas == true && strlen($respuesta->uterinas_percentil) > 1){
                 $grafico_uterinas[$respuesta->eg] = $respuesta->uterinas;
-            }else if ($respuesta->ccca > 0){
-                $grafico_ccca[$respuesta->eg] = $respuesta->ccca;
+            }else if ($respuesta->respuesta_bvm > 0){
+                $grafico_bvm[$respuesta->eg] = $respuesta->respuesta_bvm;
             }
         }
 
         if ($uterinas == true){
             $grafico_seis = GraphModel::uterinas($grafico_uterinas);
         }else{
-            $grafico_seis = GraphModel::ccca($grafico_ccca);
+            $grafico_seis = GraphModel::bvm($grafico_bvm);
         }
 
         $respuestas = $respuestas[count($respuestas)-1];

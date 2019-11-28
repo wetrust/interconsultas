@@ -1030,9 +1030,9 @@ class DashboardController extends Controller{
                     $grafico_tres = ($respuesta->lf > 0) ? array($respuesta->eg => $respuesta->lf) : array();
                     $grafico_cuatro = ($respuesta->respuesta_lh > 0) ? array($respuesta->eg => $respuesta->respuesta_lh) : array();
                     $grafico_cinco = ($respuesta->pfe_segundo > 0) ? array($respuesta->eg => $respuesta->pfe_segundo) : array();
-                    $grafico_seis = ($respuesta->ccca > 0) ? array($respuesta->eg => $respuesta->ccca) : array();
+                    $grafico_seis = ($respuesta->respuesta_bvm > 0) ? array($respuesta->eg => $respuesta->respuesta_bvm) : array();
             
-                    $grafico_seis = GraphModel::ccca($grafico_seis);
+                    $grafico_seis = GraphModel::bvm($grafico_seis);
             
                     if (strlen($respuesta->uterinas_percentil) > 1){
                         $grafico_seis = ($respuesta->uterinas > 0) ? array($respuesta->eg => $respuesta->uterinas) : array();
