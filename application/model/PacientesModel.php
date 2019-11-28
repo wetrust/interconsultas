@@ -6,7 +6,7 @@ class PacientesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT id, nombre, apellido, rut, fum, ciudad, lugar, telefono FROM pacientes WHERE user_id = :user_id";
+        $sql = "SELECT id, nombre, apellido, rut, fum, ciudad, lugar, telefono FROM pacientes WHERE user_id = :user_id ORDER BY rut";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id')));
 
