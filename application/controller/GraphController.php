@@ -223,12 +223,12 @@ class GraphController extends Controller
             'pdf' => new PdfModel(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false),
             'solicitud' => SolicitudesModel::getSolicitud($solicitud_id),
             'respuesta' => $respuesta,
-            'grafico_uno' => GraphModel::cc($grafico_uno),
-            'grafico_dos' => GraphModel::ca($grafico_dos),
-            'grafico_tres' => GraphModel::lf($grafico_tres),
-            'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
-            'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
-            'grafico_seis' => $grafico_seis,
+            'grafico_uno' => GraphModel::pesoFetal($grafico_cinco),
+            'grafico_dos' => $grafico_seis,
+            'grafico_tres' => GraphModel::cc($grafico_uno),
+            'grafico_cuatro' => GraphModel::ca($grafico_dos),
+            'grafico_cinco' => GraphModel::lf($grafico_tres),
+            'grafico_seis' => GraphModel::lh($grafico_cuatro),
         ));
     }
 
@@ -292,12 +292,12 @@ class GraphController extends Controller
             'solicitud_nombre' => $respuestas->solicitud_nombre,
             'solicitud_apellido' => $respuestas->solicitud_apellido,
             'solicitud_rut' => $respuestas->solicitud_rut,
-            'grafico_uno' => GraphModel::cc($grafico_uno),
-            'grafico_dos' => GraphModel::ca($grafico_dos),
-            'grafico_tres' => GraphModel::lf($grafico_tres),
-            'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
-            'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
-            'grafico_seis' => $grafico_seis
+            'grafico_uno' => GraphModel::pesoFetal($grafico_cinco),
+            'grafico_dos' => $grafico_seis,
+            'grafico_tres' => GraphModel::cc($grafico_uno),
+            'grafico_cuatro' => GraphModel::ca($grafico_dos),
+            'grafico_cinco' => GraphModel::lf($grafico_tres),
+            'grafico_seis' => GraphModel::lh($grafico_cuatro),
         ));
     }
 
@@ -371,12 +371,12 @@ class GraphController extends Controller
             'solicitud_nombre' => $respuestas->solicitud_nombre,
             'solicitud_apellido' => $respuestas->solicitud_apellido,
             'solicitud_rut' => $respuestas->solicitud_rut,
-            'grafico_uno' => GraphModel::cc($grafico_uno),
-            'grafico_dos' => GraphModel::ca($grafico_dos),
-            'grafico_tres' => GraphModel::lf($grafico_tres),
-            'grafico_cuatro' => GraphModel::lh($grafico_cuatro),
-            'grafico_cinco' => GraphModel::pesoFetal($grafico_cinco),
-            'grafico_seis' => $grafico_seis,
+            'grafico_uno' => GraphModel::pesoFetal($grafico_cinco),
+            'grafico_dos' => $grafico_seis,
+            'grafico_tres' => GraphModel::cc($grafico_uno),
+            'grafico_cuatro' => GraphModel::ca($grafico_dos),
+            'grafico_cinco' => GraphModel::lf($grafico_tres),
+            'grafico_seis' => GraphModel::lh($grafico_cuatro),
             'enviar' => true
         ));
 
