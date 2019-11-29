@@ -228,9 +228,20 @@ function psohdlk() {
         $("input[name='respuesta_pfe']").val(0).trigger("change");
         return;
     }
+
+    if (parseInt($("input[name='respuesta_lf']").val()) < 0){
+        $("input[name='respuesta_pfe']").val(0).trigger("change");
+        return;
+    }
+
     CC = parseInt($("input[name='respuesta_cc']").val());
     CA = parseInt($("input[name='respuesta_ca']").val());
-    var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
+    LF = parseInt($("input[name='respuesta_lf']").val());
+
+    //var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
+
+    var psoP = Math.pow(10, (1.326 + 0.0107 * CC + 0.0438 * CA + 0.158 * LF - 0.00326 * CA * LF));
+
     if (isNaN(psoP) != true) {
         $("input[name='respuesta_pfe']").val(Math.trunc(psoP)).trigger("change");
     }
