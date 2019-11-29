@@ -704,6 +704,7 @@ function loadInProcess(){
                                 eg =  parseFloat(eg).toFixed();
                                 $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
                             }
+                            psohdlk();
                         });
 
                         $("input[name='respuesta_lh']").on("change", function(){
@@ -873,7 +874,9 @@ function loadInProcess(){
                             }
                         });
 
-                        $("input[name='respuesta_lf']").keypress(function( event ) {
+                        $("input[name='respuesta_lf']").on("change", function(){
+                            psohdlk();
+                        }).keypress(function( event ) {
                             if ( event.which == 13 ) {
                                event.preventDefault();
                                $("input[name='respuesta_uterina_derecha']").focus();
@@ -1128,7 +1131,9 @@ function loadInProcess(){
                     }
                 });
 
-                $("input[name='respuesta_lf']").keypress(function( event ) {
+                $("input[name='respuesta_lf']").on("change", function(){
+                    psohdlk();
+                }).keypress(function( event ) {
                     if ( event.which == 13 ) {
                        event.preventDefault();
                        $("input[name='respuesta_uterina_derecha']").focus();
@@ -1777,6 +1782,10 @@ function psohdlk() {
     CC = parseInt($("input[name='respuesta_cc']").val());
     CA = parseInt($("input[name='respuesta_ca']").val());
     LF = parseInt($("input[name='respuesta_lf']").val());
+
+    CC = CC / 10;
+    CA = CA / 10;
+    LF = LF / 10;
 
     //var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
     

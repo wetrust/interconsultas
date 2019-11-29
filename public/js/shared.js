@@ -239,6 +239,10 @@ function psohdlk() {
     CA = parseInt($("input[name='respuesta_ca']").val());
     LF = parseInt($("input[name='respuesta_lf']").val());
 
+    CC = CC / 10;
+    CA = CA / 10;
+    LF = LF / 10;
+
     //var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
 
     var psoP = Math.pow(10, (1.326 + 0.0107 * CC + 0.0438 * CA + 0.158 * LF - 0.00326 * CA * LF));
@@ -1288,6 +1292,7 @@ function segundoTrimestre(){
                                 eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
                             }
+                            psohdlk();
                         }).keypress(function( event ) {
                             if ( event.which == 13 ) {
                                event.preventDefault();
@@ -1634,6 +1639,7 @@ function multiproposito(){
             eg = Math.trunc(parseFloat(eg));
             $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
         }
+        psohdlk();
     }).keypress(function( event ) {
         if ( event.which == 13 ) {
            event.preventDefault();

@@ -592,6 +592,10 @@
                 calCCCA();
             });
 
+            $("input[name='respuesta_lf']").on("change", function(){
+                psohdlk();
+            });
+
             $("input[name='respuesta_lcn']").on("change", function(){
                 eglcn();
             });
@@ -1028,6 +1032,10 @@
             CC = parseInt($("input[name='respuesta_cc']").val());
             CA = parseInt($("input[name='respuesta_ca']").val());
             LF = parseInt($("input[name='respuesta_lf']").val());
+
+            CC = CC / 10;
+            CA = CA / 10;
+            LF = LF / 10;
 
             //var psoP = Math.pow(10, (1.182 + 0.00273 * CC + 0.007057 * CA - 0.0000063 * Math.pow(CA, 2) - 0.000002184 * CC * CA));
 
