@@ -220,6 +220,7 @@ function calCCCA(){
 function psohdlk() {
     var CC = 0;
     var CA = 0;
+    var LF = 0;
     if (parseInt($("input[name='respuesta_cc']").val()) < 0){
         $("input[name='respuesta_pfe']").val(0).trigger("change");
         return;
