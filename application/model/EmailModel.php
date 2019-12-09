@@ -331,7 +331,7 @@ class EmailModel
 
         $tmp = Config::get('PATH_AVATARS');
         if (file_exists("$tmp/informe.pdf")) unlink("$tmp/informe.pdf");
-        if (file_exists("$tmp/informeGrafico.pdf")) unlink("$tmp/grafica.pdf");
+        if (file_exists("$tmp/grafica.pdf")) unlink("$tmp/grafica.pdf");
 
         $respuesta = RespuestaModel::getRespuesta($solicitud_id);
         $data = SolicitudesModel::getSolicitud($solicitud_id);
