@@ -860,6 +860,7 @@ function doppleruterinas(){
             eg = Math.trunc(parseFloat(eg));
             $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
         }
+        psohdlk();
     }).keypress(function( event ) {
         if ( event.which == 13 ) {
            event.preventDefault();

@@ -1779,6 +1779,11 @@ function psohdlk() {
         return;
     }
 
+    if (parseInt($("input[name='respuesta_lf']").val()) < 0){
+        $("input[name='respuesta_lf']").val(0).trigger("change");
+        return;
+    }
+
     CC = parseInt($("input[name='respuesta_cc']").val());
     CA = parseInt($("input[name='respuesta_ca']").val());
     LF = parseInt($("input[name='respuesta_lf']").val());
