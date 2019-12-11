@@ -1049,13 +1049,33 @@ function segundoTrimestre(){
         }
     });
 
-    $("#edad.gest").on("click", function(){
+    $("#edad\\.gest").on("click", function(){
         if (this.checked == true){
             document.getElementById("edad.gest.div").classList.remove("d-none");
         }else{
             document.getElementById("edad.gest.div").classList.add("d-none");
         }
     });
+
+    $('#ajusteDosSi').on('click', function(){
+        egP50 = String(document.getElementById("egP50").value);
+        if (egP50 != ""){
+            egP50 = egP50.split(".");
+            document.getElementById("semanas").value = egP50[0];
+            if (egP50.length >1){
+                document.getElementById("dias").value = egP50[1];
+            }
+
+            let dias = egP50[0] * 7;
+            dias = (egP50.length >1) ? dias + parseInt(egP50[1]) : dias;
+            let fExm = new Date();
+            fExm.setTime(Date.parse(document.getElementById("interconsulta.respuesta.fecha").value));
+            fExm.setTime(fExm.getTime() - (1000*60*60*24* (dias)));
+            document.getElementById("interconsulta.respuesta.fur.copia").value = inputDate(fExm);
+            $("#interconsulta\\.respuesta\\.fecha").trigger("change");
+        }
+    });
+
 
     $("select[name='respuesta_atrio_posterior']").on("change", function(){
         if (this.value == "no procede" || this.value == "no evaluable"){
@@ -2112,4 +2132,23 @@ function p50() {
      }
      egbio = Math.floor(egbio / 7)+"."+ Math.floor(egbio - (Math.floor(egbio/7) *7));
      $('#egP50').val(egbio);
+}
+
+function inputDate(date) {
+    if (typeof date === typeof undefined){
+        date = new Date();
+    }
+    var dd = date.getDate();
+    var mm = date.getMonth()+1; //January is 0!
+    var yyyy = date.getFullYear();
+  
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+  
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+  
+    return yyyy + '-' +  mm+ '-' + dd;
 }
