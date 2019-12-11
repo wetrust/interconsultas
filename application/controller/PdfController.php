@@ -115,7 +115,9 @@ class PdfController extends Controller{
             'respuesta_atrio_posterior_mm' => $respuesta->respuesta_atrio_posterior_mm,
             'respuesta_cerebelo_text' => $respuesta->respuesta_cerebelo_text,
             'respuesta_cisterna_m' => $respuesta->respuesta_cisterna_m,
-            'respuesta_cisterna_m_mm' => $respuesta->respuesta_cisterna_m_mm
+            'respuesta_cisterna_m_mm' => $respuesta->respuesta_cisterna_m_mm,
+            'respuesta_eg_p50' => $respuesta->respuesta_eg_p50,
+            'respuesta_ajuste' => $respuesta->respuesta_ajuste
         ));
     }
 

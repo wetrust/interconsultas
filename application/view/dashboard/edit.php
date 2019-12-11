@@ -1143,6 +1143,7 @@
                         i = 63;
                     }
                 }
+
                 var FechaA = new Date($("#interconsulta\\.respuesta\\.fecha").val());
                 var eglcN = eglcn.toString().split('.');
 

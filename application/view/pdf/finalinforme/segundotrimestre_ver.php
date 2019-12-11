@@ -151,6 +151,13 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     $html = '<table><tbody><tr><td></td><td>Índice Cc / Ca ****</td><td>'. $this->respuesta_ccca.'</td><td>Percentil: '. $this->respuesta_ccca_pct.'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+    if (property_exists($this,"respuesta_ajuste")){
+        if ($this->respuesta_ajuste == "true"){
+            $html = '<table><tbody><tr><td></td><td>Edad gestacional ecográfica (Bp50)</td><td>'. $this->respuesta_eg_p50.' semanas</td><td>(Para el cálculo de Bp50, se excluye CA)</td></tr></tbody></table>';
+            $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
+            $this->pdf->Ln(4);
+        }
+    }
     $this->pdf->Ln(4);
     if (property_exists($this,"uterinas")){
         if ($this->uterinas != ""){
