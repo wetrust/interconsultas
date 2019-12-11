@@ -1067,6 +1067,7 @@ function segundoTrimestre(){
             fExm.setTime(Date.parse(document.getElementById("interconsulta.respuesta.fecha").value));
             fExm.setTime(fExm.getTime() - (1000*60*60*24* (dias)));
             document.getElementById("interconsulta.respuesta.fur.copia").value = inputDate(fExm);
+            document.getElementById("interconsulta.fum.copia").value = inputDate(fExm);
             $("#interconsulta\\.respuesta\\.fecha").trigger("change");
         }
     });
