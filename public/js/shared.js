@@ -1049,6 +1049,14 @@ function segundoTrimestre(){
         }
     });
 
+    $("#edad.gest").on("click", function(){
+        if (this.checked == true){
+            document.getElementById("edad.gest.div").classList.remove("d-none");
+        }else{
+            document.getElementById("edad.gest.div").classList.add("d-none");
+        }
+    });
+
     $("select[name='respuesta_atrio_posterior']").on("change", function(){
         if (this.value == "no procede" || this.value == "no evaluable"){
             document.getElementsByName("respuesta_atrio_posterior_mm")[0].parentElement.classList.add("d-none");
@@ -1165,6 +1173,7 @@ function segundoTrimestre(){
                             if (dbp_ready == true && dof_ready == true){
                                 $("input[name='respuesta_ic']").val(ICAdvanced(dbp, dof));
                                 $("input[name='respuesta_cc']").val(valCC(dof,dbp)).trigger("change");
+                                p50();
                             }
                             else{
                                 $("input[name='respuesta_ic']").val(0);
@@ -1266,6 +1275,7 @@ function segundoTrimestre(){
                             }
                             psohdlk();
                             calCCCA();
+                            p50();
                         });
                         $("input[name='respuesta_ca']").on("change", function(){
                             var eg = $("#interconsulta\\.respuesta\\.eg").val();
@@ -1294,6 +1304,7 @@ function segundoTrimestre(){
                                 $("#respuesta_lf_pct").html("Pct. " + pctlfAdvanced(eg,lf));
                             }
                             psohdlk();
+                            p50();
                         }).keypress(function( event ) {
                             if ( event.which == 13 ) {
                                event.preventDefault();
@@ -1309,6 +1320,7 @@ function segundoTrimestre(){
                                 eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_lh_pct").html("Pct. " + pctlhAdvanced(eg,lh));
                             }
+                            p50();
                         }).keypress(function( event ) {
                             if ( event.which == 13 ) {
                                event.preventDefault();
@@ -1330,6 +1342,7 @@ function segundoTrimestre(){
                                 eg = Math.trunc(parseFloat(eg));
                                 $("#respuesta_cerebelo_pct").html("Pct. " + pctcerebeloAdvanced(eg,cerebelo));
                             }
+                            p50();
                             document.getElementsByName("respuesta_cerebelo_mm")[0].value= this.value;
                         }).keypress(function( event ) {
                             if ( event.which == 13 ) {
@@ -2051,4 +2064,52 @@ function makeModal(button){
     }
     
     return resultado;
+}
+
+function p50() {
+    'use strict';
+	let a = [];
+    //calcular dbp
+    const N7 = new Number(9.468544279);
+    const N8 = new Number(1.015432196);
+    var dbp = $("input[name='respuesta_dbp']").val();
+    var N = new Number(N7 * Math.pow(N8, dbp));
+    dbp = Math.floor(N) + "." + Math.round((N - Math.floor(N)) * 7);
+    var c1 = new Number(9.413641651);
+    var c2 = new Number(1.004137705);
+    var cc = $("input[name='respuesta_cc']").val();
+    N = new Number(c1 * Math.pow(c2, cc));
+    cc =  Math.floor(N) + "." + Math.round((N - Math.floor(N)) * 7);
+    c1 = new Number(11.20178254);
+    c2 = new Number(1.01704237);
+    var lf = $("input[name='respuesta_lf']").val();
+    N = new Number(c1 * Math.pow(c2, lf));
+    lf =  Math.floor(N) + "." + Math.round((N - Math.floor(N)) * 7);
+    
+    a[10]=12.4;a[11]=12.6;a[12]=13.1;a[13]=13.4; a[14]=13.6;a[15]=14.1;a[16]=14.4;a[17]=14.6; a[18]=15.1;a[19]=15.4;a[20]=15.6;a[21]=16.2; a[22]=16.5;a[23]=17.1;a[24]=17.3;a[25]=17.6; a[26]=18.1;a[27]=18.4;a[28]=19;a[29]=19.3; a[30]=19.6;a[31]=20.2;a[32]=20.5;a[33]=21.1; a[34]=21.4;a[35]=22;a[36]=22.4;a[37]=22.6; a[38]=23.3;a[39]=23.6;a[40]=24.2;a[41]=24.6; a[42]=25.2;a[43]=25.5;a[44]=26.1;a[45]=26.5; a[46]=27.1;a[47]=27.5;a[48]=28.1;a[49]=28.6; a[50]=29.2;a[51]=29.6;a[52]=30.2;a[53]=30.6; a[54]=31.3;a[55]=32;a[56]=32.4;a[57]=33.1; a[58]=33.4;a[59]=34.1;a[60]=34.6;a[61]=35.2; a[62]=35.6;a[63]=36.4;a[64]=37.1;a[65]=37.5; a[66]=38.2;a[67]=38.6;a[68]=39.4;a[69]=40.1;
+
+    var dbpdias = (Math.floor(dbp) * 7) + ((dbp - Math.floor(dbp)) * 10);
+    var ccdias = (Math.floor(cc) * 7) + ((cc - Math.floor(cc)) * 10);
+    var lfdias = (Math.floor(lf) * 7) + ((lf - Math.floor(lf)) * 10);
+    var cb = $("input[name='respuesta_cerebelo']").val();
+    let egbio = "";
+    if (cb > 0) {
+        cb = cb / 10;
+        var egHill = 6.37+(5.4*cb)+(0.78*Math.pow(cb,2))-(0.13*Math.pow(cb,3));
+        //añadir mayor presicion, ya se suma 1 dia
+        cb = Math.round( egHill * 10 ) / 10;
+        var cbdias = (Math.floor(cb) * 7) + ((cb - Math.floor(cb)) * 10);
+        egbio = (ccdias + lfdias + cbdias) /3;
+     }
+     else {
+        egbio = (dbpdias + ccdias + lfdias) /3;
+     }
+     var lh = parseInt($("input[name='respuesta_lh']").val());
+     if (lh > 0) {
+	lh =  a[lh];
+        var lhdias = (Math.floor(lh) * 7) + ((lh - Math.floor(lh)) * 10);
+        egbio = (lhdias + egbio) /2;
+     }
+     egbio = Math.floor(egbio / 7)+"."+ Math.floor(egbio - (Math.floor(egbio/7) *7));
+     $('#egP50').val(egbio);
 }
