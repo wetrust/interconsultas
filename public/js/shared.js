@@ -1061,11 +1061,6 @@ function segundoTrimestre(){
         egP50 = String(document.getElementById("egP50").value);
         if (egP50 != ""){
             egP50 = egP50.split(".");
-            document.getElementById("semanas").value = egP50[0];
-            if (egP50.length >1){
-                document.getElementById("dias").value = egP50[1];
-            }
-
             let dias = egP50[0] * 7;
             dias = (egP50.length >1) ? dias + parseInt(egP50[1]) : dias;
             let fExm = new Date();
