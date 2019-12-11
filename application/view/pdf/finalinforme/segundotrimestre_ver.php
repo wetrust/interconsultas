@@ -153,7 +153,7 @@
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
     if (property_exists($this,"respuesta_ajuste")){
         if ($this->respuesta_ajuste == 1){
-            $html = '<table><tbody><tr><td></td><td>Edad gestacional ecográfica (Bp50)</td><td>'. $this->respuesta_eg_p50.' semanas</td><td>(Para el cálculo de Bp50, se excluye CA)</td></tr></tbody></table>';
+            $html = '<table><tbody><tr><td></td><td>Edad gest. ecográfica (Bp50)</td><td>'. $this->respuesta_eg_p50.' semanas</td><td>(cálculo de Bp50, excluye CA)</td></tr></tbody></table>';
             $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, '', true);
             $this->pdf->Ln(4);
         }
