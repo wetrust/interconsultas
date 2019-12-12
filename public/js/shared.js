@@ -1044,6 +1044,7 @@ function segundoTrimestre(){
     document.getElementById("contenedor.examenes").innerHTML = html;
 
     $("#art\\.ut").on("click", function(){
+
         if (this.checked == true){
             document.getElementById("art.ut.div").classList.remove("d-none");
             document.getElementsByName("respuesta_uterina_derecha")[0].focus();
@@ -1374,7 +1375,7 @@ function segundoTrimestre(){
                         $("input[name='respuesta_em']").val($('#interconsulta\\.respuesta\\.crecimiento').data("em"));
                         $("input[name='respuesta_pm']").val($('#interconsulta\\.respuesta\\.crecimiento').data("pm"));
                         $("input[name='respuesta_imc']").val($('#interconsulta\\.respuesta\\.crecimiento').data("imc"));
-    $('#editable').val('-Crecimiento fetal:\n-Doppler materno:\n-Líquido amniótico:\n-Indicaciones:');
+    $('#editable').val('-Crecimiento fetal / Edad Gestacional:\n-Líquido amniótico:\n-Doppler materno:\n-Indicaciones:');
 }
 function primerTrimerstre(){ 
     let html='<div id="primertrimestre"> <div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">útero</label> <select class="form-control" name="respuesta_utero_primertrimestre"> <option value="central anterior" selected>central anterior</option> <option value="central posterior">central posterior</option> <option value="lateralizado a la Izquierda">lateralizado a la Izquierda</option> <option value="lateralizado a la Derecha">lateralizado a la Derecha</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Saco gestacional</label> <select class="form-control" name="respuesta_saco_gestacional"> <option value="normal" selected>normal</option> <option value="irregular">irregular</option> <option value="deformado">deformado</option> <option value="no se observa">no se observa</option> <option value="multiple">multiple</option> <option value="con pseudosaco">con pseudosaco</option> <option value="con dpmto. parcial">con dpmto. parcial</option> </select> </div><div class="col-3 form-group"> <label>Promedio saco gestacional</label> <input type="text" class="form-control" name="respuesta_saco"> </div><div class="col-3 form-group"> <label>Edad gestacional x Saco</label> <input type="text" class="form-control" name="respuesta_saco_eg" disabled> </div></div><div class="row"> <div class="col form-group"> <label>Saco vitelino</label> <select class="form-control" name="respuesta_saco_vitelino"> <option value="presente" selected>Presente</option> <option value="no se observa">No se observa</option> </select> </div><div class="col form-group"> <label>Medida saco vitelino</label> <div class="input-group"> <input type="text" class="form-control" name="respuesta_saco_vitelino_mm"> <div class="input-group-append"> <div class="input-group-text">mm</div></div></div></div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Visualización del embrión</label> <select class="form-control" name="respuesta_embrion"> <option value="no se observa aun" selected>no se observa aun</option> <option value="no se observa">no se observa</option> <option value="act. no evidenciable">act. no evidenciable</option> <option value="act. card. inicial">act. card. inicial</option> <option value="con act. cardiaca (+)">con act. cardiaca (+)</option> <option value="act. card. y corp. (+)">act. card. y corp. (+)</option> <option value="act. card. y corp. (-)">act. card. y corp. (-)</option> </select> </div><div class="col form-group d-none"> <label>Longitud céfalo - nalga (LCN)</label> <input type="text" class="form-control" name="respuesta_lcn"> </div><div class="col form-group d-none"> <label>Edad gestacional x LCN</label> <input type="text" class="form-control" name="respuesta_lcn_eg" disabled> </div><div class="col form-group d-none"> <label>Fecuencia cardiaca fetal (FCF)</label> <select name="respuesta_fcf" class="form-control"></select> </div></div><div class="row"> <div class="col form-group"> <label>&nbsp;</label> <input type="text" class="form-control bg-white" value="Fechas determinadas según longitud céfalo - nalga (LCN)" disabled> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">FUR Operacional</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_furop" disabled> </div><div class="col-3 form-group"> <label for="interconsulta.respuesta.ecografista">FPP actualizada</label> <input type="date" class="form-control bg-secondary text-white" name="respuesta_fppactualizada" disabled> </div></div><div class="row"> <div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Izquierdo</label> <select class="form-control" name="respuesta_anexo_izquierdo_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div><div class="col form-group"> <label for="interconsulta.respuesta.ecografista">Anexo Derecho</label> <select class="form-control" name="respuesta_anexo_derecho_primertrimestre"> <option value="aspecto normal" selected>aspecto normal</option> <option value="masa solida">masa solida</option> <option value="masa eco negativa">masa eco negativa</option> <option value="con ovario">con ovario</option> </select> </div></div><div class="row"> <div class="col-6 form-group"> <label for="interconsulta.respuesta.ecografista">Douglas</label> <select class="form-control" name="respuesta_douglas_primertrimestre"> <option value="libre" selected>libre</option> <option value="ocupado">ocupado</option> </select> </div></div></div>';
@@ -2142,13 +2143,9 @@ function inputDate(date) {
     var mm = date.getMonth()+1; //January is 0!
     var yyyy = date.getFullYear();
   
-    if(dd<10) {
-        dd = '0'+dd
-    } 
+    if(dd<10) { dd = '0'+dd } 
   
-    if(mm<10) {
-        mm = '0'+mm
-    } 
+    if(mm<10) { mm = '0'+mm } 
   
     return yyyy + '-' +  mm+ '-' + dd;
 }
