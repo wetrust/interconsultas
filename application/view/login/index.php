@@ -9,10 +9,30 @@
             <div class="card-body">
                 <?php if (Session::userIsLoggedIn()) { ?>
                     <div role="group">
-                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Configuración</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Datos iniciales de configuración</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#parto"><small>Postnatal (parto y RN)</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" id="menu.activo.cinco"><small>Ver guías clínicas relacionadas</small></a>
+                        <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.tres" href="https://www.isuog.org/clinical-resources/isuog-guidelines/translations/spanish.html"><small>&gt; Guías clínicas ISUOG, en español</small></a>
+                        <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.uno" href="https://medicinafetalbarcelona.org/protocolos"><small>&gt; Guías clínicas Medicina Fetal - Barcelona</small></a>
+                        <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.dos" href="dashboard/referencias"><small>&gt; Referencias seleccionadas</small></a>
                     </div>
+                    <script>
+                        $(document).ready(function(){
+                            $("#menu\\.activo\\.cinco").on("click", function(){
+                                var botones = ["menu.activo.cinco.uno", "menu.activo.cinco.dos","menu.activo.cinco.tres"];
+                                if (document.getElementById(botones[0]).classList.contains("d-none")){
+                                    botones.forEach(function myFunction(value, index, array) {
+                                        document.getElementById(value).classList.remove("d-none");
+                                    });
+                                }else{
+                                    botones.forEach(function myFunction(value, index, array) {
+                                        document.getElementById(value).classList.add("d-none");
+                                    });
+                                }
+                            });
+                        });
+                    </script>
                 <?php } else { ?>
                 <h5 class="card-title text-center">INGRESAR A PLATAFORMA</h5>
                 <?php $this->renderFeedbackMessages(); ?>

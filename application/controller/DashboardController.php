@@ -17,6 +17,23 @@ class DashboardController extends Controller{
         ));
     }
 
+    public function referencias(){
+        $this->View->render('dashboard/referencias');
+    }
+
+    public function pdf_referencias($nombrepdf=""){
+        $nombres = new stdClass();
+
+        $nombres->pdfuno = "https://crecimientofetal.cl/pdf/1_ISUOG-Ultrasound-assessment-of-fetal-biometry-and-growth-Spanish.pdf";
+        $nombres->pdfdos = "https://crecimientofetal.cl/pdf/2_Defectos_del_crecimiento_fetal.pdf";
+        $nombres->pdfnacional = "https://crecimientofetal.cl/pdf/gnacional.pdf";
+        $nombres->pdfregional = "https://crecimientofetal.cl/pdf/gregional.pdf";
+
+        $this->View->render('dashboard/pdfreferencias', array(
+            'pdf' => $nombres->$nombrepdf
+        ));
+    }
+
     public function agendar($solicitud_id){
         $this->View->renderJSON(SolicitudesModel::getSolicitud($solicitud_id));
     }
