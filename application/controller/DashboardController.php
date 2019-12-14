@@ -7,7 +7,7 @@ class DashboardController extends Controller{
     }
 
     public function index($paciente = ""){
-        $this->View->render('dashboard/index', array(
+        $this->View->render('login/index', array(
             'paciente' => $paciente
         ));
     
