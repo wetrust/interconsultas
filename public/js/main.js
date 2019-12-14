@@ -1,6 +1,7 @@
 import {make} from './wetrust.js';
 
 $(document).ready(function(){
+    $(window).trigger('hashchange');
     if (a == 1){
         $("#interconsultas\\.estado\\.nuevas").addClass("d-none");
         $("#interconsultas\\.estado\\.espera").addClass("d-none");
