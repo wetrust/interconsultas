@@ -403,7 +403,7 @@ $(window).on('hashchange', function(){
     var div = ["#configuracion","#interconsulta","#parto"];
 
     if (div.includes(hash)){
-        $(hash).trigger("click");
+        $(hash+"-tab").trigger("click");
     }
 });
 
