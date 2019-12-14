@@ -7,6 +7,13 @@
     <div class="row">
         <div class="card col-4 mt-2">
             <div class="card-body">
+                <?php if (Session::userIsLoggedIn()) { ?>
+                    <div role="group">
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/index#configuracion"><small>Configuración</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/index#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/index#parto"><small>Postnatal (parto y RN)</small></a>
+                    </div>
+                <?php } else { ?>
                 <h5 class="card-title text-center">INGRESAR A PLATAFORMA</h5>
                 <?php $this->renderFeedbackMessages(); ?>
                 <form action="<?php echo Config::get('URL'); ?>login/login" method="post">
@@ -45,6 +52,7 @@
                 <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvido su contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
                 <p class="mt-2">Si ud. no es usuario registrado en la plataforma, puede temporalmente usar contraseña de usuario invitado</p>
                 <ul><li>Correo: prueba@prueba.cl</li><li>Contraseña: 123abc</li></ul>
+                <?php } ?>
             </div>
         </div>
         <div class="col-8 mt-2">
