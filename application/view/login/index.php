@@ -8,6 +8,7 @@
         <div class="card col-4 mt-2">
             <div class="card-body">
                 <?php if (Session::userIsLoggedIn()) { ?>
+                    <h5>Ingresar a plataforma</h5>
                     <div role="group">
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Datos iniciales de configuración</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
