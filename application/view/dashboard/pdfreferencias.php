@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body">
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe id="pdfview" class="embed-responsive-item" src="<?php echo $pdf; ?>"></iframe>
+                <iframe id="pdfview" class="embed-responsive-item" src="<?php echo $this->pdf; ?>"></iframe>
             </div>
         </div>
     </div>
