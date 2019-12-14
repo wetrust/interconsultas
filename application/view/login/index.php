@@ -9,9 +9,9 @@
             <div class="card-body">
                 <?php if (Session::userIsLoggedIn()) { ?>
                     <div role="group">
-                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/index#configuracion"><small>Configuración</small></a>
-                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/index#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
-                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/index#parto"><small>Postnatal (parto y RN)</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Configuración</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#parto"><small>Postnatal (parto y RN)</small></a>
                     </div>
                 <?php } else { ?>
                 <h5 class="card-title text-center">INGRESAR A PLATAFORMA</h5>
