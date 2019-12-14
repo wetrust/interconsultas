@@ -12,7 +12,7 @@ class DashboardController extends Controller{
 
     public function sistema($hash="#interconsulta",$paciente = ""){
         $this->View->render('login/index', array(
-            'hash' => $hash
+            'hash' => $hash,
             'paciente' => $paciente
         ));
     }
