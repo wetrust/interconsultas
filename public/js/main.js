@@ -398,6 +398,15 @@ $(document).ready(function(){
     $("fecha\\.espera").val(today);
 });
 
+$(window).on('hashchange', function(){
+    var hash = document.location.hash;
+    var div = ["#configuracion","#interconsulta","#parto"];
+
+    if (div.includes(hash)){
+        $(hash).trigger("click");
+    }
+});
+
 function loadReferentes(){
     $.get(_api + 'profesionales_email').done(function(data){
         $('#interfaz\\.email').empty();
