@@ -2,6 +2,8 @@ $(document).ready(function(){
 	if (a == 4){
 		$("#div\\.a").addClass("d-none");
 		$("#div\\.c").addClass("d-none");
+		$("#responsable").removeClass("d-none");
+		loadPartoUser();
 	}else {
 		loadContrarreferentes();
 	}
@@ -230,6 +232,7 @@ $(document).ready(function(){
 		var correoReferente = String($("#s").val());
 		var nombreContrarreferente = String($("#t option:selected").text());
 		var correoContrarreferente = String($("#u").val());
+		var parto = String($("#z").val());
 
         var baseModal = '<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">';
         var footerModal = '</div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button></div></div></div></div>';
@@ -329,7 +332,8 @@ $(document).ready(function(){
 					antecedentes: antecedentes,
 					paridad: paridad,
 					nombreReferente: nombreReferente,
-					correoReferente: correoReferente
+					correoReferente: correoReferente,
+					parto: parto
 				};
 			}
 
@@ -396,6 +400,23 @@ function loadContrarreferentes(){
 		});
 	});
 	$("#t").trigger("change");
+}
+
+function loadPartoUser(){
+	$.get("api/partouser").done(function(data){
+		$("#z").empty();
+		var contador = 0;
+		$.each(data, function(element, value){
+			let option = "";
+			if (contador == 0){
+				option = '<option value="'+value.user_email+'" selected>'+value.user_name+'</option>';
+				contador++;
+			}else{
+				option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
+			}
+			$("#z").append(option);
+		});
+	});
 }
 
 function loadCiudadesSolicitud(){
