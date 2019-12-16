@@ -571,7 +571,7 @@ function buildPartosAjusteTable(data){
         $('#tabla\\.parto').append(tabla);
         $('#tabla\\.parto tr > td > button.ajuste').on("click", function(){
             let solicitud_id =  $(this).data("id");
-            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"> <div class="modal-dialog modal-lgx" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Ajuste al Peso RN</h5></div><div class="modal-body"> <div class="row"> <div class="col-5"> <div class="card"> <div class="card-body"> <div class="form-group row"> <label class="col-4">EG</label> <input type="text" class="form-control col-8" id="valoreg" disabled> </div><div class="form-group row"> <label class="col-4">Peso Fetal</label> <input type="text" class="form-control col-8" id="valorpesofetal" disabled> </div><div class="form-group row"> <label class="col-4">Sexo Neonatal</label> <select id="sn" class="form-control col-8" disabled> <option value="1" selected="">Femenino</option> <option value="0">Masculino</option> </select> </div><div class="form-group row"> <label class="col-4">Paridad Materna</label> <select id="pm" class="form-control col-8" disabled> <option value="1" selected>Primípara</option> <option value="0">Multípara</option> </select> </div><div class="form-group row"> <label class="col-3">Talla Materna</label> <select id="tm" class="form-control col-3" disabled></select> <label class="col-3">Peso Materno</label> <select id="pesom" class="form-control col-3" disabled></select> </div><div class="form-group row"> <label class="col-4">IMC <small>((Peso/Talla)^2)</small></label> <input type="text" class="form-control col-8" id="valorimc" disabled> </div><div class="form-group row"> <label class="col-4">Estado Nutricional</label> <select id="imc" class="form-control col-8" disabled> <option value="1">Enflaquecida</option> <option value="2">Normal</option> <option value="3">SobrePeso</option> <option value="4" selected>Obesidad</option> </select> </div><div class="form-group row"> <label class="col-4">Edad Materna</label> <select id="em" class="form-control col-8" disabled> <option value="1">&lt; 19</option> <option value="2">20 - 21</option> <option value="3">22 - 23</option> <option value="4">24 - 25</option> <option value="5">26 - 27</option> <option value="6" selected>&gt; 27</option> </select> </div><div class="form-group row"> <label class="col-4">Etnia Materna</label> <select id="apellm" class="form-control col-8" disabled> <option value="0">Ambos Caucásicos</option> <option value="2">Solo uno Caucásico</option> <option value="1" selected="">Ninguno Caucásico</option> </select> </div></div></div></div><div class="col-5"><div class="card"><div class="card-body"><div id="graficoAjustado"></div><div><div class="form-group row mb-0"><p class="col-12 d-none" id="tituloAjusteG"><strong>Peso ajustado para:</strong></p><label class="col-4" id="tituloAjusteAlto" style="font-size: 0.8rem;height: 2rem;">Pct. peso sin ajuste</label><input type="text" class="form-control col-2" id="PesoEgeSAj" disabled="" style="font-size: 0.8rem;height: 2rem;"><label class="col-4" id="tituloAjusteBajo" style="font-size: 0.8rem;height: 2rem;">Pct. peso con ajuste</label><input type="text" class="form-control col-2" id="PesoEgeCAj" disabled="" style="font-size: 0.8rem;height: 2rem;background-color: #bfe9fb;"></div></div><p class="text-left mt-2" style="font-size: 70%;">** Curva Regional: Lagos y col. Rev. Chilena Obtet. Ginecol. 2009; 74(4). <a id="pdfregionalviewA" href="#pdfviebox">Ver PDF</a></p></div></div></div><div class="col-2"></div></div></div><div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> </div></div></div></div>');
+            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"> <div class="modal-dialog modal-lgx" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Ajuste al Peso RN</h5></div><div class="modal-body"> <div class="row"> <div class="col-5"> <div class="card"> <div class="card-body"> <div class="form-group row"> <label class="col-4">EG</label> <input type="text" class="form-control col-8" id="valoreg" disabled> </div><div class="form-group row"> <label class="col-4">Peso Fetal</label> <input type="text" class="form-control col-8" id="valorpesofetal" disabled> </div><div class="form-group row"> <label class="col-4">Sexo Neonatal</label> <select id="sn" class="form-control col-8" disabled> <option value="1" selected="">Femenino</option> <option value="0">Masculino</option> </select> </div><div class="form-group row"> <label class="col-4">Paridad Materna</label> <select id="pm" class="form-control col-8" disabled> <option value="1" selected>Primípara</option> <option value="0">Multípara</option> </select> </div><div class="form-group row"> <label class="col-3">Talla Materna</label> <select id="tm" class="form-control col-3" disabled></select> <label class="col-3">Peso Materno</label> <select id="pesom" class="form-control col-3" disabled></select> </div><div class="form-group row"> <label class="col-4">IMC <small>((Peso/Talla)^2)</small></label> <input type="text" class="form-control col-8" id="valorimc" disabled> </div><div class="form-group row"> <label class="col-4">Estado Nutricional</label> <select id="imc" class="form-control col-8" disabled> <option value="1">Enflaquecida</option> <option value="2">Normal</option> <option value="3">SobrePeso</option> <option value="4" selected>Obesidad</option> </select> </div><div class="form-group row"> <label class="col-4">Edad Materna</label> <select id="em" class="form-control col-8" disabled> <option value="1">&lt; 19</option> <option value="2">20 - 21</option> <option value="3">22 - 23</option> <option value="4">24 - 25</option> <option value="5">26 - 27</option> <option value="6" selected>&gt; 27</option> </select> </div><div class="form-group row"> <label class="col-4">Etnia Materna</label> <select id="apellm" class="form-control col-8" disabled> <option value="0">Ambos Caucásicos</option> <option value="2">Solo uno Caucásico</option> <option value="1" selected="">Ninguno Caucásico</option> </select> </div><button class="btn btn-outline-info d-none" id="g3">Graficar percentil ajustado</button></div></div></div><div class="col-5"><div class="card"><div class="card-body"><div id="graficoAjustado"></div><div><div class="form-group row mb-0"><p class="col-12 d-none" id="tituloAjusteG"><strong>Peso ajustado para:</strong></p><label class="col-4" id="tituloAjusteAlto" style="font-size: 0.8rem;height: 2rem;">Pct. peso sin ajuste</label><input type="text" class="form-control col-2" id="PesoEgeSAj" disabled="" style="font-size: 0.8rem;height: 2rem;"><label class="col-4" id="tituloAjusteBajo" style="font-size: 0.8rem;height: 2rem;">Pct. peso con ajuste</label><input type="text" class="form-control col-2" id="PesoEgeCAj" disabled="" style="font-size: 0.8rem;height: 2rem;background-color: #bfe9fb;"></div></div><p class="text-left mt-2" style="font-size: 70%;">** Curva Regional: Lagos y col. Rev. Chilena Obtet. Ginecol. 2009; 74(4). <a id="pdfregionalviewA" href="#pdfviebox">Ver PDF</a></p></div></div></div><div class="col-2"></div></div></div><div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> </div></div></div></div>');
             for (var i = 35; i < 139; i++) {
                 let option = '<option value="'+i+'">'+i+' kg.</option>';
                 $("#pesom").append(option);
@@ -581,50 +581,201 @@ function buildPartosAjusteTable(data){
                 let option = '<option value="'+i+'">'+i+' cms.</option>';
                 $("#tm").append(option);
             }
-            $("#pesom").on("change", function(){
-                var peso,talla;
-                peso = $(this).val();
-                talla = $("#tm").val();
-                if (peso.length > 1 && talla.length > 1){
-                    let imcD = 0;
-                    imcD = imc(peso,talla);
-                    $("#valorimc").val(imcD);
-                    $("#imc").val(imcCondicionN(imcD));
+            $('#g3').click(function() {
+                tipografico = 0;
+                var apell = 0;
+                if ($("#apellm").val() == 2) {
+                    apell = 1;
+                } else {
+                    apell = $("#apellm").val();
                 }
+                varMama.edad = $("#em").val();
+                varMama.apellido = apell;
+                varMama.paridad = $("#pm").val();
+                RN.sexo = $("#sn").val();
+                var p90 = [0.2418159, -0.0038925, 0.0000168, -0.0130562, -0.0127872, -0.0034632, 0.0117179, 0.0021092, -0.9260631];
+                var p10 = [-0.2639902, 0.0110356, -0.0001265, -0.0146183, -0.0134044, -0.0020684, 0.0092266, 0.0009001, 4.474501];
+                for (i = 24; i < 43; i++) {
+                    x = i - 24;
+                    p90Pso[x] = Math.pow(10, ((i * p90[0]) + (Math.pow(i, 2) * p90[1]) + (Math.pow(i, 3) * p90[2]) + (p90[3] * $("#pm").val()) + (p90[4] * $("#sn").val()) + (p90[5] * apell) + (p90[6] * $("#imc").val()) + (p90[7] * $("#em").val()) + p90[8]));
+                    p10Pso[x] = Math.pow(10, ((i * p10[0]) + (Math.pow(i, 2) * p10[1]) + (Math.pow(i, 3) * p10[2]) + (p10[3] * $("#pm").val()) + (p10[4] * $("#sn").val()) + (p10[5] * apell) + (p10[6] * $("#imc").val()) + (p10[7] * $("#em").val()) + p10[8]));;
+                }
+                tablaPercentilesView(p10Pso,p90Pso);
+                $("#PesoEgeSAj").val(RN.pesoTemuco());
+                eg = RN.eg - 24;
+                var tablas = new Tabla;
+                var uno, dos, tres;
+                uno = p90Pso[eg] - p10Pso[eg];
+                dos = RN.peso - p10Pso[eg];
+                tres = parseInt((80 / (uno)) * (dos)) + 10;
+        
+                $("#PesoEgeCAj").val(tres);
+                $("#tituloAjusteG").addClass("d-none");
+                $("#tituloAjusteAlto").html("Pct Peso sin ajuste");
+                $("#tituloAjusteBajo").html("Pct. Peso con ajuste");
+                Highcharts.chart('graficoAjustado', {
+                    title: {
+                        text: 'Peso/Edad gestacional ajustada por variables **',
+                        style: {
+                            "color": "#337ab7",
+                            "fontSize": "12px"
+                        }
+                    },
+                    chart: {
+                        backgroundColor: "rgba(0, 0, 0, 0)"
+                    },
+                    yAxis: {
+                        title: {
+                            text: ''
+                        },
+                        tickPositions: [400, 860, 1320, 1780, 2240, 2700, 3160, 3620, 4080, 4540, 4980],
+                        tickColor: "#337ab7",
+                        labels: {
+                            enabled: true,
+                            style: {
+                                color: '#337ab7',
+                            }
+                        }
+                    },
+                    colors: ['#ff3300', '#ff3300', '#ff3300'],
+                    xAxis: {
+                        categories: ['24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42'],
+                        labels: {
+                            enabled: true,
+                            style: {
+                                color: '#337ab7',
+                            }
+                        }
+                    },
+                    credits: { enabled: false },
+                    series: [{
+                        type: "line",
+                        name: 'Pct. 10',
+                        marker: {
+                            enabled: false
+                        },
+                        dashStyle: (function() {
+                            var estilo = 'solid';
+                            if (RN.ajustePequeno == true || RN.ajusteAlto == true) {
+                                estilo = 'Dash';
+                            }
+                            return estilo;
+                        }()),
+                        color: (function() {
+                            var color = '#003d99';
+        
+                            if (RN.ajusteAlto == true) {
+                                color = '#ff3300';
+                            }
+                            return color;
+                        }()),
+                        data: (function() {
+                            var data = [];
+                            for (i = 24; i < 43; i++) {
+                                x = i - 24;
+                                data.push({
+                                    y: p10Pso[x],
+                                });
+                            }
+                            return data;
+                        }())
+                    }, {
+                        type: "line",
+                        name: 'Pct. 90',
+                        marker: {
+                            enabled: false
+                        },
+                        dashStyle: (function() {
+                            var estilo = 'solid';
+        
+                            if (RN.ajustePequeno == true || RN.ajusteAlto == true) {
+                                estilo = 'Dash';
+                            }
+        
+                            return estilo;
+                        }()),
+                        color: (function() {
+                            var color = '#003d99';
+        
+                            if (RN.ajusteAlto == true) {
+                                color = '#ff3300';
+                            }
+                            return color;
+                        }()),
+                        data: (function() {
+                            var data = [];
+                            for (i = 24; i < 43; i++) {
+                                x = i - 24;
+                                data.push({
+                                    y: p90Pso[x],
+                                });
+                            }
+                            return data;
+                        }())
+                    }, {
+                        type: "line",
+                        name: 'Peso',
+                        dashStyle: "Dot",
+                        marker: {
+                            symbol: 'square'
+                        },
+                        lineWidth: 0,
+                        data: (function() {
+                            var data = [];
+        
+                            for (i = 24; i <= (RN.eg - 1); i++) {
+                                data.push({
+                                    y: 0,
+                                });
+                            }
+                            data.push({
+                                y: parseInt(RN.peso),
+                            });
+                            for (i = RN.eg + 1; i <= 39; i++) {
+                                data.push({
+                                    y: 0,
+                                });
+                            }
+                            return data;
+                        }())
+                    }]
+                });
             });
-            $("#tm").on("change", function(){
-                var peso,talla;
-                peso = $("#pesom").val();
-                talla = $(this).val();
-                if (peso.length > 1 && talla.length > 1){
-                    let imcD = 0;
-                    imcD = imc(peso,talla);
-                    $("#valorimc").val(imcD);
-                    $("#imc").val(imcCondicionN(imcD));
-                }
+        
+            $('#tm').change(function() {
+                varMama = new Mama($("#tm").val(), $("#pesom").val(), $("#em").val(), $('#apellm').val());
+                $('#valorimc').val(varMama.imc());
+                $('#imc').val(varMama.imcCondicion());
+                $('#g3').trigger("click");
             });
-            $("#pesofetal").on("change", function(){
-                var peso,talla,eg;
-                peso = $(this).val();
-                talla = $("#tallafetal").val();
-                eg = $('#egparto').val();
-                if (peso.length > 1){
-                    $("#pesoegparto").val(pesoEg(peso,eg));
-                    $("#pesoegpartoestado").html(pesoEgCondicion(peso,eg));
-                }
-                if (peso.length > 1 && talla.length > 1){
-                    $("#ipnparto").val(ipn(peso,talla)).trigger("change");
-                }
+        
+            $('#pesom').change(function() {
+                varMama = new Mama($("#tm").val(), $("#pesom").val(), $("#em").val(), $('#apellm').val());
+                $('#valorimc').val(varMama.imc());
+                $('#imc').val(varMama.imcCondicion());
+                $('#g3').trigger("click");
             });
-            $("#tallafetal").on("change", function(){
-                var peso,talla;
-                peso = $("#pesofetal").val();
-                talla = $(this).val();
-                
-                if (peso.length > 1 && talla.length > 1){
-                    $("#ipnparto").val(ipn(peso,talla)).trigger("change");
-                }
+        
+            $('#sn').change(function() {
+                $('#g3').trigger("click");
             });
+        
+            $('#pm').change(function() {
+                $('#g3').trigger("click");
+            });
+        
+            $('#imc').change(function() {
+                $('#g3').trigger("click");
+            });
+        
+            $('#em').change(function() {
+                $('#g3').trigger("click");
+            });
+        
+            $('#apellm').change(function() {
+                $('#g3').trigger("click");
+            });
+
             $.get('dashboard/agendar/' + solicitud_id).done(function(data){
                 let edad = data.solicitud_ematerna;
                 if (edad < 20){
@@ -640,6 +791,7 @@ function buildPartosAjusteTable(data){
                 }else if (edad > 27){
                     document.getElementById("em").value = 6;
                 }
+                $("#em").trigger("change");
             });
             $.get("dashboard/dataPartos/" + solicitud_id).done(function(data){
                 $("#valoreg").val(data.semanas);
@@ -650,12 +802,12 @@ function buildPartosAjusteTable(data){
                 $("#pm").val(pm);
                 $("#pesom").val(data.peso); //
                 $("#tm").val(data.talla).trigger("change");//
-                $("#apellm").val(data.etnia);
+                $("#apellm").val(data.etnia).trigger("change");
             });
             $('#cautivo\\.dialogo').modal("show");
 			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
 				$(this).remove();
-			});
+            });
         });
     }
     else{
@@ -747,5 +899,148 @@ function ipnEgCondicion(ipn,eg){
         return "Eutrófico";
     } else if (ipn > pct90IpnNacional[eg]) {
         return "RN Obeso";
+    }
+}
+
+var RN = 0;
+var Tablas = 0;
+var varMama = 0;
+var p90Pso = [];
+var p10Pso = [];
+
+function RecienNacido(peso = 0, talla = 0, eg = 40) {
+    this.peso = peso;
+    this.talla = talla;
+    this.eg = eg;
+    this.ipn = function ipn() {
+        var valor = this.peso / (Math.pow(this.talla, 3));
+        valor = valor * 100000;
+        return valor.toFixed(1);
+    };
+    this.pesoChile = function pesoChile() {
+        eg = this.eg - 24;
+        var tablas = new Tabla;
+        var uno = tablas.pct90PesoNacional[eg] - tablas.pct10PesoNacional[eg];
+        var dos = this.peso - tablas.pct10PesoNacional[eg];
+        return parseInt((80 / (uno)) * (dos)) + 10;
+    };
+    this.pesoTemuco = function pesoTemuco() {
+        eg = this.eg - 24;
+        var tablas = new Tabla;
+        var uno = tablas.pct90PesoTemuco[eg] - tablas.pct10PesoTemuco[eg];
+        var dos = this.peso - tablas.pct10PesoTemuco[eg];
+        return parseInt((80 / (uno)) * (dos)) + 10;
+    };
+    this.pesoAjustado = 0;
+    this.pesoChileCondicion = function pesoChileC() {
+        eg = this.eg - 24;
+        var tablas = new Tabla;
+        if (this.peso < tablas.pct10PesoNacional[eg]) {
+            return "Pequeño";
+        } else if (this.peso <= tablas.pct90PesoNacional[eg]) {
+            return "Adecuado";
+        } else if (this.peso > tablas.pct90PesoNacional[eg]) {
+            return "Grande";
+        }
+    };
+    this.pesoTemucoCondicion = function pesoTemucoC() {
+        eg = this.eg - 24;
+        var tablas = new Tabla;
+
+        if (this.peso < tablas.pct10PesoTemuco[eg]) {
+            return "Pequeño";
+        } else if (this.peso <= tablas.pct90PesoTemuco[eg]) {
+            return "Adecuado";
+        } else if (this.peso > tablas.pct90PesoTemuco[eg]) {
+            return "Grande";
+        }
+    };
+    this.pesoAjutadoCondicion = '';
+    this.ipnChile = function ipnChile() {
+        var eg = this.eg - 24;
+        var tablas = new Tabla;
+        var uno = tablas.pct90IpnNacional[eg] - tablas.pct10IpnNacional[eg];
+        var dos = this.ipn() - tablas.pct10IpnNacional[eg];
+        return parseInt((80 / (uno)) * (dos)) + 10;
+    };
+    this.ipnTemuco = function ipnTemuco() {
+        var eg = this.eg - 24;
+        var tablas = new Tabla;
+        var uno = tablas.pct90IpnTemuco[eg] - tablas.pct10IpnTemuco[eg];
+        var dos = this.ipn() - tablas.pct10IpnTemuco[eg];
+        return parseInt((80 / (uno)) * (dos)) + 10;
+    };
+    this.ipnChileCondicion = function ipnChileC() {
+        var eg = this.eg - 24;
+        var tablas = new Tabla;
+
+        if (this.ipn() < tablas.pct10IpnNacional[eg]) {
+            return "Enflaquecido";
+        } else if (this.ipn() <= tablas.pct90IpnNacional[eg]) {
+            return "Eutrófico";
+        } else if (this.ipn() > tablas.pct90IpnNacional[eg]) {
+            return "RN Obeso";
+        }
+    };
+    this.ipnTemucoCondicion = function ipnTemucoC() {
+        var eg = this.eg - 24;
+        var tablas = new Tabla;
+
+        if (this.ipn() < tablas.pct10IpnTemuco[eg]) {
+            return "Enflaquecido";
+        } else if (this.ipn() <= tablas.pct90IpnTemuco[eg]) {
+            return "Eutrófico";
+        } else if (this.ipn() > tablas.pct90IpnTemuco[eg]) {
+            return "RN Obeso";
+        }
+    };
+    this.sexo = '';
+    this.ajustePequeno = false;
+    this.ajusteAlto = false;
+};
+
+function Tabla(plataforma) {
+    this.plataforma = plataforma;
+    this.pct10IpnNacional = [1.79, 1.83, 1.87, 1.91, 1.95, 1.99, 2.04, 2.08, 2.12, 2.16, 2.2, 2.25, 2.29, 2.33, 2.37, 2.41, 2.45, 2.5, 2.54];
+    this.pct90IpnNacional = [2.54, 2.57, 2.59, 2.62, 2.65, 2.68, 2.71, 2.74, 2.77, 2.8, 2.83, 2.86, 2.89, 2.92, 2.95, 2.98, 3.01, 3.04, 3.07];
+    this.pct10PesoNacional = [640.6, 666, 728.2, 822.9, 945.7, 1092.2, 1258.2, 1439.2, 1630.8, 1828.7, 2028.6, 2226, 2416.7, 2596.2, 2760.2, 2904.2, 3024.1, 3115.3, 3173.5];
+    this.pct90PesoNacional = [897.9, 963.3, 1070.6, 1214.6, 1390.1, 1592, 1815, 2053.8, 2303.4, 2558.5, 2813.9, 3064.4, 3304.7, 3529.8, 3734.4, 3913.2, 4061.2, 4173, 4243.5];
+    this.pct10IpnTemuco = [1.95, 1.93, 1.92, 1.92, 1.94, 1.97, 2.01, 2.06, 2.11, 2.17, 2.23, 2.28, 2.33, 2.38, 2.41, 2.44, 2.44, 2.42, 2.39];
+    this.pct90IpnTemuco = [2.43, 2.44, 2.46, 2.49, 2.53, 2.57, 2.62, 2.68, 2.74, 2.79, 2.85, 2.9, 2.95, 2.99, 3.02, 3.04, 3.05, 3.04, 3.01];
+    this.pct10PesoTemuco = [600, 662, 739, 830, 938, 1064, 1208, 1373, 1565, 1756, 1970, 2192, 2415, 2628, 2820, 2978, 3089, 3120, 3123];
+    this.pct90PesoTemuco = [800, 960, 1139, 1337, 1551, 1781, 2022, 2272, 2527, 2781, 3031, 3270, 3494, 3699, 3878, 4030, 4150, 4236, 4287];
+    this.pct10PesoAjustado = [];
+    this.pct90PesoAjustado = [];
+};
+
+function Mama(talla, peso, edad, apellido) {
+    this.paridad = 0
+    this.talla = talla;
+    this.peso = peso;
+    this.edad = edad;
+    this.apellido = apellido;
+    this.imc = function imc() {
+        var valor = ((this.peso / (Math.pow(this.talla, 2))) * 10000);
+        return valor.toFixed(1);
+    };
+    this.imcCondicion = function imcC() {
+        if (this.imc() < 20) {
+            return 1
+        } else if (this.imc() < 25) {
+            return 2
+        } else if (this.imc() <= 30) {
+            return 3
+        } else if (this.imc() > 30) {
+            return 4
+        }
+    };
+};
+
+function tablaPercentilesView(p10Pso,p90Pso){
+    $("#table\\.percentiles\\.ajustado").empty();
+    for (i = 24; i < 43; i++) {
+        x = i - 24;
+        let tabla = "<tr><td>"+i+"</td><td>"+Math.trunc(p10Pso[x])+"</td><td>"+Math.trunc(p90Pso[x])+"</td></tr>";
+        $("#table\\.percentiles\\.ajustado").append(tabla);
     }
 }
