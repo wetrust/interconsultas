@@ -644,7 +644,8 @@ function buildPartosAjusteTable(data){
             $.get("dashboard/dataPartos/" + solicitud_id).done(function(data){
                 $("#valoreg").val(data.semanas);
                 $("#valorpesofetal").val(data.pesofetal);
-                $("#sn").val(data.sexo);
+                let sn = (data.sexo == "Masculino") ? 0 : 1;
+                $("#sn").val(sn);
                 let pm = (data.paridad == "Primípara") ? 1 : 0;
                 $("#pm").val(pm);
                 $("#pesom").val(data.peso); //
