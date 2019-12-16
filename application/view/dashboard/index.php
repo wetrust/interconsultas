@@ -466,10 +466,3 @@
 <?php } ?>
 <script src="js/shared.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-
-Prueba
-Referente
-Contrarreferente
-Autoreferido
-Parto->mira las interconsultas finalizadas de un AUtoreferido
-parto->solo mira cuando es designado por el autorreferido
