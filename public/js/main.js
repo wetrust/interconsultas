@@ -128,6 +128,9 @@ $(document).ready(function(){
         }else if (valor == 1){
             loadReadyPartos();
             $("#filtro\\.parto\\.activar").removeClass("d-none");
+        }else if (valor == 2){
+            loadReadyPartosAjuste();
+            $("#filtro\\.parto\\.activar").removeClass("d-none");
         }
     });
     
