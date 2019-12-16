@@ -589,7 +589,7 @@ function buildPartosAjusteTable(data){
                     let imcD = 0;
                     imcD = imc(peso,talla);
                     $("#valorimc").val(imcD);
-                    $("#imc").val(imcCondicion(imcD));
+                    $("#imc").val(imcCondicionN(imcD));
                 }
             });
             $("#tm").on("change", function(){
@@ -600,7 +600,7 @@ function buildPartosAjusteTable(data){
                     let imcD = 0;
                     imcD = imc(peso,talla);
                     $("#valorimc").val(imcD);
-                    $("#imc").val(imcCondicion(imcD));
+                    $("#imc").val(imcCondicionN(imcD));
                 }
             });
             $("#pesofetal").on("change", function(){
@@ -676,6 +676,18 @@ function imcCondicion(imc) {
         return 'Sobrepeso';
     } else if (imc > 30) {
         return 'Obesidad';
+    }
+};
+
+function imcCondicionN(imc){
+    if (imc < 20) {
+        return 1;
+    } else if (imc < 25) {
+        return 2;
+    } else if (imc <= 30) {
+        return 3;
+    } else if (imc > 30) {
+        return 4;
     }
 };
 
