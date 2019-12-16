@@ -754,53 +754,6 @@ function buildPartosAjusteTable(data){
             });
 
             $('#cautivo\\.dialogo').modal("show");
-
-            $("#guardarparto").on("click", function(){
-                var data = {
-                    parto_id: $("#idparto").val(),
-                        solicitud_id: $("#idpacienteparto").val(),
-                        fecha_parto: $("#fechaparto").val(),
-                        semanas: $("#egparto").val(),
-                        dias: $("#diasparto").val(),
-                        peso: $("#pesomaterno").val(),
-                        talla: $("#tallamaterna").val(),
-                        imc: $("#imc").val(),
-                        estado_nutricional: $("#estadonutricional").val(),
-                        etnia: $("#etniamaterna").val(),
-                        paridad: $("#paridadmaterna").val(),
-                        tipo: $("#tipomaterna").val(),
-                        lugar: $("#lugarparto").val(),
-                        pesofetal: $("#pesofetal").val(),
-                        tallafetal: $("#tallafetal").val(),
-                        craneofetal: $("#craneo").val(),
-                        apgar_uno: $("#apgar_uno").val(),
-                        apgar_cinco: $("#apgar_cinco").val(),
-                        sexo: $("#sexofetal").val(),
-                        meconio: $("#meconio").val(),
-                        ipn: $("#ipnparto").val(),
-                        peso_eg: $("#pesoegparto").val(),
-                        peso_eg_estado: $("#pesoegpartoestado").html(),
-                        ipn_eg: $("#ipnegparto").val(),
-                        ipn_eg_estado: $("#ipnegpartoestado").html(),
-                        comentarios: $("#comentariosparto").val(),
-                        hipoglicemia: $("#hipoglicemia").val(),
-                        alta: $("#alta").val(),
-                        protocolo_hipoglicemia: $("#protocolo_hipoglicemia").val()
-                    }
-
-                $.post("dashboard/actualizarPartos", data).done(function(result){
-                    $('#cautivo\\.dialogo').modal("hide");
-                    loadReadyPartos();
-                });
-            });
-
-            $("#borrarparto").on("click", function(){
-                var solicitud_id = $("#idpacienteparto").val()
-                $.get("dashboard/deleteParto/" + solicitud_id).done(function(data){
-                    $('#cautivo\\.dialogo').modal("hide");
-                    loadReadyPartos();
-                });
-            });
 			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
 				$(this).remove();
 			});
