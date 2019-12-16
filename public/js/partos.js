@@ -1,3 +1,5 @@
+import {humanDate} from './wetrust.js';
+
 $(document).ready(function(){
     $("#filtro\\.parto\\.activar").on("click", function(){
         var toggle = $("#filtro\\.parto\\.contenedor").hasClass("d-none");
