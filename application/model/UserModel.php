@@ -7,7 +7,7 @@ class UserModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT user_id, user_name, user_email, user_account_type, user_almacenamiento, user_active, user_has_avatar, user_deleted FROM users WHERE user_account_type IN (1,2,3,4)";
+        $sql = "SELECT user_id, user_name, user_email, user_account_type, user_almacenamiento, user_active, user_has_avatar, user_deleted FROM users WHERE user_account_type IN (1,2,3,4,5)";
         $query = $database->prepare($sql);
         $query->execute();
 
