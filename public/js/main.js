@@ -1,4 +1,4 @@
-import {make} from './wetrust.js';
+import {make, humanDate} from './wetrust.js';
 
 $(document).ready(function(){
     $(window).trigger('hashchange');

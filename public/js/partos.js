@@ -49,10 +49,16 @@ function buildPartosTable(data){
     $('#tabla\\.parto').empty();
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
-        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Accion</th></tr></thead><tbody>';
+        var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>FPP</th><th>Ciudad</th><th>Lugar de control</th><th>Accion</th></tr></thead><tbody>';
         //tabla para exámenes ecográficos
         $.each(data, function(i, value) {
-            tabla += '<tr><td>' + value.solicitud_nombre + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td>';
+            tabla += '<tr><td>' + value.solicitud_nombre;
+            let fum = new Date();
+            fum.setTime(Date.parse(document.getElementById("fum").value));
+            fum.setTime(fum.getTime() + (1000*60*60*24*282));
+            let fpp = humanDate(fum);
+
+            tabla += '</td><td>' + fpp + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td>';
             tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Datos del parto</button></td></tr>';
         });
 
