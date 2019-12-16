@@ -12,6 +12,11 @@
                     <style>
                         .btn-outline-dark {background-color: #ebefff;}
                     </style>
+                    <?php if (Session::get("user_account_type") == 5) { ?>
+                        <div role="group">
+                            <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/parto"><small>Parto</small></a>
+                        </div>
+                    <?php } else { ?>
                     <div role="group">
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Configuración de plataforma</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
@@ -21,6 +26,7 @@
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.uno" href="https://medicinafetalbarcelona.org/protocolos"><small>&gt; Guías clínicas Medicina Fetal - Barcelona</small></a>
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.dos" href="dashboard/referencias"><small>&gt; Referencias seleccionadas</small></a>
                     </div>
+                    <?php } ?>
                     <script>
                         $(document).ready(function(){
                             $("#menu\\.activo\\.cinco").on("click", function(){
