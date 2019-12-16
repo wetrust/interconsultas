@@ -1,5 +1,3 @@
-import {humanDate} from './wetrust.js';
-
 $(document).ready(function(){
     $("#filtro\\.parto\\.activar").on("click", function(){
         var toggle = $("#filtro\\.parto\\.contenedor").hasClass("d-none");
@@ -58,7 +56,20 @@ function buildPartosTable(data){
             let fum = new Date();
             fum.setTime(Date.parse(value.solicitud_fum));
             fum.setTime(fum.getTime() + (1000*60*60*24*282));
-            let fpp = humanDate(fum);
+
+            var dd = date.getDate();
+            var mm = date.getMonth()+1; //January is 0!
+            var yyyy = date.getFullYear();
+        
+            if(dd<10) {
+                dd = '0'+dd
+            } 
+        
+            if(mm<10) {
+                mm = '0'+mm
+            } 
+        
+            let fpp = dd+ '-' + mm + '-' + yyyy;
 
             tabla += '</td><td>' + fpp + '</td><td>' + value.solicitud_ciudad + '</td><td>'+ value.solicitud_lugar +'</td>';
             tabla += '<td><button class="btn btn-secondary mr-1" data-id='+ value.solicitud_id + ' data-tipo='+ value.tipo +'>Datos del parto</button></td></tr>';
