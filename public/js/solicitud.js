@@ -275,9 +275,16 @@ $(document).ready(function(){
             $('body').append(baseModal + '<h5 class="modal-title">' + textos.form_error+ '</h5></div><div class="modal-body"><p>'+ mensaje +'</p>'+ footerModal);
             $('#cautivo\\.dialogo').modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
             return;
+		}else if (a == 4 && parto.length < 5){
+			mensaje =  "Debe designar un responsable de parto para la interconsulta";
+
+			$('body').append(baseModal + '<h5 class="modal-title">' + textos.form_error+ '</h5></div><div class="modal-body"><p>'+ mensaje +'</p>'+ footerModal);
+			$('#cautivo\\.dialogo').modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+			return;
 		}else{
 			listo = true;
 		}
+
 
 		if (listo == true){
 			$('#v').prop("disabled", true);
