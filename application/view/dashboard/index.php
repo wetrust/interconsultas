@@ -453,3 +453,4 @@
     <script src="js/configuracion.js"></script>
 <?php } ?>
 <script src="js/shared.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
