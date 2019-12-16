@@ -592,6 +592,7 @@ function buildPartosAjusteTable(data){
                 varMama.edad = $("#em").val();
                 varMama.apellido = apell;
                 varMama.paridad = $("#pm").val();
+                RN = new RecienNacido($("#valorpesofetal").val(), 0, $("#valoreg").val());
                 RN.sexo = $("#sn").val();
                 var p90 = [0.2418159, -0.0038925, 0.0000168, -0.0130562, -0.0127872, -0.0034632, 0.0117179, 0.0021092, -0.9260631];
                 var p10 = [-0.2639902, 0.0110356, -0.0001265, -0.0146183, -0.0134044, -0.0020684, 0.0092266, 0.0009001, 4.474501];
@@ -603,7 +604,6 @@ function buildPartosAjusteTable(data){
                 tablaPercentilesView(p10Pso,p90Pso);
                 $("#PesoEgeSAj").val(RN.pesoTemuco());
                 eg = RN.eg - 24;
-                var tablas = new Tabla;
                 var uno, dos, tres;
                 uno = p90Pso[eg] - p10Pso[eg];
                 dos = RN.peso - p10Pso[eg];
@@ -903,7 +903,6 @@ function ipnEgCondicion(ipn,eg){
 }
 
 var RN = 0;
-var Tablas = 0;
 var varMama = 0;
 var p90Pso = [];
 var p10Pso = [];
