@@ -254,6 +254,7 @@
                             <a class="text-dark nav-item nav-link" id="nav-lugares-tab" data-toggle="tab" href="#nav-lugares" role="tab" aria-controls="nav-lugares" aria-selected="false">Lugar de control</a>
                             <a class="text-dark nav-item nav-link" id="nav-diagnostico-tab" data-toggle="tab" href="#nav-diagnostico" role="tab" aria-controls="nav-diagnostico" aria-selected="false">Motivo de exámen</a>
                             <a class="text-dark nav-item nav-link" id="nav-lista-tab" data-toggle="tab" href="#nav-lista" role="tab" aria-controls="nav-lista" aria-selected="false">Agenda registro destinatarios</a>
+                            <a class="text-dark nav-item nav-link" id="nav-parto-tab" data-toggle="tab" href="#nav-parto" role="tab" aria-controls="nav-parto" aria-selected="false">Usuarios Partos</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -351,6 +352,17 @@
                                     <tbody id="tabla.diagnostico.configuracion">
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-parto" role="tabpanel" aria-labelledby="nav-parto-tab">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between py-sm-3"><h4>Lista de usuarios parto autorizados a observar</h4><button type="button" class="btn btn-primary">Autorizar nuevo observador</button></div>
+                                    <table class="table table-hover">
+                                        <thead class="table-secondary"><tr><th scope="col">Nombre</th><th scope="col">Email</th><th scope="col">Opciones</th></tr></thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
