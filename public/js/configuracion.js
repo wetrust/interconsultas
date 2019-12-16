@@ -249,11 +249,13 @@ function createCarcasaAutorizar(){
     btn_responder_id = uuidv4();
 
     var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-modal="'+modal_id+'" class="btn btn-primary">Guardar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
-    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Autorizar a un usuario parto</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Seleccione un usuario</label><select type="text" class="form-control btn-animado" id="profesional.parto"></select></div></div>'+ footerModal);
+    $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Autorizar a un usuario parto</h5></div><div class="modal-body"> <div class="row" id="'+div_id+'"> <div class="col-4 form-group"> <label>Seleccione un usuario</label><select type="text" class="form-control" id="profesional.parto"></select></div></div>'+ footerModal);
 
     $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
         $(this).remove();
     });
+    
+    loadPartoUserConfig();
 
     $('#'+btn_responder_id).on("click", function(){
         var modal_id = $(this).data("modal");
@@ -269,4 +271,22 @@ function createCarcasaAutorizar(){
             $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadDiagnosticoConfiguracion(); loadDiagnostico();
         });
     });
+}
+
+
+function loadPartoUserConfig(){
+	$.get("api/partouser").done(function(data){
+		$("#profesional\\.parto").empty();
+		var contador = 0;
+		$.each(data, function(element, value){
+			let option = "";
+			if (contador == 0){
+				option = '<option value="'+value.user_email+'" selected>'+value.user_name+'</option>';
+				contador++;
+			}else{
+				option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
+			}
+			$("#profesional\\.parto").append(option);
+		});
+	});
 }
