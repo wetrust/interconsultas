@@ -13,7 +13,7 @@
                         .btn-outline-dark {background-color: #ebefff;}
                     </style>
                     <div role="group">
-                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Datos iniciales de configuración</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Configuración de plataforma</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#parto"><small>Postnatal (parto y RN)</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" id="menu.activo.cinco"><small>Ver guías clínicas relacionadas</small></a>

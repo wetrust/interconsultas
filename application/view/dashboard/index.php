@@ -29,9 +29,9 @@
             <div class="col-8">
                 <a class="navbar-brand" href="#">Administración de interconsultas (Módulos)</a>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item"><a class="nav-link" id="configuracion-tab" data-toggle="tab" href="#configuracion" role="tab" aria-controls="configuracion" aria-selected="false"><small>Configuración</small></a></li>
                     <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true"><small>Prenatal (exámenes ecográficos)</small></a></li>
                     <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false"><small>Postnatal (parto y RN)</small></a></li>
+                    <li class="nav-item"><a class="nav-link" id="configuracion-tab" data-toggle="tab" href="#configuracion" role="tab" aria-controls="configuracion" aria-selected="false"><small>Configuración</small></a></li>
                 </ul>
             </div>
             <div class="col">
