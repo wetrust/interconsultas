@@ -54,7 +54,7 @@ function buildPartosTable(data){
         $.each(data, function(i, value) {
             tabla += '<tr><td>' + value.solicitud_nombre;
             let fum = new Date();
-            fum.setTime(Date.parse(document.getElementById("fum").value));
+            fum.setTime(Date.parse(value.solicitud_fum));
             fum.setTime(fum.getTime() + (1000*60*60*24*282));
             let fpp = humanDate(fum);
 
