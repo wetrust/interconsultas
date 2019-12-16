@@ -170,6 +170,12 @@
                             <label class="btn parto btn-secondary">
                                 <input type="radio" value="1" name="parto" autocomplete="off">Partos atendidos
                             </label>
+                            <label class="btn parto btn-secondary">
+                                <input type="radio" value="2" name="parto" autocomplete="off">Ajuste al peso neonatal
+                            </label>
+                            <label class="btn parto btn-secondary">
+                                <input type="radio" value="3" name="parto" autocomplete="off">Protocolo riesgo de hipoglicemia
+                            </label>
                         </div>
                     </div>
                     <button type="button" class="btn btn-animado d-none" id="filtro.parto.activar">Ver Filtros</button>
