@@ -174,7 +174,7 @@
                                 <input type="radio" value="2" name="parto" autocomplete="off">Ajuste al peso neonatal
                             </label>
                             <label class="btn parto btn-secondary">
-                                <input type="radio" value="3" name="parto" autocomplete="off">Protocolo riesgo de hipoglicemia
+                                <input type="radio" value="3" name="parto" autocomplete="off">Protocolo de hipoglicemia
                             </label>
                         </div>
                     </div>
