@@ -96,4 +96,8 @@ class ApiController extends Controller
     public function getComunas(){
         $this->View->renderJSON(ApiModel::getAllComunas());
     }
+
+    public function partouser(){
+        $this->View->renderJSON(ApiModel::partoUser());
+    }
 }

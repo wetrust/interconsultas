@@ -12,4 +12,15 @@ class ApiModel
 
         return $query->fetchAll();
     }
+
+    public static function partoUser()
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_name, user_email FROM users where user_active = 1 AND user_account_type = 5";
+        $query = $database->prepare($sql);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
 }
