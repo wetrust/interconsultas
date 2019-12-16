@@ -57,9 +57,9 @@ function buildPartosTable(data){
             fum.setTime(Date.parse(value.solicitud_fum));
             fum.setTime(fum.getTime() + (1000*60*60*24*282));
 
-            var dd = date.getDate();
-            var mm = date.getMonth()+1; //January is 0!
-            var yyyy = date.getFullYear();
+            var dd = fum.getDate();
+            var mm = fum.getMonth()+1; //January is 0!
+            var yyyy = fum.getFullYear();
         
             if(dd<10) {
                 dd = '0'+dd
