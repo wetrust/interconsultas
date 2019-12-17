@@ -267,7 +267,7 @@ function createCarcasaAutorizar(){
 
         let dav = {usuario_parto: $("#profesional\\.parto").val()}
         
-        $.post('dashboard/diagnosticoSave', dav).done(function(data){
+        $.post('ApiController/autorizarparto', dav).done(function(data){
             $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadDiagnosticoConfiguracion(); loadDiagnostico();
         });
     });

@@ -100,4 +100,8 @@ class ApiController extends Controller
     public function partouser(){
         $this->View->renderJSON(ApiModel::partoUser());
     }
+
+    public function autorizarparto(){
+        $this->View->renderJSON(ResponsablesModel::createResponsables(Request::post('usuario_parto')));
+    }
 }
