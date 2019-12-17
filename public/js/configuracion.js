@@ -265,7 +265,7 @@ function createCarcasaAutorizar(){
             $(this).remove();
         });
 
-        let dav = {usuario_parto: $("#modal\\.diagnostico\\.nombre").val()}
+        let dav = {usuario_parto: $("#profesional\\.parto").val()}
         
         $.post('dashboard/diagnosticoSave', dav).done(function(data){
             $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadDiagnosticoConfiguracion(); loadDiagnostico();
@@ -281,10 +281,10 @@ function loadPartoUserConfig(){
 		$.each(data, function(element, value){
 			let option = "";
 			if (contador == 0){
-				option = '<option value="'+value.user_email+'" selected>'+value.user_name+'</option>';
+				option = '<option value="'+value.user_id+'" selected>'+value.user_name+'</option>';
 				contador++;
 			}else{
-				option = '<option value="'+value.user_email+'">'+value.user_name+'</option>';
+				option = '<option value="'+value.user_id+'">'+value.user_name+'</option>';
 			}
 			$("#profesional\\.parto").append(option);
 		});
