@@ -808,7 +808,7 @@ function buildPartosAjusteTable(data){
             });
             $.get("dashboard/dataPartos/" + solicitud_id).done(function(data){
                 $("#valoreg").val(data.semanas);
-                $("#valorpesofetal").val(data.pesofetal);
+                $("#valorpesofetal").val(data.peso);
                 $("#nombre\\.paciente").val(data.solicitud_nombre);
                 let sn = (data.sexo == "Masculino") ? 0 : 1;
                 $("#sn").val(sn);
