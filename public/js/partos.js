@@ -809,7 +809,7 @@ function buildPartosAjusteTable(data){
             });
             $.get("dashboard/dataPartos/" + solicitud_id).done(function(data){
                 $("#valoreg").val(data.semanas);
-                $("#valorpesofetal").val(data.peso);
+                $("#valorpesofetal").val(data.pesofetal);
                 let sn = (data.sexo == "Masculino") ? 0 : 1;
                 $("#sn").val(sn);
                 let pm = (data.paridad == "Primípara") ? 1 : 0;
