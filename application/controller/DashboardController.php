@@ -10,6 +10,14 @@ class DashboardController extends Controller{
         $this->View->render('login/index');
     }
 
+    public function parto(){
+        $this->View->render('dashboard/parto');
+    }
+
+    public function prenatal(){
+        $this->View->render('dashboard/prenatal');
+    }
+
     public function sistema($hash="#interconsulta",$paciente = ""){
         $this->View->render('dashboard/index', array(
             'hash' => $hash,
