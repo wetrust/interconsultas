@@ -130,8 +130,7 @@ function buildPartosTable(data){
                 } 
                 else {
                     $('#egparto').val(semanas);
-                    $('#diasparto').val(dias);
-                }
+                    $('#diasparto').val(dias);}
             });
 
             $("#pesomaterno").on("change", function(){
