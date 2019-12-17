@@ -5,7 +5,7 @@ class ResponsablesModel{
     public static function getAllResponsables(){
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT responsable.id, responsable.responsable_id, users.user_name, users.user_email FROM responsable INNER JOIN users ON responsable.user_id = users.user_id WHERE responsable.user_id = :user_id";
+        $sql = "SELECT responsable.id, responsable.responsable_id, users.user_name, users.user_email FROM responsable INNER JOIN users ON responsable.responsable_id = users.user_id WHERE responsable.user_id = :user_id";
         $query = $database->prepare($sql);
         $query->execute(array(':user_id' => Session::get('user_id')));
 
