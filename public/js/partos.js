@@ -575,7 +575,6 @@ function buildPartosGuardadosTable(data, filtro){
 
 function buildPartosAjusteTable(data){
     $('#tabla\\.parto').empty();
-    
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
         var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Fecha de nacimiento</th><th>Semanas al parto</th><th>Accion</th></tr></thead><tbody>';
@@ -600,6 +599,7 @@ function buildPartosAjusteTable(data){
                 let option = '<option value="'+i+'">'+i+' cms.</option>';
                 $("#tm").append(option);
             }
+
             $('#g3').click(function() {
                 tipografico = 0;
                 var apell = 0;
@@ -760,7 +760,7 @@ function buildPartosAjusteTable(data){
                     }]
                 });
             });
-        
+
             $('#tm').change(function() {
                 varMama = new Mama($("#tm").val(), $("#pesom").val(), $("#em").val(), $('#apellm').val());
                 $('#valorimc').val(varMama.imc());
@@ -783,17 +783,11 @@ function buildPartosAjusteTable(data){
                 $('#g3').trigger("click");
             });
         
-            $('#imc').change(function() {
-                $('#g3').trigger("click");
-            });
+            $('#imc').change(function() { $('#g3').trigger("click"); });
         
-            $('#em').change(function() {
-                $('#g3').trigger("click");
-            });
+            $('#em').change(function() { $('#g3').trigger("click"); });
         
-            $('#apellm').change(function() {
-                $('#g3').trigger("click");
-            });
+            $('#apellm').change(function() { $('#g3').trigger("click"); });
 
             $.get('dashboard/agendar/' + solicitud_id).done(function(data){
                 let edad = data.solicitud_ematerna;
@@ -820,18 +814,14 @@ function buildPartosAjusteTable(data){
                 let pm = (data.paridad == "Primípara") ? 1 : 0;
                 $("#pm").val(pm);
                 $("#pesom").val(data.peso); //
-                $("#tm").val(data.talla).trigger("change");//
+                $("#tm").val(data.talla).trigger("change");
                 $("#apellm").val(data.etnia).trigger("change");
             });
             $('#cautivo\\.dialogo').modal("show");
-			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) {
-				$(this).remove();
-            });
+			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) { $(this).remove(); });
         });
     }
-    else{
-        $("#mensaje\\.resultado").removeClass("d-none");
-    }
+    else{ $("#mensaje\\.resultado").removeClass("d-none"); }
 }
 
 function imc(peso,talla) {
