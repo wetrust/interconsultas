@@ -14,6 +14,7 @@
                     </style>
                     <?php if (Session::get("user_account_type") == 5) { ?>
                         <div role="group">
+                            <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/prenatal"><small>Prenatal (exámenes ecográficos)</small></a>
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/parto"><small>Parto</small></a>
                         </div>
                     <?php } else { ?>
