@@ -104,6 +104,28 @@ function loadDiagnosticoConfiguracion(){
     });
 }
 
+function loadPartoConfiguracion(){
+    $.get("api/responsables").done(function(data){
+        $('#parto\\.tabla').empty();
+        if (Object.keys(data).length > 0) {
+            $.each(data, function(i, value) {
+                var fila = '<tr><td>' + value.user_name + '</td><td>' + value.user_email + '</td><td><button class="btn btn-danger" data-id="' + value.id + '">Eliminar</button></td></tr>';
+                $("#parto\\.tabla").append(fila);
+            });
+        }
+
+        $("#parto\\.tabla .btn").on("click", function(){
+            var id = $(this).data("id");
+
+            $.get('dashboard/diagnostico_configuracion_delete/'+id).done(function(data){
+                loadDiagnosticoConfiguracion();
+                loadDiagnostico();
+            });
+
+        });
+    });
+}
+
 function createCarcasaDirectorio(){
     var modal_id, div_id;
 
@@ -268,7 +290,7 @@ function createCarcasaAutorizar(){
         let dav = {usuario_parto: $("#profesional\\.parto").val()}
         
         $.post('api/autorizarparto', dav).done(function(data){
-            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadDiagnosticoConfiguracion(); loadDiagnostico();
+            $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide"); loadPartoConfiguracion(); loadPartoUser();
         });
     });
 }
