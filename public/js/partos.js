@@ -804,12 +804,12 @@ function buildPartosAjusteTable(data){
                 }else if (edad > 27){
                     document.getElementById("em").value = 6;
                 }
+                $("#nombre\\.paciente").val(data.solicitud_nombre + " " + data.solicitud_apellido);
                 $("#em").trigger("change");
             });
             $.get("dashboard/dataPartos/" + solicitud_id).done(function(data){
                 $("#valoreg").val(data.semanas);
                 $("#valorpesofetal").val(data.peso);
-                $("#nombre\\.paciente").val(data.solicitud_nombre);
                 let sn = (data.sexo == "Masculino") ? 0 : 1;
                 $("#sn").val(sn);
                 let pm = (data.paridad == "Primípara") ? 1 : 0;
