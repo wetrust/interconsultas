@@ -36,7 +36,7 @@
     $html = '<table><tbody><tr><td><strong>Datos maternos</strong></td><td><strong>Datos neonatales</strong></td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
-    $html = '<table><tbody><tr><td>Nombre: '.htmlentities($this->paciente->solicitud_nombre . " " . $this->solicitud->solicitud_apellido).'</td><td>Sexo: '.htmlentities($this->parto->sexo).'</td></tr></tbody></table>';
+    $html = '<table><tbody><tr><td>Nombre: '.htmlentities($this->paciente->solicitud_nombre . " " . $this->paciente->solicitud_apellido).'</td><td>Sexo: '.htmlentities($this->parto->sexo).'</td></tr></tbody></table>';
     $this->pdf->writeHTMLCell('', '', '', '', $html, 0, 1, 0, true, 'J', true);
     $this->pdf->Ln(1);
     $html = '<table><tbody><tr><td>RUT (DNI): '.htmlentities($this->paciente->solicitud_rut).'</td><td>Peso: '.htmlentities($this->parto->pesofetal).' grs.</td></tr></tbody></table>';
