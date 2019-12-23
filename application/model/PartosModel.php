@@ -28,14 +28,14 @@ class PartosModel
         return $query->fetch();
     }
 
-    public static function createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $ciudad, $edad_materna)
+    public static function createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna)
     {
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO partos (solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta, protocolo_hipoglicemia, ciudad, edad_materna) VALUES (:solicitud_id,:fecha_parto,:semanas,:dias,:peso,:talla,:imc,:estado_nutricional,:etnia,:paridad,:lugar,:pesofetal,:tallafetal,:craneofetal,:apgar_uno,:apgar_cinco,:sexo,:meconio,:ipn,:peso_eg,:peso_eg_estado,:ipn_eg,:ipn_eg_estado,:comentarios,:hipoglicemia,:alta, :protocolo_hipoglicemia, :ciudad, :edad_materna)";
+        $sql = "INSERT INTO partos (solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta, protocolo_hipoglicemia, edad_materna) VALUES (:solicitud_id,:fecha_parto,:semanas,:dias,:peso,:talla,:imc,:estado_nutricional,:etnia,:paridad,:lugar,:pesofetal,:tallafetal,:craneofetal,:apgar_uno,:apgar_cinco,:sexo,:meconio,:ipn,:peso_eg,:peso_eg_estado,:ipn_eg,:ipn_eg_estado,:comentarios,:hipoglicemia,:alta, :protocolo_hipoglicemia, :edad_materna)";
         $query = $database->prepare($sql);
-        $query->execute(array(':solicitud_id' => $solicitud_id, ':fecha_parto' => $fecha_parto,':semanas' => $semanas,':dias' => $dias,':peso' => $peso,':talla' => $talla,':imc' => $imc,':estado_nutricional' => $estado_nutricional,':etnia' => $etnia,':paridad' => $paridad,':lugar' => $lugar,':pesofetal' => $pesofetal,':tallafetal' => $tallafetal,':craneofetal' => $craneofetal,':apgar_uno' => $apgar_uno,':apgar_cinco' => $apgar_cinco,':sexo' => $sexo,':meconio' => $meconio,':ipn' => $ipn,':peso_eg' => $peso_eg,':peso_eg_estado' => $peso_eg_estado,':ipn_eg' => $ipn_eg,':ipn_eg_estado' => $ipn_eg_estado,':comentarios' => $comentarios,':hipoglicemia' => $hipoglicemia,':alta' => $alta, ':protocolo_hipoglicemia' => $protocolo_hipoglicemia, ':ciudad' => $ciudad, ':edad_materna' => $edad_materna));
+        $query->execute(array(':solicitud_id' => $solicitud_id, ':fecha_parto' => $fecha_parto,':semanas' => $semanas,':dias' => $dias,':peso' => $peso,':talla' => $talla,':imc' => $imc,':estado_nutricional' => $estado_nutricional,':etnia' => $etnia,':paridad' => $paridad,':lugar' => $lugar,':pesofetal' => $pesofetal,':tallafetal' => $tallafetal,':craneofetal' => $craneofetal,':apgar_uno' => $apgar_uno,':apgar_cinco' => $apgar_cinco,':sexo' => $sexo,':meconio' => $meconio,':ipn' => $ipn,':peso_eg' => $peso_eg,':peso_eg_estado' => $peso_eg_estado,':ipn_eg' => $ipn_eg,':ipn_eg_estado' => $ipn_eg_estado,':comentarios' => $comentarios,':hipoglicemia' => $hipoglicemia,':alta' => $alta, ':protocolo_hipoglicemia' => $protocolo_hipoglicemia, ':edad_materna' => $edad_materna));
 
         if ($query->rowCount() == 1) {
             return true;
@@ -45,7 +45,7 @@ class PartosModel
         return false;
     }
 
-    public static function updatePartos($parto_id,$fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia) {
+    public static function updatePartos($parto_id,$fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna) {
         $database = DatabaseFactory::getFactory()->getConnection();
         $sql = "UPDATE partos SET 
         fecha_parto = :fecha_parto,
@@ -74,10 +74,9 @@ class PartosModel
                               hipoglicemia = :hipoglicemia,
                               alta = :alta,
                                protocolo_hipoglicemia = :protocolo_hipoglicemia,
-                                ciudad = :ciudad,
                                 edad_materna = edad_materna WHERE parto_id = :parto_id";
         $query = $database->prepare($sql);
-        $query->execute(array(':parto_id' => $parto_id, ':fecha_parto' => $fecha_parto,':semanas' => $semanas,':dias' => $dias,':peso' => $peso,':talla' => $talla,':imc' => $imc,':estado_nutricional' => $estado_nutricional,':etnia' => $etnia,':paridad' => $paridad,':lugar' => $lugar,':pesofetal' => $pesofetal,':tallafetal' => $tallafetal,':craneofetal' => $craneofetal,':apgar_uno' => $apgar_uno,':apgar_cinco' => $apgar_cinco,':sexo' => $sexo,':meconio' => $meconio,':ipn' => $ipn,':peso_eg' => $peso_eg,':peso_eg_estado' => $peso_eg_estado,':ipn_eg' => $ipn_eg,':ipn_eg_estado' => $ipn_eg_estado,':comentarios' => $comentarios,':hipoglicemia' => $hipoglicemia,':alta' => $alta, ':protocolo_hipoglicemia' => $protocolo_hipoglicemia, ':ciudad' => $ciudad, ':edad_materna' => $edad_materna));
+        $query->execute(array(':parto_id' => $parto_id, ':fecha_parto' => $fecha_parto,':semanas' => $semanas,':dias' => $dias,':peso' => $peso,':talla' => $talla,':imc' => $imc,':estado_nutricional' => $estado_nutricional,':etnia' => $etnia,':paridad' => $paridad,':lugar' => $lugar,':pesofetal' => $pesofetal,':tallafetal' => $tallafetal,':craneofetal' => $craneofetal,':apgar_uno' => $apgar_uno,':apgar_cinco' => $apgar_cinco,':sexo' => $sexo,':meconio' => $meconio,':ipn' => $ipn,':peso_eg' => $peso_eg,':peso_eg_estado' => $peso_eg_estado,':ipn_eg' => $ipn_eg,':ipn_eg_estado' => $ipn_eg_estado,':comentarios' => $comentarios,':hipoglicemia' => $hipoglicemia,':alta' => $alta, ':protocolo_hipoglicemia' => $protocolo_hipoglicemia, ':edad_materna' => $edad_materna));
         if ($query->rowCount() == 1) { 
             return true;
         }
