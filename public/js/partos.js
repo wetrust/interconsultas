@@ -810,7 +810,7 @@ function buildPartosAjusteTable(data){
                 let pm = (data.paridad == "Primípara") ? 1 : 0;
                 $("#pm").val(pm);
                 $("#pesom").val(data.peso); //
-                $("#pesoSpamAjustado").html(data.peso);
+                $("#pesoSpamAjustado").html(data.pesofetal);
                 $("#tm").val(data.talla).trigger("change");
                 $("#apellm").val(data.etnia).trigger("change");
             });
