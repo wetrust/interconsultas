@@ -81,11 +81,22 @@ function buildPartosTable(data){
             let solicitud_id =  $(this).data("id");
             $('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Datos del parto y recién nacido</h5></div><div class="modal-body"> <div class="form-row"> <input type="hidden" class="form-control" id="idpacienteparto"> <input type="hidden" class="form-control" id="idpacientefur"> <div class="col-md-12"> <h6><strong>Datos maternos</strong></h6></div><div class="form-group col-md-3"> <label for="nombreparto">Nombre y apellido</label> <input type="text" class="form-control" id="nombreparto" disabled> </div><div class="form-group col-md-3"> <label for="rutparto">RUT materno</label> <input type="text" class="form-control" id="rutparto" disabled> </div><div class="form-group col-md-3"> <label for="fechaparto">Fecha de parto</label> <input type="date" class="form-control" id="fechaparto"> </div><div class="form-group col"> <label for="egparto">Edad gestacional</label> <select class="form-control" id="egparto" disabled></select> </div><div class="form-group col"> <label for="egparto">días</label> <select class="form-control" id="diasparto" disabled></select> </div></div><div class="form-row"> <div class="form-group col-md-3"> <label for="tallamaterna">Talla Materna</label> <select class="form-control" id="tallamaterna"></select> </div><div class="form-group col-md-3"> <label for="pesomaterno">Peso Materno</label> <select class="form-control" id="pesomaterno"></select> </div><div class="form-group col-md-3"> <label for="rutparto">IMC (peso * talla)&#94;2</label> <input type="text" class="form-control" id="imc" disabled> </div><div class="form-group col-md-3"> <label for="nombreparto">Estado nutricional</label> <input type="text" class="form-control" id="estadonutricional" disabled> </div></div><div class="form-row"> <div class="form-group col-md-3"> <label for="etniamaterna">Etnia materna</label> <select class="form-control" id="etniamaterna"> <option value="0">Ambos Caucásicos</option> <option value="2">Solo uno Caucásico</option> <option value="1" selected>Ninguno Caucásico</option> </select> </div><div class="form-group col-md-3"> <label for="paridadmaterna">Paridad</label> <select class="form-control" id="paridadmaterna"> <option value="Primípara" selected>Primípara</option> <option value="Multípara">Multípara</option> </select> </div><div class="form-group col-md-3 d-none"> <label>Tipo de parto</label> <select class="form-control" id="tipomaterna"> <option value="Vaginal" selected>Vaginal</option> <option value="Cesarea">Cesárea</option> </select> </div><div class="form-group col-md-3"> <label for="etniamaterna">Edad materna</label> <select class="form-control" id="edad_materna"></select> </div><div class="form-group col-md-3"> <label for="lugarparto">Lugar de Parto</label> <input type="text" class="form-control" id="lugarparto"> </div></div><div class="form-row"> <div class="col-md-12"> <h6><strong>Datos neonatales</strong></h6></div><div class="col-3"> <div class="form-row"> <div class="form-group col-12"> <label for="pesofetal">Peso fetal (grs)</label> <input type="number" class="form-control" id="pesofetal"> </div><div class="form-group col-12"> <label for="tallafetal">Talla (mm)</label> <input type="number" class="form-control" id="tallafetal"> </div><div class="form-group col-12"> <label for="craneo">Cráneo (mm)</label> <input type="text" class="form-control" id="craneo"> </div></div></div><div class="col-3"> <div class="form-row"> <div class="form-group col-12"> <label for="ipnparto">IPN ((peso*talla)&#94;3) * 100 </label> <input type="text" class="form-control" id="ipnparto" disabled> </div><div class="form-group col-12"> <label for="pesoegparto">Peso/Edad gestacional</label> <div class="input-group mb-2"> <input type="text" class="form-control" id="pesoegparto" disabled> <div class="input-group-prepend"> <div class="input-group-text" id="pesoegpartoestado"></div></div></div></div><div class="form-group col-12"> <label for="ipnegparto">IPN/Edad gestacional</label> <div class="input-group mb-2"> <input type="text" class="form-control" id="ipnegparto" disabled> <div class="input-group-prepend"> <div class="input-group-text" id="ipnegpartoestado"></div></div></div></div></div></div><div class="col-3"> <div class="form-row"> <div class="form-group col-12"> <label for="sexofetal">Sexo RN</label> <select class="form-control" id="sexofetal"> <option value="Femenino" selected>Femenino</option> <option value="Masculino">Masculino</option> <option value="Indiferenciado">Indiferenciado</option> </select> </div><div class="form-group col-12"> <label for="apgar_uno">Apgar minuto 1</label> <select class="form-control" id="apgar_uno"> <option value="0" selected>0</option> <option value="1" selected>1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> </select> </div><div class="form-group col-12"> <label for="apgar_cinco">Apgar minuto 5</label> <select class="form-control" id="apgar_cinco"> <option value="0" selected>0</option> <option value="1" selected>1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> </select> </div></div></div><div class="col-3"> <div class="form-row"> <div class="form-group col-12"> <label for="meconio">Meconio al parto</label> <select class="form-control" id="meconio"> <option value="Si">Si</option> <option value="No" selected>No</option> </select> </div></div><div class="form-row"> <div class="form-group col-12"> <label for="hipoglicemia">Hipoglicemia neonatal</label> <select class="form-control" id="hipoglicemia"> <option value="Si">Si</option> <option value="No" selected>No</option> </select> </div></div><div class="form-row"> <div class="form-group col-12"> <label for="alta">Alta con su madre</label> <select class="form-control" id="alta"> <option value="Si" selected>Si</option> <option value="No">No</option> </select> </div></div></div></div><div class="form-row"> <div class="form-group col-md-8"> <label for="comentariosparto">Comentario y observaciones</label> <input type="text" class="form-control" id="comentariosparto"> </div><div class="form-group col-md-4"> <label>Protoloco Hipoglicemia</label> <select class="form-control" id="protocolo_hipoglicemia"> <option value="Si">Si</option> <option value="No" selected>No</option> </select> </div><p class="text-primary">El proposito de conocer datos de parto y recien nacido es solo con fines de realizar seguimiento de la historia perinatal, la utilizacion de información con fines de investigación, requiere consentimiento informado de la madre. para tal efecto ver formularios en pagina inicial de la plataforma</p></div><div class="modal-footer"> <button type="button" class="btn btn-primary" id="guardarparto">Guardar</button> <button type="button" class="btn btn-danger" id="borrarparto">Borrar</button> <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> </div></div></div></div>');
             
+            
             for (var i = 35; i < 139; i++) {
                 let option = '<option value="'+i+'">'+i+' kg.</option>';
                 $("#pesomaterno").append(option);
             }
-            
+
+            for (var i = 19; i < 70; i++) {
+                let option = '<option value="'+i+'">'+i+' años.</option>';
+                $("#edad_materna").append(option);
+            }
+
+            $.get('dashboard/agendar/' + solicitud_id).done(function(data){
+                document.getElementById("edad_materna").value = data.solicitud_ematerna;
+                document.getElementById("lugarparto").value= data.solicitud_ciudad;
+            });
+
             for (var i = 135; i < 189; i++) {
                 let option = '<option value="'+i+'">'+i+' cms.</option>';
                 $("#tallamaterna").append(option);
@@ -106,11 +117,7 @@ function buildPartosTable(data){
 
             $("#fechaparto").on("change", function(){
                 var FUM = $("#idpacientefur").val();
-
-                if (FUM.length < 1){
-                    return;
-                }
-
+                if (FUM.length < 1){ return; }
                 var FExamen,FUM;
                 var undia = 1000 * 60 * 60 * 24;
                 var unasemana = undia * 7;
@@ -128,9 +135,7 @@ function buildPartosTable(data){
                     $('#egparto').val(41);
                     $('#diasparto').val(6);
                 } 
-                else {
-                    $('#egparto').val(semanas);
-                    $('#diasparto').val(dias);}
+                else { $('#egparto').val(semanas); $('#diasparto').val(dias); }
             });
 
             $("#pesomaterno").on("change", function(){
@@ -243,7 +248,6 @@ function buildPartosTable(data){
                     estado_nutricional: $("#estadonutricional").val(),
                     etnia: $("#etniamaterna").val(),
                     paridad: $("#paridadmaterna").val(),
-                    tipo: $("#tipomaterna").val(),
                     lugar: $("#lugarparto").val(),
                     pesofetal: $("#pesofetal").val(),
                     tallafetal: $("#tallafetal").val(),
@@ -310,7 +314,7 @@ function buildPartosGuardadosTable(data, filtro){
             });
         }
     }
-    
+
     if (Object.keys(data).length > 0) {
         $("#mensaje\\.resultado").addClass("d-none");
         var tabla = '<thead class="thead-dark"><tr><th>Nombre</th><th>Ciudad</th><th>Lugar de control</th><th>Fecha de nacimiento</th><th>Semanas al parto</th><th>Accion</th></tr></thead><tbody>';
@@ -459,7 +463,6 @@ function buildPartosGuardadosTable(data, filtro){
                 $("#estadonutricional").val(data.estado_nutricional);
                 $("#etniamaterna").val(data.etnia);
                 $("#paridadmaterna").val(data.paridad);
-                $("#tipomaterna").val(data.tipo);
                 $("#lugarparto").val(data.lugar);
                 $("#pesofetal").val(data.pesofetal);
                 $("#tallafetal").val(data.tallafetal);
@@ -524,7 +527,6 @@ function buildPartosGuardadosTable(data, filtro){
                         estado_nutricional: $("#estadonutricional").val(),
                         etnia: $("#etniamaterna").val(),
                         paridad: $("#paridadmaterna").val(),
-                        tipo: $("#tipomaterna").val(),
                         lugar: $("#lugarparto").val(),
                         pesofetal: $("#pesofetal").val(),
                         tallafetal: $("#tallafetal").val(),
@@ -802,18 +804,10 @@ function buildPartosAjusteTable(data){
                 $('#g3').trigger("click");
             });
         
-            $('#sn').change(function() {
-                $('#g3').trigger("click");
-            });
-        
-            $('#pm').change(function() {
-                $('#g3').trigger("click");
-            });
-        
+            $('#sn').change(function() { $('#g3').trigger("click"); });
+            $('#pm').change(function() { $('#g3').trigger("click"); });
             $('#imc').change(function() { $('#g3').trigger("click"); });
-        
             $('#em').change(function() { $('#g3').trigger("click"); });
-        
             $('#apellm').change(function() { $('#g3').trigger("click"); });
 
             $.get('dashboard/agendar/' + solicitud_id).done(function(data){

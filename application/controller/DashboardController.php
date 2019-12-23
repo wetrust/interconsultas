@@ -513,7 +513,6 @@ class DashboardController extends Controller{
         $estado_nutricional = Request::post('estado_nutricional');
         $etnia = Request::post('etnia');
         $paridad = Request::post('paridad');
-        $tipo = Request::post('tipo');
         $lugar = Request::post('lugar');
         $pesofetal = Request::post('pesofetal');
         $tallafetal = Request::post('tallafetal');
@@ -531,8 +530,10 @@ class DashboardController extends Controller{
         $hipoglicemia = Request::post('hipoglicemia');
         $alta = Request::post('alta');
         $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
+        $ciudad = Request::post('ciudad');
+        $edad_materna = Request::post('edad_materna');
 
-        $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta,$protocolo_hipoglicemia));
+        $this->View->renderJSON(PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta,$protocolo_hipoglicemia, $ciudad, $edad_materna));
     }
 
     public function actualizarPartos(){
@@ -547,7 +548,6 @@ class DashboardController extends Controller{
         $estado_nutricional = Request::post('estado_nutricional');
         $etnia = Request::post('etnia');
         $paridad = Request::post('paridad');
-        $tipo = Request::post('tipo');
         $lugar = Request::post('lugar');
         $pesofetal = Request::post('pesofetal');
         $tallafetal = Request::post('tallafetal');
@@ -565,8 +565,10 @@ class DashboardController extends Controller{
         $hipoglicemia = Request::post('hipoglicemia');
         $alta = Request::post('alta');
         $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
+        $ciudad = Request::post('ciudad');
+        $edad_materna = Request::post('edad_materna');
         
-        $this->View->renderJSON(PartosModel::updatePartos($parto_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $tipo, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia));
+        $this->View->renderJSON(PartosModel::updatePartos($parto_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $ciudad, $edad_materna));
     }
 
     public function deleteParto($solicitud_id){
