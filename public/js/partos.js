@@ -422,7 +422,6 @@ function buildPartosGuardadosTable(data, filtro){
                     $("#pesoegparto").val(pesoEg(peso,eg));
                     $("#pesoegpartoestado").html(pesoEgCondicion(peso,eg));
                 }
-                
                 if (peso.length > 1 && talla.length > 1){
                     $("#ipnparto").val(ipn(peso,talla)).trigger("change");
                 }
@@ -432,7 +431,6 @@ function buildPartosGuardadosTable(data, filtro){
                 var peso,talla;
                 peso = $("#pesofetal").val();
                 talla = $(this).val();
-                
                 if (peso.length > 1 && talla.length > 1){
                     $("#ipnparto").val(ipn(peso,talla)).trigger("change");
                 }
@@ -442,7 +440,6 @@ function buildPartosGuardadosTable(data, filtro){
                 var ipn,eg;
                 ipn = $(this).val();
                 eg = $('#egparto').val();
-
                 if (ipn.length > 1 && eg > 23){
                     $("#ipnegparto").val(ipnEg(ipn,eg));
                     $("#ipnegpartoestado").html(ipnEgCondicion(ipn,eg));
@@ -884,13 +881,14 @@ function ipn(peso,talla) {
 };
 
 function pesoEg(peso,eg){
-    var pct10PesoNacional,pct90PesoNacional;
-    pct10PesoNacional = [640.6, 666, 728.2, 822.9, 945.7, 1092.2, 1258.2, 1439.2, 1630.8, 1828.7, 2028.6, 2226, 2416.7, 2596.2, 2760.2, 2904.2, 3024.1, 3115.3, 3173.5];
-    pct90PesoNacional = [897.9, 963.3, 1070.6, 1214.6, 1390.1, 1592, 1815, 2053.8, 2303.4, 2558.5, 2813.9, 3064.4, 3304.7, 3529.8, 3734.4, 3913.2, 4061.2, 4173, 4243.5];
+    var pct10PesoTemuco,pct90PesoTemuco;
+    pct10PesoTemuco = [600, 662, 739, 830, 938, 1064, 1208, 1373, 1565, 1756, 1970, 2192, 2415, 2628, 2820, 2978, 3089, 3120, 3123];
+    pct90PesoTemuco = [800, 960, 1139, 1337, 1551, 1781, 2022, 2272, 2527, 2781, 3031, 3270, 3494, 3699, 3878, 4030, 4150, 4236, 4287];
+   
     eg = eg - 24;
 
-    var uno = pct90PesoNacional[eg] - pct10PesoNacional[eg];
-    var dos = peso - pct10PesoNacional[eg];
+    var uno = pct90PesoTemuco[eg] - pct10PesoTemuco[eg];
+    var dos = peso - pct10PesoTemuco[eg];
     return parseInt((80 / (uno)) * (dos)) + 10;
 }
 
