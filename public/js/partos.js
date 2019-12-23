@@ -87,7 +87,7 @@ function buildPartosTable(data){
                 $("#pesomaterno").append(option);
             }
 
-            for (var i = 19; i < 70; i++) {
+            for (var i = 10; i < 70; i++) {
                 let option = '<option value="'+i+'">'+i+' años.</option>';
                 $("#edad_materna").append(option);
             }
@@ -352,7 +352,7 @@ function buildPartosGuardadosTable(data, filtro){
                 $("#diasparto").append(option);
             }
 
-            for (var i = 19; i < 70; i++) {
+            for (var i = 10; i < 70; i++) {
                 let option = '<option value="'+i+'">'+i+' años.</option>';
                 $("#edad_materna").append(option);
             }
