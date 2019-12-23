@@ -621,6 +621,7 @@ function buildPartosAjusteTable(data){
                 }
 
                 $("#PesoEgeSAj").html(RN.pesoTemuco());
+                $("#pesoSACondicion").html(RN.pesoTemucoCondicion());
                 eg = RN.eg - 24;
                 var uno, dos, tres;
                 uno = p90Pso[eg] - p10Pso[eg];
@@ -628,6 +629,16 @@ function buildPartosAjusteTable(data){
                 tres = parseInt((80 / (uno)) * (dos)) + 10;
         
                 $("#PesoEgeCAj").html(tres);
+
+                let condicion = "";
+                if (RN.peso < p10Pso[eg]) {
+                    condicion = "Pequeño";
+                } else if (RN.peso <= p90Pso[eg]) {
+                    condicion = "Adecuado";
+                } else if (RN.peso > p90Pso[eg]) {
+                    condicion = "Grande";
+                }
+                $("#pesoCACondicion").html(condicion);
                 
 
                 Highcharts.chart('graficoAjustado', {
