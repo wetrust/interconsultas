@@ -254,7 +254,7 @@
                             <a class="text-dark nav-item nav-link" id="nav-lugares-tab" data-toggle="tab" href="#nav-lugares" role="tab" aria-controls="nav-lugares" aria-selected="false">Lugar de control</a>
                             <a class="text-dark nav-item nav-link" id="nav-diagnostico-tab" data-toggle="tab" href="#nav-diagnostico" role="tab" aria-controls="nav-diagnostico" aria-selected="false">Motivo de exámen</a>
                             <a class="text-dark nav-item nav-link" id="nav-lista-tab" data-toggle="tab" href="#nav-lista" role="tab" aria-controls="nav-lista" aria-selected="false">Agenda registro destinatarios</a>
-                            <a class="text-dark nav-item nav-link" id="nav-parto-tab" data-toggle="tab" href="#nav-parto" role="tab" aria-controls="nav-parto" aria-selected="false">Usuarios Partos</a>
+                            <a class="text-dark nav-item nav-link" id="nav-parto-tab" data-toggle="tab" href="#nav-parto" role="tab" aria-controls="nav-parto" aria-selected="false">Agenda datos parto y recien nacido</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
