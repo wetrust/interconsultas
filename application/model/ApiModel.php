@@ -33,7 +33,7 @@ class ApiModel
         $query->execute(array(":session_id" => $token));
 
         $respuesta =  $query->fetchAll();
-        return SolicitudesModel::getAllOldSolicitudesSinParto(respuesta->user_email)
+        return SolicitudesModel::getAllOldSolicitudesSinParto($respuesta->user_email)
     }
 
 
