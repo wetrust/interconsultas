@@ -121,5 +121,14 @@ class LoginController extends Controller
         header("Access-Control-Allow-Origin: *");
         $this->View->renderJSON($respuesta);
     }
+
+    public function partologin()
+    {
+        $respuesta = new stdClass();
+
+        $respuesta->response = LoginModel::isUserLoggedIn();
+        header("Access-Control-Allow-Origin: *");
+        $this->View->renderJSON($respuesta);
+    }
     
 }
