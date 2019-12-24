@@ -541,7 +541,7 @@ function buildPartosGuardadosTable(data, filtro){
                         hipoglicemia: $("#hipoglicemia").val(),
                         alta: $("#alta").val(),
                         protocolo_hipoglicemia: $("#protocolo_hipoglicemia").val(),
-                        edad_materna: $("edad_materna").val(),
+                        edad_materna: $("#edad_materna").val()
                     }
 
                 $.post("dashboard/actualizarPartos", data).done(function(result){
