@@ -117,7 +117,7 @@ class LoginController extends Controller
             Request::post('user'), Request::post('pss'), 0
         );
 
-        $respuesta->response = $login_successful
+        $respuesta->response = $login_successful;
         $this->View->renderJSON($respuesta);
     }
     
