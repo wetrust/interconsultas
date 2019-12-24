@@ -116,7 +116,6 @@ class ApiController extends Controller{
     public function getEsperaParto($token){
         if ($token) {
             $this->View->renderJSON(ApiModel::getAllPartos($token));
-            
         }
     }
 }
