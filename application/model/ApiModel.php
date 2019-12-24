@@ -23,4 +23,19 @@ class ApiModel
 
         return $query->fetchAll();
     }
+
+    public static function getAllPartos($token)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        let respuesta =  $query->fetchAll();
+        return SolicitudesModel::getAllOldSolicitudesSinParto(respuesta->user_email)
+    }
+
+
+    
 }

@@ -108,6 +108,15 @@ class ApiController extends Controller{
     }
 
     public function getPrepartosAutorizados(){
-        $this->View->renderJSON(ResponsablesModel::getAllResponsables());
+        $this->View->renderJSON(RespuestaModel::getAllResponsables());
+    }
+
+    //////////
+    /////////
+    public function getEsperaParto($token){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::getAllPartos($token));
+            
+        }
     }
 }
