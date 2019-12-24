@@ -118,6 +118,7 @@ class LoginController extends Controller
         );
 
         $respuesta->response = $login_successful;
+        header("Access-Control-Allow-Origin: http://localhost");
         $this->View->renderJSON($respuesta);
     }
     
