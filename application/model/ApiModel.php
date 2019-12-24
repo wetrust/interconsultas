@@ -32,8 +32,8 @@ class ApiModel
         $query = $database->prepare($sql);
         $query->execute(array(":session_id" => $token));
 
-        return $query->fetch();
-        //return SolicitudesModel::getAllOldSolicitudesSinParto($respuesta->user_email);
+        $respuesta = $query->fetch();
+        return SolicitudesModel::getAllOldSolicitudesSinParto($respuesta['user_email']);
     }
 
 
