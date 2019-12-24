@@ -3,13 +3,11 @@
 class LoginController extends Controller
 {
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
     }
 
-    public function index()
-    {
+    public function index(){
 
         if (LoginModel::isUserLoggedIn()) {
             Redirect::home();
@@ -19,8 +17,7 @@ class LoginController extends Controller
         }
     }
 
-    public function login()
-    {
+    public function login(){
 
         if (!Csrf::isTokenValid()) {
             LoginModel::logout();
@@ -48,15 +45,13 @@ class LoginController extends Controller
         }
     }
 
-    public function logout()
-    {
+    public function logout(){
         LoginModel::logout();
         Redirect::home();
         exit();
     }
 
-    public function loginWithCookie()
-    {
+    public function loginWithCookie(){
 
          $login_successful = LoginModel::loginWithCookie(Request::cookie('remember_me'));
 
@@ -68,19 +63,16 @@ class LoginController extends Controller
         }
     }
 
-    public function requestPasswordReset()
-    {
+    public function requestPasswordReset(){
         $this->View->render('login/requestPasswordReset');
     }
 
-    public function requestPasswordReset_action()
-    {
+    public function requestPasswordReset_action(){
         PasswordResetModel::requestPasswordReset(Request::post('user_name_or_email'), Request::post('captcha'));
         Redirect::to('login/index');
     }
 
-    public function verifyPasswordReset($user_name, $verification_code)
-    {
+    public function verifyPasswordReset($user_name, $verification_code){
         if (PasswordResetModel::verifyPasswordReset($user_name, $verification_code)) {
             $this->View->render('login/resetPassword', array(
                 'user_name' => $user_name,
@@ -91,8 +83,7 @@ class LoginController extends Controller
         }
     }
 
-    public function setNewPassword()
-    {
+    public function setNewPassword(){
         PasswordResetModel::setNewPassword(
             Request::post('user_name'), Request::post('user_password_reset_hash'),
             Request::post('user_password_new'), Request::post('user_password_repeat')
@@ -102,33 +93,27 @@ class LoginController extends Controller
 
 
     //para parto
-    public function parto()
-    {
+    public function parto(){
         $respuesta = new stdClass();
-
         //if (!Csrf::isTokenValid()) {
         //    LoginModel::logout();
         //    $respuesta->response = false;
         //    $this->View->renderJSON($respuesta);
         //    exit();
         //}
-
-        $login_successful = LoginModel::login(
-            Request::post('user'), Request::post('pss'), 0
-        );
-
+        $login_successful = LoginModel::login(Request::post('user'), Request::post('pss'), 0);
         $respuesta->response = $login_successful;
         header("Access-Control-Allow-Origin: *");
+        $session_id = Session::get('session_id');
+        $respuesta->session_id = $session_id;
+
         $this->View->renderJSON($respuesta);
     }
 
-    public function partologin()
-    {
+    public function partologin(){
         $respuesta = new stdClass();
-
         $respuesta->response = LoginModel::isUserLoggedIn();
         header("Access-Control-Allow-Origin: *");
         $this->View->renderJSON($respuesta);
     }
-    
 }
