@@ -99,4 +99,26 @@ class LoginController extends Controller
         );
         Redirect::to('login/index');
     }
+
+
+    //para parto
+    public function parto()
+    {
+        $respuesta = new stdClass();
+
+        //if (!Csrf::isTokenValid()) {
+        //    LoginModel::logout();
+        //    $respuesta->response = false;
+        //    $this->View->renderJSON($respuesta);
+        //    exit();
+        //}
+
+        $login_successful = LoginModel::login(
+            Request::post('user'), Request::post('pss'), 0
+        );
+
+        $respuesta->response = $login_successful
+        $this->View->renderJSON($respuesta);
+    }
+    
 }
