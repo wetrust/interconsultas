@@ -104,7 +104,7 @@ class LoginController extends Controller
         $login_successful = LoginModel::login(Request::post('user'), Request::post('pss'), 0);
         $respuesta->response = $login_successful;
         header("Access-Control-Allow-Origin: *");
-        $session_id = Session::get('session_id');
+        $session_id = session_id();
         $respuesta->session_id = $session_id;
 
         $this->View->renderJSON($respuesta);
