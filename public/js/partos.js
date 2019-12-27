@@ -61,13 +61,9 @@ function buildPartosTable(data){
             var mm = fum.getMonth()+1; //January is 0!
             var yyyy = fum.getFullYear();
         
-            if(dd<10) {
-                dd = '0'+dd
-            } 
+            if( dd<10 ) { dd = '0'+dd }
         
-            if(mm<10) {
-                mm = '0'+mm
-            } 
+            if( mm<10 ) { mm = '0'+mm }
         
             let fpp = dd+ '-' + mm + '-' + yyyy;
 
@@ -392,8 +388,7 @@ function buildPartosGuardadosTable(data, filtro){
                 if (peso.length > 1 && talla.length > 1){
                     let imcD = 0;
                     imcD = imc(peso,talla);
-                    $("#imc").val(imcD);
-                    $("#estadonutricional").val(imcCondicion(imcD));
+                    $("#imc").val(imcD); $("#estadonutricional").val(imcCondicion(imcD));
                 }
             });
             $("#tallamaterna").on("change", function(){
@@ -404,8 +399,7 @@ function buildPartosGuardadosTable(data, filtro){
                 if (peso.length > 1 && talla.length > 1){
                     let imcD = 0;
                     imcD = imc(peso,talla);
-                    $("#imc").val(imcD);
-                    $("#estadonutricional").val(imcCondicion(imcD));
+                    $("#imc").val(imcD); $("#estadonutricional").val(imcCondicion(imcD));
                 }
             });
 
@@ -428,19 +422,14 @@ function buildPartosGuardadosTable(data, filtro){
                 var peso,talla;
                 peso = $("#pesofetal").val();
                 talla = $(this).val();
-                if (peso.length > 1 && talla.length > 1){
-                    $("#ipnparto").val(ipn(peso,talla)).trigger("change");
-                }
+                if (peso.length > 1 && talla.length > 1){ $("#ipnparto").val(ipn(peso,talla)).trigger("change"); }
             });
 
             $("#ipnparto").on("change", function(){
                 var ipn,eg;
                 ipn = $(this).val();
                 eg = $('#egparto').val();
-                if (ipn.length > 1 && eg > 23){
-                    $("#ipnegparto").val(ipnEg(ipn,eg));
-                    $("#ipnegpartoestado").html(ipnEgCondicion(ipn,eg));
-                }
+                if (ipn.length > 1 && eg > 23){ $("#ipnegparto").val(ipnEg(ipn,eg)); $("#ipnegpartoestado").html(ipnEgCondicion(ipn,eg)); }
             });
 
             $.get("dashboard/baseParto/" + solicitud_id).done(function(data){
@@ -514,35 +503,35 @@ function buildPartosGuardadosTable(data, filtro){
             $("#guardarparto").on("click", function(){
                 var data = {
                     parto_id: $("#idparto").val(),
-                        solicitud_id: $("#idpacienteparto").val(),
-                        fecha_parto: $("#fechaparto").val(),
-                        semanas: $("#egparto").val(),
-                        dias: $("#diasparto").val(),
-                        peso: $("#pesomaterno").val(),
-                        talla: $("#tallamaterna").val(),
-                        imc: $("#imc").val(),
-                        estado_nutricional: $("#estadonutricional").val(),
-                        etnia: $("#etniamaterna").val(),
-                        paridad: $("#paridadmaterna").val(),
-                        lugar: $("#lugarparto").val(),
-                        pesofetal: $("#pesofetal").val(),
-                        tallafetal: $("#tallafetal").val(),
-                        craneofetal: $("#craneo").val(),
-                        apgar_uno: $("#apgar_uno").val(),
-                        apgar_cinco: $("#apgar_cinco").val(),
-                        sexo: $("#sexofetal").val(),
-                        meconio: $("#meconio").val(),
-                        ipn: $("#ipnparto").val(),
-                        peso_eg: $("#pesoegparto").val(),
-                        peso_eg_estado: $("#pesoegpartoestado").html(),
-                        ipn_eg: $("#ipnegparto").val(),
-                        ipn_eg_estado: $("#ipnegpartoestado").html(),
-                        comentarios: $("#comentariosparto").val(),
-                        hipoglicemia: $("#hipoglicemia").val(),
-                        alta: $("#alta").val(),
-                        protocolo_hipoglicemia: $("#protocolo_hipoglicemia").val(),
-                        edad_materna: $("#edad_materna").val()
-                    }
+                    solicitud_id: $("#idpacienteparto").val(),
+                    fecha_parto: $("#fechaparto").val(),
+                    semanas: $("#egparto").val(),
+                    dias: $("#diasparto").val(),
+                    peso: $("#pesomaterno").val(),
+                    talla: $("#tallamaterna").val(),
+                    imc: $("#imc").val(),
+                    estado_nutricional: $("#estadonutricional").val(),
+                    etnia: $("#etniamaterna").val(),
+                    paridad: $("#paridadmaterna").val(),
+                    lugar: $("#lugarparto").val(),
+                    pesofetal: $("#pesofetal").val(),
+                    tallafetal: $("#tallafetal").val(),
+                    craneofetal: $("#craneo").val(),
+                    apgar_uno: $("#apgar_uno").val(),
+                    apgar_cinco: $("#apgar_cinco").val(),
+                    sexo: $("#sexofetal").val(),
+                    meconio: $("#meconio").val(),
+                    ipn: $("#ipnparto").val(),
+                    peso_eg: $("#pesoegparto").val(),
+                    peso_eg_estado: $("#pesoegpartoestado").html(),
+                    ipn_eg: $("#ipnegparto").val(),
+                    ipn_eg_estado: $("#ipnegpartoestado").html(),
+                    comentarios: $("#comentariosparto").val(),
+                    hipoglicemia: $("#hipoglicemia").val(),
+                    alta: $("#alta").val(),
+                    protocolo_hipoglicemia: $("#protocolo_hipoglicemia").val(),
+                    edad_materna: $("#edad_materna").val()
+                }
 
                 $.post("dashboard/actualizarPartos", data).done(function(result){
                     $('#cautivo\\.dialogo').modal("hide");
@@ -591,7 +580,7 @@ function buildPartosAjusteTable(data){
         $('#tabla\\.parto').append(tabla);
         $('#tabla\\.parto tr > td > button.ajuste').on("click", function(){
             let solicitud_id =  $(this).data("id");
-            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"> <div class="modal-dialog modal-lgx" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">AJUSTE AL PESO NEONATAL SEGÚN CINCO VARIABLES: Estado nutricional, paridad, sexo, edad y etnia materna</h5></div><div class="modal-body"> <div class="row"> <div class="col-6"> <div class="card"> <div class="card-body"> <div class="form-group row"> <label class="col-4">Nombre:</label> <input type="text" class="form-control col-8" id="nombre.paciente" disabled> </div><div class="form-group row"> <label class="col-4">E gestacional parto</label> <input type="text" class="form-control col-2 bg-secondary text-white" id="valoreg" disabled> <label class="col-4">Peso neonatal</label> <input type="text" class="form-control col-2 bg-secondary text-white" id="valorpesofetal" disabled> </div><div class="row py-2 mb-3"> <div class="col-4">Percentil de peso</div><span id="PesoEgeSAj" class="col-2 bg-secondary text-white p-2 rounded"></span> <div class="col-4">Categorización Peso/Eg</div><span id="pesoSACondicion" class="col-2 bg-secondary text-white p-2 rounded"></span></div><div class="form-group row"> <label class="col-4">Talla Materna</label> <select id="tm" class="form-control col-2" disabled></select> <label class="col-4">Peso Materno</label> <select id="pesom" class="form-control col-2" disabled></select> </div><div class="form-group row"> <label class="col-4">IMC <small>((Peso/Talla)^2)</small></label> <input type="text" class="form-control col-8" id="valorimc" disabled> </div><div class="form-group row"> <label class="col-4">Estado Nutricional</label> <select id="imc" class="form-control col-8 bg-secondary text-white" disabled> <option value="1">Enflaquecida</option> <option value="2">Normal</option> <option value="3">SobrePeso</option> <option value="4" selected>Obesidad</option> </select> </div><div class="form-group row"> <label class="col-4">Paridad Materna</label> <select id="pm" class="form-control col-8 bg-secondary text-white" disabled> <option value="1" selected>Primípara</option> <option value="0">Multípara</option> </select> </div><div class="form-group row"> <label class="col-4">Sexo Neonatal</label> <select id="sn" class="form-control col-8 bg-secondary text-white" disabled> <option value="1" selected="">Femenino</option> <option value="0">Masculino</option> </select> </div><div class="form-group row"> <label class="col-4">Edad Materna</label> <select id="em" class="form-control col-8 bg-secondary text-white" disabled> <option value="1">&lt; 19</option> <option value="2">20 - 21</option> <option value="3">22 - 23</option> <option value="4">24 - 25</option> <option value="5">26 - 27</option> <option value="6" selected>&gt; 27</option> </select> </div><div class="form-group row"> <label class="col-4">Etnia Materna</label> <select id="apellm" class="form-control col-8 bg-secondary text-white" disabled> <option value="0">Ambos Caucásicos</option> <option value="2">Solo uno Caucásico</option> <option value="1" selected="">Ninguno Caucásico</option> </select> </div><button class="btn btn-outline-info d-none" id="g3">Graficar percentil ajustado</button> </div></div></div><div class="col-6"> <div class="card"> <div class="card-body"> <div id="graficoAjustado"></div><p style="line-height: 2.5rem !important;" class="text-primary text-right"><small>* Peso neonatal / edad gestacional ajustado, Percentil: <span id="PesoEgeCAj" class="p-2 rounded text-danger" style="background-color:#e9ecef"></span>, Categorización: <span id="pesoCACondicion" class="p-2 rounded text-danger" style="background-color:#e9ecef"></span></small></p><p><small>Percentil, medida estadística referenciada de 0 a 100, con el propósito de graficar diferencias en categorización del peso neonatal con y sin ajuste a variables, se muestran valores para los casos fuera de rango (&lt; 0, &gt; 100)</small></p></div></div></div></div></div><div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> </div></div></div></div>');
+            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="cautivo.dialogo"> <div class="modal-dialog modal-lgx" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">AJUSTE AL PESO NEONATAL SEGÚN CINCO VARIABLES: Estado nutricional, paridad, sexo, edad y etnia materna</h5></div><div class="modal-body"> <div class="row"> <div class="col-6"> <div class="card"> <div class="card-body"> <div class="form-group row"> <label class="col-4">Nombre:</label> <input type="text" class="form-control col-8" id="nombre.paciente" disabled> </div><div class="form-group row"> <label class="col-4">E gestacional parto</label> <input type="text" class="form-control col-2 bg-secondary text-white" id="valoreg" disabled> <label class="col-4">Peso neonatal</label> <input type="text" class="form-control col-2 bg-secondary text-white" id="valorpesofetal" disabled> </div><div class="row py-2 mb-3"> <div class="col-4">Percentil de peso</div><span id="PesoEgeSAj" class="col-2 bg-secondary text-white p-2 rounded"></span> <div class="col-4">Categorización Peso/Eg</div><span id="pesoSACondicion" class="col-2 bg-secondary text-white p-2 rounded"></span></div><div class="form-group row"> <label class="col-4">Talla Materna</label> <select id="tm" class="form-control col-2" disabled></select> <label class="col-4">Peso Materno</label> <select id="pesom" class="form-control col-2" disabled></select> </div><div class="form-group row"> <label class="col-4">IMC <small>((Peso/Talla)^2)</small></label> <input type="text" class="form-control col-8" id="valorimc" disabled> </div><div class="form-group row"> <label class="col-4">Estado Nutricional</label> <select id="imc" class="form-control col-8 bg-secondary text-white" disabled> <option value="1">Enflaquecida</option> <option value="2">Normal</option> <option value="3">SobrePeso</option> <option value="4" selected>Obesidad</option> </select> </div><div class="form-group row"> <label class="col-4">Paridad Materna</label> <select id="pm" class="form-control col-8 bg-secondary text-white" disabled> <option value="1" selected>Primípara</option> <option value="0">Multípara</option> </select> </div><div class="form-group row"> <label class="col-4">Sexo Neonatal</label> <select id="sn" class="form-control col-8 bg-secondary text-white" disabled> <option value="1" selected="">Femenino</option> <option value="0">Masculino</option> </select> </div><div class="form-group row"> <label class="col-4">Edad Materna</label> <select id="em" class="form-control col-8 bg-secondary text-white" disabled> <option value="1">&lt; 19</option> <option value="2">20 - 21</option> <option value="3">22 - 23</option> <option value="4">24 - 25</option> <option value="5">26 - 27</option> <option value="6" selected>&gt; 27</option> </select> </div><div class="form-group row"> <label class="col-4">Etnia Materna</label> <select id="apellm" class="form-control col-8 bg-secondary text-white" disabled> <option value="0">Ambos Caucásicos</option> <option value="2">Solo uno Caucásico</option> <option value="1" selected="">Ninguno Caucásico</option> </select> </div><button class="btn btn-outline-info d-none" id="g3">Graficar percentil ajustado</button> </div></div></div><div class="col-6"> <div class="card"> <div class="card-body"> <div id="graficoAjustado"></div><div class="row"> <div class="col-5 text-primary mb-3"><small>Nuevo percentil de Peso / Ege</small></div><div class="col-7 mb-3"><span id="PesoEgeCAj" class="p-2 rounded text-danger" style="background-color:#e9ecef"><strong>28</strong></span></div><div class="col-5 text-primary mb-3"><small>Categoría de peso ajustada:</small></div><div class="col-7 mb-3"><span id="pesoCACondicion" class="p-2 rounded text-danger" style="background-color:#e9ecef"><strong>Adecuado</strong></span></div></div></div></div></div></div></div><div class="modal-footer"> <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> </div></div></div></div>');
             for (var i = 35; i < 139; i++) {
                 let option = '<option value="'+i+'">'+i+' kg.</option>';
                 $("#pesom").append(option);
@@ -814,13 +803,26 @@ function buildPartosAjusteTable(data){
                 $("#valoreg").val(data.semanas);
                 $("#valorpesofetal").val(data.pesofetal);
                 let sn = (data.sexo == "Masculino") ? 0 : 1;
-                $("#sn").val(sn);
                 let pm = (data.paridad == "Primípara") ? 1 : 0;
+                let edad = data.edad_materna;
+
+                $("#sn").val(sn);
                 $("#pm").val(pm);
                 $("#pesom").val(data.peso); //
                 $("#tm").val(data.talla).trigger("change");
                 $("#apellm").val(data.etnia).trigger("change");
-                let edad = data.edad_materna;
+                
+                let valores = [1,2,3,4,5,6];
+                let edades = [20,22,24,26,28,27];
+
+                edades.forEach(function(value,index){
+                    if (value < edades[index]){
+                        document.getElementById("em").value = 1;
+                        Exit;
+                        edad.getElementById("parto").value = valores[index];
+                    }
+                });
+
                 if (edad < 20){
                     document.getElementById("em").value = 1;
                 }else if (edad < 22){
@@ -834,7 +836,8 @@ function buildPartosAjusteTable(data){
                 }else if (edad > 27){
                     document.getElementById("em").value = 6;
                 }
-                $("#em").trigger("change");
+
+$("#em").trigger("change");
             });
             $('#cautivo\\.dialogo').modal("show");
 			$('#cautivo\\.dialogo').on('hidden.bs.modal', function (e) { $(this).remove(); });
@@ -1052,13 +1055,15 @@ function Mama(talla, peso, edad, apellido) {
         return valor.toFixed(1);
     };
     this.imcCondicion = function imcC() {
-        if (this.imc() < 20) {
+        let imc = this.imc();
+
+        if (imc < 20) {
             return 1
-        } else if (this.imc() < 25) {
+        } else if (imc < 25) {
             return 2
-        } else if (this.imc() <= 30) {
+        } else if (imc <= 30) {
             return 3
-        } else if (this.imc() > 30) {
+        } else if (imc > 30) {
             return 4
         }
     };
