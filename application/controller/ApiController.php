@@ -118,4 +118,16 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::getAllPartos($token));
         }
     }
+
+    public function agendar($token, $solicitud_id){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::getSolicitud($token,$solicitud_id));
+        }
+    }
+
+    public function baseParto($token, $user_id){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::getOldSolicitudes($token,$user_id));
+        }
+    }
 }

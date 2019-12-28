@@ -36,6 +36,46 @@ class ApiModel
         return SolicitudesModel::getAllOldSolicitudesSinParto($respuesta->user_email);
     }
 
+    public static function getSolicitud($token, $solicitud_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        if ($query->rowCount() == 1){
+            $sql = "SELECT * FROM solicitudes WHERE solicitud_id = :solicitud_id LIMIT 1";
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_id' => $solicitud_id));
+    
+            return $query->fetch();
+        };
+    }
+
+    public static function getOldSolicitudes($token, $solicitud_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_account_type, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        if ($query->rowCount() == 1){
+
+            if ($query->user_account_type == 2){
+                $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_apellido, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, solicitudes.solicitud_fum, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_id = :solicitud_id AND solicitudes.solicitud_respuesta = 2";
+            }
+            else{
+                $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_nombre, solicitudes.solicitud_apellido, solicitudes.solicitud_rut, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, solicitudes.solicitud_fum, respuestas.tipo FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_id = :solicitud_id AND solicitudes.solicitud_respuesta = 2";
+            }
+            $query = $database->prepare($sql);
+            $query->execute(array(':solicitud_id' => $solicitud_id));
+
+            return $query->fetch();
+        }
+    }
+
 
     
 }
