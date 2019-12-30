@@ -136,4 +136,10 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::getAllPartosEfectuados($token));
         }
     }
+
+    public function dataPartos($token, $parto_id){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::getPartos($token, $parto_id));
+        }
+    }
 }
