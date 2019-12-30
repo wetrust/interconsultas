@@ -86,7 +86,7 @@ class ApiModel
         }
     } 
 
-    public static function getAllPartos($token)
+    public static function getAllPartosEfectuados($token)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 

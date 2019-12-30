@@ -133,7 +133,7 @@ class ApiController extends Controller{
 
     public function partos($token){
         if ($token) {
-            $this->View->renderJSON(ApiModel::getAllPartos($token));
+            $this->View->renderJSON(ApiModel::getAllPartosEfectuados($token));
         }
     }
 }
