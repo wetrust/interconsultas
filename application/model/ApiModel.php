@@ -37,7 +37,9 @@ class ApiModel
             return SolicitudesModel::getAllOldSolicitudesSinParto($respuesta->user_email);
         }
         else{
-            return '{"return":false}';
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
         }
     }
 
@@ -56,7 +58,9 @@ class ApiModel
     
             return $query->fetch();
         } else{
-            return '{"return":false}';
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
         }
     }
 
@@ -82,7 +86,9 @@ class ApiModel
             return $query->fetch();
         }
         else{
-            return '{"return":false}';
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
         }
     } 
 
@@ -99,7 +105,9 @@ class ApiModel
             $respuesta = $query->fetch();
             return PartosModel::getAllPartos($respuesta->user_email);
         } else{
-            return '{"return":false}';
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
         }
     }
 
@@ -114,7 +122,9 @@ class ApiModel
         if ($query->rowCount() == 1){
             return PartosModel::getPartos($parto_id);
         }else{
-            return '{"return":false}';
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
         }
     }
 }
