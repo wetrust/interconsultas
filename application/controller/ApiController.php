@@ -130,4 +130,10 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::getOldSolicitudes($token,$user_id));
         }
     }
+
+    public function partos($token){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::getAllPartos($token));
+        }
+    }
 }

@@ -33,7 +33,12 @@ class ApiModel
         $query->execute(array(":session_id" => $token));
 
         $respuesta = $query->fetch();
-        return SolicitudesModel::getAllOldSolicitudesSinParto($respuesta->user_email);
+        if ($query->rowCount() == 1){
+            return SolicitudesModel::getAllOldSolicitudesSinParto($respuesta->user_email);
+        }
+        else{
+            return '{"return":false}';
+        }
     }
 
     public static function getSolicitud($token, $solicitud_id)
@@ -50,7 +55,9 @@ class ApiModel
             $query->execute(array(':solicitud_id' => $solicitud_id));
     
             return $query->fetch();
-        };
+        } else{
+            return '{"return":false}';
+        }
     }
 
     public static function getOldSolicitudes($token, $solicitud_id)
@@ -74,8 +81,25 @@ class ApiModel
 
             return $query->fetch();
         }
+        else{
+            return '{"return":false}';
+        }
+    } 
+
+    public static function getAllPartos($token)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_account_type, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        if ($query->rowCount() == 1){
+
+            $respuesta = $query->fetch();
+            return PartosModel::getAllPartos($respuesta->user_email);
+        } else{
+            return '{"return":false}';
+        }
     }
-
-
-    
 }

@@ -143,6 +143,7 @@ class SolicitudesModel
 
         return $query->fetch();
     }
+    
     public static function getAllOldSolicitudesFilter($solicitud_email,$ciudad,$lugar,$desde,$rut,$tipo)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
