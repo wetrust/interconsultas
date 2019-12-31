@@ -142,4 +142,10 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::getPartos($token, $parto_id));
         }
     }
+
+    public function deleteParto($token, $solicitud_id){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::deleteParto($token, $solicitud_id));
+        }
+    }
 }

@@ -127,4 +127,22 @@ class ApiModel
             return $response;
         }
     }
+
+    public static function deleteParto($token, $parto_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_account_type, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        if ($query->rowCount() == 1){
+            return PartosModel::deleteParto($parto_id);
+        }else{
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
+        }
+    }
+
 }
