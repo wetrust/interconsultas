@@ -536,11 +536,9 @@ class DashboardController extends Controller{
     }
 
     public function actualizarPartos(){
+
         $parto_id = Request::post('parto_id');
         $solicitud_id = Request::post('solicitud_id');
-        $fecha_parto = Request::post('fecha_parto');
-        $semanas = Request::post('semanas');
-        $dias = Request::post('dias');
         $peso = Request::post('peso');
         $talla = Request::post('talla');
         $imc = Request::post('imc');
@@ -565,8 +563,8 @@ class DashboardController extends Controller{
         $alta = Request::post('alta');
         $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
         $edad_materna = Request::post('edad_materna');
-        
-        $this->View->renderJSON(PartosModel::updatePartos($parto_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna));
+
+        $this->View->renderJSON(PartosModel::updatePartos($parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna));
     }
 
     public function deleteParto($solicitud_id){
