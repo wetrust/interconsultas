@@ -35,6 +35,9 @@ MIT
 @angular/platform-browser
 MIT
 
+angular-highcharts
+MIT
+
 core-js
 MIT
 Copyright (c) 2014-2019 Denis Pushkarev
@@ -268,6 +271,9 @@ undefined
 
 @angular/router
 MIT
+
+highcharts
+https://www.highcharts.com/license
 
 regenerator-runtime
 MIT
