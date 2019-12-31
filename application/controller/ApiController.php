@@ -148,4 +148,39 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::deleteParto($token, $solicitud_id));
         }
     }
+
+    public function savePartos($token){
+        if ($token) {
+            $solicitud_id = Request::post('solicitud_id');
+            $fecha_parto = Request::post('fecha_parto');
+            $semanas = Request::post('semanas');
+            $dias = Request::post('dias');
+            $peso = Request::post('peso');
+            $talla = Request::post('talla');
+            $imc = Request::post('imc');
+            $estado_nutricional = Request::post('estado_nutricional');
+            $etnia = Request::post('etnia');
+            $paridad = Request::post('paridad');
+            $lugar = Request::post('lugar');
+            $pesofetal = Request::post('pesofetal');
+            $tallafetal = Request::post('tallafetal');
+            $craneofetal = Request::post('craneofetal');
+            $apgar_uno = Request::post('apgar_uno');
+            $apgar_cinco = Request::post('apgar_cinco');
+            $sexo = Request::post('sexo');
+            $meconio = Request::post('meconio');
+            $ipn = Request::post('ipn');
+            $peso_eg = Request::post('peso_eg');
+            $peso_eg_estado = Request::post('peso_eg_estado');
+            $ipn_eg = Request::post('ipn_eg');
+            $ipn_eg_estado = Request::post('ipn_eg_estado');
+            $comentarios = Request::post('comentarios');
+            $hipoglicemia = Request::post('hipoglicemia');
+            $alta = Request::post('alta');
+            $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
+            $edad_materna = Request::post('edad_materna');
+
+            $this->View->renderJSON(PartosModel::createPartos($token, $solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta,$protocolo_hipoglicemia, $edad_materna));
+        }
+    }
 }
