@@ -23,3 +23,229 @@ Meconio (Si,No)
 
 Comentarios_
 __FORMULARIO DE CONSENTIMIENTO MATERNO__
+
+
+
+
+
+
+
+let modal = makeModal("Enviar imágenes seleccionadas");
+document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+data.JPGFiles
+var estructura = '<div class="row">';
+            
+for (i in data.JPGFiles) {
+    estructura += '<div class="col-12 col-lg-3 col-md-4 col-sm-6"><a href="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" target="_blank"><img alt="Imágen ecográfica" src="https://servidor.crecimientofetal.cl/data/'+ data.JPGFiles[i][1] +'" class="img-fluid border border-primary rounded shadow mb-2" /></a><div class="form-group form-check"><input type="checkbox" class="form-check-input" name="foto" data-foto="'+ data.JPGFiles[i][1] +'"><label class="form-check-label">Seleccionar</label></div></div>';
+}
+
+estructura += '</div>';
+
+document.getElementById(modal.contenido).innerHTML = estructura;
+document.getElementById(modal.titulo).innerHTML = "Imágenes ecográficas de " + nombre;
+                    
+$('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+    $(this).remove();
+});
+
+var btn_informe = uuidv4();
+$('#'+modal.id+ " .modal-footer").append('<button class="btn btn-primary" id="'+btn_informe+'">Ver informe de imágenes seleccionadas</button>');
+
+$("#"+btn_informe).on("click", function(){
+    var contador = 0;
+    var sList = "";
+
+    $('input[name="foto"]').each(function () {
+        if (this.checked) {
+            var sThisVal = (this.checked ? this.dataset.foto : "");
+            sList += (sList=="" ? sThisVal : "," + sThisVal);
+            contador++;
+        }
+    });
+
+    if (contador == 0){
+        alert("Debes seleccionar al menos una imágen");
+        return;
+    }
+
+    if (contador == 3 || contador == 5 || contador == 7){
+        alert("Prefiere seleccionar imágenes en números par, actualmente has seleccionado " + contador + " imágenes.");
+        return;
+    }
+
+    if (contador >8){
+        alert("Máximo 8 imágenes.");
+        return;
+    }
+
+var send = {
+    fotos: sList
+}
+
+                        $.post('dashboard/informe_fotos', send).done(function(data){
+                            if (data.response = true){
+                                let modal = makeModal("Enviar informe");
+
+                                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+                                document.getElementById(modal.contenido).innerHTML = '<iframe style="min-height:400px;" src="data:application/pdf;base64,'+ data.pdf+'" class="embed-responsive-item w-100 h-100"></iframe>';
+                                document.getElementById(modal.titulo).innerHTML = "Informe de imágenes";
+
+                                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                    $(this).remove();
+                                });
+                                
+                                document.getElementById(modal.button).dataset.fotos = sList;
+                                
+                                $("#"+modal.button).on("click", function(){
+                                    "use strict";
+                                    var sList = this.dataset.fotos;
+                                    let modal = makeModal("Enviar");
+
+                                    let rol = uuidv4();
+                                    let email = uuidv4();
+            
+                                    document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                    
+                                    document.getElementById(modal.contenido).innerHTML = '<div class="row"><div class="form-group col-4"><label for="'+rol+'">Rol destinatario</label><select class="form-control" id="'+rol+'"><option value="Paciente">Paciente</option><option value="Referente">Referente</option><option value="Matrona">Matrona</option><option value="Medico">Médico</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option></select></div><div class="form-group col"><label for="'+email+'">E-mail destinatario</label><select class="form-control" id="'+email+'"></select></div></div>';
+                                    document.getElementById(modal.titulo).innerHTML = "Enviar informe de fotos por e-mail";
+                    
+                                    document.getElementById(rol).dataset.email = email;
+                                    $('#'+rol).on("change", function(){
+                                        var eMail = this.dataset.email;
+                                        $('#'+eMail).empty();
+
+                                        $.get('api/emails/'+this.value).done(function(data){
+                                            $.each(data, function(i, value) {
+                                                let option = '<option value="'+value.email_value+'">'+value.email_nombre + ' '+value.email_value+'</option>';
+                                                $('#'+eMail).append(option);
+                                            });
+                                        });
+                                    });
+                                            
+                                    $('#'+modal.id).modal("show").on('hidden.bs.modalargs', function (e) {
+                                        $(this).remove();
+                                    });
+                        
+                                    document.getElementById(modal.button).dataset.fotos = sList;
+                                    document.getElementById(modal.button).dataset.modal = modal.id;
+                                    document.getElementById(modal.button).dataset.email = email;
+                                    $("#"+modal.button).on("click", function(){
+                                        let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando imágenes...</span>';
+                                        this.disabled = true;
+                                        this.innerHTML = animacion;
+                                        let modal = this.dataset.modal;
+
+                                        var send = {
+                                            fotos: this.dataset.fotos,
+                                            email: $("#"+this.dataset.email).val(),
+                                            modal: modal
+                                        }
+            
+                                        $.post('dashboard/informe_envio', send).done(function(data){
+                                            let modal = makeModal();
+                                            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                                            document.getElementById(modal.titulo).innerHTML = "Información";
+
+                                            if (data.response = true){
+                                                document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
+                                            }
+                                            else{
+                                                document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
+                                            }
+
+                                            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                                $(this).remove();
+                                            });
+                                            
+                                            $('#'+ send.modal).modal("hide");
+                                        });
+                                    });
+                                });
+
+                            }
+                            else{
+                                alert("Hubo un error al generar informe");
+                            }
+                        });
+                    });
+
+                    
+                    document.getElementById(modal.button).dataset.modal = modal.id;
+                    $("#"+modal.button).on("click", function(){
+                        let modal = makeModal("Enviar");
+                        var contador = 0;
+                        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                        sList = "";
+
+                        $('input[name="foto"]').each(function () {
+                            if (this.checked) {
+                                var sThisVal = (this.checked ? this.dataset.foto : "");
+                                sList += (sList=="" ? sThisVal : "," + sThisVal);
+                                contador++;
+                            }
+                        });
+
+                        if (contador == 0){alert("Debes seleccionar al menos una imágen"); return;}
+                        
+                        let rol = uuidv4();
+                        let email = uuidv4();
+
+                        document.getElementById(modal.contenido).innerHTML = '<div class="row"><div class="form-group col-4"><label for="'+rol+'">Rol destinatario</label><select class="form-control" id="'+rol+'"><option value="Paciente">Paciente</option><option value="Referente">Referente</option><option value="Matrona">Matrona</option><option value="Medico">Médico</option><option value="Administrativo">Administrativo</option><option value="Otros">Otros</option></select></div><div class="form-group col"><label for="'+email+'">Nombre destinatario</label><select class="form-control" id="'+email+'"></select></div></div>';
+                        document.getElementById(modal.titulo).innerHTML = "Enviar imágenes por E-mail";
+        
+                        document.getElementById(rol).dataset.email = email;
+                        $('#'+rol).on("change", function(){
+                            var eMail = this.dataset.email;
+                            $('#'+eMail).empty();
+
+                            $.get('api/emails/'+this.value).done(function(data){
+                                $.each(data, function(i, value) {
+                                    let option = '<option value="'+value.email_value+'">'+value.email_nombre + ' '+value.email_value+'</option>';
+                                    $('#'+eMail).append(option);
+                                });
+                            });
+                        });
+
+                        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                            $(this).remove();
+                        });
+
+                        $('#'+ this.dataset.modal).modal("hide");
+            
+                        document.getElementById(modal.button).dataset.fotos = sList;
+                        document.getElementById(modal.button).dataset.modal = modal.id;
+                        document.getElementById(modal.button).dataset.email = email;
+
+                        $("#"+modal.button).on("click", function(){
+                            let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando imágenes...</span>';
+                            this.disabled = true;
+                            this.innerHTML = animacion;
+
+                            var send = {
+                                fotos: this.dataset.fotos,
+                                email: $("#"+this.dataset.email).val(),
+                                modal: this.dataset.modal
+                            }
+
+
+                            $.post('dashboard/send_fotos', send).done(function(data){
+                                $("#"+send.modal).modal("hide");
+
+                                let modal = makeModal();
+                                document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                                document.getElementById(modal.titulo).innerHTML = "Información";
+
+                                if (data.response = true){
+                                    document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
+                                }
+                                else{
+                                    document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
+                                }
+
+                                $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                    $(this).remove();
+                                });
+                            });
+                        });
+                    });
