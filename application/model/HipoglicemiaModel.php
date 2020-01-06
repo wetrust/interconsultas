@@ -20,7 +20,7 @@ class HipoglicemiaModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO hipoglicemia (parto_id, horas, valor, conducta) VALUES (:parto_id,:hora,:valor,:conducta)";
+        $sql = "INSERT INTO hipoglicemia (parto_id, horas, valor, conducta) VALUES (:parto_id,:horas,:valor,:conducta)";
         $query = $database->prepare($sql);
         $query->execute(array(':parto_id' => $parto_id, ':horas' => $hora,':valor' => $dextro,':conducta' => $conducta));
 
