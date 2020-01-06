@@ -24,11 +24,6 @@ class HipoglicemiaModel
         $query = $database->prepare($sql);
         $query->execute(array(':parto_id' => $parto_id, ':horas' => $hora,':valor' => $dextro,':conducta' => $conducta));
 
-
-        $response = new stdClass();
-        $response->return = false;
-        return $response;
-        
         if ($query->rowCount() == 1) {
             return true;
         }
