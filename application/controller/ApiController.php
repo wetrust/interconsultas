@@ -215,4 +215,15 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::updatePartos($token, $parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna));
         }
     }
+
+    public function actualizarPartos($token){
+        if ($token) {
+            $parto_id = Request::post('parto_id');
+            $factores = Request::post('factores');
+            $rnsintomatico = Request::post('rnsintomatico');
+            $factoresjson = Request::post('factoresjson');
+            
+            $this->View->renderJSON(ApiModel::updateFactores($token, $parto_id, $factores, $rnsintomatico, $factoresjson));
+        }
+    }
 }

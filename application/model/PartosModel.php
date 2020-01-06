@@ -22,7 +22,7 @@ class PartosModel
     public static function getPartos($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta,protocolo_hipoglicemia, edad_materna FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta,protocolo_hipoglicemia, edad_materna, factores, rnsintomatico, factoresjson FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id));
         return $query->fetch();
@@ -50,6 +50,18 @@ class PartosModel
         $sql = "UPDATE partos SET peso = :peso, talla = :talla, imc = :imc, estado_nutricional = :estado_nutricional, etnia = :etnia, paridad = :paridad, lugar = :lugar, pesofetal = :pesofetal, tallafetal = :tallafetal, craneofetal = :craneofetal, apgar_uno = :apgar_uno, apgar_cinco = :apgar_cinco, sexo = :sexo, meconio = :meconio, ipn = :ipn, peso_eg = :peso_eg, peso_eg_estado = :peso_eg_estado, ipn_eg = :ipn_eg, ipn_eg_estado = :ipn_eg_estado, comentarios = :comentarios, hipoglicemia = :hipoglicemia, alta = :alta, protocolo_hipoglicemia = :protocolo_hipoglicemia, edad_materna = :edad_materna WHERE parto_id = :parto_id";
         $query = $database->prepare($sql);
         $query->execute(array(':parto_id' => $parto_id, ':peso' => $peso,':talla' => $talla,':imc' => $imc,':estado_nutricional' => $estado_nutricional,':etnia' => $etnia,':paridad' => $paridad,':lugar' => $lugar,':pesofetal' => $pesofetal,':tallafetal' => $tallafetal,':craneofetal' => $craneofetal,':apgar_uno' => $apgar_uno,':apgar_cinco' => $apgar_cinco,':sexo' => $sexo,':meconio' => $meconio,':ipn' => $ipn,':peso_eg' => $peso_eg,':peso_eg_estado' => $peso_eg_estado,':ipn_eg' => $ipn_eg,':ipn_eg_estado' => $ipn_eg_estado,':comentarios' => $comentarios,':hipoglicemia' => $hipoglicemia,':alta' => $alta, ':protocolo_hipoglicemia' => $protocolo_hipoglicemia, ':edad_materna' => $edad_materna));
+        if ($query->rowCount() == 1) { 
+            return true;
+        }
+        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_EDITING_FAILED'));
+        return false;
+    }
+
+    public static function updateFactores($parto_id, $factores, $rnsintomatico, $factoresjson) {
+        $database = DatabaseFactory::getFactory()->getConnection();
+        $sql = "UPDATE partos SET factores = :factores, rnsintomatico = :rnsintomatico, factoresjson = :factoresjson WHERE parto_id = :parto_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(':parto_id' => $parto_id, ':factores' => $factores,':rnsintomatico' => $rnsintomatico,':factoresjson' => $factoresjson));
         if ($query->rowCount() == 1) { 
             return true;
         }
