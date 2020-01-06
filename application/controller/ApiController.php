@@ -239,7 +239,11 @@ class ApiController extends Controller{
             $dextro = Request::post('dextro');
             $conducta = Request::post('conducta');
 
-            $this->View->renderJSON(ApiModel::createHipoglicemia($token, $parto_id, $hora, $dextro, $conducta));
+            $response = new stdClass();
+            $response->return = false;
+            $this->View->renderJSON($response);
+
+            //$this->View->renderJSON(ApiModel::createHipoglicemia($token, $parto_id, $hora, $dextro, $conducta));
         }
     }
     public function eliminarHipoglicemia($token, $hipoglicemia){
