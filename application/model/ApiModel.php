@@ -162,7 +162,7 @@ class ApiModel
         }
     }
 
-    public static function updateFactores($token, $parto_id, $factores, $rnsintomatico, $factoresjson)
+    public static function updateFactores($token, $parto_id, $factores, $rnsintomatico, $factoresjson,$rn)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
@@ -171,7 +171,7 @@ class ApiModel
         $query->execute(array(":session_id" => $token));
 
         if ($query->rowCount() == 1){
-            return PartosModel::updateFactores($parto_id, $factores, $rnsintomatico, $factoresjson);
+            return PartosModel::updateFactores($parto_id, $factores, $rnsintomatico, $factoresjson,$rn);
         }else{
             $response = new stdClass();
             $response->return = false;

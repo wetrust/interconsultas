@@ -57,11 +57,11 @@ class PartosModel
         return false;
     }
 
-    public static function updateFactores($parto_id, $factores, $rnsintomatico, $factoresjson) {
+    public static function updateFactores($parto_id, $factores, $rnsintomatico, $factoresjson, $rn) {
         $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "UPDATE partos SET factores = :factores, rnsintomatico = :rnsintomatico, factoresjson = :factoresjson WHERE parto_id = :parto_id";
+        $sql = "UPDATE partos SET factores = :factores, rnsintomatico = :rnsintomatico, factoresjson = :factoresjson, rn = :rn WHERE parto_id = :parto_id";
         $query = $database->prepare($sql);
-        $query->execute(array(':parto_id' => $parto_id, ':factores' => $factores,':rnsintomatico' => $rnsintomatico,':factoresjson' => $factoresjson));
+        $query->execute(array(':parto_id' => $parto_id, ':factores' => $factores,':rnsintomatico' => $rnsintomatico,':factoresjson' => $factoresjson, ':rn' => $rn));
         if ($query->rowCount() == 1) { 
             return true;
         }

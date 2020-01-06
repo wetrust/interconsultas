@@ -222,8 +222,9 @@ class ApiController extends Controller{
             $factores = Request::post('factores');
             $rnsintomatico = Request::post('rnsintomatico');
             $factoresjson = Request::post('factoresjson');
+            $rn = Request::post('rn');
             
-            $this->View->renderJSON(ApiModel::updateFactores($token, $parto_id, $factores, $rnsintomatico, $factoresjson));
+            $this->View->renderJSON(ApiModel::updateFactores($token, $parto_id, $factores, $rnsintomatico, $factoresjson,$rn));
         }
     }
 
