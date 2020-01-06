@@ -222,12 +222,7 @@ class ApiModel
         $query->execute(array(":session_id" => $token));
 
         if ($query->rowCount() == 1){
-
-            $response = new stdClass();
-            $response->return = false;
-            return $response;
-
-            //return HipoglicemiaModel::createHipoglicemia($parto_id, $hora, $dextro, $conducta);
+            return HipoglicemiaModel::createHipoglicemia($parto_id, $hora, $dextro, $conducta);
         }else{
             $response = new stdClass();
             $response->return = false;
