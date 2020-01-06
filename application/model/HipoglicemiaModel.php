@@ -20,9 +20,9 @@ class HipoglicemiaModel
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO hipoglicemia (parto_id, hora, dextro, conducta) VALUES (:parto_id,:hora,:dextro,:conducta)";
+        $sql = "INSERT INTO hipoglicemia (parto_id, hora, valor, conducta) VALUES (:parto_id,:hora,:valor,:conducta)";
         $query = $database->prepare($sql);
-        $query->execute(array(':parto_id' => $parto_id, ':hora' => $hora,':dextro' => $dextro,':conducta' => $conducta));
+        $query->execute(array(':parto_id' => $parto_id, ':hora' => $hora,':valor' => $dextro,':conducta' => $conducta));
 
         if ($query->rowCount() == 1) {
             return true;
