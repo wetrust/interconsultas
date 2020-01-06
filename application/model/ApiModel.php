@@ -196,4 +196,55 @@ class ApiModel
         }
     }
 
+    public static function getHipoglicemia($token, $parto_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_account_type, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        if ($query->rowCount() == 1){
+            return HipoglicemiaModel::getAllHipoglicemia($parto_id);
+        }else{
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
+        }
+    }
+
+    public static function createHipoglicemia($token, $parto_id, $hora, $dextro, $conducta)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_account_type, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        if ($query->rowCount() == 1){
+            return HipoglicemiaModel::createHipoglicemia($parto_id, $hora, $dextro, $conducta);
+        }else{
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
+        }
+    }
+
+    public static function deleteHipoglicemia($token, $hipoglicemia_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_account_type, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $token));
+
+        if ($query->rowCount() == 1){
+            return HipoglicemiaModel::deleteHipoglicemia($hipoglicemia_id);
+        }else{
+            $response = new stdClass();
+            $response->return = false;
+            return $response;
+        }
+    }
+
 }

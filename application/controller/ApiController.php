@@ -226,4 +226,26 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::updateFactores($token, $parto_id, $factores, $rnsintomatico, $factoresjson));
         }
     }
+
+    public function hipoglicemia($token, $parto_id){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::getHipoglicemia($token, $parto_id));
+        }
+    }
+    public function nuevoHipoglicemia($token){
+        if ($token) {
+            $parto_id = Request::post('parto_id');
+            $hora = Request::post('hora');
+            $dextro = Request::post('dextro');
+            $conducta = Request::post('conducta');
+
+            $this->View->renderJSON(ApiModel::createHipoglicemia($token, $parto_id, $hora, $dextro, $conducta));
+        }
+    }
+    public function eliminarHipoglicemia($token, $hipoglicemia){
+        if ($token) {
+            $this->View->renderJSON(ApiModel::deleteHipoglicemia($token, $hipoglicemia));
+        }
+    }
+
 }
