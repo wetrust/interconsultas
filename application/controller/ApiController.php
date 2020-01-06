@@ -216,7 +216,7 @@ class ApiController extends Controller{
         }
     }
 
-    public function actualizarPartos($token){
+    public function actualizarPartoFactores($token){
         if ($token) {
             $parto_id = Request::post('parto_id');
             $factores = Request::post('factores');
