@@ -108,4 +108,18 @@ class LoginController extends Controller
 
         $this->View->renderJSON($respuesta);
     }
+
+    public function partoVerify(){
+        $respuesta = new stdClass();
+        //if (!Csrf::isTokenValid()) {
+        //    LoginModel::logout();
+        //    $respuesta->response = false;
+        //    $this->View->renderJSON($respuesta);
+        //    exit();
+        //}
+        $login_successful = LoginModel::isUserLoggedInAngular(Request::post('login'));
+        $respuesta->response = $login_successful;
+
+        $this->View->renderJSON($respuesta);
+    }
 }

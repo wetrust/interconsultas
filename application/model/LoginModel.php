@@ -230,4 +230,20 @@ class LoginModel
     {
         return Session::userIsLoggedIn();
     }
+
+    public static function isUserLoggedInAngular($session_id)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "SELECT user_id, user_account_type, user_email FROM users where user_active = 1 AND session_id = :session_id";
+        $query = $database->prepare($sql);
+        $query->execute(array(":session_id" => $session_id));
+
+        if ($query->rowCount() == 1){
+            return true;
+        }
+
+        return false;
+    }
+
 }

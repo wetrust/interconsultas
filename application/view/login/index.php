@@ -107,6 +107,6 @@
 </div>
 <script>
 <?php if (Session::userIsLoggedIn()) { ?>
-    localstorage.setItem('login', '<?php session_id();?>');
+    localStorage.setItem('login', '<?php session_id();?>');
 <?php } ?>
 </script>
