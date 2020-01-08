@@ -22,7 +22,7 @@ class PartosModel
     public static function getPartos($solicitud_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta,protocolo_hipoglicemia, edad_materna, factores, rnsintomatico, factoresjson,rn FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
+        $sql = "SELECT parto_id, solicitud_id, fecha_parto, semanas, dias, peso, talla, imc, estado_nutricional, etnia, paridad, lugar, pesofetal, tallafetal, craneofetal, apgar_uno, apgar_cinco, sexo, meconio, ipn, peso_eg, peso_eg_estado, ipn_eg, ipn_eg_estado, comentarios,hipoglicemia,alta,protocolo_hipoglicemia, edad_materna, factores, rnsintomatico, factoresjson,rn, otras FROM partos WHERE solicitud_id = :solicitud_id LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_id' => $solicitud_id));
         return $query->fetch();
@@ -57,11 +57,11 @@ class PartosModel
         return false;
     }
 
-    public static function updateFactores($parto_id, $factores, $rnsintomatico, $factoresjson, $rn) {
+    public static function updateFactores($parto_id, $factores, $rnsintomatico, $factoresjson, $rn, $otras) {
         $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "UPDATE partos SET factores = :factores, rnsintomatico = :rnsintomatico, factoresjson = :factoresjson, rn = :rn WHERE parto_id = :parto_id";
+        $sql = "UPDATE partos SET factores = :factores, rnsintomatico = :rnsintomatico, factoresjson = :factoresjson, rn = :rn, otras = :otras WHERE parto_id = :parto_id";
         $query = $database->prepare($sql);
-        $query->execute(array(':parto_id' => $parto_id, ':factores' => $factores,':rnsintomatico' => $rnsintomatico,':factoresjson' => $factoresjson, ':rn' => $rn));
+        $query->execute(array(':parto_id' => $parto_id, ':factores' => $factores,':rnsintomatico' => $rnsintomatico,':factoresjson' => $factoresjson, ':rn' => $rn, ':otras' => $otras));
         if ($query->rowCount() == 1) { 
             return true;
         }
