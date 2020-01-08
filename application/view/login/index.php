@@ -15,13 +15,13 @@
                     <?php if (Session::get("user_account_type") == 5) { ?>
                         <div role="group">
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/prenatal"><small>Prenatal (exámenes ecográficos)</small></a>
-                            <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/parto"><small>Parto</small></a>
+                            <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="parto"><small>Parto</small></a>
                         </div>
                     <?php } else { ?>
                     <div role="group">
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Configuración de plataforma</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
-                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#parto"><small>Postnatal (parto y RN)</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="parto"><small>Postnatal (parto y RN)</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" id="menu.activo.cinco" href="#"><small>Ver guías clínicas relacionadas</small></a>
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.tres" href="https://www.isuog.org/clinical-resources/isuog-guidelines/translations/spanish.html"><small>&gt; Guías clínicas ISUOG, en español</small></a>
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.uno" href="https://medicinafetalbarcelona.org/protocolos"><small>&gt; Guías clínicas Medicina Fetal - Barcelona</small></a>
@@ -83,7 +83,6 @@
                 <a class="card-link" href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">¿Olvido su contraseña?</a> <a class="card-link" href="<?php echo Config::get('URL'); ?>register/index">Registrar</a>
                 <p class="mt-2">Si ud. no es usuario registrado en la plataforma, puede temporalmente usar contraseña de usuario invitado</p>
                 <ul><li>Correo: prueba@prueba.cl</li><li>Contraseña: 123abc</li></ul>
-                <a class="card-link" href="<?php echo Config::get('URL'); ?>parto">Parto RN</a>
                 <?php } ?>
             </div>
         </div>
@@ -106,3 +105,8 @@
         </div>
     </div>
 </div>
+<script>
+<?php if (Session::userIsLoggedIn()) { ?>
+    localstorage.setItem('login', '<?php session_id();?>');
+<?php } ?>
+</script>
