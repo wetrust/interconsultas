@@ -30,7 +30,7 @@
                 <a class="navbar-brand" href="#">Administración de interconsultas (Módulos)</a>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item"><a class="nav-link active" id="interconsulta-tab" data-toggle="tab" href="#interconsulta" role="tab" aria-controls="interconsulta" aria-selected="true"><small>Prenatal (exámenes ecográficos)</small></a></li>
-                    <li class="nav-item"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false"><small>Postnatal (parto y RN)</small></a></li>
+                    <li class="nav-item d-none"><a class="nav-link" id="parto-tab" data-toggle="tab" href="#parto" role="tab" aria-controls="parto" aria-selected="false"><small>Postnatal (parto y RN)</small></a></li>
                     <li class="nav-item"><a class="nav-link" id="configuracion-tab" data-toggle="tab" href="#configuracion" role="tab" aria-controls="configuracion" aria-selected="false"><small>Configuración</small></a></li>
                 </ul>
             </div>
@@ -450,17 +450,14 @@
     <script src="js/jquery.rut.chileno.min.js"></script>
     <script src="js/solicitud.js"></script>
     <script src="js/basico.js"></script>
-    <script src="js/partos.js"></script>
     <script src="js/membrete.js"></script>
     <script src="js/configuracion.js"></script>
 <?php } else if (Session::get("user_account_type") == 3) { ?>
     <script src="js/principal.js"></script>
-    <script src="js/partos.js"></script>
 <?php } else if (Session::get("user_account_type") == 4) { ?>
     <script src="js/jquery.rut.chileno.min.js"></script>
     <script src="js/solicitud.js"></script>
     <script src="js/autorreferido.js"></script>
-    <script src="js/partos.js"></script>
     <script src="js/membrete.js"></script>
     <script src="js/configuracion.js"></script>
 <?php } ?>
