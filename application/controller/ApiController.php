@@ -175,14 +175,16 @@ class ApiController extends Controller{
             $ipn_eg = Request::post('ipn_eg');
             $ipn_eg_estado = Request::post('ipn_eg_estado');
             $comentarios = Request::post('comentarios');
+            
             $hipoglicemia = Request::post('hipoglicemia');
-            $alta = Request::post('alta');
-            $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
+            $rn = Request::post('rn');
+            $factores = Request::post('factores');
+
             $edad_materna = Request::post('edad_materna');
             $pesoegcorregido = Request::post('pesoegcorregido');
             $pesoegcorregidoestado = Request::post('pesoegcorregidoestado');
 
-            $this->View->renderJSON(ApiModel::createPartos($token, $solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta,$protocolo_hipoglicemia, $edad_materna,$pesoegcorregido,$pesoegcorregidoestado));
+            $this->View->renderJSON(ApiModel::createPartos($token, $solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $rn,$factores, $edad_materna,$pesoegcorregido,$pesoegcorregidoestado));
         }
     }
 
@@ -210,13 +212,13 @@ class ApiController extends Controller{
             $ipn_eg_estado = Request::post('ipn_eg_estado');
             $comentarios = Request::post('comentarios');
             $hipoglicemia = Request::post('hipoglicemia');
-            $alta = Request::post('alta');
-            $protocolo_hipoglicemia = Request::post('protocolo_hipoglicemia');
+            $rn = Request::post('rn');
+            $factores = Request::post('factores');
             $edad_materna = Request::post('edad_materna');
             $pesoegcorregido = Request::post('pesoegcorregido');
             $pesoegcorregidoestado = Request::post('pesoegcorregidoestado');
-            
-            $this->View->renderJSON(ApiModel::updatePartos($token, $parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna,$pesoegcorregido,$pesoegcorregidoestado));
+
+            $this->View->renderJSON(ApiModel::updatePartos($token, $parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $rn, $factores, $edad_materna,$pesoegcorregido,$pesoegcorregidoestado));
         }
     }
 

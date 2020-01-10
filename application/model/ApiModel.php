@@ -125,7 +125,7 @@ class ApiModel
         }
     }
 
-    public static function createPartos($token, $solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado)
+    public static function createPartos($token, $solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $rn, $factores, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
@@ -134,7 +134,7 @@ class ApiModel
         $query->execute(array(":session_id" => $token));
 
         if ($query->rowCount() == 1){
-            return PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado);
+            return PartosModel::createPartos($solicitud_id, $fecha_parto, $semanas, $dias, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $rn, $factores, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado);
         }else{
             $response = new stdClass();
             $response->return = false;
@@ -142,7 +142,7 @@ class ApiModel
         }
     }
 
-    public static function updatePartos($token, $parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado)
+    public static function updatePartos($token, $parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $rn, $factores, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
@@ -151,7 +151,7 @@ class ApiModel
         $query->execute(array(":session_id" => $token));
 
         if ($query->rowCount() == 1){
-            return PartosModel::updatePartos($parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $alta, $protocolo_hipoglicemia, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado);
+            return PartosModel::updatePartos($parto_id, $peso, $talla, $imc, $estado_nutricional, $etnia, $paridad, $lugar, $pesofetal, $tallafetal, $craneofetal, $apgar_uno, $apgar_cinco, $sexo, $meconio, $ipn, $peso_eg, $peso_eg_estado, $ipn_eg, $ipn_eg_estado, $comentarios, $hipoglicemia, $rn, $factores, $edad_materna, $pesoegcorregido, $pesoegcorregidoestado);
         }else{
             $response = new stdClass();
             $response->return = false;
