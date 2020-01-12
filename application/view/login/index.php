@@ -14,12 +14,14 @@
                     </style>
                     <?php if (Session::get("user_account_type") == 5) { ?>
                         <div role="group">
+                            <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="pacientes"><small>Pacientes</small></a>
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/prenatal"><small>Prenatal (exámenes ecográficos)</small></a>
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="parto"><small>Parto</small></a>
                         </div>
                     <?php } else { ?>
                     <div role="group">
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Configuración de plataforma</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="pacientes"><small>Pacientes</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#interconsulta"><small>Prenatal (exámenes ecográficos)</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="parto"><small>Postnatal (parto y RN)</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" id="menu.activo.cinco" href="#"><small>Ver guías clínicas relacionadas</small></a>
@@ -110,3 +112,6 @@
     localStorage.setItem('login', '<?php echo session_id();?>');
 <?php } ?>
 </script>
+//https://stackblitz.com/angular/jyydopxboqn?file=src%2Fapp%2Fauth%2Fauth.guard.ts
+//https://stackblitz.com/edit/angular-7-jwt-authentication-example?file=app%2F_services%2Fuser.service.ts
+//https://jasonwatmore.com/post/2018/11/16/angular-7-jwt-authentication-example-tutorial
