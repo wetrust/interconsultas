@@ -147,7 +147,7 @@ export class view {
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td class="tabla-pacientes"><button class="btn btn-primary examen" data-id="'+element.id+'">Ver exámenes</button><button class="btn btn-danger modificar" data-id="'+element.id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-danger eliminar" data-id="'+element.id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></td></tr>';
+            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td class="tabla-pacientes"><div class="btn-group"><button class="btn btn-outline-primary examen" data-id="'+element.id+'">Ver exámenes</button><button class="btn btn-outline-primary modificar" data-id="'+element.id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-outline-danger eliminar" data-id="'+element.id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
         });
 
         table += '</tbody>';
