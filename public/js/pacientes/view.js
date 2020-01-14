@@ -185,7 +185,7 @@ export class view {
         $('#rut').on("blur", function(){
             cloud.findPaciente(this.value).then(function(data){
                 if (data.length > 0){
-                    $("#".the("rut").dataset.modal).modal("hide");
+                    $("#" + the("rut").dataset.modal).modal("hide");
                     make.alert("El RUT ya está ingresado en el sistema");
                     //ocultar modal de nuevo paciente
                 }
