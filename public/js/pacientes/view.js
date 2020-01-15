@@ -151,7 +151,7 @@ export class view {
 
         cloud.getExamenes(id).then(function(data){
             if (data.return == true){
-                view.tableExamen(data.examen);
+                view.tableExamen(data.data);
             }
         });
     }
