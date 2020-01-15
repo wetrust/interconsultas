@@ -176,10 +176,10 @@ export class view {
             let fecha = value.fecha.split('-');
             fechas = fecha[0] + "" + fecha[1] + "" + fecha[2];
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            tabla += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>'+ value.eg +'</td><td class="nombre">' + value.solicitud_nombre + ' ' + value.solicitud_apellido +'</td><td>' + value.solicitud_rut + '</td>';
+            table += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>'+ value.eg +'</td><td class="nombre">' + value.solicitud_nombre + ' ' + value.solicitud_apellido +'</td><td>' + value.solicitud_rut + '</td>';
             value.solicitud_rut = value.solicitud_rut.replace(/\./g, "")
 
-            tabla += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_rut + ' data-fecha='+ fechas +'>Informes</button></td></tr>';
+            table += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_rut + ' data-fecha='+ fechas +'>Informes</button></td></tr>';
         });
         table += '</tbody>';
         the(config.verExamenesTable).innerHTML = table;
