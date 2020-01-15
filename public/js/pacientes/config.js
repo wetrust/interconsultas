@@ -5,6 +5,7 @@ export const config = {
     update: 'api/updatePaciente',
     delete: 'api/deletePaciente',
     find: 'api/buscarpaciente/',
+    examen: 'api/examen/',
     newPacientesTitulo: 'Crear nuevo paciente',
     newPacientesHTML: '<div class="row"> <div class="col form-group"> <label for="rut">R.U.T.</label> <input type="text" class="form-control g-verde text-white" id="rut"> </div><div class="col form-group"> <label for="rut">Teléfono</label> <input type="number" class="form-control" id="telefono"> </div></div><div class="row"> <div class="col form-group"> <label for="nombre">Nombre</label> <input type="text" class="form-control g-verde text-white" id="nombre"> </div><div class="col form-group"> <label for="apellido">Apellido</label> <input type="text" class="form-control g-verde text-white" id="apellido"> </div></div><div class="row"> <div class="col form-group"> <label for="ciudad">Ciudad de procedencia</label> <select class="form-control" id="ciudad"></select> </div><div class="col form-group"> <label for="lugar">Lugar de control habitual</label> <select class="form-control" id="lugar"></select> </div></div><div class="row"> <div class="col form-group"> <label for="fum">FUM</label> <input type="date" class="form-control g-verde text-white" id="fum"> </div><div class="col form-group"> <label for="fum">Semanas</label> <select class="form-control" id="semanas"></select> </div><div class="col form-group"> <label for="fum">Dias</label> <select class="form-control" id="dias"></select> </div></div>',
     updatePacientesTitulo: 'Actualizar paciente',
@@ -16,7 +17,7 @@ export const config = {
     ciudades: 'dashboard/ciudades_configuracion',
     lugares: 'dashboard/lugares_configuracion',
     verExamenesTitulo: 'Ver exámenes de paciente',
-    verExamenesHTML: '<table class="table table-striped table-bordered table-hover table-sm" id="examen.table"><caption>Lista de exámenes</caption></table>',
+    verExamenesHTML: '<button class="btn btn-primary">Nuevo exámen</button><table class="table table-striped table-bordered table-hover table-sm" id="examen.table"><caption>Lista de exámenes</caption></table>',
     verExamenesTable: 'examen.table',
     verExamenesTableHead: '<thead class="thead-dark"><tr><th scope="col">#</th><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
 }

@@ -110,6 +110,10 @@ class ApiController extends Controller{
     public function getPrepartosAutorizados(){
         $this->View->renderJSON(RespuestaModel::getAllResponsables());
     }
+    
+    public function examen($pacienteId){
+        $this->View->renderJSON(SolicitudesModel::getAllOldSolicitudesWherePaciente($pacienteId));
+    }
 
     //////////
     /////////
@@ -240,6 +244,7 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::getHipoglicemia($token, $parto_id));
         }
     }
+
     public function nuevoHipoglicemia($token){
         if ($token) {
             $parto_id = Request::post('parto_id');
@@ -250,6 +255,7 @@ class ApiController extends Controller{
             $this->View->renderJSON(ApiModel::createHipoglicemia($token, $parto_id, $hora, $dextro, $conducta));
         }
     }
+
     public function eliminarHipoglicemia($token, $hipoglicemia){
         if ($token) {
             $this->View->renderJSON(ApiModel::deleteHipoglicemia($token, $hipoglicemia));

@@ -140,14 +140,16 @@ export class view {
     }
 
     static verExamenes(){
-        let modal = make.modal("Exámenes de paciente");
+        let id = this.dataset.id;
+
+        let modal = make.modal();
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.verExamenesTitulo;
         the(modal.contenido).innerHTML = config.verExamenesHTML;
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
 
-        cloud.newPaciente(paciente).then(function(data){
+        cloud.getExamenes(id).then(function(data){
             if (data.return == true){
                 view.tableExamen(data.examen);
             }

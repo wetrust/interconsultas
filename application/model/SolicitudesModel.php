@@ -84,6 +84,7 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
+    
     public static function getAllOldSolicitudes($solicitud_email){
         $database = DatabaseFactory::getFactory()->getConnection();
 
@@ -98,6 +99,24 @@ class SolicitudesModel
 
         return $query->fetchAll();
     }
+
+    public static function getAllOldSolicitudesWherePaciente($pacienteId){
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $paciente = PacientesModel::getPacienteID($pacienteId);
+
+        if (Session::get('user_account_type') == 2){
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_apellido, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo, respuestas.eg FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_email = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_rut = :solicitud_rut";
+        }
+        else{
+            $sql = "SELECT solicitudes.solicitud_id, solicitudes.solicitud_rut, solicitudes.solicitud_nombre, solicitudes.solicitud_apellido, solicitudes.solicitud_ciudad, solicitudes.solicitud_lugar, respuestas.fecha, solicitudes.solicitud_diagnostico, respuestas.tipo, respuestas.eg FROM solicitudes INNER JOIN respuestas ON respuestas.solicitud_id = solicitudes.solicitud_id WHERE solicitudes.solicitud_profesionalemail = :solicitud_profesionalemail AND solicitudes.solicitud_respuesta = 2 AND solicitudes.solicitud_rut = :solicitud_rut";
+        }
+        $query = $database->prepare($sql);
+        $query->execute(array(':solicitud_profesionalemail' => Session::get('user_email'), ':solicitud_rut' => $paciente->rut));
+
+        return $query->fetchAll();
+    }
+
     public static function getAllOldSolicitudesSinParto($solicitud_email)
     {
         $database = DatabaseFactory::getFactory()->getConnection();

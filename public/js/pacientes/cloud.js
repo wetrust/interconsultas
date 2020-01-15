@@ -81,6 +81,14 @@ export class cloud {
             return from;
         } catch(e) {}
     }
+
+    static async getExamenes(idPaciente){
+        try {
+            const from = await data.get(config.examen + idPaciente);
+            from.id = idPaciente;
+            return from;
+        } catch(e) {}
+    } 
 }
 
 export var paciente = {
