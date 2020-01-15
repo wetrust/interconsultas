@@ -114,7 +114,11 @@ class SolicitudesModel
         $query = $database->prepare($sql);
         $query->execute(array(':solicitud_profesionalemail' => Session::get('user_email'), ':solicitud_rut' => $paciente->rut));
 
-        return $query->fetchAll();
+        $resultado= new stdClass();
+        $resultado->return = true;
+        $resultado->data = $query->fetchAll();
+
+        return $resultado;
     }
 
     public static function getAllOldSolicitudesSinParto($solicitud_email)

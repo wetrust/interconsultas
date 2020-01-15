@@ -19,5 +19,5 @@ export const config = {
     verExamenesTitulo: 'Ver exámenes de paciente',
     verExamenesHTML: '<button class="btn btn-primary">Nuevo exámen</button><table class="table table-striped table-bordered table-hover table-sm" id="examen.table"><caption>Lista de exámenes</caption></table>',
     verExamenesTable: 'examen.table',
-    verExamenesTableHead: '<thead class="thead-dark"><tr><th scope="col">#</th><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
+    verExamenesTableHead: '<thead class="thead-dark"><tr><td><span class="text-primary">Tipo de exámen</span></td><td><span class="text-primary">Realizado</span></td><td><span class="text-primary">Edad Gest.</span></td><td><span class="text-primary">Nombre paciente</span></td><td class="text-primary">R.U.T.</td><td><span class="text-primary">Accion</span></td></tr></thead>',
 }
