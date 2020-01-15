@@ -162,24 +162,24 @@ export class view {
         table += '<tbody>';
         data.forEach(function(element) {
             let tipo = "";
-            if (value.tipo == "1"){
+            if (element.tipo == "1"){
                 tipo = 'Ecografía precoz de urgencia';
-            } else if (value.tipo == "0"){
+            } else if (element.tipo == "0"){
                 tipo = 'Doppler + Eco. crecimiento';
-            } else  if (value.tipo == "2"){
+            } else  if (element.tipo == "2"){
                 tipo = 'Eco 2do / 3cer trimestre';
-            } else  if (value.tipo == "3"){
+            } else  if (element.tipo == "3"){
                 tipo = 'Eco Ginecológica';
-            } else  if (value.tipo == "4"){
+            } else  if (element.tipo == "4"){
                 tipo = 'Ecografía 11-14 semanas';
             }
-            let fecha = value.fecha.split('-');
+            let fecha = element.fecha.split('-');
             fechas = fecha[0] + "" + fecha[1] + "" + fecha[2];
             fecha = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
-            table += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>'+ value.eg +'</td><td class="nombre">' + value.solicitud_nombre + ' ' + value.solicitud_apellido +'</td><td>' + value.solicitud_rut + '</td>';
-            value.solicitud_rut = value.solicitud_rut.replace(/\./g, "")
+            table += '<tr><td>' + tipo +'</td><td>'+ fecha +'</td><td>'+ element.eg +'</td><td class="nombre">' + element.solicitud_nombre + ' ' + element.solicitud_apellido +'</td><td>' + element.solicitud_rut + '</td>';
+            element.solicitud_rut = element.solicitud_rut.replace(/\./g, "")
 
-            table += '<td><button class="btn btn-secondary" data-id='+ value.solicitud_rut + ' data-fecha='+ fechas +'>Informes</button></td></tr>';
+            table += '<td><button class="btn btn-secondary" data-id='+ element.solicitud_rut + ' data-fecha='+ fechas +'>Informes</button></td></tr>';
         });
         table += '</tbody>';
         the(config.verExamenesTable).innerHTML = table;
