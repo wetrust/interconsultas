@@ -13,7 +13,7 @@ export const config = {
     pacienteInterface: '<div class="d-flex justify-content-between mb-3"><button type="button" class="btn btn-primary" id="paciente.nuevo">Nuevo paciente</button><div class="form-group form-inline mb-0"><label class="">Buscar listado de pacientes por R.U.T. o Apellido:</label><input type="search" id="paciente.buscar" class="form-control bg-primary text-white ml-1"></div></div><div class="table-responsive mt-2"><table class="table table-striped table-bordered table-hover table-sm" id="paciente.table"><caption>Lista de pacientes</caption></table>',
     pacienteInterfaceNewButton: 'paciente.nuevo',
     pacienteInterfaceTable: 'paciente.table',
-    pacienteInterfaceTableHead: '<thead class="thead-dark"><tr><th scope="col">#</th><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
+    pacienteInterfaceTableHead: '<thead class="thead-dark"><tr><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
     ciudades: 'dashboard/ciudades_configuracion',
     lugares: 'dashboard/lugares_configuracion',
     verExamenesTitulo: 'Ver exámenes de paciente',
