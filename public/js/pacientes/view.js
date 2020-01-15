@@ -179,7 +179,7 @@ export class view {
             table += '<tr><td>'+ fecha +'</td><td>'+ element.eg +'</td><td>' + tipo +'</td>';
             element.solicitud_rut = element.solicitud_rut.replace(/\./g, "")
 
-            tabla += '<td><div class="btn-group" role="group" aria-label="Basic example"><button class="btn btn-secondary foto mr-1" data-id='+ element.solicitud_rut + ' data-fecha='+ fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
+            table += '<td><div class="btn-group" role="group" aria-label="Basic example"><button class="btn btn-secondary foto mr-1" data-id='+ element.solicitud_rut + ' data-fecha='+ fechas +'><i class="fa fa-camera" aria-hidden="true"></i></button>';
             if (element.tipo == "0" || element.tipo == "2" || element.tipo == "4"){
                 table += '<button class="btn btn-secondary informe mr-1" data-id='+ element.solicitud_id + ' data-tipo='+ element.tipo +'><i class="fa fa-file-text" aria-hidden="true"></i></button><button class="btn btn-secondary grafico" data-id='+ element.solicitud_id + ' data-tipo='+ element.tipo +'><i class="fa fa-bar-chart" aria-hidden="true"></i></button></div></td></tr>';
             }
