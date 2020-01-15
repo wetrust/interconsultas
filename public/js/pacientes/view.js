@@ -65,7 +65,6 @@ export class view {
     }
 
     static editPaciente(){
-
         let id = this.dataset.id;
 
         let modal = make.modal("Guardar");
@@ -73,9 +72,7 @@ export class view {
         the(modal.titulo).innerHTML = config.updatePacientesTitulo;
         the(modal.contenido).innerHTML = config.updatePacientesHTML;
 
-        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-            $(this).remove();
-        });
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
 
         $("#"+modal.button).on("click", function(){
             let paciente = {
@@ -142,6 +139,32 @@ export class view {
         });
     }
 
+    static verExamenes(){
+        let modal = make.modal("Exámenes de paciente");
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.verExamenesTitulo;
+        the(modal.contenido).innerHTML = config.verExamenesHTML;
+
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+
+        cloud.newPaciente(paciente).then(function(data){
+            if (data.return == true){
+                view.tableExamen(data.examen);
+            }
+        });
+    }
+
+    static tableExamen(data){
+        let table = config.verExamenesTableHead;
+
+        table += '<tbody>';
+        data.forEach(function(element) {
+            table += '<tr><th scope="row">'+element.id+'</th><td>'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td class="tabla-pacientes"><div class="btn-group"><button class="btn btn-outline-primary examen" data-id="'+element.id+'">Examen</button><button class="btn btn-outline-primary modificar" data-id="'+element.id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-outline-danger eliminar" data-id="'+element.id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
+        });
+        table += '</tbody>';
+        the(config.verExamenesTable).innerHTML = table;
+    }
+
     static tablePacientes(data){
         let table = config.pacienteInterfaceTableHead;
 
@@ -151,20 +174,16 @@ export class view {
         });
 
         table += '</tbody>';
-
         the(config.pacienteInterfaceTable).innerHTML = table;
 
-        let modificarBtns = document.getElementsByClassName("modificar");
+        let examenBtns = document.getElementsByClassName("examen");
+        for (var i=0; i < examenBtns.length; i++) { examenBtns[i].onclick = this.verExamenes; }
 
-        for (var i=0; i < modificarBtns.length; i++) {
-            modificarBtns[i].onclick = this.editPaciente;
-        }
+        let modificarBtns = document.getElementsByClassName("modificar");
+        for (var i=0; i < modificarBtns.length; i++) { modificarBtns[i].onclick = this.editPaciente; }
 
         let eliminarBtns = document.getElementsByClassName("eliminar");
-
-        for (var i=0; i < eliminarBtns.length; i++) {
-            eliminarBtns[i].onclick = this.eliminarPaciente;
-        }
+        for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPaciente; }
     }
 
     static rutValidador(){

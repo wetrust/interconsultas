@@ -15,4 +15,8 @@ export const config = {
     pacienteInterfaceTableHead: '<thead class="thead-dark"><tr><th scope="col">#</th><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
     ciudades: 'dashboard/ciudades_configuracion',
     lugares: 'dashboard/lugares_configuracion',
+    verExamenesTitulo: 'Ver exámenes de paciente',
+    verExamenesHTML: '<table class="table table-striped table-bordered table-hover table-sm" id="examen.table"><caption>Lista de exámenes</caption></table>',
+    verExamenesTable: 'examen.table',
+    verExamenesTableHead: '<thead class="thead-dark"><tr><th scope="col">#</th><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
 }
