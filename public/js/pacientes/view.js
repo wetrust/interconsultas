@@ -209,7 +209,7 @@ export class view {
         the(modal.titulo).innerHTML = config.verGraficoTitulo;
         the(modal.contenido).innerHTML = config.verGraficoHTML;
 
-        this(config.verGraficoPdf).src = url+id;
+        the(config.verGraficoPdf).src = url+id;
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });        
     }
 
