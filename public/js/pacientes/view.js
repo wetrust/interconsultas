@@ -193,8 +193,173 @@ export class view {
         let fotoBtns = document.getElementsByClassName("foto");
         for (var i=0; i < fotoBtns.length; i++) { fotoBtns[i].onclick = this.foto; }
 
+        let informeBtns = document.getElementsByClassName("informe");
+        for (var i=0; i < informeBtns.length; i++) { informeBtns[i].onclick = this.informe; }
+
         let graficoBtns = document.getElementsByClassName("grafico");
         for (var i=0; i < graficoBtns.length; i++) { graficoBtns[i].onclick = this.grafico; }
+    }
+
+    static informe(){
+        let id = this.dataset.id;
+        let tipo = this.dataset.tipo;
+        let url = '';
+        if (tipo == "1"){
+            url = 'pdf/informe_primertrimestre/';
+        } else if (tipo == "0"){
+            url = 'pdf/informe_dopplercrecimiento/';
+        } else  if (tipo == "2"){
+            url = 'pdf/informe_segundotrimestre/';
+        } else  if (tipo == "3"){
+            url = 'pdf/informe_ginecologico/';
+        } else if (tipo == "4"){
+            url = 'pdf/informe_doppler/'
+        }
+
+        let modal = make.modal("Eliminar");
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.verInformeTitulo;
+        the(modal.contenido).innerHTML = config.verInformeHTML;
+        the(modal.id).children[0].classList.add("h-100");
+
+        the(config.verInformePdf).src = url+id;
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+
+        $("#"+modal.button).on("click", function(){
+            let id = this.dataset.id;
+            let modal = this.dataset.modal;
+            $.get("dashboard/delete/" + id).done(function(data){
+                $("#"+modal).modal("hide");
+                //loadInFinish();
+            });
+        }).data("id", id).data("modal", modal.id);
+
+        $("#ver\\.interconsulta\\.enviar").on("click", function(){
+            let modal = makeModal("Enviar");
+
+            let rol = uuidv4();
+            let email = uuidv4();
+            let ciudad = uuidv4();
+            let adjuntar = uuidv4(); 
+
+            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+
+            document.getElementById(modal.contenido).innerHTML = '<div class="row"> <div class="form-group col-6"> <label for="'+rol+'">Rol destinatario</label> <select class="form-control" id="'+rol+'"> <option value="Paciente">Paciente</option> <option value="Referente">Referente</option> <option value="Matrona">Matrona</option> <option value="Medico">Médico</option> <option value="Administrativo">Administrativo</option> <option value="Otros">Otros</option> </select> </div><div class="form-group col-6"> <label for="'+ciudad+'">Ciudad</label> <select class="form-control" id="'+ciudad+'"></select> </div><div class="form-group col-6"> <label for="'+email+'">Nombre del destinatario</label> <select class="form-control" id="'+email+'"></select> </div><div class="form-group col-6"> <label for="'+adjuntar+'">¿Adjuntar Gráfica?</label> <select class="form-control" id="'+adjuntar+'"> <option value="0">No</option> <option value="1">Si</option> </select> </div></div><p>Envía informe ecográfico y gráficas respectivas</p>';
+            document.getElementById(modal.titulo).innerHTML = "Enviar informe por E-mail";                
+
+            document.getElementById(rol).dataset.ciudad = ciudad;
+            $('#'+rol).on("change", function(){
+                var ciudad = this.dataset.ciudad;
+                $('#'+ciudad).empty();
+
+                $.get('dashboard/getCiudadesProfesional/'+this.value).done(function(data){
+                    $.each(data, function(i, value) {
+                        let option = '<option value="'+value.email_ciudad+'">'+value.ciudad_name + '</option>';
+                        $('#'+ciudad).append(option);
+                    });
+                    $('#'+ciudad).trigger("change");
+                });
+            });
+
+            document.getElementById(ciudad).dataset.rol = rol;
+            document.getElementById(ciudad).dataset.email = email;
+
+            $('#'+ciudad).on("change", function(){
+                var rol = $("#"+ this.dataset.rol).val();
+                var eMail = this.dataset.email;
+                $('#'+eMail).empty();
+
+                $.get('dashboard/getEmailProfesional/'+rol+"/"+this.value).done(function(data){
+                    $.each(data, function(i, value) {
+                        let option = '<option value="'+value.email_value+'">'+value.email_nombre + '</option>';
+                        $('#'+eMail).append(option);
+                    });
+                });
+            });
+
+            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {$(this).remove();});
+
+            document.getElementById(modal.button).dataset.informe = this.dataset.informe;
+            document.getElementById(modal.button).dataset.id = this.dataset.id;
+            document.getElementById(modal.button).dataset.email = email;
+            document.getElementById(modal.button).dataset.modal = modal.id;
+            document.getElementById(modal.button).dataset.adjuntar = adjuntar;
+
+            $("#"+modal.button).on("click", function(){
+                let informe = this.dataset.informe;
+                let id = this.dataset.id;
+                let email = $("#"+this.dataset.email).val();
+
+                let adjuntar = $("#"+this.dataset.adjuntar).val();
+
+                let animacion = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="ml-2">Enviando informe...</span>';
+                this.disabled = true;
+                this.innerHTML = animacion;
+                let modal = this.dataset.modal;
+
+                let args = {email: email,informe: informe,solicitud: id, modal: modal, adjuntar: adjuntar}
+
+                $.post(_api  + 'email_manual_autorreferido', args).done(function(data){
+                    if (Object.keys(data).length > 0) {
+                        let modal = makeModal();
+                            document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+                            document.getElementById(modal.titulo).innerHTML = "Información";
+
+                            if (data.result == true){
+                                document.getElementById(modal.contenido).innerHTML = "<p>Enviado</p>";
+                            }
+                            else{
+                                document.getElementById(modal.contenido).innerHTML = "<p>No se pudo enviar, intente nuevamente</p>";
+                            }
+
+                            $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+                                $(this).remove();
+                            });
+
+                        $('#'+ args.modal).modal("hide");
+                    }
+                });
+            });
+        });
+        $("#ver\\.interconsulta\\.cambiar\\.referente").on("click", function(){
+            var id = $(this).data("id");
+            var modal_id;
+
+            modal_id = uuidv4();
+            btn_responder_id = uuidv4();
+        
+            var footerModal = '</div><div class="modal-footer"><button id="'+btn_responder_id+'" data-modal="'+modal_id+'" class="btn btn-primary">Guardar</button><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>';
+            $('body').append('<div class="modal" tabindex="-1" role="dialog" id="'+modal_id+'"> <div class="modal-dialog modal-lg" role="document"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title">Cambiar referente</h5></div><div class="modal-body"><ul class="nav nav-tabs" id="referenteTab" role="tablist"> <li class="nav-item bg-secondary"> <a class="nav-link bg-secondary text-white active" id="home-tab" data-toggle="tab" href="#referenteCambio" role="tab" aria-controls="home" aria-selected="true">Elegir otro referente</a> </li></ul><div class="tab-content" id="referenteTabContent"> <div class="tab-pane fade show active" id="referenteCambio" role="tabpanel" aria-labelledby="home-tab"> <div class="form-group"> <select class="form-control" id="interfaz.email.referente.cambio"></select> </div></div></div>'+ footerModal);
+        
+            var options = $("#interfaz\\.email > option").clone();
+            $("#interfaz\\.email\\.referente\\.cambio").empty();
+            $("#interfaz\\.email\\.referente\\.cambio").append(options);
+            $('#'+modal_id).modal("show").on('hidden.bs.modal', function (e) {
+                $(this).remove();
+            });
+        
+            $('#'+btn_responder_id).on("click", function(){
+                var modal_id = $(this).data("modal");
+                
+                $('body').append('<div class="modal" tabindex="-1" role="dialog" id="mensaje.dialogo"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Enviando Datos</h5></div><div class="modal-body"><h3 class="text-danger text-center">Guardando.... espere</H3></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button></div></div></div></div>');
+                $('#mensaje\\.dialogo').modal("show").on('hidden.bs.modal', function (e) {
+                    $(this).remove();
+                });
+        
+                var args = {
+                    solicitud_id: $(this).data("id"),
+                    solicitud_data: $("#interfaz\\.email\\.referente\\.cambio").val()
+                }
+
+                $.post('solicitudes/actualizar', args).done(function(data){
+                    var link = $("#contenedorpdf").attr('src');
+                    $('#ver\\.interconsulta\\.contenedor').empty();
+                    $("#ver\\.interconsulta\\.contenedor").append('<iframe class="embed-responsive-item w-100 h-100" src="'+link+'" id="contenedorpdf"></iframe>')
+
+                    $('#'+modal_id).modal("hide"); $('#mensaje\\.dialogo').modal("hide");
+                });
+            }).data("id",id);
+        })
     }
 
     static grafico(){
