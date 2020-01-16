@@ -17,7 +17,7 @@
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="pacientes"><small>Pacientes</small></a>
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/prenatal"><small>Prenatal (exámenes ecográficos)</small></a>
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="parto"><small>Parto</small></a>
-                            <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="AcercaDe">Acerca de la plataforma y autor</a>
+                            <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="AcercaDe"><small>Acerca de la plataforma y autor</small></a>
                         </div>
                     <?php } else { ?>
                     <div role="group">
@@ -29,7 +29,7 @@
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.tres" href="https://www.isuog.org/clinical-resources/isuog-guidelines/translations/spanish.html"><small>&gt; Guías clínicas ISUOG, en español</small></a>
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.uno" href="https://medicinafetalbarcelona.org/protocolos"><small>&gt; Guías clínicas Medicina Fetal - Barcelona</small></a>
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.dos" href="dashboard/referencias"><small>&gt; Referencias seleccionadas</small></a>
-                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="AcercaDe">Acerca de la plataforma y autor</a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="AcercaDe"><small>Acerca de la plataforma y autor</small></a>
                     </div>
                     <?php } ?>
                     <script>
