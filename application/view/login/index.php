@@ -112,6 +112,3 @@
     localStorage.setItem('login', '<?php echo session_id();?>');
 <?php } ?>
 </script>
-//https://stackblitz.com/angular/jyydopxboqn?file=src%2Fapp%2Fauth%2Fauth.guard.ts
-//https://stackblitz.com/edit/angular-7-jwt-authentication-example?file=app%2F_services%2Fuser.service.ts
-//https://jasonwatmore.com/post/2018/11/16/angular-7-jwt-authentication-example-tutorial
