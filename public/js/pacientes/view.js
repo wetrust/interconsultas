@@ -208,6 +208,7 @@ export class view {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.verGraficoTitulo;
         the(modal.contenido).innerHTML = config.verGraficoHTML;
+        the(modal.id).children[0].classList.add("h-100");
 
         the(config.verGraficoPdf).src = url+id;
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });        
