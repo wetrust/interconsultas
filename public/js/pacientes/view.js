@@ -189,6 +189,41 @@ export class view {
         });
         table += '</tbody>';
         the(config.verExamenesTable).innerHTML = table;
+
+        let fotoBtns = document.getElementsByClassName("foto");
+        for (var i=0; i < fotoBtns.length; i++) { fotoBtns[i].onclick = this.foto; }
+
+        let graficoBtns = document.getElementsByClassName("grafico");
+        for (var i=0; i < graficoBtns.length; i++) { graficoBtns[i].onclick = this.grafico; }
+    }
+
+    static grafico(){
+        let id = this.dataset.id; let tipo = this.dataset.tipo; let url = '';
+
+        if (tipo == "0"){ url = 'graph/informe_dopplercrecimiento/'; }
+        else if (tipo == "2"){ url = 'graph/informe_segundotrimestre/'; }
+        else if (tipo == "4"){ url = 'graph/informe_once_catorce/'; }
+
+        let modal = make.modal();
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.verGraficoTitulo;
+        the(modal.contenido).innerHTML = config.verGraficoHTML;
+
+        this(config.verGraficoPdf).src = url+id;
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });        
+    }
+
+    static foto(){
+        let solicitud_rut = this.dataset.id;
+        let fecha = this.dataset.fecha;
+        let el_btn = this;
+        $.get('image/index/'+solicitud_rut+'/'+fecha).done(function(data){
+            if (data.exist == true){ location.assign("imagenes/index/"+solicitud_rut+"/"+fecha); }
+            else{
+                make.alert("No hay fotos para este exámen");
+                $(el_btn).remove();
+            }
+        });
     }
 
     static tablePacientes(data){
