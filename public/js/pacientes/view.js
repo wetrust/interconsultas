@@ -156,12 +156,12 @@ export class view {
             }
         });
 
-        the("btn.dopcre").onclick = dopcre.interface();
-        the("btn.segundo").onclick = segundo.interface();
-        the("btn.once").onclick = once.interface();
-        the("btn.preco").onclick = preco.interface();
-        the("btn.ginec").onclick = ginec.interface();
-        the("btn.parto").onclick = parto.interface();
+        the("btn.dopcre").onclick = dopcre.interface;
+        the("btn.segundo").onclick = segundo.interface;
+        the("btn.once").onclick = once.interface;
+        the("btn.preco").onclick = preco.interface;
+        the("btn.ginec").onclick = ginec.interface;
+        the("btn.parto").onclick = parto.interface;
     }
 
     static tableExamen(data){
