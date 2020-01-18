@@ -1,12 +1,36 @@
 <?php
 
-class Examenes extends ORM
+class ORM
 {
-    const table = "examenes";
+    private $database;
 
-    public function __construct()
-    {
-        parent::__construct();
+    const table = "juan";
+    protected $id;
+    protected $tipo;
+    protected $user_id;
+    protected $fecha;
+    protected $paciente_id;
+    protected $data;
+
+    public function __construct() {
+        $this->database = DatabaseFactory::getFactory()->getConnection();
+        $this->user_id = Session::get('user_id');
+    }
+
+    private function getData(){
+        $this->data = json_decode($this->data);
+    }
+
+    private function setData(){
+        $this->data = json_encode($this->data);
+    }
+
+    public function getAll() {
+        $sql = "SELECT * FROM ". static::table ." WHERE user_id = :user_id";
+        $query = $this->database->prepare($sql);
+        $query->execute(array(':user_id' => $this->user_id));
+
+        return $query->fetchAll();
     }
 
     public function get() {
@@ -48,6 +72,16 @@ class Examenes extends ORM
 
         if ($query->rowCount() == 1) { return true; }
 
+        return false;
+    }
+
+    public function delete() {
+        $sql = "DELETE FROM ". static::table ." WHERE id = :id AND user_id = :user_id LIMIT 1";
+        $query = $this->database->prepare($sql);
+        $query->execute(array(':id' => $this->id, ':user_id' =>  $this->user_id));
+
+        if ($query->rowCount() == 1) { return true; }
+        
         return false;
     }
 }
