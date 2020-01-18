@@ -8,7 +8,7 @@ export class dopcre {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.dopcreTitulo;
         the(modal.contenido).innerHTML = config.dopcreHTML;
-        the(modal.id).children[0].classList.add("h-100 modal-xl");
+        the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = dopcre.save();
@@ -27,7 +27,7 @@ export class segundo {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.segundoTitulo;
         the(modal.contenido).innerHTML = config.segundoHTML;
-        the(modal.id).children[0].classList.add("h-100 modal-xl");
+        the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = segundo.save();
@@ -46,7 +46,7 @@ export class once {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.onceTitulo;
         the(modal.contenido).innerHTML = config.onceHTML;
-        the(modal.id).children[0].classList.add("h-100 modal-xl");
+        the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = once.save();
@@ -65,7 +65,7 @@ export class preco {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.precoTitulo;
         the(modal.contenido).innerHTML = config.precoHTML;
-        the(modal.id).children[0].classList.add("h-100 modal-xl");
+        the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = preco.save();
@@ -84,7 +84,7 @@ export class ginec {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.ginecTitulo;
         the(modal.contenido).innerHTML = config.ginecHTML;
-        the(modal.id).children[0].classList.add("h-100 modal-xl");
+        the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = ginec.save();
@@ -103,7 +103,7 @@ export class parto {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.partoTitulo;
         the(modal.contenido).innerHTML = config.partoHTML;
-        the(modal.id).children[0].classList.add("h-100 modal-xl");
+        the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = parto.save();
