@@ -5,9 +5,7 @@ class ExamenesModel
     public static function getAllExamenes()
     {
         $_examenes = New Examenes();
-        $_examenes->getAll();
-
-        return $_examenes;
+        return $_examenes->getAll();
     }
 
     public static function getExamenes($note_id)
