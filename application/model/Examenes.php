@@ -4,7 +4,7 @@ class Examenes
 {
     private $database;
 
-    protected const table = "examenes";
+    const table = "examenes";
     protected $id;
     protected $tipo;
     protected $user_id;
@@ -26,17 +26,17 @@ class Examenes
     }
 
     public function getAll() {
-        $sql = "SELECT id, tipo, user_id, fecha, paciente_id, data FROM :table WHERE user_id = :user_id";
+        $sql = "SELECT id, tipo, user_id, fecha, paciente_id, data FROM ". static::table ." WHERE user_id = :user_id";
         $query = $this->database->prepare($sql);
-        $query->execute(array(':table'=> self::table, ':user_id' => $this->user_id));
+        $query->execute(array(':user_id' => $this->user_id));
 
         return $query->fetchAll();
     }
 
     public function get() {
-        $sql = "SELECT id, tipo, user_id, fecha, paciente_id, data FROM :table WHERE user_id = :user_id AND id = :id LIMIT 1";
+        $sql = "SELECT id, tipo, user_id, fecha, paciente_id, data FROM ". static::table ." WHERE user_id = :user_id AND id = :id LIMIT 1";
         $query = $this->database->prepare($sql);
-        $query->execute(array(':table'=> self::table, ':user_id' =>  $this->user_id, ':id' =>  $this->id));
+        $query->execute(array(':user_id' =>  $this->user_id, ':id' =>  $this->id));
 
         if ($query->rowCount() == 1) {
             $result = $query->fetch();
@@ -56,9 +56,9 @@ class Examenes
     }
 
     public function create() {
-        $sql = "INSERT INTO :table (tipo, user_id, fecha, paciente_id, data) VALUES (:tipo, :user_id, :fecha, :paciente_id, :data)";
+        $sql = "INSERT INTO ". static::table ." (tipo, user_id, fecha, paciente_id, data) VALUES (:tipo, :user_id, :fecha, :paciente_id, :data)";
         $query = $this->database->prepare($sql);
-        $query->execute(array(':table'=> self::table, ':tipo' => $this->tipo, ':user_id' => $this->user_id, ':fecha' => $this->fecha, ':paciente_id' => $this->paciente_id, ':data' => $this->setData));
+        $query->execute(array(':tipo' => $this->tipo, ':user_id' => $this->user_id, ':fecha' => $this->fecha, ':paciente_id' => $this->paciente_id, ':data' => $this->setData));
 
         if ($query->rowCount() == 1) { return true; }
 
@@ -66,9 +66,9 @@ class Examenes
     }
 
     public function update() {
-        $sql = "UPDATE :table SET tipo = :tipo, fecha = :fecha, data = :data WHERE id = :id AND user_id = :user_id LIMIT 1";
+        $sql = "UPDATE ". static::table ." SET tipo = :tipo, fecha = :fecha, data = :data WHERE id = :id AND user_id = :user_id LIMIT 1";
         $query = $this->database->prepare($sql);
-        $query->execute(array(':table'=> self::table, ':tipo' => $this->tipo, ':fecha' => $this->fecha, ':data' => $this->setData, ':id' => $this->id, ':user_id' => $this->user_id));
+        $query->execute(array(':tipo' => $this->tipo, ':fecha' => $this->fecha, ':data' => $this->setData, ':id' => $this->id, ':user_id' => $this->user_id));
 
         if ($query->rowCount() == 1) { return true; }
 
@@ -76,9 +76,9 @@ class Examenes
     }
 
     public function delete() {
-        $sql = "DELETE FROM :table WHERE id = :id AND user_id = :user_id LIMIT 1";
+        $sql = "DELETE FROM ". static::table ." WHERE id = :id AND user_id = :user_id LIMIT 1";
         $query = $this->database->prepare($sql);
-        $query->execute(array(':table'=> self::table, ':id' => $this->id, ':user_id' =>  $this->user_id));
+        $query->execute(array(':id' => $this->id, ':user_id' =>  $this->user_id));
 
         if ($query->rowCount() == 1) { return true; }
         
