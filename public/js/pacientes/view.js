@@ -1,6 +1,7 @@
 import {cloud} from './cloud.js';
 import {config} from './config.js';
 import {make, the, humanDate, inputDate} from '../wetrust.js';
+import {dopcre, segundo, once, preco, ginec, parto} from './examen.js';
 
 export class view {
     static pacienteInterface(container, data){
@@ -154,6 +155,13 @@ export class view {
                 view.tableExamen(data.data);
             }
         });
+
+        the("btn.dopcre").onclick = dopcre.interface();
+        the("btn.segundo").onclick = segundo.interface();
+        the("btn.once").onclick = once.interface();
+        the("btn.preco").onclick = preco.interface();
+        the("btn.ginec").onclick = ginec.interface();
+        the("btn.parto").onclick = parto.interface();
     }
 
     static tableExamen(data){
