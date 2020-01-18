@@ -10,7 +10,7 @@ export class dopcre {
         the(modal.contenido).innerHTML = config.dopcreHTML;
         the(modal.id).children[0].classList.add("h-100");
 
-        the(modal.button).onclick = this.save();
+        the(modal.button).onclick = dopcre.save();
         
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
@@ -28,7 +28,7 @@ export class segundo {
         the(modal.contenido).innerHTML = config.segundoHTML;
         the(modal.id).children[0].classList.add("h-100");
 
-        the(modal.button).onclick = this.save();
+        the(modal.button).onclick = segundo.save();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
@@ -46,7 +46,7 @@ export class once {
         the(modal.contenido).innerHTML = config.onceHTML;
         the(modal.id).children[0].classList.add("h-100");
 
-        the(modal.button).onclick = this.save();
+        the(modal.button).onclick = once.save();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
@@ -64,7 +64,7 @@ export class preco {
         the(modal.contenido).innerHTML = config.precoHTML;
         the(modal.id).children[0].classList.add("h-100");
 
-        the(modal.button).onclick = this.save();
+        the(modal.button).onclick = preco.save();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
@@ -82,7 +82,7 @@ export class ginec {
         the(modal.contenido).innerHTML = config.ginecHTML;
         the(modal.id).children[0].classList.add("h-100");
 
-        the(modal.button).onclick = this.save();
+        the(modal.button).onclick = ginec.save();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
@@ -100,7 +100,7 @@ export class parto {
         the(modal.contenido).innerHTML = config.partoHTML;
         the(modal.id).children[0].classList.add("h-100");
 
-        the(modal.button).onclick = this.save();
+        the(modal.button).onclick = parto.save();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
