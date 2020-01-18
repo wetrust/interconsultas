@@ -4,7 +4,7 @@ class Examenes
 {
     private $database;
 
-    protected const $table = "examenes";
+    protected const table = "examenes";
     protected $id;
     protected $tipo;
     protected $user_id;
