@@ -8,6 +8,7 @@ export class dopcre {
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.dopcreTitulo;
         the(modal.contenido).innerHTML = config.dopcreHTML;
+        the(modal.contenido).classList.add("bg-light");
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
