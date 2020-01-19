@@ -61,6 +61,7 @@ export class segundo {
         the(modal.contenido).innerHTML = config.segundoHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
+        the(modal.contenido).classList.add("bg-light");
 
         the(modal.button).onclick = segundo.save();
         segundo.selectBVM();
@@ -132,6 +133,7 @@ export class once {
         the(modal.contenido).innerHTML = config.onceHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
+        the(modal.contenido).classList.add("bg-light");
 
         the(modal.button).onclick = once.save();
         segundo.selectFCF();
@@ -182,6 +184,7 @@ export class preco {
         the(modal.contenido).innerHTML = config.precoHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
+        the(modal.contenido).classList.add("bg-light");
 
         the(modal.button).onclick = preco.save();
         segundo.selectFCF();
@@ -232,6 +235,7 @@ export class ginec {
         the(modal.contenido).innerHTML = config.ginecHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
+        the(modal.contenido).classList.add("bg-light");
 
         the(modal.button).onclick = ginec.save();
 
@@ -251,6 +255,7 @@ export class parto {
         the(modal.contenido).innerHTML = config.partoHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
+        the(modal.contenido).classList.add("bg-light");
 
         the(modal.button).onclick = parto.save();
         parto.selectEdad();
@@ -287,6 +292,7 @@ export class parto {
             semanas.appendChild(opt);
         }
     }
+
     static selectTalla(){
         let semanas =  document.getElementsByName("talla")[0];
         let opt = document.createElement('option');
