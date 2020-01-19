@@ -12,12 +12,43 @@ export class dopcre {
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = dopcre.save();
+        dopcre.selectFCF();
         
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
 
     static save(){
 
+    }
+
+    static selectFCF(){
+        let semanas =  document.getElementsByName("respuesta_fcf")[0];
+        let opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("Sin actividad cardiaca") );
+        opt.value = 0; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("(+) inicial") );
+        opt.value = 1; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("< 90") );
+        opt.value = 2; 
+        semanas.appendChild(opt);
+
+        for (var i = 90; i < 181; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("> 180") );
+        opt.value = 181; 
+        semanas.appendChild(opt);
     }
 }
 
@@ -31,12 +62,64 @@ export class segundo {
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = segundo.save();
+        segundo.selectBVM();
+        segundo.selectFCF();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
 
     static save(){
         
+    }
+
+    static selectBVM(){
+        let semanas =  document.getElementsByName("respuesta_bvm")[0];
+        let opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("< 10") );
+        opt.value = 0; 
+        semanas.appendChild(opt);
+
+        for (var i = 10; i < 161; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("> 160") );
+        opt.value = 161; 
+        semanas.appendChild(opt);
+    }
+
+    static selectFCF(){
+        let semanas =  document.getElementsByName("respuesta_fcf")[0];
+        let opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("Sin actividad cardiaca") );
+        opt.value = 0; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("(+) inicial") );
+        opt.value = 1; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("< 90") );
+        opt.value = 2; 
+        semanas.appendChild(opt);
+
+        for (var i = 90; i < 181; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("> 180") );
+        opt.value = 181; 
+        semanas.appendChild(opt);
     }
 }
 
@@ -50,12 +133,43 @@ export class once {
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = once.save();
+        segundo.selectFCF();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
 
     static save(){
         
+    }
+
+    static selectFCF(){
+        let semanas =  document.getElementsByName("respuesta_fcf")[0];
+        let opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("Sin actividad cardiaca") );
+        opt.value = 0; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("(+) inicial") );
+        opt.value = 1; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("< 90") );
+        opt.value = 2; 
+        semanas.appendChild(opt);
+
+        for (var i = 90; i < 181; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("> 180") );
+        opt.value = 181; 
+        semanas.appendChild(opt);
     }
 }
 
@@ -69,12 +183,43 @@ export class preco {
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = preco.save();
+        segundo.selectFCF();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
 
     static save(){
         
+    }
+
+    static selectFCF(){
+        let semanas =  document.getElementsByName("respuesta_fcf")[0];
+        let opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("Sin actividad cardiaca") );
+        opt.value = 0; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("(+) inicial") );
+        opt.value = 1; 
+        semanas.appendChild(opt);
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("< 90") );
+        opt.value = 2; 
+        semanas.appendChild(opt);
+
+        for (var i = 90; i < 181; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
+
+        opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("> 180") );
+        opt.value = 181; 
+        semanas.appendChild(opt);
     }
 }
 
@@ -107,11 +252,49 @@ export class parto {
         the(modal.id).children[0].classList.remove("modal-lg");
 
         the(modal.button).onclick = parto.save();
+        parto.selectEdad();
+        parto.selectPeso();
+        parto.selectTalla();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
 
     static save(){
         
+    }
+
+    static selectEdad(){
+        let semanas =  document.getElementsByName("edad")[0];
+        let opt = document.createElement('option');
+
+        for (var i = 10; i < 70; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i + " años") );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
+    }
+
+    static selectPeso(){
+        let semanas =  document.getElementsByName("peso")[0];
+        let opt = document.createElement('option');
+
+        for (var i = 35; i < 135; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i + " kg") );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
+    }
+    static selectTalla(){
+        let semanas =  document.getElementsByName("talla")[0];
+        let opt = document.createElement('option');
+
+        for (var i = 134; i < 188; i++) {
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i + " cms") );
+            opt.value = i; 
+            semanas.appendChild(opt);
+        }
     }
 }
