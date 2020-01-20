@@ -15,6 +15,9 @@ export class dopcre {
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
+        document.getElementsByName("fecha")[0].value = inputDate();
+        document.getElementsByName("comentarios")[0].value = config.dopcreComentarios;
+
         the(modal.button).onclick = dopcre.save();
         dopcre.selectFCF();
         
@@ -67,6 +70,9 @@ export class segundo {
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
         the(modal.contenido).classList.add("bg-light");
+
+        document.getElementsByName("fecha")[0].value = inputDate();
+        document.getElementsByName("comentarios")[0].value = config.segundoComentarios;
 
         the(modal.button).onclick = segundo.save();
         segundo.selectBVM();
@@ -142,6 +148,9 @@ export class once {
         the(modal.id).children[0].classList.remove("modal-lg");
         the(modal.contenido).classList.add("bg-light");
 
+        document.getElementsByName("fecha")[0].value = inputDate();
+        document.getElementsByName("comentarios")[0].value = config.onceComentarios;
+
         the(modal.button).onclick = once.save();
         segundo.selectFCF();
 
@@ -194,6 +203,9 @@ export class preco {
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
         the(modal.contenido).classList.add("bg-light");
+
+        document.getElementsByName("fecha")[0].value = inputDate();
+        document.getElementsByName("comentarios")[0].value = config.precoComentarios;
 
         the(modal.button).onclick = preco.save();
         segundo.selectFCF();
@@ -248,6 +260,9 @@ export class ginec {
         the(modal.id).children[0].classList.remove("modal-lg");
         the(modal.contenido).classList.add("bg-light");
 
+        document.getElementsByName("fecha")[0].value = inputDate();
+        document.getElementsByName("comentarios")[0].value = config.ginecComentarios;
+
         the(modal.button).onclick = ginec.save();
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
@@ -269,6 +284,9 @@ export class parto {
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
         the(modal.contenido).classList.add("bg-light");
+
+        document.getElementsByName("fecha")[0].value = inputDate();
+        document.getElementsByName("comentarios")[0].value = config.partoComentarios;
 
         the(modal.button).onclick = parto.save();
         parto.selectEdad();
