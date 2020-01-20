@@ -13,10 +13,10 @@ export class view {
     }
 
     static newReserva(){
-        let modal = make.modal("Crear");
+        let modal = make.modal("Reservar hora");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-        the(modal.titulo).innerHTML = config.newPacientesTitulo;
-        the(modal.contenido).innerHTML = config.newPacientesHTML;
+        the(modal.titulo).innerHTML = config.newReservaTitulo;
+        the(modal.contenido).innerHTML = config.newReservaHTML;
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
             $(this).remove();

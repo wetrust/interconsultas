@@ -5,4 +5,7 @@ export const config = {
     reservasInterfaceSearch: 'reservas.buscar',
     reservasInterfaceTable: 'reservas.table',
     reservasInterfaceTableHead: '<thead class="thead-dark"><tr><th scope="col">Rut</th><th scope="col">Nombre</th><th scope="col">Apellido</th><th scope="col">FUM</th><th scope="col">Opciones</th></tr></thead>',
+    newReservaTitulo: 'Reserva de hora para atención',
+    newReservaHTML: '',
+    
 }
