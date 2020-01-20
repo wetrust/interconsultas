@@ -18,6 +18,10 @@ export class view {
         the(modal.titulo).innerHTML = config.newReservaTitulo;
         the(modal.contenido).innerHTML = config.newReservaHTML;
 
+        the(modal.id).children[0].classList.add("h-100","modal-xl");
+        the(modal.id).children[0].classList.remove("modal-lg");
+        the(modal.contenido).classList.add("bg-light");
+
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
             $(this).remove();
         });
