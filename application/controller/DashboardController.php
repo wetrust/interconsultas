@@ -18,10 +18,6 @@ class DashboardController extends Controller{
         $this->View->render('dashboard/prenatal');
     }
 
-    public function reservas(){
-        $this->View->render('dashboard/reservas');
-    }
-
     public function sistema($hash="#interconsulta",$paciente = ""){
         $this->View->render('dashboard/index', array(
             'hash' => $hash,
