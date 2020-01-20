@@ -1,7 +1,6 @@
 import {cloud} from './cloud.js';
 import {config} from './config.js';
 import {make, the, humanDate, inputDate} from '../wetrust.js';
-import {dopcre, segundo, once, preco, ginec, parto} from './examen.js';
 
 export class view {
     static reservasInterface(container, data){
