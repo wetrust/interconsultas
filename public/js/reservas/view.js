@@ -164,6 +164,8 @@ export class view {
                 $(input).removeClass("is-valid").addClass("is-invalid");
                 input.closest('.rut-container').find('span').remove();
                 input.closest('.rut-container').append('<span class="invalid-feedback">Rut incorrecto</span>');
+                the("nombre").value = "";
+                the("apellido").value = "";
             },
             fn_validado : function(input){
                 $(input).removeClass("is-invalid").addClass("is-valid");
@@ -174,7 +176,6 @@ export class view {
                     if (data.length > 0){
                         the("nombre").value = data[0].nombre;
                         the("apellido").value = data[0].apellido;
-                        //ocultar modal de nuevo paciente
                     }else{
                         make.alert("El RUT no se encuentra en el sistema"); 
                     }
