@@ -169,18 +169,17 @@ export class view {
                 $(input).removeClass("is-invalid").addClass("is-valid");
                 input.closest('.rut-container').find('span').remove();
                 input.closest('.rut-container').append('<span class="valid-feedback">Rut correcto</span>');
+                
+                cloud.findPaciente(this.value).then(function(data){
+                    if (data.length > 0){
+                        make.alert("El RUT ya está ingresado en el sistema");
+                        //ocultar modal de nuevo paciente
+                    }else{
+                        make.alert("El RUT no se encuentra en el sistema"); 
+                    }
+                });
             },
             placeholder: false
-        });
-
-        $('#rut').on("blur", function(){
-            cloud.findPaciente(this.value).then(function(data){
-                if (data.length > 0){
-                    $("#" + the("rut").dataset.modal).modal("hide");
-                    make.alert("El RUT ya está ingresado en el sistema");
-                    //ocultar modal de nuevo paciente
-                }
-            });
         });
     }
 
