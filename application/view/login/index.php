@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="card col-4 mt-2">
+        <div class="card col-12 col-sm-4 mt-2">
             <div class="card-body">
                 <?php if (Session::userIsLoggedIn()) { ?>
                     <h5>Ingresar a plataforma</h5>
@@ -90,7 +90,7 @@
                 <?php } ?>
             </div>
         </div>
-        <div class="col-8 mt-2">
+        <div class="col-8 mt-2 d-none d-sm-block">
             <div class="mx-3 px-5">
             <h5 class="text-center">SISTEMA DE REFERENCIA Y CONTRARREFERENCIA PARA SOLICITUD DE ECOGRAFIA OBSTETRICA</h5>
             <ul class="mt-3">
@@ -112,3 +112,6 @@
     localStorage.setItem('login', '<?php echo session_id();?>');
 <?php } ?>
 </script>
+//https://stackblitz.com/angular/jyydopxboqn?file=src%2Fapp%2Fauth%2Fauth.guard.ts
+//https://stackblitz.com/edit/angular-7-jwt-authentication-example?file=app%2F_services%2Fuser.service.ts
+//https://jasonwatmore.com/post/2018/11/16/angular-7-jwt-authentication-example-tutorial
