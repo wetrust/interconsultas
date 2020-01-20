@@ -56,16 +56,9 @@ export class view {
             });
         });
 
-        the("fum").value = inputDate();
+        the("dia").value = inputDate();
 
         view.rutValidador();
-        view.calcularEG();
-        view.selectCiudades();
-        view.selectLugares();
-        view.selectSemanas();
-        view.selectDias();
-        view.calcularFUM();
-        $("#fum").trigger("change");
     }
 
     static editPaciente(){
