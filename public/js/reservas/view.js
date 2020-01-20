@@ -172,7 +172,8 @@ export class view {
                 
                 cloud.findPaciente(input[0].value).then(function(data){
                     if (data.length > 0){
-                        make.alert("El RUT ya está ingresado en el sistema");
+                        the("nombre").value = data[0].nombre;
+                        the("apellido").value = data[0].apellido;
                         //ocultar modal de nuevo paciente
                     }else{
                         make.alert("El RUT no se encuentra en el sistema"); 
