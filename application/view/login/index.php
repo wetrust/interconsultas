@@ -19,6 +19,15 @@
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="parto"><small>Parto</small></a>
                             <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="AcercaDe"><small>Acerca de la plataforma y autor</small></a>
                         </div>
+                    <?php } else if (Session::get("user_account_type") == 4) { ?>
+                    <div role="group">
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="pacientes"><small>Pacientes</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" id="menu.activo.cinco" href="#"><small>Ver guías clínicas relacionadas</small></a>
+                        <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.tres" href="https://www.isuog.org/clinical-resources/isuog-guidelines/translations/spanish.html"><small>&gt; Guías clínicas ISUOG, en español</small></a>
+                        <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.uno" href="https://medicinafetalbarcelona.org/protocolos"><small>&gt; Guías clínicas Medicina Fetal - Barcelona</small></a>
+                        <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.dos" href="dashboard/referencias"><small>&gt; Referencias seleccionadas</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="AcercaDe"><small>Acerca de la plataforma y autor</small></a>
+                    </div>
                     <?php } else { ?>
                     <div role="group">
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="dashboard/sistema#configuracion"><small>Configuración de plataforma</small></a>
@@ -112,6 +121,3 @@
     localStorage.setItem('login', '<?php echo session_id();?>');
 <?php } ?>
 </script>
-//https://stackblitz.com/angular/jyydopxboqn?file=src%2Fapp%2Fauth%2Fauth.guard.ts
-//https://stackblitz.com/edit/angular-7-jwt-authentication-example?file=app%2F_services%2Fuser.service.ts
-//https://jasonwatmore.com/post/2018/11/16/angular-7-jwt-authentication-example-tutorial
