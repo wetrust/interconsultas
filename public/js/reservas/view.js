@@ -56,7 +56,7 @@ export class view {
             });
         });
 
-        the("dia").value = inputDate();
+        the("dia").value = the(config.reservasInterfaceSearch).value;
 
         view.rutValidador();
     }
