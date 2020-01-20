@@ -7,6 +7,7 @@ export class view {
         the(container).innerHTML = config.reservasInterface;
         the(config.reservasInterfaceNewButton).onclick = this.newReserva;
 
+        the(config.reservasInterfaceSearch).value = inputDate;
         view.tableReservas(data);
         view.buscarReservas();
     }
