@@ -146,6 +146,8 @@ export class view {
         let modal = make.modal();
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.verExamenesTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
         the(modal.contenido).innerHTML = config.verExamenesHTML;
         the(modal.id).children[0].classList.add("h-100");
 

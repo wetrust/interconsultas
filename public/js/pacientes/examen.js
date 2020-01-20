@@ -7,6 +7,9 @@ export class dopcre {
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.dopcreTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
+        
         the(modal.contenido).innerHTML = config.dopcreHTML;
         the(modal.contenido).classList.add("bg-light");
         the(modal.id).children[0].classList.add("h-100","modal-xl");
@@ -58,6 +61,8 @@ export class segundo {
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.segundoTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
         the(modal.contenido).innerHTML = config.segundoHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
@@ -130,6 +135,8 @@ export class once {
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.onceTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
         the(modal.contenido).innerHTML = config.onceHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
@@ -181,6 +188,8 @@ export class preco {
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.precoTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
         the(modal.contenido).innerHTML = config.precoHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
@@ -232,6 +241,8 @@ export class ginec {
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.ginecTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
         the(modal.contenido).innerHTML = config.ginecHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
@@ -252,6 +263,8 @@ export class parto {
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.partoTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
         the(modal.contenido).innerHTML = config.partoHTML;
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
