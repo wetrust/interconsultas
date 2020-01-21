@@ -64,8 +64,11 @@ export class view {
     static newPaciente(_rut){
         let modal = make.modal("Crear");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("g-verde");
         the(modal.titulo).innerHTML = config.newPacientesTitulo;
         the(modal.contenido).innerHTML = config.newPacientesHTML;
+        the(modal.contenido).classList.add("bg-light");
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
 
