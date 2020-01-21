@@ -231,6 +231,7 @@ export class view {
                         the("apellido").value = data[0].apellido;
                     }else{
                         view.newPaciente(input[0].dataset.modal);
+                        
                     }
                 });
             },
