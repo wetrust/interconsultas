@@ -22,6 +22,7 @@
                     <?php } else if (Session::get("user_account_type") == 4) { ?>
                     <div role="group">
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="reservas"><small>Reserva de pacientes</small></a>
+                        <a class="btn btn-outline-dark rounded text-left w-100 my-1" href="configuracion"><small>Configuración</small></a>
                         <a class="btn btn-outline-dark rounded text-left w-100 my-1" id="menu.activo.cinco" href="#"><small>Ver guías clínicas relacionadas</small></a>
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.tres" href="https://www.isuog.org/clinical-resources/isuog-guidelines/translations/spanish.html"><small>&gt; Guías clínicas ISUOG, en español</small></a>
                         <a class="btn btn-outline-primary rounded text-left w-100 my-1 ml-3 d-none" id="menu.activo.cinco.uno" href="https://medicinafetalbarcelona.org/protocolos"><small>&gt; Guías clínicas Medicina Fetal - Barcelona</small></a>
