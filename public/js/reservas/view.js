@@ -61,6 +61,59 @@ export class view {
         view.rutValidador();
     }
 
+    static newPaciente(){
+        let modal = make.modal("Crear");
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.newPacientesTitulo;
+        the(modal.contenido).innerHTML = config.newPacientesHTML;
+
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
+            $(this).remove();
+        });
+
+        the("rut").dataset.modal = modal.id;
+
+        $("#"+modal.button).on("click", function(){
+            let paciente = {
+                nombre: the("nombre").value,
+                apellido: the("apellido").value,
+                rut: the("rut").value,
+                fum: the("fum").value,
+                ciudad: the("ciudad").value,
+                lugar: the("lugar").value,
+                telefono: the("telefono").value,
+                modal: this.dataset.modal
+            }
+            
+            //validador de teléfono
+            paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
+
+            if(paciente.telefono > 99999999999999)
+            {
+                alert('El teléfono excede 14 dígitos');
+                return 0;
+            }
+
+            cloud.newPaciente(paciente).then(function(data){
+                if (data.return == true){
+                    $("#"+data.modal).modal("hide");
+                    location.assign("dashboard/index/"+data.rut);
+                }
+            });
+        });
+
+        the("fum").value = inputDate();
+
+        view.rutValidador();
+        view.calcularEG();
+        view.selectCiudades();
+        view.selectLugares();
+        view.selectSemanas();
+        view.selectDias();
+        view.calcularFUM();
+        $("#fum").trigger("change");
+    }
+
     static editPaciente(){
         let id = this.dataset.id;
 
@@ -177,7 +230,7 @@ export class view {
                         the("nombre").value = data[0].nombre;
                         the("apellido").value = data[0].apellido;
                     }else{
-                        make.alert("El RUT no se encuentra en el sistema"); 
+                        view.newPaciente(input[0].dataset.modal);
                     }
                 });
             },
