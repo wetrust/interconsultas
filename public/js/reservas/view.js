@@ -61,28 +61,26 @@ export class view {
         view.rutValidador();
     }
 
-    static newPaciente(){
+    static newPaciente(_rut){
         let modal = make.modal("Crear");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.newPacientesTitulo;
         the(modal.contenido).innerHTML = config.newPacientesHTML;
 
-        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-            $(this).remove();
-        });
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
 
-        the("rut").dataset.modal = modal.id;
+        document.getElementsByName("rut")[0].value = _rut;
 
         $("#"+modal.button).on("click", function(){
             let paciente = {
-                nombre: the("nombre").value,
-                apellido: the("apellido").value,
+                nombre: document.getElementsByName("nombre")[0].value,
+                apellido: document.getElementsByName("apellido")[0].value,
                 rut: the("rut").value,
                 fum: the("fum").value,
                 ciudad: the("ciudad").value,
                 lugar: the("lugar").value,
                 telefono: the("telefono").value,
-                modal: this.dataset.modal
+                modal: this.dataset.modal,
             }
             
             //validador de teléfono
@@ -97,14 +95,13 @@ export class view {
             cloud.newPaciente(paciente).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    location.assign("dashboard/index/"+data.rut);
+                    $("#rut").rut();
                 }
             });
         });
 
         the("fum").value = inputDate();
 
-        view.rutValidador();
         view.calcularEG();
         view.selectCiudades();
         view.selectLugares();
@@ -230,8 +227,8 @@ export class view {
                         the("nombre").value = data[0].nombre;
                         the("apellido").value = data[0].apellido;
                     }else{
-                        view.newPaciente(input[0].dataset.modal);
-                        
+                        view.newPaciente(input[0].value);
+
                     }
                 });
             },
