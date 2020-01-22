@@ -48,4 +48,49 @@ export class cloud {
             return from;
         } catch(e){}
     }
+
+    static async deleteNacionalidad(nacionalidad){
+        try {
+            const to = new FormData();
+            to.append('id', nacionalidad.id);
+            to.append('modal', nacionalidad.modal);
+
+            const from = await data.post(config.deleteNacionalidad, to);
+            return from;
+
+        } catch(e){}
+    }
+    static async deleteCiudad(ciudad){
+        try {
+            const to = new FormData();
+            to.append('id', ciudad.id);
+            to.append('modal', ciudad.modal);
+
+            const from = await data.post(config.deleteCiudad, to);
+            return from;
+
+        } catch(e){}
+    }
+    static async deleteLugar(lugar){
+        try {
+            const to = new FormData();
+            to.append('id', lugar.id);
+            to.append('modal', lugar.modal);
+
+            const from = await data.post(config.deleteLugar, to);
+            return from;
+
+        } catch(e){}
+    }
+    static async deletePatologia(patologia){
+        try {
+            const to = new FormData();
+            to.append('id', patologia.id);
+            to.append('modal', patologia.modal);
+
+            const from = await data.post(config.deletePatologia, to);
+            return from;
+
+        } catch(e){}
+    }
 }

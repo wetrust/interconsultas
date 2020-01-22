@@ -154,14 +154,14 @@ export class view {
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.nacionalidad_id+'</td><td>'+element.nacionalidad_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar" data-id="'+element.nacionalidad_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
+            table += '<tr><th scope="row">'+element.nacionalidad_id+'</td><td>'+element.nacionalidad_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar-nacionalidad" data-id="'+element.nacionalidad_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
         });
 
         table += '</tbody>';
         the(config.configuracionNacionalidadInterfaceTable).innerHTML = table;
 
-        //let eliminarBtns = document.getElementsByClassName("eliminar");
-        //for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPaciente; }
+        let eliminarBtns = document.getElementsByClassName("eliminar-nacionalidad");
+        for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarNacionalidad; }
     }
 
     static tableCiudad(data){
@@ -169,14 +169,14 @@ export class view {
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.ciudad_id+'</td><td>'+element.ciudad_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar" data-id="'+element.ciudad_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
+            table += '<tr><th scope="row">'+element.ciudad_id+'</td><td>'+element.ciudad_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar-ciudad" data-id="'+element.ciudad_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
         });
 
         table += '</tbody>';
         the(config.configuracionCiudadInterfaceTable).innerHTML = table;
 
-        //let eliminarBtns = document.getElementsByClassName("eliminar");
-        //for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPaciente; }
+        let eliminarBtns = document.getElementsByClassName("eliminar-ciudad");
+        for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarCiudad; }
     }
 
     static tableLugar(data){
@@ -184,14 +184,14 @@ export class view {
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.lugar_id+'</td><td>'+element.lugar_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar" data-id="'+element.lugar_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
+            table += '<tr><th scope="row">'+element.lugar_id+'</td><td>'+element.lugar_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar-lugar" data-id="'+element.lugar_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
         });
 
         table += '</tbody>';
         the(config.configuracionLugarInterfaceTable).innerHTML = table;
 
-        //let eliminarBtns = document.getElementsByClassName("eliminar");
-        //for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPaciente; }
+        let eliminarBtns = document.getElementsByClassName("eliminar-lugar");
+        for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarLugar; }
     }
 
     static tablePatologia(data){
@@ -199,141 +199,129 @@ export class view {
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.patologia_id+'</td><td>'+element.patologia_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar" data-id="'+element.patologia_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
+            table += '<tr><th scope="row">'+element.patologia_id+'</td><td>'+element.patologia_name+'</td><td><div class="btn-group"><button class="btn btn-outline-danger eliminar-patologia" data-id="'+element.patologia_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
         });
 
         table += '</tbody>';
         the(config.configuracionPatologiaInterfaceTable).innerHTML = table;
 
-        //let eliminarBtns = document.getElementsByClassName("eliminar");
-        //for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPaciente; }
+        let eliminarBtns = document.getElementsByClassName("eliminar-patologia");
+        for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPatologia; }
     }
 
-    static newPaciente(_rut){
-        let modal = make.modal("Crear");
+    static eliminarNacionalidad(){
+        let modal = make.modal("Eliminar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.deleteNacionalidadTitulo;
         the(modal.titulo).classList.add("mx-auto","text-white");
-        the(modal.titulo).parentElement.classList.add("g-verde");
-        the(modal.titulo).innerHTML = config.newPacientesTitulo;
-        the(modal.contenido).innerHTML = config.newPacientesHTML;
+        the(modal.titulo).parentElement.classList.add("bg-danger");
+        the(modal.contenido).innerHTML = config.deleteNacionalidadHTML;
         the(modal.contenido).classList.add("bg-light");
 
-        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
-
-        document.getElementsByName("rut")[0].value = _rut;
-
-        $("#"+modal.button).on("click", function(){
-            let paciente = {
-                nombre: document.getElementsByName("nombre")[0].value,
-                apellido: document.getElementsByName("apellido")[0].value,
-                rut: the("rut").value,
-                fum: the("fum").value,
-                ciudad: the("ciudad").value,
-                lugar: the("lugar").value,
-                telefono: the("telefono").value,
-                modal: this.dataset.modal,
-            }
-            
-            //validador de teléfono
-            paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
-
-            if(paciente.telefono > 99999999999999)
-            {
-                alert('El teléfono excede 14 dígitos');
-                return 0;
-            }
-
-            cloud.newPaciente(paciente).then(function(data){
-                if (data.return == true){
-                    $("#"+data.modal).modal("hide");
-                    $("#rut").trigger("blur");
-                }
-            });
-        });
-
-        the("fum").value = inputDate();
-
-        view.calcularEG();
-        view.selectCiudades();
-        view.selectLugares();
-        view.selectSemanas();
-        view.selectDias();
-        view.calcularFUM();
-        $("#fum").trigger("change");
-    }
-
-    static editPaciente(){
-        let id = this.dataset.id;
-
-        let modal = make.modal("Guardar");
-        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
-        the(modal.titulo).innerHTML = config.updatePacientesTitulo;
-        the(modal.contenido).innerHTML = config.updatePacientesHTML;
+        the(modal.button).dataset.id = this.dataset.id;
 
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
 
         $("#"+modal.button).on("click", function(){
-            let paciente = {
-                id: the("id").value,
-                nombre: the("nombre").value,
-                apellido: the("apellido").value,
-                rut: the("rut").value,
-                fum: the("fum").value,
-                ciudad: the("ciudad").value,
-                lugar: the("lugar").value,
-                telefono: the("telefono").value,
+            let nacionalidad = {
+                id: this.dataset.id,
                 modal: this.dataset.modal
             }
-
-            //validador de teléfono
-            paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
-
-            if(paciente.telefono > 99999999999999)
-            {
-                alert('El teléfono excede 14 dígitos');
-                return 0;
-            }
-
-            cloud.updatePaciente(paciente).then(function(data){
+            cloud.deletePaciente(nacionalidad).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    location.reload();
-                }else if (data.return == false){
-                    alert('No hay cambios que guardar');
+                    view.tablePatologia(data.data);
+                }else{
+                    make.alert('Hubo un error al eliminar');
                 }
             });
         });
+    }
 
-        view.rutValidador();
-        view.calcularEG();
-        view.selectCiudades();
-        view.selectLugares();
-        view.selectSemanas();
-        view.selectDias();
-        view.calcularFUM();
+    static eliminarCiudad(){
+        let modal = make.modal("Eliminar");
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.deleteCiudadTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("bg-danger");
+        the(modal.contenido).innerHTML = config.deleteCiudadHTML;
+        the(modal.contenido).classList.add("bg-light");
 
-        cloud.getPaciente(id).then(function(data){
-            the("id").value = data.id;
-            the("nombre").value = data.nombre;
-            the("apellido").value = data.apellido;
-            the("rut").value = data.rut;
-            the("fum").value = data.fum;
-            the("ciudad").value = data.ciudad;
-            the("lugar").value = data.lugar;
-            the("telefono").value = data.telefono;
+        the(modal.button).dataset.id = this.dataset.id;
 
-            $("#fum").trigger("change");
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+
+        $("#"+modal.button).on("click", function(){
+            let ciudad = {
+                id: this.dataset.id,
+                modal: this.dataset.modal
+            }
+            cloud.deletePaciente(ciudad).then(function(data){
+                if (data.return == true){
+                    $("#"+data.modal).modal("hide");
+                    view.tablePatologia(data.data);
+                }else{
+                    make.alert('Hubo un error al eliminar');
+                }
+            });
         });
     }
 
-    static eliminarPaciente(){
-        let paciente = {
-            id: this.dataset.id
-        }
-        cloud.deletePaciente(paciente).then(function(data){
-            if (data.return == true){
-                location.reload();
+    static eliminarLugar(){
+        let modal = make.modal("Eliminar");
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.deleteLugarTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("bg-danger");
+        the(modal.contenido).innerHTML = config.deleteLugarHTML;
+        the(modal.contenido).classList.add("bg-light");
+
+        the(modal.button).dataset.id = this.dataset.id;
+
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+
+        $("#"+modal.button).on("click", function(){
+            let lugar = {
+                id: this.dataset.id,
+                modal: this.dataset.modal
             }
+            cloud.deletePaciente(lugar).then(function(data){
+                if (data.return == true){
+                    $("#"+data.modal).modal("hide");
+                    view.tablePatologia(data.data);
+                }else{
+                    make.alert('Hubo un error al eliminar');
+                }
+            });
+        });
+    }
+
+    static eliminarPatologia(){
+        let modal = make.modal("Eliminar");
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.deletePatologiaTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("bg-danger");
+        the(modal.contenido).innerHTML = config.deletePatologiaHTML;
+        the(modal.contenido).classList.add("bg-light");
+
+        the(modal.button).dataset.id = this.dataset.id;
+
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+
+        $("#"+modal.button).on("click", function(){
+            let patologia = {
+                id: this.dataset.id,
+                modal: this.dataset.modal
+            }
+            cloud.deletePaciente(patologia).then(function(data){
+                if (data.return == true){
+                    $("#"+data.modal).modal("hide");
+                    view.tablePatologia(data.data);
+                }else{
+                    make.alert('Hubo un error al eliminar');
+                }
+            });
         });
     }
 }

@@ -320,4 +320,56 @@ class ApiController extends Controller{
         $this->View->renderJSON($response);
     }
 
+    public function deleteNacionalidad(){
+        $data = new stdClass();
+        $data->id = Request::post('id');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::deleteNacionalidad($data);
+        $response->data = ConfiguracionModel::getAllNacionalidades();
+        $response->modal = $data->modal;
+
+        $this->View->renderJSON($response);
+    }
+
+    public function deleteCiudad(){
+        $data = new stdClass();
+        $data->id = Request::post('id');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::deleteCiudad($data);
+        $response->data = ConfiguracionModel::getAllCiudades();
+        $response->modal = $data->modal;
+
+        $this->View->renderJSON($response);
+    }
+
+    public function deleteLugar(){
+        $data = new stdClass();
+        $data->id = Request::post('id');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::deleteLugar($data);
+        $response->data = ConfiguracionModel::getAllLugares();
+        $response->modal = $data->modal;
+
+        $this->View->renderJSON($response);
+    }
+
+    public function deletePatologia(){
+        $data = new stdClass();
+        $data->id = Request::post('id');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::deletePatologia($data);
+        $response->data = ConfiguracionModel::getAllPatologias();
+        $response->modal = $data->modal;
+
+        $this->View->renderJSON($response);
+    }
+
 }

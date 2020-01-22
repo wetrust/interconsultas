@@ -122,4 +122,72 @@ class ConfiguracionModel
         return false;
     }
 
+    public static function deleteNacionalidad($data)
+    {
+        if (!$data->id) { return false; }
+
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "DELETE FROM c_nacionalidad WHERE nacionalidad_id = :nacionalidad_id AND user_id = :user_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':nacionalidad_id' => $data->id, ':user_id' => Session::get('user_id')));
+
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function deleteCiudad($data)
+    {
+        if (!$data->id) { return false; }
+
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "DELETE FROM c_ciudad WHERE ciudad_id = :ciudad_id AND user_id = :user_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':ciudad_id' => $data->id, ':user_id' => Session::get('user_id')));
+
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function deleteLugar($data)
+    {
+        if (!$data->id) { return false; }
+
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "DELETE FROM c_lugar WHERE lugar_id = :lugar_id AND user_id = :user_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':lugar_id' => $data->id, ':user_id' => Session::get('user_id')));
+
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function deletePatologia($data)
+    {
+        if (!$data->id) { return false; }
+
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "DELETE FROM c_patologia WHERE patologia_id = :patologia_id AND user_id = :user_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':patologia_id' => $data->id, ':user_id' => Session::get('user_id')));
+
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
