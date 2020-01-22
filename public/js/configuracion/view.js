@@ -227,7 +227,7 @@ export class view {
                 id: this.dataset.id,
                 modal: this.dataset.modal
             }
-            cloud.deletePaciente(nacionalidad).then(function(data){
+            cloud.deleteNacionalidad(nacionalidad).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
                     view.tablePatologia(data.data);
@@ -256,7 +256,7 @@ export class view {
                 id: this.dataset.id,
                 modal: this.dataset.modal
             }
-            cloud.deletePaciente(ciudad).then(function(data){
+            cloud.deleteCiudad(ciudad).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
                     view.tablePatologia(data.data);
@@ -285,7 +285,7 @@ export class view {
                 id: this.dataset.id,
                 modal: this.dataset.modal
             }
-            cloud.deletePaciente(lugar).then(function(data){
+            cloud.deleteLugar(lugar).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
                     view.tablePatologia(data.data);
@@ -314,7 +314,7 @@ export class view {
                 id: this.dataset.id,
                 modal: this.dataset.modal
             }
-            cloud.deletePaciente(patologia).then(function(data){
+            cloud.deletePatologia(patologia).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
                     view.tablePatologia(data.data);
