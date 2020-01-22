@@ -12,7 +12,7 @@ export class cloud {
         try {
             const to = new FormData();
             to.append('nacionalidad', nacionalidad.nacionalidad);
-            to.append('modal', paciente.modal);
+            to.append('modal', nacionalidad.modal);
 
             const from = await data.post(config.newNacionalidad, to);
             return from;
@@ -22,7 +22,7 @@ export class cloud {
         try {
             const to = new FormData();
             to.append('ciudad', ciudad.ciudad);
-            to.append('modal', paciente.modal);
+            to.append('modal', ciudad.modal);
 
             const from = await data.post(config.newCiudad, to);
             return from;
@@ -32,7 +32,7 @@ export class cloud {
         try {
             const to = new FormData();
             to.append('lugar', lugar.lugar);
-            to.append('modal', paciente.modal);
+            to.append('modal', lugar.modal);
 
             const from = await data.post(config.newLugar, to);
             return from;
@@ -42,7 +42,7 @@ export class cloud {
         try {
             const to = new FormData();
             to.append('patologia', patologia.patologia);
-            to.append('modal', paciente.modal);
+            to.append('modal', patologia.modal);
 
             const from = await data.post(config.newPatologia, to);
             return from;

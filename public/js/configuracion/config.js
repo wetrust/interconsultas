@@ -1,5 +1,5 @@
 export const config = {
-    getConfiguraciones: 'api/configuraciones',
+    configuraciones: 'api/configuraciones',
     newNacionalidad: '/api/newNacionalidad',
     newCiudad: '/api/newCiudad',
     newLugar: '/api/newLugar',
