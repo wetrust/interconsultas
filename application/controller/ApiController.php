@@ -262,4 +262,62 @@ class ApiController extends Controller{
         }
     }
 
+    public function configuraciones(){
+        $data = array();
+        $data[0] = ConfiguracionModel::getAllNacionalidades();
+        $data[1] = ConfiguracionModel::getAllCiudades();
+        $data[2] = ConfiguracionModel::getAllLugares();
+        $data[3] = ConfiguracionModel::getAllPatologias();
+
+        $this->View->renderJSON($data);
+    }
+
+    public function newNacionalidad(){
+        $data = new stdClass();
+        $data->nacionalidad = Request::post('nacionalidad');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::createNacionalidad($data);
+        $response->data = ConfiguracionModel::getAllNacionalidades();
+        $response->modal = $data->modal;
+        $this->View->renderJSON($response);
+    }
+
+    public function newCiudad(){
+        $data = new stdClass();
+        $data->ciudad = Request::post('ciudad');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::createCiudad($data);
+        $response->data = ConfiguracionModel::getAllCiudades();
+        $response->modal = $data->modal;
+        $this->View->renderJSON($response);
+    }
+
+    public function newLugar(){
+        $data = new stdClass();
+        $data->lugar = Request::post('lugar');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::createLugar($data);
+        $response->data = ConfiguracionModel::getAllLugares();
+        $response->modal = $data->modal;
+        $this->View->renderJSON($response);
+    }
+
+    public function newPatologia(){
+        $data = new stdClass();
+        $data->patologia = Request::post('patologia');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ConfiguracionModel::createPatologia($data);
+        $response->data = ConfiguracionModel::getAllPatologias();
+        $response->modal = $data->modal;
+        $this->View->renderJSON($response);
+    }
+
 }
