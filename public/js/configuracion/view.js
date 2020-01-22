@@ -230,7 +230,7 @@ export class view {
             cloud.deleteNacionalidad(nacionalidad).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    view.tablePatologia(data.data);
+                    view.tableNacionalidad(data.data);
                 }else{
                     make.alert('Hubo un error al eliminar');
                 }
@@ -259,7 +259,7 @@ export class view {
             cloud.deleteCiudad(ciudad).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    view.tablePatologia(data.data);
+                    view.tableCiudad(data.data);
                 }else{
                     make.alert('Hubo un error al eliminar');
                 }
@@ -288,7 +288,7 @@ export class view {
             cloud.deleteLugar(lugar).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    view.tablePatologia(data.data);
+                    view.tableLugar(data.data);
                 }else{
                     make.alert('Hubo un error al eliminar');
                 }
