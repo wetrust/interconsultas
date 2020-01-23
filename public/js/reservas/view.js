@@ -106,8 +106,6 @@ export class view {
         the("fum").value = inputDate();
 
         view.calcularEG();
-        view.selectCiudades();
-        view.selectLugares();
         view.selectSemanas();
         view.selectDias();
         view.calcularFUM();
@@ -264,30 +262,6 @@ export class view {
                 document.getElementById("semanas").value = 0;
                 document.getElementById("dias").value = 0;
             }
-        });
-    }
-
-    static selectCiudades(){
-        cloud.getCiudades().then(function(data){
-            data.forEach(function(element) {
-                let ciudad = the("ciudad");
-                let opt = document.createElement('option');
-                opt.appendChild( document.createTextNode(element.ciudad_name) );
-                opt.value = element.ciudad_name; 
-                ciudad.appendChild(opt); 
-            });
-        });
-    }
-
-    static selectLugares(){
-        cloud.getLugares().then(function(data){
-            data.forEach(function(element) {
-                let lugar = the("lugar");
-                let opt = document.createElement('option');
-                opt.appendChild( document.createTextNode(element.lugar_name) );
-                opt.value = element.lugar_name; 
-                lugar.appendChild(opt); 
-            });
         });
     }
 
