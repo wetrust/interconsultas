@@ -10,10 +10,17 @@ export class cloud {
     }
     static async findReservas(fecha){
         try {
-            const from = await data.get(config.find + fecha);
+            const from = await data.get(config.findReservas + fecha);
             return from;
         } catch(e) {}
     }
+    static async findPaciente(paciente){
+        try {
+            const from = await data.get(config.findPacientes + paciente);
+            from.paciente = paciente;
+            return from;
+        } catch(e) {}
+    }   
     static async newPaciente(paciente){
         try {
             const to = new FormData();
