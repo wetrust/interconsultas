@@ -344,20 +344,10 @@ export class view {
     }
 
     static buscarReservas(){
-        $("#paciente\\.buscar").on("keypress", function(){
-            if ( event.which == 13 ) {
-                let paciente = this.value;
-                paciente = paciente.replace(/\s+/g, "_");
-
-                if (paciente.length == 0){
-                    location.reload();
-                    return 0;
-                }
-
-                cloud.findPaciente(paciente).then(function(data){
-                    view.tablePacientes(data);
-                });
-            }
+        $("#reservas\\.buscar").on("change", function(){
+            cloud.findReservas(this.value).then(function(data){
+                view.tableReservas(data);
+            });
         });
     }
 

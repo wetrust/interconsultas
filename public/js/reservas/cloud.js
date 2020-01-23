@@ -8,10 +8,9 @@ export class cloud {
             return from;
         } catch(e) {}
     }
-    static async findPaciente(paciente){
+    static async findReservas(fecha){
         try {
-            const from = await data.get(config.find + paciente);
-            from.paciente = paciente;
+            const from = await data.get(config.find + fecha);
             return from;
         } catch(e) {}
     }
@@ -54,6 +53,7 @@ export class cloud {
             const to = new FormData();
             to.append('id', reserva.id);
             to.append('fecha', reserva.fecha);
+            to.append('modal', reserva.modal);
 
             const from = await data.post(config.deleteReserva, to);
             return from;
