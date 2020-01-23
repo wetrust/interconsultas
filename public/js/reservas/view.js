@@ -212,19 +212,31 @@ export class view {
         });
     }
 
+    static verPreparar(){
+        let modal = make.modal();
+        document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
+        the(modal.titulo).innerHTML = config.verPrepararTitulo;
+        the(modal.titulo).classList.add("mx-auto","text-white");
+        the(modal.titulo).parentElement.classList.add("bg-danger");
+        the(modal.contenido).innerHTML = config.verPrepararHTML;
+        the(modal.contenido).classList.add("bg-light");
+
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+    }
+
     static tableReservas(data){
         let table = config.reservasInterfaceTableHead;
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.reserva_id+'</td><td>'+humanDate(new Date(element.reserva_dia))+'</td><td>'+element.reserva_hora+'</td><td>'+element.reserva_minutos+'</td><td>'+element.reserva_rut+'</td><td>'+element.reserva_nombre+'</td><td>'+element.reserva_apellido+'</td><td class="tabla-reservas"><div class="btn-group"><button class="btn btn-outline-primary examen" data-id="'+element.reserva_id+'">Examen</button><button class="btn btn-outline-primary modificar" data-id="'+element.reserva_id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-outline-danger eliminar-reserva" data-id="'+element.reserva_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
+            table += '<tr><th scope="row">'+element.reserva_id+'</td><td>'+humanDate(new Date(element.reserva_dia))+'</td><td>'+element.reserva_hora+'</td><td>'+element.reserva_minutos+'</td><td>'+element.reserva_rut+'</td><td>'+element.reserva_nombre+'</td><td>'+element.reserva_apellido+'</td><td class="tabla-reservas"><div class="btn-group"><button class="btn btn-outline-primary examen-reserva" data-id="'+element.reserva_id+'">Examen</button><button class="btn btn-outline-primary modificar" data-id="'+element.reserva_id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-outline-danger eliminar-reserva" data-id="'+element.reserva_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
         });
 
         table += '</tbody>';
         the(config.reservasInterfaceTable).innerHTML = table;
 
-        //let examenBtns = document.getElementsByClassName("examen");
-        //for (var i=0; i < examenBtns.length; i++) { examenBtns[i].onclick = this.verExamenes; }
+        let examenBtns = document.getElementsByClassName("examen-reserva");
+        for (var i=0; i < examenBtns.length; i++) { examenBtns[i].onclick = this.verPreparar; }
 
         //let modificarBtns = document.getElementsByClassName("modificar");
         //for (var i=0; i < modificarBtns.length; i++) { modificarBtns[i].onclick = this.editPaciente; }
