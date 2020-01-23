@@ -157,8 +157,6 @@ export class view {
 
         view.rutValidador();
         view.calcularEG();
-        view.selectCiudades();
-        view.selectLugares();
         view.selectSemanas();
         view.selectDias();
         view.calcularFUM();
@@ -323,7 +321,7 @@ export class view {
         cloud.getConfiguraciones().then(function(data){
 
             if (data.length > 0){
-                data.data[0].forEach(function(element) {
+                data[0].forEach(function(element) {
                     let nacionalidad = the("nacionalidad");
                     let opt = document.createElement('option');
                     opt.appendChild( document.createTextNode(element.nacionalidad_name) );
@@ -331,7 +329,7 @@ export class view {
                     nacionalidad.appendChild(opt);
                 });
 
-                data.data[1].forEach(function(element) {
+                data[1].forEach(function(element) {
                     let ciudad = the("ciudad");
                     let opt = document.createElement('option');
                     opt.appendChild( document.createTextNode(element.ciudad_name) );
@@ -339,7 +337,7 @@ export class view {
                     ciudad.appendChild(opt);
                 });
 
-                data.data[2].forEach(function(element) {
+                data[2].forEach(function(element) {
                     let lugar = the("lugar");
                     let opt = document.createElement('option');
                     opt.appendChild( document.createTextNode(element.lugar_name) );
@@ -347,7 +345,7 @@ export class view {
                     lugar.appendChild(opt);
                 });
 
-                data.data[3].forEach(function(element) {
+                data[3].forEach(function(element) {
                     let patologia = the("patologia");
                     let opt = document.createElement('option');
                     opt.appendChild( document.createTextNode(element.patologia_name) );
