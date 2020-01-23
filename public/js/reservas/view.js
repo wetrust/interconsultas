@@ -279,7 +279,7 @@ export class view {
     }
 
     static selectHoras(){
-        for (var i = 0; i < 43; i++) {
+        for (var i = 1; i < 25; i++) {
             let hora = the("hora");
             let opt = document.createElement('option');
             opt.appendChild( document.createTextNode(i) );
@@ -289,11 +289,11 @@ export class view {
     }
 
     static selectMinutos(){
-        for (var i = 0; i < 43; i++) {
+        for (var i = 0; i < 4; i++) {
             let minutos = the("minutos");
             let opt = document.createElement('option');
-            opt.appendChild( document.createTextNode(i) );
-            opt.value = i; 
+            opt.appendChild( document.createTextNode(i * 15) );
+            opt.value = i * 15; 
             minutos.appendChild(opt);
         }
     }

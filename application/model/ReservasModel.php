@@ -46,7 +46,7 @@ class ReservasModel
 
     public static function deleteReserva($data)
     {
-        if (!data->id) {
+        if (!$data->id) {
             return false;
         }
 
