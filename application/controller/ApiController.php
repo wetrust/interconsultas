@@ -291,7 +291,7 @@ class ApiController extends Controller{
         $response = new stdClass();
         $response->return = ReservasModel::createReserva($data);
         $response->modal = $data->modal;
-        $response->data = ReservasModel::getAllReservas();
+        $response->data = ReservasModel::getAllReservas(NULL);
         $this->View->renderJSON($response);
     }
 
