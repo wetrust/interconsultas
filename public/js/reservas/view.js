@@ -80,8 +80,10 @@ export class view {
                 apellido: document.getElementsByName("apellido")[0].value,
                 rut: the("rut").value,
                 fum: the("fum").value,
+                nacionalidad: the("nacionalidad").value,
                 ciudad: the("ciudad").value,
                 lugar: the("lugar").value,
+                patologia: the("patologia").value,
                 telefono: the("telefono").value,
                 modal: this.dataset.modal,
             }
@@ -89,8 +91,7 @@ export class view {
             //validador de teléfono
             paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
 
-            if(paciente.telefono > 99999999999999)
-            {
+            if(paciente.telefono > 99999999999999){
                 alert('El teléfono excede 14 dígitos');
                 return 0;
             }

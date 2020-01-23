@@ -22,8 +22,10 @@ export class cloud {
             to.append('apellido', paciente.apellido);
             to.append('rut', paciente.rut);
             to.append('fum', paciente.fum);
+            to.append('nacionalidad', paciente.nacionalidad);
             to.append('ciudad', paciente.ciudad);
             to.append('lugar', paciente.lugar);
+            to.append('patologia', paciente.patologia);
             to.append('telefono', paciente.telefono);
             to.append('modal', paciente.modal);
             to.append('reservas', paciente.reservas);

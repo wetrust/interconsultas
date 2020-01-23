@@ -54,6 +54,8 @@ class ApiController extends Controller{
         $data->fum = Request::post('fum');
         $data->ciudad = Request::post('ciudad');
         $data->lugar = Request::post('lugar');
+        $data->nacionalidad = Request::post('nacionalidad');
+        $data->patologia = Request::post('patologia');
         $data->telefono = Request::post('telefono');
         $data->modal = Request::post('modal');
 

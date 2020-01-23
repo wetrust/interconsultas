@@ -47,15 +47,12 @@ class PacientesModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO pacientes (rut, nombre, apellido, fum, ciudad, lugar, telefono, user_id) VALUES (:rut, :nombre, :apellido, :fum, :ciudad, :lugar, :telefono, :user_id)";
+        $sql = "INSERT INTO pacientes (rut, nombre, apellido, fum, ciudad, lugar, telefono, nacionalidad, patologia, user_id) VALUES (:rut, :nombre, :apellido, :fum, :ciudad, :lugar, :telefono, :nacionalidad, :patologia, :user_id)";
         $query = $database->prepare($sql);
-        $query->execute(array(':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':ciudad' => $data->ciudad, ':lugar' => $data->lugar, ':telefono' => $data->telefono, ':user_id' => Session::get('user_id')));
+        $query->execute(array(':rut' => $data->rut, ':nombre' => $data->nombre, ':apellido' => $data->apellido, ':fum' => $data->fum, ':ciudad' => $data->ciudad, ':lugar' => $data->lugar, ':telefono' => $data->telefono, ':nacionalidad' =>  $data->nacionalidad, ':patologia' =>  $data->patologia, ':user_id' => Session::get('user_id')));
 
-        if ($query->rowCount() == 1) {
-            return true;
-        }
+        if ($query->rowCount() == 1) { return true; }
 
-        Session::add('feedback_negative', Text::get('FEEDBACK_NOTE_CREATION_FAILED'));
         return false;
     }
 
