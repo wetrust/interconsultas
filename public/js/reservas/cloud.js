@@ -34,6 +34,21 @@ export class cloud {
             return from;
         } catch(e){}
     }
+    static async newReserva(reserva){
+        try {
+            const to = new FormData();
+            to.append('rut', reserva.rut);
+            to.append('nombre', reserva.nombre);
+            to.append('apellido', reserva.apellido);
+            to.append('dia', reserva.dia);
+            to.append('hora', reserva.hora);
+            to.append('minutos', reserva.minutos);
+            to.append('modal', reserva.modal);
+
+            const from = await data.post(config.newReserva, to);
+            return from;
+        } catch(e){}
+    }
     static async getConfiguraciones(){
         try {
             const from = await data.get(config.configuraciones);

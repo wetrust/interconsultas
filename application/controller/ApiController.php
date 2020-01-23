@@ -274,6 +274,27 @@ class ApiController extends Controller{
         $this->View->renderJSON($data);
     }
 
+    public function reservas($fecha = NULL){
+        $this->View->renderJSON(ReservasModel::getAllReservas($fecha ));
+    }
+
+    public function newReserva(){
+        $data = new stdClass();
+        $data->rut = Request::post('rut');
+        $data->nombre = Request::post('nombre');
+        $data->apellido = Request::post('apellido');
+        $data->dia = Request::post('dia');
+        $data->hora = Request::post('hora');
+        $data->minutos = Request::post('minutos');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        $response->return = ReservasModel::createReserva($data);
+        $response->modal = $data->modal;
+        $response->data = ReservasModel::getAllReservas();
+        $this->View->renderJSON($response);
+    }
+
     public function newNacionalidad(){
         $data = new stdClass();
         $data->nacionalidad = Request::post('nacionalidad');

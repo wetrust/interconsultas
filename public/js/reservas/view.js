@@ -21,37 +21,30 @@ export class view {
         the(modal.contenido).innerHTML = config.newReservaHTML;
         the(modal.contenido).classList.add("bg-light");
 
-        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) {
-            $(this).remove();
-        });
+        $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
 
         the("rut").dataset.modal = modal.id;
 
         $("#"+modal.button).on("click", function(){
-            let paciente = {
+            let reserva = {
+                rut: the("rut").value,
                 nombre: the("nombre").value,
                 apellido: the("apellido").value,
-                rut: the("rut").value,
-                fum: the("fum").value,
-                ciudad: the("ciudad").value,
-                lugar: the("lugar").value,
-                telefono: the("telefono").value,
+                dia: the("dia").value,
+                hora: the("hora").value,
+                minutos: the("minutos").value,
                 modal: this.dataset.modal
             }
             
-            //validador de teléfono
-            paciente.telefono = (paciente.telefono == "") ? 0 : parseInt(paciente.telefono);
-
-            if(paciente.telefono > 99999999999999)
-            {
-                alert('El teléfono excede 14 dígitos');
+            if(reserva.rut.length < 8){
+                make.alert('RUT no corresponde a Chile');
                 return 0;
             }
 
-            cloud.newPaciente(paciente).then(function(data){
+            cloud.newReserva(reserva).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    location.assign("dashboard/index/"+data.rut);
+                    tableReservas(data.data);
                 }
             });
         });
@@ -111,6 +104,8 @@ export class view {
         view.selectDias();
         view.calcularFUM();
         view.cargarConfiguracion();
+        view.selectHoras();
+        view.selectMinutos();
         $("#fum").trigger("change");
     }
 
@@ -187,7 +182,6 @@ export class view {
         });
     }
 
-
     static tableReservas(data){
         let table = config.pacienteInterfaceTableHead;
 
@@ -199,14 +193,14 @@ export class view {
         table += '</tbody>';
         the(config.pacienteInterfaceTable).innerHTML = table;
 
-        let examenBtns = document.getElementsByClassName("examen");
-        for (var i=0; i < examenBtns.length; i++) { examenBtns[i].onclick = this.verExamenes; }
+        //let examenBtns = document.getElementsByClassName("examen");
+        //for (var i=0; i < examenBtns.length; i++) { examenBtns[i].onclick = this.verExamenes; }
 
-        let modificarBtns = document.getElementsByClassName("modificar");
-        for (var i=0; i < modificarBtns.length; i++) { modificarBtns[i].onclick = this.editPaciente; }
+        //let modificarBtns = document.getElementsByClassName("modificar");
+        //for (var i=0; i < modificarBtns.length; i++) { modificarBtns[i].onclick = this.editPaciente; }
 
-        let eliminarBtns = document.getElementsByClassName("eliminar");
-        for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPaciente; }
+        //let eliminarBtns = document.getElementsByClassName("eliminar");
+        //for (var i=0; i < eliminarBtns.length; i++) { eliminarBtns[i].onclick = this.eliminarPaciente; }
     }
 
     static rutValidador(){
@@ -281,6 +275,26 @@ export class view {
             opt.appendChild( document.createTextNode(i) );
             opt.value = i; 
             dias.appendChild(opt);
+        }
+    }
+
+    static selectHoras(){
+        for (var i = 0; i < 43; i++) {
+            let hora = the("hora");
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
+            hora.appendChild(opt);
+        }
+    }
+
+    static selectMinutos(){
+        for (var i = 0; i < 43; i++) {
+            let minutos = the("minutos");
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(i) );
+            opt.value = i; 
+            minutos.appendChild(opt);
         }
     }
 
