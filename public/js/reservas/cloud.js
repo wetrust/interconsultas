@@ -32,4 +32,10 @@ export class cloud {
             return from;
         } catch(e){}
     }
+    static async getConfiguraciones(){
+        try {
+            const from = await data.get(config.configuraciones);
+            return from;
+        } catch(e) {}
+    }
 }
