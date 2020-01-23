@@ -49,6 +49,17 @@ export class cloud {
             return from;
         } catch(e){}
     }
+    static async deleteReserva(reserva){
+        try {
+            const to = new FormData();
+            to.append('id', reserva.id);
+            to.append('fecha', reserva.fecha);
+
+            const from = await data.post(config.deleteReserva, to);
+            return from;
+
+        } catch(e){}
+    }
     static async getConfiguraciones(){
         try {
             const from = await data.get(config.configuraciones);
