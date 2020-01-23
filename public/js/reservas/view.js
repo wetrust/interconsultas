@@ -44,7 +44,7 @@ export class view {
             cloud.newReserva(reserva).then(function(data){
                 if (data.return == true){
                     $("#"+data.modal).modal("hide");
-                    tableReservas(data.data);
+                    view.tableReservas(data.data);
                 }
             });
         });
@@ -183,15 +183,15 @@ export class view {
     }
 
     static tableReservas(data){
-        let table = config.pacienteInterfaceTableHead;
+        let table = config.reservasInterfaceTableHead;
 
         table += '<tbody>';
         data.forEach(function(element) {
-            table += '<tr><th scope="row">'+element.rut+'</td><td>'+element.nombre+'</td><td>'+element.apellido+'</td><td>'+humanDate(new Date(element.fum))+'</td><td class="tabla-pacientes"><div class="btn-group"><button class="btn btn-outline-primary examen" data-id="'+element.id+'">Examen</button><button class="btn btn-outline-primary modificar" data-id="'+element.id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-outline-danger eliminar" data-id="'+element.id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
+            table += '<tr><th scope="row">'+element.reserva_id+'</td><td>'+humanDate(new Date(element.reserva_dia))+'</td><td>'+element.reserva_hora+'</td><td>'+element.reserva_minutos+'</td><td>'+element.reserva_rut+'</td><td>'+element.reserva_nombre+'</td><td>'+element.reserva_apellido+'</td><td class="tabla-reservas"><div class="btn-group"><button class="btn btn-outline-primary examen" data-id="'+element.reserva_id+'">Examen</button><button class="btn btn-outline-primary modificar" data-id="'+element.reserva_id+'"><i class="fa fa-pencil" aria-hidden="true"></i></button><button class="btn btn-outline-danger eliminar" data-id="'+element.reserva_id+'"><i class="fa fa-trash" aria-hidden="true"></i></button></div></td></tr>';
         });
 
         table += '</tbody>';
-        the(config.pacienteInterfaceTable).innerHTML = table;
+        the(config.reservasInterfaceTable).innerHTML = table;
 
         //let examenBtns = document.getElementsByClassName("examen");
         //for (var i=0; i < examenBtns.length; i++) { examenBtns[i].onclick = this.verExamenes; }
