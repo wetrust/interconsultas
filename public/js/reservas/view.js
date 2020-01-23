@@ -52,6 +52,8 @@ export class view {
         the("dia").value = the(config.reservasInterfaceSearch).value;
 
         view.rutValidador();
+        view.selectHoras();
+        view.selectMinutos();
     }
 
     static newPaciente(_rut){
@@ -104,8 +106,6 @@ export class view {
         view.selectDias();
         view.calcularFUM();
         view.cargarConfiguracion();
-        view.selectHoras();
-        view.selectMinutos();
         $("#fum").trigger("change");
     }
 
