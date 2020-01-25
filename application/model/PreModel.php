@@ -36,11 +36,11 @@ class PreModel
 
         if ($query->rowCount() == 1) {
             $respuesta = new stdClass();
-
-            ReservasModel::closeReserva($data);
             
             $respuesta->reserva_rut = $reserva->reserva_rut;
             $respuesta->data = $database->lastInsertId();
+
+            ReservasModel::closeReserva($data);
 
             return $respuesta;
         }
