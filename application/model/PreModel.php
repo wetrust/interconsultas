@@ -27,8 +27,6 @@ class PreModel
 
     public static function createPre($data)
     {
-        if (!$data) { return false; }
-
         $reserva = ReservasModel::getReserva($data);
 
         $database = DatabaseFactory::getFactory()->getConnection();
