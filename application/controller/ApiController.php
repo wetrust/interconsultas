@@ -424,6 +424,7 @@ class ApiController extends Controller{
         $response->examen = $data->examen;
         $response->data = ReservasModel::getAllReservas($data->fecha);
         $response->paciente = PacientesModel::getPaciente($pre->reserva_rut);
+        $response->fecha = $data->fecha;
         $response->modal = $data->modal;
 
         $this->View->renderJSON($response);
