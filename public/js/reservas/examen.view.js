@@ -1,6 +1,7 @@
 import {make, the, humanDate, inputDate} from '../wetrust.js';
 import {cloud} from './cloud.js';
 import {config} from './config.js';
+import {fn} from './examen.fn.js';
 
 export class dopcre {
     static interface(data){
@@ -21,6 +22,24 @@ export class dopcre {
 
         the(modal.button).onclick = dopcre.save();
         dopcre.selectFCF();
+
+        EG = fn.EG(data);
+        document.getElementsByName("eg")[0].value = EG.text;
+
+        document.getElementsByName("respuesta_cc")[0].dataset.eg = EG.semanas;
+        document.getElementsByName("respuesta_cc")[0].onkeyup = dopcre.cc;
+        document.getElementsByName("respuesta_ca")[0].dataset.eg = EG.semanas;
+        document.getElementsByName("respuesta_ca")[0].onkeyup = dopcre.ca;
+        document.getElementsByName("respuesta_lf")[0].dataset.eg = EG.semanas;
+        document.getElementsByName("respuesta_lf")[0].onkeyup = dopcre.lf;
+        document.getElementsByName("respuesta_uterina_derecha")[0].dataset.eg = EG.semanas;
+        document.getElementsByName("respuesta_uterina_derecha")[0].onkeyup = dopcre.utd;
+        document.getElementsByName("respuesta_uterina_izquierda")[0].dataset.eg = EG.semanas;
+        document.getElementsByName("respuesta_uterina_izquierda")[0].onkeyup = dopcre.uti;
+        document.getElementsByName("respuesta_umbilical")[0].dataset.eg = EG.semanas;
+        document.getElementsByName("respuesta_umbilical")[0].onkeyup = dopcre.umb;
+        document.getElementsByName("respuesta_cm")[0].dataset.eg = EG.semanas;
+        document.getElementsByName("respuesta_cm")[0].onkeyup = dopcre.cm;
         
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
@@ -57,6 +76,116 @@ export class dopcre {
         opt.appendChild( document.createTextNode("> 180") );
         opt.value = 181; 
         semanas.appendChild(opt);
+    }
+
+    static cc(e){
+        dopcre.keyup(e);
+
+        let value = this.value;
+        let cut = Object;
+        cut.digit = 3;
+        cut.value = value;
+        value = fn.cut(cut);
+        value = fn.number(value);
+
+        this.value = value;
+
+        //if (value != null){
+        //    let cc = fn.cc(this);
+
+        //    the("respuesta_cm_pct").innerHTML = cc.pct;
+        //}
+        //else{
+        //    the("respuesta_cm_pct").innerHTML = ''; 
+        //}
+    }
+    static ca(e){
+        dopcre.keyup(e);
+
+        let value = this.value;
+        let cut = Object;
+        cut.digit = 3;
+        cut.value = value;
+        value = fn.cut(cut);
+        value = fn.number(value);
+
+    }
+    static lf(e){
+        dopcre.keyup(e);
+
+        let value = this.value;
+        let cut = Object;
+        cut.digit = 3;
+        cut.value = value;
+        value = fn.cut(cut);
+        value = fn.number(value);
+
+    }
+    static utd(e){
+        dopcre.keyup(e);
+
+        let value = this.value;
+        let cut = Object;
+        cut.digit = 3;
+        cut.value = value;
+        value = fn.cut(cut);
+        value = fn.number(value);
+
+    }
+    static uti(e){
+        dopcre.keyup(e);
+
+        let value = this.value;
+        let cut = Object;
+        cut.digit = 3;
+        cut.value = value;
+        value = fn.cut(cut);
+        value = fn.number(value);
+
+    }
+    static umb(e){
+        dopcre.keyup(e);
+
+        let value = this.value;
+        let cut = Object;
+        cut.digit = 3;
+        cut.value = value;
+        value = fn.cut(cut);
+        value = fn.number(value);
+
+    }
+    static cm(e){
+        dopcre.keyup(e);
+
+        let value = this.value;
+        let cut = Object;
+        cut.digit = 3;
+        cut.value = value;
+        value = fn.cut(cut);
+        value = fn.number(value);
+
+
+    }
+    static keyup(e){
+        let _e = e.srcElement;
+        let _id = e.srcElement.id;
+
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+        {
+                e.Handled = true;
+        }
+
+        // only allow one decimal point
+        if (e.KeyChar == '.')
+        {
+            e.Handled = true;
+        }
+
+        if ( e.which == 13 ) {
+            e.preventDefault();
+            //$("input[name='respuesta_cc']").focus();
+        }
     }
 }
 
