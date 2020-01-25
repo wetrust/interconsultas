@@ -444,7 +444,6 @@ export class view {
                 if (data.length > 0){
                     $("#" + the("rut").dataset.modal).modal("hide");
                     make.alert("El RUT ya está ingresado en el sistema");
-                    //ocultar modal de nuevo paciente
                 }
             });
         });

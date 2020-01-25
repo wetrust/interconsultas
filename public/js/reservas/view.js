@@ -1,6 +1,7 @@
 import {cloud} from './cloud.js';
 import {config} from './config.js';
 import {make, the, humanDate, inputDate} from '../wetrust.js';
+import {dopcre, segundo, once, preco, ginec, parto} from './examen.js';
 
 export class view {
     static reservasInterface(container, data){
@@ -35,17 +36,11 @@ export class view {
                 minutos: the("minutos").value,
                 modal: this.dataset.modal
             }
-            
-            if(reserva.rut.length < 8){
-                make.alert('RUT no corresponde a Chile');
-                return 0;
-            }
+
+            if(reserva.rut.length < 8){ make.alert('RUT no corresponde a Chile'); return 0; }
 
             cloud.newReserva(reserva).then(function(data){
-                if (data.return == true){
-                    $("#"+data.modal).modal("hide");
-                    view.tableReservas(data.data);
-                }
+                if (data.return == true){ $("#"+data.modal).modal("hide"); view.tableReservas(data.data); }
             });
         });
 
@@ -172,13 +167,9 @@ export class view {
     }
 
     static eliminarPaciente(){
-        let paciente = {
-            id: this.dataset.id
-        }
+        let paciente = { id: this.dataset.id }
         cloud.deletePaciente(paciente).then(function(data){
-            if (data.return == true){
-                location.reload();
-            }
+            if (data.return == true){ location.reload(); }
         });
     }
 
@@ -222,6 +213,13 @@ export class view {
         the(modal.contenido).classList.add("bg-light");
         the(modal.id).children[0].classList.add("h-100");
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
+
+        the("btn.dopcre").onclick = dopcre.interface;
+        the("btn.segundo").onclick = segundo.interface;
+        the("btn.once").onclick = once.interface;
+        the("btn.preco").onclick = preco.interface;
+        the("btn.ginec").onclick = ginec.interface;
+        the("btn.parto").onclick = parto.interface;
     }
 
     static tableReservas(data){
@@ -307,6 +305,7 @@ export class view {
             opt.appendChild( document.createTextNode(i) );
             opt.value = i; 
             semanas.appendChild(opt);
+            opt.children.append(opt);
         }
     }
 
@@ -366,7 +365,6 @@ export class view {
     static cargarConfiguracion(){
 
         cloud.getConfiguraciones().then(function(data){
-
             if (data.length > 0){
                 data[0].forEach(function(element) {
                     let nacionalidad = the("nacionalidad");
@@ -402,7 +400,6 @@ export class view {
             }else{
                 make.alert("Hubo un problema al obtener la configuración, vuelva a cargar la página");
             }
-
         });
     }
 }
