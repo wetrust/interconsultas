@@ -29,16 +29,16 @@ class PreModel
     {
         $reserva = ReservasModel::getReserva($data);
 
-        $database = DatabaseFactory::getFactory()->getConnection();
+        //$database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "INSERT INTO pre_examen (user_id, paciente_rut, pre_fecha, pre_examen, pre_motivo) VALUES (:user_id, :paciente_rut, :pre_fecha, :pre_examen, :pre_motivo)";
-        $query = $database->prepare($sql);
-        $query->execute(array(':paciente_rut' => $reserva->reserva_rut, ':pre_fecha' => $data->fecha, ':pre_examen' => $data->examen, ':pre_motivo' => $data->motivo, ':user_id' => Session::get('user_id')));
+        //$sql = "INSERT INTO pre_examen (user_id, paciente_rut, pre_fecha, pre_examen, pre_motivo) VALUES (:user_id, :paciente_rut, :pre_fecha, :pre_examen, :pre_motivo)";
+        //$query = $database->prepare($sql);
+        //$query->execute(array(':paciente_rut' => $reserva->reserva_rut, ':pre_fecha' => $data->fecha, ':pre_examen' => $data->examen, ':pre_motivo' => $data->motivo, ':user_id' => Session::get('user_id')));
 
-        if ($query->rowCount() == 1) { 
+        //if ($query->rowCount() == 1) { 
             //return $database->lastInsertId();
-            return false; 
-        }
+        //    return false; 
+        //}
 
         return false;
     }
