@@ -234,17 +234,17 @@ export class view {
                     view.tableReservas(data.data);
 
                     if (data.examen == "0"){
-                        dopcre.interface();
+                        dopcre.interface(data);
                     }else if (data.examen == "1"){
-                        segundo.interface();
+                        segundo.interface(data);
                     }else if (data.examen == "2"){
-                        once.interface();
+                        once.interface(data);
                     }else if (data.examen == "3"){
-                        preco.interface();
+                        preco.interface(data);
                     }else if (data.examen == "4"){
-                        ginec.interface();
+                        ginec.interface(data);
                     }else if (data.examen == "5"){
-                        parto.interface();
+                        parto.interface(data);
                     }
                 }
             });

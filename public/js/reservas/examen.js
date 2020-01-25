@@ -3,7 +3,7 @@ import {cloud} from './cloud.js';
 import {config} from './config.js';
 
 export class dopcre {
-    static interface(){
+    static interface(data){
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.dopcreTitulo;
@@ -15,7 +15,8 @@ export class dopcre {
         the(modal.id).children[0].classList.add("h-100","modal-xl");
         the(modal.id).children[0].classList.remove("modal-lg");
 
-        document.getElementsByName("fecha")[0].value = inputDate();
+        document.getElementsByName("fecha")[0].value = data.fecha;
+        document.getElementsByName("fum")[0].value = data.paciente.fum;
         document.getElementsByName("comentarios")[0].value = config.dopcreComentarios;
 
         the(modal.button).onclick = dopcre.save();
@@ -60,7 +61,7 @@ export class dopcre {
 }
 
 export class segundo {
-    static interface(){
+    static interface(data){
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.segundoTitulo;
@@ -137,7 +138,7 @@ export class segundo {
 }
 
 export class once {
-    static interface(){
+    static interface(data){
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.onceTitulo;
@@ -193,7 +194,7 @@ export class once {
 }
 
 export class preco {
-    static interface(){
+    static interface(data){
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.precoTitulo;
@@ -249,7 +250,7 @@ export class preco {
 }
 
 export class ginec {
-    static interface(){
+    static interface(data){
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.ginecTitulo;
@@ -274,7 +275,7 @@ export class ginec {
 }
 
 export class parto {
-    static interface(){
+    static interface(data){
         let modal = make.modal("Guardar");
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.partoTitulo;
