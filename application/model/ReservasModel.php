@@ -44,6 +44,21 @@ class ReservasModel
         return false;
     }
 
+    public static function closeReserva($data)
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+        $sql = "UPDATE reservas SET reserva_visible = 0 WHERE reserva_id = :reserva_id AND user_id = :user_id LIMIT 1";
+        $query = $database->prepare($sql);
+        $query->execute(array(':reserva_id' => $data->id, ':user_id' => Session::get('user_id')));
+
+        if ($query->rowCount() == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
     public static function deleteReserva($data)
     {
         if (!$data->id) {
