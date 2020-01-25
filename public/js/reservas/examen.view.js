@@ -88,88 +88,113 @@ export class dopcre {
             cut.value = value;
             this.value = fn.cut(cut);
 
-            //    let cc = fn.cc(this);
-
-        //    the("respuesta_cm_pct").innerHTML = cc.pct;
-        //}
-        //else{
-        //    the("respuesta_cm_pct").innerHTML = ''; 
+            let cc = fn.cc(this);
+            the("respuesta_cc_pct").innerHTML = cc.text;
+        }
+        else{
+            the("respuesta_cc_pct").innerHTML = ''; 
         }
     }
     static ca(e){
-        let value = this.value;
-        let cut = Object;
-        cut.digit = 3;
-        cut.value = value;
-        value = fn.cut(cut);
-        value = fn.number(value);
+        this.value = fn.number(this.value);
+        let value = String(this.value);
 
+        if (value.length > 0){
+            let cut = Object;
+            cut.digit = 3;
+            cut.value = value;
+            this.value = fn.cut(cut);
+
+            let ca = fn.ca(this);
+            the("respuesta_ca_pct").innerHTML = ca.text;
+        }
+        else{
+            the("respuesta_ca_pct").innerHTML = ''; 
+        }
     }
     static lf(e){
-        let value = this.value;
-        let cut = Object;
-        cut.digit = 3;
-        cut.value = value;
-        value = fn.cut(cut);
-        value = fn.number(value);
+        this.value = fn.number(this.value);
+        let value = String(this.value);
 
+        if (value.length > 0){
+            let cut = Object;
+            cut.digit = 3;
+            cut.value = value;
+            this.value = fn.cut(cut);
+
+            let lf = fn.lf(this);
+            the("respuesta_lf_pct").innerHTML = lf.text;
+        }
+        else{
+            the("respuesta_lf_pct").innerHTML = ''; 
+        }
     }
     static utd(e){
-        let value = this.value;
-        let cut = Object;
-        cut.digit = 3;
-        cut.value = value;
-        value = fn.cut(cut);
-        value = fn.number(value);
+        this.value = fn.number(this.value);
+        let value = String(this.value);
 
+        if (value.length > 0){
+            let cut = Object;
+            cut.digit = 3;
+            cut.value = value;
+            this.value = fn.cut(cut);
+
+            let ut = fn.ut(this);
+            the("respuesta_uterina_derecha_percentil").innerHTML = ut.text;
+        }
+        else{
+            the("respuesta_uterina_derecha_percentil").innerHTML = ''; 
+        }
     }
     static uti(e){
-        let value = this.value;
-        let cut = Object;
-        cut.digit = 3;
-        cut.value = value;
-        value = fn.cut(cut);
-        value = fn.number(value);
+        this.value = fn.number(this.value);
+        let value = String(this.value);
 
+        if (value.length > 0){
+            let cut = Object;
+            cut.digit = 3;
+            cut.value = value;
+            this.value = fn.cut(cut);
+
+            let ut = fn.ut(this);
+            the("respuesta_uterina_izquierda_percentil").innerHTML = ut.text;
+        }
+        else{
+            the("respuesta_uterina_izquierda_percentil").innerHTML = ''; 
+        }
     }
     static umb(e){
-        let value = this.value;
-        let cut = Object;
-        cut.digit = 3;
-        cut.value = value;
-        value = fn.cut(cut);
-        value = fn.number(value);
+        this.value = fn.number(this.value);
+        let value = String(this.value);
 
+        if (value.length > 0){
+            let cut = Object;
+            cut.digit = 3;
+            cut.value = value;
+            this.value = fn.cut(cut);
+
+            let umb = fn.umb(this);
+            the("respuesta_umbilical_percentil").innerHTML = umb.text;
+        }
+        else{
+            the("respuesta_umbilical_percentil").innerHTML = ''; 
+        }
     }
     static cm(e){
-        let value = this.value;
-        let cut = Object;
-        cut.digit = 3;
-        cut.value = value;
-        value = fn.cut(cut);
-        value = fn.number(value);
+        this.value = fn.number(this.value);
+        let value = String(this.value);
 
+        if (value.length > 0){
+            let cut = Object;
+            cut.digit = 3;
+            cut.value = value;
+            this.value = fn.cut(cut);
 
-    }
-    static keyup(e){
-        let _e = e.srcElement;
-        let _id = e.srcElement.id;
-
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
-        {
-                e.Handled = true;
+            let cm = fn.cm(this);
+            the("respuesta_cm_percentil").innerHTML = cm.text;
         }
-
-        // only allow one decimal point
-        if (e.KeyChar == '.')
-        {
-            e.Handled = true;
-        }
-
-        if ( e.which == 13 ) {
-            e.preventDefault();
-            //$("input[name='respuesta_cc']").focus();
+        else{
+            the("respuesta_cm_percentil").innerHTML = ''; 
         }
     }
 }
