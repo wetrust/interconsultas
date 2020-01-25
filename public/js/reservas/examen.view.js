@@ -180,9 +180,9 @@ export class dopcre {
         let eg = document.getElementsByName("respuesta_cc")[0].dataset.eg;
 
         if (String(cc).length > 0 && String(ca).length > 0 && String(lf).length > 0 ){
-            the("respuesta_pfe").value = fn.pfe(lf, cc, ca,eg);
+            document.getElementsByName("respuesta_pfe")[0].value = fn.pfe(lf, cc, ca,eg);
         }else{
-            the("respuesta_pfe").value = ''; 
+            document.getElementsByName("respuesta_pfe")[0].value = ''; 
         }
     }
     //
