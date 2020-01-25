@@ -3,16 +3,16 @@
 
 class PreModel
 {
-    public static function getAllPre()
-    {
-        $database = DatabaseFactory::getFactory()->getConnection();
+    //public static function getAllPre()
+    //{
+    //    $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT user_id, pre_id, paciente_id, pre_fecha, pre_examen, pre_motivo FROM notes WHERE user_id = :user_id";
-        $query = $database->prepare($sql);
-        $query->execute(array(':user_id' => Session::get('user_id')));
+    //    $sql = "SELECT user_id, pre_id, paciente_id, pre_fecha, pre_examen, pre_motivo FROM notes WHERE user_id = :user_id";
+    //    $query = $database->prepare($sql);
+    //    $query->execute(array(':user_id' => Session::get('user_id')));
 
-        return $query->fetchAll();
-    }
+    //    return $query->fetchAll();
+    //}
 
     //public static function getPre($data)
     //{
