@@ -23,13 +23,7 @@ export class fn {
         }
     }
     static number(value){
-        value = String(value);
-        if (value.length > 0){
-            value = value.replace(",", ".");
-            value = parseInt(value);
-        }else{
-            return null;
-        }
+        return value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
     }
     static cut(data){
         let value = String(data.value);

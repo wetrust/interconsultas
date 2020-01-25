@@ -27,19 +27,19 @@ export class dopcre {
         document.getElementsByName("eg")[0].value = EG.text;
 
         document.getElementsByName("respuesta_cc")[0].dataset.eg = EG.semanas;
-        document.getElementsByName("respuesta_cc")[0].onkeyup = dopcre.cc;
+        document.getElementsByName("respuesta_cc")[0].oninput = dopcre.cc;
         document.getElementsByName("respuesta_ca")[0].dataset.eg = EG.semanas;
-        document.getElementsByName("respuesta_ca")[0].onkeyup = dopcre.ca;
+        document.getElementsByName("respuesta_ca")[0].oninput = dopcre.ca;
         document.getElementsByName("respuesta_lf")[0].dataset.eg = EG.semanas;
-        document.getElementsByName("respuesta_lf")[0].onkeyup = dopcre.lf;
+        document.getElementsByName("respuesta_lf")[0].oninput = dopcre.lf;
         document.getElementsByName("respuesta_uterina_derecha")[0].dataset.eg = EG.semanas;
-        document.getElementsByName("respuesta_uterina_derecha")[0].onkeyup = dopcre.utd;
+        document.getElementsByName("respuesta_uterina_derecha")[0].oninput = dopcre.utd;
         document.getElementsByName("respuesta_uterina_izquierda")[0].dataset.eg = EG.semanas;
-        document.getElementsByName("respuesta_uterina_izquierda")[0].onkeyup = dopcre.uti;
+        document.getElementsByName("respuesta_uterina_izquierda")[0].oninput = dopcre.uti;
         document.getElementsByName("respuesta_umbilical")[0].dataset.eg = EG.semanas;
-        document.getElementsByName("respuesta_umbilical")[0].onkeyup = dopcre.umb;
+        document.getElementsByName("respuesta_umbilical")[0].oninput = dopcre.umb;
         document.getElementsByName("respuesta_cm")[0].dataset.eg = EG.semanas;
-        document.getElementsByName("respuesta_cm")[0].onkeyup = dopcre.cm;
+        document.getElementsByName("respuesta_cm")[0].oninput = dopcre.cm;
         
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
     }
@@ -78,30 +78,25 @@ export class dopcre {
         semanas.appendChild(opt);
     }
 
-    static cc(e){
-        dopcre.keyup(e);
+    static cc(){
+        this.value = fn.number(this.value);
+        let value = String(this.value);
 
-        let value = this.value;
-        let cut = Object;
-        cut.digit = 3;
-        cut.value = value;
-        value = fn.cut(cut);
-        value = fn.number(value);
+        if (value.length > 0){
+            let cut = Object;
+            cut.digit = 3;
+            cut.value = value;
+            this.value = fn.cut(cut);
 
-        this.value = value;
-
-        //if (value != null){
-        //    let cc = fn.cc(this);
+            //    let cc = fn.cc(this);
 
         //    the("respuesta_cm_pct").innerHTML = cc.pct;
         //}
         //else{
         //    the("respuesta_cm_pct").innerHTML = ''; 
-        //}
+        }
     }
     static ca(e){
-        dopcre.keyup(e);
-
         let value = this.value;
         let cut = Object;
         cut.digit = 3;
@@ -111,8 +106,6 @@ export class dopcre {
 
     }
     static lf(e){
-        dopcre.keyup(e);
-
         let value = this.value;
         let cut = Object;
         cut.digit = 3;
@@ -122,8 +115,6 @@ export class dopcre {
 
     }
     static utd(e){
-        dopcre.keyup(e);
-
         let value = this.value;
         let cut = Object;
         cut.digit = 3;
@@ -133,8 +124,6 @@ export class dopcre {
 
     }
     static uti(e){
-        dopcre.keyup(e);
-
         let value = this.value;
         let cut = Object;
         cut.digit = 3;
@@ -144,8 +133,6 @@ export class dopcre {
 
     }
     static umb(e){
-        dopcre.keyup(e);
-
         let value = this.value;
         let cut = Object;
         cut.digit = 3;
@@ -155,8 +142,6 @@ export class dopcre {
 
     }
     static cm(e){
-        dopcre.keyup(e);
-
         let value = this.value;
         let cut = Object;
         cut.digit = 3;
