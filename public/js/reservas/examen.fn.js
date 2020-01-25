@@ -83,7 +83,7 @@ export class fn {
     static ccca(cc,ca,eg){
         'use strict';
         let ccca = fn.number(String(cc / ca))
-
+        ccca = ccca.toFixed(1);
 
         let a = [], b = [];
         a[15] = 1.1; a[16] = 1.09; a[17] = 1.08; a[18] = 1.07; a[19] = 1.06; a[20] = 1.06; a[21] = 1.05; a[22] = 1.04; a[23] = 1.03; a[24] = 1.02; a[25] = 1.01; a[26] = 1; a[27] = 1; a[28] = 0.99; a[29] = 0.98; a[30] = 0.97; a[31] = 0.96; a[32] = 0.95; a[33] = 0.95; a[34] = 0.94; a[35] = 0.93; a[36] = 0.92; a[37] = 0.91; a[38] = 0.9; a[39] = 0.89; a[40] = 0.89;
@@ -99,6 +99,8 @@ export class fn {
             let texto = Math.trunc(resultado);
             if (texto > 99) {texto = '> 99';} 
             else if (texto < 1) {texto = '< 1';}
+
+
 
             return {pct:resultado,text: ccca + ", percentil " + texto};
         }

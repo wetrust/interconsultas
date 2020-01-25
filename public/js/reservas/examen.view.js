@@ -47,7 +47,8 @@ export class dopcre {
     }
 
     static save(){
-
+        modal = this.dataset.modal;
+        $("#"+modal).modal("hide");
     }
 
     static selectFCF(){
@@ -180,7 +181,8 @@ export class dopcre {
         let eg = document.getElementsByName("respuesta_cc")[0].dataset.eg;
 
         if (String(cc).length > 0 && String(ca).length > 0 && String(lf).length > 0 ){
-            document.getElementsByName("respuesta_pfe")[0].value = fn.pfe(lf, cc, ca,eg);
+            let pfex = fn.pfe(lf, cc, ca,eg);
+            document.getElementsByName("respuesta_pfe")[0].value = pfex.text;
         }else{
             document.getElementsByName("respuesta_pfe")[0].value = ''; 
         }
@@ -231,10 +233,10 @@ export class dopcre {
         if (String(utd).length > 0 && String(uti).length > 0){
             let promedio =  (parseFloat(utd) + parseFloat(uti) ) / 2;
             let prut = fn.promut(promedio, eg);
-            the("respuesta_uterinas").value = promedio + ", percentil " + prut.text;
+            document.getElementsByName("respuesta_uterinas")[0].value = promedio + ", percentil " + prut.text;
         }
         else{
-            the("respuesta_uterinas").value = ''; 
+            document.getElementsByName("respuesta_uterinas")[0].value = ''; 
         }
     }
     //
