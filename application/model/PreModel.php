@@ -34,9 +34,15 @@ class PreModel
         $query = $database->prepare($sql);
         $query->execute(array(':paciente_rut' => $reserva->reserva_rut, ':pre_fecha' => $data->fecha, ':pre_examen' => $data->examen, ':pre_motivo' => $data->motivo, ':user_id' => Session::get('user_id')));
 
-        if ($query->rowCount() == 1) { 
+        if ($query->rowCount() == 1) {
+            $respuesta = new stdClass();
+
             ReservasModel::closeReserva($data);
-            return $database->lastInsertId();
+            
+            $respuesta->reserva_rut = $reserva->reserva_rut;
+            $respuesta->data = $database->lastInsertId();
+
+            return $respuesta;
         }
 
         return false;

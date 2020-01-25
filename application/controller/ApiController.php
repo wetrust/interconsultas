@@ -419,9 +419,11 @@ class ApiController extends Controller{
 
         $response = new stdClass();
         
-        $response->retorno = PreModel::createPre($data);
+        $pre = PreModel::createPre($data);
+        $response->return = $pre->data;
         $response->examen = $data->examen;
         $response->data = ReservasModel::getAllReservas($data->fecha);
+        $response->paciente = PacientesModel::getPaciente($pre->reserva_rut);
         $response->modal = $data->modal;
 
         $this->View->renderJSON($response);
