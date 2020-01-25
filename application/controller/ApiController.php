@@ -420,11 +420,11 @@ class ApiController extends Controller{
         $response = new stdClass();
         
         $response->retorno = PreModel::createPre($data);
-        //$response->examen = $data->examen;
-        //$response->data = ReservasModel::getAllReservas($data->fecha);
-        //$response->modal = $data->modal;
+        $response->examen = $data->examen;
+        $response->data = ReservasModel::getAllReservas($data->fecha);
+        $response->modal = $data->modal;
 
-        //$this->View->renderJSON($response);
+        $this->View->renderJSON($response);
     }
 
 }
