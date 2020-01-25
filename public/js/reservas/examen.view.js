@@ -47,7 +47,7 @@ export class dopcre {
     }
 
     static save(){
-        modal = this.dataset.modal;
+        let modal = this.dataset.modal;
         $("#"+modal).modal("hide");
     }
 
