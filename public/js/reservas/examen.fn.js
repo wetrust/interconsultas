@@ -33,6 +33,12 @@ export class fn {
             return null;
         }
     }
+    //arreglar
+    static valCC(dof,dbp){
+        var delta = parseFloat(1.60);
+        return Math.round((parseInt(dof) + parseInt(dbp)) * delta);
+    }
+    //
     static cc(data){
         'use strict';
         let a = [], b = [];
@@ -73,6 +79,31 @@ export class fn {
             return {pct:resultado,text:texto};
         }
     }
+    //arreglar
+    static ccca(cc,ca,eg){
+        'use strict';
+        let ccca = fn.number(cc / ca)
+
+
+        let a = [], b = [];
+        a[15] = 1.1; a[16] = 1.09; a[17] = 1.08; a[18] = 1.07; a[19] = 1.06; a[20] = 1.06; a[21] = 1.05; a[22] = 1.04; a[23] = 1.03; a[24] = 1.02; a[25] = 1.01; a[26] = 1; a[27] = 1; a[28] = 0.99; a[29] = 0.98; a[30] = 0.97; a[31] = 0.96; a[32] = 0.95; a[33] = 0.95; a[34] = 0.94; a[35] = 0.93; a[36] = 0.92; a[37] = 0.91; a[38] = 0.9; a[39] = 0.89; a[40] = 0.89;
+        b[15] = 1.29; b[16] = 1.28; b[17] = 1.27; b[18] = 1.26; b[19] = 1.25; b[20] = 1.24; b[21] = 1.24; b[22] = 1.23; b[23] = 1.22; b[24] = 1.21; b[25] = 1.2; b[26] = 1.19; b[27] = 1.18; b[28] = 1.18; b[29] = 1.17; b[30] = 1.17; b[31] = 1.16; b[32] = 1.15; b[33] = 1.14; b[34] = 1.13; b[35] = 1.12; b[36] = 1.11; b[37] = 1.1; b[38] = 1.09; b[39] = 1.08; b[40] = 1.08;
+    
+        if (data.dataset.eg < 15 || data.dataset.eg > 40){
+            return {pct:0,text:""};
+        }
+        else {
+            var uno = b[eg] - a[eg];
+            var dos = ccca - a[eg];
+            var resultado = parseInt(95 / (uno) * (dos) + 3);
+            let texto = Math.trunc(resultado);
+            if (texto > 99) {texto = '> 99';} 
+            else if (texto < 1) {texto = '< 1';}
+
+            return {pct:resultado,text: ccca + ", percentil " + texto};
+        }
+    }
+    //
     static lf(data){
         'use strict';
         let a = [], b = [];
@@ -111,6 +142,25 @@ export class fn {
             return {pct:resultado,text:texto};
         }
     }
+    static promut(prom,eg){
+        'use strict';
+        var a = [], b = [];
+        a[10] = 1.23; a[11] = 1.18; a[12] = 1.11; a[13] = 1.05; a[14] = 0.99; a[15] = 0.94; a[16] = 0.89; a[17] = 0.85; a[18] = 0.81; a[19] = 0.78; a[20] = 0.74; a[21] = 0.71; a[22] = 0.69; a[23] = 0.66; a[24] = 0.64; a[25] = 0.62; a[26] = 0.6; a[27] = 0.58; a[28] = 0.56; a[29] = 0.55; a[30] = 0.54; a[31] = 0.52; a[32] = 0.51; a[33] = 0.51; a[34] = 0.51; a[35] = 0.49; a[36] = 0.48; a[37] = 0.48; a[38] = 0.47; a[39] = 0.47; a[40] = 0.47;
+        b[10] = 2.84; b[11] = 2.71; b[12] = 2.53; b[13] = 2.38; b[14] = 2.24; b[15] = 2.11; b[16] = 1.99; b[17] = 1.88; b[18] = 1.79; b[19] = 1.71; b[20] = 1.61; b[21] = 1.54; b[22] = 1.47; b[23] = 1.41; b[24] = 1.35; b[25] = 1.3; b[26] = 1.25; b[27] = 1.21; b[28] = 1.17; b[29] = 1.13; b[30] = 1.11; b[31] = 1.06; b[32] = 1.04; b[33] = 1.01; b[34] = 0.99; b[35] = 0.97; b[36] = 0.95; b[37] = 0.94; b[38] = 0.92; b[39] = 0.91; b[40] = 0.91;
+      
+        if (eg < 10 || eg > 40){
+            return {pct:0,text:""};
+        }else {
+            let uno = b[eg] - a[eg];
+            let dos = prom - a[eg];
+            let resultado = 90 / (uno) * (dos) + 5;
+            let texto = Math.trunc(resultado);
+            if (texto > 99) {texto = '> 99';} 
+            else if (texto < 1) {texto = '< 1';}
+
+            return {pct:resultado,text:texto};
+        } 
+    }
     static umb(data){
         'use strict';
         var a = [], b = [];
@@ -131,15 +181,37 @@ export class fn {
         }
     }
     static cm(data){
+        'use strict';
         var a = [], b = [];
-        a[20] = 0.78; a[21] = 0.87; a[22] = 0.95; a[23] = 1.02;a[24] = 1.09; a[25] = 1.15; a[26] = 1.2; a[27] = 1.24;a[28] = 1.28; a[29] = 1.31; a[30] = 1.33; a[31] = 1.35;a[32] = 1.36; a[33] = 1.36; a[34] = 1.36; a[35] = 1.34;a[36] = 1.32; a[37] = 1.3; a[38] = 1.26; a[39] = 1.22;a[40] = 1.18;
-        b[20] = 1.68; b[21] = 1.88; b[22] = 2.06; b[23] = 2.22;b[24] = 2.36; b[25] = 2.49; b[26] = 2.6;	b[27] = 2.7;b[28] = 2.78; b[29] = 2.84; b[30] = 2.89; b[31] = 2.92;b[32] = 2.93; b[33] = 2.93; b[34] = 2.91; b[35] = 2.87;b[36] = 2.82; b[37] = 2.75; b[38] = 2.67; b[39] = 2.57;
+        a[0] = 1.24; a[1] = 1.29; a[2] = 1.34; a[3] = 1.37; a[4] = 1.4; a[5] = 1.43; a[6] = 1.44; a[7] = 1.45; a[8] = 1.45; a[9] = 1.44; a[10] = 1.43; a[11] = 1.41; a[12] = 1.38; a[13] = 1.34;	a[14] = 1.3; a[15] = 1.25; a[16] = 1.19; a[17] = 1.13;	a[18] = 1.05; a[19] = 0.98; a[20] = 0.89;
+        b[0] = 1.98; b[1] = 2.12; b[2] = 2.25; b[3] = 2.36; b[4] = 2.45; b[5] = 2.53; b[6] = 2.59; b[7] = 2.63; b[8] = 2.66; b[9] = 2.67; b[10] = 2.67;	b[11] = 2.65; b[12] = 2.62; b[13] = 2.56;	b[14] = 2.5; b[15] = 2.41; b[16] = 2.31; b[17] = 2.2; b[18] = 2.07; b[19] = 1.92; b[20] = 1.76;
         
         if (data.dataset.eg < 20 || data.dataset.eg > 40){
             return {pct:0,text:""};
         }else {
-            let uno = b[data.dataset.eg] - a[data.dataset.eg];
-            let dos = data.value - a[data.dataset.eg];
+            let eg = data.dataset.eg;
+            eg = eg - 20;
+            var uno = b[eg] - a[eg];
+            var dos = data.value - a[eg];
+            var resultado = parseInt(90 / (uno) * (dos) + 5);
+
+            let texto = Math.trunc(resultado);
+            if (texto > 99) {texto = '> 99';} 
+            else if (texto < 1) {texto = '< 1';}
+
+            return {pct:resultado,text:texto};
+        }
+    }
+    static cmau(promedio,eg){
+        var a = [], b = [];
+        a[20] = 0.78; a[21] = 0.87; a[22] = 0.95; a[23] = 1.02;a[24] = 1.09; a[25] = 1.15; a[26] = 1.2; a[27] = 1.24;a[28] = 1.28; a[29] = 1.31; a[30] = 1.33; a[31] = 1.35;a[32] = 1.36; a[33] = 1.36; a[34] = 1.36; a[35] = 1.34;a[36] = 1.32; a[37] = 1.3; a[38] = 1.26; a[39] = 1.22;a[40] = 1.18;
+        b[20] = 1.68; b[21] = 1.88; b[22] = 2.06; b[23] = 2.22;b[24] = 2.36; b[25] = 2.49; b[26] = 2.6;	b[27] = 2.7;b[28] = 2.78; b[29] = 2.84; b[30] = 2.89; b[31] = 2.92;b[32] = 2.93; b[33] = 2.93; b[34] = 2.91; b[35] = 2.87;b[36] = 2.82; b[37] = 2.75; b[38] = 2.67; b[39] = 2.57;
+        
+        if (eg < 20 || eg > 40){
+            return {pct:0,text:""};
+        }else {
+            let uno = b[eg] - a[eg];
+            let dos = promedio - a[data.dataset.eg];
             var resultado = (90 / (uno) * (dos)) +5
             let texto = Math.trunc(resultado);
             if (texto > 99) {texto = '> 99';} 
@@ -148,4 +220,52 @@ export class fn {
             return {pct:resultado,text:texto};
         }
     }
+    //
+    static pfe(lf, cc, ca,eg){
+        cc = cc / 10;
+        ca = ca / 10;
+        lf = lf / 10;
+
+        var psoP = Math.pow(10, (1.326 + 0.0107 * cc + 0.0438 * ca + 0.158 * lf - 0.00326 * ca * lf));
+    
+
+        if (isNaN(psoP) != true) {
+            psoP = Math.trunc(psoP);
+        }
+        else{
+            psoP = 0;
+        }
+
+        var pct10 = [], pct90 = [];
+        pct10[0] = 97;pct10[1] = 121;pct10[2] = 150;pct10[3] = 185;pct10[4] = 227;pct10[5] = 275;
+        pct10[6] = 331;pct10[7] = 398;pct10[8] = 471;pct10[9] = 556;pct10[10] = 652;pct10[11] = 758;
+        pct10[12] = 876;pct10[13] = 1004;pct10[14] = 1145;pct10[15] = 1294;pct10[16] = 1453;
+        pct10[17] = 1621;pct10[18] = 1794;pct10[19] = 1973;pct10[20] = 2154;pct10[21] = 2335;
+        pct10[22] = 2513; pct10[23] = 2686; pct10[24] = 2851; pct10[25] = 2985;
+        pct90[0] = 137;pct90[1] = 171;pct90[2] = 212;pct90[3] = 261;pct90[4] = 319;
+        pct90[5] = 387;pct90[6] = 467;pct90[7] = 559;pct90[8] = 665;pct90[9] = 784;
+        pct90[10] = 918;pct90[11] = 1068;pct90[12] = 1234;pct90[13] = 1416;pct90[14] = 1613;
+        pct90[15] = 1824;pct90[16] = 2049;pct90[17] = 2285;pct90[18] = 2530;
+        pct90[19] = 2781;pct90[20] = 3036;pct90[21] = 3291;pct90[22] = 3543;pct90[23] = 3786;
+        pct90[24] = 4019;pct90[25] = 4234;
+
+        if (eg < 15 || eg > 40 || psoP <= 0)
+        {
+            return {pct:0,text:""};
+        }
+        else {
+            eg = eg - 15;
+            eg = parseInt(eg);
+            var uno = pct90[eg] - pct10[eg];
+            var dos = pfe - pct10[eg];
+            var resultado = (80 / (uno) * (dos)) + 10;
+
+            let texto = Math.trunc(resultado);
+            if (texto > 99) {texto = '> 99';} 
+            else if (texto < 1) {texto = '< 1';}
+
+            return {pct:resultado,text:psoP + ", percentil " + texto};
+        }
+    }
+    //
 }
