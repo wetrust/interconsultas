@@ -27,7 +27,7 @@ class PreModel
 
     public static function createPre($data)
     {
-        $reserva = ReservasModel::getReserva($data);
+        //$reserva = ReservasModel::getReserva($data);
 
         //$database = DatabaseFactory::getFactory()->getConnection();
 
