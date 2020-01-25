@@ -23,7 +23,7 @@ export class dopcre {
         the(modal.button).onclick = dopcre.save();
         dopcre.selectFCF();
 
-        EG = fn.EG(data);
+        let EG = fn.EG(data);
         document.getElementsByName("eg")[0].value = EG.text;
 
         document.getElementsByName("respuesta_cc")[0].dataset.eg = EG.semanas;
