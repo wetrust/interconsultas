@@ -148,10 +148,10 @@ export class dopcre {
 
         if (String(cc).length > 0 && String(ca).length > 0){
             let ccca = fn.ccca(cc,ca,eg);
-            the("respuesta_ccca").value = ccca.text;
+            document.getElementsByName("respuesta_ccca")[0].value = ccca.text;
         }
         else{
-            the("respuesta_ccca").value = ''; 
+            document.getElementsByName("respuesta_ccca")[0].value = ''; 
         }
     }
     static lf(e){

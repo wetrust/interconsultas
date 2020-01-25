@@ -82,7 +82,7 @@ export class fn {
     //arreglar
     static ccca(cc,ca,eg){
         'use strict';
-        let ccca = fn.number(cc / ca)
+        let ccca = fn.number(String(cc / ca))
 
 
         let a = [], b = [];
@@ -257,7 +257,7 @@ export class fn {
             eg = eg - 15;
             eg = parseInt(eg);
             var uno = pct90[eg] - pct10[eg];
-            var dos = pfe - pct10[eg];
+            var dos = psoP - pct10[eg];
             var resultado = (80 / (uno) * (dos)) + 10;
 
             let texto = Math.trunc(resultado);
