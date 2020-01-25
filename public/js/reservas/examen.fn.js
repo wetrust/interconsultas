@@ -1,9 +1,9 @@
 export class fn {
     static EG(data){
-        _FUM = new Date();
+        let _FUM = new Date();
         _FUM.setTime(Date.parse(data.paciente.fum));
         _FUM = _FUM.getTime();
-        _fExamen = new Date();
+        let _fExamen = new Date();
         _fExamen.setTime(Date.parse(data.fecha));
         _fExamen = _fExamen.getTime();
         
@@ -23,7 +23,7 @@ export class fn {
         }
     }
     static number(value){
-        value = String(value);
+        let value = String(value);
         if (value.length > 0){
             value = value.replace(",", ".");
             value = parseInt(value);
@@ -32,7 +32,7 @@ export class fn {
         }
     }
     static cut(data){
-        value = String(data.value);
+        let  value = String(data.value);
         if (value.length > 0){
             return value.substring(0, data.digit);
         }else{
