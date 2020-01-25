@@ -409,4 +409,22 @@ class ApiController extends Controller{
         $this->View->renderJSON($response);
     }
 
+    public function createPre(){
+        $data = new stdClass();
+        $data->id = Request::post('id');
+        $data->fecha = Request::post('fecha');
+        $data->examen = Request::post('examen');
+        $data->motivo = Request::post('motivo');
+        $data->modal = Request::post('modal');
+
+        $response = new stdClass();
+        
+        $response->return = PreModel::createPre($data);
+        $response->examen = $data->examen;
+        $response->data = ReservasModel::getAllReservas($data->fecha);
+        $response->modal = $data->modal;
+
+        $this->View->renderJSON($response);
+    }
+
 }

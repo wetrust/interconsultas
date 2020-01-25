@@ -204,7 +204,9 @@ export class view {
     }
 
     static verPreparar(){
-        let modal = make.modal();
+        let reserva_id = this.dataset.id;
+        let modal = make.modal("Crear examen");
+
         document.getElementsByTagName("body")[0].insertAdjacentHTML( 'beforeend', modal.modal);
         the(modal.titulo).innerHTML = config.verPrepararTitulo;
         the(modal.titulo).classList.add("mx-auto","text-white");
@@ -213,12 +215,40 @@ export class view {
         the(modal.contenido).classList.add("bg-light");
         $('#'+modal.id).modal("show").on('hidden.bs.modal', function (e) { $(this).remove(); });
 
-        the("btn.dopcre").onclick = dopcre.interface;
-        the("btn.segundo").onclick = segundo.interface;
-        the("btn.once").onclick = once.interface;
-        the("btn.preco").onclick = preco.interface;
-        the("btn.ginec").onclick = ginec.interface;
-        the("btn.parto").onclick = parto.interface;
+        the(modal.button).dataset.reserva = reserva_id;
+
+        $("#"+modal.button).on("click", function(){
+            let pre = {
+                id: this.dataset.reserva,
+                fecha: the(config.reservasInterfaceSearch).value,
+                examen: the(config.verPrepararExamenButton).value,
+                motivo: the(config.verPrepararMotivo).value,
+                modal: this.dataset.modal
+            }
+
+            cloud.createPre(pre).then(function(data){
+                if (data.return == false){
+                    make.alert('Hubo un error al eliminar');
+                }else{
+                    $("#"+data.modal).modal("hide");
+                    view.tableReservas(data.data);
+
+                    if (data.examen == "0"){
+                        dopcre.interface;
+                    }else if (data.examen == "1"){
+                        segundo.interface;
+                    }else if (data.examen == "2"){
+                        once.interface;
+                    }else if (data.examen == "3"){
+                        preco.interface;
+                    }else if (data.examen == "4"){
+                        ginec.interface;
+                    }else if (data.examen == "5"){
+                        parto.interface;
+                    }
+                }
+            });
+        });
     }
 
     static tableReservas(data){

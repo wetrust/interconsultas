@@ -6,7 +6,7 @@ class ReservasModel
     {
 
         $database = DatabaseFactory::getFactory()->getConnection();
-        $sql = "SELECT user_id, reserva_id, reserva_nombre, reserva_apellido, reserva_rut, reserva_dia, reserva_hora, reserva_minutos FROM reservas WHERE user_id = :user_id AND reserva_dia = :reserva_dia";        
+        $sql = "SELECT user_id, reserva_id, reserva_nombre, reserva_apellido, reserva_rut, reserva_dia, reserva_hora, reserva_minutos FROM reservas WHERE user_id = :user_id AND reserva_dia = :reserva_dia AND reserva_visible = 1";        
         $query = $database->prepare($sql);
 
         if ($fecha == NULL){
@@ -62,4 +62,6 @@ class ReservasModel
 
         return false;
     }
+
+    
 }

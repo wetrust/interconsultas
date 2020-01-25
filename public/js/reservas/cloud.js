@@ -67,6 +67,20 @@ export class cloud {
 
         } catch(e){}
     }
+    static async createPre(pre){
+        try {
+            const to = new FormData();
+            to.append('id', pre.id);
+            to.append('fecha', pre.fecha);
+            to.append('examen', pre.examen);
+            to.append('motivo', pre.motivo);
+            to.append('modal', pre.modal);
+
+            const from = await data.post(config.preparar, to);
+            return from;
+        } catch(e){}
+    }
+    
     static async getConfiguraciones(){
         try {
             const from = await data.get(config.configuraciones);
