@@ -20,7 +20,7 @@ export class dopcre {
         document.getElementsByName("fum")[0].value = data.paciente.fum;
         document.getElementsByName("comentarios")[0].value = config.dopcreComentarios;
 
-        the(modal.button).onclick = dopcre.save();
+        the(modal.button).onclick = dopcre.save;
         dopcre.selectFCF();
 
         let EG = fn.EG(data);
