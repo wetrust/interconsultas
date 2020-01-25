@@ -23,7 +23,7 @@ export class fn {
         }
     }
     static number(value){
-        let value = String(value);
+        value = String(value);
         if (value.length > 0){
             value = value.replace(",", ".");
             value = parseInt(value);
@@ -32,7 +32,7 @@ export class fn {
         }
     }
     static cut(data){
-        let  value = String(data.value);
+        let value = String(data.value);
         if (value.length > 0){
             return value.substring(0, data.digit);
         }else{
